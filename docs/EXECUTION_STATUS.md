@@ -191,4 +191,29 @@ Verificación 2026-09-25: `pnpm check` exit 0 — lint ✅ · typecheck ✅ · 2
 
 Siguiente: **Step 5 — `@vscar/economics-engine`**, consumiendo `EnergyContext` + `EnergyScenario` (nunca las fuentes).
 
+## STEP 5 — `@vscar/economics-engine` v0.1 · ✅ (2026-09-25)
+
+Documentación: [docs/economics/ECONOMICS_ENGINE_V0_1.md](economics/ECONOMICS_ENGINE_V0_1.md). Metodología **2026.3** (`economics-v1`, redondeo `money-v1`).
+
+| Componente | Estado |
+|---|---|
+| Paquete puro: `vehicle-schema`, `methodology`, `market-context`, `quality`, `zod`; prohibido `db`, `data-connectors`, `worker`, `node:*` (ESLint + test) | ✅ |
+| Contratos `EconomicVehicleInput`, `EconomicScenario`, `VehicleEconomicOverrides`, `EconomicResult`; entrada desde el bundle con las reglas de `quality` (usable, válido en fecha, sin BLOCK, sin conflicto) | ✅ |
+| ICE/MHEV/HEV (L/100 km × €/L), BEV (kWh de red × €/kWh, eficiencia 0,90 ESTIMATED según `charging_loss_basis`), PHEV combinado (fracción eléctrica del escenario + CS; nunca WLTP ponderado; sin CS → UNAVAILABLE) | ✅ |
+| Running Cost (anual, 1/3/5/N años) y Ownership Cost (COMPLETE o `KNOWN_COST_VIEW`; sin compra → UNAVAILABLE) | ✅ / PARTIAL por diseño |
+| Known / User-provided / Estimated por línea; precedencia de precios override > referencia > fallback (vacío) > UNAVAILABLE | ✅ |
+| Rangos propagados (sin punto medio); dinero en céntimos, HALF_UP, acumulados enteros | ✅ |
+| Break-even (BREAK_EVEN / UNCERTAIN / NO_BREAK_EVEN / NO_PREMIUM), deltas antisimétricos, sensibilidad determinista (8 variables) | ✅ |
+| Confianza HIGH/MEDIUM/LOW con motivos; 25 warnings; `scenarioHash` (huella de methodology) | ✅ |
+| Procedencia: precios usados (fuente, observación, fecha, frescura, impuestos) y fuentes implicadas → la capa de publicación aplica el gate S04 | ✅ |
+| Tests: 26 unitarios + 7 propiedades + 6 fixtures reales + 2 frontera | ✅ |
+
+Decisión técnica nueva (sin reabrir aprobadas): el consumo eléctrico declara `charging_loss_basis`; la eficiencia de carga solo se aplica si las pérdidas están EXCLUIDAS; si están INCLUIDAS no se aplica (evita contarlas dos veces); si no se sabe (todos los consumos curados hoy) el coste sale como **rango**.
+
+Gate legal vigente (A8): **Build Economics: YES · uso ESIOS interno/desarrollo: YES · publicar precios basados en ESIOS: NO** hasta resolver derechos S04. El resultado conserva `source_id` para que la capa de publicación lo aplique.
+
+Verificación 2026-09-25: `pnpm check` exit 0 — lint ✅ · typecheck ✅ · 254 tests ✅ + 3 live (EEA, MITECO, ESIOS) ✅ con sus flags.
+
+Siguiente: Comparison Engine (consume `EconomicResult`, no recalcula economía).
+
 ## STEP 4 — Primera calculadora pública · ⏳

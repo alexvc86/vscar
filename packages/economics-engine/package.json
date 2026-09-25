@@ -1,0 +1,24 @@
+{
+  "name": "@vscar/economics-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "VScar Economics Engine v0.1: energy cost per 100 km, running cost and ownership cost views (known vs estimated), PHEV blended cost, ranges, confidence, sensitivity and break-even. Pure and deterministic: no I/O, no sources, no database.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@vscar/market-context": "workspace:*",
+    "@vscar/methodology": "workspace:*",
+    "@vscar/quality": "workspace:*",
+    "@vscar/vehicle-schema": "workspace:*",
+    "zod": "^3.25.67"
+  },
+  "devDependencies": {
+    "@vscar/fixtures": "workspace:*"
+  }
+}

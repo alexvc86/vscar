@@ -41,8 +41,8 @@ export default tseslint.config(
       'no-restricted-imports': [
         'error',
         {
-          paths: ['@vscar/db', 'mysql2', 'mysql2/promise', '@vscar/data-connectors'],
-          patterns: ['drizzle-orm', 'drizzle-orm/*', '@vscar/db/*', '@vscar/data-connectors/*', 'node:*'],
+          paths: ['@vscar/db', 'mysql2', 'mysql2/promise', '@vscar/data-connectors', '@vscar/worker'],
+          patterns: ['drizzle-orm', 'drizzle-orm/*', '@vscar/db/*', '@vscar/data-connectors/*', '@vscar/worker/*', 'node:*'],
         },
       ],
     },

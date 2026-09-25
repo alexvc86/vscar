@@ -1,4 +1,5 @@
 import { DGT_LABEL_RULE } from './dgt-label.ts';
+import { ECONOMICS_RULES } from './economics.ts';
 import { ENERGY_MARKET_RULES } from './energy-market.ts';
 import { FOR_YOU_RULES } from './for-you.ts';
 import { DIFFERENCE_THRESHOLDS } from './meaningful-difference.ts';
@@ -23,12 +24,14 @@ export * from './scenarios.ts';
 export * from './dgt-label.ts';
 export * from './quality-config.ts';
 export * from './energy-market.ts';
+export * from './economics.ts';
 
 /**
  * methodologyVersion (Plan §13.8). Cualquier cambio en la configuración exige nueva versión.
  * 2026.2: + reglas de datos de mercado de energía (`energy-market-v1`: frescura, ventana, referencia por mercado).
+ * 2026.3: + reglas económicas (`economics-v1`: eficiencia de carga, producto por combustible, redondeo, confianza, sensibilidad).
  */
-export const METHODOLOGY_VERSION = '2026.2';
+export const METHODOLOGY_VERSION = '2026.3';
 
 /** Configuración metodológica completa y serializable (fila de `methodology_versions.config`). */
 export const METHODOLOGY_CONFIG = {
@@ -45,6 +48,7 @@ export const METHODOLOGY_CONFIG = {
   completeness: { weights: COMPLETENESS_WEIGHTS, provenance_factor: PROVENANCE_FACTOR, mapping_factor: MAPPING_FACTOR, seo_min: SEO_COMPLETENESS_MIN },
   recommendation_confidence_levels: RECOMMENDATION_CONFIDENCE_LEVELS,
   energy_market: ENERGY_MARKET_RULES,
+  economics: ECONOMICS_RULES,
 } as const;
 
 /** JSON canónico (claves ordenadas) para huella y almacenamiento. */

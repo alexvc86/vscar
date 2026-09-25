@@ -105,6 +105,28 @@ importers:
         specifier: ^0.31.4
         version: 0.31.11
 
+  packages/economics-engine:
+    dependencies:
+      '@vscar/market-context':
+        specifier: workspace:*
+        version: link:../market-context
+      '@vscar/methodology':
+        specifier: workspace:*
+        version: link:../methodology
+      '@vscar/quality':
+        specifier: workspace:*
+        version: link:../quality
+      '@vscar/vehicle-schema':
+        specifier: workspace:*
+        version: link:../vehicle-schema
+      zod:
+        specifier: ^3.25.67
+        version: 3.25.76
+    devDependencies:
+      '@vscar/fixtures':
+        specifier: workspace:*
+        version: link:../../fixtures
+
   packages/market-context:
     dependencies:
       '@vscar/methodology':

@@ -30,9 +30,9 @@ describe('methodology config integrity', () => {
   });
 
   it('has a version and a stable fingerprint that changes with the config', () => {
-    expect(METHODOLOGY_VERSION).toBe('2026.2');
+    expect(METHODOLOGY_VERSION).toBe('2026.3');
     expect(methodologyFingerprint()).toBe(methodologyFingerprint(JSON.parse(JSON.stringify(METHODOLOGY_CONFIG))));
-    expect(methodologyFingerprint({ ...METHODOLOGY_CONFIG, version: '2026.3' })).not.toBe(methodologyFingerprint());
+    expect(methodologyFingerprint({ ...METHODOLOGY_CONFIG, version: '2026.4' })).not.toBe(methodologyFingerprint());
   });
 
   it('presets and sensitivity ranges exist for both reference markets', () => {

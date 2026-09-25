@@ -1,7 +1,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
-import { ENERGY_MARKET_RULES } from '@vscar/methodology';
+import { ENERGY_MARKET_RULES, METHODOLOGY_VERSION } from '@vscar/methodology';
 import { EnergyPriceObservation, type EnergyProduct, type PriceScopeType } from '@vscar/vehicle-schema';
 import { effectiveEnergyInputs, loadEnergyContext, resolveEnergyContext, type EnergyPriceReader } from '../src/index.ts';
 
@@ -147,7 +147,7 @@ describe('market-context — provenance and separation of assumptions', () => {
       retrieved_at: '2026-09-24',
       label: 'reference fuel price (median of public stations)',
     });
-    expect(ctx.rules).toEqual({ methodology_version: '2026.2', energy_market_rules: 'energy-market-v1' });
+    expect(ctx.rules).toEqual({ methodology_version: METHODOLOGY_VERSION, energy_market_rules: 'energy-market-v1' });
   });
 
   it('EnergyContext holds observed facts only: no home-charging share, no vehicle costs', () => {
