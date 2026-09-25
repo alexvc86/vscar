@@ -1,0 +1,16 @@
+node_modules/
+.turbo/
+dist/
+coverage/
+*.log
+
+# secretos y configuración local (en el VPS viven en C:\vscar\config\)
+.env
+.env.*
+!.env.example
+
+# datos productivos, backups y dumps nunca en Git (plan §33.3)
+/data/
+/backups/
+*.sql.gz
+*.dump

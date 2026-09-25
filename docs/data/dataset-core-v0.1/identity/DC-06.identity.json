@@ -1,0 +1,42 @@
+{
+  "dc": "DC-06",
+  "commercial_variant": "Hyundai Tucson 1.6 T-GDI HEV 230 CV (132 kW ICE + 44.2 kW e-motor, 169.1 kW system) AT6, FWD (4x2), trim Tecno, NX4 pre-facelift, MY2023, ES (IDAE record 'TUCSON 1.6 TGDI 230CV HEV AT TECNO 2C', id 550852)",
+  "market": "ES",
+  "eea_year": 2023,
+  "eea_table": "[CO2Emission].[latest].[co2cars_2023Fv28]",
+  "query_filter": "MS='ES' AND Mk LIKE 'HYUNDAI%' AND Cn LIKE '%TUCSON%' AND Fm='H'; Ep is combustion-engine power; values are MIN-MAX per TAN/Va/Ve group",
+  "candidates": [
+    { "TAN": "E5*2018/858*00001*06", "T": "NX4E", "Va": "F5P41", "Ve": "A61B13", "Cn": "TUCSON IX35", "registrations": 2406, "values": { "Ep": 132, "Ec": 1598, "M": 1639, "Ewltp": "127", "Z": null, "Zr": null }, "dr_min": "2023-01-02", "dr_max": "2023-12-29" },
+    { "TAN": "E5*2018/858*00001*06", "T": "NX4E", "Va": "F5P41", "Ve": "A61B14", "Cn": "TUCSON IX35", "registrations": 2218, "values": { "Ep": 132, "Ec": 1598, "M": 1639, "Ewltp": "130-131", "Z": null, "Zr": null }, "dr_min": "2023-01-02", "dr_max": "2023-12-29" },
+    { "TAN": "E5*2018/858*00001*06", "T": "NX4E", "Va": "F5P41", "Ve": "A61B14", "Cn": "TUCSON", "registrations": 1, "values": { "Ep": 132, "Ec": 1598, "M": 1639, "Ewltp": "131", "Z": null, "Zr": null }, "dr_min": "2023-03-09", "dr_max": "2023-03-09" },
+    { "TAN": "E5*2018/858*00001*06", "T": "NX4E", "Va": "F5P41", "Ve": "A61E24", "Cn": "TUCSON IX35", "registrations": 423, "values": { "Ep": 132, "Ec": 1598, "M": 1639, "Ewltp": "131", "Z": null, "Zr": null }, "dr_min": "2023-01-11", "dr_max": "2023-12-29" },
+    { "TAN": "E5*2018/858*00001*06", "T": "NX4E", "Va": "F5P44", "Ve": "A61B14", "Cn": "TUCSON IX35", "registrations": 169, "values": { "Ep": 132, "Ec": 1598, "M": 1709, "Ewltp": "145", "Z": null, "Zr": null }, "dr_min": "2023-01-04", "dr_max": "2023-12-29" },
+    { "TAN": "E5*2018/858*00001*06", "T": "NX4E", "Va": "F5P31", "Ve": "M61D24", "Cn": "TUCSON IX35", "registrations": 8, "values": { "Ep": 132, "Ec": 1598, "M": 1538, "Ewltp": "152", "Z": null, "Zr": null }, "dr_min": "2023-07-13", "dr_max": "2023-12-14" },
+    { "TAN": "E5*2018/858*00001*03", "T": "NX4E", "Va": "F5P31", "Ve": "M61D24", "Cn": "TUCSON IX35", "registrations": 1, "values": { "Ep": 132, "Ec": 1598, "M": 1538, "Ewltp": "152", "Z": null, "Zr": null }, "dr_min": "2023-01-10", "dr_max": "2023-01-10" },
+    { "TAN": "E5*2018/858*00001*06", "T": "NX4E", "Va": "F5P34", "Ve": "D71A14", "Cn": "TUCSON IX35", "registrations": 1, "values": { "Ep": 132, "Ec": 1598, "M": 1633, "Ewltp": "162", "Z": null, "Zr": null }, "dr_min": "2023-11-22", "dr_max": "2023-11-22" }
+  ],
+  "decision": {
+    "type_approval_number": "e5*2018/858*00001*06",
+    "type_approval_number_scope": "model/type level only (Tucson NX4e MY2022-2023), from Safety Gate; not linked by an official source to the HEV 230 CV Tecno variant",
+    "variant_code": null,
+    "version_code": null,
+    "manufacturer_type_code": "NX4E",
+    "identification_confidence": "UNCONFIRMED",
+    "model_level_hints": {
+      "likely_eea_variant_by_value_only": "F5P41 (FWD HEV, Ep 132, M 1639); Ve A61B14 has 130-131 g/km like IDAE Tecno 130 g/km, but A61B14 is shared by many units and trims (e.g. Style 4x2 131). NOT evidence-backed."
+    },
+    "evidence": [
+      { "source": "EU Safety Gate alert SR/01460/25 (public API)", "url": "https://ec.europa.eu/safety-gate-alerts/public/api/notification/10093916?language=en", "what_it_shows": "'Passenger car. Model (Type): Tucson (NX4e). Model Year: 2022 - 2023. VIN's: from TMAJA81BVNJ254096 to TMAJC81BGPJ401001', modelTypes 'e5*2018/858*00001*06', production 12.09.2022-07.09.2023. Links type NX4e / MY2023 to that TAN at model level (no engine or variant)." },
+      { "source": "IDAE detail id 550852 (coches.idae.es/ajax campo=detalle) and Tucson HEV list", "url": "https://coches.idae.es/base-datos/marca-y-modelo", "what_it_shows": "'Hyundai TUCSON 1.6 TGDI 230CV HEV AT TECNO 2C': Hibridos de gasolina, 1.598 cm3, automatico, MTMA 2.175, potencia termica 132,0 kW, electrica 44,2 kW, 5,70 l/100 km, 130 g/km, 4.500x1.865x1.650, 5 plazas. NO codigo de tipo/variante/version in detail or list rows (Tecno Sky 130, Maxx 127, Style 131, N Line Sky 131, Style 4x4 145)." },
+      { "source": "EEA discodata co2cars_2023Fv28", "url": "https://discodata.eea.europa.eu/sql", "what_it_shows": "ES Tucson Fm=H petrol rows with Ep 132 kW: Va F5P41 (M 1639; Ve A61B13 127 g/km, A61B14 130-131, A61E24 131), Va F5P44 (M 1709, 145 g/km), and Va F5P31/F5P34 (M 1538/1633, 152/162 g/km). All HEV Ep-132 F5P41 rows are TAN E5*2018/858*00001*06, T NX4E. No field links a row to trim 'Tecno'." }
+    ]
+  },
+  "separate_technical_variants": [
+    "Va F5P44 (M 1709, 145 g/km; same value as IDAE Style 4x4 145) is presumably the AWD/HTRAC HEV - do not merge with FWD F5P41 (AWD attribution is by value, not officially decoded).",
+    "Within F5P41, Ve A61B13 (127 g/km), A61B14 (130-131) and A61E24 (131) are distinct versions; Tecno cannot be assigned to one by CO2 similarity (Maxx 127 vs Tecno 130 vs Style/N Line 131 are value matches only).",
+    "Va F5P31 / F5P34 (Ep 132, Fm H, M 1538/1633, 152/162 g/km) are presumably the 1.6 T-GDI 48V mild hybrid (DT) versions - different powertrain; F5P21 (Ep 110) and diesel F5D51/F5D54 (Ep 100) are 48V MHEV versions too.",
+    "Rows with TAN extensions *03/*04/*05 in early 2023 are older TAN revisions; do not merge with *06 without evidence."
+  ],
+  "missing_for_upgrade": "CoC or Hyundai Spain technical sheet / homologation ficha for Tucson 1.6 T-GDI HEV 230 CV 4x2 Tecno showing type NX4E + variant F5P41 (-> PARTIAL) and the version code (e.g. A61B14) (-> EXACT); or a DGT/ITV ficha tecnica of a registered 2023 Tecno HEV 4x2.",
+  "notes": "Checked 2026-09-24. IDAE Hyundai records carry no type/version codes. Web search for type approval/CoC data for Tucson HEV found only secondary sites (autodoc, auto-data, cartimeline; not evidence). EEA Cn is mostly 'TUCSON IX35' for NX4E. The TAN e5*2018/858*00001*06 is recorded because an official source (Safety Gate) ties it to Tucson NX4e MY2022-2023, but it is model-level; Va/Ve left null per brief rules (value-based selection = UNCONFIRMED)."
+}

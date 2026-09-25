@@ -1,0 +1,43 @@
+{
+  "dc": "DC-09",
+  "commercial_variant": "SEAT León 5p 1.5 TSI (EcoTSI EVO) 96 kW / 130 CV Start&Stop Style, manual 6, Mk3 facelift (type 5F), MY2018 (IDAE labels MY19)",
+  "market": "ES",
+  "eea_year": 2018,
+  "eea_table": "[CO2Emission].[latest].[co2cars] (Status='F')",
+  "candidates": [
+    { "TAN": "e9*2007/46*0094*28", "Va": "BDACAX0V", "Ve": "FM6SFM6AJ0157CPVLO51BA", "registrations": 666, "values": { "Ep": 96, "Ec": 1498, "M": 1239, "Enedc": 111, "Ewltp": "133-134", "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "e9*2007/46*0094*28", "Va": "BDACAX0V", "Ve": "FM6SFM6AJ0157CPVLO51CA", "registrations": 81, "values": { "Ep": 96, "Ec": 1498, "M": 1239, "Enedc": 113, "Ewltp": "137-139", "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "e9*2007/46*0094*28", "Va": "BDACAX0V", "Ve": "FM6SFM6AJ0157CPVLO51EB", "registrations": 171, "values": { "Ep": 96, "Ec": 1498, "M": 1239, "Enedc": 116, "Ewltp": "143-144", "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "e9*2007/46*0094*28", "Va": "BDACAX0V", "Ve": "FM6SFM6AJ0157CPVLM51CA", "registrations": 2, "values": { "Ep": 96, "Ec": 1498, "M": 1239, "Enedc": 113, "Ewltp": 139, "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "e9*2007/46*0094*28", "Va": "BDACAX0V", "Ve": "FM6SFM6AJ0157CPVLM51EB", "registrations": 1, "values": { "Ep": 96, "Ec": 1498, "M": 1239, "Enedc": 116, "Ewltp": 143, "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "e9*2007/46*0094*29", "Va": "BDACAX0V", "Ve": "FM6SFM6AJ0157CPVLO51BA", "registrations": 470, "values": { "Ep": 96, "Ec": 1498, "M": 1239, "Enedc": 111, "Ewltp": "133-135", "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "e9*2007/46*0094*29", "Va": "BDACAX0V", "Ve": "FM6SFM6AJ0157CPVLO51CA", "registrations": 75, "values": { "Ep": 96, "Ec": 1498, "M": 1239, "Enedc": 113, "Ewltp": "138-139", "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "e9*2007/46*0094*29", "Va": "BDACAX0V", "Ve": "FM6SFM6AJ0157CPVLO51EB", "registrations": 120, "values": { "Ep": 96, "Ec": 1498, "M": 1239, "Enedc": 116, "Ewltp": "142-145", "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "e9*2007/46*0094*30", "Va": "BDACAX0V", "Ve": "FM6SFM6AJ0157CPVLO51BA", "registrations": 280, "values": { "Ep": 96, "Ec": 1498, "M": 1239, "Enedc": 111, "Ewltp": "133-135", "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "e9*2007/46*0094*30", "Va": "BDACAX0V", "Ve": "FM6SFM6AJ0157CPVLO51CA", "registrations": 132, "values": { "Ep": 96, "Ec": 1498, "M": 1239, "Enedc": 113, "Ewltp": "138-139", "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "e9*2007/46*0094*30", "Va": "BDACAX0V", "Ve": "FM6SFM6AJ0157CPVLO51EB", "registrations": 165, "values": { "Ep": 96, "Ec": 1498, "M": 1239, "Enedc": 116, "Ewltp": "143-144", "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "e9*2007/46*0094*31", "Va": "BDACAX0V", "Ve": "FM6SFM6AJ0157CPVLO51BA", "registrations": 54, "values": { "Ep": 96, "Ec": 1498, "M": 1239, "Enedc": 111, "Ewltp": "133-135", "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "e9*2007/46*0094*31", "Va": "BDACAX0V", "Ve": "FM6SFM6AJ0157CPVLO51CA", "registrations": 44, "values": { "Ep": 96, "Ec": 1498, "M": 1239, "Enedc": 113, "Ewltp": "138-139", "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "e9*2007/46*0094*31", "Va": "BDACAX0V", "Ve": "FM6SFM6AJ0157CPVLO51EB", "registrations": 72, "values": { "Ep": 96, "Ec": 1498, "M": 1239, "Enedc": 116, "Ewltp": "142-144", "Z": null, "Zr": null }, "dr_min": null, "dr_max": null }
+  ],
+  "decision": {
+    "type_approval_number": null,
+    "variant_code": null,
+    "version_code": null,
+    "manufacturer_type_code": null,
+    "identification_confidence": "UNCONFIRMED",
+    "evidence": [
+      { "source": "EEA CO2 cars 2018 final (discodata), MS=ES, Mk=SEAT, Ec=1498, Ft=Petrol, Status='F'", "url": "https://discodata.eea.europa.eu/sql?query=SELECT%20TAN%2C%20Va%2C%20Ve%2C%20...%20FROM%20%5BCO2Emission%5D.%5Blatest%5D.%5Bco2cars%5D%20WHERE%20MS%3D'ES'%20AND%20Mk%3D'SEAT'%20AND%20Year%3D2018%20AND%20Status%3D'F'%20AND%20Va%3D'BDACAX0V'", "what_it_shows": "The only 96 kW / 1498 cm3 type-5F rows with Cn 'LEON' (hatchback) are TAN e9*2007/46*0094 revisions *28-*31, Va BDACAX0V (2,340 registrations); 'LEON ST' is Va FDACAX0V. All BDACAX0V versions start 'FM6' (all manual; no DSG at 96 kW), M=1239 kg, and all carry both Enedc (111/113/116) and Ewltp (133-145), i.e. one WLTP-era homologation regime in 2018. Ve suffix LO51BA/LO51CA/LO51EB/LM51.. separates versions; nothing in EEA says which is Style." },
+      { "source": "IDAE base de datos, SEAT LEON (modelo 453), NEDC & WLTP listings and detail pages id 460838 ('SEAT LEON 1.5 EcoTSI 96kW (130cv) St&Sp STYLE') and 466104 ('… STYLE s48'), fetched via coches.idae.es/ajax", "url": "https://coches.idae.es/base-datos/marca-y-modelo", "what_it_shows": "Detail pages show name, segment, fuel, cc, manual gearbox, MTMA 1720/1780, power, WLTP consumption/CO2, dimensions 4282x1816x1459 and 5 seats, but NO código de tipo/variante/versión. These entries are WLTP (later MY) records; the MY19 row (111 g/km) exists only in the IDAE PDF guide (DC-09 S1), which has no type/version codes either. Record 460838 even shows 131 kW / 178 CV for a 96 kW name (IDAE data error, see DC-09 F6)." }
+    ]
+  },
+  "separate_technical_variants": [
+    "Va BDACAX0V = León hatchback (Cn LEON) 96 kW manual; do NOT merge with Va FDACAX0V (LEON ST estate, M 1271 kg).",
+    "Va BDADAX0V = León 1.5 TSI 110 kW (150 CV), manual (Ve FM6S…) and DSG (Ve FD7S…) — different power and gearbox, exclude.",
+    "No 3-door (SC) 96 kW León rows found in ES 2018; no automatic 96 kW version exists in these rows.",
+    "Within BDACAX0V: Ve …LO51BA (Enedc 111, the value IDAE prints for 'STYLE MY19'), …LO51CA (113), …LO51EB (116) and …LM51CA/EB are distinct versions; the 111 g/km match with IDAE is numeric similarity only and does not establish the Style Ve.",
+    "TAN revisions *28, *29, *30, *31 share Va/Ve — revision number reflects extension date, not the commercial variant."
+  ],
+  "missing_for_upgrade": "A CoC, ficha técnica (tarjeta ITV) or SEAT technical document for a León 5p 1.5 TSI 130 CV Style showing TAN e9*2007/46*0094*xx, type 5F, variant BDACAX0V (-> PARTIAL) and its version code FM6SFM6AJ0157CPVLO51?? (-> EXACT).",
+  "notes": "Most likely identity (UNCONFIRMED, value-based only): TAN e9*2007/46*0094*28..*31, T 5F, Va BDACAX0V, Ve FM6SFM6AJ0157CPVLO51BA (highest registrations, Enedc 111 = IDAE Style MY19 figure). Web search for 'BDACAX0V' returned no official document. EEA 2018 Dr is null for all rows. Queried 2026-09-24."
+}

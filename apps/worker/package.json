@@ -1,0 +1,26 @@
+{
+  "name": "@vscar/worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "VScarWorker: Node process (NSSM service) that processes the MySQL jobs queue: EEA_IMPORT, QUALITY_CHECK, CONFLICT_SCAN.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=../../.env src/main.ts",
+    "enqueue": "node --env-file-if-exists=../../.env src/cli/enqueue.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@vscar/data-connectors": "workspace:*",
+    "@vscar/db": "workspace:*",
+    "@vscar/quality": "workspace:*",
+    "@vscar/vehicle-schema": "workspace:*",
+    "zod": "^3.25.67"
+  },
+  "devDependencies": {
+    "@vscar/fixtures": "workspace:*"
+  }
+}

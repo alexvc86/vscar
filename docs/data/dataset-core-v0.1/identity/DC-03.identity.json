@@ -1,0 +1,32 @@
+{
+  "dc": "DC-03",
+  "commercial_variant": "Volkswagen Golf Advance 1.5 TSI EVO 130 CV, 5 puertas, manual 6 (Mk7.5), 2018",
+  "market": "ES",
+  "eea_year": 2018,
+  "eea_table": "[CO2Emission].[latest].[co2cars] (Status='F')",
+  "candidates": [
+    { "TAN": "E1*2007/46*0623*33", "Va": "GAC4DACAX0", "Ve": "FM6FM6AJ015N7MVON1ML79VR2N", "registrations": 140, "values": { "Ep": 96, "Ec": 1498, "M": 1301, "Enedc": 113 } },
+    { "TAN": "E1*2007/46*0623*33", "Va": "GAC4DACAX0", "Ve": "FM6FM6AJ015N7MVON1ML69VR2N", "registrations": 14, "values": { "Ep": 96, "Ec": 1498, "M": 1301, "Enedc": 116 } },
+    { "TAN": "E1*2007/46*0623*33", "Va": "GAC4DACAX0", "Ve": "FD7FD7CW005N7MVON1ML69VR8N", "registrations": 1, "values": { "Ep": 96, "Ec": 1498, "M": 1344, "Enedc": 113 } },
+    { "TAN": "E1*2007/46*0623*33", "Va": "GAC4DACAX0", "Ve": "FD7FD7CW005N7MVON1ML79VR8N", "registrations": 1, "values": { "Ep": 96, "Ec": 1498, "M": 1344, "Enedc": 110 } },
+    { "TAN": "E1*2007/46*0623*35", "Va": "GAC4DACAX0", "Ve": "FM6FM6AJ015N7CPON1ML1BVR2NA", "registrations": 523, "values": { "Ep": 96, "Ec": 1498, "M": 1315, "Enedc": 113, "Ewltp": "135–136" } },
+    { "TAN": "E1*2007/46*0623*35", "Va": "GAC4DACAX0", "Ve": "FM6FM6AJ015N7CPON1ML1CVR2NA", "registrations": 21, "values": { "M": 1315, "Enedc": 116, "Ewltp": "139–140" } },
+    { "TAN": "E1*2007/46*0623*35", "Va": "GAC4DACAX0", "Ve": "FM6FM6AJ015N7CPON1ML1CVR2NB", "registrations": 88, "values": { "M": 1315, "Enedc": "116–119", "Ewltp": "141–142" } },
+    { "TAN": "E1*2007/46*0623*35", "Va": "GAC4DACAX0", "Ve": "FD7FD7CW005N7CPON1ML1BVR8NA", "registrations": 150, "values": { "M": 1340, "Enedc": 111, "Ewltp": 136 } },
+    { "TAN": "E1*2007/46*0623*35", "Va": "GAC4DACAX0", "Ve": "FD7FD7CW005N7CPON1ML1CVR8NA", "registrations": 7, "values": { "M": 1340, "Enedc": 113, "Ewltp": "138–139" } }
+  ],
+  "decision": {
+    "rv_a_h33": { "type_approval_number": "e1*2007/46*0623*33", "variant_code": "GAC4DACAX0", "version_code": "FM6FM6AJ015N7MVON1ML79VR2N", "identification_confidence": "EXACT" },
+    "rv_b_h35": { "type_approval_number": "e1*2007/46*0623*35", "variant_code": "GAC4DACAX0", "version_code": "FM6FM6AJ015N7CPON1ML1BVR2NA", "identification_confidence": "EXACT" },
+    "evidence": [
+      { "source": "EEA 2018 final (S01), recorded sample packages/data-connectors/test/fixtures/eea/golf-2018-es.json", "url": "https://discodata.eea.europa.eu/sql", "what_it_shows": "exact TAN/Va/Ve records whose values (Enedc 113, M 1301 / 1315, Ewltp 136) are the ones DC-03 curated; DC-03 §2.1 documents the Va and the version fragments …MVON1ML79… and …CPON1ML1B…" }
+    ]
+  },
+  "separate_technical_variants": [
+    "FD7… versions are DSG (7-speed) — separate technical variants, never mixed with the manual (FM6…) RV",
+    "…ML69VR2N (*33) and …ML1CVR2NA/…ML1CVR2NB (*35) are other manual versions (116–119 g/km) — separate, not merged with ML79/ML1B",
+    "Va GAC2DACAX0 (3-door) excluded"
+  ],
+  "missing_for_upgrade": "Technical identity is EXACT. The commercial link 'Advance' ↔ Ve is a curation inference (EEA has no trim); a CoC or VW technical sheet listing the Ve per trim would make the commercial link official.",
+  "notes": "Manual vs DSG read from the leading code (FM6/FD7) is an inference already flagged in DC-03 (not publishable as a spec); it is only used here to keep versions separate, never to merge them."
+}

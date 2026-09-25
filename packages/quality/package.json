@@ -1,0 +1,21 @@
+{
+  "name": "@vscar/quality",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "VScar data quality: engine usability, plausibility rules (PASS/WARNING/BLOCK), Conflict Engine and category eligibility. No I/O.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@vscar/vehicle-schema": "workspace:*",
+    "@vscar/methodology": "workspace:*"
+  },
+  "devDependencies": {
+    "@vscar/fixtures": "workspace:*"
+  }
+}

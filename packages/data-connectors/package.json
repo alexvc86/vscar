@@ -1,0 +1,22 @@
+{
+  "name": "@vscar/data-connectors",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "VScar source adapters (network + raw filesystem). v0.1: EEA CO2 monitoring (discodata). Never talks to the database.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@vscar/vehicle-schema": "workspace:*",
+    "zod": "^3.25.67"
+  },
+  "devDependencies": {
+    "@vscar/fixtures": "workspace:*",
+    "@vscar/quality": "workspace:*"
+  }
+}

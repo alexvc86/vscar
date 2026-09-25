@@ -1,0 +1,1 @@
+ALTER TABLE `energy_prices` ADD `price_basis` varchar(32) DEFAULT 'RETAIL_PUMP_PRICE' NOT NULL;

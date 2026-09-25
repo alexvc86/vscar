@@ -1,0 +1,20 @@
+{
+  "name": "@vscar/methodology",
+  "version": "2026.2.0",
+  "private": true,
+  "type": "module",
+  "description": "VScar methodology (methodologyVersion 2026.2): utility curves, meaningful differences, for-you rules, used information confidence, range rules, presets, sensitivity ranges, DGT label rule, thresholds and weights, energy market data rules. Pure, no I/O, browser-safe.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@vscar/vehicle-schema": "workspace:*"
+  },
+  "devDependencies": {
+    "@vscar/fixtures": "workspace:*"
+  }
+}

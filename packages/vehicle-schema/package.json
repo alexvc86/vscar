@@ -1,0 +1,17 @@
+{
+  "name": "@vscar/vehicle-schema",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "VScar canonical vehicle schema (SpecKey Catalog v0.2): Zod schemas and TypeScript types. No I/O.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "zod": "^3.25.67"
+  }
+}

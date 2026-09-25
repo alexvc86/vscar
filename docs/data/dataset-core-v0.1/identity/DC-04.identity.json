@@ -1,0 +1,52 @@
+{
+  "dc": "DC-04",
+  "commercial_variant": "Volkswagen Golf Style 1.5 eTSI 110 kW (150 CV) Automatico DSG 7 vel. (MHEV 48 V, FWD, hatchback), Golf 8 PA / Mk8.5, ES 2024-2026 (configurator MY2027, VW sales model code DA14EM)",
+  "market": "ES",
+  "eea_year": [2024, 2025],
+  "eea_table": ["[CO2Emission].[latest].[co2cars_2024Fv30] (final)", "[CO2Emission].[latest].[co2cars_2025Pv31] (provisional)"],
+  "query_filter": "MS='ES' AND Mk LIKE 'VOLKSWAGEN%' AND Cn LIKE 'GOLF%' AND [Ep (KW)]=110 AND Fm='H' (Ec=1498 in all returned rows); values below are MIN-MAX of M and Ewltp per TAN/Va/Ve group",
+  "candidates": [
+    { "year": 2024, "TAN": "E1*2007/46*2014*24", "T": "CD", "Va": "ACDXDBX0", "Ve": "FD7FD7CW006N4WESON1MLA", "registrations": 41, "values": { "Ep": 110, "Ec": 1498, "M": 1376, "Ewltp": "123", "Z": null, "Zr": null }, "dr_min": "2024-06-14", "dr_max": "2024-09-30" },
+    { "year": 2024, "TAN": "E1*2007/46*2014*24", "T": "CD", "Va": "ACDXDBX0", "Ve": "FD7FD7CW006N4WESMN1MLA", "registrations": 5, "values": { "Ep": 110, "Ec": 1498, "M": 1376, "Ewltp": "124-125", "Z": null, "Zr": null }, "dr_min": "2024-06-17", "dr_max": "2024-07-05" },
+    { "year": 2024, "TAN": "E1*2007/46*2014*25", "T": "CD", "Va": "ACDXDBX0", "Ve": "FD7FD7CW006N4WESON1MLA", "registrations": 104, "values": { "Ep": 110, "Ec": 1498, "M": 1376, "Ewltp": "122-123", "Z": null, "Zr": null }, "dr_min": "2024-07-12", "dr_max": "2024-12-30" },
+    { "year": 2024, "TAN": "E1*2007/46*2014*26", "T": "CD", "Va": "ACDXDBX0", "Ve": "FD7FD7CW006N4WESON1MLA", "registrations": 17, "values": { "Ep": 110, "Ec": 1498, "M": 1376, "Ewltp": "122-124", "Z": null, "Zr": null }, "dr_min": "2024-08-06", "dr_max": "2024-12-09" },
+    { "year": 2024, "TAN": "E1*2007/46*2014*27", "T": "CD", "Va": "ACDXDBX0", "Ve": "FD7FD7CW006N4WESON1MLA", "registrations": 156, "values": { "Ep": 110, "Ec": 1498, "M": 1373, "Ewltp": "122-125", "Z": null, "Zr": null }, "dr_min": "2024-10-24", "dr_max": "2024-12-30" },
+    { "year": 2024, "TAN": "E1*2007/46*2014*27", "T": "CD", "Va": "ACDXDBX0", "Ve": "FD7FD7CW006N4WESMN1MLA", "registrations": 23, "values": { "Ep": 110, "Ec": 1498, "M": 1373, "Ewltp": "123-124", "Z": null, "Zr": null }, "dr_min": "2024-10-17", "dr_max": "2024-12-30" },
+    { "year": 2025, "TAN": "E1*2007/46*2014*27", "T": "CD", "Va": "ACDXDBX0", "Ve": "FD7FD7CW006N4WESON1MLA", "registrations": 59, "values": { "Ep": 110, "Ec": 1498, "M": 1373, "Ewltp": "123-124", "Z": null, "Zr": null }, "dr_min": "2025-01-02", "dr_max": "2025-07-14" },
+    { "year": 2025, "TAN": "E1*2007/46*2014*28", "T": "CD", "Va": "ACDXDBX0", "Ve": "FD7FD7CW006N4VNSON1MLA0", "registrations": 103, "values": { "Ep": 110, "Ec": 1498, "M": 1373, "Ewltp": "119-125", "Z": null, "Zr": null }, "dr_min": "2025-01-30", "dr_max": "2025-11-24" },
+    { "year": 2025, "TAN": "E1*2007/46*2014*28", "T": "CD", "Va": "ACDXDBX0", "Ve": "FD7FD7CW006N4VNSMN1MLA0", "registrations": 5, "values": { "Ep": 110, "Ec": 1498, "M": 1373, "Ewltp": "123-125", "Z": null, "Zr": null }, "dr_min": "2025-01-31", "dr_max": "2025-05-05" },
+    { "year": 2025, "TAN": "E1*2007/46*2014*29", "T": "CD", "Va": "ACDXDBX0", "Ve": "FD7FD7CW006N4VNSON1MLAON", "registrations": 37, "values": { "Ep": 110, "Ec": 1498, "M": 1373, "Ewltp": "119-124", "Z": null, "Zr": null }, "dr_min": "2025-05-14", "dr_max": "2025-10-29" },
+    { "year": 2025, "TAN": "E1*2007/46*2014*29", "T": "CD", "Va": "ACDXDBX0", "Ve": "FD7FD7CW006N4VNSON1MLAOO", "registrations": 8, "values": { "Ep": 110, "Ec": 1498, "M": 1373, "Ewltp": "119-124", "Z": null, "Zr": null }, "dr_min": "2025-05-22", "dr_max": "2025-11-27" },
+    { "year": 2025, "TAN": "E1*2007/46*2014*30", "T": "CD", "Va": "ACDXDBX0", "Ve": "FD7FD7CW006N4VNSON1MLAON", "registrations": 9, "values": { "Ep": 110, "Ec": 1498, "M": 1373, "Ewltp": "117-122", "Z": null, "Zr": null }, "dr_min": "2025-07-30", "dr_max": "2025-12-22" },
+    { "year": 2025, "TAN": "E1*2007/46*2014*31", "T": "CD", "Va": "ACDXDBX0", "Ve": "FD7FD7CW006N4VNSON1MLAKO", "registrations": 5, "values": { "Ep": 110, "Ec": 1498, "M": 1373, "Ewltp": "117-123", "Z": null, "Zr": null }, "dr_min": "2025-10-23", "dr_max": "2025-12-17" },
+    { "year": 2025, "TAN": "E1*2007/46*2014*31", "T": "CD", "Va": "ACDXDBX0", "Ve": "FD7FD7CW006N4VNSON1MLAKN", "registrations": 6, "values": { "Ep": 110, "Ec": 1498, "M": 1373, "Ewltp": "117-122", "Z": null, "Zr": null }, "dr_min": "2025-10-21", "dr_max": "2025-11-25" },
+    { "year": 2025, "TAN": "E1*2007/46*2014*32", "T": "CD", "Va": "ACDXDBX0", "Ve": "FD7FD7CW006N4VNSON1MLAKO", "registrations": 2, "values": { "Ep": 110, "Ec": 1498, "M": 1373, "Ewltp": "117-118", "Z": null, "Zr": null }, "dr_min": "2025-12-04", "dr_max": "2025-12-23" }
+  ],
+  "decision": {
+    "type_approval_number": null,
+    "variant_code": null,
+    "version_code": null,
+    "manufacturer_type_code": "CD",
+    "identification_confidence": "UNCONFIRMED",
+    "model_level_hints": {
+      "type_approval_family": "e1*2007/46*2014* (hatchback type CD; extension not determinable: EEA shows *24 to *32 for the matching rows)",
+      "vw_sales_model_code": "DA14EM (VW ES configurator model code, not a homologation identifier)",
+      "likely_eea_variant_by_value_only": "ACDXDBX0 (NOT evidence-backed; selected only by Ep/Ec/Fm/M/CO2 similarity)"
+    },
+    "evidence": [
+      { "source": "EU Safety Gate alert SR/02758/25 (public API)", "url": "https://ec.europa.eu/safety-gate-alerts/public/api/notification/10095399?language=en", "what_it_shows": "Golf / Golf Variant, modelTypes 'CD, CDV', 'e1*2007/46*2014*' and 'e1*2007/46*2180*', production 09.02.2024-24.05.2024. Links type CD (Golf hatch) to TAN base e1*2007/46*2014* at model level only (no engine, no variant, no extension)." },
+      { "source": "IDAE detail id 607306 (coches.idae.es/ajax campo=detalle)", "url": "https://coches.idae.es/base-datos/marca-y-modelo", "what_it_shows": "'Golf 8 PA MY26 Golf Style 1.5 eTSI 110 kW (150 CV) Automatico DSG 7 vel.': Hibridos de gasolina, 1.498 cm3, MTMA 1.860, 5,40 l/100 km, 123 g/km, 4.282x1.789x1.483, 5 plazas. NO codigo de tipo/variante/version shown (also none in list rows or in details 602966, 603180). Also shows Potencia termica 85,0 kW (IDAE error already noted in DC file)." },
+      { "source": "VW ES configurator API (viso/catalogue/models, Style filter)", "url": "https://cdn.oneapi.volkswagen.com/viso/catalogue/models?tenant=ihdcc-vw-es-es&salesgroupKey=36279&carlineKey=30602&modelFilters=EquipmentLine%3AStyle&fetchPrices=true&fetchTechnical=true&fetchWltp=true", "what_it_shows": "Model 'Golf Style 1.5 eTSI 110 kW (150 CV) Automatico DSG 7 vel.', code DA14EM$..., year 2027, front-wheel drive, automatic. No TAN/Va/Ve fields in the response." },
+      { "source": "EEA discodata co2cars_2024Fv30 / co2cars_2025Pv31", "url": "https://discodata.eea.europa.eu/sql", "what_it_shows": "For MS=ES Golf, Ec 1498 Ep 110 Fm H: pre-facelift Va ACDFYAX0 (Jan-Sep 2024, TAN *2014*22/*23, M 1365-1367, 126-134 g/km) and facelift Va ACDXDBX0 (from 2024-06-14, TAN *2014*24..*32, M 1373-1376, 117-125 g/km); Variant (T=CDV, TAN *2180*) also ACDXDBX0. No field in EEA links rows to trim 'Style'." }
+    ]
+  },
+  "separate_technical_variants": [
+    "Va ACDXDBX0 contains BOTH Fm='H' (Ve prefix FD7FD7CW006..., eTSI DSG7) and Fm='M' (Ve prefix FM6FM6C9013..., 1.5 TSI 110 kW 6-speed manual per commercial range) - never merge at Va level; gearbox is distinguished only at Ve level (prefix meaning inferred, not officially decoded).",
+    "Pre-facelift Golf 8 Va ACDFYAX0 (TAN e1*2007/46*2014*22/*23, 2024-01 to 2024-09, Ve ...BISON/BISMN...) is a different variant: not DC-04 (Mk8.5).",
+    "Golf Variant (T=CDV, TAN e1*2007/46*2180*16..*21) shares Va ACDXDBX0 but is a different type (estate): exclude.",
+    "1.5 eTSI 85 kW (Va ACDXDEX0, Ep 85) and 1.5 TSI eHybrid PHEV (Va ACDUCAX0/ACDUCBX0, Fm P) are different variants.",
+    "Within ACDXDBX0 Fm H there are multiple Ve (WESON/WESMN in 2024; VNSON/VNSMN with suffixes 0/ON/OO/KN/KO in 2025) and TAN extensions *24-*32; which Ve corresponds to Style cannot be determined."
+  ],
+  "missing_for_upgrade": "A CoC (fields 0.2 type/variant/version, 0.2.1 type-approval number) or VW technical sheet / IDAE record for the Golf Style 1.5 eTSI 110 kW DSG naming variant ACDXDBX0 (-> PARTIAL) plus the exact version code (-> EXACT). Alternatively a DGT/ITV ficha tecnica for a registered Style eTSI 150 unit.",
+  "notes": "Checked 2026-09-24. IDAE VW records carry no type/version codes (unlike BYD). VW ES configurator response obtained with the public oneapiKey embedded in the configurator page. Web search for 'ACDXDBX0' only returned secondary Dutch plate databases (not evidence, not used). The EEA pattern (ACDXDBX0, Fm H, M 1373 in 2025 equal to configurator kerb weight 1.373 kg) is consistent with DC-04 but is value-based matching only, hence UNCONFIRMED per brief."
+}

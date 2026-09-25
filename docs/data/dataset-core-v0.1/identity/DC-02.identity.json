@@ -1,0 +1,27 @@
+{
+  "dc": "DC-02",
+  "commercial_variant": "Toyota RAV4 6th generation (2026) Hybrid 200 (185 CV) e-CVT 4x2 (FWD), trim Advance (Spain; orders from 2026-01-20)",
+  "market": "ES",
+  "eea_year": 2025,
+  "eea_table": "[CO2Emission].[latest].[co2cars_2025Pv31] (provisional; no 2026 table exists)",
+  "candidates": [],
+  "decision": {
+    "type_approval_number": null,
+    "variant_code": null,
+    "version_code": null,
+    "manufacturer_type_code": null,
+    "identification_confidence": "UNCONFIRMED",
+    "evidence": [
+      { "source": "IDAE Guía de consumo y emisiones — detalle vehículo id 609107 'Toyota RAV4 HYBRID 200 4x2 Advance (NG26)' (POST https://coches.idae.es/ajax campo=detalle, fetched 2026-09-24)", "url": "https://coches.idae.es/base-datos/marca-y-modelo", "what_it_shows": "Official ES record for the exact commercial variant: 2.487 cm3, automático, MTMA 2.170, potencia 142,8 cv, potencia térmica 105,0 kW, 'Motor eléctrico eje 1: 100 kW', WLTP 5,18 l/100 km, 117 g CO2/km, 4.600x1.855x1.680 mm, 5 plazas. No 'código de tipo/versión', TAN, Va or Ve shown. Separate IDAE entry for 4x4 Advance (609110, MTMA 2.230, eje 2: 39,9 kW)." },
+      { "source": "EEA CO2 cars 2025 provisional (discodata), MS='ES', Mk='TOYOTA', Cn LIKE '%RAV%' (queried 2026-09-24)", "url": "https://discodata.eea.europa.eu/sql?query=SELECT%20TAN%2C%20Va%2C%20Ve%2C%20Fm%2C%20%5BEp%20(KW)%5D%2C%20SUM(R)%20FROM%20%5BCO2Emission%5D.%5Blatest%5D.%5Bco2cars_2025Pv31%5D%20WHERE%20MS%3D'ES'%20AND%20Mk%3D'TOYOTA'%20AND%20Cn%20LIKE%20'%25RAV%25'%20GROUP%20BY%20TAN%2C%20Va%2C%20Ve%2C%20Fm%2C%20%5BEp%20(KW)%5D", "what_it_shows": "ES 2025 RAV4 rows are only 5th-gen: HEV TAN E6*2007/46*0289*08/*09, Va AXAL52(N)/AXAL54(N), Ep=131 kW; PHEV E6*2007/46*0429*03-*05, Va AXAP54(N), Ep=136. No row with Ep=105 kW (the 6th-gen HEV thermal power per IDAE) in ES." },
+      { "source": "EEA CO2 cars 2025 provisional, EU-wide, Mk='TOYOTA', Va/Ve LIKE 'AXA%6%' (queried 2026-09-24)", "url": "https://discodata.eea.europa.eu/sql", "what_it_shows": "Only 5 single-unit rows in DE with TAN 'E1*NIV' (non-EU-type/individual approvals): Va AXAL62 / AXAL64 / 'AXAL 64' / AXAP64, Ep 160 or 105. Not ES, not an EU whole-vehicle type approval, not usable for the ES Hybrid 200 FWD." }
+    ]
+  },
+  "separate_technical_variants": [
+    "6th-gen Hybrid 200 4x4/AWD (IDAE 609110; second rear motor 39,9 kW; MTMA 2.230) is a different technical variant from the FWD and must not be merged; per DC-02 curation it is not in the ES HEV range (S2) although IDAE lists it.",
+    "5th-gen (XA50) rows in EEA 2025 (AXAL52/AXAL54, Ep 131, TAN E6*2007/46*0289*08/*09) belong to the previous generation (DC-01 lineage) and must not be assigned to DC-02.",
+    "DE 'E1*NIV' rows (AXAL62/AXAL64, some Ep 160) are individually approved imports, not the EU type approval of the ES car."
+  ],
+  "missing_for_upgrade": "EEA 2026 data (expected provisional release ~mid/late 2027) with ES registrations of the 6th-gen HEV FWD, plus an official document tying 'Hybrid 200 4x2 Advance' to a TAN/Va/Ve (CoC or ficha técnica ITV of an ES unit, or Toyota ES technical sheet with model codes). TAN+Va from CoC -> PARTIAL; +Ve -> EXACT.",
+  "notes": "Deliveries in ES started mid-2026, so the car cannot appear in EEA 2025 (latest available year, provisional). The EU-wide 'AXAL62' Va seen in a DE NIV row hints at the 6th-gen FWD model code but is a single individual approval with Ep=160 (inconsistent with the 105 kW ICE), so it is not recorded as manufacturer_type_code. IDAE detail pages for Toyota carry no type/version code."
+}

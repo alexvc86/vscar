@@ -1,0 +1,17 @@
+{
+  "name": "@vscar/fixtures",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Small, reproducible test fixtures derived from Dataset Core v0.1 curation drafts (not a publishable dataset).",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@vscar/vehicle-schema": "workspace:*"
+  }
+}

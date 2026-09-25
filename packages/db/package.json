@@ -1,0 +1,28 @@
+{
+  "name": "@vscar/db",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "VScar persistence: Drizzle ORM schema for MySQL 8 and repositories. The only package that talks to the database.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./testing": "./src/testing.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "db:generate": "drizzle-kit generate"
+  },
+  "dependencies": {
+    "@vscar/vehicle-schema": "workspace:*",
+    "drizzle-orm": "^0.44.2",
+    "mysql2": "^3.14.1"
+  },
+  "devDependencies": {
+    "@vscar/fixtures": "workspace:*",
+    "@vscar/quality": "workspace:*",
+    "drizzle-kit": "^0.31.4",
+    "@vscar/data-connectors": "workspace:*",
+    "@vscar/market-context": "workspace:*"
+  }
+}

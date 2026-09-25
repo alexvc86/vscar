@@ -1,0 +1,34 @@
+{
+  "dc": "DC-08",
+  "commercial_variant": "BYD SEAL Design RWD 82,5 kWh (230 kW), 2026 'renovado' phase, Spain",
+  "market": "ES",
+  "eea_year": 2025,
+  "eea_table": "[CO2Emission].[latest].[co2cars_2025Pv31] (provisional) and [CO2Emission].[latest].[co2cars_2024Fv30] (final); MS='ES', Mk='BYD'. No 2026 EEA data exists yet.",
+  "candidates": [
+    { "TAN": "E13*2018/858*00639*00", "Va": "SE2R1C", "Ve": "2NTE5F002NL1", "registrations": 727, "values": { "Ep": 230, "M": 2130, "Mt": 2207, "Ewltp": 0, "Z": 166, "Zr": 570 }, "dr_min": "2024-01-02", "dr_max": "2024-12-30", "note": "EEA 2024 final; Cn='BYD SEAL'" },
+    { "TAN": "E13*2018/858*00639*00", "Va": "SE2R1C", "Ve": "2NTE5F002NL1", "registrations": 169, "values": { "Ep": 230, "M": 2130, "Mt": 2207, "Ewltp": 0, "Z": 166, "Zr": 570 }, "dr_min": "2025-01-02", "dr_max": "2025-11-27", "note": "EEA 2025 provisional; 147 rows with Mt=2207 + 22 rows with Mt=null (2025-01-09→06-25)" },
+    { "TAN": "E13*2018/858*00639*03", "Va": "SE2R1C", "Ve": "2NTE5F002NL1", "registrations": 1399, "values": { "Ep": 230, "M": 2130, "Mt": 2207, "Ewltp": 0, "Z": 166, "Zr": 570 }, "dr_min": "2025-01-31", "dr_max": "2025-12-30", "note": "EEA 2025 provisional" },
+    { "TAN": "E13*2018/858*00639*05", "Va": "SE2R1C", "Ve": "2NTE5F002NL1", "registrations": 468, "values": { "Ep": 230, "M": 2130, "Mt": 2207, "Ewltp": 0, "Z": 166, "Zr": 570 }, "dr_min": "2025-07-24", "dr_max": "2025-12-30", "note": "EEA 2025 provisional; latest revision seen" },
+    { "TAN": "E13*2018/858*00639*03 / *05", "Va": "SE2R1C", "Ve": "4NTE5H004NL1", "registrations": 9, "values": { "Ep": 170, "M": 2045, "Mt": 2117, "Ewltp": 0, "Z": 154, "Zr": 460 }, "dr_min": "2025-08-27", "dr_max": "2025-12-30", "note": "Same Va, different Ve = SEAL Comfort (IDAE 606455 'SE2R1C/4NTE5H004NL1'). Not this DC; corroborates that IDAE code = EEA Va/Ve" },
+    { "TAN": "E13*2018/858*00639*00 / *03 / *05", "Va": "SE2D1C", "Ve": "1NXE5E001NL1", "registrations": 672, "values": { "Ep": 390, "M": 2260, "Mt": 2326, "Ewltp": 0, "Z": 182, "Zr": 520 }, "dr_min": "2024-01-08", "dr_max": "2025-12-30", "note": "SEAL Excellence AWD (IDAE 606456 'SE2D1C/1NXE5E001NL1'); 2024: 296; 2025: 99+161+87+29. Not this DC" }
+  ],
+  "decision": {
+    "type_approval_number": "E13*2018/858*00639 (base; revisions *00, *03, *05 observed with this Va/Ve in ES; revision applicable to 2026-phase units not verifiable)",
+    "variant_code": "SE2R1C",
+    "version_code": "2NTE5F002NL1",
+    "manufacturer_type_code": null,
+    "identification_confidence": "EXACT",
+    "evidence": [
+      { "source": "IDAE coches.idae.es detail 606454 (ajax campo=detalle; print/detalles PDF) and SEAL listing", "url": "https://coches.idae.es/print/detalles/606454", "what_it_shows": "Official Spanish record 'BYD SEAL Design (SE2R1C/2NTE5F002NL1)': 230 kW, 570 km, 16,60 kWh/100 km, 82,50 kWh, MTMA 2.501, 4.800x1.875x1.460. Links the commercial trim 'Design' to code SE2R1C/2NTE5F002NL1. Sibling entries: Comfort 'SE2R1C/4NTE5H004NL1' (606455), Excellence AWD 'SE2D1C/1NXE5E001NL1' (606456)." },
+      { "source": "EEA CO2 cars 2024 final and 2025 provisional (discodata)", "url": "https://discodata.eea.europa.eu/sql?query=SELECT%20TAN%2C%20Va%2C%20Ve%2C%20...%20FROM%20%5BCO2Emission%5D.%5Blatest%5D.%5Bco2cars_2025Pv31%5D%20WHERE%20MS%3D'ES'%20AND%20Mk%3D'BYD'%20AND%20(Cn%20LIKE%20'%25SEAL%25'%20OR%20Va%20LIKE%20'SE%25')%20GROUP%20BY%20...", "what_it_shows": "Rows with Va='SE2R1C' AND Ve='2NTE5F002NL1' exactly (Cn 'BYD SEAL', TAN E13*2018/858*00639*00/*03/*05, Ep 230, Z 166, Zr 570). The IDAE code split at '/' equals EEA Va/Ve character-for-character; the same holds for the Comfort and Excellence codes, confirming IDAE's code format is Va/Ve. This is an exact code correspondence, not a value match." }
+    ]
+  },
+  "separate_technical_variants": [
+    "SE2R1C/4NTE5H004NL1 (Comfort, 170 kW, 61,4 kWh, 460 km) shares Va SE2R1C but is a different version — never merge with Design.",
+    "SE2D1C/1NXE5E001NL1 (Excellence AWD, 390 kW, 520 km) — different Va.",
+    "TAN revisions *00/*03/*05 of E13*2018/858*00639 carry identical published values for SE2R1C/2NTE5F002NL1; they are extensions of the same approval, not different variants. The 2026 facelift (boot 400→485 L, frunk 53→72 L, 19\" wheels, DMS) may be covered by a later extension not yet in EEA data.",
+    "EEA 'HAN' rows also show Va SE2D1C/Ve 1NXE5E001NL1 under a different TAN (E9*KS18/858*11304*03, 200 kW) — a data-quality artefact; Va/Ve must always be read together with TAN."
+  ],
+  "missing_for_upgrade": "Already EXACT at Va/Ve level. To pin the TAN revision for the 2026 'renovado' phase: EEA 2026 data (not yet published) or a CoC of a 2026-registered SEAL Design showing TAN extension and Va/Ve; this would also confirm that the facelift kept Ve 2NTE5F002NL1.",
+  "notes": "IDAE does not date its record, so whether 606454 describes pre- or post-April-2026 units is not stated; its values (MTMA 2.501, 570 km, 16,6 kWh) are identical to the pre-facelift EEA rows and BYD's press release says the mechanical range is unchanged. EEA M (mass in running order) = 2130 kg vs BYD catalogue 'Peso en vacío' 2.055 kg (different mass definitions). The DC-08 curation file's friction #16 ('EEA only returned 2021–2022') is superseded: the per-year tables co2cars_2024Fv30 / co2cars_2025Pv31 contain the SEAL. Queries run 2026-09-24."
+}

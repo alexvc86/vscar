@@ -1,0 +1,24 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "typecheck": {
+      "dependsOn": [
+        "^typecheck"
+      ]
+    },
+    "test": {
+      "dependsOn": [
+        "^typecheck",
+        "^test"
+      ],
+      "env": [
+        "VSCAR_TEST_DATABASE_URL",
+        "VSCAR_EEA_LIVE",
+        "VSCAR_LIVE_EEA",
+        "VSCAR_MITECO_LIVE",
+        "VSCAR_ESIOS_LIVE",
+        "ESIOS_TOKEN"
+      ]
+    }
+  }
+}

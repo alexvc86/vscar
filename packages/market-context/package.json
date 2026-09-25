@@ -1,0 +1,19 @@
+{
+  "name": "@vscar/market-context",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "VScar market context v0.1: resolves observed reference energy prices (fuel by tax zone, electricity PVPC reference) for a market/region/date, with freshness and provenance. Pure: knows no source APIs and no database.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@vscar/methodology": "workspace:*",
+    "@vscar/vehicle-schema": "workspace:*",
+    "zod": "^3.25.67"
+  }
+}

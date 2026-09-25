@@ -1,0 +1,40 @@
+{
+  "dc": "DC-01",
+  "commercial_variant": "Toyota RAV4 Hybrid (XA50) 2.5 220H 218 CV e-CVT 4x2 (FWD), trim Advance, MY2021 (Spain)",
+  "market": "ES",
+  "eea_year": 2021,
+  "eea_table": "[CO2Emission].[latest].[co2cars] (Year=2021, MS='ES', Mk='TOYOTA', Cn='TOYOTA RAV4', Fm='H', Status='F')",
+  "candidates": [
+    { "TAN": "e6*2007/46*0289*04", "Va": "AXAH52(N)", "Ve": "AXAH52L-ANXMBW(1E)", "registrations": 3842, "values": { "Ep": 131, "M": 1665, "Ewltp": 129, "Z": null, "Zr": null }, "dr_min": "2021-01-04", "dr_max": "2021-12-30" },
+    { "TAN": "E6*2007/46*0289*04", "Va": "AXAH52(N)", "Ve": "AXAH52L-ANXXBW(1E)", "registrations": 153, "values": { "Ep": 131, "M": 1665, "Ewltp": "126-127", "Z": null, "Zr": null }, "dr_min": "2021-01-12", "dr_max": "2021-12-30" },
+    { "TAN": "E6*2007/46*0289*04", "Va": "AXAL52(N)", "Ve": "AXAL52L-ANXMBW(2E)", "registrations": 1772, "values": { "Ep": 131, "M": 1665, "Ewltp": "129-132", "Z": null, "Zr": null }, "dr_min": "2021-01-05", "dr_max": "2021-12-30" },
+    { "TAN": "e6*2007/46*0289*04", "Va": "AXAL52(N)", "Ve": "AXAL52L-ANXGBW(1E)", "registrations": 260, "values": { "Ep": 131, "M": 1680, "Ewltp": "131-132", "Z": null, "Zr": null }, "dr_min": "2021-01-19", "dr_max": "2021-12-30" },
+    { "TAN": "e6*2007/46*0289*03", "Va": "AXAH52(N)", "Ve": "AXAH52L-ANXMBW(1D)", "registrations": 4, "values": { "Ep": 131, "M": 1665, "Ewltp": 129, "Z": null, "Zr": null }, "dr_min": "2021-01-19", "dr_max": "2021-02-23" },
+    { "TAN": "e6*2007/46*0289*03", "Va": "AXAH52(N)", "Ve": "AXAH52L-ANXMBW(2D)", "registrations": 2, "values": { "Ep": 131, "M": 1665, "Ewltp": 129, "Z": null, "Zr": null }, "dr_min": "2021-05-05", "dr_max": "2021-06-07" },
+    { "TAN": "e6*2007/46*0289*03", "Va": "AXAH52(N)", "Ve": "AXAH52L-ANXGBW(1D)", "registrations": 2, "values": { "Ep": 131, "M": 1680, "Ewltp": 129, "Z": null, "Zr": null }, "dr_min": "2021-02-18", "dr_max": "2021-04-20" },
+    { "TAN": "e6*2007/46*0289*03", "Va": "AXAL52(N)", "Ve": "AXAL52L-ANXMBW(1D)", "registrations": 6, "values": { "Ep": 131, "M": 1655, "Ewltp": "128-129", "Z": null, "Zr": null }, "dr_min": "2021-01-21", "dr_max": "2021-09-27" },
+    { "TAN": "e6*2007/46*0289*03", "Va": "AXAL52(N)", "Ve": "AXAL52L-ANXGBW(1D)", "registrations": 12, "values": { "Ep": 131, "M": 1670, "Ewltp": 129, "Z": null, "Zr": null }, "dr_min": "2021-03-24", "dr_max": "2021-09-21" },
+    { "TAN": "e6*2007/46*0289*02", "Va": "AXAH52(N)", "Ve": "AXAH52L-ANXMBW(1C)", "registrations": 3, "values": { "Ep": 131, "M": 1665, "Ewltp": 129, "Z": null, "Zr": null }, "dr_min": "2021-01-25", "dr_max": "2021-05-25" },
+    { "TAN": "e6*2007/46*0289*02", "Va": "AXAH52(N)", "Ve": "AXAH52L-ANXMBW(2C)", "registrations": 7, "values": { "Ep": 131, "M": 1665, "Ewltp": 129, "Z": null, "Zr": null }, "dr_min": "2021-01-27", "dr_max": "2021-08-30" },
+    { "TAN": "e6*2007/46*0289*02", "Va": "AXAH52(N)", "Ve": "AXAH52L-ANXGBW(1C)", "registrations": 11, "values": { "Ep": 131, "M": 1680, "Ewltp": 129, "Z": null, "Zr": null }, "dr_min": "2021-01-27", "dr_max": "2021-06-21" }
+  ],
+  "decision": {
+    "type_approval_number": null,
+    "variant_code": null,
+    "version_code": null,
+    "manufacturer_type_code": null,
+    "identification_confidence": "UNCONFIRMED",
+    "evidence": [
+      { "source": "IDAE Guía de consumo y emisiones — detalle vehículo id 540541 'Toyota RAV4 HYBRID 4x2 2.5 Advance Llanta 18p (MY21)' (POST https://coches.idae.es/ajax campo=detalle, fetched 2026-09-24)", "url": "https://coches.idae.es/base-datos/marca-y-modelo", "what_it_shows": "Official ES record for the exact commercial variant: 2.487 cm3, automático, MTMA 2.135, potencia 178,1 cv, potencia térmica 131,0 kW, WLTP 5,65 l/100 km, 128 g CO2/km, 4.600x1.855x1.685 mm, 5 plazas. It does NOT show any 'código de tipo/versión', TAN, Va or Ve (also checked Business 540540, 4x4 Advance 540546, NG19 478060: none carries a code). IDAE list shows separate 4x4 entries (e.g. 540546, MTMA 2.225)." },
+      { "source": "EEA CO2 cars 2021 final (discodata), ES, TOYOTA RAV4, Fm='H', Status='F' (queried 2026-09-24)", "url": "https://discodata.eea.europa.eu/sql?query=SELECT%20TAN%2C%20Va%2C%20Ve%2C%20%5BEp%20(KW)%5D%2C%20SUM(R)%20FROM%20%5BCO2Emission%5D.%5Blatest%5D.%5Bco2cars%5D%20WHERE%20Year%3D2021%20AND%20MS%3D'ES'%20AND%20Mk%3D'TOYOTA'%20AND%20Cn%3D'TOYOTA%20RAV4'%20AND%20Fm%3D'H'%20AND%20Status%3D'F'%20GROUP%20BY%20TAN%2C%20Va%2C%20Ve%2C%20%5BEp%20(KW)%5D", "what_it_shows": "All ES 2021 RAV4 HEV rows have Ep=131 kW (matches IDAE 'potencia térmica 131 kW'); TAN families e6*2007/46*0289*02/*03/*04 (dominant *04) and e13*2007/46*1991*06/*07/*08 (small volumes); Va AXAH52, AXAL52, AXAH54, AXAL54; several Ve per Va (ANXMBW, ANXXBW, ANXGBW suffixes). Nothing in EEA names trim or drivetrain, so no official link from 'Advance 4x2' to one Va/Ve." }
+    ]
+  },
+  "separate_technical_variants": [
+    "Va AXAH52 vs AXAL52: both appear with M=1665 and Ep=131 in ES 2021 and are distinct type-approval variants; secondary parts catalogues associate '52' with FWD and '54' with AWD, and the H/L letter plausibly relates to battery type (Advance kept NiMH per Toyota ES press release 2020-09-03, Style/Luxury/Black Edition moved to Li-ion) — NOT verified by an official source, so neither may be chosen.",
+    "Va AXAH54 / AXAL54 (M 1710-1761 kg): presumably AWD-i 222 CV; must never be merged with the 4x2 even though Ep=131 kW is identical.",
+    "Ve suffixes ANXMBW / ANXXBW / ANXGBW (and revision tags 1C/2C/1D/2D/1E/2E) are separate versions with different mass/CO2 (e.g. ANXXBW 126-127 g/km vs ANXMBW 129 g/km); do not collapse.",
+    "TAN extensions *02, *03, *04 (e6, Belgium) and e13*2007/46*1991*06-*08 (Luxembourg) are separate approvals/revisions registered in ES in 2021."
+  ],
+  "missing_for_upgrade": "An official document linking 'RAV4 220H 4x2 Advance MY21' to a TAN/Va/Ve: e.g. a CoC or ficha técnica (tarjeta ITV) of an ES Advance 4x2 unit showing TAN e6*2007/46*0289*0x, variant AXAH52(N) or AXAL52(N) and version string; or a Toyota ES/TME technical sheet listing model codes per trim. With TAN+Va from such a doc -> PARTIAL; with Ve too -> EXACT.",
+  "notes": "IDAE (only official ES source with a detail page for this exact variant) carries no type/version code for Toyota, unlike the BYD SEAL example. Secondary sources seen (not evidence): amayama/partsouq parts catalogues describe AXAH52L-ANXMBW as EU-spec LHD A25A-FXS CVT; dauto.ch Typenschein lists AXAH52 FWD under e6*2007/46-2018/1832*0289. Toyota Europe HV dismantling manual (toyota-tech.eu 'RAV4_AXAH52,54 hvdm.pdf') would be an official manufacturer source for model-code->drivetrain but returned an HTML access page, not the PDF. EEA candidate values (Ep 131, M 1665, Ewltp 129) look like the car, but per brief that is UNCONFIRMED. Candidate list limited to '52' Va rows (e6 approvals); AWD '54' rows and e13 rows omitted from candidates by design."
+}

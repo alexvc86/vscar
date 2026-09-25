@@ -1,0 +1,45 @@
+{
+  "dc": "DC-05",
+  "commercial_variant": "BMW X3 xDrive20d 190 CV (140 kW) Steptronic 8, diesel, AWD, G01 pre-LCI, MY2018, launch specification valid until 08/2018 (NEDC, EU6)",
+  "market": "ES",
+  "eea_year": 2018,
+  "eea_table": "[CO2Emission].[latest].[co2cars] (Status='F'; Year=2017 returned no ES rows for this engine/TAN)",
+  "candidates": [
+    { "TAN": "E1*2007/46*1797*01", "Va": "TX31", "Ve": "CA1500M0", "registrations": 218, "values": { "Ep": 140, "Ec": 1995, "M": 1825, "W": 2864, "Enedc": 132, "Ewltp": null, "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "E1*2007/46*1797*01", "Va": "TX31", "Ve": "CA2500M0", "registrations": 259, "values": { "Ep": 140, "Ec": 1995, "M": 1825, "W": 2864, "Enedc": 138, "Ewltp": null, "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "E1*2007/46*1797*01", "Va": "TX31", "Ve": "CA3500M0", "registrations": 34, "values": { "Ep": 140, "Ec": 1995, "M": 1825, "W": 2864, "Enedc": 142, "Ewltp": null, "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "E1*2007/46*1797*01", "Va": "TX31", "Ve": "CA150000", "registrations": 45, "values": { "Ep": 140, "Ec": 1995, "M": 1825, "W": 2864, "Enedc": 132, "Ewltp": null, "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "E1*2007/46*1797*01", "Va": "TX31", "Ve": "CA250000", "registrations": 66, "values": { "Ep": 140, "Ec": 1995, "M": 1825, "W": 2864, "Enedc": 138, "Ewltp": null, "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "E1*2007/46*1797*01", "Va": "TX31", "Ve": "CA350000", "registrations": 21, "values": { "Ep": 140, "Ec": 1995, "M": 1825, "W": 2864, "Enedc": 142, "Ewltp": null, "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "E1*2007/46*1797*01", "Va": "TX31", "Ve": "CA1500L0", "registrations": 50, "values": { "Ep": 140, "Ec": 1995, "M": 1825, "W": 2864, "Enedc": 132, "Ewltp": null, "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "E1*2007/46*1797*01", "Va": "TX31", "Ve": "CA2500L0", "registrations": 20, "values": { "Ep": 140, "Ec": 1995, "M": 1825, "W": 2864, "Enedc": 138, "Ewltp": null, "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "E1*2007/46*1797*02", "Va": "TX31", "Ve": "CA1500M0", "registrations": 174, "values": { "Ep": 140, "Ec": 1995, "M": 1825, "W": 2864, "Enedc": 132, "Ewltp": null, "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "E1*2007/46*1797*02", "Va": "TX31", "Ve": "CA2500M0", "registrations": 209, "values": { "Ep": 140, "Ec": 1995, "M": 1825, "W": 2864, "Enedc": 138, "Ewltp": null, "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "E1*2007/46*1797*02", "Va": "TX31", "Ve": "CA3500M0", "registrations": 38, "values": { "Ep": 140, "Ec": 1995, "M": 1825, "W": 2864, "Enedc": 142, "Ewltp": null, "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "E1*2007/46*1797*02", "Va": "TX31", "Ve": "CA1500B0", "registrations": 74, "values": { "Ep": 140, "Ec": 1995, "M": 1825, "W": 2864, "Enedc": 132, "Ewltp": null, "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "E1*2007/46*1797*02", "Va": "TX31", "Ve": "CA2500B0", "registrations": 69, "values": { "Ep": 140, "Ec": 1995, "M": 1825, "W": 2864, "Enedc": 138, "Ewltp": null, "Z": null, "Zr": null }, "dr_min": null, "dr_max": null },
+    { "TAN": "E1*2007/46*1797*02", "Va": "TX31", "Ve": "CA3500B0", "registrations": 29, "values": { "Ep": 140, "Ec": 1995, "M": 1825, "W": 2864, "Enedc": 142, "Ewltp": null, "Z": null, "Zr": null }, "dr_min": null, "dr_max": null }
+  ],
+  "decision": {
+    "type_approval_number": null,
+    "variant_code": null,
+    "version_code": null,
+    "manufacturer_type_code": null,
+    "identification_confidence": "UNCONFIRMED",
+    "evidence": [
+      { "source": "EEA CO2 cars 2018 final (discodata), MS=ES, Mk=BMW, T=G3X, Ep=140 kW, Ec=1995, Ft=Diesel", "url": "https://discodata.eea.europa.eu/sql?query=SELECT%20TAN%2C%20Va%2C%20Ve%2C%20...%20FROM%20%5BCO2Emission%5D.%5Blatest%5D.%5Bco2cars%5D%20WHERE%20MS%3D'ES'%20AND%20Mk%3D'BMW'%20AND%20Year%3D2018%20AND%20Status%3D'F'%20AND%20T%3D'G3X'%20AND%20%5BEp%20(KW)%5D%3D140", "what_it_shows": "Two homologation regimes under TAN family e1*2007/46*1797: revisions *01/*02 (NEDC only, Ewltp null, Ve CA1500xx/CA2500xx/CA3500xx with Enedc 132/138/142, Va TX31 only) and revisions *03/*04 (Enedc 140-146 + Ewltp 178-189, Ve CAW500xx, Va TX31 and TX35). Values of *01/*02 coincide with the launch-spec CO2 132-142 g/km (S1/S5) and those of *03/*04 with the 09/2018 NEDC-correlated 140-146 g/km (S6) — this is value matching only, not an identifier link." },
+      { "source": "BMW press technical data PDFs S1 (ES, T0272101ES/389288) and S5 (UK, T0272066EN_GB/397550), text-searched in this session", "url": "https://www.press.bmwgroup.com/spain/article/attachment/T0272101ES/389288", "what_it_shows": "No TAN, type (G3X), variant (TX31) or version code appears in either document; they do not link the commercial variant to EEA identifiers." },
+      { "source": "IDAE consumption database (per DC-05 curation file S12)", "url": "https://coches.idae.es/base-datos/marca-y-modelo", "what_it_shows": "No IDAE record for X3 xDrive20d before production 11/2019, so no IDAE code link is available." }
+    ]
+  },
+  "separate_technical_variants": [
+    "E1*2007/46*1797*01 / *02, Va TX31, Ve CA?500?? (NEDC only, EU6 launch spec) — the target homologation regime, but not individually confirmed.",
+    "e1*2007/46*1797*03 / *04, Va TX31 and TX35, Ve CAW500?? (NEDC-correlated + WLTP, EU6d-TEMP, from 09/2018) — DIFFERENT homologation; do NOT merge with DC-05 even though same TAN base, kW and mass.",
+    "Va TX35 (only in *03/*04) is a different variant from TX31; meaning not established from official sources.",
+    "Within *01/*02 the Ve digit 1/2/3 goes with Enedc 132/138/142 (plausibly the BMW wheel/tyre clusters 1/2/3 in S5) and the suffix M0/L0/B0/00/MA/LA/BA differs — these are separate versions; which one is the base Spanish spec is not known.",
+    "E1*2007/46*0512*19/*20, T=X3, Va WZ51 (wheelbase 2810 mm, previous F25 generation) — different type, exclude.",
+    "E1*2007/46*0179*01 T=G3X TX31 CA2500M0 (1 registration) — anomalous TAN, likely data error; exclude."
+  ],
+  "missing_for_upgrade": "A CoC or Spanish ficha técnica/homologation document for an X3 xDrive20d produced before 09/2018 showing TAN e1*2007/46*1797*01 or *02 with type G3X / variant TX31 (-> PARTIAL); plus the version code of the specific configuration (tyre cluster / trim) (-> EXACT).",
+  "notes": "Most likely identity (UNCONFIRMED, value-based only): TAN E1*2007/46*1797*01 or *02, T G3X, Va TX31, Ve CA1500M0 / CA2500M0 / CA3500M0 or siblings. Secondary sites seen via search (realoem.com, amayama.com 'G01 X3 20dX B47 TX31'; typenscheine.ch / dauto.ch listing e1*2007/46*1797 for X3 20d xDrive G3X) agree on TX31 = X3 20dX but are NOT evidence. EEA 2018 Dr is null for all rows. No ES rows for this TAN in Year=2017. Queried 2026-09-24."
+}
