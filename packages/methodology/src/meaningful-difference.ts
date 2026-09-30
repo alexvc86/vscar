@@ -16,7 +16,16 @@ export interface DifferenceThreshold {
 
 const t = (abs: [number, number, number], extra: Omit<DifferenceThreshold, 'abs'> = {}): DifferenceThreshold => ({ abs, ...extra });
 
-export const DIFFERENCE_THRESHOLDS: Readonly<Partial<Record<SpecKey | 'price_eur', DifferenceThreshold>>> = {
+/**
+ * Claves no-SpecKey:
+ * - `price_eur`: importes puntuales (precio de compra, coste de propiedad acumulado).
+ * - `running_cost_annual_eur` (2026.4): coste de uso ANUAL; los acumulados a N años se clasifican por su
+ *   equivalente anual (delta / N) para no inflar la relevancia con el horizonte.
+ * - `seats` (2026.4): plazas (dato estructural de la variant).
+ */
+export type DifferenceKey = SpecKey | 'price_eur' | 'running_cost_annual_eur' | 'seats';
+
+export const DIFFERENCE_THRESHOLDS: Readonly<Partial<Record<DifferenceKey, DifferenceThreshold>>> = {
   'perf.accel_0_100_s': t([0.4, 0.7, 1.0]),
   'cap.boot_l': t([30, 50, 80]),
   'nrg.fuel_combined_l100': t([0.3, 0.5, 0.8]),
@@ -36,6 +45,23 @@ export const DIFFERENCE_THRESHOLDS: Readonly<Partial<Record<SpecKey | 'price_eur
   'dim.width_mm': t([20, 40, 70], { provisional: true }),
   'dim.height_mm': t([30, 60, 100], { provisional: true }),
   'war.years': t([0.5, 1, 2], { provisional: true }),
+  // Propuestas 2026.4 (Comparison Engine v0.1), pendientes de calibración:
+  running_cost_annual_eur: t([50, 150, 300], { pct: [0.03, 0.08, 0.15], provisional: true }),
+  seats: t([0.5, 0.75, 1], { provisional: true }),
+  'cap.boot_max_l': t([50, 100, 200], { provisional: true }),
+  'cap.towing_braked_kg': t([100, 300, 500], { provisional: true }),
+  'cap.payload_kg': t([25, 50, 100], { provisional: true }),
+  'cap.isofix_positions': t([0.5, 0.75, 1], { provisional: true }),
+  'dim.turning_m': t([0.2, 0.4, 0.8], { provisional: true }),
+  'rng.phev_total_km': t([30, 50, 80], { provisional: true }),
+  'war.km': t([10_000, 25_000, 50_000], { provisional: true }),
+  'bat.warranty_years': t([0.5, 1, 2], { provisional: true }),
+  'bat.warranty_km': t([10_000, 25_000, 50_000], { provisional: true }),
+  'saf.ncap_stars': t([0.5, 0.75, 1], { provisional: true }),
+  'saf.ncap_adult_pct': t([2, 5, 10], { provisional: true }),
+  'saf.ncap_child_pct': t([2, 5, 10], { provisional: true }),
+  'saf.ncap_vru_pct': t([2, 5, 10], { provisional: true }),
+  'saf.ncap_assist_pct': t([2, 5, 10], { provisional: true }),
 };
 
 /** Bases que, si faltan o son UNSPECIFIED, impiden comparar directamente (el resto solo avisa). */
@@ -119,6 +145,29 @@ export function compareValues(a: SpecValue, b: SpecValue): ComparisonResult {
   const ib = interval(b);
   if (!ia || !ib) return { comparable: false, reason: 'non-numeric values' };
 
+  if (a.value_min !== undefined || b.value_min !== undefined) warnings.push('homologated range');
+  return { comparable: true, ...compareIntervals(threshold, ia, ib, def.higherIsBetter), warnings };
+}
+
+export interface IntervalComparison {
+  classification: DifferenceClass | 'RANGE_DEPENDENT';
+  low: DifferenceClass;
+  high: DifferenceClass;
+  /** b − a como intervalo. */
+  delta: readonly [number, number];
+  better: 'a' | 'b' | undefined;
+}
+
+/**
+ * Clasifica la diferencia entre dos intervalos (un punto es [x, x]) con un umbral de Meaningful Difference.
+ * Base común de `compareValues` y de comparaciones sin SpecValue (plazas, NCAP, importes).
+ */
+export function compareIntervals(
+  threshold: DifferenceThreshold,
+  ia: readonly [number, number],
+  ib: readonly [number, number],
+  higherIsBetter: boolean | null,
+): IntervalComparison {
   const delta: [number, number] = [ib[0] - ia[1], ib[1] - ia[0]];
   const reference = Math.max(Math.abs(ia[1]), Math.abs(ib[1]));
   const crossesZero = delta[0] <= 0 && delta[1] >= 0;
@@ -128,12 +177,10 @@ export function compareValues(a: SpecValue, b: SpecValue): ComparisonResult {
   const high = classifyMagnitude(threshold, maxMag, reference);
 
   let better: 'a' | 'b' | undefined;
-  if (!crossesZero && high !== 'TIE' && def.higherIsBetter !== null) {
+  if (!crossesZero && high !== 'TIE' && higherIsBetter !== null) {
     const bLarger = delta[0] > 0;
-    better = bLarger === def.higherIsBetter ? 'b' : 'a';
+    better = bLarger === higherIsBetter ? 'b' : 'a';
   }
   if (low === 'TIE' && high === 'TIE') better = undefined;
-  if (a.value_min !== undefined || b.value_min !== undefined) warnings.push('homologated range');
-
-  return { comparable: true, classification: low === high ? low : 'RANGE_DEPENDENT', low, high, delta, better, warnings };
+  return { classification: low === high ? low : 'RANGE_DEPENDENT', low, high, delta, better };
 }

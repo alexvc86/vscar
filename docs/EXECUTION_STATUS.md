@@ -216,4 +216,34 @@ Verificación 2026-09-25: `pnpm check` exit 0 — lint ✅ · typecheck ✅ · 2
 
 Siguiente: Comparison Engine (consume `EconomicResult`, no recalcula economía).
 
+## STEP 6a — `@vscar/comparison-engine` v0.1 · ✅ (2026-09-30)
+
+Documentación: [docs/comparison/COMPARISON_ENGINE_V0_1.md](comparison/COMPARISON_ENGINE_V0_1.md). Metodología **2026.4**.
+
+Responde "¿en qué es materialmente mejor, peor o equivalente cada coche para este escenario?". **Sin winner, overall score, personal fit ni recomendación** (Step 6b).
+
+| Componente | Estado |
+|---|---|
+| Paquete puro: `vehicle-schema`, `methodology`, `quality`, `economics-engine`, `zod`; prohibido `db`, `data-connectors`, `worker`, `node:*` (ESLint + test) | ✅ |
+| Contratos `ComparisonCandidate`, `ComparisonScenario` (solo contexto práctico), `ComparisonResult`; candidato desde el bundle con las reglas de `quality` | ✅ |
+| Deal breakers primero (PASS/FAIL/UNKNOWN; UNKNOWN ≠ PASS; rango que cruza el límite → UNKNOWN; ningún FAIL se revierte) | ✅ |
+| Métricas técnicas en 10 categorías con `AHEAD/BEHIND/PRACTICAL_TIE/RANGE_DEPENDENT/DIFFERENT/NOT_COMPARABLE/UNKNOWN` | ✅ |
+| Diferencia bruta · Meaningful Difference (umbrales de methodology, sin duplicar) · Meaningful For You (`for-you-v1`, perfil práctico) | ✅ |
+| Rangos por intervalos; ciclos, bases, `range_type`, ventana SoC y protocolo NCAP distintos → NOT_COMPARABLE | ✅ |
+| Economía consumida de `EconomicResult` (deltas `economicDelta`, break-even `breakEven`); sin recalcular; ciclos distintos → NOT_COMPARABLE | ✅ |
+| Resúmenes por categoría por unanimidad (sin pesos); confianza de datos combinando señales existentes | ✅ |
+| Simetría A/B, independencia del orden y del conjunto, reproducibilidad (`scenarioHash`) | ✅ |
+| Tests: 22 unitarios + 4 propiedades + 5 fixtures reales + 3 frontera | ✅ |
+
+Cambios en methodology 2026.4 (sin reabrir Step 5): umbrales `provisional` que faltaban para comparar — coste de uso anual (`running_cost_annual_eur`), plazas, maletero abatido, remolque, carga útil, ISOFIX, giro, autonomía total PHEV, garantías de km y batería, NCAP; reglas `comparison-v1` de confianza de datos; `compareIntervals` extraída de `compareValues` (mismo comportamiento, tests de methodology/quality intactos).
+
+Decisiones técnicas nuevas:
+- Outcome adicional `DIFFERENT` para diferencias sin dirección de mejora (dimensiones, etiqueta DGT, equipamiento): se describen, no se valoran.
+- Los costes energéticos derivados de consumos de ciclos distintos (p. ej. X3 NEDC vs Golf WLTP) se muestran pero son NOT_COMPARABLE (coherente con §13 y con el plan: "NOT DIRECTLY COMPARABLE, excluido del ganador pero visible").
+- Los acumulados a N años se clasifican por su equivalente anual para que el horizonte no infle la relevancia.
+
+Verificación 2026-09-30: `pnpm check` exit 0 — lint ✅ · typecheck ✅ · 288 tests ✅ + 3 live (EEA, MITECO, ESIOS) ✅ con sus flags.
+
+Siguiente: Step 6b — Fit Engine (Practical Fit / Preference Fit sobre `ComparisonResult`).
+
 ## STEP 4 — Primera calculadora pública · ⏳

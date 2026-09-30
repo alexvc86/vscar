@@ -61,6 +61,31 @@ importers:
         specifier: workspace:*
         version: link:../packages/vehicle-schema
 
+  packages/comparison-engine:
+    dependencies:
+      '@vscar/economics-engine':
+        specifier: workspace:*
+        version: link:../economics-engine
+      '@vscar/methodology':
+        specifier: workspace:*
+        version: link:../methodology
+      '@vscar/quality':
+        specifier: workspace:*
+        version: link:../quality
+      '@vscar/vehicle-schema':
+        specifier: workspace:*
+        version: link:../vehicle-schema
+      zod:
+        specifier: ^3.25.67
+        version: 3.25.76
+    devDependencies:
+      '@vscar/fixtures':
+        specifier: workspace:*
+        version: link:../../fixtures
+      '@vscar/market-context':
+        specifier: workspace:*
+        version: link:../market-context
+
   packages/data-connectors:
     dependencies:
       '@vscar/vehicle-schema':

@@ -1,0 +1,25 @@
+{
+  "name": "@vscar/comparison-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "VScar Comparison Engine v0.1 (Step 6a): deal breakers, per-metric technical comparison (raw difference, meaningful difference, meaningful for you), economic comparison over EconomicResult (no recalculation), category summaries and data confidence. No winner, no overall score. Pure, deterministic, browser-safe.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@vscar/economics-engine": "workspace:*",
+    "@vscar/methodology": "workspace:*",
+    "@vscar/quality": "workspace:*",
+    "@vscar/vehicle-schema": "workspace:*",
+    "zod": "^3.25.67"
+  },
+  "devDependencies": {
+    "@vscar/fixtures": "workspace:*",
+    "@vscar/market-context": "workspace:*"
+  }
+}
