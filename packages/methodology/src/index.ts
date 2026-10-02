@@ -1,5 +1,7 @@
 import { DGT_LABEL_RULE } from './dgt-label.ts';
+import { ALPHA_DECISION_RULES } from './alpha-decision.ts';
 import { COMPARISON_RULES } from './comparison.ts';
+import { RECOMMENDATION_CONFIDENCE_RULES, ROBUSTNESS_RULES, WHY_NOT_RULES } from './recommendation.ts';
 import { ECONOMICS_RULES } from './economics.ts';
 import { ENERGY_MARKET_RULES } from './energy-market.ts';
 import { FOR_YOU_RULES } from './for-you.ts';
@@ -27,6 +29,8 @@ export * from './quality-config.ts';
 export * from './energy-market.ts';
 export * from './economics.ts';
 export * from './comparison.ts';
+export * from './alpha-decision.ts';
+export * from './recommendation.ts';
 
 /**
  * methodologyVersion (Plan §13.8). Cualquier cambio en la configuración exige nueva versión.
@@ -34,8 +38,11 @@ export * from './comparison.ts';
  * 2026.3: + reglas económicas (`economics-v1`: eficiencia de carga, producto por combustible, redondeo, confianza, sensibilidad).
  * 2026.4: + umbrales provisionales para la comparación (coste de uso anual, plazas, capacidad, garantías, NCAP)
  *         y reglas de confianza de datos de la comparación (`comparison-v1`).
+ * 2026.5: + reglas del Alpha Decision Engine (`alpha-decision-v1`: pesos técnicos, componentes Alpha Fit,
+ *         prioridades simples, relevancia de autonomía, utilidad del coste anual) y umbrales de empate de decisión.
+ * 2026.6: + Step 6c (`why-not-v1`, `robustness-v1`, `recommendation-confidence-v1`), provisionales.
  */
-export const METHODOLOGY_VERSION = '2026.4';
+export const METHODOLOGY_VERSION = '2026.6';
 
 /** Configuración metodológica completa y serializable (fila de `methodology_versions.config`). */
 export const METHODOLOGY_CONFIG = {
@@ -54,6 +61,10 @@ export const METHODOLOGY_CONFIG = {
   energy_market: ENERGY_MARKET_RULES,
   economics: ECONOMICS_RULES,
   comparison: COMPARISON_RULES,
+  alpha_decision: ALPHA_DECISION_RULES,
+  why_not: WHY_NOT_RULES,
+  robustness: ROBUSTNESS_RULES,
+  recommendation_confidence: RECOMMENDATION_CONFIDENCE_RULES,
 } as const;
 
 /** JSON canónico (claves ordenadas) para huella y almacenamiento. */

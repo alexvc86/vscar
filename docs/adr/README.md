@@ -36,6 +36,7 @@ Fichero `ADR-NNN-titulo-en-kebab-case.md` con:
 | [ADR-007](ADR-007-reference-vs-used-instance.md) | reference-vs-used-instance + commercial vs technical identity (Homologation) | **ACCEPTED** (2026-09-24) | §9.1, §11 |
 | ADR-008 | dataset-storage-strategy (MySQL + raw filesystem) | Propuesto | §33.1 |
 | [ADR-009](ADR-009-data-provider-rights.md) | data-provider-rights | **ACCEPTED WITH OPEN LEGAL VERIFICATION** (2026-09-24) | §10.1 |
-| ADR-010 | threeui-evaluation | Pendiente de evaluación de licencia | §21 |
+| [ADR-010](ADR-010-visual-motion-stack.md) | visual-motion-stack (ThreeUI Community para atmósfera, GSAP para scroll, Motion para UI, R3F condicionado) | **ACCEPTED FOR LAB** (2026-10-02) · §3 y §4 sustituidos por ADR-011 | §21, §22, §26 |
+| [ADR-011](ADR-011-alpha-visual-stack-after-lab.md) | alpha-visual-stack-after-lab (RibbonField solo, reduced motion = estático, R3F rechazado para Alpha, SVG ONLY) | **ACCEPTED** (2026-10-02) | §21, §22, §26 |
 
 No es necesario escribirlos todos de inmediato: se redactan cuando la decisión se ejecuta.

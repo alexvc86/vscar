@@ -1,0 +1,42 @@
+{
+  "name": "@vscar/motion-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Step 6e — ThreeUI / Motion Lab. Isolated Next.js lab that validates the Step 6d visual direction with the real decision pipeline (fixtures + pure engines). Not production, no DB, no API.",
+  "scripts": {
+    "snapshot": "node scripts/snapshot.ts",
+    "dev": "next dev -p 4100",
+    "build": "next build",
+    "start": "next start -p 4100",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@designcodeio/threeui": "1.2.0",
+    "@gsap/react": "2.1.2",
+    "@react-three/fiber": "9.8.1",
+    "@vscar/comparison-engine": "workspace:*",
+    "@vscar/decision-engine": "workspace:*",
+    "@vscar/economics-engine": "workspace:*",
+    "@vscar/market-context": "workspace:*",
+    "@vscar/methodology": "workspace:*",
+    "@vscar/vehicle-schema": "workspace:*",
+    "geist": "1.7.2",
+    "gsap": "3.15.0",
+    "motion": "13.5.0",
+    "next": "16.3.8",
+    "ogl": "1.0.11",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/three": "0.186.0",
+    "@vscar/fixtures": "workspace:*",
+    "tailwindcss": "4.3.3"
+  }
+}

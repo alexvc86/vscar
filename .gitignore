@@ -2,6 +2,9 @@ node_modules/
 .turbo/
 dist/
 coverage/
+.next/
+next-env.d.ts
+*.tsbuildinfo
 *.log
 
 # secretos y configuración local (en el VPS viven en C:\vscar\config\)

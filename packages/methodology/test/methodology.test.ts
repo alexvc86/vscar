@@ -17,7 +17,7 @@ import {
 
 describe('methodology config integrity', () => {
   it('references only existing numeric SpecKeys', () => {
-    for (const key of [...Object.keys(UTILITY_CURVES), ...Object.keys(DIFFERENCE_THRESHOLDS).filter((k) => !['price_eur', 'running_cost_annual_eur', 'seats'].includes(k))]) {
+    for (const key of [...Object.keys(UTILITY_CURVES), ...Object.keys(DIFFERENCE_THRESHOLDS).filter((k) => !['price_eur', 'running_cost_annual_eur', 'seats', 'technical_capability', 'alpha_fit'].includes(k))]) {
       expect(isSpecKey(key), key).toBe(true);
       expect(['int', 'decimal']).toContain(SPEC_KEY_DEFINITIONS.get(key as SpecKey)!.dataType);
     }
@@ -30,9 +30,9 @@ describe('methodology config integrity', () => {
   });
 
   it('has a version and a stable fingerprint that changes with the config', () => {
-    expect(METHODOLOGY_VERSION).toBe('2026.4');
+    expect(METHODOLOGY_VERSION).toBe('2026.6');
     expect(methodologyFingerprint()).toBe(methodologyFingerprint(JSON.parse(JSON.stringify(METHODOLOGY_CONFIG))));
-    expect(methodologyFingerprint({ ...METHODOLOGY_CONFIG, version: '2026.5' })).not.toBe(methodologyFingerprint());
+    expect(methodologyFingerprint({ ...METHODOLOGY_CONFIG, version: '2026.7' })).not.toBe(methodologyFingerprint());
   });
 
   it('presets and sensitivity ranges exist for both reference markets', () => {

@@ -246,4 +246,99 @@ Verificación 2026-09-30: `pnpm check` exit 0 — lint ✅ · typecheck ✅ · 2
 
 Siguiente: Step 6b — Fit Engine (Practical Fit / Preference Fit sobre `ComparisonResult`).
 
+## STEP 6b — Alpha Decision Engine v0.1 · ✅ (2026-10-02)
+
+Documentación: [docs/decision/ALPHA_DECISION_ENGINE_V0_1.md](decision/ALPHA_DECISION_ENGINE_V0_1.md). Metodología **2026.5** (`alpha-decision-v1`, provisional). Motor `0.1.0`.
+
+| Componente | Estado |
+|---|---|
+| Paquete puro (`vehicle-schema`, `methodology`, `quality`, `economics-engine`, `comparison-engine`, `zod`); sin `db`, adapters, worker ni `node:*` (ESLint + test) | ✅ |
+| No recalcula: consume `compareCandidates` (6a) + `EconomicResult` (5); rechaza resultados de comparación incompletos | ✅ |
+| Technical Capability: curvas de utilidad de methodology (sin min–max), pesos editoriales públicos, categorías sin datos excluidas (nunca 0) con cobertura; solo WLTP / potencia de sistema / NCAP vigente; edad, km y precio no intervienen | ✅ |
+| Economic Fit @ horizonte (1/3/5/N): coste de uso del `EconomicResult`, dirección del 6a, sin ganador si NOT_COMPARABLE o UNKNOWN; propiedad como `KNOWN_COST_VIEW` | ✅ |
+| Practical Fit: deal breakers del 6a (FAIL), UNCONFIRMED (obligatorio sin dato, nunca PASS), PASS_WITH_COMPROMISES (deseos incumplidos), PASS; el estado manda sobre el score | ✅ |
+| Prioridades simples COST/SPACE/PERFORMANCE (3/2/1) y Alpha Fit sin doble conteo | ✅ |
+| Alpha Best For You: solo ≠ FAIL; empates prácticos neutralizados; PRACTICAL_TIE / RANGE_DEPENDENT sin forzar ganador; NO_FULL_MATCH con candidato más cercano informativo | ✅ |
+| Contribuciones (máx. 3, ≥ MEANINGFUL, qué/cuánto/por qué/para quién), confianza de datos combinada, `scenarioHash` | ✅ |
+| Sin Preference Fit, sin Personal Fit, sin brand/design score, sin penalización por edad | ✅ |
+| Tests: 17 unitarios + 6 propiedades + 5 fixtures reales + 3 frontera | ✅ |
+
+Decisiones técnicas nuevas:
+- Cuarto estado de Practical Fit `UNCONFIRMED` (requisito obligatorio sin dato): no es PASS ni compromiso; el candidato sigue siendo elegible pero se marca `requiresVerification`.
+- Las comparaciones de Alpha Fit y Technical Capability entre dos coches se hacen sobre componentes/categorías **comunes**, y las métricas que el 6a marca PRACTICAL_TIE se igualan (una diferencia trivial no decide aunque la prioridad sea HIGH).
+- El componente COST solo usa costes basados en consumos WLTP (coherente con NOT_COMPARABLE de ciclos).
+
+Resultado en casos reales: BYD SEAL vs Model 3 → empate práctico para un commuter con carga en casa; BYD para quien hace 10 viajes largos/año (autonomía CLEAR y relevante). X3 NEDC vs Golf WLTP → sin ganador económico.
+
+Verificación 2026-10-02: `pnpm check` exit 0 — lint ✅ · typecheck ✅ · 319 tests ✅ + 3 live (EEA, MITECO, ESIOS) ✅ con sus flags.
+
+Siguiente: Step 6c — Why Not + Result Robustness + Recommendation Confidence.
+
+## STEP 6c — Why Not · Result Robustness · Recommendation Confidence · ✅ (2026-10-02)
+
+Documentación: [docs/decision/ALPHA_DECISION_ENGINE_V0_1.md § Step 6c](decision/ALPHA_DECISION_ENGINE_V0_1.md). Metodología **2026.6** (`why-not-v1`, `robustness-v1`, `recommendation-confidence-v1`, provisionales). Mismo paquete `@vscar/decision-engine` (no hay razón arquitectónica para uno nuevo).
+
+| Componente | Estado |
+|---|---|
+| Why Not por candidato (máx. 5) y tradeoffs del elegido (máx. 3); orden determinista; puerta ≥ MEANINGFUL; SLIGHT solo como respaldo menor; sin relleno | ✅ |
+| Verify before deciding (UNCONFIRMED y deseos sin dato), nunca como defecto confirmado; NO_FULL_MATCH con "closest option", nunca "recommended" | ✅ |
+| Result Robustness: rejilla + bisección acotada sobre km/año, precio carburante, precio electricidad, % carga en casa y horizonte, en rangos de methodology; prioridades simples; global por el cambio más cercano; TIE/RANGE_DEPENDENT nunca HIGH | ✅ |
+| Recommendation Confidence HIGH/MEDIUM/LOW + motivos, combinando señales existentes; topes por empate, rangos, sin coincidencia y todo sin confirmar; derechos de publicación separados | ✅ |
+| Mensajes `messageKey` + `params` (+ respaldo en inglés) — i18n-ready | ✅ |
+| `createDecisionPipeline`: orquesta Economics → Comparison → Decision para re-evaluar escenarios (único módulo que los llama) | ✅ |
+| Contrato preparado para `usedInformationConfidence` (`NOT_APPLICABLE`) y `subject = USED_INSTANCE` | ✅ |
+| Tests: 8 unitarios/goldens + 3 casos reales + 1 determinismo + 5 propiedades | ✅ |
+
+Corrección incluida: las utilidades de los componentes del Alpha Fit ya no se redondean antes de comparar pares (el redondeo a 0,1 creaba "islas" de resultado junto al umbral de empate; lo detectó la búsqueda de robustez). Los scores mostrados siguen redondeados.
+
+Verificación 2026-10-02: `pnpm check` exit 0 — lint ✅ · typecheck ✅ · 337 tests ✅ + 3 live (EEA, MITECO, ESIOS) ✅ con sus flags.
+
+Siguiente: scaffold local de VScar Web (contratos estables) o Used Adjustment.
+
+## STEP 6d — Visual Direction + ThreeUI Strategy · ✅ (2026-10-02)
+
+Solo análisis, dirección y especificación: no hay `apps/web`, ni código ThreeUI/GSAP, ni cambios en los engines.
+
+| Entregable | Estado |
+|---|---|
+| [VSCAR_VISUAL_DIRECTION_V0_1.md](design/VSCAR_VISUAL_DIRECTION_V0_1.md): análisis medido de Forge (principal), Singularity, Soviet Flip y Armor; 8 principios; narrativa Car VS dinámica (6–9 capítulos, no 12); scroll grammar; 19 tokens de motion; responsabilidades Motion/GSAP/ThreeUI/R3F; tipografía y color (contraste AA medido); estados tie / range-dependent / no full match / cambio de ganador; móvil; reduced motion; rendimiento y tiers; plan del lab | ✅ |
+| [THREEUI_EVALUATION.md](design/THREEUI_EVALUATION.md): `@designcodeio/threeui` 1.2.0 MIT (Community), Pro fuera de npm, grafo de imports por componente, shortlist y rechazos, patrón de integración, riesgos | ✅ |
+| [ADR-010 — visual-motion-stack](adr/ADR-010-visual-motion-stack.md): ThreeUI adelantado para atmósfera, GSAP solo para scroll, Motion para UI, R3F condicionado a presupuesto | ✅ ACCEPTED FOR LAB |
+| [THIRD_PARTY.md](licenses/THIRD_PARTY.md): licencias del stack visual verificadas en los tarballs | ✅ |
+
+Hallazgos medidos que cambian el plan:
+- La sensación premium de Forge no viene del 3D: es fotografía con profundidad 2,5D en shader OGL + SplitText + secciones `sticky` con scrub (sin `pin`), sobre scroll nativo suavizado.
+- ThreeUI 1.2.0 no usa R3F ni trae `'use client'`. Sus fondos WebGL nativos pesan 2–5 KB gzip, pero no respetan reduced motion (lo aplica un wrapper). La familia "Neuform" (iframe + CDN, ~119 KB) y los componentes con Three r128 quedan descartados.
+- GSAP 3.15 + ScrollTrigger + SplitText = 48,7 KB gzip, con licencia gratuita para uso comercial.
+- R3F + three para una silueta pueden superar los 250 KB del chunk 3D: queda condicionado al lab, con alternativa OGL y la silueta SVG siempre como base.
+
+Siguiente: **Step 6e — ThreeUI / Motion Lab** (`labs/motion-lab`, 5 efectos, gate de rendimiento por efecto).
+
+## STEP 6e — ThreeUI / Motion Lab · ✅ PASS (2026-10-02)
+
+Lab aislado en `labs/motion-lab` (Next.js 16 App Router, una ruta, puerto 4100). Sin `apps/web`, sin DB, sin API, sin cambios en los engines. Datos reales: snapshot de Dataset Core + energía ESIOS/MITECO, pasados por el `createDecisionPipeline` real.
+
+| Entregable | Estado |
+|---|---|
+| Narrativa BYD → VS → Model 3 → PRACTICAL TIE → cambio de escenario → BYD seleccionado; el ganador sale del engine (`longTripsPerYear` 1 → tie, 10 → BYD; el cambio ocurre en 3) | ✅ |
+| 5 efectos medidos (FPS, hilo principal, heap, LCP/CLS/INP, gzip) en HIGH / LOW / móvil (CPU ×4) / reduced / sin WebGL / contexto perdido | ✅ |
+| [MOTION_LAB_RESULTS.md](design/MOTION_LAB_RESULTS.md) + 14 capturas en `docs/design/motion-lab/` (~490 KB) | ✅ |
+| [ADR-011 — alpha-visual-stack-after-lab](adr/ADR-011-alpha-visual-stack-after-lab.md): sustituye en parte a ADR-010 | ✅ ACCEPTED |
+| Tests del lab (20): tier, reduced → 2D, fallback del wrapper, tie real, selección real, frontera sin DB; regla ESLint `BROWSER_LABS` | ✅ |
+| `corepack pnpm check` (lint + typecheck + test, 22 tareas) y build del lab | ✅ (tests MySQL de `@vscar/db` omitidos: sin `VSCAR_TEST_DATABASE_URL` en la shell) |
+
+Decisiones:
+- **ThreeUI**: RibbonField KEEP, StreamConvergence REJECT. Reduced motion, sin WebGL o contexto perdido → degradado CSS sin contexto WebGL.
+- **Vehículo**: SVG ONLY. **R3F REJECTED FOR ALPHA** (236 KB gzip, sin ganancia visual sin GLTF, +150 ms de hilo principal); OGL REJECT.
+- **GSAP**: ScrollTrigger + SplitText + `@gsap/react`, sticky CSS + scrub, sin `pin`; ScrollTriggers estables tras 4 ciclos de cambiar tier/renderer/motion.
+- **Motion**: Tie Balance, Tie → Winner (`layoutId` compartido), Scenario Morph; CLS 0.
+
+Hallazgos que condicionan `apps/web`:
+- JS inicial del lab 333,6 KB gzip (framework 170,7 KB): engines + datos (69,6 KB) al servidor/lazy y GSAP (47,6 KB) después del LCP; `size-limit` en el primer build.
+- Pipeline interactivo 3,5–6,5 ms (20–26 ms en móvil ×4); robustez completa 0,1–0,7 s → fuera del hilo principal.
+- HMR no verificado en navegador (el Chromium headless bloquea el WebSocket); queda como comprobación manual.
+- Laragon activo y compatible; no se tocó ningún servicio, `hosts` ni vhost.
+
+Siguiente: scaffold de `apps/web` con el stack de ADR-011.
+
 ## STEP 4 — Primera calculadora pública · ⏳

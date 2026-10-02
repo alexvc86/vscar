@@ -1,0 +1,26 @@
+{
+  "name": "@vscar/decision-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "VScar Alpha Decision Engine v0.1 (Steps 6b–6c): Technical Capability, Economic Fit @ horizon, Practical Fit, simple priorities and Alpha Best For You, Why Not, Result Robustness and Recommendation Confidence over ComparisonResult + EconomicResult. No Preference Fit, no Personal Fit (MVP). Pure, deterministic, browser-safe.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@vscar/comparison-engine": "workspace:*",
+    "@vscar/economics-engine": "workspace:*",
+    "@vscar/methodology": "workspace:*",
+    "@vscar/quality": "workspace:*",
+    "@vscar/vehicle-schema": "workspace:*",
+    "zod": "^3.25.67",
+    "@vscar/market-context": "workspace:*"
+  },
+  "devDependencies": {
+    "@vscar/fixtures": "workspace:*"
+  }
+}

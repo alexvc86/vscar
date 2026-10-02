@@ -23,7 +23,7 @@ const t = (abs: [number, number, number], extra: Omit<DifferenceThreshold, 'abs'
  *   equivalente anual (delta / N) para no inflar la relevancia con el horizonte.
  * - `seats` (2026.4): plazas (dato estructural de la variant).
  */
-export type DifferenceKey = SpecKey | 'price_eur' | 'running_cost_annual_eur' | 'seats';
+export type DifferenceKey = SpecKey | 'price_eur' | 'running_cost_annual_eur' | 'seats' | 'technical_capability' | 'alpha_fit';
 
 export const DIFFERENCE_THRESHOLDS: Readonly<Partial<Record<DifferenceKey, DifferenceThreshold>>> = {
   'perf.accel_0_100_s': t([0.4, 0.7, 1.0]),
@@ -62,6 +62,9 @@ export const DIFFERENCE_THRESHOLDS: Readonly<Partial<Record<DifferenceKey, Diffe
   'saf.ncap_child_pct': t([2, 5, 10], { provisional: true }),
   'saf.ncap_vru_pct': t([2, 5, 10], { provisional: true }),
   'saf.ncap_assist_pct': t([2, 5, 10], { provisional: true }),
+  // Propuestas 2026.5 (Alpha Decision Engine): puntos de score 0–100.
+  technical_capability: t([3, 6, 10], { provisional: true }),
+  alpha_fit: t([3, 6, 10], { provisional: true }),
 };
 
 /** Bases que, si faltan o son UNSPECIFIED, impiden comparar directamente (el resto solo avisa). */
