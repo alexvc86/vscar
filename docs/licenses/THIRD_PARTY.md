@@ -1,6 +1,6 @@
 # Third-party licenses — frontend visual stack
 
-> Inventario de las dependencias del frontend evaluadas en Step 6d (2026-10-02). Verificado contra `package.json`/LICENSE de los tarballs de npm. El inventario automático (license-checker en CI, Master Plan §40) lo sustituirá cuando exista `apps/web`.
+> Inventario de las dependencias del frontend evaluadas en Step 6d (2026-10-02). Verificado contra `package.json`/LICENSE de los tarballs de npm. `apps/web` existe desde Step 7a; el inventario automático (license-checker en CI, Master Plan §40) queda pendiente.
 
 | Paquete | Versión evaluada | Licencia | Notas |
 |---|---|---|---|
@@ -15,5 +15,13 @@
 | `lenis` | 1.3.26 | MIT | no se adopta por defecto |
 | Geist / Geist Mono (`geist`) | 1.7.2 | SIL OFL 1.1 (© Vercel + basement.studio) | tipografía principal |
 | Instrument Serif | (incluida en ThreeUI / Google Fonts) | SIL OFL 1.1 | solo si el lab la valida |
+| `next-intl` (+ `use-intl`) | 4.14.9 | MIT | i18n de `apps/web` (Step 7a) |
+| `zustand` | 5.0.15 | MIT | solo estado efímero de UI |
+| `react-hook-form` | 7.89.0 | MIT | hoja "Cambiar tu uso" (diferida) |
+| `@hookform/resolvers` | 5.9.1 | MIT | `zodResolver` |
+| `@radix-ui/react-dialog` | 1.1.23 | MIT | `@vscar/ui/sheet` |
+| `@radix-ui/react-slot` | 1.3.3 | MIT | `@vscar/ui/button` (`asChild`) |
+| `server-only` | 0.0.1 | MIT | marca módulos solo-servidor |
+| `@playwright/test` | 1.63.0 | Apache-2.0 | **solo desarrollo** (E2E con el Chrome instalado) |
 
 Reglas: nada Pro sin licencia y decisión explícita; ningún componente que cargue librerías desde CDN; sin fotos de prensa ni logos de fabricantes (Master Plan §40).

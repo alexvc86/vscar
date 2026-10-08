@@ -1,0 +1,390 @@
+{
+  "common": {
+    "brand": "VScar",
+    "tagline": "No el mejor coche. El mejor coche para ti.",
+    "subtagline": "Compara con los números a la vista.",
+    "skipToContent": "Saltar al contenido",
+    "close": "Cerrar",
+    "loading": "Cargando…",
+    "notConfirmed": "No confirmado",
+    "vs": "vs",
+    "and": "y",
+    "genericSilhouette": "{name} — silueta genérica de {body} (no es una imagen del fabricante)",
+    "devSnapshot": "Datos de desarrollo: snapshot controlado de Dataset Core. No es un dataset publicado."
+  },
+  "navigation": {
+    "home": "Inicio",
+    "compare": "Comparar",
+    "methodology": "Metodología",
+    "language": "Idioma",
+    "languageSwitchLabel": "Cambiar idioma (el mercado sigue siendo {market})",
+    "mainNav": "Navegación principal",
+    "chapterIndex": "Capítulos",
+    "jumpToDetails": "Ir a los detalles",
+    "jumpToResult": "Ir al resultado"
+  },
+  "markets": {
+    "ES": "España"
+  },
+  "home": {
+    "title": "No el mejor coche. El mejor coche para ti.",
+    "lead": "Compara con los números a la vista.",
+    "cta": "Comparar coches",
+    "demoNote": "Demo real: {a} vs {b}, calculada con los engines de VScar sobre datos del mercado español.",
+    "pillarsTitle": "Cómo decide VScar",
+    "pillar1": "Resultados separados: capacidad técnica, coste de uso y encaje con tu uso.",
+    "pillar2": "Sin ganador forzado: un empate práctico es una respuesta válida.",
+    "pillar3": "Cada cifra con su fuente, ciclo y fecha."
+  },
+  "comparison": {
+    "metaTitle": "{a} vs {b}: ¿cuál encaja mejor contigo? | VScar",
+    "metaDescription": "{a} vs {b} para tu uso real en {market}: coste de uso, autonomía eléctrica y qué cambiaría el resultado, con los números a la vista.",
+    "candidate": "Candidato {side}",
+    "chapters": {
+      "vs": "VS",
+      "result": "Tu resultado",
+      "reason": "Diferencia clave",
+      "economics": "Coste de uso",
+      "tradeoffs": "Lo que sacrificas",
+      "change": "Qué cambia el resultado",
+      "confidence": "Confianza y verificación",
+      "details": "Comparación completa"
+    },
+    "scenarioSummary": "{km} al año · {daily} al día · {trips, plural, =0 {sin viajes largos} one {# viaje largo} other {# viajes largos}} al año · carga en casa {home}",
+    "notFound": "Esta comparación no está disponible en este mercado."
+  },
+  "decision": {
+    "eyebrow": "Para tus necesidades",
+    "status": {
+      "BEST_FOR_YOU": "El mejor para tus necesidades",
+      "PRACTICAL_TIE": "Empate práctico",
+      "RANGE_DEPENDENT": "Depende de la configuración",
+      "NO_FULL_MATCH": "Ninguno cumple completamente tus requisitos.",
+      "INSUFFICIENT_DATA": "No hay datos comparables suficientes"
+    },
+    "statusLead": {
+      "BEST_FOR_YOU": "El {name} encaja mejor con tu uso.",
+      "PRACTICAL_TIE": "Para tu uso, ninguno es significativamente mejor.",
+      "RANGE_DEPENDENT": "El resultado depende de rangos de configuración; VScar no fuerza un ganador.",
+      "NO_FULL_MATCH": "Ningún vehículo cumple todos los requisitos obligatorios.",
+      "INSUFFICIENT_DATA": "No hay datos comparables suficientes de espacio, autonomía, prestaciones o coste de uso."
+    },
+    "selectedBadge": "El mejor para tus necesidades",
+    "tieMarker": "Igual",
+    "closestOption": "Opción más cercana — no es una recomendación",
+    "why": "Por qué",
+    "whyTie": "Por qué es un empate",
+    "announce": {
+      "BEST_FOR_YOU": "Resultado: el {name} es el mejor para tus necesidades.",
+      "PRACTICAL_TIE": "Resultado: empate práctico entre {a} y {b} para este escenario.",
+      "RANGE_DEPENDENT": "Resultado: depende de la configuración.",
+      "NO_FULL_MATCH": "Resultado: ninguno cumple completamente tus requisitos.",
+      "INSUFFICIENT_DATA": "Resultado: no hay datos comparables suficientes.",
+      "changed": "El resultado ha cambiado."
+    },
+    "contribution": {
+      "metricAhead": "{label}: {winner} {valueWinner} frente a {other} {valueOther} — diferencia {level}",
+      "forYou": "para tu uso: {level}",
+      "dealBreaker": "El {name} no cumple un requisito obligatorio",
+      "compromise": "{name}: por debajo de un objetivo preferido"
+    },
+    "tieKeyIntro": "La mayor diferencia, y por qué no decide por ti",
+    "reasonIntro": "Por qué decide por ti",
+    "whyNotTitle": "¿Por qué no el {name}?",
+    "tradeoffsTitle": "Lo que sacrificas con el {name}",
+    "verifyTitle": "Verifica esto antes de decidir",
+    "noticesTitle": "Notas",
+    "onlyMinor": "Solo diferencias menores."
+  },
+  "metricLayers": {
+    "raw": "Diferencia bruta",
+    "meaningful": "Diferencia relevante",
+    "forYou": "Relevante para ti",
+    "notAssessed": "Sin evaluar",
+    "level": {
+      "TIE": "empate",
+      "SLIGHT": "ligera",
+      "MEANINGFUL": "relevante",
+      "CLEAR": "clara",
+      "RANGE_DEPENDENT": "depende de la configuración"
+    },
+    "levelLong": {
+      "TIE": "Sin diferencia real",
+      "SLIGHT": "Ligera ventaja",
+      "MEANINGFUL": "Ventaja relevante",
+      "CLEAR": "Ventaja clara",
+      "RANGE_DEPENDENT": "Depende de la configuración"
+    },
+    "ahead": "Por delante: {name}",
+    "rules": {
+      "range_low_relevance": "tu uso diario queda muy por debajo de la autonomía de ambos, cargas en casa y haces pocos viajes largos",
+      "range_full_relevance": "con viajes largos frecuentes la autonomía sigue siendo plenamente relevante",
+      "cargo_family": "familia numerosa",
+      "cargo_single": "conductor solo sin viajes largos",
+      "performance_low": "las prestaciones tienen prioridad baja",
+      "performance_high": "las prestaciones tienen prioridad alta",
+      "consumption_high_km": "kilometraje anual alto",
+      "consumption_low_km": "kilometraje anual bajo"
+    }
+  },
+  "scenario": {
+    "cta": "Cambiar tu uso",
+    "title": "Tu uso",
+    "description": "Solo cambian estos datos; los engines recalculan en tu dispositivo.",
+    "annualKm": "Distancia al año",
+    "dailyKm": "Día típico",
+    "longTrips": "Viajes largos al año",
+    "homeCharging": "Carga en casa",
+    "homeChargingHint": "0 % = sin carga en casa",
+    "horizon": "Años de propiedad",
+    "priorities": "Lo que más te importa",
+    "cost": "Coste",
+    "space": "Espacio",
+    "performance": "Prestaciones",
+    "priorityLevel": {
+      "1": "Baja",
+      "2": "Media",
+      "3": "Alta"
+    },
+    "apply": "Aplicar",
+    "reset": "Volver al trayecto diario",
+    "unitsYear": "{value, plural, one {# año} other {# años}}",
+    "invalidField": "Revisa este valor ({min}–{max}).",
+    "presetLongTrips": "{count, plural, one {# viaje largo} other {# viajes largos}} al año",
+    "quickTitle": "Prueba otro uso",
+    "recalculating": "Recalculando…"
+  },
+  "confidence": {
+    "title": "Confianza de la recomendación",
+    "level": {
+      "HIGH": "ALTA",
+      "MEDIUM": "MEDIA",
+      "LOW": "BAJA"
+    },
+    "explain": "Lo seguro que está VScar de este resultado, no lo bueno que es el coche."
+  },
+  "robustness": {
+    "title": "Qué cambiaría el resultado",
+    "checking": "Analizando qué podría cambiar el resultado…",
+    "status": {
+      "STABLE": "Estable",
+      "SENSITIVE": "Sensible",
+      "VERY_SENSITIVE": "Muy sensible",
+      "TIE": "Empate práctico",
+      "RANGE_DEPENDENT": "Depende de rangos",
+      "NO_RECOMMENDATION": "Sin recomendación",
+      "UNKNOWN": "Sin analizar"
+    }
+  },
+  "technical": {
+    "title": "Capacidad técnica",
+    "coverage": "{value} del peso editorial tiene datos",
+    "categories": {
+      "Economy": "Consumo y coste",
+      "Range": "Autonomía",
+      "Performance": "Prestaciones",
+      "Space": "Espacio",
+      "Charging": "Carga",
+      "Safety": "Seguridad",
+      "Warranty": "Garantía",
+      "Technology": "Tecnología",
+      "Eco": "Eco"
+    },
+    "outcome": {
+      "AHEAD": "Por delante: {name}",
+      "BEHIND": "Por delante: {name}",
+      "PRACTICAL_TIE": "Empate práctico",
+      "RANGE_DEPENDENT": "Depende de la configuración",
+      "DIFFERENT": "Distinto (ninguno es mejor)",
+      "NOT_COMPARABLE": "No directamente comparable",
+      "UNKNOWN": "No confirmado"
+    },
+    "cycle": "ciclo {cycle}",
+    "metrics": {
+      "perf_power_max_kw": "Potencia máxima",
+      "perf_accel_0_100_s": "0–100 km/h",
+      "rng_electric_combined_km": "Autonomía eléctrica",
+      "rng_phev_total_km": "Autonomía total (PHEV)",
+      "chg_ac_max_kw": "Carga AC (máx.)",
+      "chg_dc_max_kw": "Carga rápida DC (máx.)",
+      "chg_dc_time_min": "Tiempo de carga DC",
+      "dim_length_mm": "Longitud",
+      "dim_width_mm": "Anchura",
+      "dim_height_mm": "Altura",
+      "cap_boot_l": "Maletero",
+      "dim_turning_m": "Diámetro de giro",
+      "seats": "Plazas",
+      "cap_boot_max_l": "Maletero (asientos abatidos)",
+      "cap_towing_braked_kg": "Remolque con freno",
+      "cap_payload_kg": "Carga útil",
+      "cap_isofix_positions": "Anclajes ISOFIX",
+      "cap_third_row": "Tercera fila",
+      "war_years": "Garantía (años)",
+      "war_km": "Garantía (distancia)",
+      "bat_warranty_years": "Garantía de batería (años)",
+      "bat_warranty_km": "Garantía de batería (distancia)",
+      "emi_co2_combined_gkm": "Emisiones de CO₂",
+      "emi_dgt_label_es": "Etiqueta DGT",
+      "nrg_fuel_combined_l100": "Consumo de combustible",
+      "nrg_fuel_charge_sustaining_l100": "Consumo de combustible (batería descargada)",
+      "nrg_electric_combined_kwh100": "Consumo eléctrico",
+      "tech_apple_carplay": "Apple CarPlay",
+      "tech_android_auto": "Android Auto",
+      "adas_aeb": "Frenada de emergencia automática",
+      "adas_acc": "Control de crucero adaptativo",
+      "adas_lane_keep": "Mantenimiento de carril",
+      "adas_blind_spot": "Detector de ángulo muerto",
+      "tech_ota_updates": "Actualizaciones remotas",
+      "tech_center_screen_in": "Pantalla central",
+      "saf_ncap_stars": "Calificación Euro NCAP",
+      "economic_cost_per_100km": "Coste de energía por 100 km",
+      "economic_running_annual": "Coste de uso al año",
+      "economic_running_3y": "Coste de uso, 3 años",
+      "economic_running_5y": "Coste de uso, 5 años",
+      "economic_ownership_1y": "Coste de propiedad conocido, 1 año",
+      "economic_ownership_3y": "Coste de propiedad conocido, 3 años",
+      "economic_ownership_5y": "Coste de propiedad conocido, 5 años"
+    },
+    "boolean": {
+      "true": "Sí",
+      "false": "No"
+    }
+  },
+  "economic": {
+    "title": "Coste de uso",
+    "lead": "Energía al precio de referencia del mercado, para tus {km} al año.",
+    "perYear": "al año",
+    "per100km": "por 100 km",
+    "horizon": "en {years, plural, one {# año} other {# años}}",
+    "cheaper": "El {name} cuesta {amount} menos al año en uso.",
+    "notComparable": "Los costes de uso usan ciclos de homologación distintos, así que VScar no los ordena.",
+    "unknown": "El coste de uso no está disponible para al menos un vehículo.",
+    "tie": "Los costes de uso son prácticamente iguales.",
+    "rangeNote": "Los rangos vienen del rango oficial de consumo; VScar nunca muestra un punto medio.",
+    "marketContext": "Contexto de mercado",
+    "referenceFuel": "Gasolina de referencia",
+    "referenceElectricity": "Electricidad de referencia",
+    "homeCharging": "Carga en casa",
+    "fuelNotUsed": "no se usa: ambos son eléctricos",
+    "taxesExcluded": "término de energía regulado, sin impuestos",
+    "fuelProduct": {
+      "PETROL_95_E5": "Gasolina 95",
+      "DIESEL_A": "Gasóleo"
+    }
+  },
+  "practical": {
+    "title": "Encaje práctico",
+    "status": {
+      "PASS": "Cumple tus requisitos",
+      "PASS_WITH_COMPROMISES": "Los cumple, con concesiones",
+      "UNCONFIRMED": "No confirmado",
+      "FAIL": "No cumple un requisito"
+    }
+  },
+  "methodology": {
+    "title": "Metodología",
+    "lead": "VScar separa capacidad técnica, coste de uso y encaje con tu uso. Nunca los mezcla en una nota única y nunca fuerza un ganador.",
+    "howWeCalculated": "Cómo lo calculamos",
+    "source": "Fuente",
+    "cycle": "Ciclo de homologación",
+    "origin": "Origen",
+    "referenceDate": "Fecha de referencia",
+    "versions": "Engine {engine} · Metodología {methodology} · Reglas de decisión {rules}",
+    "scenarioHash": "Huella del escenario",
+    "origins": {
+      "MARKET_REFERENCE": "Referencia de mercado (calculado)",
+      "USER_OVERRIDE": "Tu valor",
+      "METHODOLOGY_FALLBACK": "Valor de respaldo de la metodología (estimado)"
+    },
+    "sources": {
+      "esios": "Red Eléctrica (ESIOS), tarifa regulada PVPC",
+      "miteco": "MITECO, precios de gasolineras (mediana de zona)",
+      "dataset": "VScar Dataset Core (curado, con fuentes citadas)"
+    },
+    "rightsNote": "Los precios basados en ESIOS se muestran en desarrollo; su publicación sigue bloqueada hasta resolver los derechos de uso.",
+    "sections": {
+      "separate": "Resultados separados",
+      "separateBody": "La capacidad técnica, el encaje económico a tu horizonte y el encaje práctico se calculan por separado. \"El mejor para tus necesidades\" solo compara vehículos que cumplen tus requisitos obligatorios.",
+      "meaningful": "Diferencia relevante",
+      "meaningfulBody": "Cada especificación tiene su propio umbral de empate, diferencia ligera, relevante o clara. Una segunda capa dice si importa para tu uso.",
+      "confidence": "Confianza",
+      "confidenceBody": "La confianza refleja la calidad de los datos y lo cerca que está el resultado de cambiar. Es sobre la recomendación, no sobre el coche.",
+      "ranges": "Rangos, no puntos medios",
+      "rangesBody": "Cuando el dato oficial es un rango, todos los resultados conservan el intervalo."
+    }
+  },
+  "units": {
+    "kmPerYear": "{value} km/año",
+    "kmPerDay": "{value} km/día",
+    "perYear": "{value}/año",
+    "percent": "{value} %",
+    "yes": "sí",
+    "no": "no"
+  },
+  "errors": {
+    "notFoundTitle": "Página no encontrada",
+    "notFoundBody": "Esta página no existe en este idioma y mercado.",
+    "backHome": "Volver al inicio",
+    "genericTitle": "Algo ha fallado",
+    "genericBody": "No se ha podido mostrar la comparación. Tu escenario se conserva en la barra de direcciones.",
+    "retry": "Reintentar",
+    "invalidScenario": "Algunos valores del escenario del enlace no eran válidos y se han restablecido: {fields}."
+  },
+  "engine": {
+    "decision": {
+      "why_not": {
+        "deal_breaker": "No cumple un requisito obligatorio: {reason}",
+        "compromise": "Por debajo de tu objetivo preferido: {reason}",
+        "running_cost": "Cuesta unos {amount} más al año en uso{hasKm, select, yes { con {annualKm}} other {}} que el {other}",
+        "economics_not_comparable": "Los costes de uso del {subject} y del {other} usan ciclos de homologación distintos, así que VScar no los ordena económicamente",
+        "metric_behind": "{label}: {subject} {valueSubject} frente a {other} {valueOther} {unit} (diferencia {level}{hasForYou, select, yes {; para ti: {forYou}} other {}})",
+        "metric_different": "{label}: {subject} {valueSubject} frente a {other} {valueOther} {unit} — una diferencia de {delta} {unit}, ni mejor ni peor en sí misma",
+        "none": "Sin desventajas relevantes frente al {other} en este escenario"
+      },
+      "no_full_match": "Ninguno cumple completamente tus requisitos.",
+      "closest_option": "Opción más cercana (no es una recomendación): {subject} — no cumple {failed, plural, one {# requisito} other {# requisitos}}",
+      "verify": {
+        "requirement": "{what} no está confirmado. Verifica que {op, select, max {no supera} other {alcanza al menos}} {required} {unit}",
+        "desired": "No se ha podido comprobar {what} frente a tu objetivo de {required} {unit}"
+      },
+      "robustness": {
+        "switch": "El resultado cambia si {variable, select, annual_km {tu distancia anual} fuel_price {el precio del combustible} electricity_price {el precio de la electricidad} home_charging_share {tu porcentaje de carga en casa} horizon_years {tus años de propiedad} other {{variable}}} {direction, select, BELOW {baja de} other {supera}} {value}",
+        "priority_switch": "El resultado cambia si tu prioridad de {priority} es {level}",
+        "stable": "El resultado se mantiene estable en todo el rango de escenarios probado",
+        "tie": "Los vehículos están en empate práctico para tus necesidades: no hay un resultado único que poner a prueba",
+        "range_dependent": "El resultado depende de rangos de configuración",
+        "no_recommendation": "No hay recomendación que poner a prueba (ningún vehículo cumple todos los requisitos)",
+        "unknown": "La robustez aún no se ha analizado"
+      },
+      "confidence": {
+        "data": "La confianza de los datos de entrada es {level}{hasDetail, select, yes { ({detail})} other {}}",
+        "unconfirmed_requirement": "{what} no está confirmado para el vehículo sugerido",
+        "desired_unknown": "No se {count, plural, one {ha podido comprobar # objetivo preferido} other {han podido comprobar # objetivos preferidos}}",
+        "economics_not_comparable": "Los costes de uso no son comparables (ciclos o escenarios distintos)",
+        "economics_unknown": "El coste de uso no está disponible para al menos un vehículo",
+        "economics_comparable": "Los costes de uso son comparables para todos los vehículos",
+        "robustness": "La robustez del resultado es {level}",
+        "used_information": "La confianza de la información del usado es {level}",
+        "cap": "Confianza limitada a {level}: {reason}",
+        "all_unconfirmed": "Todos los vehículos restantes tienen requisitos obligatorios sin confirmar"
+      }
+    },
+    "level": {
+      "HIGH": "alta",
+      "MEDIUM": "media",
+      "LOW": "baja"
+    },
+    "priority": {
+      "COST": "coste",
+      "SPACE": "espacio",
+      "PERFORMANCE": "prestaciones"
+    },
+    "capReason": {
+      "PRACTICAL_TIE": "empate práctico",
+      "RANGE_DEPENDENT": "depende de rangos",
+      "NO_FULL_MATCH": "ninguno cumple",
+      "INSUFFICIENT_DATA": "datos insuficientes",
+      "ALL_UNCONFIRMED": "todos sin confirmar"
+    }
+  }
+}

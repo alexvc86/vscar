@@ -341,4 +341,31 @@ Hallazgos que condicionan `apps/web`:
 
 Siguiente: scaffold de `apps/web` con el stack de ADR-011.
 
+## STEP 7a — Real VScar Web Foundation · ✅ PASS (2026-10-02)
+
+Primera app real: `apps/web` (`@vscar/web`, Next.js 16 App Router, puerto **4200** mientras el lab siga en 4100). Base de producción, no un laboratorio. Sin MySQL, API pública, usados, login, analytics ni anuncios. Engines sin cambios.
+
+| Entregable | Estado |
+|---|---|
+| [WEB_FOUNDATION_V0_1.md](web/WEB_FOUNDATION_V0_1.md): arquitectura, fronteras diferidas, capítulos dinámicos, robustez servidor + worker, rendimiento medido, tests | ✅ |
+| [I18N_AND_MARKETS.md](web/I18N_AND_MARKETS.md) · [LOCAL_DEVELOPMENT.md](web/LOCAL_DEVELOPMENT.md) | ✅ |
+| [ADR-012 — i18n-market-routing](adr/ADR-012-i18n-market-routing.md): idioma ≠ mercado, `es-es`/`en-es`, segmento canónico `compare` (se desvía de §29, alias `comparar` con 308) | ✅ ACCEPTED |
+| `packages/ui` (`@vscar/ui`): tokens TS + CSS (oscuro, claro preparado), Button, Sheet (Radix), Disclosure, `visual-tier` extraído del lab | ✅ |
+| Comparación BYD SEAL vs Model 3 en `/es-es/compare/…` y `/en-es/compare/…` con el pipeline real: 1 viaje → empate, 10 → BYD sin recarga, la robustez del worker actualiza la confianza (BAJA → MEDIA) y el cambio de idioma conserva el escenario | ✅ |
+| Tests: `@vscar/web` 42 (vitest) + 5 E2E (Playwright, Chrome real, 0 errores de consola) · `@vscar/ui` 9 · `check` del monorepo en verde (MySQL omitido sin `VSCAR_TEST_DATABASE_URL`) | ✅ |
+| HMR (pendiente de 6e): 3 rondas en `next dev`: ScrollTriggers 7 → 7, listeners 17 → 17, 1 contexto WebGL, 0 errores | ✅ |
+
+Rendimiento medido (build de producción, local; móvil = CPU ×4):
+- JS inicial de la comparación: **151,2 KB gzip** (189,8 KB contando polyfills `noModule`) → **WITHIN BUDGET** (≤ 200 KB). Desglose: React DOM 77,0 · Next 43,0 · app 31,3 (islas 5,6) · polyfills legacy 38,6.
+- Diferido: pipeline 53,8 · Motion 51,9 · GSAP 46,7 · formulario + Radix 24,8 · next-intl cliente 11,9 · RibbonField 2,3 · worker 0,7 KB. three/R3F/OGL no existen en el build.
+- LCP 164–656 ms · CLS 0 en todas las configuraciones (móvil bajó de 0,71 a 0) · INP 24–48 ms (móvil ×4 en 5 repeticiones: mediana 136 ms, peor 208 ms).
+
+Hallazgos:
+- `en-ES` de CLDR formatea con separadores españoles: cada locale declara su `formatLocale` (`en-es` → `en-GB`).
+- Partes del engine 6b (contribuciones, explicaciones, reglas For You, `detail`/`reason`/`what`) no tienen `messageKey`. La UI las localiza por campos estructurados o usa el respaldo inglés; queda propuesto un Step de engine.
+- Primer render de un escenario nuevo: 0,2–0,7 s de servidor por la robustez (caché LRU). Vigilar en el VPS.
+- Laragon activo y compatible; no se tocó Apache, MySQL, `hosts` ni vhosts.
+
+Siguiente: **Step 7b — Vehicle Selector + Real Data Orchestration**.
+
 ## STEP 4 — Primera calculadora pública · ⏳

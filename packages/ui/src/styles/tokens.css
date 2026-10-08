@@ -1,0 +1,109 @@
+/*
+ * VScar design tokens (Step 6d §5–7). Importar DESPUÉS de `@import "tailwindcss"`.
+ * Dark-first; `:root[data-theme="light"]` queda preparado (Alpha se publica en oscuro).
+ */
+@theme {
+  --color-base: var(--vs-base);
+  --color-surface: var(--vs-surface);
+  --color-raised: var(--vs-raised);
+  --color-text: var(--vs-text);
+  --color-muted: var(--vs-muted);
+  --color-subtle: var(--vs-subtle);
+  --color-candidate-a: var(--vs-candidate-a);
+  --color-candidate-b: var(--vs-candidate-b);
+  --color-warning: var(--vs-warning);
+  --color-info: var(--vs-info);
+  --color-line: var(--vs-line);
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+}
+
+:root {
+  color-scheme: dark;
+  /* color */
+  --vs-base: #0b0c0e;
+  --vs-surface: #15171a;
+  --vs-raised: #1e2125;
+  --vs-text: #f2f1ec;
+  --vs-muted: #a3a6ad;
+  --vs-subtle: #7c8088;
+  --vs-candidate-a: #8ec5ff;
+  --vs-candidate-b: #e2be8a;
+  --vs-warning: #f2994a;
+  --vs-info: #b9c3d0;
+  --vs-line: rgb(242 241 236 / 0.1);
+  --vs-line-strong: rgb(242 241 236 / 0.32);
+  --vs-candidate-a-line: rgb(142 197 255 / 0.45);
+  --vs-candidate-b-line: rgb(226 190 138 / 0.45);
+  /* spacing */
+  --vs-gutter: clamp(16px, 4vw, 64px);
+  --vs-space-1: 4px;
+  --vs-space-2: 8px;
+  --vs-space-3: 12px;
+  --vs-space-4: 16px;
+  --vs-space-5: 24px;
+  --vs-space-6: 32px;
+  --vs-space-7: 48px;
+  --vs-space-8: 72px;
+  --vs-space-9: 96px;
+  --vs-content-max: 1200px;
+  --vs-prose-max: 68ch;
+  /* typography */
+  --vs-text-label: 12px;
+  --vs-text-small: 14px;
+  --vs-text-body: 16px;
+  --vs-text-lead: 19px;
+  --vs-text-h3: 20px;
+  --vs-text-h2: clamp(28px, 4vw, 56px);
+  --vs-text-display: clamp(40px, 7.2vw, 104px);
+  --vs-text-metric: clamp(40px, 6vw, 88px);
+  --vs-tracking-label: 0.08em;
+  --vs-tracking-display: -0.035em;
+  /* radii, borders, elevation */
+  --vs-radius-sm: 6px;
+  --vs-radius-md: 10px;
+  --vs-radius-lg: 16px;
+  --vs-radius-pill: 999px;
+  --vs-border: 1px solid var(--vs-line);
+  --vs-elevation-1: 0 1px 0 rgb(255 255 255 / 0.03) inset;
+  --vs-elevation-2: 0 12px 40px rgb(0 0 0 / 0.45);
+  /* motion */
+  --vs-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --vs-ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+  --vs-dur-hover: 160ms;
+  --vs-dur-morph: 180ms;
+  --vs-dur-sheet: 240ms;
+  --vs-dur-lock: 420ms;
+  --vs-dur-entry: 900ms;
+  --vs-dur-entry-reduced: 150ms;
+  /* touch */
+  --vs-touch-target: 44px;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --vs-base: #f4f3ef;
+  --vs-surface: #ffffff;
+  --vs-raised: #ecebe6;
+  --vs-text: #141518;
+  --vs-muted: #5a5e66;
+  --vs-subtle: #6b6f77;
+  --vs-candidate-a: #1f5faf;
+  --vs-candidate-b: #8a5a1c;
+  --vs-warning: #a24a00;
+  --vs-info: #4a5563;
+  --vs-line: rgb(20 21 24 / 0.12);
+  --vs-line-strong: rgb(20 21 24 / 0.36);
+  --vs-candidate-a-line: rgb(31 95 175 / 0.5);
+  --vs-candidate-b-line: rgb(138 90 28 / 0.5);
+}
+
+@media (max-width: 699px) {
+  :root {
+    --vs-dur-entry: 630ms;
+  }
+}

@@ -1,0 +1,390 @@
+{
+  "common": {
+    "brand": "VScar",
+    "tagline": "Not the best car. The best car for you.",
+    "subtagline": "Compare with the math shown.",
+    "skipToContent": "Skip to content",
+    "close": "Close",
+    "loading": "Loading…",
+    "notConfirmed": "Not confirmed",
+    "vs": "vs",
+    "and": "and",
+    "genericSilhouette": "{name} — generic {body} silhouette (not a manufacturer image)",
+    "devSnapshot": "Development data: controlled Dataset Core snapshot. Not a published dataset."
+  },
+  "navigation": {
+    "home": "Home",
+    "compare": "Compare",
+    "methodology": "Methodology",
+    "language": "Language",
+    "languageSwitchLabel": "Change language (market stays {market})",
+    "mainNav": "Main navigation",
+    "chapterIndex": "Chapters",
+    "jumpToDetails": "Jump to details",
+    "jumpToResult": "Jump to result"
+  },
+  "markets": {
+    "ES": "Spain"
+  },
+  "home": {
+    "title": "Not the best car. The best car for you.",
+    "lead": "Compare with the math shown.",
+    "cta": "Compare cars",
+    "demoNote": "Live demo: {a} vs {b}, calculated with VScar's engines on Spanish market data.",
+    "pillarsTitle": "How VScar decides",
+    "pillar1": "Separate results: technical capability, running cost and fit for your use.",
+    "pillar2": "No forced winner: a practical tie is a valid answer.",
+    "pillar3": "Every number with its source, cycle and date."
+  },
+  "comparison": {
+    "metaTitle": "{a} vs {b} — which fits you better? | VScar",
+    "metaDescription": "{a} vs {b} for your real use in {market}: running cost, electric range and what would change the result, with the math shown.",
+    "candidate": "Candidate {side}",
+    "chapters": {
+      "vs": "VS",
+      "result": "Your result",
+      "reason": "Key difference",
+      "economics": "Running cost",
+      "tradeoffs": "What you give up",
+      "change": "What changes the result",
+      "confidence": "Confidence and verify",
+      "details": "Full comparison"
+    },
+    "scenarioSummary": "{km} per year · {daily} per day · {trips, plural, =0 {no long trips} one {# long trip} other {# long trips}} per year · home charging {home}",
+    "notFound": "This comparison is not available in this market."
+  },
+  "decision": {
+    "eyebrow": "For your needs",
+    "status": {
+      "BEST_FOR_YOU": "Best for your needs",
+      "PRACTICAL_TIE": "Practical tie",
+      "RANGE_DEPENDENT": "It depends on the configuration",
+      "NO_FULL_MATCH": "None fully meets your requirements.",
+      "INSUFFICIENT_DATA": "Not enough comparable data"
+    },
+    "statusLead": {
+      "BEST_FOR_YOU": "{name} fits your use better.",
+      "PRACTICAL_TIE": "For your use, neither is meaningfully better.",
+      "RANGE_DEPENDENT": "The result depends on configuration ranges; VScar does not force a winner.",
+      "NO_FULL_MATCH": "No vehicle meets every mandatory requirement.",
+      "INSUFFICIENT_DATA": "There is not enough comparable data on space, range, performance or running cost."
+    },
+    "selectedBadge": "Best for your needs",
+    "tieMarker": "Equal",
+    "closestOption": "Closest option — not a recommendation",
+    "why": "Why",
+    "whyTie": "Why it is a tie",
+    "announce": {
+      "BEST_FOR_YOU": "Result: {name} is best for your needs.",
+      "PRACTICAL_TIE": "Result: practical tie between {a} and {b} for this scenario.",
+      "RANGE_DEPENDENT": "Result: it depends on the configuration.",
+      "NO_FULL_MATCH": "Result: none fully meets your requirements.",
+      "INSUFFICIENT_DATA": "Result: not enough comparable data.",
+      "changed": "The result changed."
+    },
+    "contribution": {
+      "metricAhead": "{label}: {winner} {valueWinner} vs {other} {valueOther} — {level} difference",
+      "forYou": "for your use: {level}",
+      "dealBreaker": "{name} does not meet a mandatory requirement",
+      "compromise": "{name}: below a preferred target"
+    },
+    "tieKeyIntro": "The biggest difference, and why it does not decide it for you",
+    "reasonIntro": "Why it decides it for you",
+    "whyNotTitle": "Why not the {name}?",
+    "tradeoffsTitle": "What you give up with the {name}",
+    "verifyTitle": "Verify before deciding",
+    "noticesTitle": "Notes",
+    "onlyMinor": "Only minor differences."
+  },
+  "metricLayers": {
+    "raw": "Raw difference",
+    "meaningful": "Meaningful difference",
+    "forYou": "Meaningful for you",
+    "notAssessed": "Not assessed",
+    "level": {
+      "TIE": "tie",
+      "SLIGHT": "slight",
+      "MEANINGFUL": "meaningful",
+      "CLEAR": "clear",
+      "RANGE_DEPENDENT": "configuration-dependent"
+    },
+    "levelLong": {
+      "TIE": "No real difference",
+      "SLIGHT": "Slight advantage",
+      "MEANINGFUL": "Meaningful advantage",
+      "CLEAR": "Clear advantage",
+      "RANGE_DEPENDENT": "Depends on configuration"
+    },
+    "ahead": "{name} ahead",
+    "rules": {
+      "range_low_relevance": "your daily use is far below either car's range, you charge at home and make few long trips",
+      "range_full_relevance": "frequent long trips keep range fully relevant",
+      "cargo_family": "large family",
+      "cargo_single": "single driver without long trips",
+      "performance_low": "performance is a low priority",
+      "performance_high": "performance is a high priority",
+      "consumption_high_km": "high annual mileage",
+      "consumption_low_km": "low annual mileage"
+    }
+  },
+  "scenario": {
+    "cta": "Change your usage",
+    "title": "Your usage",
+    "description": "Only these inputs change; the engines recompute on your device.",
+    "annualKm": "Distance per year",
+    "dailyKm": "Typical day",
+    "longTrips": "Long trips per year",
+    "homeCharging": "Home charging share",
+    "homeChargingHint": "0 % = no home charging",
+    "horizon": "Ownership horizon",
+    "priorities": "What matters most",
+    "cost": "Cost",
+    "space": "Space",
+    "performance": "Performance",
+    "priorityLevel": {
+      "1": "Low",
+      "2": "Medium",
+      "3": "High"
+    },
+    "apply": "Apply",
+    "reset": "Reset to commuter",
+    "unitsYear": "{value, plural, one {# year} other {# years}}",
+    "invalidField": "Check this value ({min}–{max}).",
+    "presetLongTrips": "{count, plural, one {# long trip} other {# long trips}} a year",
+    "quickTitle": "Try a different usage",
+    "recalculating": "Recalculating…"
+  },
+  "confidence": {
+    "title": "Recommendation confidence",
+    "level": {
+      "HIGH": "HIGH",
+      "MEDIUM": "MEDIUM",
+      "LOW": "LOW"
+    },
+    "explain": "How sure VScar is about this result — not how good the car is."
+  },
+  "robustness": {
+    "title": "What would change the result",
+    "checking": "Checking what could change the result…",
+    "status": {
+      "STABLE": "Stable",
+      "SENSITIVE": "Sensitive",
+      "VERY_SENSITIVE": "Very sensitive",
+      "TIE": "Practical tie",
+      "RANGE_DEPENDENT": "Range dependent",
+      "NO_RECOMMENDATION": "No recommendation",
+      "UNKNOWN": "Not tested"
+    }
+  },
+  "technical": {
+    "title": "Technical capability",
+    "coverage": "{value} of the editorial weight has data",
+    "categories": {
+      "Economy": "Economy",
+      "Range": "Range",
+      "Performance": "Performance",
+      "Space": "Space",
+      "Charging": "Charging",
+      "Safety": "Safety",
+      "Warranty": "Warranty",
+      "Technology": "Technology",
+      "Eco": "Eco"
+    },
+    "outcome": {
+      "AHEAD": "{name} ahead",
+      "BEHIND": "{name} ahead",
+      "PRACTICAL_TIE": "Practical tie",
+      "RANGE_DEPENDENT": "Depends on configuration",
+      "DIFFERENT": "Different (neither better)",
+      "NOT_COMPARABLE": "Not directly comparable",
+      "UNKNOWN": "Not confirmed"
+    },
+    "cycle": "{cycle} cycle",
+    "metrics": {
+      "perf_power_max_kw": "Maximum power",
+      "perf_accel_0_100_s": "0–100 km/h",
+      "rng_electric_combined_km": "Electric range",
+      "rng_phev_total_km": "Total range (PHEV)",
+      "chg_ac_max_kw": "AC charging (max)",
+      "chg_dc_max_kw": "DC fast charging (max)",
+      "chg_dc_time_min": "DC charging time",
+      "dim_length_mm": "Length",
+      "dim_width_mm": "Width",
+      "dim_height_mm": "Height",
+      "cap_boot_l": "Boot",
+      "dim_turning_m": "Turning circle",
+      "seats": "Seats",
+      "cap_boot_max_l": "Boot (seats folded)",
+      "cap_towing_braked_kg": "Braked towing",
+      "cap_payload_kg": "Payload",
+      "cap_isofix_positions": "ISOFIX positions",
+      "cap_third_row": "Third row",
+      "war_years": "Warranty (years)",
+      "war_km": "Warranty (distance)",
+      "bat_warranty_years": "Battery warranty (years)",
+      "bat_warranty_km": "Battery warranty (distance)",
+      "emi_co2_combined_gkm": "CO₂ emissions",
+      "emi_dgt_label_es": "DGT label",
+      "nrg_fuel_combined_l100": "Fuel consumption",
+      "nrg_fuel_charge_sustaining_l100": "Fuel consumption (charge sustaining)",
+      "nrg_electric_combined_kwh100": "Electric consumption",
+      "tech_apple_carplay": "Apple CarPlay",
+      "tech_android_auto": "Android Auto",
+      "adas_aeb": "Automatic emergency braking",
+      "adas_acc": "Adaptive cruise control",
+      "adas_lane_keep": "Lane keeping",
+      "adas_blind_spot": "Blind-spot monitoring",
+      "tech_ota_updates": "Over-the-air updates",
+      "tech_center_screen_in": "Central screen",
+      "saf_ncap_stars": "Euro NCAP rating",
+      "economic_cost_per_100km": "Energy cost per 100 km",
+      "economic_running_annual": "Running cost per year",
+      "economic_running_3y": "Running cost, 3 years",
+      "economic_running_5y": "Running cost, 5 years",
+      "economic_ownership_1y": "Known ownership cost, 1 year",
+      "economic_ownership_3y": "Known ownership cost, 3 years",
+      "economic_ownership_5y": "Known ownership cost, 5 years"
+    },
+    "boolean": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "economic": {
+    "title": "Running cost",
+    "lead": "Energy at the market reference price, for your {km} per year.",
+    "perYear": "per year",
+    "per100km": "per 100 km",
+    "horizon": "over {years, plural, one {# year} other {# years}}",
+    "cheaper": "{name} costs {amount} less per year to run.",
+    "notComparable": "Running costs use different test cycles, so VScar does not rank them.",
+    "unknown": "Running cost is not available for at least one vehicle.",
+    "tie": "Running costs are practically the same.",
+    "rangeNote": "Ranges come from the official consumption range; VScar never shows a midpoint.",
+    "marketContext": "Market context",
+    "referenceFuel": "Reference fuel price",
+    "referenceElectricity": "Reference electricity price",
+    "homeCharging": "Home charging",
+    "fuelNotUsed": "not used: both are electric",
+    "taxesExcluded": "regulated energy term, taxes excluded",
+    "fuelProduct": {
+      "PETROL_95_E5": "Petrol 95",
+      "DIESEL_A": "Diesel"
+    }
+  },
+  "practical": {
+    "title": "Practical fit",
+    "status": {
+      "PASS": "Meets your requirements",
+      "PASS_WITH_COMPROMISES": "Meets them, with compromises",
+      "UNCONFIRMED": "Not confirmed",
+      "FAIL": "Does not meet a requirement"
+    }
+  },
+  "methodology": {
+    "title": "Methodology",
+    "lead": "VScar separates technical capability, running cost and fit for your use. It never mixes them into one score and never forces a winner.",
+    "howWeCalculated": "How we calculated this",
+    "source": "Source",
+    "cycle": "Test cycle",
+    "origin": "Origin",
+    "referenceDate": "Reference date",
+    "versions": "Engine {engine} · Methodology {methodology} · Decision rules {rules}",
+    "scenarioHash": "Scenario fingerprint",
+    "origins": {
+      "MARKET_REFERENCE": "Market reference (calculated)",
+      "USER_OVERRIDE": "Your value",
+      "METHODOLOGY_FALLBACK": "Methodology fallback (estimated)"
+    },
+    "sources": {
+      "esios": "Red Eléctrica (ESIOS), PVPC regulated tariff",
+      "miteco": "MITECO, fuel station prices (zone median)",
+      "dataset": "VScar Dataset Core (curated, cited sources)"
+    },
+    "rightsNote": "ESIOS-based prices are shown for development; publication stays blocked until data rights are cleared.",
+    "sections": {
+      "separate": "Separate results",
+      "separateBody": "Technical capability, economic fit at your horizon and practical fit are calculated separately. \"Best for your needs\" only compares vehicles that meet your mandatory requirements.",
+      "meaningful": "Meaningful difference",
+      "meaningfulBody": "Each spec has its own threshold for a tie, a slight, a meaningful or a clear difference. A second layer says whether it matters for your usage.",
+      "confidence": "Confidence",
+      "confidenceBody": "Confidence reflects data quality and how close the result is to changing. It is about the recommendation, not the car.",
+      "ranges": "Ranges, not midpoints",
+      "rangesBody": "When official data is a range, every result keeps the interval."
+    }
+  },
+  "units": {
+    "kmPerYear": "{value} km/year",
+    "kmPerDay": "{value} km/day",
+    "perYear": "{value}/year",
+    "percent": "{value} %",
+    "yes": "yes",
+    "no": "no"
+  },
+  "errors": {
+    "notFoundTitle": "Page not found",
+    "notFoundBody": "This page does not exist in this language and market.",
+    "backHome": "Back to home",
+    "genericTitle": "Something went wrong",
+    "genericBody": "The comparison could not be displayed. Your scenario is kept in the address bar.",
+    "retry": "Try again",
+    "invalidScenario": "Some scenario values in the link were not valid and were reset: {fields}."
+  },
+  "engine": {
+    "decision": {
+      "why_not": {
+        "deal_breaker": "Does not meet a mandatory requirement: {reason}",
+        "compromise": "Below your preferred target: {reason}",
+        "running_cost": "Costs about {amount} more per year to run{hasKm, select, yes { at {annualKm}} other {}} than the {other}",
+        "economics_not_comparable": "Running costs of the {subject} and the {other} use different test cycles, so VScar does not rank them economically",
+        "metric_behind": "{label}: {subject} {valueSubject} vs {other} {valueOther} {unit} ({level} difference{hasForYou, select, yes {; for you: {forYou}} other {}})",
+        "metric_different": "{label}: {subject} {valueSubject} vs {other} {valueOther} {unit} — a difference of {delta} {unit}, not better or worse in itself",
+        "none": "No meaningful disadvantage against the {other} in this scenario"
+      },
+      "no_full_match": "None fully meets your requirements.",
+      "closest_option": "Closest option (not a recommendation): {subject} — fails {failed, plural, one {# requirement} other {# requirements}}",
+      "verify": {
+        "requirement": "{what} is not confirmed. Verify that it {op, select, max {does not exceed} other {reaches at least}} {required} {unit}",
+        "desired": "{what} could not be checked against your preferred {required} {unit}"
+      },
+      "robustness": {
+        "switch": "The result changes if {variable, select, annual_km {your annual distance} fuel_price {the fuel price} electricity_price {the electricity price} home_charging_share {your home-charging share} horizon_years {your ownership horizon} other {{variable}}} {direction, select, BELOW {falls below} other {rises above}} {value}",
+        "priority_switch": "The result changes if your {priority} priority is {level}",
+        "stable": "The result remains stable across the tested scenario range",
+        "tie": "The vehicles are a practical tie for your needs: there is no single result to be robust",
+        "range_dependent": "The result depends on configuration ranges",
+        "no_recommendation": "There is no recommendation to test (no vehicle fully meets the requirements)",
+        "unknown": "Robustness has not been tested yet"
+      },
+      "confidence": {
+        "data": "Input data confidence is {level}{hasDetail, select, yes { ({detail})} other {}}",
+        "unconfirmed_requirement": "{what} is not confirmed for the suggested vehicle",
+        "desired_unknown": "{count, plural, one {# preferred target} other {# preferred targets}} could not be checked",
+        "economics_not_comparable": "Running costs are not comparable (different test cycles or scenarios)",
+        "economics_unknown": "Running cost is unavailable for at least one vehicle",
+        "economics_comparable": "Running costs are comparable for all vehicles",
+        "robustness": "Result robustness is {level}",
+        "used_information": "Used-vehicle information confidence is {level}",
+        "cap": "Confidence capped at {level}: {reason}",
+        "all_unconfirmed": "Every remaining vehicle has unconfirmed mandatory requirements"
+      }
+    },
+    "level": {
+      "HIGH": "high",
+      "MEDIUM": "medium",
+      "LOW": "low"
+    },
+    "priority": {
+      "COST": "cost",
+      "SPACE": "space",
+      "PERFORMANCE": "performance"
+    },
+    "capReason": {
+      "PRACTICAL_TIE": "practical tie",
+      "RANGE_DEPENDENT": "range dependent",
+      "NO_FULL_MATCH": "no full match",
+      "INSUFFICIENT_DATA": "insufficient data",
+      "ALL_UNCONFIRMED": "all unconfirmed"
+    }
+  }
+}

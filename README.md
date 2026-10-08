@@ -45,4 +45,17 @@ Worker local: `node --env-file=.env apps/worker/src/main.ts` (necesita `DATABASE
 Diseño (Step 6d): [dirección visual](docs/design/VSCAR_VISUAL_DIRECTION_V0_1.md) · [evaluación ThreeUI](docs/design/THREEUI_EVALUATION.md) · [ADR-010](docs/adr/ADR-010-visual-motion-stack.md) · [licencias del stack visual](docs/licenses/THIRD_PARTY.md).
 Motion Lab (Step 6e): [resultados](docs/design/MOTION_LAB_RESULTS.md) · [ADR-011](docs/adr/ADR-011-alpha-visual-stack-after-lab.md) · lab aislado en `labs/motion-lab` (`corepack pnpm --filter @vscar/motion-lab dev`, puerto 4100).
 
+### VScar Web (`apps/web`, Step 7a)
+
+```bash
+corepack pnpm --filter @vscar/web dev     # http://localhost:4200/es-es
+corepack pnpm --filter @vscar/web build && corepack pnpm --filter @vscar/web start
+corepack pnpm --filter @vscar/web test    # vitest · e2e: corepack pnpm --filter @vscar/web e2e
+```
+
+- ES: `http://localhost:4200/es-es/compare/byd-seal-vs-tesla-model-3`
+- EN: `http://localhost:4200/en-es/compare/byd-seal-vs-tesla-model-3`
+
+Docs: [Web Foundation](docs/web/WEB_FOUNDATION_V0_1.md) · [i18n y mercados](docs/web/I18N_AND_MARKETS.md) · [desarrollo local](docs/web/LOCAL_DEVELOPMENT.md) · [ADR-012](docs/adr/ADR-012-i18n-market-routing.md).
+
 No se guardan en Git datos productivos, descargas masivas, backups, secretos ni logs (plan §33.3).
