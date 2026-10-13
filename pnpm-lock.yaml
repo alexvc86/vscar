@@ -47,6 +47,9 @@ importers:
       '@vscar/comparison-engine':
         specifier: workspace:*
         version: link:../../packages/comparison-engine
+      '@vscar/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@vscar/decision-engine':
         specifier: workspace:*
         version: link:../../packages/decision-engine
@@ -59,6 +62,9 @@ importers:
       '@vscar/methodology':
         specifier: workspace:*
         version: link:../../packages/methodology
+      '@vscar/quality':
+        specifier: workspace:*
+        version: link:../../packages/quality
       '@vscar/ui':
         specifier: workspace:*
         version: link:../../packages/ui

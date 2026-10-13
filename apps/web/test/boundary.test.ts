@@ -19,6 +19,9 @@ const INITIAL_ISLANDS = [
   'components/site/LanguageSwitcher.tsx',
   'components/visual/HeroAtmosphere.tsx',
   'components/visual/ScrollChoreography.tsx',
+  // Step 7b: selector de vehículos (home) y controles del par (comparación). El selector en sí es diferido.
+  'components/catalog/CompareBuilder.tsx',
+  'components/catalog/PairControls.tsx',
 ];
 
 const STATIC_IMPORT = /^\s*import\s+(?!type\b)(?:[^'"]*?\sfrom\s+)?['"]([^'"]+)['"]/gm;
@@ -55,6 +58,12 @@ describe('initial JS boundary (lazy boundaries)', () => {
   const allPackages = new Set(graph.flatMap((g) => [...g.packages]));
   const allFiles = new Set(graph.flatMap((g) => [...g.files].map((f) => f.slice(SRC.length + 1).replace(/\\/g, '/'))));
 
+  it('the vehicle selector is a deferred chunk (import() on first open)', () => {
+    expect(allFiles.has('components/catalog/VehicleSelector.tsx')).toBe(false);
+    for (const f of ['components/catalog/CompareBuilder.tsx', 'components/catalog/PairControls.tsx']) {
+      expect(readFileSync(join(SRC, f), 'utf8')).toMatch(/import\('\.\/VehicleSelector'\)/);
+    }
+  });
   it('client pipeline (engines, dataset) is not in the initial graph', () => {
     for (const p of ['@vscar/decision-engine', '@vscar/comparison-engine', '@vscar/economics-engine', '@vscar/market-context', '@vscar/vehicle-schema']) expect(allPackages.has(p), p).toBe(false);
     expect(allFiles.has('domain/decision.ts')).toBe(false);
@@ -84,17 +93,49 @@ describe('initial JS boundary (lazy boundaries)', () => {
   });
 });
 
+describe('server-only data layer (Step 7b)', () => {
+  const walk = (d: string): string[] => readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? walk(join(d, f)) : [join(d, f)]));
+  const files = walk(SRC).filter((f) => /\.(ts|tsx)$/.test(f));
+  const rel = (f: string) => f.slice(SRC.length + 1).replace(/\\/g, '/');
+  const DB = /['"](@vscar\/db|mysql2?|drizzle-orm)(\/[^'"]*)?['"]/;
+
+  it('@vscar/db is imported ONLY under src/server/**', () => {
+    expect(files.filter((f) => DB.test(readFileSync(f, 'utf8'))).map(rel).filter((f) => !f.startsWith('server/'))).toEqual([]);
+  });
+  it("every module in src/server/** starts with import 'server-only'", () => {
+    for (const f of files.filter((x) => rel(x).startsWith('server/'))) expect(readFileSync(f, 'utf8').trimStart(), rel(f)).toMatch(/^import 'server-only';/);
+  });
+  it("no 'use client' module (nor the worker) reaches the server layer, the DB or snapshot data", () => {
+    const clientEntries = files.filter((f) => /^\s*['"]use client['"]/.test(readFileSync(f, 'utf8'))).map(rel);
+    expect(clientEntries.length).toBeGreaterThan(5);
+    for (const entry of [...clientEntries, 'workers/robustness.worker.ts']) {
+      const g = reachable(entry);
+      const reached = [...g.files].map(rel);
+      expect(reached.filter((f) => f.startsWith('server/') || f.startsWith('data/')), entry).toEqual([]);
+      expect([...g.packages].filter((p) => DB.test(`'${p}'`)), entry).toEqual([]);
+    }
+  });
+});
+
+describe('i18n request locale', () => {
+  it('no segment-level not-found under [locale]/: Next renders it before the page and it would pin next-intl to the default locale', () => {
+    const walk = (d: string): string[] => readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? walk(join(d, f)) : [join(d, f)]));
+    const notFounds = walk(join(SRC, 'app')).filter((f) => /not-found\.tsx$/.test(f)).map((f) => f.slice(SRC.length + 1).replace(/\\/g, '/'));
+    expect(notFounds).toEqual(['app/[locale]/not-found.tsx']);
+  });
+});
+
 describe('dependency boundary', () => {
   const pkg = JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8')) as { dependencies: Record<string, string>; devDependencies: Record<string, string> };
   const deps = Object.keys(pkg.dependencies);
   it('no R3F / three / OGL / Lenis / smooth-scroll in production deps (ADR-011)', () => {
     for (const d of deps) expect(d).not.toMatch(/^(three|@react-three\/.*|ogl|lenis|@studio-freight\/lenis|locomotive-scroll|smooth-scrollbar)$/);
   });
-  it('no DB / connectors / worker / MySQL', () => {
-    for (const d of [...deps, ...Object.keys(pkg.devDependencies)]) expect(d).not.toMatch(/^(@vscar\/(db|data-connectors|worker)|mysql2?|drizzle-orm)$/);
+  it('no connectors / worker; MySQL only through @vscar/db (never mysql2 or drizzle directly)', () => {
+    for (const d of [...deps, ...Object.keys(pkg.devDependencies)]) expect(d).not.toMatch(/^(@vscar\/(data-connectors|worker)|mysql2?|drizzle-orm)$/);
   });
-  it('src/ never imports DB, connectors, worker, fixtures or MySQL', () => {
-    const FORBIDDEN = /['"](@vscar\/(db|data-connectors|worker|fixtures)|mysql2?|drizzle-orm)(\/[^'"]*)?['"]/;
+  it('src/ never imports connectors, worker, fixtures or the MySQL driver/ORM directly', () => {
+    const FORBIDDEN = /['"](@vscar\/(data-connectors|worker|fixtures)|mysql2?|drizzle-orm)(\/[^'"]*)?['"]/;
     const walk = (d: string): string[] => readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? walk(join(d, f)) : [join(d, f)]));
     expect(walk(SRC).filter((f) => /\.(ts|tsx)$/.test(f) && FORBIDDEN.test(readFileSync(f, 'utf8')))).toEqual([]);
   });

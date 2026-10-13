@@ -17,14 +17,16 @@ export interface SheetProps {
   className?: string;
   /** Al cerrar, Radix devuelve el foco al disparador; `preventDefault()` permite enviarlo a otro sitio. */
   onCloseAutoFocus?: (event: Event) => void;
+  /** Al abrir, Radix enfoca el primer elemento; `preventDefault()` permite enfocar otro (p. ej. un buscador). */
+  onOpenAutoFocus?: (event: Event) => void;
 }
 
-export function Sheet({ open, onOpenChange, title, description, closeLabel, children, className, onCloseAutoFocus }: SheetProps) {
+export function Sheet({ open, onOpenChange, title, description, closeLabel, children, className, onCloseAutoFocus, onOpenAutoFocus }: SheetProps) {
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay className="vs-sheet__overlay" />
-        <Dialog.Content className={cn('vs-sheet', className)} {...(description ? {} : { 'aria-describedby': undefined })} {...(onCloseAutoFocus ? { onCloseAutoFocus } : {})}>
+        <Dialog.Content className={cn('vs-sheet', className)} {...(description ? {} : { 'aria-describedby': undefined })} {...(onCloseAutoFocus ? { onCloseAutoFocus } : {})} {...(onOpenAutoFocus ? { onOpenAutoFocus } : {})}>
           <header className="vs-sheet__header">
             <Dialog.Title className="vs-sheet__title">{title}</Dialog.Title>
             <Dialog.Close className="vs-button vs-button--quiet vs-button--sm" aria-label={closeLabel}>

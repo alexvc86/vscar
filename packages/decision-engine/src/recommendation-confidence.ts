@@ -20,16 +20,6 @@ export interface RecommendationConfidence {
 export type UsedInformationConfidenceInput = ConfidenceLevel | 'NOT_APPLICABLE';
 
 const R = RECOMMENDATION_CONFIDENCE_RULES;
-const CRIT: Record<string, string> = {
-  minSeats: 'Seat count',
-  minBootL: 'Boot volume',
-  minTowingKg: 'Towing capacity',
-  maxLengthMm: 'Length',
-  maxWidthMm: 'Width',
-  maxHeightMm: 'Height',
-  minElectricRangeKm: 'Electric range',
-  maxPurchasePriceEur: 'Purchase price',
-};
 
 export function recommendationConfidence(decision: AlphaDecisionResult, robustness: ResultRobustness, usedInformation: UsedInformationConfidenceInput = 'NOT_APPLICABLE'): RecommendationConfidence {
   const reasons: Message[] = [];
@@ -43,12 +33,13 @@ export function recommendationConfidence(decision: AlphaDecisionResult, robustne
   const dc = decision.dataConfidence.level;
   if (P.data_confidence[dc]) {
     score -= P.data_confidence[dc]!;
-    reasons.push(message('decision.confidence.data', { level: dc, detail: decision.dataConfidence.reasons.slice(0, 2).join('; ') || undefined }));
+    // Detalle estructurado (antes: texto inglés libre): los motivos de la confianza de datos de la decisión.
+    reasons.push(message('decision.confidence.data', { level: dc }, decision.dataConfidence.messages.slice(0, 2)));
   }
   for (const id of selected) {
     for (const u of pf.get(id)?.mandatoryUnknowns ?? []) {
       score -= P.selected_unconfirmed_per_requirement;
-      reasons.push(message('decision.confidence.unconfirmed_requirement', { what: CRIT[u.criterion] ?? u.criterion, candidateId: id }));
+      reasons.push(message('decision.confidence.unconfirmed_requirement', { criterion: u.criterion, candidateId: id }));
     }
     const desiredUnknown = (pf.get(id)?.unknowns.length ?? 0) - (pf.get(id)?.mandatoryUnknowns.length ?? 0);
     if (desiredUnknown > 0) {
@@ -72,7 +63,7 @@ export function recommendationConfidence(decision: AlphaDecisionResult, robustne
 
   if (P.robustness[robustness.level] && !['TIE', 'RANGE_DEPENDENT', 'NO_RECOMMENDATION'].includes(robustness.status)) {
     score -= P.robustness[robustness.level]!;
-    reasons.push(message('decision.confidence.robustness', { level: robustness.level, detail: robustness.messages[0]?.text }));
+    reasons.push(message('decision.confidence.robustness', { level: robustness.level }, robustness.messages.slice(0, 1)));
   }
   if (usedInformation !== 'NOT_APPLICABLE' && P.used_information[usedInformation]) {
     score -= P.used_information[usedInformation]!;

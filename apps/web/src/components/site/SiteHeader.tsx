@@ -1,5 +1,4 @@
 import { Suspense } from 'react';
-import { DEMO_SLUG } from '@/domain/comparisons';
 import { LANGUAGES, sameMarketLocales } from '@/i18n/locales';
 import { localizedHref, type AppRoute } from '@/i18n/routes';
 import { useI18n } from '@/i18n/use-i18n';
@@ -29,7 +28,7 @@ export function SiteHeader({ route, search = '' }: { route: AppRoute; search?: s
         <nav aria-label={t('navigation.mainNav')} className="site-nav">
           <ul>
             <li>
-              <a href={localizedHref(locale, { page: 'compare', slug: DEMO_SLUG })}>{t('navigation.compare')}</a>
+              <a href={`${localizedHref(locale, { page: 'home' })}#compare`}>{t('navigation.compare')}</a>
             </li>
             <li>
               <a href={localizedHref(locale, { page: 'methodology' })}>{t('navigation.methodology')}</a>

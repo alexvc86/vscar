@@ -1,5 +1,4 @@
 /// <reference lib="webworker" />
-import { COMPARISONS } from '@/domain/comparisons';
 import { computeRobustness } from '@/domain/decision';
 import { Scenario } from '@/domain/scenario';
 import type { RobustnessRequest, RobustnessResponse } from './robustness-protocol';
@@ -9,16 +8,16 @@ import type { RobustnessRequest, RobustnessResponse } from './robustness-protoco
  * Devuelve `ResultRobustness` + la `RecommendationConfidence` que depende de ella.
  */
 const scope = self as unknown as DedicatedWorkerGlobalScope;
+/** Marca estable del chunk del worker (la usa el informe de bundle para localizarlo). */
+const WORKER = 'vscar-robustness-worker';
 
 scope.onmessage = (event: MessageEvent<RobustnessRequest>) => {
-  const { id, slug, scenario } = event.data;
+  const { id, data, scenario } = event.data;
   let response: RobustnessResponse;
   try {
-    const def = COMPARISONS[slug];
-    if (!def) throw new Error(`unknown comparison ${slug}`);
-    response = { ok: true, id, ...computeRobustness(def, Scenario.parse(scenario)) };
+    response = { ok: true, id, ...computeRobustness(data, Scenario.parse(scenario)) };
   } catch (e) {
-    response = { ok: false, id, error: e instanceof Error ? e.message : String(e) };
+    response = { ok: false, id, error: `${WORKER}: ${e instanceof Error ? e.message : String(e)}` };
   }
   scope.postMessage(response);
 };

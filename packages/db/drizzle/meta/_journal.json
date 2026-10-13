@@ -43,6 +43,13 @@
       "when": 1790326526770,
       "tag": "0005_energy_price_basis",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1791899240752,
+      "tag": "0006_catalog_slugs",
+      "breakpoints": true
     }
   ]
 }

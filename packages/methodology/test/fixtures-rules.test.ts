@@ -16,7 +16,7 @@ const homologation = (variantId: string) => all.homologations.find((h) => h.id =
 describe('Meaningful Difference on real fixtures', () => {
   it('Golf 2018: NEDC (TAN *33) vs WLTP (TAN *35) CO₂ is NOT_DIRECTLY_COMPARABLE', () => {
     const r = compareValues(val(GOLF_2018_IDS.rvA, 'emi.co2_combined_gkm'), val(GOLF_2018_IDS.rvB, 'emi.co2_combined_gkm', (v) => v.test_cycle === 'WLTP'));
-    expect(r).toEqual({ comparable: false, reason: 'NOT_DIRECTLY_COMPARABLE: NEDC vs WLTP' });
+    expect(r).toEqual({ comparable: false, reason: 'NOT_DIRECTLY_COMPARABLE: NEDC vs WLTP', code: 'CYCLE_MISMATCH', params: { cycleA: 'NEDC', cycleB: 'WLTP' } });
   });
 
   it('Golf 2018: declared NEDC vs inferred NEDC-correlated is not comparable either', () => {
@@ -42,7 +42,7 @@ describe('Meaningful Difference on real fixtures', () => {
 
   it('battery capacities with UNSPECIFIED basis are never compared (BYD 82.5 vs Model 3 50)', () => {
     const r = compareValues(val(BYD_SEAL_IDS.variant, 'bat.capacity_kwh'), val(MODEL3_2021_IDS.srp, 'bat.capacity_kwh', (v) => v.source_authority !== 'SECONDARY_REFERENCE'));
-    expect(r).toEqual({ comparable: false, reason: 'NOT_DIRECTLY_COMPARABLE: battery_capacity_basis unspecified' });
+    expect(r).toEqual({ comparable: false, reason: 'NOT_DIRECTLY_COMPARABLE: battery_capacity_basis unspecified', code: 'BASIS_UNSPECIFIED', params: { field: 'battery_capacity_basis' } });
   });
 
   it('DC times with different SoC windows are not comparable (BYD 10→80 vs 30→80)', () => {

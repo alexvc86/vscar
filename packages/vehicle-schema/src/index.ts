@@ -8,3 +8,4 @@ export * from './critical-keys.ts';
 export * from './bundle.ts';
 export * from './used-instance.ts';
 export * from './energy-prices.ts';
+export * from './slug.ts';

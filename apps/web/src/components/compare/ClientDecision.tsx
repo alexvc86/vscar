@@ -4,7 +4,7 @@ import { AnimatePresence, LayoutGroup, motion, MotionConfig } from 'motion/react
 import { NextIntlClientProvider, useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
 import { notifyChaptersUpdated } from '@/client/scenario-nav';
-import { COMPARISONS } from '@/domain/comparisons';
+import type { ComparisonData } from '@/domain/comparison-data';
 import { computeDecision } from '@/domain/decision';
 import { scenarioKey, type Scenario } from '@/domain/scenario';
 import { buildDecisionView, withRobustness, type DecisionView } from '@/domain/view-model';
@@ -22,6 +22,8 @@ export interface ClientDecisionProps {
   initialView: DecisionView;
   initialScenario: Scenario;
   scenario: Scenario;
+  /** Datos de la comparación resueltos en el servidor (las dos variants + energía): mismos hechos que el RSC. */
+  data: ComparisonData;
   pathname: string;
   slug: string;
   locale: string;
@@ -60,7 +62,7 @@ export function ClientDecision(props: ClientDecisionProps) {
   );
 }
 
-function Recalculating({ initialView, initialScenario, scenario, pathname, slug }: ClientDecisionProps) {
+function Recalculating({ initialView, initialScenario, scenario, data, pathname }: ClientDecisionProps) {
   const t = useTranslations();
   const [shown, setShown] = useState({ view: initialView, scenario: initialScenario, key: scenarioKey(initialScenario) });
   const [pending, setPending] = useState(false);
@@ -81,11 +83,9 @@ function Recalculating({ initialView, initialScenario, scenario, pathname, slug 
   useEffect(() => {
     const key = scenarioKey(scenario);
     if (key === shown.key) return;
-    const def = COMPARISONS[slug];
-    if (!def) return;
     const frame = requestAnimationFrame(() => {
-      const run = computeDecision(def, scenario, { robustness: false });
-      const fresh = buildDecisionView(def, run.input, run.result, false);
+      const run = computeDecision(data, scenario, { robustness: false });
+      const fresh = buildDecisionView(data, run.input, run.result, false);
       // Hasta que el worker responda se conservan robustez y confianza anteriores (atenuadas, `aria-busy`):
       // nunca se muestra una confianza "sin robustez" como definitiva y no hay salto de layout.
       const view: DecisionView = { ...fresh, confidence: shown.view.confidence, ...(shown.view.robustness ? { robustness: shown.view.robustness } : {}) };
@@ -103,10 +103,10 @@ function Recalculating({ initialView, initialScenario, scenario, pathname, slug 
           if (r.ok) setShown((s) => ({ ...s, view: withRobustness(s.view, r) }));
         };
       }
-      worker.current.postMessage({ id, slug, scenario } satisfies RobustnessRequest);
+      worker.current.postMessage({ id, data, scenario } satisfies RobustnessRequest);
     });
     return () => cancelAnimationFrame(frame);
-  }, [scenario, shown.key, shown.view, slug, t]);
+  }, [scenario, shown.key, shown.view, data, t]);
 
   useEffect(() => {
     notifyChaptersUpdated();

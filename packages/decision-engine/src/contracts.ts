@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { ComparisonScenario, type ComparisonCandidate, type ComparisonResult, type DealBreakerCheck, type DealBreakerResult } from '@vscar/comparison-engine';
-import type { DifferenceClass, FitComponent, PriorityLevel, TechnicalCategory } from '@vscar/methodology';
+import type { DifferenceClass, FitComponent, Message, PriorityLevel, TechnicalCategory } from '@vscar/methodology';
 
 /**
  * Contratos del Alpha Decision Engine v0.1 (Step 6b). Resultados SEPARADOS:
@@ -83,13 +83,15 @@ export interface EconomicFitResult {
     ownership?: { view: 'COMPLETE' | 'KNOWN_COST_VIEW'; total_minor: Range; missing: string[] };
     confidence?: string;
   }[];
-  pairs: { a: string; b: string; outcome: EconomicPairOutcome; delta_minor?: Range; meaningful?: DifferenceClass | 'RANGE_DEPENDENT'; reason?: string }[];
+  pairs: { a: string; b: string; outcome: EconomicPairOutcome; delta_minor?: Range; meaningful?: DifferenceClass | 'RANGE_DEPENDENT'; reason?: string; reasonMessage?: Message }[];
   status: 'LEADER' | 'PRACTICAL_TIE' | 'RANGE_DEPENDENT' | 'NOT_COMPARABLE' | 'UNKNOWN';
   leaderId?: string;
   /** Candidatos que comparten el mejor puesto (empate práctico / dependencia de rangos). */
   tiedIds?: string[];
   confidence: 'HIGH' | 'MEDIUM' | 'LOW';
+  /** Respaldo inglés; la UI usa `messages`. */
   reasons: string[];
+  messages: Message[];
   warnings: string[];
 }
 
@@ -102,7 +104,9 @@ export interface ComponentScore {
   utility?: Range;
   weight: number;
   metrics: MetricUtility[];
+  /** Respaldo inglés; la UI usa `noteMessage`. */
   note?: string;
+  noteMessage?: Message;
 }
 
 export interface PracticalFitResult {
@@ -111,7 +115,9 @@ export interface PracticalFitResult {
   status: PracticalFitStatus;
   score?: Range;
   components: ComponentScore[];
+  /** Respaldo inglés; la UI usa `messages`. */
   reasons: string[];
+  messages: Message[];
   compromises: DealBreakerCheck[];
   /** Requisitos (obligatorios o deseados) sin dato verificable: nunca se dan por cumplidos. */
   unknowns: DealBreakerCheck[];
@@ -134,7 +140,11 @@ export interface Contribution {
   /** Para quién (resumen del escenario práctico). */
   forWhom?: string;
   level?: DifferenceClass | 'RANGE_DEPENDENT';
+  /** Respaldo inglés; la UI usa `message` (+ `whyMessages`). */
   text: string;
+  message: Message;
+  /** Por qué importa: prioridad, relevancia de uso, reglas Meaningful For You. */
+  whyMessages: Message[];
 }
 
 export interface AlphaBestForYouResult {
@@ -144,21 +154,23 @@ export interface AlphaBestForYouResult {
   /** Intrínseco (independiente del conjunto) por candidato elegible. */
   alphaFit: { candidateId: string; score?: Range; components: ComponentScore[] }[];
   /** Solo si NO_FULL_MATCH: informativo (el que menos/menos gravemente incumple), NO una recomendación. */
-  closestCandidate?: { candidateId: string; failedChecks: DealBreakerCheck[]; note: string };
+  closestCandidate?: { candidateId: string; failedChecks: DealBreakerCheck[]; note: string; noteMessage: Message };
   /** Candidato elegible con requisitos sin confirmar: hay que verificarlos. */
   requiresVerification?: DealBreakerCheck[];
+  /** Respaldo inglés; la UI usa `explanationMessage`. */
   explanation: string;
+  explanationMessage: Message;
 }
 
 export interface AlphaDecisionResult {
   candidates: string[];
   technicalCapability: TechnicalCapabilityResult[];
-  technicalLeader: { status: 'LEADER' | 'PRACTICAL_TIE' | 'RANGE_DEPENDENT' | 'INSUFFICIENT_DATA'; candidateId?: string; tiedIds?: string[]; reasons: string[] };
+  technicalLeader: { status: 'LEADER' | 'PRACTICAL_TIE' | 'RANGE_DEPENDENT' | 'INSUFFICIENT_DATA'; candidateId?: string; tiedIds?: string[]; reasons: string[]; messages: Message[] };
   economicFit: EconomicFitResult;
   practicalFit: PracticalFitResult[];
   alphaBestForYou: AlphaBestForYouResult;
   topContributions: Contribution[];
-  dataConfidence: { level: 'HIGH' | 'MEDIUM' | 'LOW'; reasons: string[] };
+  dataConfidence: { level: 'HIGH' | 'MEDIUM' | 'LOW'; reasons: string[]; messages: Message[] };
   warnings: string[];
   priorities: Record<'COST' | 'SPACE' | 'PERFORMANCE', PriorityLevel>;
   methodologyVersion: string;

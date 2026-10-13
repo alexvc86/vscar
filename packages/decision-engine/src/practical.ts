@@ -1,5 +1,7 @@
 import { evaluateDealBreakers, type ComparisonCandidate, type DealBreakerCheck, type DealBreakerResult } from '@vscar/comparison-engine';
+import type { Message } from '@vscar/methodology';
 import type { ComponentScore, DecisionScenario, PracticalFitResult } from './contracts.ts';
+import { checkParams, message } from './messages.ts';
 import { practicalScore } from './utilities.ts';
 
 /**
@@ -51,6 +53,22 @@ export function practicalFit(c: ComparisonCandidate, mandatory: DealBreakerResul
   if (mandatory.unknownChecks.length) reasons.push(`cannot confirm: ${mandatory.unknownChecks.map((u) => u.reason).join('; ')}`);
   if (desired.unknownChecks.length) reasons.push(`preferred targets without data: ${desired.unknownChecks.map((u) => u.reason).join('; ')}`);
 
+  // Mismos hechos que `reasons`, como mensajes estructurados (la UI traduce; nunca infiere de `reasons`).
+  const messages: Message[] = [];
+  for (const f of failed) messages.push(message('decision.practical.requirement_failed', checkParams(f)));
+  if (status !== 'FAIL') {
+    const met = mandatory.checks.filter((x) => x.status === 'PASS');
+    if (met.length) for (const m of met) messages.push(message('decision.practical.requirement_met', checkParams(m)));
+    else messages.push(message('decision.practical.no_failures'));
+    for (const x of compromises) {
+      const o = x.observedValue!;
+      const isMax = x.criterion.startsWith('max');
+      messages.push(message('decision.practical.compromise', { ...checkParams(x), gap: isMax ? o.min - x.requiredValue : x.requiredValue - o.max, direction: isMax ? 'ABOVE' : 'BELOW' }));
+    }
+  }
+  for (const u of mandatory.unknownChecks) messages.push(message('decision.practical.unconfirmed', checkParams(u)));
+  for (const u of desired.unknownChecks) messages.push(message('decision.practical.desired_unknown', checkParams(u)));
+
   const score = practicalScore(components);
   return {
     candidateId: c.id,
@@ -58,6 +76,7 @@ export function practicalFit(c: ComparisonCandidate, mandatory: DealBreakerResul
     ...(score ? { score } : {}),
     components: components.filter((x) => x.component === 'SPACE' || x.component === 'RANGE_FIT'),
     reasons,
+    messages,
     compromises,
     unknowns,
     mandatoryUnknowns: mandatory.unknownChecks,

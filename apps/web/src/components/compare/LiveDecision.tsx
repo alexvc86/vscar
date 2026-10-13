@@ -12,7 +12,7 @@ import type { ClientDecisionProps } from './ClientDecision';
  * (`children`) y no carga nada. Al primer cambio de escenario carga el chunk diferido (pipeline real,
  * Motion, mensajes) y le pasa la vista inicial para animar desde ella. Sin JS, los enlaces navegan al servidor.
  */
-export function LiveDecision({ children, initialView, initialScenario, pathname, slug, locale, language, labels }: { children: ReactNode } & Omit<ClientDecisionProps, 'scenario' | 'messages'> & { language: LanguageCode }) {
+export function LiveDecision({ children, initialView, initialScenario, data, pathname, slug, locale, language, labels }: { children: ReactNode } & Omit<ClientDecisionProps, 'scenario' | 'messages'> & { language: LanguageCode }) {
   const params = useSearchParams();
   const scenario: Scenario = parseScenarioFromSearchParams(new URLSearchParams(params.toString())).scenario;
   const changed = scenarioKey(scenario) !== scenarioKey(initialScenario);
@@ -49,7 +49,7 @@ export function LiveDecision({ children, initialView, initialScenario, pathname,
   return (
     <div ref={root} className="live-decision" data-live={Client ? 'client' : 'server'} aria-busy={loading && !Client ? 'true' : undefined}>
       {Client ? (
-        <Client.C initialView={initialView} initialScenario={initialScenario} scenario={scenario} pathname={pathname} slug={slug} locale={locale} labels={labels} messages={Client.messages} />
+        <Client.C initialView={initialView} initialScenario={initialScenario} scenario={scenario} data={data} pathname={pathname} slug={slug} locale={locale} labels={labels} messages={Client.messages} />
       ) : (
         <>
           {loading ? (

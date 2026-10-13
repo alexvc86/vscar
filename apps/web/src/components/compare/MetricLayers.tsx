@@ -1,5 +1,5 @@
 import type { CandidateView, MetricView } from '@/domain/view-model';
-import { forYouRuleText, metricLabel } from '@/i18n/engine-messages';
+import { metricLabel } from '@/i18n/engine-messages';
 import type { I18n } from '@/i18n/use-i18n';
 
 /**
@@ -48,9 +48,9 @@ export function MetricLayers({ metric, candidates, i18n }: { metric: MetricView;
         <li data-scrub-layer="for-you">
           <span className="label">{t('metricLayers.forYou')}</span>
           <span className="chip chip--you">{levelLong(metric.forYou)}</span>
-          {metric.forYouRules.map((r) => (
-            <span key={r} className="metric__rule">
-              {forYouRuleText(t, r)}
+          {metric.forYouMessages.map((msg) => (
+            <span key={msg.messageKey} className="metric__rule">
+              {i18n.mInline(msg)}
             </span>
           ))}
         </li>

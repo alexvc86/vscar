@@ -1,5 +1,9 @@
+import { pairSlug } from '@/domain/catalog';
 import type { DecisionView } from '@/domain/view-model';
+import { localizedHref } from '@/i18n/routes';
 import type { I18n } from '@/i18n/use-i18n';
+import { optionText, pairLabels, selectorLabels } from '../catalog/labels';
+import { ChangeCarButton, SwapCarsLink } from '../catalog/PairControls';
 import { VehicleVisual } from '../vehicle/VehicleVisual';
 import { HeroAtmosphere } from '../visual/HeroAtmosphere';
 import { ScenarioTrigger } from './ScenarioTrigger';
@@ -9,9 +13,12 @@ import { ScenarioTrigger } from './ScenarioTrigger';
  * ningún JS visual. Dueños: CSS = entrada del vehículo (`.vehicle-entry`); GSAP = `[data-vs-*]` (scrub);
  * ThreeUI = canvas de la atmósfera (sobre el degradado CSS).
  */
-export function HeroVs({ view, i18n }: { view: DecisionView; i18n: I18n }) {
-  const { t } = i18n;
+export function HeroVs({ view, i18n, search = '' }: { view: DecisionView; i18n: I18n; search?: string }) {
+  const { t, locale } = i18n;
   const [a, b] = view.candidates;
+  const labels = pairLabels(i18n);
+  const sel = selectorLabels(i18n);
+  const swapped = pairSlug(b.option.slug, a.option.slug);
   return (
     <section id="vs" className="chapter chapter--vs" aria-labelledby="vs-title" data-chapter="vs" data-vs-scene="">
       <div className="atmosphere atmosphere--hero" aria-hidden="true">
@@ -31,9 +38,22 @@ export function HeroVs({ view, i18n }: { view: DecisionView; i18n: I18n }) {
                 <figcaption>
                   <span className={`label tone-${c.side}`}>{t('comparison.candidate', { side: c.side.toUpperCase() })}</span>
                   <span className="vs__name">{c.name}</span>
-                  <span className="mono vs__meta">
-                    {c.year} · {c.powertrain} · {c.body}
-                  </span>
+                  {(() => {
+                    const text = optionText(c.option, sel);
+                    return (
+                      <>
+                        <span className="vs__variant" data-testid={`variant-${c.side}`}>
+                          {text.name}
+                        </span>
+                        <span className="mono vs__meta">
+                          {text.meta}
+                          {text.period ? ` · ${text.period}` : ''}
+                          {c.option.preview ? <span className="picker__badge" title={sel.previewNote}>{sel.preview}</span> : null}
+                        </span>
+                      </>
+                    );
+                  })()}
+                  <ChangeCarButton side={c.side} label={labels.change} ariaLabel={labels.changeCar.replace('{name}', c.name)} />
                 </figcaption>
               </figure>
             ))}
@@ -46,6 +66,7 @@ export function HeroVs({ view, i18n }: { view: DecisionView; i18n: I18n }) {
               {t('navigation.jumpToDetails')}
             </a>
             <ScenarioTrigger label={t('scenario.cta')} />
+            <SwapCarsLink href={localizedHref(locale, { page: 'compare', slug: swapped }, search)} locale={locale.segment} slug={swapped} label={labels.swap} />
           </div>
         </div>
       </div>

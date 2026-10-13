@@ -1,12 +1,12 @@
 import { Disclosure } from '@vscar/ui/disclosure';
 import type { CandidateSide } from '@vscar/ui/tokens';
 import { DEFAULT_SCENARIO, serializeScenario, type Scenario } from '@/domain/scenario';
-import { sourceInfo } from '@/domain/sources';
-import type { CandidateView, ContributionView, DecisionView, MetricView, WhyNotView } from '@/domain/view-model';
+import type { CandidateView, DecisionView, MetricView, WhyNotView } from '@/domain/view-model';
 import { metricLabel } from '@/i18n/engine-messages';
 import { useI18n, type I18n } from '@/i18n/use-i18n';
 import { VehicleVisual } from '../vehicle/VehicleVisual';
 import { Chapter, SplitHeading } from './Heading';
+import { MessageText } from './MessageText';
 import { STATIC_KIT, type MotionKit } from './kit';
 import { MetricLayers } from './MetricLayers';
 import { ScenarioTrigger } from './ScenarioTrigger';
@@ -59,28 +59,6 @@ export function DecisionChapters({ view, scenario, pathname, kit = STATIC_KIT, r
 
 const nameOf = (view: DecisionView, side?: CandidateSide) => view.candidates.find((c) => c.side === side)?.name ?? '';
 
-function contributionText(c: ContributionView, view: DecisionView, metrics: Map<string, MetricView>, { t, f }: I18n): string {
-  const metric = c.metric ? metrics.get(c.metric) : undefined;
-  if (metric && metric.leader && metric.a && metric.b) {
-    const unit = metric.a.unit ?? metric.b.unit;
-    const win = metric.leader === 'a' ? metric.a : metric.b;
-    const lose = metric.leader === 'a' ? metric.b : metric.a;
-    const level = c.level ?? metric.meaningful;
-    const base = t('decision.contribution.metricAhead', {
-      label: metricLabel(t, metric.metric),
-      winner: nameOf(view, metric.leader),
-      valueWinner: f.valueRange(win, unit) ?? '',
-      other: nameOf(view, metric.leader === 'a' ? 'b' : 'a'),
-      valueOther: f.valueRange(lose, unit) ?? '',
-      level: level ? t(`metricLayers.level.${level}`) : '',
-    });
-    return metric.forYou ? `${base} · ${t('decision.contribution.forYou', { level: t(`metricLayers.level.${metric.forYou}`) })}` : base;
-  }
-  if (c.component === 'DEAL_BREAKER' && c.side) return t('decision.contribution.dealBreaker', { name: nameOf(view, c.side) });
-  // Sin campos estructurados suficientes: respaldo inglés del engine (hueco documentado en WEB_FOUNDATION).
-  return c.text;
-}
-
 function ConfidenceMeter({ level, i18n }: { level: 'HIGH' | 'MEDIUM' | 'LOW'; i18n: I18n }) {
   const filled = level === 'HIGH' ? 3 : level === 'MEDIUM' ? 2 : 1;
   return (
@@ -101,6 +79,12 @@ function ResultChapter({ view, kit, i18n, metrics, index, pending, scenario }: {
   const selectedName = view.selected ? nameOf(view, view.selected) : undefined;
   const balanced = status !== 'BEST_FOR_YOU';
   const { Card, Marker, Morph } = kit;
+  // Motivos: las contribuciones del engine; en un empate, las reglas Meaningful For You de las métricas clave
+  // (por qué esa diferencia no decide para tu uso). Todo son mensajes del engine.
+  const whyItems = view.reasons.length
+    ? view.reasons.map((c) => ({ key: `${c.component}-${c.metric ?? c.message.messageKey}`, msg: c.message, why: c.whyMessages }))
+    : view.keyMetrics.flatMap((m) => m.forYouMessages.map((msg) => ({ key: `${m.metric}-${msg.messageKey}`, msg, why: [] })));
+  void metrics;
   return (
     <Chapter id="result" labelledBy="result-title" index={index} className="chapter--result">
       <p className="label">{t('decision.eyebrow')}</p>
@@ -111,7 +95,9 @@ function ResultChapter({ view, kit, i18n, metrics, index, pending, scenario }: {
         {t(`decision.status.${status}`)}
         {selectedName ? <span className="result__who tone-a-or-b" data-side={view.selected}>: {selectedName}</span> : null}
       </h2>
-      <p className="result__lead">{t(`decision.statusLead.${status}`, { name: selectedName ?? '' })}</p>
+      <div className="result__lead">
+        <MessageText msg={view.explanation} i18n={i18n} />
+      </div>
       <div className="result__row" data-balanced={balanced ? 'true' : 'false'}>
         {view.candidates.map((c, i) => {
           const selected = view.selected === c.side;
@@ -144,16 +130,32 @@ function ResultChapter({ view, kit, i18n, metrics, index, pending, scenario }: {
         ) : null}
       </div>
       <Morph morphKey={`${status}-${view.selected ?? ''}`} className="result__why">
-        <h3 className="label">{balanced ? t('decision.whyTie') : t('decision.why')}</h3>
-        <ul className="result__reasons">
-          {view.reasons.length ? view.reasons.map((c) => <li key={`${c.component}-${c.metric ?? c.text}`}>{contributionText(c, view, metrics, i18n)}</li>) : <li>{t(`decision.statusLead.${status}`, { name: selectedName ?? '' })}</li>}
-        </ul>
+        {whyItems.length ? (
+          <>
+            <h3 className="label">{balanced ? t('decision.whyTie') : t('decision.why')}</h3>
+            <ul className="result__reasons">
+              {whyItems.map((w) => (
+                <li key={w.key}>
+                  <MessageText msg={w.msg} i18n={i18n} />
+                  {w.why.length ? <span className="result__reason-why"> — {w.why.map((x) => i18n.mInline(x)).join('; ')}</span> : null}
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : null}
         {view.notices.length ? (
           <ul className="result__notices">
             {view.notices.map((n) => (
-              <li key={n.messageKey}>{i18n.m(n)}</li>
+              <li key={n.messageKey}>
+                <MessageText msg={n} i18n={i18n} />
+              </li>
             ))}
           </ul>
+        ) : null}
+        {view.closestNote ? (
+          <p className="muted small">
+            <MessageText msg={view.closestNote} i18n={i18n} />
+          </p>
         ) : null}
         <p className="result__confidence">
           <a href="#confidence" className="link-quiet">
@@ -181,10 +183,8 @@ function ReasonChapter({ id, metric, view, i18n, index }: { id: string; metric: 
 function EconomicsChapter({ view, scenario, i18n, index }: { view: DecisionView; scenario: Scenario; i18n: I18n; index: number }) {
   const { t, f } = i18n;
   const e = view.economics;
-  const leaderName = nameOf(view, e.leader);
-  const savings = e.annualDelta ? f.moneyMinorRange({ min: Math.abs(e.annualDelta.min), max: Math.abs(e.annualDelta.max) }) : undefined;
-  const statusLine =
-    e.status === 'LEADER' && savings ? t('economic.cheaper', { name: leaderName, amount: savings }) : e.status === 'NOT_COMPARABLE' ? t('economic.notComparable') : e.status === 'UNKNOWN' ? t('economic.unknown') : t('economic.tie');
+  // Titular = explicación del Economic Fit del engine (no se compone en la UI).
+  const statusLine = e.messages[0] ? i18n.mInline(e.messages[0]) : t('economic.title');
   return (
     <Chapter id="economics" labelledBy="economics-title" index={index} className="chapter--economics">
       <p className="label">{t('comparison.chapters.economics')}</p>
@@ -257,7 +257,7 @@ function WhyNotList({ items, i18n }: { items: WhyNotView['items']; i18n: I18n })
     <ul className="whynot__list">
       {items.map((it, k) => (
         <li key={`${it.messageKey}-${it.metric ?? k}`} data-severity={it.severity}>
-          {i18n.m(it)}
+          <MessageText msg={it} i18n={i18n} />
         </li>
       ))}
     </ul>
@@ -315,7 +315,9 @@ function ChangeChapter({ view, scenario, pathname, pending, i18n, index }: { vie
             <p className="chip chip--status">{t(`robustness.status.${view.robustness.status}`)}</p>
             <ul className="robustness__list">
               {view.robustness.messages.map((msg, k) => (
-                <li key={`${msg.messageKey}-${k}`}>{i18n.m(msg)}</li>
+                <li key={`${msg.messageKey}-${k}`}>
+                  <MessageText msg={msg} i18n={i18n} />
+                </li>
               ))}
             </ul>
           </div>
@@ -371,7 +373,9 @@ function ConfidenceChapter({ view, i18n, index, pending }: { view: DecisionView;
           <p className="muted small">{t('confidence.explain')}</p>
           <ul className="confidence__reasons">
             {view.confidence.reasons.map((r, k) => (
-              <li key={`${r.messageKey}-${k}`}>{i18n.m(r)}</li>
+              <li key={`${r.messageKey}-${k}`}>
+                <MessageText msg={r} i18n={i18n} />
+              </li>
             ))}
           </ul>
         </div>
@@ -381,7 +385,9 @@ function ConfidenceChapter({ view, i18n, index, pending }: { view: DecisionView;
           <h3>{t('decision.verifyTitle')}</h3>
           <ul>
             {view.verify.map((v, k) => (
-              <li key={`${v.messageKey}-${k}`}>{i18n.m(v)}</li>
+              <li key={`${v.messageKey}-${k}`}>
+                <MessageText msg={v} i18n={i18n} />
+              </li>
             ))}
           </ul>
         </div>
@@ -445,7 +451,7 @@ function DetailsChapter({ view, i18n, index }: { view: DecisionView; i18n: I18n;
                     <td className="metric-table__outcome">
                       <span className={`outcome outcome--${m.outcome.toLowerCase()}`}>{outcomeText(m, view, i18n)}</span>
                       {m.meaningful && m.outcome !== 'UNKNOWN' ? <span className="muted"> · {t(`metricLayers.levelLong.${m.meaningful}`)}</span> : null}
-                      {m.outcome === 'NOT_COMPARABLE' && m.reason ? <span className="muted small"> — {m.reason}</span> : null}
+                      {m.outcome === 'NOT_COMPARABLE' && m.reasonMessage ? <span className="muted small"> — {i18n.mInline(m.reasonMessage)}</span> : null}
                     </td>
                   </tr>
                 ))}
@@ -464,10 +470,28 @@ function DetailsChapter({ view, i18n, index }: { view: DecisionView; i18n: I18n;
                 </dd>
                 <dd>
                   {t('practical.title')}: {t(`practical.status.${view.practical[c.side].status}`)}
+                  {view.practical[c.side].messages.length ? (
+                    <ul className="msg-details">
+                      {view.practical[c.side].messages.map((msg, k) => (
+                        <li key={`${msg.messageKey}-${k}`}>
+                          <MessageText msg={msg} i18n={i18n} />
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
                 </dd>
               </div>
             ))}
           </dl>
+          {view.technicalMessages.length ? (
+            <ul className="msg-details">
+              {view.technicalMessages.map((msg, k) => (
+                <li key={`${msg.messageKey}-${k}`}>
+                  <MessageText msg={msg} i18n={i18n} />
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </Disclosure>
         <HowWeCalculated view={view} i18n={i18n} />
       </div>
@@ -478,10 +502,14 @@ function DetailsChapter({ view, i18n, index }: { view: DecisionView; i18n: I18n;
 function HowWeCalculated({ view, i18n }: { view: DecisionView; i18n: I18n }) {
   const { t, f } = i18n;
   const elec = view.energy.electricity;
+  const sourceInfo = (id: string | undefined) => (id ? view.sources.find((s) => s.id === id) : undefined);
   const elecSource = sourceInfo(elec?.sourceId);
   const fuelSource = sourceInfo(view.energy.fuel?.sourceId);
   const cycles = [...new Set(view.metricsByCategory.flatMap((c) => c.metrics.flatMap((m) => [m.a?.cycle, m.b?.cycle])).filter(Boolean))];
-  const vehicleSources = view.provenance.sourceIds.map((id) => sourceInfo(id)).filter((s): s is NonNullable<typeof s> => !!s && !s.key);
+  // Fuentes de los vehículos (identidad, valores, precios) con su estado de derechos; las de energía van arriba.
+  const vehicleSources = view.sources.filter((s) => !s.key);
+  const attributions = [...new Set(view.sources.map((s) => s.attribution).filter((a): a is string => !!a))];
+  const pendingRights = view.sources.some((s) => s.publication === 'PREVIEW_ONLY');
   const sourceLabel = (s: typeof elecSource) => (s?.key && t.has(`methodology.sources.${s.key}`) ? t(`methodology.sources.${s.key}`) : (s?.name ?? ''));
   return (
     <Disclosure summary={<span>{t('methodology.howWeCalculated')}</span>} className="details__category details__how" id="how-we-calculated">
@@ -493,7 +521,7 @@ function HowWeCalculated({ view, i18n }: { view: DecisionView; i18n: I18n }) {
               <span className="mono">{f.money(elec.value, 3)}/kWh</span> · {t('methodology.source')}: {sourceLabel(elecSource)} · {t('methodology.origin')}: {t(`methodology.origins.${elec.origin}`)}
               {elec.date ? ` · ${t('methodology.referenceDate')}: ${f.date(elec.date.slice(0, 10))}` : ''}
             </dd>
-            {elecSource?.publicationBlocked ? <dd className="muted small">{t('methodology.rightsNote')}</dd> : null}
+            {elecSource?.publication === 'PREVIEW_ONLY' ? <dd className="muted small">{t('methodology.rightsNote')}</dd> : null}
           </div>
         ) : null}
         {view.energy.fuel ? (
@@ -517,6 +545,16 @@ function HowWeCalculated({ view, i18n }: { view: DecisionView; i18n: I18n }) {
             <dd>{vehicleSources.map((s) => s.name).join(' · ')}</dd>
           </div>
         ) : null}
+        {attributions.length ? (
+          <div>
+            <dt>{t('methodology.attribution')}</dt>
+            {attributions.map((a) => (
+              <dd key={a} className="small">
+                {a}
+              </dd>
+            ))}
+          </div>
+        ) : null}
         <div>
           <dt>{t('methodology.title')}</dt>
           <dd className="mono small">{t('methodology.versions', { engine: view.versions.engine, methodology: view.versions.methodology, rules: view.versions.decisionRules })}</dd>
@@ -525,7 +563,10 @@ function HowWeCalculated({ view, i18n }: { view: DecisionView; i18n: I18n }) {
           </dd>
         </div>
       </dl>
-      <p className="muted small">{t('common.devSnapshot')}</p>
+      <p className="muted small">
+        {view.channel === 'PREVIEW' || pendingRights ? `${t('common.devSnapshot')} ` : ''}
+        <span className="mono">{t('methodology.dataSnapshot', { vehicles: view.dataSnapshot.vehicles, energy: view.dataSnapshot.energy, rights: view.dataSnapshot.rights })}</span>
+      </p>
     </Disclosure>
   );
 }

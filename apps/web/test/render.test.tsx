@@ -4,13 +4,14 @@ import { describe, expect, it } from 'vitest';
 import en from '../messages/en.json';
 import es from '../messages/es.json';
 import { DecisionChapters } from '../src/components/compare/DecisionChapters';
-import { COMPARISONS, DEMO_SLUG } from '../src/domain/comparisons.ts';
 import { computeDecision, computeRobustness } from '../src/domain/decision.ts';
 import { DEFAULT_SCENARIO } from '../src/domain/scenario.ts';
-import { serverDecisionView } from '../src/domain/server-decision.ts';
 import { buildDecisionView, withRobustness } from '../src/domain/view-model.ts';
+import { serverDecisionView } from '../src/server/server-decision.ts';
+import { comparisonData, DEMO_PAIR } from './support/catalog.ts';
 
-const def = COMPARISONS[DEMO_SLUG]!;
+const def = await comparisonData();
+const DEMO_SLUG = DEMO_PAIR;
 const render = (segment: 'es-es' | 'en-es', trips: number, view = serverDecisionView(def, { ...DEFAULT_SCENARIO, trips }).view) =>
   renderToStaticMarkup(
     <NextIntlClientProvider locale={segment} messages={segment === 'es-es' ? es : en} timeZone="Europe/Madrid">

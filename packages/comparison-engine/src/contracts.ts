@@ -1,3 +1,4 @@
+import type { Message } from '@vscar/methodology';
 import { z } from 'zod';
 import type { DifferenceClass } from '@vscar/methodology';
 import type { BreakEven, EconomicResult } from '@vscar/economics-engine';
@@ -64,7 +65,9 @@ export interface DealBreakerCheck {
   /** Intervalo observado (punto si min = max); ausente si no hay dato. */
   observedValue?: { min: number; max: number; unit: string };
   status: CheckStatus;
+  /** Respaldo inglés; la UI usa `message`. */
   reason: string;
+  message: Message;
   provenance?: { value_id?: string; source_id?: string; spec_key?: string };
 }
 
@@ -116,22 +119,26 @@ export interface MetricComparison {
   /** Diferencia numérica general (independiente del usuario). */
   meaningful?: DifferenceClass | 'RANGE_DEPENDENT';
   /** Relevancia para el escenario práctico (Meaningful For You); ausente si no hay regla. */
-  meaningfulForYou?: { level: DifferenceClass | 'RANGE_DEPENDENT'; rules: string[] };
+  meaningfulForYou?: { level: DifferenceClass | 'RANGE_DEPENDENT'; rules: string[]; messages: Message[] };
   a?: ValueView;
   b?: ValueView;
   /** a − b (unidad de la métrica; céntimos para importes). */
   delta?: Range;
   /** (a − b) / b en % (cotas exactas del intervalo). */
   percentDifference?: Range;
+  /** Respaldo inglés; la UI usa `reasonMessage`. */
   reason?: string;
+  reasonMessage?: Message;
   warnings: string[];
-  /** Frase determinista (sin IA); ausente si no puede afirmarse nada. */
+  /** Frase determinista (sin IA) en inglés de respaldo; ausente si no puede afirmarse nada. */
   explanation?: string;
+  explanationMessage?: Message;
 }
 
 export interface EconomicComparison {
   status: 'COMPARED' | 'UNKNOWN' | 'NOT_COMPARABLE';
   reason?: string;
+  reasonMessage?: Message;
   metrics: MetricComparison[];
   /** Resultado del Economics Engine (no se recalcula): `premium` = el más caro de comprar. */
   breakEven?: { premiumId: string; baselineId: string; result: BreakEven };
@@ -160,7 +167,7 @@ export interface ComparisonResult {
   technicalComparisons: MetricComparison[];
   economicComparison: EconomicComparison;
   categorySummaries: CategorySummary[];
-  dataConfidence: { level: 'HIGH' | 'MEDIUM' | 'LOW'; reasons: string[] };
+  dataConfidence: { level: 'HIGH' | 'MEDIUM' | 'LOW'; reasons: string[]; messages: Message[] };
   warnings: string[];
   methodologyVersion: string;
   comparisonRulesVersion: string;

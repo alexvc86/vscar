@@ -1,9 +1,8 @@
-import { MESSAGE_TEMPLATES, message, type Message } from '@vscar/decision-engine';
 import { createTranslator } from 'next-intl';
 import { describe, expect, it } from 'vitest';
 import en from '../messages/en.json';
 import es from '../messages/es.json';
-import { renderEngineMessage, type Translator } from '../src/i18n/engine-messages.ts';
+import type { Translator } from '../src/i18n/engine-messages.ts';
 import { createFormat } from '../src/i18n/format.ts';
 import { LOCALES, MARKETS, marketOf, parseLocaleSegment, sameMarketLocales, switchLanguage } from '../src/i18n/locales.ts';
 import { localeAlternates } from '../src/i18n/metadata.ts';
@@ -107,56 +106,5 @@ describe('localized formatting (market units, language format)', () => {
     expect(fmt('es-es').moneyMinorRange({ min: 2396, max: 12368 })).toBe('23,96–123,68 €');
     expect(fmt('en-es').moneyMinorRange({ min: 2396, max: 12368 })).toBe('€23.96–€123.68');
     expect(fmt('es-es').numberRange({ min: 2.4, max: 3.1 }, 1)).toBe('2,4–3,1');
-  });
-});
-
-describe('engine message keys → next-intl', () => {
-  const sample: Record<string, Record<string, string | number>> = {
-    'decision.why_not.running_cost': { amountMinMinor: 2396, amountMaxMinor: 12368, currency: 'EUR', annualKm: 15000, other: 'Tesla Model 3' },
-    'decision.why_not.metric_behind': { label: 'electric range', subject: 'Tesla Model 3', other: 'BYD SEAL', valueSubject: '448', valueOther: '570', unit: 'km', level: 'CLEAR', forYou: 'CLEAR' },
-    'decision.why_not.metric_different': { label: 'length', subject: 'A', other: 'B', valueSubject: '4800', valueOther: '4720', unit: 'mm', deltaMin: 80, deltaMax: 80 },
-    'decision.robustness.switch': { variable: 'annual_km', direction: 'ABOVE', switchValue: 21840, currentValue: 15000 },
-    'decision.robustness.priority_switch': { priority: 'COST', level: 'HIGH' },
-    'decision.confidence.data': { level: 'LOW', detail: 'x' },
-    'decision.confidence.robustness': { level: 'LOW', detail: 'x' },
-    'decision.confidence.cap': { level: 'LOW', reason: 'PRACTICAL_TIE' },
-    'decision.confidence.desired_unknown': { count: 2 },
-    'decision.closest_option': { subject: 'A', failed: 2 },
-    'decision.verify.requirement': { what: 'Towing capacity', op: 'min', required: 1500, unit: 'kg' },
-    'decision.verify.desired': { what: 'Boot', required: 550, unit: 'L' },
-    'decision.why_not.deal_breaker': { reason: 'r' },
-    'decision.why_not.compromise': { reason: 'r' },
-    'decision.why_not.economics_not_comparable': { subject: 'A', other: 'B' },
-    'decision.why_not.none': { other: 'B' },
-    'decision.confidence.unconfirmed_requirement': { what: 'Towing' },
-    'decision.confidence.used_information': { level: 'LOW' },
-  };
-  it('every engine messageKey exists in both catalogs', () => {
-    for (const key of Object.keys(MESSAGE_TEMPLATES)) {
-      expect(tr('es-es').has(`engine.${key}`), key).toBe(true);
-      expect(tr('en-es').has(`engine.${key}`), key).toBe(true);
-    }
-  });
-  it('every engine message renders in both languages without throwing or leaking the key', () => {
-    for (const key of Object.keys(MESSAGE_TEMPLATES)) {
-      const msg = message(key, sample[key] ?? {});
-      for (const seg of ['es-es', 'en-es']) {
-        const out = renderEngineMessage(msg, tr(seg), fmt(seg), parseLocaleSegment(seg)!.language);
-        expect(out.length, `${seg} ${key}`).toBeGreaterThan(0);
-        expect(out).not.toContain('engine.');
-        expect(out).not.toMatch(/\{[a-zA-Z]+\}/);
-      }
-    }
-  });
-  it('localized output (not the English fallback) for the demo messages', () => {
-    const m = message('decision.robustness.switch', sample['decision.robustness.switch']!);
-    expect(renderEngineMessage(m, tr('es-es'), fmt('es-es'), 'es')).toBe('El resultado cambia si tu distancia anual supera 21.840 km/año');
-    expect(renderEngineMessage(m, tr('en-es'), fmt('en-es'), 'en')).toBe('The result changes if your annual distance rises above 21,840 km/year');
-    const behind = { ...message('decision.why_not.metric_behind', sample['decision.why_not.metric_behind']!), metric: 'rng.electric_combined_km' };
-    expect(renderEngineMessage(behind, tr('es-es'), fmt('es-es'), 'es')).toBe('Autonomía eléctrica: Tesla Model 3 448 frente a BYD SEAL 570 km (diferencia clara; para ti: clara)');
-  });
-  it('unknown key → safe English fallback from the engine, never the raw key', () => {
-    const unknown: Message = { messageKey: 'decision.future.unknown_key', params: {}, text: 'Engine fallback text' };
-    expect(renderEngineMessage(unknown, tr('es-es'), fmt('es-es'), 'es')).toBe('Engine fallback text');
   });
 });

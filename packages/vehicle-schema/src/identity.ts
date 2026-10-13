@@ -101,7 +101,8 @@ export const ReferenceVariant = z
     commercial_group_key: z.string().regex(/^[a-z]{2}:[a-z0-9.:-]+$/),
     /** `commercial_group_key` + discriminador de homologación (`:h<short>`). */
     canonical_key: z.string().regex(/^[a-z]{2}:[a-z0-9.:-]+:h[a-z0-9-]+$/),
-    slug: z.string().regex(/^[a-z0-9-]+$/),
+    /** Routing (Step 7b): único por mercado; nunca contiene `-vs-` (separador de pares). No es identidad. */
+    slug: z.string().regex(/^[a-z0-9-]+$/).refine((s) => !s.includes('-vs-'), 'slug must not contain the pair separator -vs-'),
     commercial: CommercialIdentity,
     technical: TechnicalFields,
     homologation_id: Uuid,

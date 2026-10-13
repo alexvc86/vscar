@@ -1,7 +1,19 @@
 import { breakEven, economicDelta, type EconomicResult } from '@vscar/economics-engine';
 import { DIFFERENCE_THRESHOLDS, compareIntervals } from '@vscar/methodology';
 import type { ComparisonCandidate, EconomicComparison, MetricComparison, Range } from './contracts.ts';
+import { cmessage, registerMetricLabel } from './messages.ts';
 import { outcomeOf } from './technical.ts';
+
+for (const [k, l] of [
+  ['economic.cost_per_100km', 'energy cost per 100 km'],
+  ['economic.running_annual', 'annual running cost'],
+  ['economic.running_3y', 'running cost over 3 years'],
+  ['economic.running_5y', 'running cost over 5 years'],
+  ['economic.ownership_1y', 'known ownership costs over 1 year'],
+  ['economic.ownership_3y', 'known ownership costs over 3 years'],
+  ['economic.ownership_5y', 'known ownership costs over 5 years'],
+] as const)
+  registerMetricLabel(k, l);
 
 /**
  * Comparación económica: CONSUME dos `EconomicResult` (Step 5). No recalcula economía: los deltas salen de
@@ -52,6 +64,10 @@ function moneyMetric(mm: MoneyMetric, A: ComparisonCandidate, B: ComparisonCandi
   } else if (outcome === 'PRACTICAL_TIE') explanation = `${mm.label}: ${A.label} ${shownA} vs ${B.label} ${shownB} — practical tie`;
   else if (outcome === 'RANGE_DEPENDENT') explanation = `${mm.label}: ${A.label} ${shownA} vs ${B.label} ${shownB} — which one is cheaper depends on configuration and assumptions`;
   const p = pct(aE, bE);
+  const unit = mm.unit === 'EUR' ? 'EUR_MINOR' : 'EUR_PER_100KM';
+  const explanationMessage = explanation
+    ? cmessage('comparison.metric.directional', { metric: mm.metric, outcome, level: c.classification, a: A.label, b: B.label, valueAMin: mm.a.min, valueAMax: mm.a.max, valueBMin: mm.b.min, valueBMax: mm.b.max, unit })
+    : undefined;
   return {
     metric: mm.metric,
     label: mm.label,
@@ -64,20 +80,34 @@ function moneyMetric(mm: MoneyMetric, A: ComparisonCandidate, B: ComparisonCandi
     ...(p ? { percentDifference: round2(p) } : {}),
     warnings: [],
     ...(explanation ? { explanation } : {}),
+    ...(explanationMessage ? { explanationMessage } : {}),
   };
 }
 
 export function compareEconomics(A: ComparisonCandidate, B: ComparisonCandidate): EconomicComparison {
   const ea = A.economic;
   const eb = B.economic;
-  if (!ea || !eb) return { status: 'UNKNOWN', reason: `no economic result for ${[!ea ? A.label : undefined, !eb ? B.label : undefined].filter(Boolean).join(' and ')}`, metrics: [] };
+  if (!ea || !eb)
+    return {
+      status: 'UNKNOWN',
+      reason: `no economic result for ${[!ea ? A.label : undefined, !eb ? B.label : undefined].filter(Boolean).join(' and ')}`,
+      reasonMessage: cmessage('comparison.economic.no_result', { a: A.label, b: B.label, missingA: !ea, missingB: !eb }),
+      metrics: [],
+    };
   const economicConfidence = { a: ea.confidence.level, b: eb.confidence.level };
   const unavailable = [ea.runningCost.status === 'UNAVAILABLE' ? A.label : undefined, eb.runningCost.status === 'UNAVAILABLE' ? B.label : undefined].filter(Boolean);
-  if (unavailable.length) return { status: 'UNKNOWN', reason: `running cost unavailable for ${unavailable.join(' and ')} (never treated as a tie)`, metrics: [], economicConfidence };
+  if (unavailable.length)
+    return {
+      status: 'UNKNOWN',
+      reason: `running cost unavailable for ${unavailable.join(' and ')} (never treated as a tie)`,
+      reasonMessage: cmessage('comparison.economic.running_unavailable', { a: A.label, b: B.label, missingA: ea.runningCost.status === 'UNAVAILABLE', missingB: eb.runningCost.status === 'UNAVAILABLE' }),
+      metrics: [],
+      economicConfidence,
+    };
   // Solo se comparan resultados calculados con el mismo escenario (km y horizonte).
   const km = assumption(ea, 'annual_km');
   if (km !== assumption(eb, 'annual_km') || assumption(ea, 'horizon_years') !== assumption(eb, 'horizon_years') || ea.methodologyVersion !== eb.methodologyVersion) {
-    return { status: 'NOT_COMPARABLE', reason: 'economic results were computed with different scenarios or methodology versions', metrics: [], economicConfidence };
+    return { status: 'NOT_COMPARABLE', reason: 'economic results were computed with different scenarios or methodology versions', reasonMessage: cmessage('comparison.economic.different_scenarios'), metrics: [], economicConfidence };
   }
   const annualKm = Number(km);
   // Ciclos de los consumos que usó cada resultado (procedencia del Economics Engine → hechos del candidato).
@@ -93,6 +123,7 @@ export function compareEconomics(A: ComparisonCandidate, B: ComparisonCandidate)
   const ca = cyclesOf(A, ea);
   const cb = cyclesOf(B, eb);
   const cycleMismatch = ca && cb && ca !== cb ? `energy costs derived from different test cycles (${A.label}: ${ca}, ${B.label}: ${cb}) — not directly comparable` : undefined;
+  const cycleMismatchMessage = cycleMismatch ? cmessage('comparison.economic.cycles_not_comparable', { a: A.label, b: B.label, cycleA: ca, cycleB: cb }) : undefined;
   const d = economicDelta(ea, eb);
   const annualT = DIFFERENCE_THRESHOLDS.running_cost_annual_eur!;
   const priceT = DIFFERENCE_THRESHOLDS.price_eur!;
@@ -174,7 +205,9 @@ export function compareEconomics(A: ComparisonCandidate, B: ComparisonCandidate)
     for (const mc of metrics) {
       mc.outcome = 'NOT_COMPARABLE';
       mc.reason = cycleMismatch;
+      mc.reasonMessage = cycleMismatchMessage!;
       delete mc.explanation;
+      delete mc.explanationMessage;
       mc.warnings.push(cycleMismatch);
     }
   }
@@ -189,5 +222,5 @@ export function compareEconomics(A: ComparisonCandidate, B: ComparisonCandidate)
       ? { premiumId: premium.vehicleId, baselineId: baseline.vehicleId, result: { status: 'UNAVAILABLE', reason: cycleMismatch } }
       : { premiumId: premium.vehicleId, baselineId: baseline.vehicleId, result: breakEven(premium, baseline) };
   }
-  return { status: cycleMismatch ? 'NOT_COMPARABLE' : 'COMPARED', ...(cycleMismatch ? { reason: cycleMismatch } : {}), metrics, ...(be ? { breakEven: be } : {}), economicConfidence };
+  return { status: cycleMismatch ? 'NOT_COMPARABLE' : 'COMPARED', ...(cycleMismatch ? { reason: cycleMismatch, reasonMessage: cycleMismatchMessage! } : {}), metrics, ...(be ? { breakEven: be } : {}), economicConfidence };
 }

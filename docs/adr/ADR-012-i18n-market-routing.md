@@ -31,7 +31,7 @@
 
 - **Positivas**: un mercado nuevo es una fila en `MARKETS` + datos; un idioma nuevo es una fila en `LANGUAGES` + catálogo; un locale nuevo es una fila en `LOCALES`. Engines y rutas no cambian. Tests de contrato: claves idénticas entre catálogos, formato por locale y preservación del escenario al cambiar de idioma.
 - **Negativas**: el segmento `compare` en inglés aparece también en URLs en español (las etiquetas visibles sí están traducidas).
-- **Riesgos**: varias frases del engine (Step 6b: contribuciones, explicaciones y reglas Meaningful For You) siguen siendo texto inglés sin `messageKey`. El adaptador las localiza a partir de campos estructurados (`metric`, `level`, `component`, reglas de `for-you-v1`). Las que no tienen estructura (`detail` de confianza, `reason` de requisitos, `what` de verificación) se muestran en inglés como respaldo. Se propone añadir `messageKey` en esos puntos en un Step de engine.
+- **Riesgos**: varias frases del engine (Step 6b: contribuciones, explicaciones y reglas Meaningful For You) siguen siendo texto inglés sin `messageKey`. El adaptador las localiza a partir de campos estructurados (`metric`, `level`, `component`, reglas de `for-you-v1`). Las que no tienen estructura (`detail` de confianza, `reason` de requisitos, `what` de verificación) se muestran en inglés como respaldo. Se propone añadir `messageKey` en esos puntos en un Step de engine. **Resuelto en el Step 7a.1** (Decision Message Contract): todo texto visible del engine es `messageKey + params`. Step 7b: la comparación es un par de ReferenceVariants (`/{locale}/compare/{a}-vs-{b}`), ver [ADR-013](ADR-013-catalog-publication-and-routing.md).
 
 ## Referencias
 

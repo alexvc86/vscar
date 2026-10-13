@@ -4,6 +4,8 @@
 >
 > Decisiones: [ADR-011](../adr/ADR-011-alpha-visual-stack-after-lab.md) (stack visual) · [ADR-012](../adr/ADR-012-i18n-market-routing.md) (idioma × mercado) · Guías: [I18N_AND_MARKETS.md](I18N_AND_MARKETS.md) · [LOCAL_DEVELOPMENT.md](LOCAL_DEVELOPMENT.md) · capturas en [`screens/`](screens/)
 
+> **Actualización Step 7b (2026-10-13)**: la comparación fija y el snapshot de Dataset Core han sido sustituidos por el selector real sobre el catálogo MySQL. Las rutas son ahora pares de ReferenceVariants (`/{locale}/compare/{a}-vs-{b}`; la URL de esta sección redirige con 308) y los datos llegan del servidor. Ver [DATA_ORCHESTRATION_V0_1.md](DATA_ORCHESTRATION_V0_1.md) y [VEHICLE_SELECTOR_V0_1.md](VEHICLE_SELECTOR_V0_1.md). El resto de este documento describe la Step 7a.
+
 Primera aplicación web real de VScar: base de producción, no un laboratorio. Abre una comparación BYD SEAL vs Tesla Model 3 con el pipeline real, en español o inglés y sobre el mercado español, con la identidad visual aprobada.
 
 ## 1. Qué hay

@@ -1,12 +1,14 @@
 import fc from 'fast-check';
 import { describe, expect, it } from 'vitest';
-import { COMPARISONS, DEMO_SLUG } from '../src/domain/comparisons.ts';
-import { computeDecision, computeRobustness, VEHICLE_IDS } from '../src/domain/decision.ts';
+import { BYD_SEAL_IDS } from '@vscar/fixtures';
+import { computeDecision, computeRobustness } from '../src/domain/decision.ts';
 import { DEFAULT_SCENARIO, parseScenarioFromSearchParams, Scenario, SCENARIO_LIMITS, serializeScenario, toEngineScenarios } from '../src/domain/scenario.ts';
-import { serverDecisionView } from '../src/domain/server-decision.ts';
 import { buildDecisionView, withRobustness } from '../src/domain/view-model.ts';
+import { serverDecisionView } from '../src/server/server-decision.ts';
+import { comparisonData } from './support/catalog.ts';
 
-const def = COMPARISONS[DEMO_SLUG]!;
+/** Comparación BYD SEAL vs Model 3 resuelta por el catálogo + orquestador (Step 7b), no por una definición fija. */
+const def = await comparisonData();
 const view = (trips: number, robustness = false) => {
   const run = computeDecision(def, { ...DEFAULT_SCENARIO, trips }, { robustness });
   return { run, view: buildDecisionView(def, run.input, run.result, robustness) };
@@ -55,7 +57,7 @@ describe('real decision (no hardcoded UI expectations)', () => {
   it('10 long trips/year → BYD SEAL selected (side A)', () => {
     const { run, view: v } = view(10);
     expect(run.result.alphaBestForYou.status).toBe('BEST_FOR_YOU');
-    expect(run.result.alphaBestForYou.candidateId).toBe(VEHICLE_IDS.byd);
+    expect(run.result.alphaBestForYou.candidateId).toBe(BYD_SEAL_IDS.variant);
     expect(v.selected).toBe('a');
     expect(v.reasons.length).toBeGreaterThan(0);
     expect(v.reasons.length).toBeLessThanOrEqual(3);

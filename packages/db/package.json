@@ -6,6 +6,7 @@
   "description": "VScar persistence: Drizzle ORM schema for MySQL 8 and repositories. The only package that talks to the database.",
   "exports": {
     ".": "./src/index.ts",
+    "./migrations": "./src/migrations.ts",
     "./testing": "./src/testing.ts"
   },
   "scripts": {

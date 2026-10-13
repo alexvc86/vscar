@@ -15,7 +15,9 @@ import { gzipSync } from 'node:zlib';
 
 const BASE = process.env.VSCAR_WEB_URL ?? 'http://localhost:4200';
 const BUDGET_KB = 200;
-const ROUTES = ['/es-es/', '/en-es/', '/es-es/compare/byd-seal-vs-tesla-model-3', '/en-es/compare/byd-seal-vs-tesla-model-3', '/es-es/methodology'];
+// Step 7b: la comparación es un par de ReferenceVariants del catálogo (la URL fija de la 7a redirige aquí).
+const PAIR = 'byd-seal-2026-design-rwd-82-5-kwh-vs-tesla-model-3-2021-standard-range-plus-e6r';
+const ROUTES = ['/es-es/', '/en-es/', `/es-es/compare/${PAIR}`, `/en-es/compare/${PAIR}`, '/es-es/methodology'];
 const root = new URL('..', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const chunksDir = join(root, '.next', 'static', 'chunks');
 
@@ -27,7 +29,10 @@ const SIGNATURES: [string, RegExp][] = [
   ['three', /WebGLRenderer|ShaderChunk|MeshStandardMaterial/],
   ['r3f', /__r3f|react-three-fiber/],
   ['ogl', /new Program\(gl|uTexel/],
-  ['robustness-worker', /unknown comparison/],
+  ['robustness-worker', /vscar-robustness-worker/],
+  // Step 7b: el selector de vehículos (chunk diferido) y cualquier rastro de base de datos (nunca en cliente).
+  ['db', /mysql2|drizzle-orm|createPool\(|COM_QUERY|ER_ACCESS_DENIED/],
+  ['selector', /vehicle-search/],
   ['gsap', /GreenSock|_gsap|ScrollTrigger|SplitText/],
   ['motion', /layoutId|MotionConfig|motionValue|LayoutGroup/],
   ['pipeline', /alpha-decision-v1|why-not-v1|robustness-v1/],
@@ -46,7 +51,7 @@ const info = new Map(
     const buf = readFileSync(join(chunksDir, f));
     const s = buf.toString('utf8');
     const libs = SIGNATURES.filter(([, r]) => r.test(s)).map(([k]) => k);
-    return [f, { gz: gzipSync(buf, { level: 9 }).length, raw: buf.length, libs, primary: libs[0] ?? 'app/other', worker: /unknown comparison/.test(s) }];
+    return [f, { gz: gzipSync(buf, { level: 9 }).length, raw: buf.length, libs, primary: libs[0] ?? 'app/other', worker: /vscar-robustness-worker/.test(s) }];
   }),
 );
 const kb = (b: number) => +(b / 1024).toFixed(1);
@@ -97,6 +102,9 @@ const report = {
     formNotInitial: initialLibs('react-hook-form').length === 0,
     noThreeR3fOgl: forbidden.length === 0,
     robustnessWorkerChunk: deferred.some((d) => d.worker),
+    selectorNotInitial: initialLibs('selector').length === 0,
+    selectorChunkExists: deferred.some((d) => d.libs.includes('selector')),
+    noDbInClient: [...info.values()].every((c) => !c.libs.includes('db')),
   },
   forbidden,
 };

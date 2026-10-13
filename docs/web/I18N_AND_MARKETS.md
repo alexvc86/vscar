@@ -36,9 +36,8 @@ language != market
 ## Mensajes
 
 - `messages/es.json` y `messages/en.json`, con namespaces `common`, `navigation`, `markets`, `home`, `comparison`, `decision`, `metricLayers`, `scenario`, `confidence`, `robustness`, `technical`, `economic`, `practical`, `methodology`, `units`, `errors` y `engine`. Un test exige el mismo conjunto de claves en los dos.
-- **Claves del Decision Engine**: el engine devuelve `{ messageKey, params, text }` (Step 6c). La UI no reconstruye razones: `renderEngineMessage()` busca `engine.{messageKey}`, formatea los `params` (importes en céntimos → moneda del mercado, km, €/kWh, niveles y variables traducidos) y aplica la plantilla ICU. Si falta la clave o un parámetro imprescindible, usa `text`, el respaldo inglés del engine; nunca la clave cruda. Un test recorre **todas** las claves de `MESSAGE_TEMPLATES` en ambos idiomas.
+- **Mensajes de los engines**: ver *Decision Message Contract* más abajo.
 - **Etiquetas de métrica**: `technical.metrics.{spec_key con _}` (p. ej. `rng_electric_combined_km`), con respaldo en la etiqueta del engine.
-- **Reglas Meaningful For You** (`for-you-v1`): mapa de la regla inglesa estable a `metricLayers.rules.*`.
 - **Faltas**: en producción, `getMessageFallback` devuelve cadena vacía (nunca la clave); en desarrollo devuelve la ruta de la clave para detectarla.
 
 ## Formato
@@ -76,3 +75,14 @@ El HTML inicial no envía catálogos al cliente. Las islas iniciales reciben sus
 | **un par existente** (p. ej. `es-us`) | fila en `LOCALES` (`formatLocale: 'es-US'`, `hreflang: 'es-US'`) |
 
 Para millas, MPG o kW↔hp/CV harán falta conversiones de presentación (`@vscar/units`, Plan §28) cuando exista el primer mercado no métrico. Hoy `MarketConfig.units` ya declara qué sistema usa cada mercado.
+
+## Decision Message Contract
+
+*Engine owns meaning. UI owns language. Market owns units/currency/data context.* (Step 7a.1; contrato completo en [ALPHA_DECISION_ENGINE_V0_1.md](../decision/ALPHA_DECISION_ENGINE_V0_1.md#decision-message-contract-step-7a1)).
+
+- Los engines devuelven `{ messageKey, params, text, details? }`. La UI traduce con **una sola utilidad**: `translateDecisionMessage(msg, t, f, { inlineDetails })` en `src/i18n/engine-messages.ts`, que devuelve `{ text, fromCatalog }`. Busca `engine.{messageKey}` y aplica la plantilla ICU; `text` solo se usaría si faltara la clave (un test de cobertura lo impide).
+- Formateo de `params` por convención, nunca caso a caso: `xMin`/`xMax` → rango con la unidad del mensaje; `xMinMinor`/`xMaxMinor` → importe en la moneda del mercado; `criterion`, `priority`, `level`, `category`, `status`, `component`, `code`… → tablas de enumeración del catálogo (`engine.criterion.*`, `engine.level.*`, …); nombres de vehículo tal cual.
+- `details` se muestran como sublista (`components/compare/MessageText.tsx`) o en línea (`i18n.mInline`). La UI no compone frases de decisión (se eliminaron `contributionText`, `decision.statusLead`, `metricLayers.rules` y `economic.cheaper/notComparable/unknown/tie`).
+- Catálogos: 100 claves de engine (64 decision + 36 comparison) en `es.json` y `en.json`: **100 % / 100 %**. Español natural ("El Tesla Model 3 te costaría unos 386 € menos al año con tu uso"), inglés llano y neutro. El idioma no cambia el mercado: `en-es` sigue en km y EUR.
+- Tests (`test/engine-messages.test.ts`): claves del engine ⊆ es y ⊆ en; toda clave se renderiza desde el catálogo con parámetros sintéticos; en los 9 casos reales, ES sin inglés y EN sin español; independencia del respaldo (centinela); frases clave exactas; km/EUR en inglés.
+- Añadir una clave: plantilla + esquema en el engine y entrada `engine.<clave>` en ambos catálogos. Los tests fallan si falta cualquiera.

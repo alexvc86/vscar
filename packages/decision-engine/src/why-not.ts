@@ -1,7 +1,7 @@
 import type { ComparisonCategory, ComparisonResult, DealBreakerCheck, MetricComparison } from '@vscar/comparison-engine';
 import { WHY_NOT_RULES } from '@vscar/methodology';
 import type { AlphaDecisionResult, DecisionInput, Range } from './contracts.ts';
-import { message, type Message } from './messages.ts';
+import { checkParams, message, type Message } from './messages.ts';
 
 /**
  * Why Not / tradeoffs / verificación (Step 6c). Consume `ComparisonResult` (6a) y `AlphaDecisionResult` (6b):
@@ -68,16 +68,6 @@ const TYPE_OF: Record<ComparisonCategory, WhyNotType> = {
   Technology: 'TECHNOLOGY',
   Economy: 'ECO',
 };
-const CRITERION: Record<string, [string, string, 'min' | 'max']> = {
-  minSeats: ['Seat count', 'seats', 'min'],
-  minBootL: ['Boot volume', 'L', 'min'],
-  minTowingKg: ['Towing capacity', 'kg', 'min'],
-  maxLengthMm: ['Length', 'mm', 'max'],
-  maxWidthMm: ['Width', 'mm', 'max'],
-  maxHeightMm: ['Height', 'mm', 'max'],
-  minElectricRangeKm: ['Electric range', 'km', 'min'],
-  maxPurchasePriceEur: ['Purchase price', '€', 'max'],
-};
 
 const order = (a: WhyNotItem, b: WhyNotItem) =>
   SEVERITY_RANK[a.severity] - SEVERITY_RANK[b.severity] ||
@@ -98,11 +88,13 @@ function view(r: ComparisonResult, x: string, m: MetricComparison): MetricCompar
   return { ...m, outcome: flip[m.outcome] ?? m.outcome, a: m.b, b: m.a, ...(m.delta ? { delta: { min: -m.delta.max || 0, max: -m.delta.min || 0 } } : {}) } as MetricComparison;
 }
 const severityOf = (level?: string): WhyNotSeverity => (level === 'CLEAR' ? 'MAJOR' : level === 'MEANINGFUL' ? 'MODERATE' : 'MINOR');
-const fmtVal = (v?: { min: unknown; max: unknown }) => (!v ? '?' : v.min === v.max ? String(v.min) : `${v.min}–${v.max}`);
+/** Valor de la métrica como DATOS: rango numérico `xMin`/`xMax` o código (`x`). Nunca texto formateado. */
+const valueOf = (base: string, v?: { min: unknown; max: unknown }): Record<string, string | number | boolean> =>
+  !v ? {} : typeof v.min === 'number' && typeof v.max === 'number' ? { [`${base}Min`]: v.min, [`${base}Max`]: v.max } : { [base]: typeof v.min === 'boolean' ? v.min : String(v.min) };
 
 function requirementItems(id: string, checks: readonly DealBreakerCheck[], type: 'DEAL_BREAKER' | 'PRACTICAL_COMPROMISE'): WhyNotItem[] {
   return checks.map((c) => ({
-    ...message(type === 'DEAL_BREAKER' ? 'decision.why_not.deal_breaker' : 'decision.why_not.compromise', { criterion: c.criterion, required: c.requiredValue, reason: c.reason }),
+    ...message(type === 'DEAL_BREAKER' ? 'decision.why_not.deal_breaker' : 'decision.why_not.compromise', checkParams(c)),
     type,
     severity: type === 'DEAL_BREAKER' ? 'BLOCKING' : 'COMPROMISE',
     subject: 'REFERENCE_VARIANT',
@@ -113,8 +105,8 @@ function requirementItems(id: string, checks: readonly DealBreakerCheck[], type:
 }
 
 function verificationItem(candidateId: string, c: DealBreakerCheck, mandatory: boolean): VerificationItem {
-  const [what, unit, op] = CRITERION[c.criterion] ?? [c.criterion, '', 'min'];
-  return { ...message(mandatory ? 'decision.verify.requirement' : 'decision.verify.desired', { criterion: c.criterion, what, required: c.requiredValue, unit, op }), candidateId, criterion: c.criterion, mandatory };
+  const op = c.criterion.startsWith('max') ? 'max' : 'min';
+  return { ...message(mandatory ? 'decision.verify.requirement' : 'decision.verify.desired', { ...checkParams(c), op }), candidateId, criterion: c.criterion, mandatory };
 }
 
 /** Desventajas de `x` frente a `y` según la comparación (solo resultados confirmados: BEHIND). */
@@ -123,7 +115,18 @@ function disadvantages(x: string, y: string, r: ComparisonResult, labels: Map<st
   const subject = labels.get(x)!;
   const other = labels.get(y)!;
   if (r.economicComparison.status === 'NOT_COMPARABLE' && r.economicComparison.metrics.length) {
-    out.push({ ...message('decision.why_not.economics_not_comparable', { subject, other, reason: r.economicComparison.reason }), type: 'DATA_UNCERTAINTY', severity: 'INFO', subject: 'REFERENCE_VARIANT', againstId: y, sourceResult: 'COMPARISON' });
+    const rm = r.economicComparison.reasonMessage;
+    // Ciclos vistos desde x (el sujeto): el mensaje de la comparación los da desde A.
+    const flip = rm?.messageKey === 'comparison.economic.cycles_not_comparable' && r.candidateAId !== x;
+    out.push({
+      // Con ciclos, los params ya dicen el motivo; si no, el motivo de la comparación va como detalle.
+      ...message('decision.why_not.economics_not_comparable', { subject, other, ...(rm?.params.cycleA ? { cycleSubject: String(flip ? rm.params.cycleB : rm.params.cycleA), cycleOther: String(flip ? rm.params.cycleA : rm.params.cycleB) } : {}) }, rm && !rm.params.cycleA ? [rm] : undefined),
+      type: 'DATA_UNCERTAINTY',
+      severity: 'INFO',
+      subject: 'REFERENCE_VARIANT',
+      againstId: y,
+      sourceResult: 'COMPARISON',
+    });
   }
   for (const raw of [...r.economicComparison.metrics, ...r.technicalComparisons]) {
     // Economía: solo el coste anual (los acumulados son el mismo hecho repetido).
@@ -137,11 +140,11 @@ function disadvantages(x: string, y: string, r: ComparisonResult, labels: Map<st
       const msg = economic
         ? message('decision.why_not.running_cost', { amountMinMinor: m.delta!.min, amountMaxMinor: m.delta!.max, currency: 'EUR', annualKm, other })
         : message('decision.why_not.metric_behind', {
-            label: m.label,
+            metric: m.metric,
             subject,
             other,
-            valueSubject: fmtVal(m.a),
-            valueOther: fmtVal(m.b),
+            ...valueOf('value', m.a),
+            ...valueOf('otherValue', m.b),
             unit: m.a?.unit ?? undefined,
             level: m.meaningful,
             forYou: m.meaningfulForYou && m.meaningfulForYou.level !== m.meaningful ? m.meaningfulForYou.level : undefined,
@@ -151,7 +154,7 @@ function disadvantages(x: string, y: string, r: ComparisonResult, labels: Map<st
       out.push({ ...msg, type: economic ? 'ECONOMIC' : TYPE_OF[m.category], severity: severityOf(level), subject: 'REFERENCE_VARIANT', metric: m.metric, ...(m.delta ? { delta: m.delta } : {}), ...(level ? { level } : {}), againstId: y, ...(prov.value_ids.length ? { provenance: prov } : {}), sourceResult: 'COMPARISON' });
     } else if (includeDifferent && m.outcome === 'DIFFERENT' && m.delta && LEVEL_RANK.indexOf(m.meaningful ?? '') >= LEVEL_RANK.indexOf(WHY_NOT_RULES.min_level)) {
       out.push({
-        ...message('decision.why_not.metric_different', { label: m.label, subject, other, valueSubject: fmtVal(m.a), valueOther: fmtVal(m.b), unit: m.a?.unit ?? undefined, deltaMin: m.delta.min, deltaMax: m.delta.max }),
+        ...message('decision.why_not.metric_different', { metric: m.metric, subject, other, ...valueOf('value', m.a), ...valueOf('otherValue', m.b), unit: m.a?.unit ?? undefined, deltaMin: m.delta.min, deltaMax: m.delta.max }),
         type: TYPE_OF[m.category],
         severity: 'INFO',
         subject: 'REFERENCE_VARIANT',

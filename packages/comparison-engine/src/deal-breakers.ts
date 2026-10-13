@@ -1,5 +1,6 @@
 import type { SpecValue } from '@vscar/vehicle-schema';
 import { ComparisonScenario, type CheckStatus, type ComparisonCandidate, type ComparisonScenarioIn, type DealBreakerCheck, type DealBreakerResult } from './contracts.ts';
+import { cmessage } from './messages.ts';
 
 /**
  * Deal Breakers (restricciones duras), evaluados ANTES de cualquier comparación.
@@ -21,8 +22,11 @@ function check(
   what: string,
   provenance?: DealBreakerCheck['provenance'],
   basisNote = '',
+  /** Código de la base de medida (método de maletero, ciclo, base del precio) para el mensaje. */
+  basis?: string,
 ): DealBreakerCheck {
-  if (!observed) return { criterion, requiredValue: required, status: 'UNKNOWN', reason: `${what}: no usable data`, ...(provenance ? { provenance } : {}) };
+  const head = { criterion, required, unit, ...(basis ? { basis } : {}) };
+  if (!observed) return { criterion, requiredValue: required, status: 'UNKNOWN', reason: `${what}: no usable data`, message: cmessage('comparison.requirement.no_data', head), ...(provenance ? { provenance } : {}) };
   const ok = (x: number) => (kind === 'MIN' ? x >= required : x <= required);
   const allOk = ok(observed.min) && ok(observed.max);
   const noneOk = !ok(observed.min) && !ok(observed.max);
@@ -33,7 +37,8 @@ function check(
     status === 'UNKNOWN'
       ? `${what} ${shown} ${unit}: depends on configuration (required ${op} ${required})${basisNote}`
       : `${what} ${shown} ${unit} ${status === 'PASS' ? 'meets' : 'does not meet'} ${op} ${required} ${unit}${basisNote}`;
-  return { criterion, requiredValue: required, observedValue: { ...observed, unit }, status, reason, ...(provenance ? { provenance } : {}) };
+  const message = cmessage(status === 'PASS' ? 'comparison.requirement.pass' : status === 'FAIL' ? 'comparison.requirement.fail' : 'comparison.requirement.range_dependent', { ...head, observedMin: observed.min, observedMax: observed.max });
+  return { criterion, requiredValue: required, observedValue: { ...observed, unit }, status, reason, message, ...(provenance ? { provenance } : {}) };
 }
 
 function fact(c: ComparisonCandidate, key: string) {
@@ -52,7 +57,7 @@ export function evaluateDealBreakers(c: ComparisonCandidate, scenarioIn: Compari
   if (r.minBootL !== undefined) {
     const f = fact(c, 'cap.boot_l');
     const method = f.value?.measurement_basis?.boot_method;
-    checks.push(check('minBootL', r.minBootL, f.observed, 'MIN', 'L', 'boot', f.provenance, method && method !== 'UNSPECIFIED' ? ` (${method})` : method ? ' (measurement method unspecified)' : ''));
+    checks.push(check('minBootL', r.minBootL, f.observed, 'MIN', 'L', 'boot', f.provenance, method && method !== 'UNSPECIFIED' ? ` (${method})` : method ? ' (measurement method unspecified)' : '', method));
   }
   if (r.minTowingKg !== undefined) {
     const f = fact(c, 'cap.towing_braked_kg');
@@ -70,16 +75,23 @@ export function evaluateDealBreakers(c: ComparisonCandidate, scenarioIn: Compari
   }
   if (r.minElectricRangeKm !== undefined) {
     if (!PLUGIN.has(c.powertrainType)) {
-      checks.push({ criterion: 'minElectricRangeKm', requiredValue: r.minElectricRangeKm, observedValue: { min: 0, max: 0, unit: 'km' }, status: 'FAIL', reason: `${c.powertrainType} has no plug-in electric range` });
+      checks.push({
+        criterion: 'minElectricRangeKm',
+        requiredValue: r.minElectricRangeKm,
+        observedValue: { min: 0, max: 0, unit: 'km' },
+        status: 'FAIL',
+        reason: `${c.powertrainType} has no plug-in electric range`,
+        message: cmessage('comparison.requirement.no_plugin_range', { criterion: 'minElectricRangeKm', required: r.minElectricRangeKm, unit: 'km', powertrain: c.powertrainType }),
+      });
     } else {
       const f = fact(c, 'rng.electric_combined_km');
       const cycle = f.value?.test_cycle ? ` (${f.value.test_cycle})` : '';
-      checks.push(check('minElectricRangeKm', r.minElectricRangeKm, f.observed, 'MIN', 'km', 'electric range', f.provenance, cycle));
+      checks.push(check('minElectricRangeKm', r.minElectricRangeKm, f.observed, 'MIN', 'km', 'electric range', f.provenance, cycle, f.value?.test_cycle));
     }
   }
   if (r.maxPurchasePriceEur !== undefined) {
     const p = c.economic?.ownershipCost.purchase;
-    checks.push(check('maxPurchasePriceEur', r.maxPurchasePriceEur, p ? { min: p.amount_minor / 100, max: p.amount_minor / 100 } : undefined, 'MAX', 'EUR', 'purchase price', undefined, p ? ` (${p.basis})` : ''));
+    checks.push(check('maxPurchasePriceEur', r.maxPurchasePriceEur, p ? { min: p.amount_minor / 100, max: p.amount_minor / 100 } : undefined, 'MAX', 'EUR', 'purchase price', undefined, p ? ` (${p.basis})` : '', p?.basis));
   }
 
   const failedChecks = checks.filter((x) => x.status === 'FAIL');

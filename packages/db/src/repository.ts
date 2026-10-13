@@ -26,6 +26,36 @@ export interface RawIngestInput {
   retrieved_at: string;
 }
 
+/** Variants indicadas con todo lo que cuelga de ellas, validadas con el schema v0.2 (compartido por repositorio y lector). */
+export async function loadBundleFrom(db: VscarDb, variantIds: readonly string[]): Promise<DatasetBundle> {
+  if (variantIds.length === 0) return DatasetBundle.parse({ sources: [], homologations: [], variants: [], spec_values: [] });
+  const ids = [...variantIds];
+
+  const variants = await db.select().from(t.referenceVariants).where(inArray(t.referenceVariants.id, ids));
+  const homologationIds = variants.map((v) => v.homologation_id);
+  const [homologations, values, prices, safety] = await Promise.all([
+    db.select().from(t.homologations).where(inArray(t.homologations.id, homologationIds)),
+    db.select().from(t.specValues).where(inArray(t.specValues.variant_id, ids)),
+    db.select().from(t.vehiclePrices).where(inArray(t.vehiclePrices.variant_id, ids)),
+    db.select().from(t.safetyRatings).where(inArray(t.safetyRatings.variant_id, ids)),
+  ]);
+  const sourceIds = [
+    ...new Set([...homologations, ...values, ...prices, ...safety].map((r) => r.source_id)),
+  ];
+  const sources = sourceIds.length ? await db.select().from(t.sources).where(inArray(t.sources.id, sourceIds)) : [];
+
+  const byId = <T extends { id: string }>(xs: T[]) => [...xs].sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+  return DatasetBundle.parse({
+    sources: byId(sources).map(m.sourceFromRow),
+    homologations: byId(homologations).map(m.homologationFromRow),
+    variants: byId(variants).map(m.variantFromRow),
+    spec_values: byId(values).map(m.specValueFromRow),
+    prices: byId(prices).map(m.priceFromRow),
+    incentives: [],
+    safety_ratings: byId(safety).map(m.safetyFromRow),
+  });
+}
+
 /**
  * Repositorio de catálogo. Es la frontera entre MySQL y el dominio:
  * los engines reciben DatasetBundle ya validado y nunca consultan la base de datos (plan §33, ADR-002).
@@ -52,33 +82,8 @@ export function createCatalogRepository(db: VscarDb) {
     },
 
     /** Carga las variants indicadas con todo lo que cuelga de ellas y lo valida con el schema v0.2. */
-    async loadBundle(variantIds: readonly string[]): Promise<DatasetBundle> {
-      if (variantIds.length === 0) return DatasetBundle.parse({ sources: [], homologations: [], variants: [], spec_values: [] });
-      const ids = [...variantIds];
-
-      const variants = await db.select().from(t.referenceVariants).where(inArray(t.referenceVariants.id, ids));
-      const homologationIds = variants.map((v) => v.homologation_id);
-      const [homologations, values, prices, safety] = await Promise.all([
-        db.select().from(t.homologations).where(inArray(t.homologations.id, homologationIds)),
-        db.select().from(t.specValues).where(inArray(t.specValues.variant_id, ids)),
-        db.select().from(t.vehiclePrices).where(inArray(t.vehiclePrices.variant_id, ids)),
-        db.select().from(t.safetyRatings).where(inArray(t.safetyRatings.variant_id, ids)),
-      ]);
-      const sourceIds = [
-        ...new Set([...homologations, ...values, ...prices, ...safety].map((r) => r.source_id)),
-      ];
-      const sources = sourceIds.length ? await db.select().from(t.sources).where(inArray(t.sources.id, sourceIds)) : [];
-
-      const byId = <T extends { id: string }>(xs: T[]) => [...xs].sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
-      return DatasetBundle.parse({
-        sources: byId(sources).map(m.sourceFromRow),
-        homologations: byId(homologations).map(m.homologationFromRow),
-        variants: byId(variants).map(m.variantFromRow),
-        spec_values: byId(values).map(m.specValueFromRow),
-        prices: byId(prices).map(m.priceFromRow),
-        incentives: [],
-        safety_ratings: byId(safety).map(m.safetyFromRow),
-      });
+    loadBundle(variantIds: readonly string[]): Promise<DatasetBundle> {
+      return loadBundleFrom(db, variantIds);
     },
 
     /** Registra los metadatos de un fichero bruto (idempotente por hash del contenido). */
@@ -141,6 +146,11 @@ export function createCatalogRepository(db: VscarDb) {
     async findSourceByCode(code: string) {
       const rows = await db.select().from(t.sources).where(eq(t.sources.code, code));
       return rows.sort((a, b) => (a.id < b.id ? -1 : 1))[0];
+    },
+
+    /** Alias de slug (curación): el slug antiguo sigue resolviendo y la web redirige al canónico. Idempotente. */
+    async addSlugAlias(input: { market_code: string; slug: string; variant_id: string; reason: string }): Promise<void> {
+      await db.insert(t.variantSlugAliases).values(input).onDuplicateKeyUpdate({ set: { slug: sql`slug` } });
     },
 
     /** Variants técnicas que comparten denominación comercial (ADR-007). */

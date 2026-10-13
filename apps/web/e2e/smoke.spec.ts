@@ -1,6 +1,8 @@
 import { expect, test, type Page } from '@playwright/test';
 
-const PATH = '/es-es/compare/byd-seal-vs-tesla-model-3';
+// Step 7b: par canónico de ReferenceVariants (la URL de la 7a redirige aquí).
+const PAIR = 'byd-seal-2026-design-rwd-82-5-kwh-vs-tesla-model-3-2021-standard-range-plus-e6r';
+const PATH = `/es-es/compare/${PAIR}`;
 
 function watchConsole(page: Page) {
   const problems: string[] = [];
@@ -35,7 +37,7 @@ test('ES tie → 10 trips → BYD → EN keeps scenario → back to ES', async (
 
   // Cambiar a inglés conserva mercado, comparación y escenario.
   await page.locator('[data-lang-switch="en"]').click();
-  await expect(page).toHaveURL(/\/en-es\/compare\/byd-seal-vs-tesla-model-3\?trips=10$/);
+  await expect(page).toHaveURL(new RegExp(`/en-es/compare/${PAIR}[?]trips=10$`));
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(headline).toHaveAttribute('data-status', 'BEST_FOR_YOU');
   await expect(headline).toHaveText('Best for your needs: BYD SEAL');
@@ -43,7 +45,7 @@ test('ES tie → 10 trips → BYD → EN keeps scenario → back to ES', async (
   await expect(page.locator('#confidence .confidence__level')).toContainText('MEDIUM');
 
   await page.locator('[data-lang-switch="es"]').click();
-  await expect(page).toHaveURL(/\/es-es\/compare\/byd-seal-vs-tesla-model-3\?trips=10$/);
+  await expect(page).toHaveURL(new RegExp(`/es-es/compare/${PAIR}[?]trips=10$`));
   await expect(headline).toHaveText('El mejor para tus necesidades: BYD SEAL');
   expect(problems).toEqual([]);
 });
@@ -76,9 +78,12 @@ test('routing: / → /es-es/, comparar alias, unknown locale 404, home in both l
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('No el mejor coche. El mejor coche para ti.');
   await page.goto('/en-es');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Not the best car. The best car for you.');
-  await expect(page.getByRole('link', { name: 'Compare cars' })).toHaveAttribute('href', '/en-es/compare/byd-seal-vs-tesla-model-3');
-  await page.goto('/es-es/comparar/byd-seal-vs-tesla-model-3');
-  await expect(page).toHaveURL(/\/es-es\/compare\/byd-seal-vs-tesla-model-3$/);
+  await expect(page.getByRole('link', { name: 'Compare cars' })).toHaveAttribute('href', '#compare');
+  // Alias `comparar` (ADR-012) y URL fija de la 7a → par canónico, conservando el escenario.
+  await page.goto(`/es-es/comparar/${PAIR}`);
+  await expect(page).toHaveURL(new RegExp(`/es-es/compare/${PAIR}$`));
+  await page.goto('/es-es/compare/byd-seal-vs-tesla-model-3?trips=10');
+  await expect(page).toHaveURL(new RegExp(`/es-es/compare/${PAIR}[?]trips=10$`));
   const res = await page.goto('/fr-fr');
   expect(res?.status()).toBe(404);
 });

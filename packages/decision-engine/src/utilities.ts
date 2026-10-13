@@ -1,7 +1,8 @@
 import type { ComparisonCandidate, ComparisonScenario } from '@vscar/comparison-engine';
-import { ALPHA_DECISION_RULES, UTILITY_CURVES, evaluateUtilityRange, type FitComponent, type PriorityLevel, type TechnicalCategory } from '@vscar/methodology';
+import { ALPHA_DECISION_RULES, UTILITY_CURVES, evaluateUtilityRange, type FitComponent, type Message, type PriorityLevel, type TechnicalCategory } from '@vscar/methodology';
 import { getSpecKeyDefinition, type SpecKey, type SpecValue } from '@vscar/vehicle-schema';
 import type { ComponentScore, MetricUtility, Range, SimplePriorities, TechnicalCapabilityResult, TechnicalCategoryScore } from './contracts.ts';
+import { message } from './messages.ts';
 
 /**
  * Utilidades INTRÍNSECAS de un candidato (curvas de `@vscar/methodology`, nunca min–max entre candidatos):
@@ -104,13 +105,14 @@ export const priorityLevels = (p: SimplePriorities): Record<'COST' | 'SPACE' | '
 });
 
 /** Relevancia de la autonomía según el uso (cotas de `for-you-v1`). */
-export function rangeRelevance(s: ComparisonScenario, smallestRangeKm: number): { multiplier: number; note: string } {
+export function rangeRelevance(s: ComparisonScenario, smallestRangeKm: number): { multiplier: number; note: string; noteMessage: Message } {
   const rr = R.range_relevance;
-  if ((s.longTripsPerYear ?? 0) >= rr.many_long_trips) return { multiplier: rr.high_multiplier, note: 'frequent long trips: range matters more' };
+  const params = { ...(s.longTripsPerYear !== undefined ? { longTripsPerYear: s.longTripsPerYear } : {}), ...(s.dailyDistanceKm !== undefined ? { dailyKm: s.dailyDistanceKm } : {}), smallestRangeKm };
+  if ((s.longTripsPerYear ?? 0) >= rr.many_long_trips) return { multiplier: rr.high_multiplier, note: 'frequent long trips: range matters more', noteMessage: message('decision.contribution.range_relevance', { relevance: 'HIGH', ...params }) };
   if ((s.longTripsPerYear ?? Infinity) <= rr.few_long_trips && s.homeChargingAvailable && s.dailyDistanceKm !== undefined && s.dailyDistanceKm * rr.daily_margin <= smallestRangeKm) {
-    return { multiplier: rr.low_multiplier, note: 'daily use far below the range, home charging, few long trips: range matters less' };
+    return { multiplier: rr.low_multiplier, note: 'daily use far below the range, home charging, few long trips: range matters less', noteMessage: message('decision.contribution.range_relevance', { relevance: 'LOW', ...params }) };
   }
-  return { multiplier: 1, note: 'standard relevance' };
+  return { multiplier: 1, note: 'standard relevance', noteMessage: message('decision.contribution.range_relevance', { relevance: 'STANDARD', ...params }) };
 }
 
 /**
@@ -122,9 +124,9 @@ export function fitComponents(c: ComparisonCandidate, scenario: ComparisonScenar
   const mult = (p: 'COST' | 'SPACE' | 'PERFORMANCE') => R.priority_multipliers[pr[p]];
   const scratch: string[] = [];
   const out: ComponentScore[] = [];
-  const add = (component: FitComponent, metrics: MetricUtility[], weight: number, note?: string) => {
+  const add = (component: FitComponent, metrics: MetricUtility[], weight: number, note?: string, noteMessage?: Message) => {
     // Utilidades exactas (sin redondeo): las comparaciones por pares cerca de un umbral no deben depender de redondeos.
-    if (metrics.length) out.push({ component, utility: mean(metrics.map((m) => m.utility)), weight, metrics, ...(note ? { note } : {}) });
+    if (metrics.length) out.push({ component, utility: mean(metrics.map((m) => m.utility)), weight, metrics, ...(note ? { note } : {}), ...(noteMessage ? { noteMessage } : {}) });
   };
   const F = R.fit_components;
   add('SPACE', F.SPACE.metrics.map((m) => metricUtility(c, m, scratch)).filter((x): x is MetricUtility => !!x), F.SPACE.base_weight * mult('SPACE'));
@@ -132,7 +134,7 @@ export function fitComponents(c: ComparisonCandidate, scenario: ComparisonScenar
     const range = F.RANGE_FIT.metrics.map((m) => metricUtility(c, m, scratch)).filter((x): x is MetricUtility => !!x);
     if (range.length) {
       const rel = rangeRelevance(scenario, range[0]!.value.min);
-      add('RANGE_FIT', range, F.RANGE_FIT.base_weight * rel.multiplier, rel.note);
+      add('RANGE_FIT', range, F.RANGE_FIT.base_weight * rel.multiplier, rel.note, rel.noteMessage);
     }
   }
   add('PERFORMANCE', F.PERFORMANCE.metrics.map((m) => metricUtility(c, m, scratch)).filter((x): x is MetricUtility => !!x), F.PERFORMANCE.base_weight * mult('PERFORMANCE'));

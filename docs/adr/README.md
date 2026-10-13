@@ -39,5 +39,6 @@ Fichero `ADR-NNN-titulo-en-kebab-case.md` con:
 | [ADR-010](ADR-010-visual-motion-stack.md) | visual-motion-stack (ThreeUI Community para atmósfera, GSAP para scroll, Motion para UI, R3F condicionado) | **ACCEPTED FOR LAB** (2026-10-02) · §3 y §4 sustituidos por ADR-011 | §21, §22, §26 |
 | [ADR-011](ADR-011-alpha-visual-stack-after-lab.md) | alpha-visual-stack-after-lab (RibbonField solo, reduced motion = estático, R3F rechazado para Alpha, SVG ONLY) | **ACCEPTED** (2026-10-02) | §21, §22, §26 |
 | [ADR-012](ADR-012-i18n-market-routing.md) | i18n-market-routing (idioma ≠ mercado, `es-es`/`en-es`, segmento canónico `compare`, hreflang por mercado) | **ACCEPTED** (2026-10-02) | §27, §28, §29 |
+| [ADR-013](ADR-013-catalog-publication-and-routing.md) | catalog-publication-and-routing (canales PUBLIC/PREVIEW por derechos, capa de datos server-only, API interna de búsqueda, rutas por par de ReferenceVariants y política de slugs) | **ACCEPTED** (2026-10-13) | §10.1, §11, §29, §32 |
 
 No es necesario escribirlos todos de inmediato: se redactan cuando la decisión se ejecuta.

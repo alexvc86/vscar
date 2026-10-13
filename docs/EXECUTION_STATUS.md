@@ -368,4 +368,60 @@ Hallazgos:
 
 Siguiente: **Step 7b — Vehicle Selector + Real Data Orchestration**.
 
+## STEP 7a.1 — Decision Engine i18n Contract · ✅ PASS (2026-10-09)
+
+Ningún texto de decisión visible depende ya de frases inglesas libres: todo lo que explica un engine es `messageKey + params` (+ `details`) y la web lo traduce con `translateDecisionMessage`. **Sin cambios de lógica ni de metodología** (`methodologyVersion` sigue 2026.6). No hace falta ADR: la arquitectura no cambia y el contrato evoluciona de forma aditiva.
+
+| Entregable | Estado |
+|---|---|
+| `@vscar/methodology`: tipo `Message`, `createMessageFactory`, `isStructuredParamValue`; `ForYouResult.applied[{code, params}]`; `NotComparableCode` en Meaningful Difference | ✅ |
+| comparison-engine: 36 claves (`comparison.requirement/metric/reason/meaningful_for_you/economic/confidence.*`) + esquema de parámetros | ✅ |
+| decision-engine: 64 claves (contribution, best_for_you, technical, economic, practical, data_confidence, why_not, verify, confidence, robustness) + `MESSAGE_PARAM_SCHEMA`; `decision.economic.not_comparable_cycles {cycleA, cycleB}` | ✅ |
+| Web: `translateDecisionMessage`, `MessageText`, view-model y capítulos sin frases compuestas en la UI; catálogos ES/EN **100 % / 100 %** | ✅ |
+| Dorado lógico antes/después (9 casos) idéntico · contrato de mensajes (16 tests) · cobertura y calidad de traducción en la web (10 tests) | ✅ |
+| Docs: "Decision Message Contract" en [ALPHA_DECISION_ENGINE_V0_1.md](decision/ALPHA_DECISION_ENGINE_V0_1.md) y [I18N_AND_MARKETS.md](web/I18N_AND_MARKETS.md) | ✅ |
+
+Verificación: `pnpm check` en verde (411 tests; MySQL omitido sin `VSCAR_TEST_DATABASE_URL`) · build de producción · 5/5 E2E · JS inicial de la comparación **189,8 KB** con polyfills (igual que en 7a; WITHIN BUDGET).
+
+Texto inglés restante, todo fuera de la UI: respaldos `text` de las 100 plantillas (solo fallback/logs); campos de texto heredados (`reason`, `explanation`, `why`, `note`, `rules`…) conservados por compatibilidad y no renderizados; `warnings` de diagnóstico (7 puntos de emisión, mensajes de desarrollador); nombres de casos sintéticos en los tests.
+
+Hallazgo: el puerto 4200 puede estar ocupado por otra aplicación local. `playwright.config.ts` acepta `VSCAR_WEB_PORT` (por defecto 4200) y el informe de bundle, `VSCAR_WEB_URL`.
+
+Siguiente: **Step 7b — Vehicle Selector + Real Data Orchestration**.
+
+## STEP 7b — Vehicle Selector + Real Data Orchestration · ✅ PASS (2026-10-13)
+
+La comparación fija y el snapshot de Dataset Core desaparecen de la web. El usuario elige dos **ReferenceVariants** del catálogo de España, el servidor las resuelve contra **MySQL**, filtra lo que no se puede publicar, y los engines deciden con las mismas entradas de siempre. Sin usados, marketplace, cuentas, favoritos ni analytics. Metodología sin cambios (2026.6).
+
+| Entregable | Estado |
+|---|---|
+| Selector búsqueda-primero (combobox ARIA, debounce 200 ms, ≥ 2 caracteres, ≤ 20 resultados, sin acentos), diferido (4,3 KB); home "elige A → B → Comparar"; Cambiar / Intercambiar en la comparación; "Comparaciones de ejemplo" | ✅ |
+| `CatalogReader` de solo lectura en `@vscar/db` (búsqueda parametrizada `utf8mb4_0900_ai_ci`, slugs + alias, huella del catálogo); migración `0006` (slug único por mercado + `variant_slug_aliases`); `corepack pnpm db:dev` | ✅ |
+| `@vscar/quality` → publicación: derechos = DATA_RIGHTS_MATRIX (test de sincronía), canales PUBLIC/PREVIEW, `PUBLIC_AVAILABLE`/`INTERNAL_AVAILABLE`/`NOT_AVAILABLE`, por campo; conflictos conservados al ocultar | ✅ |
+| Capa server-only (`apps/web/src/server/**`): `VehicleCatalogService`, `loadComparisonData` → `ComparisonData` (adapters existentes), energía filtrada por canal, `dataSnapshot`; API interna `/api/catalog/search` | ✅ |
+| Rutas `/{locale}/compare/{a}-vs-{b}` (A/B conservado), URL de la 7a y alias → 308 al canónico con escenario, 404 específica, idioma conserva par + escenario | ✅ |
+| Docs: [VEHICLE_SELECTOR_V0_1](web/VEHICLE_SELECTOR_V0_1.md) · [DATA_ORCHESTRATION_V0_1](web/DATA_ORCHESTRATION_V0_1.md) · [ADR-013](adr/ADR-013-catalog-publication-and-routing.md) | ✅ |
+
+Catálogo (mercado ES):
+- **PREVIEW**: 9 variants · 5 marcas · 5 modelos · BEV 4, ICE 3, PHEV 1, MHEV 1.
+- **PUBLIC**: **0**. Todas son `test_fixture`, 6 tienen identidad no `EXACT`, y S02/S08 tienen derechos ❓. Es el resultado honesto de ADR-009 §9, no un fallo.
+
+Verificación:
+- `pnpm check` en verde: **507 tests** (3 en vivo omitidos), con los suites MySQL ejecutados por primera vez en `check`: db 28, worker 14, web 10.
+- Build de producción y **9/9 E2E** (Chrome).
+- JS inicial de la comparación **152,7 KB** (191,3 con polyfills; 7a: 151,2/189,8).
+- Búsqueda p50 3,6 ms / p95 7,8 ms en frío.
+- SSR con escenario nuevo p50 344 ms; la robustez son ≈ 310 ms.
+- INP peor caso: escritorio 72 ms, móvil ×4 112 ms.
+
+Hallazgos:
+- **Derechos ≠ calidad**: ocultar la fuente secundaria del Model 3 deshacía un conflicto pendiente de revisión y dejaba pasar un valor. Ahora los conflictos se calculan con todos los valores. El test dorado (catálogo = ruta de la 7a, resultado completo) lo detectó.
+- **`not-found.tsx` de segmento + next-intl**: Next lo construye antes que la página y fijaba el locale por defecto para toda la petición; `/en-es` salía en español. Ahora hay un único `[locale]/not-found.tsx` con mensaje según la ruta, protegido por un test.
+- El 4200 lo ocupa a veces otra aplicación de la máquina (Angular ajeno): no se toca. VScar se prueba en 4210 (`VSCAR_WEB_PORT`/`VSCAR_WEB_URL`).
+- Base `vscar_dev` + usuario con permisos solo sobre ella creados en el MySQL de Laragon. No se tocó Apache, Nginx, `hosts` ni vhosts.
+
+Siguiente:
+- **Step 7c — Comparison URL / Share / richer catalog pages**.
+- En paralelo, en el data workstream: verificar derechos de S08/S02/S04 y curar identidades `EXACT` para que el canal PUBLIC tenga catálogo.
+
 ## STEP 4 — Primera calculadora pública · ⏳

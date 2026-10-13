@@ -12,15 +12,17 @@ export interface I18n {
   locale: AppLocale;
   t: Translator;
   f: Format;
-  /** Mensaje del engine (`messageKey` + `params`) localizado. */
-  m: (msg: Message & { metric?: string }) => string;
+  /** Mensaje del engine localizado (texto principal; los `details` los muestra `MessageText`). */
+  m: (msg: Message) => string;
+  /** Mensaje del engine con sus `details` en línea (para contextos de una sola línea). */
+  mInline: (msg: Message) => string;
 }
 
 export function useI18n(): I18n {
   const locale = parseLocaleSegment(useLocale()) ?? DEFAULT_LOCALE;
   const t = useTranslations() as unknown as Translator;
   const f = createFormat(locale.formatLocale, MARKETS[locale.market], { yes: t('technical.boolean.true'), no: t('technical.boolean.false') });
-  return { locale, t, f, m: (msg) => renderEngineMessage(msg, t, f, locale.language) };
+  return { locale, t, f, m: (msg) => renderEngineMessage(msg, t, f, { inlineDetails: false }), mInline: (msg) => renderEngineMessage(msg, t, f) };
 }
 
 export type { Format, Translator };

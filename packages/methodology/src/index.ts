@@ -21,6 +21,7 @@ import { UTILITY_CURVES } from './utility.ts';
 export * from './utility.ts';
 export * from './meaningful-difference.ts';
 export * from './for-you.ts';
+export * from './messages.ts';
 export * from './used-information.ts';
 export * from './ranges.ts';
 export * from './scenarios.ts';

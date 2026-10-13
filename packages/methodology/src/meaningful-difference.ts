@@ -78,8 +78,11 @@ const BLOCKING_BASES: ReadonlySet<MeasurementBasisField> = new Set([
   'soc_to_pct',
 ]);
 
+/** Motivo estructurado de NOT_DIRECTLY_COMPARABLE (Step 7a.1); `reason` es su respaldo inglés. */
+export type NotComparableCode = 'DIFFERENT_SPEC_KEYS' | 'NO_THRESHOLD' | 'DIFFERENT_UNITS' | 'CYCLE_UNDECLARED' | 'CYCLE_MISMATCH' | 'BASIS_UNSPECIFIED' | 'BASIS_MISMATCH' | 'NON_NUMERIC';
+
 export type ComparisonResult =
-  | { comparable: false; reason: string }
+  | { comparable: false; reason: string; code: NotComparableCode; params?: Readonly<Record<string, string>> }
   | {
       comparable: true;
       /** Clase si ambos extremos coinciden; `RANGE_DEPENDENT` si el rango la hace variar. */
@@ -116,18 +119,18 @@ export function classifyMagnitude(threshold: DifferenceThreshold, magnitude: num
  * Compara dos valores de la misma SpecKey. Nunca compara ciclos o bases distintas como equivalentes.
  */
 export function compareValues(a: SpecValue, b: SpecValue): ComparisonResult {
-  if (a.spec_key !== b.spec_key) return { comparable: false, reason: 'different SpecKeys' };
+  if (a.spec_key !== b.spec_key) return { comparable: false, reason: 'different SpecKeys', code: 'DIFFERENT_SPEC_KEYS' };
   const def = getSpecKeyDefinition(a.spec_key);
   const threshold = DIFFERENCE_THRESHOLDS[a.spec_key as SpecKey];
-  if (!def || !threshold) return { comparable: false, reason: `no meaningful-difference threshold for ${a.spec_key}` };
-  if (a.unit !== b.unit) return { comparable: false, reason: 'different units' };
+  if (!def || !threshold) return { comparable: false, reason: `no meaningful-difference threshold for ${a.spec_key}`, code: 'NO_THRESHOLD', params: { specKey: a.spec_key } };
+  if (a.unit !== b.unit) return { comparable: false, reason: 'different units', code: 'DIFFERENT_UNITS', params: { unitA: String(a.unit), unitB: String(b.unit) } };
 
   const warnings: string[] = [];
   if (def.cycle) {
     const ca = effectiveCycle(a);
     const cb = effectiveCycle(b);
-    if (ca.cycle === undefined || cb.cycle === undefined) return { comparable: false, reason: 'NOT_DIRECTLY_COMPARABLE: test cycle not declared' };
-    if (ca.cycle !== cb.cycle) return { comparable: false, reason: `NOT_DIRECTLY_COMPARABLE: ${ca.cycle} vs ${cb.cycle}` };
+    if (ca.cycle === undefined || cb.cycle === undefined) return { comparable: false, reason: 'NOT_DIRECTLY_COMPARABLE: test cycle not declared', code: 'CYCLE_UNDECLARED' };
+    if (ca.cycle !== cb.cycle) return { comparable: false, reason: `NOT_DIRECTLY_COMPARABLE: ${ca.cycle} vs ${cb.cycle}`, code: 'CYCLE_MISMATCH', params: { cycleA: ca.cycle, cycleB: cb.cycle } };
     if (ca.inferred || cb.inferred) warnings.push('cycle inferred, not declared');
   }
   for (const field of def.basis ?? []) {
@@ -135,18 +138,18 @@ export function compareValues(a: SpecValue, b: SpecValue): ComparisonResult {
     const y = b.measurement_basis?.[field];
     const unspecified = x === undefined || y === undefined || x === 'UNSPECIFIED' || y === 'UNSPECIFIED';
     if (BLOCKING_BASES.has(field)) {
-      if (unspecified) return { comparable: false, reason: `NOT_DIRECTLY_COMPARABLE: ${field} unspecified` };
-      if (x !== y) return { comparable: false, reason: `NOT_DIRECTLY_COMPARABLE: ${field} ${String(x)} vs ${String(y)}` };
+      if (unspecified) return { comparable: false, reason: `NOT_DIRECTLY_COMPARABLE: ${field} unspecified`, code: 'BASIS_UNSPECIFIED', params: { field } };
+      if (x !== y) return { comparable: false, reason: `NOT_DIRECTLY_COMPARABLE: ${field} ${String(x)} vs ${String(y)}`, code: 'BASIS_MISMATCH', params: { field, valueA: String(x), valueB: String(y) } };
     } else if (unspecified) {
       warnings.push(`${field} unspecified`);
     } else if (x !== y) {
-      return { comparable: false, reason: `NOT_DIRECTLY_COMPARABLE: ${field} ${String(x)} vs ${String(y)}` };
+      return { comparable: false, reason: `NOT_DIRECTLY_COMPARABLE: ${field} ${String(x)} vs ${String(y)}`, code: 'BASIS_MISMATCH', params: { field, valueA: String(x), valueB: String(y) } };
     }
   }
 
   const ia = interval(a);
   const ib = interval(b);
-  if (!ia || !ib) return { comparable: false, reason: 'non-numeric values' };
+  if (!ia || !ib) return { comparable: false, reason: 'non-numeric values', code: 'NON_NUMERIC' };
 
   if (a.value_min !== undefined || b.value_min !== undefined) warnings.push('homologated range');
   return { comparable: true, ...compareIntervals(threshold, ia, ib, def.higherIsBetter), warnings };

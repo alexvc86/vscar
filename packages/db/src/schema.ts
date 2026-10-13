@@ -105,10 +105,27 @@ export const referenceVariants = mysqlTable(
   (t) => [
     uniqueIndex('reference_variants_canonical_key').on(t.canonical_key),
     uniqueIndex('reference_variants_homologation').on(t.homologation_id),
-    uniqueIndex('reference_variants_market_slug_year').on(t.market_code, t.slug, t.model_year),
+    // Step 7b: el slug es la clave de routing (`/{locale}/compare/{a}-vs-{b}`), única por mercado (no por año).
+    uniqueIndex('reference_variants_market_slug').on(t.market_code, t.slug),
     index('reference_variants_group').on(t.commercial_group_key),
     index('reference_variants_search').on(t.market_code, t.manufacturer, t.model, t.model_year),
   ],
+);
+
+/**
+ * Alias de slug (Step 7b, Plan §11 `slug_history`): un slug antiguo de una variant sigue resolviendo y la web
+ * redirige (308) al canónico. El slug canónico vive en `reference_variants.slug`; el id técnico nunca cambia.
+ */
+export const variantSlugAliases = mysqlTable(
+  'variant_slug_aliases',
+  {
+    market_code: char('market_code', { length: 2 }).notNull(),
+    slug: varchar('slug', { length: 255 }).notNull(),
+    variant_id: uuid('variant_id').notNull().references(() => referenceVariants.id),
+    reason: varchar('reason', { length: 64 }).notNull(),
+    created_at: createdAt(),
+  },
+  (t) => [uniqueIndex('variant_slug_aliases_market_slug').on(t.market_code, t.slug), index('variant_slug_aliases_variant').on(t.variant_id)],
 );
 
 /** Raw ingest (Plan §33.1): metadatos del fichero bruto; el contenido vive en C:scar\data

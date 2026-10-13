@@ -10,6 +10,7 @@ import {
 } from '@vscar/methodology';
 import { getSpecKeyDefinition, type SafetyRating, type SpecKey, type SpecValue } from '@vscar/vehicle-schema';
 import type { ComparisonCandidate, ComparisonCategory, ComparisonOutcome, ComparisonScenario, MetricComparison, Range, ValueView } from './contracts.ts';
+import { cmessage, registerMetricLabel, valueParams, type Message } from './messages.ts';
 
 /**
  * Métricas técnicas por categoría (estructura del engine; los umbrales viven en methodology).
@@ -48,6 +49,16 @@ export const TECHNICAL_METRICS: readonly MetricDef[] = [
   ),
   ...m('Technology', 'numeric', ['tech.center_screen_in', 'centre screen']),
 ];
+
+for (const d of TECHNICAL_METRICS) registerMetricLabel(d.key, d.label);
+for (const [key, label] of [
+  ['saf.ncap_stars', 'NCAP stars'],
+  ['saf.ncap_adult_pct', 'NCAP adult occupant'],
+  ['saf.ncap_child_pct', 'NCAP child occupant'],
+  ['saf.ncap_vru_pct', 'NCAP vulnerable road users'],
+  ['saf.ncap_assist_pct', 'NCAP safety assist'],
+] as const)
+  registerMetricLabel(key, label);
 
 /** Métricas con regla de Meaningful For You en methodology (`for-you-v1`). */
 const FOR_YOU_KEYS = new Set([
@@ -109,13 +120,31 @@ export function outcomeOf(c: IntervalComparison, higherIsBetter: boolean | null)
 const fmt = (x: number) => (Number.isInteger(x) ? x.toLocaleString('en-US') : x.toLocaleString('en-US', { maximumFractionDigits: 2 }));
 const fmtView = (v: ValueView) => (v.min === v.max ? `${typeof v.min === 'number' ? fmt(v.min) : String(v.min)}` : `${fmt(v.min as number)}–${fmt(v.max as number)}`);
 
-function forYouOf(key: string, low: DifferenceClass, high: DifferenceClass, profile: ForYouProfile, smallest: number): { level: DifferenceClass | 'RANGE_DEPENDENT'; rules: string[] } | undefined {
+function forYouOf(key: string, low: DifferenceClass, high: DifferenceClass, profile: ForYouProfile, smallest: number): { level: DifferenceClass | 'RANGE_DEPENDENT'; rules: string[]; messages: Message[] } | undefined {
   if (!FOR_YOU_KEYS.has(key)) return undefined;
   const lo = meaningfulForYou(key as SpecKey, low, profile, { smallest_value: smallest });
   const hi = meaningfulForYou(key as SpecKey, high, profile, { smallest_value: smallest });
   const rules = [...new Set([...lo.applied_rules, ...hi.applied_rules])];
+  const applied = [...new Map([...lo.applied, ...hi.applied].map((r) => [r.code, r])).values()];
+  const messages = applied.map((r) => cmessage(`comparison.meaningful_for_you.${r.code}`, { metric: key, ...r.params }));
   const level: DifferenceClass | 'RANGE_DEPENDENT' = lo.for_you === hi.for_you ? lo.for_you : 'RANGE_DEPENDENT';
-  return { level, rules };
+  return { level, rules, messages };
+}
+
+/** Mensaje estructurado de la explicación de una métrica (desde el punto de vista de A). */
+function explainMessage(metric: string, aName: string, bName: string, a: ValueView, b: ValueView, outcome: ComparisonOutcome, meaningful: string | undefined, forYou?: { level: string; rules: string[] }): Message | undefined {
+  if (!['AHEAD', 'BEHIND', 'PRACTICAL_TIE', 'RANGE_DEPENDENT', 'DIFFERENT'].includes(outcome)) return undefined;
+  return cmessage('comparison.metric.directional', {
+    metric,
+    outcome,
+    level: meaningful,
+    a: aName,
+    b: bName,
+    ...valueParams('valueA', a),
+    ...valueParams('valueB', b),
+    unit: a.unit ?? undefined,
+    ...(forYou && forYou.rules.length && forYou.level !== meaningful ? { forYouLevel: forYou.level } : {}),
+  });
 }
 
 function explain(label: string, aName: string, bName: string, a: ValueView, b: ValueView, unit: string, outcome: ComparisonOutcome, meaningful: string | undefined, forYou?: { level: string; rules: string[] }): string | undefined {
@@ -148,7 +177,7 @@ function explain(label: string, aName: string, bName: string, a: ValueView, b: V
 function bestPair(a: readonly SpecValue[], b: readonly SpecValue[]) {
   const pairs = a.flatMap((va, i) => b.map((vb, j) => ({ va, vb, rank: i + j, key: [va.id, vb.id].sort().join('|'), cmp: compareValues(va, vb) })));
   const ok = pairs.filter((p) => p.cmp.comparable).sort((x, y) => x.rank - y.rank || x.key.localeCompare(y.key));
-  if (ok.length) return { pair: ok[0]!, reason: undefined };
+  if (ok.length) return { pair: ok[0]!, reason: undefined, first: undefined };
   const first = [...pairs].sort((x, y) => x.rank - y.rank || x.key.localeCompare(y.key))[0]!;
   return { pair: undefined, reason: first.cmp.comparable ? undefined : first.cmp.reason, first };
 }
@@ -157,20 +186,29 @@ export function compareMetric(def: MetricDef, A: ComparisonCandidate, B: Compari
   const base = { metric: def.key, label: def.label, category: def.category, warnings: [] as string[] };
 
   if (def.key === 'seats') {
-    if (A.seats === undefined || B.seats === undefined) return { ...base, outcome: 'UNKNOWN', reason: `seats missing for ${A.seats === undefined ? A.label : B.label}` };
+    if (A.seats === undefined || B.seats === undefined)
+      return { ...base, outcome: 'UNKNOWN', reason: `seats missing for ${A.seats === undefined ? A.label : B.label}`, reasonMessage: cmessage('comparison.reason.no_usable', { metric: 'seats', a: A.label, b: B.label, missingA: A.seats === undefined, missingB: B.seats === undefined }) };
     const c = compareIntervals(DIFFERENCE_THRESHOLDS.seats!, [A.seats, A.seats], [B.seats, B.seats], true);
     const { outcome, delta } = outcomeOf(c, true);
     const a: ValueView = { min: A.seats, max: A.seats, unit: 'seats' };
     const b: ValueView = { min: B.seats, max: B.seats, unit: 'seats' };
     const explanation = explain(def.label, A.label, B.label, a, b, '', outcome, c.classification);
-    return { ...base, outcome, meaningful: c.classification, a, b, delta, ...(explanation ? { explanation } : {}) };
+    const explanationMessage = explainMessage(def.key, A.label, B.label, a, b, outcome, c.classification);
+    return { ...base, outcome, meaningful: c.classification, a, b, delta, ...(explanation ? { explanation } : {}), ...(explanationMessage ? { explanationMessage } : {}) };
   }
 
   const va = A.facts[def.key] ?? [];
   const vb = B.facts[def.key] ?? [];
   if (!va.length || !vb.length) {
     const who = [!va.length ? A.label : undefined, !vb.length ? B.label : undefined].filter(Boolean).join(' and ');
-    return { ...base, outcome: 'UNKNOWN', reason: `no usable ${def.key} for ${who}`, ...(va[0] ? { a: view(va[0]) } : {}), ...(vb[0] ? { b: view(vb[0]) } : {}) };
+    return {
+      ...base,
+      outcome: 'UNKNOWN',
+      reason: `no usable ${def.key} for ${who}`,
+      reasonMessage: cmessage('comparison.reason.no_usable', { metric: def.key, a: A.label, b: B.label, missingA: !va.length, missingB: !vb.length }),
+      ...(va[0] ? { a: view(va[0]) } : {}),
+      ...(vb[0] ? { b: view(vb[0]) } : {}),
+    };
   }
 
   if (def.kind === 'descriptive') {
@@ -178,11 +216,12 @@ export function compareMetric(def: MetricDef, A: ComparisonCandidate, B: Compari
     const y = vb[0]!.value;
     const a = view(va[0]!);
     const b = view(vb[0]!);
-    if (x === undefined || y === undefined || x === 'unknown' || y === 'unknown') return { ...base, outcome: 'UNKNOWN', a, b, reason: 'value unknown' };
+    if (x === undefined || y === undefined || x === 'unknown' || y === 'unknown') return { ...base, outcome: 'UNKNOWN', a, b, reason: 'value unknown', reasonMessage: cmessage('comparison.reason.value_unknown', { metric: def.key }) };
     const outcome: ComparisonOutcome = x === y ? 'PRACTICAL_TIE' : 'DIFFERENT';
     const explanation =
       outcome === 'DIFFERENT' ? `${def.label}: ${A.label} ${String(x)} · ${B.label} ${String(y)}` : `${def.label}: both ${String(x)}`;
-    return { ...base, outcome, a, b, explanation };
+    const explanationMessage = cmessage('comparison.metric.descriptive', { metric: def.key, outcome, a: A.label, b: B.label, valueA: typeof x === 'boolean' ? x : String(x), valueB: typeof y === 'boolean' ? y : String(y) });
+    return { ...base, outcome, a, b, explanation, explanationMessage };
   }
 
   const threshold = DIFFERENCE_THRESHOLDS[def.key as DifferenceKey];
@@ -191,16 +230,34 @@ export function compareMetric(def: MetricDef, A: ComparisonCandidate, B: Compari
     // Sin umbral metodológico: solo igualdad exacta o diferencia descrita (nunca "empate práctico" inventado).
     const ia = interval(va[0]!);
     const ib = interval(vb[0]!);
-    if (!ia || !ib) return { ...base, outcome: 'UNKNOWN', reason: 'non-numeric values' };
+    if (!ia || !ib) return { ...base, outcome: 'UNKNOWN', reason: 'non-numeric values', reasonMessage: cmessage('comparison.reason.non_numeric', { metric: def.key }) };
     const same = ia[0] === ib[0] && ia[1] === ib[1];
     const a = view(va[0]!);
     const b = view(vb[0]!);
-    return { ...base, outcome: same ? 'PRACTICAL_TIE' : 'DIFFERENT', a, b, delta: { min: ia[0] - ib[1], max: ia[1] - ib[0] }, reason: 'no meaningful-difference threshold in methodology: described only', explanation: `${def.label}: ${A.label} ${fmtView(a)} vs ${B.label} ${fmtView(b)} ${a.unit ?? ''}`.trim() };
+    return {
+      ...base,
+      outcome: same ? 'PRACTICAL_TIE' : 'DIFFERENT',
+      a,
+      b,
+      delta: { min: ia[0] - ib[1], max: ia[1] - ib[0] },
+      reason: 'no meaningful-difference threshold in methodology: described only',
+      reasonMessage: cmessage('comparison.reason.no_threshold', { metric: def.key }),
+      explanation: `${def.label}: ${A.label} ${fmtView(a)} vs ${B.label} ${fmtView(b)} ${a.unit ?? ''}`.trim(),
+      explanationMessage: cmessage('comparison.metric.described', { metric: def.key, a: A.label, b: B.label, ...valueParams('valueA', a), ...valueParams('valueB', b), unit: a.unit ?? undefined }),
+    };
   }
 
-  const { pair, reason } = bestPair(va, vb);
+  const { pair, reason, first } = bestPair(va, vb);
   if (!pair || !pair.cmp.comparable) {
-    return { ...base, outcome: 'NOT_COMPARABLE', a: view(va[0]!), b: view(vb[0]!), reason: reason ?? 'not comparable' };
+    const nc = first && !first.cmp.comparable ? first.cmp : undefined;
+    return {
+      ...base,
+      outcome: 'NOT_COMPARABLE',
+      a: view(va[0]!),
+      b: view(vb[0]!),
+      reason: reason ?? 'not comparable',
+      reasonMessage: cmessage('comparison.reason.not_comparable', { metric: def.key, code: nc?.code ?? 'NON_NUMERIC', ...(nc?.params ?? {}) }),
+    };
   }
   const cmp = pair.cmp;
   const { outcome, delta } = outcomeOf(cmp, higher);
@@ -210,6 +267,7 @@ export function compareMetric(def: MetricDef, A: ComparisonCandidate, B: Compari
   const ib = interval(pair.vb)!;
   const forYou = forYouOf(def.key, cmp.low, cmp.high, profile, Math.min(ia[0], ib[0]));
   const explanation = explain(def.label, A.label, B.label, a, b, pair.va.unit ?? '', outcome, cmp.classification, forYou);
+  const explanationMessage = explainMessage(def.key, A.label, B.label, a, b, outcome, cmp.classification, forYou);
   return {
     ...base,
     outcome,
@@ -220,6 +278,7 @@ export function compareMetric(def: MetricDef, A: ComparisonCandidate, B: Compari
     delta,
     warnings: cmp.warnings,
     ...(explanation ? { explanation } : {}),
+    ...(explanationMessage ? { explanationMessage } : {}),
   };
 }
 
@@ -236,10 +295,39 @@ export function compareSafety(A: ComparisonCandidate, B: ComparisonCandidate): M
   const describe = (r: SafetyRating) => `${r.stars ?? '?'}★ ${r.authority} ${r.tested_year ?? ''} (${r.protocol_version ?? 'protocol unknown'})${r.rating_status === 'EXPIRED' ? ' — EXPIRED' : ''}`;
   const rv = (r: SafetyRating): ValueView => ({ min: r.stars ?? 'n/a', max: r.stars ?? 'n/a', unit: 'stars', note: describe(r), source_id: r.source_id });
   const base = { metric: 'saf.ncap_stars', label: 'NCAP rating', category: 'Safety' as const, warnings: [] as string[] };
-  if (!ra || !rb) return [{ ...base, outcome: 'UNKNOWN', reason: `no safety rating for ${[!ra ? A.label : undefined, !rb ? B.label : undefined].filter(Boolean).join(' and ')}`, ...(ra ? { a: rv(ra) } : {}), ...(rb ? { b: rv(rb) } : {}) }];
+  if (!ra || !rb)
+    return [
+      {
+        ...base,
+        outcome: 'UNKNOWN',
+        reason: `no safety rating for ${[!ra ? A.label : undefined, !rb ? B.label : undefined].filter(Boolean).join(' and ')}`,
+        reasonMessage: cmessage('comparison.reason.no_safety_rating', { a: A.label, b: B.label, missingA: !ra, missingB: !rb }),
+        ...(ra ? { a: rv(ra) } : {}),
+        ...(rb ? { b: rv(rb) } : {}),
+      },
+    ];
+  const ncap = (r: SafetyRating, side: 'A' | 'B') => ({
+    [`authority${side}`]: r.authority,
+    ...(r.tested_year ? { [`year${side}`]: r.tested_year } : {}),
+    ...(r.protocol_version ? { [`protocol${side}`]: r.protocol_version } : {}),
+    ...(r.stars !== undefined ? { [`stars${side}`]: r.stars } : {}),
+    [`expired${side}`]: r.rating_status === 'EXPIRED',
+  });
   const expired = [ra, rb].filter((r) => r.rating_status === 'EXPIRED').length ? ['rating EXPIRED'] : [];
   if (ra.authority !== rb.authority || ra.protocol_version !== rb.protocol_version || ra.protocol_version === undefined) {
-    return [{ ...base, outcome: 'NOT_COMPARABLE', a: rv(ra), b: rv(rb), warnings: expired, reason: `different protocols: ${describe(ra)} vs ${describe(rb)}`, explanation: `NCAP: ${A.label} ${describe(ra)} · ${B.label} ${describe(rb)} — not directly comparable` }];
+    return [
+      {
+        ...base,
+        outcome: 'NOT_COMPARABLE',
+        a: rv(ra),
+        b: rv(rb),
+        warnings: expired,
+        reason: `different protocols: ${describe(ra)} vs ${describe(rb)}`,
+        reasonMessage: cmessage('comparison.reason.ncap_protocols', { ...ncap(ra, 'A'), ...ncap(rb, 'B') }),
+        explanation: `NCAP: ${A.label} ${describe(ra)} · ${B.label} ${describe(rb)} — not directly comparable`,
+        explanationMessage: cmessage('comparison.metric.ncap_not_comparable', { a: A.label, b: B.label, ...ncap(ra, 'A'), ...ncap(rb, 'B') }),
+      },
+    ];
   }
   const out: MetricComparison[] = [];
   for (const [field, key, label] of [
@@ -253,7 +341,7 @@ export function compareSafety(A: ComparisonCandidate, B: ComparisonCandidate): M
     const y = rb[field];
     const b0 = { ...base, metric: key, label };
     if (x === undefined || y === undefined) {
-      out.push({ ...b0, outcome: 'UNKNOWN', reason: `${label} missing` });
+      out.push({ ...b0, outcome: 'UNKNOWN', reason: `${label} missing`, reasonMessage: cmessage('comparison.reason.field_missing', { metric: key }) });
       continue;
     }
     const c = compareIntervals(DIFFERENCE_THRESHOLDS[key]!, [x, x], [y, y], true);
@@ -261,7 +349,8 @@ export function compareSafety(A: ComparisonCandidate, B: ComparisonCandidate): M
     const a: ValueView = { min: x, max: x, unit: field === 'stars' ? 'stars' : '%', note: describe(ra) };
     const b: ValueView = { min: y, max: y, unit: field === 'stars' ? 'stars' : '%', note: describe(rb) };
     const explanation = explain(label, A.label, B.label, a, b, field === 'stars' ? '★' : '%', outcome, c.classification);
-    out.push({ ...b0, outcome, meaningful: c.classification, a, b, delta, warnings: expired, ...(explanation ? { explanation } : {}) });
+    const explanationMessage = explainMessage(key, A.label, B.label, a, b, outcome, c.classification);
+    out.push({ ...b0, outcome, meaningful: c.classification, a, b, delta, warnings: expired, ...(explanation ? { explanation } : {}), ...(explanationMessage ? { explanationMessage } : {}) });
   }
   return out;
 }

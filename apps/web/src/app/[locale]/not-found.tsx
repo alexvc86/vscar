@@ -1,17 +1,20 @@
-import { useI18n } from '@/i18n/use-i18n';
+import { NotFoundMessage } from '@/components/site/NotFoundMessage';
+import { SiteFooter } from '@/components/site/SiteFooter';
+import { SiteHeader } from '@/components/site/SiteHeader';
 import { localizedHref } from '@/i18n/routes';
+import { useI18n } from '@/i18n/use-i18n';
 
 export default function NotFound() {
   const { t, locale } = useI18n();
+  const home = localizedHref(locale, { page: 'home' });
   return (
-    <main id="main" className="page page--narrow">
-      <h1 className="page__title">{t('errors.notFoundTitle')}</h1>
-      <p className="muted">{t('errors.notFoundBody')}</p>
-      <p>
-        <a className="vs-button vs-button--ghost" href={localizedHref(locale, { page: 'home' })}>
-          {t('errors.backHome')}
-        </a>
-      </p>
-    </main>
+    <>
+      <SiteHeader route={{ page: 'home' }} />
+      <NotFoundMessage
+        generic={{ title: t('errors.notFoundTitle'), body: t('errors.notFoundBody'), cta: t('errors.backHome'), href: home }}
+        compare={{ title: t('catalog.notFoundTitle'), body: t('catalog.notFoundBody'), cta: t('catalog.chooseOther'), href: `${home}#compare` }}
+      />
+      <SiteFooter />
+    </>
   );
 }

@@ -1,4 +1,5 @@
 import { COMPARISON_RULES, METHODOLOGY_VERSION, methodologyFingerprint, minConfidence, type ConfidenceLevel, type DifferenceClass } from '@vscar/methodology';
+import { cmessage, type Message } from './messages.ts';
 import type { CategoryStatus } from '@vscar/quality';
 import type { AlphaCategory } from '@vscar/vehicle-schema';
 import {
@@ -66,39 +67,51 @@ function summarize(category: ComparisonCategory, metrics: readonly MetricCompari
 function dataConfidence(A: ComparisonCandidate, B: ComparisonCandidate, summaries: readonly CategorySummary[], metrics: readonly MetricComparison[], econ: EconomicComparison) {
   const R = COMPARISON_RULES.data_confidence;
   const reasons: string[] = [];
+  const messages: Message[] = [];
   const levels: ConfidenceLevel[] = ['HIGH'];
   const eligible = summaries.filter((s) => ELIGIBILITY_CATEGORIES.has(s.category));
   const notAvailable = eligible.filter((s) => s.status === 'NOT_AVAILABLE').length;
   if (eligible.length && notAvailable / eligible.length > R.low_if_not_available_share_above) {
     levels.push('LOW');
     reasons.push(`${notAvailable}/${eligible.length} categories not available for at least one vehicle`);
+    messages.push(cmessage('comparison.confidence.categories_not_available', { notAvailable, total: eligible.length }));
   }
   if (eligible.some((s) => s.status === 'PARTIAL')) {
     levels.push(R.partial_caps_at);
     reasons.push(`partial categories: ${eligible.filter((s) => s.status === 'PARTIAL').map((s) => s.category).join(', ')}`);
+    for (const s of eligible.filter((x) => x.status === 'PARTIAL')) messages.push(cmessage('comparison.confidence.partial_category', { category: s.category }));
   }
   const usedIds = new Set(metrics.flatMap((m) => [m.a?.value_id, m.b?.value_id]).filter(Boolean));
   const coarse = [A, B].flatMap((c) => Object.values(c.facts).flat()).filter((v) => usedIds.has(v.id) && R.coarse_mapping.includes(v.mapping_confidence));
   if (coarse.length) {
     levels.push(R.coarse_mapping_caps_at);
     reasons.push(`${coarse.length} compared value(s) mapped only at powertrain/generation level or inferred`);
+    messages.push(cmessage('comparison.confidence.coarse_mapping', { count: coarse.length }));
   }
   if ([A, B].some((c) => c.exclusions.some((e) => /conflict/i.test(e)))) {
     levels.push(R.conflict_caps_at);
     reasons.push('values in unresolved conflict were excluded');
+    messages.push(cmessage('comparison.confidence.conflicts_excluded'));
   }
   const determinable = metrics.filter((m) => !['UNKNOWN', 'NOT_COMPARABLE'].includes(m.outcome));
   const rangeDep = determinable.filter((m) => m.outcome === 'RANGE_DEPENDENT').length;
   if (determinable.length && rangeDep / determinable.length > R.range_dependent_share_caps_medium) {
     levels.push('MEDIUM');
     reasons.push(`${rangeDep}/${determinable.length} comparisons depend on configuration ranges`);
+    messages.push(cmessage('comparison.confidence.range_dependent', { count: rangeDep, total: determinable.length }));
   }
   if (econ.economicConfidence?.a && econ.economicConfidence.b) {
     const e = minConfidence(econ.economicConfidence.a as ConfidenceLevel, econ.economicConfidence.b as ConfidenceLevel);
     levels.push(e);
-    if (e !== 'HIGH') reasons.push(`economic confidence ${e}`);
-  } else if (econ.status !== 'COMPARED') reasons.push(`economic comparison ${econ.status.toLowerCase()}`);
-  return { level: minConfidence(...levels), reasons };
+    if (e !== 'HIGH') {
+      reasons.push(`economic confidence ${e}`);
+      messages.push(cmessage('comparison.confidence.economic_confidence', { level: e }));
+    }
+  } else if (econ.status !== 'COMPARED') {
+    reasons.push(`economic comparison ${econ.status.toLowerCase()}`);
+    messages.push(cmessage('comparison.confidence.economic_status', { status: econ.status }));
+  }
+  return { level: minConfidence(...levels), reasons, messages };
 }
 
 /** Huella del par (independiente del orden A/B): candidatos, escenario, resultados económicos y metodología. */

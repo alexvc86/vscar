@@ -2,35 +2,76 @@ import type { Message } from '@vscar/decision-engine';
 import type { Format } from './format.ts';
 
 /**
- * Adaptador DecisionMessage → next-intl. El contrato es `messageKey + params` (Step 6c): aquí solo se
- * TRADUCE y se FORMATEA; no se generan razones nuevas. Si falta la clave o algún parámetro necesario,
- * se usa el respaldo inglés del engine (`text`), nunca una cadena vacía ni la clave cruda.
+ * translateDecisionMessage — ÚNICA utilidad que convierte un mensaje de engine (Decision / Comparison) en
+ * texto localizado (Step 7a.1). Responsabilidades:
+ *   1. buscar `engine.{messageKey}` en el catálogo del idioma;
+ *   2. FORMATEAR los params según convenciones de datos (no interpretar semántica):
+ *      `xMin`/`xMax` → rango con la unidad del mensaje · `xMinMinor`/`xMaxMinor` → importe del mercado ·
+ *      enums (`metric`, `criterion`, `level`, `priority`, `category`, `status`, `unit`) → etiquetas del catálogo;
+ *   3. `details` → entre paréntesis, separados por «; »;
+ *   4. respaldo (`text`, inglés) SOLO si la clave no existe en el catálogo.
+ * La UI nunca construye frases a partir de tipos de resultado: si falta semántica, falta en el engine.
  */
 export interface Translator {
   (key: string, values?: Record<string, string | number | Date>): string;
   has(key: string): boolean;
+  raw?(key: string): unknown;
 }
 
-/** Reglas Meaningful For You (methodology `for-you-v1`, texto inglés estable) → claves de UI. */
-const FOR_YOU_RULE_KEYS: Record<string, string> = {
-  'range: daily use far below every car range, charging at home, few long trips': 'range_low_relevance',
-  'range: frequent long trips keep full relevance': 'range_full_relevance',
-  'cargo: large family': 'cargo_family',
-  'cargo: single driver without long trips': 'cargo_single',
-  'performance: low priority': 'performance_low',
-  'performance: high priority': 'performance_high',
-  'consumption: high annual mileage': 'consumption_high_km',
-  'consumption: low annual mileage': 'consumption_low_km',
+/** Argumentos que referencia una plantilla ICU (`{name}`, `{name, select …}`, `{name, plural …}`). */
+function templateArgs(raw: unknown): string[] {
+  return typeof raw === 'string' ? [...new Set([...raw.matchAll(/\{\s*([A-Za-z][A-Za-z0-9_]*)\s*[,}]/g)].map((m) => m[1]!))] : [];
+}
+
+const DIFFERENCE_LEVELS = new Set(['TIE', 'SLIGHT', 'MEANINGFUL', 'CLEAR', 'RANGE_DEPENDENT']);
+const CONFIDENCE_LEVELS = new Set(['HIGH', 'MEDIUM', 'LOW']);
+/** Params enum → espacio de etiquetas del catálogo. */
+const ENUM_NS: Record<string, string> = {
+  criterion: 'engine.criterion',
+  priority: 'engine.priority',
+  category: 'engine.category',
+  status: 'engine.status',
+  reason: 'engine.capReason',
+  component: 'engine.component',
+  code: 'engine.notComparableCode',
 };
-
-export function forYouRuleText(t: Translator, rule: string): string {
-  const k = FOR_YOU_RULE_KEYS[rule];
-  return k && t.has(`metricLayers.rules.${k}`) ? t(`metricLayers.rules.${k}`) : rule;
-}
+const LEVEL_PARAMS = new Set(['level', 'forYouLevel', 'generalLevel', 'forYou']);
+/** Params numéricos que se presentan como distancia en km (dato del mercado ES: km). */
+const KM_PARAMS = new Set(['dailyKm', 'smallestRangeKm']);
+/** Params de recuento: se pasan como número para el plural ICU. */
+const COUNT_PARAMS = new Set(['count', 'total', 'notAvailable', 'failed', 'horizonYears', 'longTripsPerYear', 'minLongTrips', 'maxLongTrips', 'familySize']);
 
 export function metricLabel(t: Translator, metric: string, fallback?: string): string {
   const key = `technical.metrics.${metric.replace(/\./g, '_')}`;
   return t.has(key) ? t(key) : (fallback ?? metric);
+}
+
+function enumLabel(t: Translator, ns: string, v: unknown): string {
+  const key = `${ns}.${String(v)}`;
+  return t.has(key) ? t(key) : String(v);
+}
+
+function levelLabel(t: Translator, v: unknown): string {
+  const s = String(v);
+  if (DIFFERENCE_LEVELS.has(s)) return enumLabel(t, 'metricLayers.level', s);
+  if (CONFIDENCE_LEVELS.has(s)) return enumLabel(t, 'engine.level', s);
+  return s;
+}
+
+/** Unidad de un mensaje → texto de unidad del mercado (las de dinero se formatean aparte). */
+function unitLabel(t: Translator, unit: string | undefined): string {
+  if (!unit) return '';
+  return t.has(`engine.unit.${unit.replace(/[^a-zA-Z0-9]/g, '_')}`) ? t(`engine.unit.${unit.replace(/[^a-zA-Z0-9]/g, '_')}`) : unit;
+}
+
+function amount(f: Format, unit: string | undefined, r: { min: number; max: number }, t: Translator): string {
+  if (unit === 'EUR_MINOR') return f.moneyMinorRange(r, 0);
+  if (unit === 'EUR' || unit === '€') return f.moneyRange(r, 0);
+  if (unit === 'EUR_PER_100KM') return `${f.moneyRange(r)}/100 km`;
+  const digits = unit && /\/100|^s$/.test(unit) ? 1 : 0;
+  const n = f.numberRange(r, digits);
+  const u = unitLabel(t, unit);
+  return u ? `${n} ${u}` : n;
 }
 
 const ROBUSTNESS_UNIT: Record<string, (f: Format, v: number, t: Translator) => string> = {
@@ -41,85 +82,90 @@ const ROBUSTNESS_UNIT: Record<string, (f: Format, v: number, t: Translator) => s
   horizon_years: (f, v, t) => t('scenario.unitsYear', { value: v }),
 };
 
-const lower = (t: Translator, ns: string, v: unknown) => {
-  const key = `${ns}.${String(v)}`;
-  return t.has(key) ? t(key) : String(v).toLowerCase().replace(/_/g, ' ');
-};
+/** Params formateados para la plantilla ICU. Solo formato y etiquetas de enums: ninguna frase. */
+export function formatParams(msg: Message, t: Translator, f: Format): Record<string, string | number> {
+  const p = msg.params as Record<string, string | number | boolean | undefined>;
+  const out: Record<string, string | number> = {};
+  const unit = typeof p.unit === 'string' ? p.unit : undefined;
+  const consumed = new Set<string>();
 
-/** Prepara los parámetros ya formateados para la plantilla ICU de cada clave. `undefined` = usar respaldo. */
-function paramsFor(m: Message & { metric?: string }, t: Translator, f: Format, english: boolean): Record<string, string | number> | undefined {
-  const p = m.params;
-  const s = (k: string) => (p[k] === undefined ? '' : String(p[k]));
-  const label = () => (m.metric ? metricLabel(t, m.metric, s('label')) : s('label'));
-  const valueText = (k: string) => {
-    const raw = p[k];
-    const n = typeof raw === 'number' ? raw : Number(raw);
-    return Number.isFinite(n) && String(raw).trim() !== '' ? f.number(n, 1) : s(k);
-  };
-  switch (m.messageKey) {
-    case 'decision.why_not.running_cost':
-      return {
-        amount: f.moneyMinorRange({ min: Number(p.amountMinMinor), max: Number(p.amountMaxMinor) }),
-        hasKm: p.annualKm ? 'yes' : 'no',
-        annualKm: p.annualKm ? t('units.kmPerYear', { value: f.number(Number(p.annualKm)) }) : '',
-        other: s('other'),
-      };
-    case 'decision.why_not.metric_behind':
-      return {
-        label: label(),
-        subject: s('subject'),
-        other: s('other'),
-        valueSubject: valueText('valueSubject'),
-        valueOther: valueText('valueOther'),
-        unit: s('unit'),
-        level: lower(t, 'metricLayers.level', p.level),
-        hasForYou: p.forYou ? 'yes' : 'no',
-        forYou: p.forYou ? lower(t, 'metricLayers.level', p.forYou) : '',
-      };
-    case 'decision.why_not.metric_different':
-      return { label: label(), subject: s('subject'), other: s('other'), valueSubject: valueText('valueSubject'), valueOther: valueText('valueOther'), unit: s('unit'), delta: f.numberRange({ min: Number(p.deltaMin), max: Number(p.deltaMax) }, 1) };
-    case 'decision.robustness.switch': {
-      const unit = ROBUSTNESS_UNIT[s('variable')];
-      const v = Number(p.switchValue);
-      return { variable: s('variable'), direction: s('direction'), value: unit ? unit(f, v, t) : f.number(v, 3) };
+  // Rangos: importes en unidades menores y rangos con la unidad del mensaje.
+  for (const k of Object.keys(p)) {
+    const minor = /^(.*)MinMinor$/.exec(k);
+    if (minor && typeof p[k] === 'number' && typeof p[`${minor[1]}MaxMinor`] === 'number') {
+      out[minor[1]!] = f.moneyMinorRange({ min: p[k] as number, max: p[`${minor[1]}MaxMinor`] as number });
+      consumed.add(k).add(`${minor[1]}MaxMinor`);
+      continue;
     }
-    case 'decision.robustness.priority_switch':
-      return { priority: lower(t, 'engine.priority', p.priority), level: lower(t, 'engine.level', p.level) };
-    case 'decision.confidence.data':
-      // `detail` es texto libre en inglés del engine: solo se muestra en inglés (hueco documentado).
-      return { level: lower(t, 'engine.level', p.level), hasDetail: english && p.detail ? 'yes' : 'no', detail: english ? s('detail') : '' };
-    case 'decision.confidence.robustness':
-    case 'decision.confidence.used_information':
-      return { level: lower(t, 'engine.level', p.level) };
-    case 'decision.confidence.cap':
-      return { level: lower(t, 'engine.level', p.level), reason: lower(t, 'engine.capReason', p.reason) };
-    case 'decision.confidence.desired_unknown':
-      return { count: Number(p.count) };
-    case 'decision.closest_option':
-      return { subject: s('subject'), failed: Number(p.failed) };
-    case 'decision.verify.requirement':
-    case 'decision.verify.desired':
-      // `what` llega en inglés: fuera del inglés se usa el respaldo completo (no se mezcla idioma en la frase).
-      if (!english) return undefined;
-      return { what: s('what'), op: s('op'), required: f.number(Number(p.required)), unit: s('unit') };
-    case 'decision.why_not.deal_breaker':
-    case 'decision.why_not.compromise':
-    case 'decision.confidence.unconfirmed_requirement':
-      if (!english) return undefined;
-      return Object.fromEntries(Object.entries(p).map(([k, v]) => [k, String(v)]));
-    default:
-      return Object.fromEntries(Object.entries(p).map(([k, v]) => [k, typeof v === 'number' ? v : String(v)]));
+    const range = /^(.*)Min$/.exec(k);
+    if (range && typeof p[k] === 'number' && typeof p[`${range[1]}Max`] === 'number') {
+      out[range[1]!] = amount(f, unit, { min: p[k] as number, max: p[`${range[1]}Max`] as number }, t);
+      consumed.add(k).add(`${range[1]}Max`);
+    }
   }
+  for (const [k, v] of Object.entries(p)) {
+    if (v === undefined || consumed.has(k)) continue;
+    if (typeof v === 'boolean') out[k] = v ? 'yes' : 'no';
+    else if (k === 'metric') out[k] = metricLabel(t, String(v));
+    else if (LEVEL_PARAMS.has(k)) out[k] = levelLabel(t, v);
+    else if (ENUM_NS[k]) out[k] = enumLabel(t, ENUM_NS[k], v);
+    else if (k === 'unit') out[k] = unitLabel(t, String(v));
+    else if ((k === 'required' || k === 'gap') && typeof v === 'number') out[k] = amount(f, unit, { min: v, max: v }, t);
+    else if (k === 'annualKm' && typeof v === 'number') out[k] = t('units.kmPerYear', { value: f.number(v) });
+    else if (KM_PARAMS.has(k) && typeof v === 'number') out[k] = `${f.number(v)} km`;
+    else if (k === 'coverage' && typeof v === 'number') out[k] = f.percent(v);
+    else if ((k === 'switchValue' || k === 'currentValue') && typeof v === 'number') {
+      const fmt = ROBUSTNESS_UNIT[String(p.variable)];
+      out[k] = fmt ? fmt(f, v, t) : f.number(v, 3);
+    } else if (COUNT_PARAMS.has(k) && typeof v === 'number') out[k] = v;
+    else if (typeof v === 'number') out[k] = f.number(v, 2);
+    else out[k] = v;
+  }
+  // Variables ICU `select` siempre presentes (evitan errores de formato si un opcional falta).
+  for (const sel of ['hasKm', 'hasForYou', 'hasAnnual', 'hasGeneral', 'hasObserved', 'hasCycles', 'hasDelta']) out[sel] ??= 'no';
+  if (p.annualKm !== undefined) out.hasKm = 'yes';
+  if (p.forYou !== undefined || p.forYouLevel !== undefined) out.hasForYou = 'yes';
+  if (p.annualMinMinor !== undefined) out.hasAnnual = 'yes';
+  if (p.generalLevel !== undefined) out.hasGeneral = 'yes';
+  if (p.observedMin !== undefined) out.hasObserved = 'yes';
+  if (p.cycleSubject !== undefined || p.cycleA !== undefined) out.hasCycles = 'yes';
+  if (p.deltaMin !== undefined) out.hasDelta = 'yes';
+  return out;
 }
 
-export function renderEngineMessage(m: Message & { metric?: string }, t: Translator, f: Format, language: string): string {
-  const key = `engine.${m.messageKey}`;
-  if (!t.has(key)) return m.text;
-  const params = paramsFor(m, t, f, language === 'en');
-  if (!params) return m.text;
-  try {
-    return t(key, params);
-  } catch {
-    return m.text;
+export interface Rendered {
+  text: string;
+  /** false = se usó el respaldo inglés del engine (clave ausente en el catálogo). */
+  fromCatalog: boolean;
+}
+
+export function translateDecisionMessage(msg: Message, t: Translator, f: Format, opts: { inlineDetails?: boolean } = {}): Rendered {
+  const key = `engine.${msg.messageKey}`;
+  let text: string;
+  let fromCatalog = true;
+  if (t.has(key)) {
+    try {
+      const values = formatParams(msg, t, f);
+      // Un opcional ausente nunca rompe la frase: los argumentos referenciados y no presentes van vacíos.
+      for (const a of templateArgs(t.raw?.(key))) values[a] ??= '';
+      text = t(key, values);
+    } catch {
+      text = msg.text;
+      fromCatalog = false;
+    }
+  } else {
+    text = msg.text;
+    fromCatalog = false;
   }
+  if (msg.details?.length && opts.inlineDetails !== false) {
+    const inner = msg.details.map((d) => translateDecisionMessage(d, t, f));
+    if (inner.some((d) => !d.fromCatalog)) fromCatalog = false;
+    text = `${text} (${inner.map((d) => d.text).join('; ')})`;
+  }
+  return { text, fromCatalog };
+}
+
+/** Atajo: solo el texto (con `details` en línea). */
+export function renderEngineMessage(msg: Message, t: Translator, f: Format, opts: { inlineDetails?: boolean } = {}): string {
+  return translateDecisionMessage(msg, t, f, opts).text;
 }

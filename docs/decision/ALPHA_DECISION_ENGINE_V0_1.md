@@ -191,3 +191,40 @@ Niveles: HIGH ≥ 80, MEDIUM ≥ 55. Topes a LOW: `PRACTICAL_TIE`, `RANGE_DEPEND
 - Un único precio eléctrico de referencia: `home_charging_share` no cambia hoy el resultado (`NO_SWITCH_IN_RANGE`).
 - La curva de utilidad del coste anual satura a costes altos: diferencias grandes entre coches muy caros de usar pesan menos (pendiente de calibración).
 - Sin Used Adjustment: `usedInformationConfidence = NOT_APPLICABLE`; `subject = USED_INSTANCE` reservado.
+
+# Decision Message Contract (Step 7a.1)
+
+> Contrato de presentación, no de lógica: **sin cambio de `methodologyVersion`** (sigue 2026.6). Un test dorado (`test/logic-golden.test.ts`, snapshot generado antes del cambio) demuestra que scores, estados, ganadores, contribuciones, robustez y confianza son idénticos.
+
+**Regla**: *Engine owns meaning. UI owns language. Market owns units/currency/data context.*
+
+Todo texto explicativo que produce un engine es un `Message` (`@vscar/methodology`, `messages.ts`):
+
+```ts
+interface Message { messageKey: string; params: MessageParams; text: string; details?: Message[] }
+```
+
+- `messageKey`: identificador estable por **significado** (`decision.economic.not_comparable_cycles`), nunca derivado del texto.
+- `params`: solo **datos**: números crudos, importes en unidades menores (`amountMinMinor`), rangos como `xMin`/`xMax`, códigos de unidad (`kg`, `km`), códigos de enumeración (`criterion: 'minTowingKg'`, `level: 'CLEAR'`, `cycleA: 'NEDC'`), ids y nombres propios de vehículo. Nunca frases, números formateados ni nombres localizados (test con `isStructuredParamValue`).
+- `text`: respaldo inglés renderizado con las plantillas del engine. Solo para depuración, logs y protección ante una traducción ausente; **no** es la fuente normal de la UI (test: sustituir todo `text` por un centinela no cambia el render).
+- `details`: mensajes subordinados (p. ej. el motivo concreto de un "no comparable").
+
+Fábricas: `createMessageFactory(templates)` en methodology; `MESSAGE_TEMPLATES` + `MESSAGE_PARAM_SCHEMA` (64 claves) en decision-engine; `COMPARISON_MESSAGE_TEMPLATES` + `COMPARISON_MESSAGE_PARAM_SCHEMA` (36 claves) en comparison-engine. Una clave desconocida lanza error. Los engines no importan next-intl, React, la web ni ficheros de locale, y no formatean números.
+
+| Campo visible | Mensaje estructurado |
+|---|---|
+| `topContributions[]` | `message` (`decision.contribution.*`) + `whyMessages[]` |
+| Technical Capability | `technicalLeader.messages` (`decision.technical.*`) |
+| Economic Fit | `economicFit.messages`, `reasonMessage` por par (`decision.economic.*`; ciclos distintos → `decision.economic.not_comparable_cycles {cycleA, cycleB}`) |
+| Practical Fit | `practicalFit[].messages`, `ComponentScore.noteMessage` (`decision.practical.*`) |
+| Alpha Best For You | `explanationMessage`, `closestCandidate.noteMessage` (`decision.best_for_you.*`) |
+| Meaningful For You | `meaningfulForYou.messages` (`comparison.meaningful_for_you.<code>`), a partir de `ForYouResult.applied[{code, params}]` |
+| Métricas / requisitos | `explanationMessage`, `reasonMessage`, `DealBreakerCheck.message` (`comparison.metric.*`, `comparison.reason.*`, `comparison.requirement.*`) |
+| Why Not / tradeoffs / verificación | `decision.why_not.*`, `decision.verify.*` con `checkParams` (`criterion`, `required`, `unit`, `op`, `observedMin/Max`) |
+| Confianza / robustez | `decision.confidence.*`, `decision.robustness.*`, `dataConfidence.messages` |
+
+`ComparisonResult` (Meaningful Difference) incorpora `code: NotComparableCode` + `params` en el caso no comparable (`CYCLE_MISMATCH {cycleA, cycleB}`, `BASIS_MISMATCH`, …).
+
+Compatibilidad: evolución **aditiva**. Los campos de texto anteriores (`text`, `reason`, `explanation`, `why`, `note`, `rules`, `warnings`) se conservan como respaldo o diagnóstico; los campos `*Message(s)` son el contrato.
+
+Tests (`packages/decision-engine/test`): `logic-golden` (9 casos: BYD vs M3 commuter y viajes largos, X3 NEDC vs Golf WLTP, León sin economía, remolque UNCONFIRMED, NO_FULL_MATCH…) y `message-contract` (16: todo campo visible tiene mensaje, toda clave tiene plantilla y esquema, parámetros requeridos presentes, parámetros estructurados, sin texto libre heredado en params, engines sin dependencias de locale).

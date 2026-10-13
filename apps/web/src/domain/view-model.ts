@@ -2,9 +2,9 @@ import type { ComparisonCategory, ComparisonOutcome, MetricComparison } from '@v
 import type { AlphaRecommendationResult, Message, WhyNotItem } from '@vscar/decision-engine';
 import type { EconomicResult } from '@vscar/economics-engine';
 import type { CandidateSide } from '@vscar/ui/tokens';
-import type { ComparisonDefinition } from './comparisons.ts';
 import type { DecisionInput } from '@vscar/decision-engine';
-import { energyContextFor, VEHICLE_IDS } from './decision.ts';
+import type { VehicleOption } from './catalog.ts';
+import type { ComparisonData, DataSnapshot, SourceInfo } from './comparison-data.ts';
 
 /**
  * Vista de la decisión, NEUTRA respecto al idioma y serializable. Solo REORGANIZA lo que devuelven los engines
@@ -18,10 +18,13 @@ export type ResultStatus = AlphaRecommendationResult['alphaBestForYou']['status'
 export interface CandidateView {
   side: CandidateSide;
   id: string;
+  /** Nombre corto (el mismo que usan los mensajes del engine). */
   name: string;
-  year: number;
+  year: number | null;
   powertrain: string;
   body: string;
+  /** Identidad comercial de la ReferenceVariant (selector, hero, cambiar coche). */
+  option: VehicleOption;
 }
 
 /** Métrica orientada: `a` = candidato A de la página (BYD), `b` = candidato B (Model 3). */
@@ -36,9 +39,10 @@ export interface MetricView {
   delta?: Range;
   meaningful?: Level;
   forYou?: Level;
-  forYouRules: string[];
-  /** Motivo estructurado del engine (texto inglés de respaldo). */
-  reason?: string;
+  /** Reglas Meaningful For You aplicadas (mensajes del engine). */
+  forYouMessages: Message[];
+  /** Motivo de UNKNOWN / NOT_COMPARABLE (mensaje del engine). */
+  reasonMessage?: Message;
   /** Lado que va por delante (si la métrica tiene dirección). */
   leader?: CandidateSide;
 }
@@ -49,8 +53,8 @@ export interface ContributionView {
   level?: Level;
   /** Lado favorecido. */
   side?: CandidateSide;
-  /** Respaldo en inglés del engine. */
-  text: string;
+  message: Message;
+  whyMessages: Message[];
 }
 
 export interface WhyNotView {
@@ -68,6 +72,8 @@ export interface EconomicsView {
   /** Diferencia anual (positivo: A cuesta más). */
   annualDelta?: Range;
   meaningful?: string;
+  /** Explicación del Economic Fit (mensajes del engine). */
+  messages: Message[];
 }
 
 export interface EnergyReferenceView {
@@ -101,7 +107,11 @@ export interface DecisionView {
   economics: EconomicsView;
   energy: EnergyReferenceView;
   technical: Record<CandidateSide, { score?: Range; coverage: number }>;
-  practical: Record<CandidateSide, { status: string; score?: Range }>;
+  technicalMessages: Message[];
+  practical: Record<CandidateSide, { status: string; score?: Range; messages: Message[] }>;
+  /** Explicación del resultado (Alpha Best For You). */
+  explanation: Message;
+  closestNote?: Message;
   whyNot: WhyNotView[];
   tradeoffs: WhyNotView['items'];
   verify: Message[];
@@ -110,6 +120,10 @@ export interface DecisionView {
   robustness?: { status: string; level: string; messages: Message[] };
   versions: { engine: string; methodology: string; decisionRules: string; scenarioHash: string };
   provenance: { sourceIds: string[] };
+  /** Fuentes usadas, con su estado de derechos (para "Cómo lo calculamos"). */
+  sources: SourceInfo[];
+  dataSnapshot: DataSnapshot;
+  channel: ComparisonData['channel'];
 }
 
 /** Categorías de la capa de detalles (Step 7a §76); Size + Practicality → Space. */
@@ -141,23 +155,21 @@ export function orientMetric(m: MetricComparison, pairAId: string, pageAId: stri
     ...(delta ? { delta } : {}),
     ...(m.meaningful ? { meaningful: m.meaningful } : {}),
     ...(m.meaningfulForYou ? { forYou: m.meaningfulForYou.level } : {}),
-    forYouRules: m.meaningfulForYou?.rules ?? [],
-    ...(m.reason ? { reason: m.reason } : {}),
+    forYouMessages: m.meaningfulForYou?.messages ?? [],
+    ...(m.reasonMessage ? { reasonMessage: m.reasonMessage } : {}),
     ...(outcome === 'AHEAD' ? { leader: 'a' as const } : outcome === 'BEHIND' ? { leader: 'b' as const } : {}),
   };
 }
 
 const hasValue = (m: MetricView) => m.a !== undefined || m.b !== undefined;
 
-export function buildDecisionView(def: ComparisonDefinition, input: DecisionInput, result: AlphaRecommendationResult, robustnessComputed: boolean): DecisionView {
-  const [va, vb] = def.vehicles;
-  const idA = VEHICLE_IDS[va.key];
-  const idB = VEHICLE_IDS[vb.key];
+export function buildDecisionView(data: ComparisonData, input: DecisionInput, result: AlphaRecommendationResult, robustnessComputed: boolean): DecisionView {
+  const [va, vb] = data.vehicles;
+  const idA = va.option.id;
+  const idB = vb.option.id;
   const side = (id?: string) => sideOf(id, idA);
-  const candidates: [CandidateView, CandidateView] = [
-    { side: 'a', id: idA, name: va.name, year: va.year, powertrain: va.powertrain, body: va.body },
-    { side: 'b', id: idB, name: vb.name, year: vb.year, powertrain: vb.powertrain, body: vb.body },
-  ];
+  const candidate = (v: ComparisonData['vehicles'][number]): CandidateView => ({ side: v.side, id: v.option.id, name: v.label, year: v.option.year, powertrain: v.option.powertrainType, body: v.option.bodyType, option: v.option });
+  const candidates: [CandidateView, CandidateView] = [candidate(va), candidate(vb)];
 
   const pair = input.comparison.pairs.find((p) => [p.candidateAId, p.candidateBId].includes(idA) && [p.candidateAId, p.candidateBId].includes(idB))!;
   const tech = pair.technicalComparisons.map((m) => orientMetric(m, pair.candidateAId, idA));
@@ -171,7 +183,7 @@ export function buildDecisionView(def: ComparisonDefinition, input: DecisionInpu
 
   const reasons: ContributionView[] = result.topContributions.slice(0, 3).map((c) => {
     const m = c.metric ? byMetric.get(c.metric) : undefined;
-    return { component: c.component, ...(c.metric ? { metric: c.metric } : {}), ...(c.level ? { level: c.level as Level } : {}), ...(m?.leader ? { side: m.leader } : {}), text: c.text };
+    return { component: c.component, ...(c.metric ? { metric: c.metric } : {}), ...(c.level ? { level: c.level as Level } : {}), ...(m?.leader ? { side: m.leader } : {}), message: c.message, whyMessages: c.whyMessages };
   });
 
   // Métricas protagonistas: las de las contribuciones; en un empate, las diferencias generales ≥ MEANINGFUL que
@@ -207,6 +219,7 @@ export function buildDecisionView(def: ComparisonDefinition, input: DecisionInpu
     perSide,
     ...(annualMetric?.delta ? { annualDelta: annualMetric.delta } : {}),
     ...(annualMetric?.meaningful ? { meaningful: annualMetric.meaningful } : {}),
+    messages: econ.messages,
   };
 
   // Energía de referencia del mercado, tal como la usó el Economics Engine.
@@ -214,7 +227,7 @@ export function buildDecisionView(def: ComparisonDefinition, input: DecisionInpu
   const elec = used.find((e) => e.energy === 'ELECTRICITY');
   const fuelUsed = used.find((e) => e.energy === 'FUEL');
   const scenarioShare = input.scenario.comparison?.homeChargingShare ?? 1;
-  const refFuel = energyContextFor(def.market).fuel.PETROL_95_E5;
+  const refFuel = data.energy.fuel.PETROL_95_E5;
   const energy: EnergyReferenceView = {
     ...(elec
       ? { electricity: { value: elec.value, unit: elec.unit, origin: elec.origin, ...(elec.observationDate ? { date: elec.observationDate } : {}), ...(elec.price_basis ? { basis: elec.price_basis } : {}), ...(elec.taxes ? { taxes: elec.taxes } : {}), ...(elec.source_id ? { sourceId: elec.source_id } : {}) } }
@@ -231,9 +244,9 @@ export function buildDecisionView(def: ComparisonDefinition, input: DecisionInpu
     side: side(w.candidateId)!,
     kind: w.kind,
     onlyMinor: w.onlyMinor,
-    items: w.items.map((i) => ({ messageKey: i.messageKey, params: i.params, text: i.text, type: i.type, severity: i.severity, ...(i.metric ? { metric: i.metric } : {}) })),
+    items: w.items.map((i) => ({ messageKey: i.messageKey, params: i.params, text: i.text, ...(i.details ? { details: i.details } : {}), type: i.type, severity: i.severity, ...(i.metric ? { metric: i.metric } : {}) })),
   }));
-  const tradeoffs = result.tradeoffsForSelected.map((i) => ({ messageKey: i.messageKey, params: i.params, text: i.text, type: i.type, severity: i.severity, ...(i.metric ? { metric: i.metric } : {}) }));
+  const tradeoffs = result.tradeoffsForSelected.map((i) => ({ messageKey: i.messageKey, params: i.params, text: i.text, ...(i.details ? { details: i.details } : {}), type: i.type, severity: i.severity, ...(i.metric ? { metric: i.metric } : {}) }));
 
   const metricsByCategory = DETAIL_CATEGORIES.map((category) => ({ category, metrics: all.filter((m) => toDetail(m.category) === category && hasValue(m)) })).filter((c) => c.metrics.length > 0);
 
@@ -251,7 +264,7 @@ export function buildDecisionView(def: ComparisonDefinition, input: DecisionInpu
   const sources = [...new Set(input.candidates.flatMap((c) => (c.economic as EconomicResult | undefined)?.provenance.sources.map((s) => s.source_id) ?? []))].sort();
 
   return {
-    slug: def.slug,
+    slug: data.pairSlug,
     status,
     ...(selected ? { selected } : {}),
     tied: (b4y.tiedIds ?? []).map((id) => side(id)!).sort(),
@@ -264,15 +277,24 @@ export function buildDecisionView(def: ComparisonDefinition, input: DecisionInpu
     economics,
     energy,
     technical: { a: { ...(techOf(idA)?.score ? { score: techOf(idA)!.score! } : {}), coverage: techOf(idA)?.coverage ?? 0 }, b: { ...(techOf(idB)?.score ? { score: techOf(idB)!.score! } : {}), coverage: techOf(idB)?.coverage ?? 0 } },
-    practical: { a: { status: practicalOf(idA)?.status ?? 'UNCONFIRMED', ...(practicalOf(idA)?.score ? { score: practicalOf(idA)!.score! } : {}) }, b: { status: practicalOf(idB)?.status ?? 'UNCONFIRMED', ...(practicalOf(idB)?.score ? { score: practicalOf(idB)!.score! } : {}) } },
+    technicalMessages: result.technicalLeader.messages,
+    practical: {
+      a: { status: practicalOf(idA)?.status ?? 'UNCONFIRMED', ...(practicalOf(idA)?.score ? { score: practicalOf(idA)!.score! } : {}), messages: practicalOf(idA)?.messages ?? [] },
+      b: { status: practicalOf(idB)?.status ?? 'UNCONFIRMED', ...(practicalOf(idB)?.score ? { score: practicalOf(idB)!.score! } : {}), messages: practicalOf(idB)?.messages ?? [] },
+    },
+    explanation: b4y.explanationMessage,
+    ...(b4y.closestCandidate ? { closestNote: b4y.closestCandidate.noteMessage } : {}),
     whyNot,
     tradeoffs,
-    verify: result.requiresVerification.map((v) => ({ messageKey: v.messageKey, params: v.params, text: v.text })),
+    verify: result.requiresVerification.map((v) => ({ messageKey: v.messageKey, params: v.params, text: v.text, ...(v.details ? { details: v.details } : {}) })),
     notices: result.notices,
     confidence: { level: result.recommendationConfidence.level, reasons: result.recommendationConfidence.reasons.slice(0, 3), robustnessComputed },
     ...(robustnessComputed ? { robustness: { status: result.resultRobustness.status, level: result.resultRobustness.level, messages: result.resultRobustness.messages } } : {}),
     versions: { engine: result.engineVersion, methodology: result.methodologyVersion, decisionRules: result.decisionRulesVersion, scenarioHash: result.scenarioHash },
     provenance: { sourceIds: sources },
+    sources: data.sources,
+    dataSnapshot: data.dataSnapshot,
+    channel: data.channel,
   };
 }
 

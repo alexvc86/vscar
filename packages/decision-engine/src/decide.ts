@@ -9,6 +9,7 @@ import {
   type ConfidenceLevel,
   type DifferenceClass,
   type FitComponent,
+  type Message,
 } from '@vscar/methodology';
 import {
   DecisionScenario,
@@ -21,6 +22,7 @@ import {
   type TechnicalCapabilityResult,
 } from './contracts.ts';
 import { economicFit } from './economic-fit.ts';
+import { checkParams, message } from './messages.ts';
 import { metricOutcome, pairAlphaFit } from './pairwise.ts';
 import { practicalFit } from './practical.ts';
 import { alphaFitScore, fitComponents, priorityLevels, technicalCapability, weightedMean } from './utilities.ts';
@@ -111,19 +113,26 @@ export function decide(input: DecisionInput): AlphaDecisionResult {
 
   // Confianza de datos: combina señales existentes (comparación, economía, cobertura), sin escala nueva.
   const reasons: string[] = [];
+  const confidenceMessages: Message[] = [];
   const levels: ConfidenceLevel[] = ['HIGH'];
   for (const p of pairs) {
     levels.push(p.dataConfidence.level);
     for (const r of p.dataConfidence.reasons) reasons.push(`${label(p.candidateAId)} vs ${label(p.candidateBId)}: ${r}`);
+    if (p.dataConfidence.messages.length) confidenceMessages.push(message('decision.data_confidence.pair', { subject: label(p.candidateAId), other: label(p.candidateBId), level: p.dataConfidence.level }, p.dataConfidence.messages));
   }
-  if (econ.status === 'UNKNOWN' || econ.status === 'NOT_COMPARABLE') reasons.push(`economic fit ${econ.status.toLowerCase()}`);
+  if (econ.status === 'UNKNOWN' || econ.status === 'NOT_COMPARABLE') {
+    reasons.push(`economic fit ${econ.status.toLowerCase()}`);
+    confidenceMessages.push(message('decision.data_confidence.economic', { status: econ.status }));
+  }
   for (const t of technical) if (t.coverage < 0.5) {
     levels.push('MEDIUM');
     reasons.push(`${label(t.candidateId)}: technical data covers ${Math.round(t.coverage * 100)} % of editorial weight`);
+    confidenceMessages.push(message('decision.data_confidence.technical_coverage', { subject: label(t.candidateId), coverage: t.coverage }));
   }
   for (const p of practical) if (p.unknowns.length) {
     levels.push('MEDIUM');
     reasons.push(`${label(p.candidateId)}: ${p.unknowns.length} requirement(s) without verifiable data`);
+    confidenceMessages.push(message('decision.data_confidence.requirements_without_data', { subject: label(p.candidateId), count: p.unknowns.length }));
   }
   for (const t of technical) warnings.push(...t.warnings.map((w) => `${label(t.candidateId)}: ${w}`));
   warnings.push(...econ.warnings);
@@ -145,7 +154,7 @@ export function decide(input: DecisionInput): AlphaDecisionResult {
     practicalFit: practical,
     alphaBestForYou: alpha,
     topContributions,
-    dataConfidence: { level: minConfidence(...levels), reasons: [...new Set(reasons)] },
+    dataConfidence: { level: minConfidence(...levels), reasons: [...new Set(reasons)], messages: [...new Map(confidenceMessages.map((m) => [`${m.messageKey}|${JSON.stringify(m.params)}`, m])).values()] },
     warnings: [...new Set(warnings)],
     priorities,
     methodologyVersion: METHODOLOGY_VERSION,
@@ -159,7 +168,7 @@ export function decide(input: DecisionInput): AlphaDecisionResult {
 
 function leaderByTechnical(technical: readonly TechnicalCapabilityResult[], pairs: readonly ComparisonResult[], label: (id: string) => string): AlphaDecisionResult['technicalLeader'] {
   const scored = technical.filter((t) => t.score).map((t) => t.candidateId);
-  if (scored.length < 2) return { status: 'INSUFFICIENT_DATA', reasons: ['Technical Capability needs at least two vehicles with technical data'] };
+  if (scored.length < 2) return { status: 'INSUFFICIENT_DATA', reasons: ['Technical Capability needs at least two vehicles with technical data'], messages: [message('decision.technical.insufficient_data')] };
   // Par sobre categorías comunes (pesos renormalizados): no se comparan scores con coberturas distintas.
   const pairCmp = (x: string, y: string) => {
     const tx = technical.find((t) => t.candidateId === x)!;
@@ -173,9 +182,15 @@ function leaderByTechnical(technical: readonly TechnicalCapabilityResult[], pair
   const { winner, undominated } = tournamentFree(scored, beats);
   if (!winner) {
     const rangeDep = undominated.some((x, i) => undominated.slice(i + 1).some((y) => pairCmp(x, y)?.classification === 'RANGE_DEPENDENT'));
-    return { status: rangeDep ? 'RANGE_DEPENDENT' : 'PRACTICAL_TIE', tiedIds: [...undominated].sort(), reasons: [rangeDep ? 'technical capability depends on configuration' : 'technical capability is practically equal'] };
+    return {
+      status: rangeDep ? 'RANGE_DEPENDENT' : 'PRACTICAL_TIE',
+      tiedIds: [...undominated].sort(),
+      reasons: [rangeDep ? 'technical capability depends on configuration' : 'technical capability is practically equal'],
+      messages: [message(rangeDep ? 'decision.technical.range_dependent' : 'decision.technical.tie')],
+    };
   }
   const reasons: string[] = [];
+  const messages: Message[] = [];
   for (const y of scored.filter((y) => y !== winner)) {
     const r = pairs.find((p) => [p.candidateAId, p.candidateBId].includes(winner) && [p.candidateAId, p.candidateBId].includes(y))!;
     const ahead = [...r.technicalComparisons, ...r.economicComparison.metrics]
@@ -185,8 +200,12 @@ function leaderByTechnical(technical: readonly TechnicalCapabilityResult[], pair
       .sort((a, b) => rank(b.meaningful) - rank(a.meaningful) || a.metric.localeCompare(b.metric))
       .slice(0, 3);
     if (ahead.length) reasons.push(`Technical Capability: ${label(winner)} ahead of ${label(y)} mainly because of: ${ahead.map((m) => `${m.label} (${howMuch(m) ?? m.meaningful})`).join(', ')}`);
+    for (const m of ahead) {
+      const abs = m.delta ? { deltaMin: Math.min(Math.abs(m.delta.min), Math.abs(m.delta.max)), deltaMax: Math.max(Math.abs(m.delta.min), Math.abs(m.delta.max)) } : {};
+      messages.push(message('decision.technical.metric_ahead', { subject: label(winner), subjectId: winner, other: label(y), otherId: y, metric: m.metric, level: m.meaningful, ...abs, unit: m.a?.unit ?? undefined }));
+    }
   }
-  return { status: 'LEADER', candidateId: winner, reasons };
+  return { status: 'LEADER', candidateId: winner, reasons, messages };
 }
 
 // ------------------------------------------------------------------------------------------ best for you
@@ -215,8 +234,13 @@ function bestForYou(
     return {
       status: 'NO_FULL_MATCH',
       alphaFit: [],
-      closestCandidate: { candidateId: closest.id, failedChecks: closest.failed, note: 'informational only: it fails fewer or less severe requirements — not a recommendation' },
+      closestCandidate: { candidateId: closest.id, failedChecks: closest.failed, note: 'informational only: it fails fewer or less severe requirements — not a recommendation', noteMessage: message('decision.best_for_you.closest_note') },
       explanation: `None fully meets your requirements. ${candidates.map((c) => `${label(c.id)}: ${pf.get(c.id)!.failed.map((f) => f.reason).join('; ')}`).join(' · ')}`,
+      explanationMessage: message(
+        'decision.best_for_you.no_full_match',
+        {},
+        candidates.flatMap((c) => pf.get(c.id)!.failed.map((f) => message('decision.best_for_you.requirement_failed', { subject: label(c.id), subjectId: c.id, ...checkParams(f) }))),
+      ),
     };
   }
   const verification = (id: string) => (pf.get(id)!.status === 'UNCONFIRMED' ? { requiresVerification: pf.get(id)!.mandatoryUnknowns } : {});
@@ -229,6 +253,7 @@ function bestForYou(
       alphaFit,
       ...verification(id),
       explanation: others.length ? `${label(id)} is the only vehicle that meets your mandatory requirements.` : `${label(id)} is the only vehicle evaluated.`,
+      explanationMessage: message(others.length ? 'decision.best_for_you.only_eligible' : 'decision.best_for_you.only_evaluated', { subject: label(id), subjectId: id }),
     };
   }
   const cmpOf = (x: string, y: string) => {
@@ -238,10 +263,12 @@ function bestForYou(
   const cmps = new Map<string, ReturnType<typeof cmpOf>>();
   const key = (x: string, y: string) => `${x}|${y}`;
   for (const x of eligible) for (const y of eligible) if (x !== y) cmps.set(key(x, y), cmpOf(x, y));
-  if ([...cmps.values()].every((c) => !c)) return { status: 'INSUFFICIENT_DATA', alphaFit, explanation: 'Not enough comparable data on space, range, performance or running cost to separate the vehicles.' };
+  if ([...cmps.values()].every((c) => !c))
+    return { status: 'INSUFFICIENT_DATA', alphaFit, explanation: 'Not enough comparable data on space, range, performance or running cost to separate the vehicles.', explanationMessage: message('decision.best_for_you.insufficient_data') };
   const beats = (x: string, y: string) => cmps.get(key(x, y))?.better === 'a';
   const { winner, undominated } = tournamentFree(eligible, beats);
-  if (winner) return { status: 'BEST_FOR_YOU', candidateId: winner, alphaFit, ...verification(winner), explanation: `Best for your needs (Alpha): ${label(winner)}.` };
+  if (winner)
+    return { status: 'BEST_FOR_YOU', candidateId: winner, alphaFit, ...verification(winner), explanation: `Best for your needs (Alpha): ${label(winner)}.`, explanationMessage: message('decision.best_for_you.selected', { subject: label(winner), subjectId: winner }) };
   const tied = [...undominated].sort();
   const rangeDep = tied.some((x) => tied.some((y) => x !== y && cmps.get(key(x, y))?.classification === 'RANGE_DEPENDENT'));
   return {
@@ -251,6 +278,7 @@ function bestForYou(
     explanation: rangeDep
       ? `${tied.map(label).join(' and ')}: which one fits your needs better depends on configuration ranges.`
       : `${tied.map(label).join(' and ')} are a practical tie for your needs — no winner is forced.`,
+    explanationMessage: message(rangeDep ? 'decision.best_for_you.range_dependent' : 'decision.best_for_you.tie', { count: tied.length }),
   };
 }
 
@@ -270,7 +298,15 @@ function contributions(
   // Otros que no cumplen requisitos obligatorios: motivo decisivo.
   for (const c of candidates.filter((c) => c.id !== winner && pf.get(c.id)!.status === 'FAIL')) {
     for (const f of pf.get(c.id)!.failed) {
-      out.push({ component: 'DEAL_BREAKER', what: `${label(c.id)} does not meet a mandatory requirement`, why: 'mandatory requirement', ...(who ? { forWhom: who } : {}), text: `${label(c.id)}: ${f.reason}` });
+      out.push({
+        component: 'DEAL_BREAKER',
+        what: `${label(c.id)} does not meet a mandatory requirement`,
+        why: 'mandatory requirement',
+        ...(who ? { forWhom: who } : {}),
+        text: `${label(c.id)}: ${f.reason}`,
+        message: message('decision.contribution.deal_breaker', { subject: label(c.id), subjectId: c.id, ...checkParams(f) }),
+        whyMessages: [],
+      });
     }
   }
   // Ventajas sobre el segundo mejor elegible (mayor Alpha Fit intrínseco), por componente.
@@ -293,13 +329,52 @@ function contributions(
         const text = m.metric.startsWith('economic.')
           ? `${m.label}: ${label(winner)} costs about ${hm} less per year than ${label(runnerUp)}${who ? ` (${who})` : ''}`
           : `${m.explanation ?? `${m.label}: ${label(winner)} ahead of ${label(runnerUp)} by ${hm}`} — ${why}`;
-        factors.push({ component: comp.component, metric, what: m.label, ...(hm ? { howMuch: hm } : {}), why: [why, ...(m.meaningfulForYou?.rules ?? [])].join('; '), ...(who ? { forWhom: who } : {}), ...(level ? { level } : {}), text, weight: comp.weight, minor: rank(level) < rank(R.top_contributions.min_level) });
+        // Mensaje estructurado: valores del lado correcto del par (outcomeFor no intercambia a/b).
+        const winView = r.candidateAId === winner ? m.a : m.b;
+        const runView = r.candidateAId === winner ? m.b : m.a;
+        const absDelta = m.delta ? { min: Math.min(Math.abs(m.delta.min), Math.abs(m.delta.max)), max: Math.max(Math.abs(m.delta.min), Math.abs(m.delta.max)) } : undefined;
+        const num = (base: string, v?: { min: unknown; max: unknown }) => (v && typeof v.min === 'number' && typeof v.max === 'number' ? { [`${base}Min`]: v.min, [`${base}Max`]: v.max } : {});
+        const msg = m.metric.startsWith('economic.')
+          ? message('decision.contribution.running_cost', { subject: label(winner), subjectId: winner, other: label(runnerUp), otherId: runnerUp, amountMinMinor: absDelta?.min, amountMaxMinor: absDelta?.max, currency: 'EUR', annualKm: scenario.comparison.annualKm })
+          : message('decision.contribution.metric_ahead', {
+              metric,
+              component: comp.component,
+              subject: label(winner),
+              subjectId: winner,
+              other: label(runnerUp),
+              otherId: runnerUp,
+              ...num('value', winView),
+              ...num('otherValue', runView),
+              unit: winView?.unit ?? undefined,
+              ...(absDelta ? { deltaMin: absDelta.min, deltaMax: absDelta.max } : {}),
+              level: level ?? m.meaningful,
+              ...(m.meaningfulForYou && m.meaningfulForYou.level !== m.meaningful ? { generalLevel: m.meaningful } : {}),
+            });
+        const whyMessages: Message[] = [
+          comp.component === 'RANGE_FIT' ? comp.noteMessage : message('decision.contribution.priority', { priority: comp.component, level: pr[comp.component as 'COST' | 'SPACE' | 'PERFORMANCE'] }),
+          ...(m.meaningfulForYou?.messages ?? []),
+        ].filter((x): x is Message => !!x);
+        factors.push({
+          component: comp.component,
+          metric,
+          what: m.label,
+          ...(hm ? { howMuch: hm } : {}),
+          why: [why, ...(m.meaningfulForYou?.rules ?? [])].join('; '),
+          ...(who ? { forWhom: who } : {}),
+          ...(level ? { level } : {}),
+          text,
+          message: msg,
+          whyMessages,
+          weight: comp.weight,
+          minor: rank(level) < rank(R.top_contributions.min_level),
+        });
       }
     }
   }
   const major = factors.filter((f) => !f.minor).sort((a, b) => rank(b.level) - rank(a.level) || b.weight - a.weight || (a.metric ?? '').localeCompare(b.metric ?? ''));
   const minor = factors.filter((f) => f.minor).sort((a, b) => rank(b.level) - rank(a.level) || b.weight - a.weight || (a.metric ?? '').localeCompare(b.metric ?? ''));
   out.push(...(major.length ? major : minor).map(({ weight: _w, minor: _m, ...c }) => c));
-  for (const comp of pf.get(winner)!.compromises) out.push({ component: 'COMPROMISE', what: 'compromise', why: 'preferred target not met', text: `${label(winner)}: ${comp.reason}` });
+  for (const comp of pf.get(winner)!.compromises)
+    out.push({ component: 'COMPROMISE', what: 'compromise', why: 'preferred target not met', text: `${label(winner)}: ${comp.reason}`, message: message('decision.contribution.compromise', { subject: label(winner), subjectId: winner, ...checkParams(comp) }), whyMessages: [] });
   return out.slice(0, R.top_contributions.max);
 }
