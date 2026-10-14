@@ -543,7 +543,7 @@
     "otherSide": "Already in the comparison",
     "current": "Selected",
     "preview": "Preview",
-    "previewNote": "Private preview: some data is still pending a rights check and would not be published.",
+    "previewNote": "Preview — some data is still being verified.",
     "periodRange": "homologated {from}–{to}",
     "periodFrom": "homologated from {from}",
     "change": "Change",
@@ -571,6 +571,48 @@
       "BEV": "Electric",
       "FCEV": "Fuel cell",
       "EREV": "Extended-range electric"
-    }
+    },
+    "picker": {
+      "stepsLabel": "Selection steps",
+      "brand": "Brand",
+      "model": "Model",
+      "year": "Year",
+      "version": "Version",
+      "chooseBrand": "Choose the brand",
+      "chooseModel": "Choose the model",
+      "chooseYear": "Choose the year",
+      "chooseVersion": "Choose the version",
+      "summary": "Your car",
+      "back": "Back",
+      "searchDirect": "Search directly",
+      "browse": "Browse by brand",
+      "modelsCount": "{count, plural, one {# model} other {# models}}",
+      "yearUnknown": "Year unknown",
+      "noVersions": "No versions are available for this year.",
+      "chooseThisCar": "Choose this car",
+      "technicalDetails": "Technical details",
+      "identityStatus": "Identity status",
+      "identityUnconfirmed": "Identity unconfirmed",
+      "previewNotice": "Preview — some data is still being verified.",
+      "emptyPublic": "We're still verifying the vehicles available for publication.",
+      "loading": "Loading…",
+      "genericSilhouette": "Generic silhouette",
+      "imagePreview": "Image being verified",
+      "transmission": {
+        "manual": "Manual",
+        "automatic": "Automatic",
+        "dct": "Dual-clutch",
+        "cvt": "CVT",
+        "ecvt": "e-CVT",
+        "single_speed": "Single-speed"
+      },
+      "drivetrain": {
+        "FWD": "Front-wheel drive",
+        "RWD": "Rear-wheel drive",
+        "AWD": "All-wheel drive"
+      },
+      "powertrainLabel": "Powertrain"
+    },
+    "cycle": "{cycle} homologation"
   }
 }

@@ -1,12 +1,13 @@
 import { expect, test, type Page } from '@playwright/test';
 
 /**
- * Step 7b — selector real + orquestación (catálogo MySQL de desarrollo, canal PREVIEW).
- * Flujo del brief §118 + teclado, bloqueo de "mismo coche", Escape, atrás/adelante y 404 específica.
+ * Step 7b.2 — VehiclePicker: Marca → Modelo → Año → Versión (por defecto) y "Buscar directamente" (atajo), sobre el
+ * catálogo MySQL de desarrollo (canal PREVIEW). El último paso resuelve SIEMPRE una ReferenceVariant concreta.
  */
+const GOLF18_NEDC = 'volkswagen-golf-2018-advance-1-5-tsi-130-h33';
+const GOLF_ETSI = 'volkswagen-golf-style-1-5-etsi-150-dsg';
 const BYD = 'byd-seal-2026-design-rwd-82-5-kwh';
 const M3 = 'tesla-model-3-2021-standard-range-plus-e6r';
-const M3_LATE = 'tesla-model-3-2021-standard-range-plus-e6cr';
 
 function watchConsole(page: Page) {
   const problems: string[] = [];
@@ -17,129 +18,173 @@ function watchConsole(page: Page) {
   return problems;
 }
 
-async function pick(page: Page, query: string, slug: string) {
-  const search = page.getByTestId('vehicle-search');
-  await expect(search).toBeFocused();
-  await search.fill(query);
-  const option = page.locator(`[role="option"][data-slug="${slug}"]`);
-  await expect(option).toBeVisible();
-  await option.click();
+/** Recorre los 4 pasos y confirma. Comprueba el foco en el título de cada paso. */
+async function browseTo(page: Page, brand: string, model: string, year: string, slug: string) {
+  const title = page.locator('#vp-step-title');
+  await page.getByTestId(`brand-${brand}`).click();
+  await expect(title).toBeFocused();
+  await page.getByTestId(`model-${model}`).click();
+  await expect(title).toBeFocused();
+  await page.getByTestId(`year-${year}`).click();
+  await expect(title).toBeFocused();
+  await page.getByTestId(`variant-${slug}`).click();
+  await expect(title).toBeFocused();
+  await expect(page.locator('.vp-summary')).toBeVisible();
+  await page.getByTestId('choose-car').click();
 }
 
-test('home ES → choose BYD → choose Model 3 → compare → trips → EN keeps pair + scenario → swap → back/forward', async ({ page }) => {
+test('§107 home ES → Volkswagen → Golf → 2018 → version → second car → compare → change A (year + version) → EN keeps pair', async ({ page }) => {
   const problems = watchConsole(page);
   await page.goto('/es-es');
-  await expect(page.getByTestId('compare-go')).toBeDisabled();
-
-  // "Comparar coches" abre el selector del primer coche (sin pedir escenario antes).
   await page.getByTestId('home-cta').click();
   const dialog = page.getByRole('dialog');
   await expect(dialog).toHaveAccessibleName('Elige el primer coche');
-  await expect(page.locator('.picker__status')).toContainText('Escribe al menos 2 letras');
-  await pick(page, 'BYD', BYD);
-  // Flujo guiado: el segundo coche se pide a continuación.
+  await expect(page.getByTestId('picker-side')).toHaveText('Coche A');
+  await expect(page.locator('[aria-current="step"]')).toContainText('Marca');
+  // Tarjeta de modelo: una por modelo, con sus años reales y visual (silueta genérica: no hay imagen con derechos).
+  await page.getByTestId('brand-Volkswagen').click();
+  const golf = page.getByTestId('model-Golf');
+  await expect(golf).toContainText('2027 · 2018');
+  await expect(golf.locator('[data-visual="silhouette"]')).toHaveCount(1);
+  await page.getByTestId('model-Golf').click();
+  await expect(page.locator('.vp__chips button')).toHaveCount(2);
+  await page.getByTestId('year-2018').click();
+  // Misma versión comercial, dos identidades técnicas: se distinguen (NEDC / WLTP), nunca se fusionan.
+  await expect(page.locator('.vp-variant__row')).toHaveCount(2);
+  await expect(page.getByTestId(`variant-${GOLF18_NEDC}`)).toContainText('homologación NEDC');
+  await page.getByTestId(`variant-${GOLF18_NEDC}`).click();
+  await page.getByTestId('choose-car').click();
+
+  // Flujo guiado: el selector pasa al coche B.
   await expect(dialog).toHaveAccessibleName('Elige el segundo coche');
-  await page.getByTestId('vehicle-search').fill('Tesla');
-  // Dos variants técnicas con el mismo nombre comercial: se distinguen por su periodo, nunca por códigos.
-  await expect(page.locator(`[role="option"][data-slug="${M3}"]`)).toContainText('homologado');
-  await expect(dialog).not.toContainText('E6R');
-  await page.locator(`[role="option"][data-slug="${M3}"]`).click();
+  await expect(page.getByTestId('picker-side')).toHaveText('Coche B');
+  await browseTo(page, 'Tesla', 'Model 3', '2021', M3);
   await expect(dialog).toBeHidden();
-  await expect(page.getByTestId('pick-a')).toContainText('SEAL Design RWD');
-  await expect(page.getByTestId('pick-b')).toContainText('Model 3');
-
   await page.getByTestId('compare-go').click();
-  await expect(page).toHaveURL(new RegExp(`/es-es/compare/${BYD}-vs-${M3}$`));
-  const headline = page.locator('#result-title');
-  await expect(headline).toHaveAttribute('data-status', 'PRACTICAL_TIE');
+  await expect(page).toHaveURL(new RegExp(`/es-es/compare/${GOLF18_NEDC}-vs-${M3}$`));
 
-  // Cambiar el escenario cambia la decisión (pipeline cliente diferido).
-  await page.locator('a[data-scenario-link]', { hasText: '10 viajes largos' }).click();
-  await expect(page).toHaveURL(/\?trips=10$/);
-  await expect(headline).toHaveAttribute('data-status', 'BEST_FOR_YOU');
-  await expect(headline).toContainText('BYD SEAL');
+  // Escenario + cambiar A: el selector abre en el AÑO del coche actual; otro año, otra versión.
+  await page.goto(`/es-es/compare/${GOLF18_NEDC}-vs-${M3}?trips=10`);
+  await page.getByTestId('change-a').click();
+  await expect(page.locator('[aria-current="step"]')).toContainText('Año');
+  await page.getByTestId('year-2027').click();
+  await page.getByTestId(`variant-${GOLF_ETSI}`).click();
+  await page.getByTestId('choose-car').click();
+  await expect(page).toHaveURL(new RegExp(`/es-es/compare/${GOLF_ETSI}-vs-${M3}[?]trips=10$`));
 
-  // Idioma: mismo par, mismo escenario, mismo mercado.
   await page.locator('[data-lang-switch="en"]').click();
-  await expect(page).toHaveURL(new RegExp(`/en-es/compare/${BYD}-vs-${M3}\\?trips=10$`));
-  await expect(headline).toHaveText('Best for your needs: BYD SEAL');
-
-  // Intercambiar: B vs A con el mismo escenario y la misma decisión (BYD, ahora en el lado B).
-  await page.getByTestId('swap-cars').click();
-  await expect(page).toHaveURL(new RegExp(`/en-es/compare/${M3}-vs-${BYD}\\?trips=10$`));
-  await expect(headline).toHaveText('Best for your needs: BYD SEAL');
-  await expect(page.locator('.result-card--b.is-selected')).toHaveCount(1);
-
-  // Historial del navegador.
-  await page.goBack();
-  await expect(page).toHaveURL(new RegExp(`/en-es/compare/${BYD}-vs-${M3}\\?trips=10$`));
-  await expect(page.locator('.result-card--a.is-selected')).toHaveCount(1);
-  await page.goForward();
-  await expect(page).toHaveURL(new RegExp(`/en-es/compare/${M3}-vs-${BYD}\\?trips=10$`));
-  await expect(page.locator('.result-card--b.is-selected')).toHaveCount(1);
+  await expect(page).toHaveURL(new RegExp(`/en-es/compare/${GOLF_ETSI}-vs-${M3}[?]trips=10$`));
+  await expect(page.getByTestId('variant-a')).toContainText('Golf');
   expect(problems).toEqual([]);
 });
 
-test('change car on the comparison: keyboard, same-car block, Escape, scenario preserved', async ({ page }) => {
+test('step back without closing; search directly as a shortcut; swap keeps the scenario', async ({ page }) => {
   const problems = watchConsole(page);
   await page.goto(`/en-es/compare/${BYD}-vs-${M3}?trips=10`);
-  const changeA = page.getByTestId('change-a');
-  await changeA.click();
-  const dialog = page.getByRole('dialog');
-  await expect(dialog).toHaveAccessibleName('Choose the first car');
+  await page.getByTestId('change-b').click();
+  await expect(page.locator('[aria-current="step"]')).toContainText('Year');
+  await page.getByTestId('picker-back').click();
+  await expect(page.locator('[aria-current="step"]')).toContainText('Model');
+  await page.getByTestId('picker-back').click();
+  await expect(page.locator('[aria-current="step"]')).toContainText('Brand');
+  await expect(page.getByRole('dialog')).toBeVisible();
+
+  await page.getByTestId('picker-mode').click();
   const search = page.getByTestId('vehicle-search');
+  await expect(search).toBeFocused();
   await expect(search).toHaveAttribute('role', 'combobox');
-  await expect(search).toHaveAttribute('aria-controls', /.+/);
+  await search.fill('golf etsi');
+  await page.locator(`[role="option"][data-slug="${GOLF_ETSI}"]`).click();
+  await expect(page).toHaveURL(new RegExp(`/en-es/compare/${BYD}-vs-${GOLF_ETSI}[?]trips=10$`));
 
-  // A no puede ser igual que B.
-  await search.fill('model 3');
-  // La opción está `aria-disabled` (ya es el coche B); un usuario puede pulsarla igualmente y recibe el aviso.
-  await page.locator(`[role="option"][data-slug="${M3}"]`).click({ force: true });
-  await expect(dialog.getByRole('alert')).toHaveText('Choose a different car.');
-  await expect(dialog).toBeVisible();
-
-  // Escape cierra y el foco vuelve a "Change".
-  await page.keyboard.press('Escape');
-  await expect(dialog).toBeHidden();
-  await expect(changeA).toBeFocused();
-
-  // Teclado: ↓ hasta la otra variant del Model 3 e Intro.
-  await changeA.click();
-  await search.fill('tesla');
-  await expect(page.locator(`[role="option"][data-slug="${M3_LATE}"]`)).toBeVisible();
-  const activeSlug = () =>
-    page.evaluate(() => {
-      const id = document.activeElement?.getAttribute('aria-activedescendant');
-      return id ? document.getElementById(id)?.getAttribute('data-slug') : null;
-    });
-  for (let i = 0; i < 6 && (await activeSlug()) !== M3_LATE; i++) await page.keyboard.press('ArrowDown');
-  expect(await activeSlug()).toBe(M3_LATE);
-  await page.keyboard.press('Enter');
-  await expect(page).toHaveURL(new RegExp(`/en-es/compare/${M3_LATE}-vs-${M3}\\?trips=10$`));
-  await expect(page.getByTestId('variant-a')).toContainText('Model 3');
-  await expect(page.locator('#result-title')).toHaveAttribute('data-status', /.+/);
+  await page.getByTestId('swap-cars').click();
+  await expect(page).toHaveURL(new RegExp(`/en-es/compare/${GOLF_ETSI}-vs-${BYD}[?]trips=10$`));
   expect(problems).toEqual([]);
 });
 
-test('unknown vehicle → specific 404; invalid search input → controlled API error', async ({ page, request }) => {
+test('same car twice is blocked; Escape closes and returns focus to Change', async ({ page }) => {
+  await page.goto(`/en-es/compare/${BYD}-vs-${M3}`);
+  const changeA = page.getByTestId('change-a');
+  await changeA.click();
+  await page.getByTestId('step-brand').click();
+  await browseToVersion(page, 'Tesla', 'Model 3', '2021');
+  // M3 ya es el coche B: la fila está marcada y elegirla avisa en vez de seleccionar.
+  await page.getByTestId(`variant-${M3}`).click({ force: true });
+  await expect(page.getByRole('dialog').getByRole('alert')).toHaveText('Choose a different car.');
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('dialog')).toBeHidden();
+  await expect(changeA).toBeFocused();
+});
+
+async function browseToVersion(page: Page, brand: string, model: string, year: string) {
+  await page.getByTestId(`brand-${brand}`).click();
+  await page.getByTestId(`model-${model}`).click();
+  await page.getByTestId(`year-${year}`).click();
+}
+
+test('keyboard only: Tab + Enter through the four steps', async ({ page }) => {
+  await page.goto('/es-es');
+  await page.getByTestId('pick-a').focus();
+  await page.keyboard.press('Enter');
+  const title = page.locator('#vp-step-title');
+  await expect(title).toBeFocused();
+  for (const target of ['brand-SEAT', 'model-León', 'year-2026']) {
+    await page.getByTestId(target).focus();
+    await page.keyboard.press('Enter');
+    await expect(title).toBeFocused();
+  }
+  await page.locator('.vp-variant__row').first().focus();
+  await page.keyboard.press('Enter');
+  await page.getByTestId('choose-car').focus();
+  await page.keyboard.press('Enter');
+  await expect(page.getByTestId('pick-a')).toContainText('León');
+});
+
+test('§108 mobile 390 px: full-screen sheet, the four steps, select a car', async ({ browser }) => {
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+  const page = await ctx.newPage();
+  await page.goto('/es-es');
+  await page.getByTestId('home-cta').click();
+  const sheet = page.locator('.vs-picker--browse');
+  await expect(sheet).toBeVisible();
+  const box = await sheet.boundingBox();
+  expect(box?.width).toBeGreaterThanOrEqual(388);
+  await expect(page.locator('.vp__steps')).toBeHidden();
+  await expect(page.locator('.vp__progress')).toHaveText('1 / 4');
+  await page.getByTestId('brand-BYD').tap();
+  await page.getByTestId('model-SEAL').tap();
+  await page.getByTestId('year-2026').tap();
+  await expect(page.locator('.vp__progress')).toHaveText('4 / 4');
+  const row = page.getByTestId(`variant-${BYD}`);
+  const rb = await row.boundingBox();
+  expect(rb?.height).toBeGreaterThanOrEqual(44);
+  await row.tap();
+  await page.getByTestId('choose-car').tap();
+  await expect(page.getByTestId('pick-a')).toContainText('SEAL');
+  await ctx.close();
+});
+
+test('unknown vehicle → specific 404; invalid inputs → controlled API errors', async ({ page, request }) => {
   const res = await page.goto(`/es-es/compare/${BYD}-vs-no-such-car`);
   expect(res?.status()).toBe(404);
   await expect(page.getByTestId('compare-not-found')).toContainText('No encontramos uno de estos vehículos.');
-  const same = await page.goto(`/en-es/compare/${BYD}-vs-${BYD}`);
-  expect(same?.status()).toBe(404);
-  await expect(page.getByTestId('compare-not-found')).toContainText("We couldn't find one of these vehicles.");
   expect((await request.get(`/api/catalog/search?market=ES&q=${'x'.repeat(101)}`)).status()).toBe(400);
-  const ok = await request.get('/api/catalog/search?market=ES&q=leon');
-  expect((await ok.json()).results.map((r: { slug: string }) => r.slug)).toEqual(['seat-leon-2026-style-e-hybrid-204']);
+  expect((await request.get('/api/catalog/browse?market=ES&level=models')).status()).toBe(400);
 });
 
-test('ES and EN selectors list the same catalog', async ({ page }) => {
-  const list = async (locale: string) => {
+test('ES and EN pickers show the same brands, models, years and versions', async ({ page }) => {
+  const collect = async (locale: string) => {
     await page.goto(`/${locale}`);
     await page.getByTestId('pick-a').click();
-    await page.getByTestId('vehicle-search').fill('golf');
-    await expect(page.locator('[role="option"]').first()).toBeVisible();
-    return page.locator('[role="option"]').evaluateAll((els) => els.map((e) => e.getAttribute('data-slug')));
+    await page.getByTestId('brand-Tesla').click();
+    await page.getByTestId('model-Model 3').click();
+    const years = await page.locator('.vp__chips button').evaluateAll((els) => els.map((e) => e.getAttribute('data-testid')));
+    await page.getByTestId('year-2021').click();
+    await expect(page.locator('.vp-variant__row')).toHaveCount(3);
+    const versions = await page.locator('.vp-variant__row').evaluateAll((els) => els.map((e) => e.getAttribute('data-variant-id')));
+    return { years, versions };
   };
-  expect(await list('en-es')).toEqual(await list('es-es'));
+  const es = await collect('es-es');
+  expect(es.versions).toHaveLength(3);
+  expect(await collect('en-es')).toEqual(es);
 });

@@ -1,5 +1,5 @@
 import { and, count, eq, inArray, max, sql, type SQL } from 'drizzle-orm';
-import type { DatasetBundle } from '@vscar/vehicle-schema';
+import { VehicleModelMedia, type DatasetBundle } from '@vscar/vehicle-schema';
 import type { VscarDb } from './client.ts';
 import { loadBundleFrom } from './repository.ts';
 import * as t from './schema.ts';
@@ -26,11 +26,19 @@ export interface CatalogRow {
   body_type: string;
   powertrain_type: string;
   drivetrain: string;
+  transmission: string;
   sales_start: string | null;
   sales_end: string | null;
   status: string;
   homologation_valid_from: string;
   homologation_valid_to: string | null;
+  /** Ciclo de homologación (NEDC, WLTP…): distingue variants técnicas con el mismo nombre comercial (ADR-007). */
+  homologation_test_cycle: string;
+  /** Identidad técnica (ADR-007): solo para el detalle técnico de vista previa/metodología, nunca para el usuario. */
+  identification_confidence: string;
+  type_approval_number: string | null;
+  variant_code: string | null;
+  version_code: string | null;
 }
 
 export interface SlugResolution {
@@ -46,6 +54,7 @@ export interface CatalogVersion {
   variants: number;
   values: number;
   prices: number;
+  media: number;
   lastChange: string | null;
 }
 
@@ -75,11 +84,17 @@ export function createCatalogReader(db: VscarDb) {
     body_type: rv.body_type,
     powertrain_type: rv.powertrain_type,
     drivetrain: rv.drivetrain,
+    transmission: rv.transmission,
     sales_start: rv.sales_start,
     sales_end: rv.sales_end,
     status: rv.status,
     homologation_valid_from: t.homologations.valid_from,
     homologation_valid_to: t.homologations.valid_to,
+    homologation_test_cycle: t.homologations.test_cycle,
+    identification_confidence: t.homologations.identification_confidence,
+    type_approval_number: t.homologations.type_approval_number,
+    variant_code: t.homologations.variant_code,
+    version_code: t.homologations.version_code,
   };
   const base = () => db.select(columns).from(rv).innerJoin(t.homologations, eq(t.homologations.id, rv.homologation_id));
 
@@ -128,12 +143,32 @@ export function createCatalogReader(db: VscarDb) {
       return loadBundleFrom(db, inMarket);
     },
 
+    /**
+     * Media de modelo (Step 7b.2). Devuelve TODOS los registros válidos de las marcas pedidas; qué se puede mostrar en
+     * cada canal lo decide el dominio (`selectModelMedia`), nunca la consulta. Registros inválidos se descartan.
+     */
+    async listModelMedia(brands?: readonly string[]): Promise<VehicleModelMedia[]> {
+      const m = t.vehicleModelMedia;
+      const rows = await db
+        .select()
+        .from(m)
+        .where(brands?.length ? inArray(m.brand, [...brands]) : undefined)
+        .orderBy(m.brand, m.model, m.id);
+      return rows.flatMap((r) => {
+        const parsed = VehicleModelMedia.safeParse(
+          Object.fromEntries(Object.entries(r).filter(([k, v]) => v !== null && k !== 'created_at' && k !== 'updated_at')),
+        );
+        return parsed.success ? [parsed.data] : [];
+      });
+    },
+
     async catalogVersion(market: string): Promise<CatalogVersion> {
       const [v] = await db.select({ n: count(), last: max(rv.created_at) }).from(rv).where(eq(rv.market_code, market));
       const [sv] = await db.select({ n: count(), last: max(t.specValues.created_at) }).from(t.specValues).innerJoin(rv, eq(rv.id, t.specValues.variant_id)).where(eq(rv.market_code, market));
       const [p] = await db.select({ n: count(), last: max(t.vehiclePrices.created_at) }).from(t.vehiclePrices).innerJoin(rv, eq(rv.id, t.vehiclePrices.variant_id)).where(eq(rv.market_code, market));
-      const lasts = [v?.last, sv?.last, p?.last].filter((x): x is string => typeof x === 'string').sort();
-      return { variants: v?.n ?? 0, values: sv?.n ?? 0, prices: p?.n ?? 0, lastChange: lasts.at(-1) ?? null };
+      const [md] = await db.select({ n: count(), last: max(t.vehicleModelMedia.updated_at) }).from(t.vehicleModelMedia);
+      const lasts = [v?.last, sv?.last, p?.last, md?.last].filter((x): x is string => typeof x === 'string').sort();
+      return { variants: v?.n ?? 0, values: sv?.n ?? 0, prices: p?.n ?? 0, media: md?.n ?? 0, lastChange: lasts.at(-1) ?? null };
     },
   };
 }

@@ -16,6 +16,9 @@ const config: NextConfig = {
   poweredByHeader: false,
   // No generar AGENTS.md/CLAUDE.md (next dev los crea por defecto).
   agentRules: false,
+  // Media del selector (Step 7b.2): solo assets locales aprobados (`/public/media`), servidos en AVIF/WebP.
+  // Sin `remotePatterns`: una URL externa no se optimiza ni se muestra hasta que exista una lista de dominios con licencia.
+  images: { formats: ['image/avif', 'image/webp'], imageSizes: [160, 220, 320, 440], minimumCacheTTL: 2_678_400 },
   // Driver MySQL nativo de Node: fuera del bundle de servidor (solo lo usa `src/server/*`).
   serverExternalPackages: ['mysql2'],
   transpilePackages: [

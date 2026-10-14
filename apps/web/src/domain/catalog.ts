@@ -24,6 +24,11 @@ export interface VehicleOption {
    * comercial, año y powertrain (ADR-007). Fechas ISO; la UI las formatea.
    */
   period?: { from: string; to?: string };
+  /**
+   * Ciclo de homologación, SOLO cuando distingue variants con el mismo nombre comercial, año y powertrain y el periodo
+   * no basta (Golf 2018 Advance: NEDC vs WLTP). Es un hecho comprensible, no un código.
+   */
+  cycle?: string;
   /** true si la variant solo está disponible en el canal PREVIEW (derechos pendientes / registro de prueba). */
   preview?: boolean;
 }
@@ -38,6 +43,7 @@ export interface VehicleDisplayLabel {
   year: number | null;
   powertrain: string;
   period?: { from: string; to?: string };
+  cycle?: string;
 }
 
 /** Quita el prefijo de marca y modelo del nombre comercial ("BYD SEAL Design…" → "Design…"). */
@@ -50,7 +56,7 @@ export function commercialVariant(commercialName: string, brand: string, model: 
 }
 
 export function buildVehicleDisplayLabel(o: VehicleOption): VehicleDisplayLabel {
-  return { brand: o.brand, name: `${o.model} ${o.variant}`.trim(), short: `${o.brand} ${o.model}`, year: o.year, powertrain: o.powertrainType, ...(o.period ? { period: o.period } : {}) };
+  return { brand: o.brand, name: `${o.model} ${o.variant}`.trim(), short: `${o.brand} ${o.model}`, year: o.year, powertrain: o.powertrainType, ...(o.period ? { period: o.period } : {}), ...(o.cycle ? { cycle: o.cycle } : {}) };
 }
 
 /**
@@ -146,3 +152,64 @@ export const EXAMPLE_PAIRS: readonly { a: string; b: string }[] = [
 export const LEGACY_PAIRS: Readonly<Record<string, string>> = {
   'byd-seal-vs-tesla-model-3': pairSlug('byd-seal-2026-design-rwd-82-5-kwh', 'tesla-model-3-2021-standard-range-plus-e6r'),
 };
+
+// ---------------------------------------------------------------------------------------------------------------
+// Step 7b.2 — navegación Marca → Modelo → Año → Versión. DTOs mínimos (sin specs completas) servidos por el servidor
+// con los derechos ya aplicados: el cliente nunca recibe una URL de imagen que su canal no pueda mostrar.
+// ---------------------------------------------------------------------------------------------------------------
+
+/** Imagen ya autorizada para el canal. Ausente = silueta SVG del sistema (nunca una tarjeta sin visual). */
+export interface MediaView {
+  /** Asset local optimizado (`/media/…`); se sirve con next/image (AVIF/WebP). */
+  src: string;
+  width: number;
+  height: number;
+  /** DECORATIVE → `alt=""`; IDENTIFYING → "Marca Modelo". */
+  alt: 'DECORATIVE' | 'IDENTIFYING';
+  /** Nivel que resolvió la imagen (generación exacta o modelo). */
+  match: 'GENERATION' | 'MODEL';
+  attribution?: string;
+  /** Solo en PREVIEW: imagen con derechos pendientes (se señala discretamente). */
+  preview?: boolean;
+}
+
+export interface BrandOption {
+  brand: string;
+  /** Modelos seleccionables de la marca en el mercado y canal. */
+  models: number;
+}
+
+/** Tarjeta de modelo: como mucho imagen, nombre, años disponibles y una pista de generación. */
+export interface ModelCard {
+  brand: string;
+  model: string;
+  /** Generaciones explícitas del catálogo (nunca inventadas). La UI solo las muestra si distinguen algo. */
+  generations: string[];
+  /** Años modelo presentes (más reciente primero); `null` = año desconocido. */
+  years: (number | null)[];
+  bodyType: string;
+  media?: MediaView;
+  preview?: boolean;
+}
+
+export interface YearOption {
+  /** Año modelo declarado por la fuente; `null` = desconocido (nunca deducido de matriculación o del dataset). */
+  year: number | null;
+  /** Generación explícita de ese año, si existe (p. ej. "Mk7"). */
+  generations: string[];
+}
+
+/** Fila de versión: apunta EXACTAMENTE a una ReferenceVariant (`id`), nunca a un nombre comercial. */
+export interface VariantRow extends VehicleOption {
+  /** Potencia máxima en kW solo si hay un valor usable, publicable en el canal y sin conflicto. */
+  powerKw?: { min: number; max: number };
+  transmission: string;
+  drivetrain: string;
+  generation?: string;
+  media?: MediaView;
+  /** Solo PREVIEW (detalle técnico de metodología/depuración). Nunca en PUBLIC. */
+  identity?: { referenceVariantId: string; status: string; tan?: string; va?: string; ve?: string };
+}
+
+/** `year` de la API: número o `unknown`. */
+export const yearParam = (y: number | null) => (y === null ? 'unknown' : String(y));

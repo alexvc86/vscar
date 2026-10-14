@@ -424,4 +424,40 @@ Siguiente:
 - **Step 7c — Comparison URL / Share / richer catalog pages**.
 - En paralelo, en el data workstream: verificar derechos de S08/S02/S04 y curar identidades `EXACT` para que el canal PUBLIC tenga catálogo.
 
+## STEP 7b.2 — Visual Vehicle Selector + Model Media · ✅ PASS (2026-10-14)
+
+El usuario elige como piensa: **Marca → Modelo → Año → Versión** (búsqueda directa como atajo), y VScar resuelve siempre una `ReferenceVariant` técnica concreta. Nueva entidad `VehicleModelMedia`, con derechos de imagen separados de los de datos y fallback SVG obligatorio. Sin cambios de elegibilidad, identidad, rutas ni metodología.
+
+| Entregable | Estado |
+|---|---|
+| `VehiclePicker` (diferido, 10,4 KB): pasos con `aria-current`, foco en el título de cada paso, tarjetas de modelo, chips de año, filas de versión, resumen "Elegir este coche", Atrás sin cerrar, "Buscar directamente"; Sheet a pantalla completa en móvil; Motion solo para entrada, hover y selección | ✅ |
+| Desambiguación ADR-007 con hechos comprensibles: Golf 2018 "homologación NEDC / WLTP", Model 3 E6R/E6CR por periodo; detalle técnico (ID, TAN, Va, Ve, estado) solo en PREVIEW | ✅ |
+| `VehicleModelMedia` (vehicle-schema) + `RightsStatus` compartido con la DATA_RIGHTS_MATRIX; `mediaPublication`/`selectModelMedia` (quality); tabla `vehicle_model_media` (migración `0007`), `listModelMedia`/`saveModelMedia` (db) | ✅ |
+| Servicio y API interna `/api/catalog/browse` (marcas, modelos, años, versiones) con derechos de datos y de imagen aplicados en servidor; siluetas genéricas por carrocería (berlina, compacto, SUV) | ✅ |
+| Docs: [VEHICLE_SELECTOR_V0_2](web/VEHICLE_SELECTOR_V0_2.md) · [VEHICLE_MEDIA_POLICY](data/VEHICLE_MEDIA_POLICY.md) · [ADR-014](adr/ADR-014-vehicle-model-media-and-selector-flow.md) | ✅ |
+
+Catálogo (PREVIEW, ES):
+- 5 marcas, 5 modelos, 6 modelo-año (Golf 2018 y 2027; X3 2018; SEAL 2026; León 2026; Model 3 2021) y 9 versiones.
+- PUBLIC sigue en 0, con el mensaje "Todavía estamos verificando los vehículos disponibles para publicación".
+- Imágenes con derechos verificados: **0**. Todas las tarjetas muestran la silueta de su carrocería.
+
+Verificación:
+- `pnpm check` en verde: **545 tests** (3 en vivo omitidos), con MySQL en db, worker y web.
+- **12/12 E2E**, incluido el flujo §107 y móvil a 390 px.
+- Abrir el selector p50 **40 ms**; pasos p50 26–36 ms; API p50 6–8 ms.
+- JS inicial de la comparación **153,0 KB** (191,6 con polyfills).
+
+Hallazgos:
+- **Golf 2018 Advance h33/h35** compartían nombre, año, potencia y periodo: indistinguibles para el usuario. Ahora se distinguen por el ciclo de homologación (NEDC/WLTP), un hecho que además afecta a la comparabilidad.
+- **Potencia en conflicto** (Golf eTSI 110 frente a 85 kW): la fila no muestra ninguna, en vez de elegir una.
+- **Rendimiento**:
+  - `AnimatePresence mode="wait"` retenía los pasos 300–550 ms; ahora la transición es solo de entrada.
+  - `next/dynamic` (React.lazy) sumaba ~350 ms a la apertura por el retraso con el que React 19 revela contenido suspendido; ahora hay un loader propio con precarga en reposo.
+- Más suites MySQL en paralelo: `hookTimeout` amplio en db, worker y web (esperan el bloqueo compartido de `vscar_test`).
+- Cambio de idioma con el selector abierto: se cierra y se conservan comparación y escenario. No se guarda la selección parcial (documentado).
+
+Siguiente:
+- **Step 7c — Comparison URL / Share / richer catalog pages**.
+- En el data workstream: primeras imágenes con derechos verificados (propias o licenciadas) y derechos de S08/S02/S04 para el canal PUBLIC.
+
 ## STEP 4 — Primera calculadora pública · ⏳

@@ -12,7 +12,7 @@ import { comparisonData, DEMO_PAIR, memoryCatalog } from './support/catalog.ts';
 /** Step 7b: catálogo, selección y orquestación con el servicio y el orquestador REALES (lector en memoria). */
 const BYD = 'byd-seal-2026-design-rwd-82-5-kwh';
 const M3 = 'tesla-model-3-2021-standard-range-plus-e6r';
-const labels = { powertrain: { BEV: 'Eléctrico', ICE: 'Combustión', MHEV: 'Microhíbrido', PHEV: 'Híbrido enchufable' }, periodRange: 'homologado {from}–{to}', periodFrom: 'homologado desde {from}', formatLocale: 'es-ES' };
+const labels = { powertrain: { BEV: 'Eléctrico', ICE: 'Combustión', MHEV: 'Microhíbrido', PHEV: 'Híbrido enchufable' }, periodRange: 'homologado {from}–{to}', periodFrom: 'homologado desde {from}', cycle: 'homologación {cycle}', formatLocale: 'es-ES' };
 
 describe('catalog: market-aware, language-independent', () => {
   it('ES lists the selectable ReferenceVariants; another market lists nothing', async () => {

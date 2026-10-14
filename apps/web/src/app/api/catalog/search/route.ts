@@ -42,7 +42,9 @@ export async function GET(request: NextRequest) {
       powertrainType: o.powertrainType,
       bodyType: o.bodyType,
       ...(o.period ? { period: o.period } : {}),
+      ...(o.cycle ? { cycle: o.cycle } : {}),
       ...(o.preview ? { preview: true } : {}),
+      ...(o.media ? { media: o.media } : {}),
     }));
     return NextResponse.json(
       { market: parsed.data.market, query: r.query, mode: r.mode, results },

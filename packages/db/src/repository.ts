@@ -1,5 +1,5 @@
 import { eq, inArray, sql } from 'drizzle-orm';
-import { DatasetBundle, SpecValue, type DatasetBundleInput, type SpecValueInput } from '@vscar/vehicle-schema';
+import { DatasetBundle, SpecValue, VehicleModelMedia, type DatasetBundleInput, type SpecValueInput, type VehicleModelMediaInput } from '@vscar/vehicle-schema';
 import type { VscarDb } from './client.ts';
 import * as m from './mappers.ts';
 import * as t from './schema.ts';
@@ -151,6 +151,41 @@ export function createCatalogRepository(db: VscarDb) {
     /** Alias de slug (curación): el slug antiguo sigue resolviendo y la web redirige al canónico. Idempotente. */
     async addSlugAlias(input: { market_code: string; slug: string; variant_id: string; reason: string }): Promise<void> {
       await db.insert(t.variantSlugAliases).values(input).onDuplicateKeyUpdate({ set: { slug: sql`slug` } });
+    },
+
+    /**
+     * Media de modelo (curación, Step 7b.2): valida contra el contrato y la política (licencia, derechos, origen)
+     * antes de guardar. Idempotente por id (un registro existente se actualiza: los derechos pueden cambiar).
+     */
+    async saveModelMedia(records: readonly VehicleModelMediaInput[]): Promise<number> {
+      const parsed = records.map((r) => VehicleModelMedia.parse(r));
+      for (const m of parsed) {
+        const row = {
+          id: m.id,
+          brand: m.brand,
+          model: m.model,
+          generation_code: m.generation_code ?? null,
+          model_year_from: m.model_year_from ?? null,
+          model_year_to: m.model_year_to ?? null,
+          role: m.role,
+          media_type: m.media_type,
+          asset_path: m.asset_path ?? null,
+          external_url: m.external_url ?? null,
+          width: m.width,
+          height: m.height,
+          origin: m.origin,
+          rights_status: m.rights_status,
+          source_id: m.source_id ?? null,
+          attribution: m.attribution ?? null,
+          license: m.license ?? null,
+          verified_at: m.verified_at ?? null,
+          alt: m.alt,
+          notes: m.notes ?? null,
+        };
+        const { id: _id, ...update } = row;
+        await db.insert(t.vehicleModelMedia).values(row).onDuplicateKeyUpdate({ set: update });
+      }
+      return parsed.length;
     },
 
     /** Variants técnicas que comparten denominación comercial (ADR-007). */

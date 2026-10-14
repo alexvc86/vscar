@@ -94,4 +94,33 @@ describe.skipIf(!url)('catalog reader (MySQL)', () => {
     expect(after.values).toBe(before.values + 1);
     expect(after).not.toEqual(before);
   });
+
+  it('model media (Step 7b.2): round-trip, policy validated on save, part of the catalog fingerprint', async () => {
+    const repo = createCatalogRepository(handle.db);
+    // Registro SINTÉTICO (test): no apunta a ningún asset real.
+    const synthetic = {
+      id: '00000000-0000-4000-8000-0000000000e1',
+      brand: 'Volkswagen',
+      model: 'Golf',
+      generation_code: 'Mk7',
+      role: 'SELECTOR' as const,
+      media_type: 'IMAGE' as const,
+      asset_path: '/media/synthetic/golf-mk7.webp',
+      width: 640,
+      height: 360,
+      origin: 'SELF_CREATED' as const,
+      rights_status: 'PENDING' as const,
+      notes: 'synthetic test record',
+    };
+    const before = await reader.catalogVersion('ES');
+    await repo.saveModelMedia([synthetic]);
+    expect(await reader.listModelMedia(['Volkswagen'])).toEqual([{ ...synthetic, alt: 'IDENTIFYING' }]);
+    expect(await reader.listModelMedia(['BYD'])).toEqual([]);
+    expect((await reader.catalogVersion('ES')).media).toBe(before.media + 1);
+    // Política: derechos verificados sin licencia → rechazado antes de llegar a MySQL.
+    await expect(repo.saveModelMedia([{ ...synthetic, id: '00000000-0000-4000-8000-0000000000e2', rights_status: 'VERIFIED' }])).rejects.toThrow(/license/);
+    // Idempotente por id: los derechos de un registro pueden cambiar.
+    await repo.saveModelMedia([{ ...synthetic, rights_status: 'DENIED' }]);
+    expect((await reader.listModelMedia())[0]?.rights_status).toBe('DENIED');
+  });
 });

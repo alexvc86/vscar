@@ -1,4 +1,4 @@
-import { ALPHA_CATEGORIES, type DatasetBundle, type Homologation, type ReferenceVariant, type SafetyRating, type Source, type SpecValue, type VehiclePrice } from '@vscar/vehicle-schema';
+import { ALPHA_CATEGORIES, type DatasetBundle, type RightsStatus, type Homologation, type ReferenceVariant, type SafetyRating, type Source, type SpecValue, type VehiclePrice } from '@vscar/vehicle-schema';
 import { detectConflicts } from './conflicts.ts';
 import { evaluateEligibility, vehiclePageEligible } from './eligibility.ts';
 
@@ -10,8 +10,8 @@ import { evaluateEligibility, vehiclePageEligible } from './eligibility.ts';
  * Un test compara este registro con la tabla de la matriz: si la matriz cambia, este fichero debe cambiar.
  */
 
-/** Estado de un derecho, tal como lo expresa la matriz: ✅ · ⚠️ · ❓ · ❌. */
-export type RightState = 'VERIFIED' | 'CONDITIONAL' | 'PENDING' | 'DENIED';
+/** Estado de un derecho, tal como lo expresa la matriz: ✅ · ⚠️ · ❓ · ❌ (`RightsStatus` de vehicle-schema, compartido con la media). */
+export type RightState = RightsStatus;
 
 export interface SourceRights {
   store: RightState;

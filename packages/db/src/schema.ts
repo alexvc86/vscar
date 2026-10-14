@@ -128,6 +128,40 @@ export const variantSlugAliases = mysqlTable(
   (t) => [uniqueIndex('variant_slug_aliases_market_slug').on(t.market_code, t.slug), index('variant_slug_aliases_variant').on(t.variant_id)],
 );
 
+/**
+ * Media de MODELO (Step 7b.2, ADR-014): imagen por marca + modelo (+ generación), con derechos PROPIOS (≠ datos).
+ * Sin columna de canal: el canal se DERIVA de `rights_status` + `origin` (`mediaPublication` en @vscar/quality),
+ * así no pueden contradecirse. Sin mercado: una imagen del modelo vale en cualquier mercado (los derechos, no).
+ */
+export const vehicleModelMedia = mysqlTable(
+  'vehicle_model_media',
+  {
+    id: uuid('id').primaryKey(),
+    brand: varchar('brand', { length: 64 }).notNull(),
+    model: varchar('model', { length: 64 }).notNull(),
+    generation_code: varchar('generation_code', { length: 32 }),
+    model_year_from: smallint('model_year_from'),
+    model_year_to: smallint('model_year_to'),
+    role: varchar('role', { length: 16 }).notNull(),
+    media_type: varchar('media_type', { length: 8 }).notNull(),
+    asset_path: varchar('asset_path', { length: 255 }),
+    external_url: url('external_url'),
+    width: smallint('width').notNull(),
+    height: smallint('height').notNull(),
+    origin: varchar('origin', { length: 24 }).notNull(),
+    rights_status: varchar('rights_status', { length: 16 }).notNull(),
+    source_id: uuid('source_id').references(() => sources.id),
+    attribution: varchar('attribution', { length: 255 }),
+    license: varchar('license', { length: 255 }),
+    verified_at: isoDate('verified_at'),
+    alt: varchar('alt', { length: 16 }).notNull(),
+    notes: text('notes'),
+    created_at: createdAt(),
+    updated_at: timestamp('updated_at', { mode: 'string' }).defaultNow().onUpdateNow().notNull(),
+  },
+  (t) => [index('vehicle_model_media_model').on(t.brand, t.model, t.role)],
+);
+
 /** Raw ingest (Plan §33.1): metadatos del fichero bruto; el contenido vive en C:scar\data
 aw\. */
 export const rawIngest = mysqlTable(

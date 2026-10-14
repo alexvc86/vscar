@@ -1,11 +1,12 @@
 'use client';
-import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { pairSlug, type VehicleOption } from '@/domain/catalog';
 import { optionText, type PairLabels, type SelectorLabels } from './labels';
+import { useVehiclePicker } from './picker-loader';
 
-const VehicleSelector = dynamic(() => import('./VehicleSelector'), { ssr: false });
+
+
 
 /**
  * Home (Step 7b §62–63): elige el primer coche → el segundo → Comparar. Sin pedir escenario antes.
@@ -17,8 +18,10 @@ export function CompareBuilder({ locale, market, labels, selector }: { locale: s
   const [side, setSide] = useState<'a' | 'b' | undefined>();
   const [mounted, setMounted] = useState(false);
   const ready = !!pick.a && !!pick.b && pick.a.id !== pick.b.id;
+  const { Picker, ensure } = useVehiclePicker(market);
 
   const open = (s: 'a' | 'b') => {
+    ensure();
     setMounted(true);
     setSide(s);
   };
@@ -29,12 +32,13 @@ export function CompareBuilder({ locale, market, labels, selector }: { locale: s
       if (!cta || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
       e.preventDefault();
       document.getElementById('compare')?.scrollIntoView({ block: 'start' });
+      ensure();
       setMounted(true);
       setSide((cur) => cur ?? 'a');
     };
     document.addEventListener('click', onClick);
     return () => document.removeEventListener('click', onClick);
-  }, []);
+  }, [ensure]);
   const onSelect = (o: VehicleOption) => {
     const next = { ...pick, [side!]: o };
     setPick(next);
@@ -91,8 +95,8 @@ export function CompareBuilder({ locale, market, labels, selector }: { locale: s
           </p>
         ) : null}
       </div>
-      {mounted ? (
-        <VehicleSelector
+      {mounted && Picker ? (
+        <Picker
           open={!!side}
           onOpenChange={(o) => !o && setSide(undefined)}
           side={side ?? 'a'}

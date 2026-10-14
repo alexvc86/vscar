@@ -3,7 +3,7 @@
 Plataforma de decisión para elegir coche — nuevo o usado — con los cálculos a la vista.
 Plan maestro: [docs/VSCAR_MASTER_PLAN.md](docs/VSCAR_MASTER_PLAN.md) (v1.0 baseline) · Estado: [docs/EXECUTION_STATUS.md](docs/EXECUTION_STATUS.md).
 
-## Estructura (Step 7b)
+## Estructura (Step 7b.2)
 
 | Paquete | Qué es | I/O |
 |---|---|---|
@@ -55,6 +55,8 @@ corepack pnpm --filter @vscar/web test    # vitest · e2e: corepack pnpm --filte
 - Home con selector de vehículos: `http://localhost:4200/es-es` · `http://localhost:4200/en-es`
 - Comparación (par de ReferenceVariants): `http://localhost:4200/es-es/compare/byd-seal-2026-design-rwd-82-5-kwh-vs-tesla-model-3-2021-standard-range-plus-e6r`
 
-Docs: [Web Foundation](docs/web/WEB_FOUNDATION_V0_1.md) · [Vehicle Selector](docs/web/VEHICLE_SELECTOR_V0_1.md) · [Data Orchestration](docs/web/DATA_ORCHESTRATION_V0_1.md) · [i18n y mercados](docs/web/I18N_AND_MARKETS.md) · [desarrollo local](docs/web/LOCAL_DEVELOPMENT.md) · [ADR-012](docs/adr/ADR-012-i18n-market-routing.md) · [ADR-013](docs/adr/ADR-013-catalog-publication-and-routing.md).
+Selector de vehículos (Step 7b.2): Marca → Modelo → Año → Versión (o "Buscar directamente"), con silueta SVG por carrocería mientras no haya imágenes con derechos ([política de media](docs/data/VEHICLE_MEDIA_POLICY.md)).
+
+Docs: [Web Foundation](docs/web/WEB_FOUNDATION_V0_1.md) · [Vehicle Selector v0.2](docs/web/VEHICLE_SELECTOR_V0_2.md) · [v0.1](docs/web/VEHICLE_SELECTOR_V0_1.md) · [Data Orchestration](docs/web/DATA_ORCHESTRATION_V0_1.md) · [i18n y mercados](docs/web/I18N_AND_MARKETS.md) · [desarrollo local](docs/web/LOCAL_DEVELOPMENT.md) · [ADR-012](docs/adr/ADR-012-i18n-market-routing.md) · [ADR-013](docs/adr/ADR-013-catalog-publication-and-routing.md) · [ADR-014](docs/adr/ADR-014-vehicle-model-media-and-selector-flow.md).
 
 No se guardan en Git datos productivos, descargas masivas, backups, secretos ni logs (plan §33.3).

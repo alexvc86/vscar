@@ -1,12 +1,13 @@
 'use client';
-import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState, type MouseEvent } from 'react';
 import { useUi } from '@/client/store';
 import { pairSlug, type VehicleOption } from '@/domain/catalog';
 import type { SelectorLabels } from './labels';
+import { useVehiclePicker } from './picker-loader';
 
-const VehicleSelector = dynamic(() => import('./VehicleSelector'), { ssr: false });
+
+
 
 /**
  * Controles del par en la comparación (Step 7b §56–60). Cambiar un coche o intercambiarlos NAVEGA a la nueva URL
@@ -46,14 +47,17 @@ export function PairPickerHost({ locale, market, labels, a, b }: { locale: strin
   const side = useUi((s) => s.pickerSide);
   const closePicker = useUi((s) => s.closePicker);
   const [mounted, setMounted] = useState(false);
+  const { Picker, ensure } = useVehiclePicker(market);
   useEffect(() => {
-    if (side) setMounted(true);
-  }, [side]);
+    if (!side) return;
+    ensure();
+    setMounted(true);
+  }, [side, ensure]);
   // Al navegar a otro par, el selector se cierra.
   useEffect(() => closePicker, [closePicker, a.id, b.id]);
-  if (!mounted) return null;
+  if (!mounted || !Picker) return null;
   return (
-    <VehicleSelector
+    <Picker
       open={!!side}
       onOpenChange={(o) => !o && closePicker()}
       side={side ?? 'a'}

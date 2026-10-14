@@ -1,6 +1,6 @@
 import type { CatalogReader, CatalogRow } from '@vscar/db';
 import { loadAllCases } from '@vscar/fixtures';
-import type { DatasetBundle } from '@vscar/vehicle-schema';
+import type { DatasetBundle, VehicleModelMedia } from '@vscar/vehicle-schema';
 import { LEGACY_PAIRS, normalizeSearch } from '../../src/domain/catalog.ts';
 import type { ComparisonData } from '../../src/domain/comparison-data.ts';
 import { createVehicleCatalogService, type VehicleCatalogService } from '../../src/server/catalog-service.ts';
@@ -11,7 +11,7 @@ import { loadComparisonData } from '../../src/server/comparison-loader.ts';
  * (búsqueda AND de términos sin acentos ni mayúsculas, slugs por mercado, alias). Permite ejecutar el servicio y
  * el orquestador reales sin base de datos; la suite `catalog-mysql.test.ts` prueba lo mismo contra MySQL.
  */
-export function memoryCatalogReader(bundle: DatasetBundle = loadAllCases(), aliases: Record<string, string> = {}): CatalogReader {
+export function memoryCatalogReader(bundle: DatasetBundle = loadAllCases(), aliases: Record<string, string> = {}, media: readonly VehicleModelMedia[] = []): CatalogReader {
   const rows: CatalogRow[] = bundle.variants.map((v) => {
     const h = bundle.homologations.find((x) => x.id === v.homologation_id)!;
     return {
@@ -29,11 +29,17 @@ export function memoryCatalogReader(bundle: DatasetBundle = loadAllCases(), alia
       body_type: v.commercial.body_type,
       powertrain_type: v.technical.powertrain_type,
       drivetrain: v.technical.drivetrain,
+      transmission: v.technical.transmission,
       sales_start: v.commercial.sales_start ?? null,
       sales_end: v.commercial.sales_end ?? null,
       status: v.status,
       homologation_valid_from: h.valid_from,
       homologation_valid_to: h.valid_to ?? null,
+      homologation_test_cycle: h.test_cycle,
+      identification_confidence: h.identification_confidence,
+      type_approval_number: h.type_approval_number ?? null,
+      variant_code: h.variant_code ?? null,
+      version_code: h.version_code ?? null,
     };
   });
   const order = (xs: CatalogRow[]) => [...xs].sort((a, b) => a.manufacturer.localeCompare(b.manufacturer) || a.model.localeCompare(b.model) || a.model_year - b.model_year || a.slug.localeCompare(b.slug));
@@ -65,13 +71,14 @@ export function memoryCatalogReader(bundle: DatasetBundle = loadAllCases(), alia
       return target ? { variantId: target.id, canonicalSlug: target.slug, viaAlias: true } : undefined;
     },
     loadBundle: async (market: string, ids: readonly string[]) => pick(ids.filter((id) => rows.some((r) => r.id === id && r.market_code === market))),
-    catalogVersion: async (market: string) => ({ variants: rows.filter((r) => r.market_code === market).length, values: bundle.spec_values.length, prices: bundle.prices.length, lastChange: 'memory' }),
+    listModelMedia: async (brands?: readonly string[]) => media.filter((m) => !brands?.length || brands.includes(m.brand)),
+    catalogVersion: async (market: string) => ({ variants: rows.filter((r) => r.market_code === market).length, values: bundle.spec_values.length, prices: bundle.prices.length, media: media.length, lastChange: 'memory' }),
   };
   return reader as unknown as CatalogReader;
 }
 
-export function memoryCatalog(channel: 'PUBLIC' | 'PREVIEW' = 'PREVIEW', bundle?: DatasetBundle, aliases?: Record<string, string>): VehicleCatalogService {
-  const reader = memoryCatalogReader(bundle, aliases);
+export function memoryCatalog(channel: 'PUBLIC' | 'PREVIEW' = 'PREVIEW', bundle?: DatasetBundle, aliases?: Record<string, string>, media?: readonly VehicleModelMedia[]): VehicleCatalogService {
+  const reader = memoryCatalogReader(bundle, aliases, media);
   return createVehicleCatalogService({ reader: () => reader, channel });
 }
 

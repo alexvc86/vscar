@@ -543,7 +543,7 @@
     "otherSide": "Ya está en la comparación",
     "current": "Elegido",
     "preview": "Vista previa",
-    "previewNote": "Vista previa privada: algunos datos están pendientes de verificar derechos y no se publicarían.",
+    "previewNote": "Vista previa — algunos datos aún están en verificación.",
     "periodRange": "homologado {from}–{to}",
     "periodFrom": "homologado desde {from}",
     "change": "Cambiar",
@@ -571,6 +571,48 @@
       "BEV": "Eléctrico",
       "FCEV": "Pila de combustible",
       "EREV": "Eléctrico de autonomía extendida"
-    }
+    },
+    "picker": {
+      "stepsLabel": "Pasos de la selección",
+      "brand": "Marca",
+      "model": "Modelo",
+      "year": "Año",
+      "version": "Versión",
+      "chooseBrand": "Elige la marca",
+      "chooseModel": "Elige el modelo",
+      "chooseYear": "Elige el año",
+      "chooseVersion": "Elige la versión",
+      "summary": "Tu coche",
+      "back": "Atrás",
+      "searchDirect": "Buscar directamente",
+      "browse": "Explorar por marca",
+      "modelsCount": "{count, plural, one {# modelo} other {# modelos}}",
+      "yearUnknown": "Año desconocido",
+      "noVersions": "No hay versiones disponibles para este año.",
+      "chooseThisCar": "Elegir este coche",
+      "technicalDetails": "Detalles técnicos",
+      "identityStatus": "Estado de identidad",
+      "identityUnconfirmed": "Identidad sin confirmar",
+      "previewNotice": "Vista previa — algunos datos aún están en verificación.",
+      "emptyPublic": "Todavía estamos verificando los vehículos disponibles para publicación.",
+      "loading": "Cargando…",
+      "genericSilhouette": "Silueta genérica",
+      "imagePreview": "Imagen en verificación",
+      "transmission": {
+        "manual": "Manual",
+        "automatic": "Automático",
+        "dct": "Doble embrague",
+        "cvt": "CVT",
+        "ecvt": "e-CVT",
+        "single_speed": "Una velocidad"
+      },
+      "drivetrain": {
+        "FWD": "Tracción delantera",
+        "RWD": "Tracción trasera",
+        "AWD": "Tracción total"
+      },
+      "powertrainLabel": "Motorización"
+    },
+    "cycle": "homologación {cycle}"
   }
 }

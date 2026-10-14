@@ -1,8 +1,32 @@
 import 'server-only';
 import type { CatalogReader, CatalogRow, CatalogVersion } from '@vscar/db';
-import { availableIn, publicationInputFromBundle, variantAvailability, type PublicationChannel, type VariantAvailability } from '@vscar/quality';
-import type { DatasetBundle } from '@vscar/vehicle-schema';
-import { browseOrder, commercialVariant, EXAMPLE_PAIRS, normalizeSearch, rankSearchResults, SEARCH_LIMIT, SEARCH_MIN_CHARS, type VehicleOption } from '@/domain/catalog';
+import {
+  availableIn,
+  detectConflicts,
+  engineUsability,
+  filterBundleForChannel,
+  publicationInputFromBundle,
+  selectModelMedia,
+  variantAvailability,
+  type PublicationChannel,
+  type VariantAvailability,
+} from '@vscar/quality';
+import { isValidAt, type DatasetBundle, type MediaRole, type VehicleModelMedia } from '@vscar/vehicle-schema';
+import {
+  browseOrder,
+  commercialVariant,
+  EXAMPLE_PAIRS,
+  normalizeSearch,
+  rankSearchResults,
+  SEARCH_LIMIT,
+  SEARCH_MIN_CHARS,
+  type BrandOption,
+  type MediaView,
+  type ModelCard,
+  type VariantRow,
+  type VehicleOption,
+  type YearOption,
+} from '@/domain/catalog';
 import type { MarketCode } from '@/i18n/locales';
 import { CatalogUnavailableError } from './db';
 
@@ -32,12 +56,39 @@ export interface CatalogIndex {
   availability: Map<string, VariantAvailability>;
   /** Variants del mercado que existen pero no son seleccionables en el canal (para métricas/docs). */
   excluded: number;
+  /** Potencia máxima por variant (solo valores usables, publicables en el canal y sin conflicto). */
+  powerById: Map<string, { min: number; max: number }>;
+  /** Registros de media de las marcas del catálogo (sin filtrar: el canal se aplica al elegir). */
+  media: VehicleModelMedia[];
 }
 
-const versionString = (v: CatalogVersion) => `${v.variants}.${v.values}.${v.prices}@${v.lastChange ?? '-'}`;
+const versionString = (v: CatalogVersion) => `${v.variants}.${v.values}.${v.prices}.${v.media}@${v.lastChange ?? '-'}`;
+
+/**
+ * Potencia para la fila de versión: un dato de presentación, no de cálculo. Solo se muestra si es publicable en el
+ * canal, usable por los engines, vigente en la fecha de referencia y sin conflicto (Golf eTSI: 110 vs 85 kW en
+ * conflicto → no se muestra ninguno). Nunca se elige un valor en conflicto para la UI.
+ */
+function powerOf(visible: DatasetBundle, variantId: string, at: string | undefined): { min: number; max: number } | undefined {
+  const values = visible.spec_values.filter((v) => v.variant_id === variantId && v.spec_key === 'perf.power_max_kw');
+  const conflicted = new Set(detectConflicts(values).flatMap((c) => c.value_ids));
+  const v = values.find((x) => !conflicted.has(x.id) && engineUsability(x).usable && isValidAt(x, at));
+  if (!v) return undefined;
+  if (typeof v.value === 'number') return { min: v.value, max: v.value };
+  if (typeof v.value_min === 'number' && typeof v.value_max === 'number') return { min: v.value_min, max: v.value_max };
+  return undefined;
+}
+
+/** Imagen autorizada para el canal → DTO del cliente. Solo assets locales en Alpha (las URL externas fallan cerrado). */
+export function mediaView(records: readonly VehicleModelMedia[], q: { brand: string; model: string; generation?: string | null; modelYear?: number | null; role: MediaRole; channel: PublicationChannel }): MediaView | undefined {
+  const c = selectModelMedia(records, q);
+  const m = c.media;
+  if (!m || c.match === 'FALLBACK' || !m.asset_path) return undefined;
+  return { src: m.asset_path, width: m.width, height: m.height, alt: m.alt, match: c.match, ...(m.attribution ? { attribution: m.attribution } : {}), ...(c.previewOnly ? { preview: true } : {}) };
+}
 
 /** Índice puro a partir de filas + bundle: testable sin servidor. */
-export function buildCatalogIndex(market: MarketCode, channel: PublicationChannel, version: string, rows: readonly CatalogRow[], bundle: DatasetBundle): CatalogIndex {
+export function buildCatalogIndex(market: MarketCode, channel: PublicationChannel, version: string, rows: readonly CatalogRow[], bundle: DatasetBundle, media: readonly VehicleModelMedia[] = []): CatalogIndex {
   const availability = new Map<string, VariantAvailability>();
   const selectable: CatalogRow[] = [];
   for (const row of rows) {
@@ -63,29 +114,124 @@ export function buildCatalogIndex(market: MarketCode, channel: PublicationChanne
   const counts = new Map<string, number>();
   for (const o of base) counts.set(groupKey(o), (counts.get(groupKey(o)) ?? 0) + 1);
   const rowById = new Map(rows.map((r) => [r.id, r]));
+  // Dentro de un grupo, cada distintivo solo se muestra si DIFIERE entre sus miembros: periodo y/o ciclo.
+  const members = new Map<string, CatalogRow[]>();
+  for (const o of base) members.set(groupKey(o), [...(members.get(groupKey(o)) ?? []), rowById.get(o.id)!]);
+  const periodOf = (r: CatalogRow) => `${r.homologation_valid_from}|${r.homologation_valid_to ?? ''}`;
   const options = browseOrder(
     base.map((o) => {
-      if ((counts.get(groupKey(o)) ?? 0) < 2) return o;
+      const group = members.get(groupKey(o)) ?? [];
+      if (group.length < 2) return o;
       const r = rowById.get(o.id)!;
-      return { ...o, period: { from: r.homologation_valid_from, ...(r.homologation_valid_to ? { to: r.homologation_valid_to } : {}) } };
+      const periods = new Set(group.map(periodOf)).size > 1;
+      const cycles = new Set(group.map((x) => x.homologation_test_cycle)).size > 1;
+      return {
+        ...o,
+        ...(periods || !cycles ? { period: { from: r.homologation_valid_from, ...(r.homologation_valid_to ? { to: r.homologation_valid_to } : {}) } } : {}),
+        ...(cycles ? { cycle: r.homologation_test_cycle } : {}),
+      };
     }),
   );
-  return { market, channel, version, options, byId: new Map(options.map((o) => [o.id, o])), rowById, availability, excluded: rows.length - options.length };
+  const visible = filterBundleForChannel(bundle, channel);
+  const powerById = new Map<string, { min: number; max: number }>();
+  for (const o of options) {
+    const pw = powerOf(visible, o.id, variantReferenceDate(rowById.get(o.id)!));
+    if (pw) powerById.set(o.id, pw);
+  }
+  return { market, channel, version, options, byId: new Map(options.map((o) => [o.id, o])), rowById, availability, excluded: rows.length - options.length, powerById, media: [...media] };
+}
+
+const same = (a: string, b: string) => normalizeSearch(a) === normalizeSearch(b);
+const uniq = <T,>(xs: T[]) => [...new Set(xs)];
+/** Años modelo, más reciente primero; el desconocido (`null`) al final. */
+const yearOrder = (a: number | null, b: number | null) => (a === null ? 1 : b === null ? -1 : b - a);
+
+export function brandsOf(idx: CatalogIndex): BrandOption[] {
+  const models = new Map<string, Set<string>>();
+  for (const o of idx.options) models.set(o.brand, (models.get(o.brand) ?? new Set()).add(o.model));
+  return [...models].map(([brand, m]) => ({ brand, models: m.size })).sort((a, b) => a.brand.localeCompare(b.brand));
+}
+
+/** Una tarjeta por MODELO (nunca una por variant), con sus años y su imagen autorizada. */
+export function modelsOf(idx: CatalogIndex, brand: string): ModelCard[] {
+  const groups = new Map<string, VehicleOption[]>();
+  for (const o of idx.options) if (same(o.brand, brand)) groups.set(o.model, [...(groups.get(o.model) ?? []), o]);
+  return [...groups].map(([model, opts]) => {
+    const rows = opts.map((o) => idx.rowById.get(o.id)!);
+    const generations = uniq(rows.map((r) => r.generation_code)).sort();
+    const bodies = rows.map((r) => r.body_type);
+    const bodyType = [...new Set(bodies)].sort((a, b) => bodies.filter((x) => x === b).length - bodies.filter((x) => x === a).length)[0]!;
+    // Una sola generación → su imagen exacta; varias → imagen del modelo (o silueta), nunca la de una generación.
+    const media = mediaView(idx.media, { brand: opts[0]!.brand, model, generation: generations.length === 1 ? generations[0] : null, role: 'SELECTOR', channel: idx.channel });
+    return {
+      brand: opts[0]!.brand,
+      model,
+      generations,
+      years: uniq(opts.map((o) => o.year)).sort(yearOrder),
+      bodyType,
+      ...(media ? { media } : {}),
+      ...(opts.every((o) => o.preview) ? { preview: true } : {}),
+    };
+  }).sort((a, b) => a.model.localeCompare(b.model));
+}
+
+export function yearsOf(idx: CatalogIndex, brand: string, model: string): YearOption[] {
+  const byYear = new Map<number | null, string[]>();
+  for (const o of idx.options) {
+    if (!same(o.brand, brand) || !same(o.model, model)) continue;
+    byYear.set(o.year, uniq([...(byYear.get(o.year) ?? []), idx.rowById.get(o.id)!.generation_code]));
+  }
+  return [...byYear].map(([year, generations]) => ({ year, generations: generations.sort() })).sort((a, b) => yearOrder(a.year, b.year));
+}
+
+/** Versiones de un modelo y año: cada fila apunta a UNA ReferenceVariant; nunca se fusionan identidades técnicas. */
+export function variantsOf(idx: CatalogIndex, brand: string, model: string, year: number | null): VariantRow[] {
+  return idx.options
+    .filter((o) => same(o.brand, brand) && same(o.model, model) && o.year === year)
+    .map((o): VariantRow => {
+      const r = idx.rowById.get(o.id)!;
+      const power = idx.powerById.get(o.id);
+      const media = mediaView(idx.media, { brand: o.brand, model: o.model, generation: r.generation_code, modelYear: o.year, role: 'THUMBNAIL', channel: idx.channel });
+      return {
+        ...o,
+        ...(power ? { powerKw: power } : {}),
+        transmission: r.transmission,
+        drivetrain: r.drivetrain,
+        generation: r.generation_code,
+        ...(media ? { media } : {}),
+        // Detalle técnico SOLO en vista previa (metodología/depuración): nunca llega a un cliente PUBLIC.
+        ...(idx.channel === 'PREVIEW'
+          ? {
+              identity: {
+                referenceVariantId: o.id,
+                status: r.identification_confidence,
+                ...(r.type_approval_number ? { tan: r.type_approval_number } : {}),
+                ...(r.variant_code ? { va: r.variant_code } : {}),
+                ...(r.version_code ? { ve: r.version_code } : {}),
+              },
+            }
+          : {}),
+      };
+    })
+    .sort((a, b) => a.variant.localeCompare(b.variant) || (a.period?.from ?? '').localeCompare(b.period?.from ?? '') || a.slug.localeCompare(b.slug));
 }
 
 export interface SearchResult {
   query: string;
   /** `browse` = sin texto suficiente: primeras opciones por marca/modelo/año. */
   mode: 'search' | 'browse';
-  results: VehicleOption[];
+  /** Opción + miniatura ligera autorizada para el canal (nunca hero). */
+  results: (VehicleOption & { media?: MediaView })[];
 }
 
 export interface VehicleCatalogService {
   channel: PublicationChannel;
   index(market: MarketCode): Promise<CatalogIndex>;
   searchVehicles(market: MarketCode, query: string, limit?: number): Promise<SearchResult>;
-  listBrands(market: MarketCode): Promise<{ brand: string; count: number }[]>;
-  listModels(market: MarketCode, brand: string): Promise<{ model: string; count: number }[]>;
+  listBrands(market: MarketCode): Promise<BrandOption[]>;
+  listModels(market: MarketCode, brand: string): Promise<ModelCard[]>;
+  listModelYears(market: MarketCode, brand: string, model: string): Promise<YearOption[]>;
+  listVariants(market: MarketCode, brand: string, model: string, year: number | null): Promise<VariantRow[]>;
   getVariantBySlug(market: MarketCode, slug: string): Promise<{ option: VehicleOption; canonicalSlug: string; viaAlias: boolean } | undefined>;
   getVariantById(market: MarketCode, id: string): Promise<VehicleOption | undefined>;
   examples(market: MarketCode): Promise<{ a: VehicleOption; b: VehicleOption }[]>;
@@ -112,8 +258,8 @@ export function createVehicleCatalogService(deps: { reader: () => CatalogReader;
   async function rebuild(market: MarketCode, version: string): Promise<CatalogIndex> {
     const reader = deps.reader();
     const rows = await reader.listVariants(market);
-    const bundle = await reader.loadBundle(market, rows.map((r) => r.id));
-    return buildCatalogIndex(market, deps.channel, version, rows, bundle);
+    const [bundle, media] = await Promise.all([reader.loadBundle(market, rows.map((r) => r.id)), reader.listModelMedia([...new Set(rows.map((r) => r.manufacturer))])]);
+    return buildCatalogIndex(market, deps.channel, version, rows, bundle, media);
   }
 
   async function index(market: MarketCode): Promise<CatalogIndex> {
@@ -144,7 +290,11 @@ export function createVehicleCatalogService(deps: { reader: () => CatalogReader;
       const idx = await index(market);
       const q = normalizeSearch(query);
       const n = Math.max(1, Math.min(limit, SEARCH_LIMIT));
-      if (q.length < SEARCH_MIN_CHARS) return { query: q, mode: 'browse', results: idx.options.slice(0, n) };
+      const withThumb = (o: VehicleOption) => {
+        const media = mediaView(idx.media, { brand: o.brand, model: o.model, generation: idx.rowById.get(o.id)?.generation_code ?? null, modelYear: o.year, role: 'THUMBNAIL', channel: idx.channel });
+        return media ? { ...o, media } : o;
+      };
+      if (q.length < SEARCH_MIN_CHARS) return { query: q, mode: 'browse', results: idx.options.slice(0, n).map(withThumb) };
       const key = `${market}|${idx.version}|${q}|${n}`;
       let results = searchCache.get(key);
       if (!results) {
@@ -154,19 +304,23 @@ export function createVehicleCatalogService(deps: { reader: () => CatalogReader;
         searchCache.set(key, results);
         if (searchCache.size > SEARCH_CACHE_MAX) searchCache.delete(searchCache.keys().next().value!);
       }
-      return { query: q, mode: 'search', results };
+      return { query: q, mode: 'search', results: results.map(withThumb) };
     },
 
     async listBrands(market) {
-      const counts = new Map<string, number>();
-      for (const o of (await index(market)).options) counts.set(o.brand, (counts.get(o.brand) ?? 0) + 1);
-      return [...counts].map(([brand, count]) => ({ brand, count })).sort((a, b) => a.brand.localeCompare(b.brand));
+      return brandsOf(await index(market));
     },
 
     async listModels(market, brand) {
-      const counts = new Map<string, number>();
-      for (const o of (await index(market)).options) if (normalizeSearch(o.brand) === normalizeSearch(brand)) counts.set(o.model, (counts.get(o.model) ?? 0) + 1);
-      return [...counts].map(([model, count]) => ({ model, count })).sort((a, b) => a.model.localeCompare(b.model));
+      return modelsOf(await index(market), brand);
+    },
+
+    async listModelYears(market, brand, model) {
+      return yearsOf(await index(market), brand, model);
+    },
+
+    async listVariants(market, brand, model, year) {
+      return variantsOf(await index(market), brand, model, year);
     },
 
     async getVariantBySlug(market, slug) {

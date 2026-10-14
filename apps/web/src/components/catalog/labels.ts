@@ -1,4 +1,7 @@
 import { buildVehicleDisplayLabel, POWERTRAINS, type VehicleOption } from '@/domain/catalog';
+
+const TRANSMISSIONS = ['manual', 'automatic', 'dct', 'cvt', 'ecvt', 'single_speed'] as const;
+const DRIVETRAINS = ['FWD', 'RWD', 'AWD'] as const;
 import type { I18n } from '@/i18n/use-i18n';
 
 /**
@@ -28,8 +31,45 @@ export interface SelectorLabels {
   previewNote: string;
   periodRange: string;
   periodFrom: string;
+  /** `{cycle}` */
+  cycle: string;
   powertrain: Record<string, string>;
   formatLocale: string;
+  /** Step 7b.2: navegación Marca → Modelo → Año → Versión. */
+  picker: PickerLabels;
+}
+
+export interface PickerLabels {
+  carA: string;
+  carB: string;
+  stepsLabel: string;
+  brand: string;
+  model: string;
+  year: string;
+  version: string;
+  chooseBrand: string;
+  chooseModel: string;
+  chooseYear: string;
+  chooseVersion: string;
+  summary: string;
+  back: string;
+  searchDirect: string;
+  browse: string;
+  modelsOne: string;
+  modelsOther: string;
+  yearUnknown: string;
+  noVersions: string;
+  chooseThisCar: string;
+  technicalDetails: string;
+  identityStatus: string;
+  identityUnconfirmed: string;
+  previewNotice: string;
+  emptyPublic: string;
+  loading: string;
+  imagePreview: string;
+  powertrainLabel: string;
+  transmission: Record<string, string>;
+  drivetrain: Record<string, string>;
 }
 
 export interface PairLabels {
@@ -70,8 +110,20 @@ export function selectorLabels({ t, locale }: Pick<I18n, 't' | 'locale'>): Selec
     previewNote: t('catalog.previewNote'),
     periodRange: (t.raw?.('catalog.periodRange') as string | undefined) ?? '',
     periodFrom: (t.raw?.('catalog.periodFrom') as string | undefined) ?? '',
+    cycle: (t.raw?.('catalog.cycle') as string | undefined) ?? '',
     powertrain: Object.fromEntries(POWERTRAINS.map((p) => [p, t(`catalog.powertrain.${p}`)])),
     formatLocale: locale.formatLocale,
+    picker: {
+      carA: t('catalog.slotA'),
+      carB: t('catalog.slotB'),
+      ...Object.fromEntries(
+        (['stepsLabel', 'brand', 'model', 'year', 'version', 'chooseBrand', 'chooseModel', 'chooseYear', 'chooseVersion', 'summary', 'back', 'searchDirect', 'browse', 'yearUnknown', 'noVersions', 'chooseThisCar', 'technicalDetails', 'identityStatus', 'identityUnconfirmed', 'previewNotice', 'emptyPublic', 'loading', 'imagePreview', 'powertrainLabel'] as const).map((k) => [k, t(`catalog.picker.${k}`)]),
+      ),
+      modelsOne: t('catalog.picker.modelsCount', { count: 1 }).replace('1', '{count}'),
+      modelsOther: t('catalog.picker.modelsCount', { count: 7 }).replace('7', '{count}'),
+      transmission: Object.fromEntries(TRANSMISSIONS.map((x) => [x, t(`catalog.picker.transmission.${x}`)])),
+      drivetrain: Object.fromEntries(DRIVETRAINS.map((x) => [x, t(`catalog.picker.drivetrain.${x}`)])),
+    } as PickerLabels,
   };
 }
 
@@ -94,10 +146,12 @@ export function pairLabels({ t }: Pick<I18n, 't'>): PairLabels {
 export const fill = (template: string, values: Record<string, string | number>) => template.replace(/\{(\w+)\}/g, (_, k: string) => String(values[k] ?? ''));
 
 /** Texto de una opción: nombre comercial + "año · powertrain" (+ periodo si distingue variants técnicas). */
-export function optionText(o: VehicleOption, labels: Pick<SelectorLabels, 'powertrain' | 'periodRange' | 'periodFrom' | 'formatLocale'>) {
+export function optionText(o: VehicleOption, labels: Pick<SelectorLabels, 'powertrain' | 'periodRange' | 'periodFrom' | 'cycle' | 'formatLocale'>) {
   const l = buildVehicleDisplayLabel(o);
   const month = (iso: string) => new Intl.DateTimeFormat(labels.formatLocale, { month: 'short', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${iso}T00:00:00Z`));
   const powertrain = labels.powertrain[l.powertrain] ? `${labels.powertrain[l.powertrain]} (${l.powertrain})` : l.powertrain;
-  const period = l.period ? (l.period.to ? fill(labels.periodRange, { from: month(l.period.from), to: month(l.period.to) }) : fill(labels.periodFrom, { from: month(l.period.from) })) : undefined;
+  const dated = l.period ? (l.period.to ? fill(labels.periodRange, { from: month(l.period.from), to: month(l.period.to) }) : fill(labels.periodFrom, { from: month(l.period.from) })) : undefined;
+  const cycle = l.cycle ? fill(labels.cycle, { cycle: l.cycle }) : undefined;
+  const period = [dated, cycle].filter(Boolean).join(' · ') || undefined;
   return { brand: l.brand, name: l.name, short: l.short, meta: [l.year ?? undefined, powertrain].filter(Boolean).join(' · '), ...(period ? { period } : {}) };
 }

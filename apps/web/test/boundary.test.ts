@@ -58,11 +58,11 @@ describe('initial JS boundary (lazy boundaries)', () => {
   const allPackages = new Set(graph.flatMap((g) => [...g.packages]));
   const allFiles = new Set(graph.flatMap((g) => [...g.files].map((f) => f.slice(SRC.length + 1).replace(/\\/g, '/'))));
 
-  it('the vehicle selector is a deferred chunk (import() on first open)', () => {
-    expect(allFiles.has('components/catalog/VehicleSelector.tsx')).toBe(false);
-    for (const f of ['components/catalog/CompareBuilder.tsx', 'components/catalog/PairControls.tsx']) {
-      expect(readFileSync(join(SRC, f), 'utf8')).toMatch(/import\('\.\/VehicleSelector'\)/);
-    }
+  it('the vehicle picker (browse + search, next/image, Motion) is a deferred chunk (import() on first open)', () => {
+    for (const f of ['components/catalog/VehiclePicker.tsx', 'components/catalog/VehiclePickerSearch.tsx', 'components/vehicle/ModelVisual.tsx']) expect(allFiles.has(f), f).toBe(false);
+    // Sin `next/dynamic` (React.lazy + Suspense retrasa ~300 ms la apertura): import() propio en el loader, tras load + idle.
+    expect(readFileSync(join(SRC, 'components/catalog/picker-loader.ts'), 'utf8')).toMatch(/import\('\.\/VehiclePicker'\)/);
+    for (const f of ['components/catalog/CompareBuilder.tsx', 'components/catalog/PairControls.tsx']) expect(readFileSync(join(SRC, f), 'utf8')).toContain('useVehiclePicker');
   });
   it('client pipeline (engines, dataset) is not in the initial graph', () => {
     for (const p of ['@vscar/decision-engine', '@vscar/comparison-engine', '@vscar/economics-engine', '@vscar/market-context', '@vscar/vehicle-schema']) expect(allPackages.has(p), p).toBe(false);

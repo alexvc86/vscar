@@ -85,7 +85,7 @@ describe.skipIf(!url)('catalog over MySQL', () => {
 
   it('the result carries the data snapshot (catalog version, energy, rights matrix) for traceability', async () => {
     const data = await comparisonData(DEMO_PAIR, catalog);
-    expect(data.dataSnapshot.vehicles).toMatch(/^9\.\d+\.\d+@/);
+    expect(data.dataSnapshot.vehicles).toMatch(/^9\.\d+\.\d+\.\d+@/); // variants.values.prices.media@último cambio
     expect(data.dataSnapshot.rights).toBe('DATA_RIGHTS_MATRIX v0.2');
     expect(data.channel).toBe('PREVIEW');
   });
