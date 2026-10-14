@@ -5,6 +5,8 @@ import { SiteFooter } from '@/components/site/SiteFooter';
 import { SiteHeader } from '@/components/site/SiteHeader';
 import { DEFAULT_LOCALE, parseLocaleSegment } from '@/i18n/locales';
 import { localeAlternates } from '@/i18n/metadata';
+import { serverEnv } from '@/server/env';
+import { robotsFor } from '@/server/seo';
 import { useI18n } from '@/i18n/use-i18n';
 
 type Params = Promise<{ locale: string }>;
@@ -12,7 +14,7 @@ type Params = Promise<{ locale: string }>;
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const locale = parseLocaleSegment((await params).locale) ?? DEFAULT_LOCALE;
   const t = await getTranslations({ locale: locale.segment });
-  return { title: `${t('methodology.title')} | VScar`, description: t('methodology.lead'), alternates: localeAlternates(locale, { page: 'methodology' }), robots: { index: false, follow: true } };
+  return { title: { absolute: t('seo.methodologyTitle') }, description: t('methodology.lead'), alternates: localeAlternates(locale, { page: 'methodology' }), robots: robotsFor(serverEnv().channel, true) };
 }
 
 export default async function MethodologyPage({ params }: { params: Params }) {
@@ -20,7 +22,8 @@ export default async function MethodologyPage({ params }: { params: Params }) {
   return <Methodology />;
 }
 
-const SECTIONS = ['separate', 'meaningful', 'confidence', 'ranges'] as const;
+// Step 7c §80: orden de la decisión, Meaningful Difference, encaje práctico y económico, confianza, rangos.
+const SECTIONS = ['order', 'separate', 'meaningful', 'practical', 'economic', 'confidence', 'ranges'] as const;
 
 function Methodology() {
   const { t } = useI18n();

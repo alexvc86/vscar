@@ -48,7 +48,9 @@
       "tradeoffs": "What you give up",
       "change": "What changes the result",
       "confidence": "Confidence and verify",
-      "details": "Full comparison"
+      "details": "Full comparison",
+      "technical": "Technical capability",
+      "practical": "Practical fit"
     },
     "scenarioSummary": "{km} per year · {daily} per day · {trips, plural, =0 {no long trips} one {# long trip} other {# long trips}} per year · home charging {home}",
     "notFound": "This comparison is not available in this market."
@@ -102,7 +104,8 @@
       "CLEAR": "Clear advantage",
       "RANGE_DEPENDENT": "Depends on configuration"
     },
-    "ahead": "{name} ahead"
+    "ahead": "{name} ahead",
+    "forYouShort": "For your use"
   },
   "scenario": {
     "cta": "Change your usage",
@@ -225,7 +228,9 @@
     "boolean": {
       "true": "Yes",
       "false": "No"
-    }
+    },
+    "chapterLead": "Technical differences the decision engine considers relevant. Technical capability does not decide on its own: it is a separate result.",
+    "score": "Technical score"
   },
   "economic": {
     "title": "Running cost",
@@ -243,7 +248,9 @@
     "fuelProduct": {
       "PETROL_95_E5": "Petrol 95",
       "DIESEL_A": "Diesel"
-    }
+    },
+    "knownCostView": "Known cost view",
+    "horizonYears": "{years} years"
   },
   "practical": {
     "title": "Practical fit",
@@ -252,7 +259,8 @@
       "PASS_WITH_COMPROMISES": "Meets them, with compromises",
       "UNCONFIRMED": "Not confirmed",
       "FAIL": "Does not meet a requirement"
-    }
+    },
+    "chapterLead": "Whether each car meets your requirements (seats, boot, towing, range…)."
   },
   "methodology": {
     "title": "Methodology",
@@ -283,10 +291,18 @@
       "confidence": "Confidence",
       "confidenceBody": "Confidence reflects data quality and how close the result is to changing. It is about the recommendation, not the car.",
       "ranges": "Ranges, not midpoints",
-      "rangesBody": "When official data is a range, every result keeps the interval."
+      "rangesBody": "When official data is a range, every result keeps the interval.",
+      "order": "Decision order",
+      "orderBody": "First, your hard requirements: a car that fails one cannot be the best for you. Then practical fit with your use, running cost at your horizon and the relevant technical differences. Finally, what would change the result and how confident we are.",
+      "practical": "Practical fit",
+      "practicalBody": "Checks your requirements against usable data: meets, meets with compromises, unconfirmed or fails. Unknown data is never treated as a pass.",
+      "economic": "Economic fit",
+      "economicBody": "Running cost with your mileage and the market reference prices, at an explicit horizon. We show ranges, not a midpoint, and we never compare consumption from different homologation cycles (NEDC vs WLTP)."
     },
     "attribution": "Attribution",
-    "dataSnapshot": "Data: catalog {vehicles} · energy {energy} · {rights}"
+    "dataSnapshot": "Data: catalog {vehicles} · energy {energy} · {rights}",
+    "dataUpdated": "Catalog data: {date}",
+    "link": "Full methodology"
   },
   "units": {
     "kmPerYear": "{value} km/year",
@@ -614,5 +630,38 @@
       "powertrainLabel": "Powertrain"
     },
     "cycle": "{cycle} homologation"
+  },
+  "seo": {
+    "compareTitle": "{a} vs {b} — Which fits you better? | VScar",
+    "compareDescription": "Compare {a} and {b} on cost, range, performance and real-world use. VScar shows you which one fits your needs better, and why.",
+    "homeTitle": "VScar — Not the best car. The best car for you.",
+    "methodologyTitle": "Methodology | VScar",
+    "ogLocale": "en_ES",
+    "ogScenario": "Reference scenario · {km} km/year · {market}",
+    "ogStatus": {
+      "BEST_FOR_YOU": "Best for your needs",
+      "PRACTICAL_TIE": "Practical tie",
+      "RANGE_DEPENDENT": "Depends on the configuration",
+      "NO_FULL_MATCH": "Neither fully meets the requirements",
+      "INSUFFICIENT_DATA": "Not enough data to decide"
+    }
+  },
+  "breadcrumbs": {
+    "label": "Breadcrumb",
+    "home": "Home",
+    "compare": "Compare"
+  },
+  "share": {
+    "button": "Share comparison",
+    "copied": "Link copied",
+    "copyFailed": "Couldn't copy: copy the address from your browser bar.",
+    "text": "Check this VScar comparison: {a} vs {b}"
+  },
+  "skip": {
+    "result": "Skip to result",
+    "details": "Skip to details"
+  },
+  "rail": {
+    "label": "Compared vehicles"
   }
 }

@@ -4,6 +4,7 @@ import { localizedHref } from '@/i18n/routes';
 import type { I18n } from '@/i18n/use-i18n';
 import { optionText, pairLabels, selectorLabels } from '../catalog/labels';
 import { ChangeCarButton, SwapCarsLink } from '../catalog/PairControls';
+import { ShareComparison } from './ShareComparison';
 import { VehicleVisual } from '../vehicle/VehicleVisual';
 import { HeroAtmosphere } from '../visual/HeroAtmosphere';
 import { ScenarioTrigger } from './ScenarioTrigger';
@@ -67,6 +68,10 @@ export function HeroVs({ view, i18n, search = '' }: { view: DecisionView; i18n: 
             </a>
             <ScenarioTrigger label={t('scenario.cta')} />
             <SwapCarsLink href={localizedHref(locale, { page: 'compare', slug: swapped }, search)} locale={locale.segment} slug={swapped} label={labels.swap} />
+            <ShareComparison
+              title={t('seo.compareTitle', { a: a.name, b: b.name })}
+              labels={{ button: t('share.button'), copied: t('share.copied'), copyFailed: t('share.copyFailed'), text: t('share.text', { a: a.name, b: b.name }) }}
+            />
           </div>
         </div>
       </div>

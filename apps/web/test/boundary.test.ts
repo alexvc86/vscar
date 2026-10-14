@@ -22,6 +22,8 @@ const INITIAL_ISLANDS = [
   // Step 7b: selector de vehículos (home) y controles del par (comparación). El selector en sí es diferido.
   'components/catalog/CompareBuilder.tsx',
   'components/catalog/PairControls.tsx',
+  // Step 7c: compartir (isla mínima; Web Share / portapapeles).
+  'components/compare/ShareComparison.tsx',
 ];
 
 const STATIC_IMPORT = /^\s*import\s+(?!type\b)(?:[^'"]*?\sfrom\s+)?['"]([^'"]+)['"]/gm;

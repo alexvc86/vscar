@@ -3,7 +3,7 @@
 Plataforma de decisión para elegir coche — nuevo o usado — con los cálculos a la vista.
 Plan maestro: [docs/VSCAR_MASTER_PLAN.md](docs/VSCAR_MASTER_PLAN.md) (v1.0 baseline) · Estado: [docs/EXECUTION_STATUS.md](docs/EXECUTION_STATUS.md).
 
-## Estructura (Step 7b.2)
+## Estructura (Step 7c)
 
 | Paquete | Qué es | I/O |
 |---|---|---|
@@ -57,6 +57,8 @@ corepack pnpm --filter @vscar/web test    # vitest · e2e: corepack pnpm --filte
 
 Selector de vehículos (Step 7b.2): Marca → Modelo → Año → Versión (o "Buscar directamente"), con silueta SVG por carrocería mientras no haya imágenes con derechos ([política de media](docs/data/VEHICLE_MEDIA_POLICY.md)).
 
-Docs: [Web Foundation](docs/web/WEB_FOUNDATION_V0_1.md) · [Vehicle Selector v0.2](docs/web/VEHICLE_SELECTOR_V0_2.md) · [v0.1](docs/web/VEHICLE_SELECTOR_V0_1.md) · [Data Orchestration](docs/web/DATA_ORCHESTRATION_V0_1.md) · [i18n y mercados](docs/web/I18N_AND_MARKETS.md) · [desarrollo local](docs/web/LOCAL_DEVELOPMENT.md) · [ADR-012](docs/adr/ADR-012-i18n-market-routing.md) · [ADR-013](docs/adr/ADR-013-catalog-publication-and-routing.md) · [ADR-014](docs/adr/ADR-014-vehicle-model-media-and-selector-flow.md).
+Docs: [Web Foundation](docs/web/WEB_FOUNDATION_V0_1.md) · [Vehicle Selector v0.2](docs/web/VEHICLE_SELECTOR_V0_2.md) · [Shareable Comparisons](docs/web/SHAREABLE_COMPARISONS_V0_1.md) · [SEO Foundation](docs/web/SEO_FOUNDATION_V0_1.md) · [v0.1](docs/web/VEHICLE_SELECTOR_V0_1.md) · [Data Orchestration](docs/web/DATA_ORCHESTRATION_V0_1.md) · [i18n y mercados](docs/web/I18N_AND_MARKETS.md) · [desarrollo local](docs/web/LOCAL_DEVELOPMENT.md) · [ADR-012](docs/adr/ADR-012-i18n-market-routing.md) · [ADR-013](docs/adr/ADR-013-catalog-publication-and-routing.md) · [ADR-014](docs/adr/ADR-014-vehicle-model-media-and-selector-flow.md) · [ADR-015](docs/adr/ADR-015-comparison-url-and-indexability.md).
+
+Comparaciones compartibles (Step 7c): la URL (`/{idioma}-{mercado}/compare/{a}-vs-{b}?escenario`) reconstruye la comparación en cualquier navegador; canonical, OG e indexación representan la comparación base. `VSCAR_SITE_URL` fija el origen de canonical/OG/sitemap.
 
 No se guardan en Git datos productivos, descargas masivas, backups, secretos ni logs (plan §33.3).

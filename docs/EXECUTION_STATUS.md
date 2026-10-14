@@ -460,4 +460,33 @@ Siguiente:
 - **Step 7c — Comparison URL / Share / richer catalog pages**.
 - En el data workstream: primeras imágenes con derechos verificados (propias o licenciadas) y derechos de S08/S02/S04 para el canal PUBLIC.
 
+## STEP 7c — Shareable Comparison + Rich Comparison Pages · ✅ PASS (2026-10-14)
+
+Cada comparación es una página estable, compartible y preparada para SEO. La **identidad de la página** (par + mercado) está separada del **escenario del usuario** (query): canonical, hreflang, OG, robots y sitemap representan la comparación base. Sin cambios en engines, identidad, derechos ni metodología.
+
+| Entregable | Estado |
+|---|---|
+| Compartir: URL actual completa por Web Share API o copia (aviso "Enlace copiado" 2,5 s, `aria-live`); reconstrucción en otro navegador: mismo par, mercado, escenario y decisión | ✅ |
+| SEO (`server/seo.ts`): metadata ES/EN, canonical sin escenario por idioma y en orden determinista (A-vs-B = B-vs-A), hreflang + x-default (`es-es`), Open Graph + Twitter, imagen OG generada y estable (Canonical Comparison Scenario `ES-2026.10`), JSON-LD honesto (WebPage + BreadcrumbList + ItemList, sin ratings) | ✅ |
+| Indexabilidad: PREVIEW `noindex, nofollow` en todo; PUBLIC solo pares editoriales con coches públicos; `sitemap.xml` y `robots.txt` por canal (sin URLs de fixtures, sin bloquear páginas) | ✅ |
+| Página: `buildComparisonChapters` (capítulos técnico y práctico cuando el engine los hace relevantes; 6–9), detalle con filas `MetricCompare` (cifras grandes, diferencia + "Por delante", para tu uso), horizonte y "Vista de costes conocidos", barra de vehículos fija (CSS), migas, saltos al resultado y a los detalles, fecha de datos y enlace a Metodología (ampliada), CSS de impresión | ✅ |
+| Docs: [SHAREABLE_COMPARISONS_V0_1](web/SHAREABLE_COMPARISONS_V0_1.md) · [SEO_FOUNDATION_V0_1](web/SEO_FOUNDATION_V0_1.md) · [ADR-015](adr/ADR-015-comparison-url-and-indexability.md) | ✅ |
+
+Verificación:
+- `pnpm check` en verde: **566 tests** (3 en vivo omitidos), con MySQL; 21 nuevos de SEO y capítulos.
+- **E2E**: compartir y reconstruir, Web Share, PREVIEW noindex, canonical al invertir el par, OG estable, sin JS, móvil a 390 px.
+- JS inicial de la comparación **154,0 KB** (192,6 con polyfills).
+- LCP ≤ 1,23 s; CLS 0; INP p75 104 ms escritorio / 72 ms móvil ×4.
+
+Hallazgos:
+- El contrato de mensajes (7a.1) hace variar la longitud del titular y de la explicación entre empate y elegido. En móvil, el recálculo llegaba más de 500 ms después del clic y sumaba CLS 0,055: se reservan líneas en pantallas estrechas y el CLS vuelve a 0.
+- El delta "+2,4 kWh/100 km · Tesla Model 3" sugería lo contrario en métricas donde menos es mejor: ahora es la diferencia sin signo + "Por delante: …".
+- INP: la peor carga móvil (×4) llegó a 296 ms en una de cinco, por la primera interacción durante la carga de chunks visuales diferidos (procesamiento real 2–9 ms). El p75 está dentro de presupuesto. Vigilar en dispositivos reales.
+- PUBLIC sigue en 0 coches: hoy nada es indexable. La lógica PUBLIC está probada con un catálogo **sintético** en tests.
+
+Siguiente:
+- Preparación del despliegue Alpha (VPS, `VSCAR_SITE_URL`, canal).
+- En el data workstream: derechos S08/S02/S04, identidades `EXACT` e imágenes con derechos, para que exista un catálogo PUBLIC.
+- Posible 7d: páginas mínimas de modelo si aportan navegación.
+
 ## STEP 4 — Primera calculadora pública · ⏳

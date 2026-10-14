@@ -4,6 +4,7 @@ import type { EconomicResult } from '@vscar/economics-engine';
 import type { CandidateSide } from '@vscar/ui/tokens';
 import type { DecisionInput } from '@vscar/decision-engine';
 import type { VehicleOption } from './catalog.ts';
+import { buildComparisonChapters } from './chapters.ts';
 import type { ComparisonData, DataSnapshot, SourceInfo } from './comparison-data.ts';
 
 /**
@@ -83,7 +84,7 @@ export interface EnergyReferenceView {
   homeChargingShare: number;
 }
 
-export type ChapterKind = 'vs' | 'result' | 'reason' | 'economics' | 'tradeoffs' | 'change' | 'confidence' | 'details';
+export type ChapterKind = 'vs' | 'result' | 'reason' | 'economics' | 'technical' | 'practical' | 'tradeoffs' | 'change' | 'confidence' | 'details';
 
 export interface ChapterView {
   id: string;
@@ -250,14 +251,16 @@ export function buildDecisionView(data: ComparisonData, input: DecisionInput, re
 
   const metricsByCategory = DETAIL_CATEGORIES.map((category) => ({ category, metrics: all.filter((m) => toDetail(m.category) === category && hasValue(m)) })).filter((c) => c.metrics.length > 0);
 
-  const chapters: ChapterView[] = [{ id: 'vs', kind: 'vs' }, { id: 'result', kind: 'result' }];
-  for (const m of key) chapters.push({ id: `reason-${m.metric.replace(/[^a-z0-9]+/gi, '-')}`, kind: 'reason', metric: m.metric });
-  // Economía como capítulo propio solo si hay un líder económico comparable y no está ya como motivo.
-  if (econ.status === 'LEADER' && !key.some((m) => m.category === 'Economy')) chapters.push({ id: 'economics', kind: 'economics' });
   // Mismo criterio que el capítulo: nunca un capítulo vacío.
   const hasTradeoffs = (selected ? tradeoffs.length > 0 : false) || whyNot.some((w) => w.items.length > 0 && (w.kind === 'WHY_NOT' || w.kind === 'VERIFY_BEFORE_DECIDING' || (!selected && w.kind === 'TRADEOFFS')));
-  if (hasTradeoffs) chapters.push({ id: 'tradeoffs', kind: 'tradeoffs' });
-  chapters.push({ id: 'change', kind: 'change' }, { id: 'confidence', kind: 'confidence' }, { id: 'details', kind: 'details' });
+  const practicalOf2 = (id: string) => result.practicalFit.find((p) => p.candidateId === id)?.status ?? 'UNCONFIRMED';
+  const chapters = buildComparisonChapters({
+    keyMetrics: key,
+    technicalMetrics: tech,
+    economicStatus: econ.status,
+    practicalStatus: [practicalOf2(idA), practicalOf2(idB)],
+    hasTradeoffs,
+  });
 
   const techOf = (id: string) => result.technicalCapability.find((t) => t.candidateId === id);
   const practicalOf = (id: string) => result.practicalFit.find((p) => p.candidateId === id);

@@ -1733,3 +1733,215 @@ a {
     font-size: var(--vs-text-body);
   }
 }
+
+/* ---------- Step 7c: página de comparación compartible ---------- */
+.breadcrumbs {
+  max-width: var(--vs-content-max);
+  margin: 0 auto;
+  padding: var(--vs-space-3) var(--vs-gutter) 0;
+  font-size: var(--vs-text-small);
+}
+.breadcrumbs ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--vs-space-2);
+  color: var(--vs-subtle);
+}
+.breadcrumbs li + li::before {
+  content: '/';
+  margin-right: var(--vs-space-2);
+  color: var(--vs-line-strong);
+}
+.breadcrumbs a {
+  color: var(--vs-muted);
+  text-decoration: none;
+}
+.breadcrumbs a:hover,
+.breadcrumbs a:focus-visible {
+  color: var(--vs-text);
+  text-decoration: underline;
+}
+.breadcrumbs [aria-current='page'] {
+  color: var(--vs-muted);
+}
+
+/* Barra de vehículos: compacta y fija bajo la cabecera mientras se leen los capítulos (sin JS). */
+.vehicle-rail {
+  position: sticky;
+  top: 56px;
+  z-index: 45;
+  display: flex;
+  align-items: center;
+  gap: var(--vs-space-3);
+  min-height: 40px;
+  padding: 0 var(--vs-gutter);
+  background: rgb(11 12 14 / 0.9);
+  backdrop-filter: blur(8px);
+  border-bottom: var(--vs-border);
+  font-size: var(--vs-text-small);
+}
+.vehicle-rail__name {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+.vehicle-rail__vs {
+  color: var(--vs-subtle);
+  font-size: var(--vs-text-label);
+}
+.vehicle-rail__jump {
+  margin-left: auto;
+  color: var(--vs-muted);
+  white-space: nowrap;
+}
+
+.share {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--vs-space-2);
+}
+.share__status {
+  min-width: 8ch;
+  color: var(--vs-muted);
+}
+
+.econ-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--vs-space-2);
+  margin: var(--vs-space-3) 0;
+}
+.chip--horizon {
+  text-transform: uppercase;
+  letter-spacing: var(--vs-tracking-label);
+}
+
+/* Filas de comparación: cifras grandes alineadas, divisores sutiles (no una hoja de cálculo). */
+.mcmp-list {
+  display: grid;
+}
+.mcmp {
+  display: grid;
+  gap: var(--vs-space-1);
+  padding: var(--vs-space-4) 0;
+  border-bottom: var(--vs-border);
+}
+.mcmp:last-child {
+  border-bottom: 0;
+}
+.mcmp__label {
+  margin: 0;
+  font-size: var(--vs-text-label);
+  letter-spacing: var(--vs-tracking-label);
+  text-transform: uppercase;
+  color: var(--vs-muted);
+}
+.mcmp__values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--vs-space-4);
+  margin: 0;
+}
+.mcmp__side dd {
+  margin: 0;
+  display: grid;
+}
+.mcmp__num {
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-variant-numeric: tabular-nums;
+}
+.mcmp__side--a .mcmp__num {
+  color: var(--vs-candidate-a);
+}
+.mcmp__side--b {
+  text-align: right;
+}
+.mcmp__side--b .mcmp__num {
+  color: var(--vs-candidate-b);
+}
+.mcmp__side:not(.is-ahead) .mcmp__num {
+  opacity: 0.78;
+}
+.mcmp__cycle {
+  font-size: var(--vs-text-label);
+  color: var(--vs-subtle);
+}
+.mcmp__delta,
+.mcmp__foryou {
+  margin: 0;
+  text-align: center;
+  font-size: var(--vs-text-small);
+}
+.mcmp__foryou {
+  color: var(--vs-muted);
+}
+.mcmp[data-outcome='NOT_COMPARABLE'] .mcmp__num,
+.mcmp[data-outcome='UNKNOWN'] .mcmp__num {
+  opacity: 0.7;
+}
+
+.tech-scores {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--vs-space-3);
+  margin: var(--vs-space-5) 0 0;
+}
+.tech-scores dd {
+  margin: 2px 0 0;
+  color: var(--vs-muted);
+  font-size: var(--vs-text-small);
+}
+
+@media (max-width: 699px) {
+  .vehicle-rail {
+    gap: var(--vs-space-2);
+  }
+  /* La explicación del resultado (mensaje del engine, 7a.1) ocupa hasta 3 líneas en móvil (empate): se reservan para
+     que empate ↔ elegido no desplace el contenido cuando el recálculo llega (CLS). */
+  .result__lead {
+    min-height: 4.6em;
+  }
+  /* Titular: "Empate práctico" (1 línea) ↔ "El mejor para tus necesidades: …" (3 líneas a 390 px). */
+  .result__headline {
+    min-height: 2.85em;
+  }
+  /* Cifras sin cortar la unidad ("16,6 kWh/100 km" en una línea por lado). */
+  .mcmp__values {
+    gap: var(--vs-space-2);
+  }
+  .mcmp__num {
+    font-size: 15px;
+    white-space: nowrap;
+  }
+  .vehicle-rail__jump {
+    display: none;
+  }
+}
+
+/* Impresión básica: contenido completo, sin elementos interactivos ni efectos (sin PDF en Alpha). */
+@media print {
+  .site-header,
+  .vehicle-rail,
+  .chapter-index,
+  .atmosphere,
+  .vs__actions,
+  .change-car,
+  .change__actions,
+  .change__quick,
+  .share,
+  .skip-link {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .chapter {
+    break-inside: avoid;
+  }
+}

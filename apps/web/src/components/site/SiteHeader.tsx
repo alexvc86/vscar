@@ -5,7 +5,8 @@ import { useI18n } from '@/i18n/use-i18n';
 import { LanguageSwitcher, type LanguageOption } from './LanguageSwitcher';
 
 /** Navegación inicial: VScar · Comparar · Metodología · Idioma. Sin mega-menú. */
-export function SiteHeader({ route, search = '' }: { route: AppRoute; search?: string }) {
+/** `skipLinks`: atajos adicionales tras "Saltar al contenido" (comparación: resultado y detalles). */
+export function SiteHeader({ route, search = '', skipLinks = [] }: { route: AppRoute; search?: string; skipLinks?: { href: string; label: string }[] }) {
   const { t, locale } = useI18n();
   const options: LanguageOption[] = sameMarketLocales(locale).map((l) => ({
     segment: l.segment,
@@ -21,6 +22,11 @@ export function SiteHeader({ route, search = '' }: { route: AppRoute; search?: s
       <a href="#main" className="skip-link">
         {t('common.skipToContent')}
       </a>
+      {skipLinks.map((l) => (
+        <a key={l.href} href={l.href} className="skip-link">
+          {l.label}
+        </a>
+      ))}
       <div className="site-header__inner">
         <a href={localizedHref(locale, { page: 'home' })} className="brand">
           VScar

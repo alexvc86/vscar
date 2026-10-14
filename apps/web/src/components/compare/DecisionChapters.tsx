@@ -8,6 +8,9 @@ import { VehicleVisual } from '../vehicle/VehicleVisual';
 import { Chapter, SplitHeading } from './Heading';
 import { MessageText } from './MessageText';
 import { STATIC_KIT, type MotionKit } from './kit';
+import { relevantTechnicalMetrics } from '@/domain/chapters';
+import { localizedHref } from '@/i18n/routes';
+import { MetricCompare } from './MetricCompare';
 import { MetricLayers } from './MetricLayers';
 import { ScenarioTrigger } from './ScenarioTrigger';
 
@@ -41,6 +44,10 @@ export function DecisionChapters({ view, scenario, pathname, kit = STATIC_KIT, r
           }
           case 'economics':
             return <EconomicsChapter key={ch.id} index={index++} view={view} scenario={scenario} i18n={i18n} />;
+          case 'technical':
+            return <TechnicalChapter key={ch.id} index={index++} view={view} i18n={i18n} />;
+          case 'practical':
+            return <PracticalChapter key={ch.id} index={index++} view={view} i18n={i18n} />;
           case 'tradeoffs':
             return <TradeoffsChapter key={ch.id} index={index++} view={view} i18n={i18n} />;
           case 'change':
@@ -190,6 +197,10 @@ function EconomicsChapter({ view, scenario, i18n, index }: { view: DecisionView;
       <p className="label">{t('comparison.chapters.economics')}</p>
       <SplitHeading id="economics-title" text={statusLine} className="chapter__title chapter__title--md" />
       <p className="muted">{t('economic.lead', { km: `${f.number(scenario.km)} km` })}</p>
+      <p className="econ-badges">
+        <span className="chip chip--horizon">{t('economic.horizonYears', { years: e.horizonYears })}</span>
+        <span className="chip">{t('economic.knownCostView')}</span>
+      </p>
       <div className="econ-grid">
         {view.candidates.map((c) => {
           const s = e.perSide[c.side];
@@ -214,6 +225,65 @@ function EconomicsChapter({ view, scenario, i18n, index }: { view: DecisionView;
       </div>
       <p className="muted small">{t('economic.rangeNote')}</p>
       <MarketContext view={view} i18n={i18n} />
+    </Chapter>
+  );
+}
+
+/** Capacidad técnica: diferencias que el engine califica de relevantes (≥ MEANINGFUL) + resultado técnico separado. */
+function TechnicalChapter({ view, i18n, index }: { view: DecisionView; i18n: I18n; index: number }) {
+  const { t, f } = i18n;
+  const tech = view.metricsByCategory.filter((c) => c.category !== 'Economy').flatMap((c) => c.metrics);
+  const metrics = relevantTechnicalMetrics(tech, view.keyMetrics).slice(0, 4);
+  const lead = view.technicalMessages[0] ? i18n.mInline(view.technicalMessages[0]) : t('comparison.chapters.technical');
+  return (
+    <Chapter id="technical" labelledBy="technical-title" index={index} className="chapter--technical">
+      <p className="label">{t('comparison.chapters.technical')}</p>
+      <SplitHeading id="technical-title" text={lead} className="chapter__title chapter__title--md" />
+      <p className="muted">{t('technical.chapterLead')}</p>
+      <div className="mcmp-list">
+        {metrics.map((m) => (
+          <MetricCompare key={m.metric} metric={m} candidates={view.candidates} i18n={i18n} />
+        ))}
+      </div>
+      <dl className="tech-scores">
+        {view.candidates.map((c) => (
+          <div key={c.side}>
+            <dt className={`tone-${c.side}`}>{c.name}</dt>
+            <dd>
+              {t('technical.score')}: <span className="mono">{view.technical[c.side].score ? f.numberRange(view.technical[c.side].score!, 1) : t('common.notConfirmed')}</span> ·{' '}
+              {t('technical.coverage', { value: f.percent(view.technical[c.side].coverage) })}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </Chapter>
+  );
+}
+
+/** Encaje práctico: estado de requisitos por coche con los mensajes del engine (deal breakers, concesiones, sin confirmar). */
+function PracticalChapter({ view, i18n, index }: { view: DecisionView; i18n: I18n; index: number }) {
+  const { t } = i18n;
+  return (
+    <Chapter id="practical" labelledBy="practical-title" index={index} className="chapter--practical">
+      <SplitHeading id="practical-title" text={t('comparison.chapters.practical')} className="chapter__title" />
+      <p className="muted">{t('practical.chapterLead')}</p>
+      <div className="whynot-grid">
+        {view.candidates.map((c) => (
+          <article key={c.side} className={`whynot whynot--${c.side}`} data-practical={view.practical[c.side].status}>
+            <h3>{c.name}</h3>
+            <p className="chip chip--status">{t(`practical.status.${view.practical[c.side].status}`)}</p>
+            {view.practical[c.side].messages.length ? (
+              <ul className="whynot__list">
+                {view.practical[c.side].messages.map((msg, k) => (
+                  <li key={`${msg.messageKey}-${k}`}>
+                    <MessageText msg={msg} i18n={i18n} />
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </article>
+        ))}
+      </div>
     </Chapter>
   );
 }
@@ -396,26 +466,8 @@ function ConfidenceChapter({ view, i18n, index, pending }: { view: DecisionView;
   );
 }
 
-function valueCell(m: MetricView, side: CandidateSide, i18n: I18n) {
-  const v = side === 'a' ? m.a : m.b;
-  const unit = m.a?.unit ?? m.b?.unit;
-  if (!v) return <span className="value-unknown">{i18n.t('common.notConfirmed')}</span>;
-  return (
-    <>
-      <span className="mono">{i18n.f.valueRange(v, unit)}</span>
-      {v.cycle ? <span className="cycle"> · {i18n.t('technical.cycle', { cycle: v.cycle })}</span> : null}
-    </>
-  );
-}
-
-function outcomeText(m: MetricView, view: DecisionView, i18n: I18n): string {
-  const name = m.leader ? nameOf(view, m.leader) : '';
-  return i18n.t(`technical.outcome.${m.outcome}`, { name });
-}
-
 function DetailsChapter({ view, i18n, index }: { view: DecisionView; i18n: I18n; index: number }) {
   const { t, f } = i18n;
-  const [ca, cb] = view.candidates;
   return (
     <Chapter id="details" labelledBy="details-title" index={index} className="chapter--details">
       <h2 id="details-title" className="chapter__title" tabIndex={-1}>
@@ -424,39 +476,11 @@ function DetailsChapter({ view, i18n, index }: { view: DecisionView; i18n: I18n;
       <div className="details">
         {view.metricsByCategory.map(({ category, metrics }) => (
           <Disclosure key={category} summary={<span>{t(`technical.categories.${category}`)}</span>} className="details__category">
-            <table className="metric-table">
-              <caption className="sr-only">{t(`technical.categories.${category}`)}</caption>
-              <thead>
-                <tr>
-                  <th scope="col">
-                    <span className="sr-only">{t('technical.title')}</span>
-                  </th>
-                  <th scope="col" className="tone-a">
-                    {ca.name}
-                  </th>
-                  <th scope="col" className="tone-b">
-                    {cb.name}
-                  </th>
-                  <th scope="col">
-                    <span className="sr-only">{t('metricLayers.meaningful')}</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {metrics.map((m) => (
-                  <tr key={m.metric} data-outcome={m.outcome}>
-                    <th scope="row">{metricLabel(t, m.metric)}</th>
-                    <td>{valueCell(m, 'a', i18n)}</td>
-                    <td>{valueCell(m, 'b', i18n)}</td>
-                    <td className="metric-table__outcome">
-                      <span className={`outcome outcome--${m.outcome.toLowerCase()}`}>{outcomeText(m, view, i18n)}</span>
-                      {m.meaningful && m.outcome !== 'UNKNOWN' ? <span className="muted"> · {t(`metricLayers.levelLong.${m.meaningful}`)}</span> : null}
-                      {m.outcome === 'NOT_COMPARABLE' && m.reasonMessage ? <span className="muted small"> — {i18n.mInline(m.reasonMessage)}</span> : null}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <div className="mcmp-list">
+              {metrics.map((m) => (
+                <MetricCompare key={m.metric} metric={m} candidates={view.candidates} i18n={i18n} />
+              ))}
+            </div>
           </Disclosure>
         ))}
         <Disclosure summary={<span>{t('technical.title')} · {t('practical.title')}</span>} className="details__category">
@@ -563,6 +587,12 @@ function HowWeCalculated({ view, i18n }: { view: DecisionView; i18n: I18n }) {
           </dd>
         </div>
       </dl>
+      {view.dataSnapshot.vehicles.includes('@') ? (
+        <p className="muted small">{t('methodology.dataUpdated', { date: view.dataSnapshot.vehicles.split('@')[1]!.slice(0, 10) })}</p>
+      ) : null}
+      <p className="small">
+        <a href={localizedHref(i18n.locale, { page: 'methodology' })}>{t('methodology.link')}</a>
+      </p>
       <p className="muted small">
         {view.channel === 'PREVIEW' || pendingRights ? `${t('common.devSnapshot')} ` : ''}
         <span className="mono">{t('methodology.dataSnapshot', { vehicles: view.dataSnapshot.vehicles, energy: view.dataSnapshot.energy, rights: view.dataSnapshot.rights })}</span>

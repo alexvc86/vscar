@@ -9,6 +9,8 @@ import { optionText, pairLabels, selectorLabels } from '@/components/catalog/lab
 import { pairSlug, type VehicleOption } from '@/domain/catalog';
 import { DEFAULT_LOCALE, parseLocaleSegment, type MarketCode } from '@/i18n/locales';
 import { localeAlternates } from '@/i18n/metadata';
+import { serverEnv } from '@/server/env';
+import { robotsFor } from '@/server/seo';
 import { localizedHref } from '@/i18n/routes';
 import { useI18n } from '@/i18n/use-i18n';
 import { vehicleCatalog } from '@/server/catalog';
@@ -18,7 +20,15 @@ type Params = Promise<{ locale: string }>;
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const locale = parseLocaleSegment((await params).locale) ?? DEFAULT_LOCALE;
   const t = await getTranslations({ locale: locale.segment });
-  return { title: `VScar — ${t('home.title')}`, description: t('home.lead'), alternates: localeAlternates(locale, { page: 'home' }), robots: { index: false, follow: true } };
+  const title = t('seo.homeTitle');
+  return {
+    title: { absolute: title },
+    description: t('home.lead'),
+    alternates: localeAlternates(locale, { page: 'home' }),
+    openGraph: { type: 'website', siteName: 'VScar', title, description: t('home.lead'), url: localizedHref(locale, { page: 'home' }), locale: t('seo.ogLocale') },
+    // PREVIEW: noindex, nofollow siempre; PUBLIC: la home es indexable.
+    robots: robotsFor(serverEnv().channel, true),
+  };
 }
 
 /** Ejemplos del catálogo real: se revalidan (ISR) para seguir los cambios de datos sin recalcular en cada visita. */
