@@ -31,6 +31,8 @@ export const COMPARISON_MESSAGE_TEMPLATES: Readonly<Record<string, (p: MessagePa
   'comparison.requirement.no_plugin_range': (p) => `${p.powertrain} has no plug-in electric range`,
   // Step 8a — requisitos de la unidad usada
   'comparison.requirement.used_unknown': (p) => `${crit(p).label} of this used vehicle is not known: ask the seller (required ${crit(p).op === 'max' ? '≤' : '≥'} ${fallbackNumber(p.required)} ${crit(p).unit})`,
+  'comparison.requirement.service_history_full': () => 'Full service history: complete (declared)',
+  'comparison.requirement.service_history_not_full': (p) => `Full service history required: declared ${String(p.history).toLowerCase()}`,
   'comparison.requirement.calculated_unconfirmed': (p) =>
     `${crit(p).label} ${fallbackRange(p, 'observed')} ${crit(p).unit} calculated from the original warranty: confirm it applies to this unit (required ${crit(p).op === 'max' ? '≤' : '≥'} ${fallbackNumber(p.required)} ${crit(p).unit})`,
   // Métricas
@@ -85,6 +87,8 @@ export const COMPARISON_MESSAGE_PARAM_SCHEMA: Readonly<Record<string, readonly s
   'comparison.requirement.no_data': ['criterion', 'required', 'unit'],
   'comparison.requirement.no_plugin_range': ['criterion', 'required', 'powertrain'],
   'comparison.requirement.used_unknown': ['criterion', 'required', 'unit'],
+  'comparison.requirement.service_history_full': ['criterion', 'history', 'flag'],
+  'comparison.requirement.service_history_not_full': ['criterion', 'history', 'flag'],
   'comparison.requirement.calculated_unconfirmed': ['criterion', 'required', 'unit', 'observedMin', 'observedMax'],
   'comparison.metric.directional': ['metric', 'outcome', 'a', 'b'],
   'comparison.metric.descriptive': ['metric', 'outcome', 'a', 'b', 'valueA', 'valueB'],

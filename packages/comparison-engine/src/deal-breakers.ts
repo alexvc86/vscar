@@ -137,5 +137,23 @@ function usedChecks(c: ComparisonCandidate, r: Req): DealBreakerCheck[] {
   numeric('maxAgeYears', r.maxAgeYears, f.ageMonths, 'MAX', 'years', 'age', 12);
   numeric('minBatteryHealthPct', r.minBatteryHealthPct, f.batteryHealthPct, 'MIN', '%', 'battery health');
   numeric('minWarrantyRemainingMonths', r.minWarrantyRemainingMonths, f.warrantyRemainingMonths, 'MIN', 'months', 'remaining warranty');
+  // Step 8b — requisito categórico. Se expresa como bandera (1 = completo) para reutilizar el contrato de requisitos;
+  // los mensajes llevan `flag: true` para que nunca se presente como una cantidad.
+  if (r.mustHaveFullServiceHistory) {
+    const h = f.serviceHistory ?? { state: 'UNKNOWN' as const };
+    const criterion = 'mustHaveFullServiceHistory' as const;
+    if (h.state === 'UNKNOWN') out.push({ ...unknown(criterion, 1, 'FLAG', 'service history'), message: cmessage('comparison.requirement.used_unknown', { criterion, required: 1, unit: 'FLAG', flag: true }) });
+    else {
+      const full = h.value === 'FULL';
+      out.push({
+        criterion,
+        requiredValue: 1,
+        observedValue: { min: full ? 1 : 0, max: full ? 1 : 0, unit: 'FLAG' },
+        status: full ? 'PASS' : 'FAIL',
+        reason: full ? 'service history is complete' : `service history is ${h.value.toLowerCase()}`,
+        message: cmessage(full ? 'comparison.requirement.service_history_full' : 'comparison.requirement.service_history_not_full', { criterion, history: h.value, flag: true }),
+      });
+    }
+  }
   return out;
 }

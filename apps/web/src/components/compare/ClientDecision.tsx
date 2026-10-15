@@ -7,6 +7,7 @@ import { notifyChaptersUpdated } from '@/client/scenario-nav';
 import type { ComparisonData } from '@/domain/comparison-data';
 import { computeDecision } from '@/domain/decision';
 import { scenarioKey, type Scenario } from '@/domain/scenario';
+import { serializePairConditions } from '@/domain/used-params';
 import { buildDecisionView, withRobustness, type DecisionView } from '@/domain/view-model';
 import { MARKETS, parseLocaleSegment } from '@/i18n/locales';
 import type { RobustnessRequest, RobustnessResponse } from '@/workers/robustness-protocol';
@@ -118,7 +119,7 @@ function Recalculating({ initialView, initialScenario, scenario, data, pathname 
         {announce}
       </p>
       <LayoutGroup>
-        <DecisionChapters view={shown.view} scenario={shown.scenario} pathname={pathname} kit={MOTION_KIT} robustnessPending={pending} />
+        <DecisionChapters view={shown.view} scenario={shown.scenario} pathname={pathname} usedQuery={serializePairConditions(data.conditions)} kit={MOTION_KIT} robustnessPending={pending} />
       </LayoutGroup>
     </MotionConfig>
   );

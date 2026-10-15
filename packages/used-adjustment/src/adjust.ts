@@ -122,8 +122,12 @@ function analyse(input: UsedAdjustmentInput): Analysis {
   const warnings: UsedWarning[] = [];
   const warn = (key: string, params: MessageParams, code: UsedRuleCode, fields: UsedSourceField[]) => warnings.push(traced(umessage(key, params), code, fields));
 
-  const age = calculateVehicleAge({ ...(u.registration_date ? { registrationDate: u.registration_date } : {}), ...(u.registration_year !== undefined ? { registrationYear: u.registration_year } : {}) }, evaluationDate);
-  if (age.invalid) warn('used.warning.registration_after_evaluation', { registration: u.registration_date ?? String(u.registration_year), evaluationDate }, 'USED_REGISTRATION_AFTER_EVALUATION', ageSource(age));
+  const age = calculateVehicleAge(
+    { ...(u.registration_date ? { registrationDate: u.registration_date } : {}), ...(u.registration_year !== undefined ? { registrationYear: u.registration_year } : {}), ...(u.registration_month ? { registrationMonth: u.registration_month } : {}) },
+    evaluationDate,
+  );
+  const registration = u.registration_date ?? (u.registration_month ? `${u.registration_year}-${String(u.registration_month).padStart(2, '0')}` : String(u.registration_year));
+  if (age.invalid) warn('used.warning.registration_after_evaluation', { registration, evaluationDate }, 'USED_REGISTRATION_AFTER_EVALUATION', ageSource(age));
   if (u.registration_year_assumed !== undefined) warn('used.warning.assumed_registration_not_used', { registrationYearAssumed: u.registration_year_assumed }, 'USED_ASSUMED_REGISTRATION_NOT_USED', ['registration_year_assumed']);
   if (u.observed_at && u.observed_at > evaluationDate) warn('used.warning.observed_after_evaluation', { observedAt: u.observed_at, evaluationDate }, 'USED_OBSERVED_AFTER_EVALUATION', ['observed_at']);
 
@@ -142,6 +146,7 @@ function analyse(input: UsedAdjustmentInput): Analysis {
     mileageKm,
     batteryHealthPct: !plugin ? NOT_APPLICABLE : u.battery_health_pct !== 'unknown' ? known(u.battery_health_pct) : UNKNOWN,
     warrantyRemainingMonths: warranty.fact,
+    serviceHistory: u.service_history === 'unknown' ? { state: 'UNKNOWN' } : { state: 'KNOWN', value: u.service_history.toUpperCase() as 'FULL' | 'PARTIAL' | 'NONE', basis: 'USER_PROVIDED' },
   };
   return { u, ref, evaluationDate, age, facts, warrantySource: warranty.sourceFields, summary: summarize(u, ref, evaluationDate, age, facts, priceUsable), priceUsable, currencyMismatch, warnings };
 }
@@ -153,7 +158,7 @@ function informationConfidence(a: Analysis, requiresVerification: boolean): Used
   const forInfo: UsedVehicleInstance = {
     ...a.u,
     ...(a.priceUsable ? {} : { asking_price_minor: undefined, currency: undefined }),
-    ...(a.age.invalid ? { registration_date: undefined, registration_year: undefined } : {}),
+    ...(a.age.invalid ? { registration_date: undefined, registration_year: undefined, registration_month: undefined } : {}),
   };
   const ages = ageYears(a.age);
   const ctx = { powertrain: a.ref.powertrainType, ...(ages ? { age_years: ages } : {}) };

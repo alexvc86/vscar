@@ -63,6 +63,8 @@ export const CRITERION_FALLBACK: Readonly<Record<string, { label: string; unit: 
   maxAgeYears: { label: 'age', unit: 'years', op: 'max' },
   minBatteryHealthPct: { label: 'battery health', unit: '%', op: 'min' },
   minWarrantyRemainingMonths: { label: 'remaining warranty', unit: 'months', op: 'min' },
+  // Step 8b: requisito categórico (bandera); los mensajes llevan `flag: true`.
+  mustHaveFullServiceHistory: { label: 'full service history', unit: '', op: 'min' },
 };
 
 export const capitalize = (x: string) => (x ? x[0]!.toUpperCase() + x.slice(1) : x);

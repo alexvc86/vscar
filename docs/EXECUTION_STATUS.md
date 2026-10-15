@@ -460,6 +460,35 @@ Siguiente:
 - **Step 7c — Comparison URL / Share / richer catalog pages**.
 - En el data workstream: primeras imágenes con derechos verificados (propias o licenciadas) y derechos de S08/S02/S04 para el canal PUBLIC.
 
+## STEP 8b — Used Vehicle Input + New/Used UX · ✅ PASS (2026-10-15)
+
+Una sola experiencia para NUEVO/NUEVO, NUEVO/USADO, USADO/NUEVO y USADO/USADO: Marca → Modelo → Año → Versión → **¿Nuevo o Usado?** → datos de la unidad → revisión. Los hechos de la unidad viajan en la URL (contrato `u=1`, ADR-017) y llegan al **único** `createDecisionPipeline` en servidor, cliente y worker. Sin cuentas, sin persistencia, sin marketplace.
+
+| Entregable | Estado |
+|---|---|
+| Paso Nuevo/Usado tras la versión (también desde la búsqueda); misma ReferenceVariant permitida si alguno es usado | ✅ |
+| Formulario en dos niveles, todo opcional (precio, km, matriculación mes/año · garantía, historial, estado, SOH si aplica, daños); validación al avanzar con error por campo; cambiar de coche vacía los datos | ✅ |
+| Identidad de participante (`subjectId`): Golf nuevo vs Golf usado son dos participantes; usados idénticos se desambiguan | ✅ |
+| Resultado: insignias A/B NUEVO/USADO, resumen de la unidad, **Compra y coste conocido**, capítulo **Este usado** (información, señales ATTENTION / INFORMATION_GAP / NOTE, verificación, procedencia) | ✅ |
+| Requisitos para usados en "Cambiar tu uso" (km, antigüedad, SOH, garantía) + **historial completo** (FULL → PASS · parcial/ausente → FAIL · desconocido → UNCONFIRMED) | ✅ |
+| URL compartible y determinista (Zod), swap con los hechos siguiendo a su coche, idioma y escenario conservados, URL rota sin 500 | ✅ |
+| SEO: canonical/OG del par base, vistas con hechos de usado `noindex` sin JSON-LD, misma variant sin canonical; PREVIEW/PUBLIC sin cambios | ✅ |
+| i18n ES/EN al 100 % (namespace `used`, requisitos, criterios, rama `flag` en plantillas de requisitos) | ✅ |
+| Docs: [USED_INPUT_UX_V0_1](used/USED_INPUT_UX_V0_1.md) · [USED_COMPARISON_INTEGRATION_V0_1](used/USED_COMPARISON_INTEGRATION_V0_1.md) · [ADR-017](adr/ADR-017-used-facts-in-url-and-participant-identity.md) | ✅ |
+
+Metodología **sin cambios (2026.7)**: el historial completo es un requisito declarado por el usuario (contrato de requisitos existente) y `registration_month` solo afina la precisión de la misma regla de edad. Golden new/new de 8a idénticos.
+
+Verificación: `pnpm check` en verde, **685 tests** (3 en vivo omitidos) con MySQL (+39); **E2E 27/27** (8 nuevos: flujos A–F, cambio de unidad, URL malformada). JS inicial comparación **155,8 KB** (+1,8), home 153,8 KB. LCP ≤ 1,24 s; CLS 0; INP p75 72 ms escritorio / 128 ms móvil ×4 (peor carga móvil 296 ms, 1 de 5, mismo patrón que 7c); INP del formulario p75 48 / 128 ms, peor 136 ms.
+
+Hallazgos:
+- `computeDecision` llamaba a `recommend(input)` sin los ajustes del pipeline: ahora pasa `pipeline.usedAdjustments` (new/new idéntico).
+- `@vscar/methodology` entraba en el JS inicial (172,6 KB) por la huella de la identidad: movida a `used-subject.ts` (solo servidor).
+- Abrir el selector en móvil ×4 costaba 208–384 ms desde 7b.2: ahora en `startTransition` (40–88 ms).
+- E2E con un worker por núcleo saturaba el único `next start`: configuración `workers: 2`.
+- Con la misma variant en los dos lados, los nombres de engine son "Volkswagen Golf A / B" (neutros respecto al idioma); la UI añade NUEVO/USADO. A pulir en 8c.
+
+Siguiente: Step 8c (endurecer la experiencia de decisión nuevo/usado: nombres por condición, explicación de `eval`, señales en el resumen) y preparación del despliegue Alpha PREVIEW.
+
 ## STEP 8a — Used Adjustment Engine v0.1 · ✅ PASS (2026-10-14)
 
 `@vscar/used-adjustment`: capa pura y determinista que añade a una ReferenceVariant los hechos de una unidad usada concreta, sin duplicar ni reescribir engines. **ReferenceVariant + UsedVehicleInstance → Used Adjustment → mismos engines** (un solo `createDecisionPipeline`). Sin UI, marketplace, scraping, precio de mercado, historial externo ni VIN.

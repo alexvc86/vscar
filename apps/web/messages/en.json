@@ -50,7 +50,8 @@
       "confidence": "Confidence and verify",
       "details": "Full comparison",
       "technical": "Technical capability",
-      "practical": "Practical fit"
+      "practical": "Practical fit",
+      "used": "This used car"
     },
     "scenarioSummary": "{km} per year · {daily} per day · {trips, plural, =0 {no long trips} one {# long trip} other {# long trips}} per year · home charging {home}",
     "notFound": "This comparison is not available in this market."
@@ -132,7 +133,17 @@
     "invalidField": "Check this value ({min}–{max}).",
     "presetLongTrips": "{count, plural, one {# long trip} other {# long trips}} a year",
     "quickTitle": "Try a different usage",
-    "recalculating": "Recalculating…"
+    "recalculating": "Recalculating…",
+    "requirements": {
+      "title": "Requirements for used cars",
+      "lead": "They only apply to used cars. If a detail is not known, the requirement stays unconfirmed (never assumed met).",
+      "maxkm": "Maximum mileage (km)",
+      "maxage": "Maximum age (years)",
+      "minsoh": "Minimum battery health (%)",
+      "minwarranty": "Minimum remaining warranty (months)",
+      "fullhistory": "Require a full service history",
+      "none": "Empty = no requirement"
+    }
   },
   "confidence": {
     "title": "Recommendation confidence",
@@ -250,7 +261,18 @@
       "DIESEL_A": "Diesel"
     },
     "knownCostView": "Known cost view",
-    "horizonYears": "{years} years"
+    "horizonYears": "{years} years",
+    "purchaseTitle": "Purchase and known cost",
+    "purchase": "Purchase price",
+    "purchaseSource": {
+      "LIST": "list price",
+      "USED_ASKING": "asking price",
+      "OVERRIDE": "price entered"
+    },
+    "ownership": "Known cost over {years, plural, one {# year} other {# years}}",
+    "initialDifference": "Initial purchase difference",
+    "purchaseNote": "The purchase difference alone does not decide the economic fit: Economic Fit compares running cost. The purchase counts in the known cost and the break-even. No estimated depreciation, resale or maintenance.",
+    "noPurchase": "No price"
   },
   "practical": {
     "title": "Practical fit",
@@ -324,10 +346,10 @@
   "engine": {
     "decision": {
       "contribution": {
-        "deal_breaker": "The {subject} does not meet your {criterion} requirement: {hasObserved, select, yes {it has {observed}} other {there is no data}}, and you need {op, select, max {at most} other {at least}} {required}",
+        "deal_breaker": "{flag, select, yes {The {subject} does not meet your {criterion} requirement} other {The {subject} does not meet your {criterion} requirement: {hasObserved, select, yes {it has {observed}} other {there is no data}}, and you need {op, select, max {at most} other {at least}} {required}}}",
         "metric_ahead": "{metric}: {subject} {value} vs {other} {otherValue} — {level} difference{hasGeneral, select, yes { ({generalLevel} in general)} other {}}",
         "running_cost": "The {subject} costs about {amount} less per year to run than the {other}{hasKm, select, yes { at {annualKm}} other {}}",
-        "compromise": "{subject}: below your preferred {criterion} ({hasObserved, select, yes {it has {observed}} other {there is no data}}; you wanted {op, select, max {at most} other {at least}} {required})",
+        "compromise": "{flag, select, yes {{subject}: does not reach your {criterion} target} other {{subject}: below your preferred {criterion} ({hasObserved, select, yes {it has {observed}} other {there is no data}}; you wanted {op, select, max {at most} other {at least}} {required})}}",
         "priority": "your {priority} priority is {level}",
         "range_relevance": "{relevance, select, HIGH {frequent long trips make range matter more} LOW {your daily use stays far below the range, you charge at home and make few long trips: range matters less} other {range carries its standard weight}}"
       },
@@ -338,7 +360,7 @@
         "tie": "For your use, {count, plural, =2 {neither vehicle} other {none of the # vehicles}} is meaningfully better: a practical tie, with no forced winner.",
         "range_dependent": "Which one fits you better depends on configuration ranges, so VScar does not force a winner.",
         "no_full_match": "None fully meets your requirements.",
-        "requirement_failed": "The {subject} does not meet your {criterion} requirement: {hasObserved, select, yes {it has {observed}} other {there is no data}}, and you need {op, select, max {at most} other {at least}} {required}",
+        "requirement_failed": "{flag, select, yes {The {subject} does not meet your {criterion} requirement} other {The {subject} does not meet your {criterion} requirement: {hasObserved, select, yes {it has {observed}} other {there is no data}}, and you need {op, select, max {at most} other {at least}} {required}}}",
         "insufficient_data": "There is not enough comparable data on space, range, performance or running cost to separate the vehicles.",
         "closest_note": "Closest option, not a recommendation: it fails fewer or less severe requirements."
       },
@@ -358,12 +380,12 @@
         "tie": "Running costs are practically the same over {horizonYears, plural, one {# year} other {# years}}."
       },
       "practical": {
-        "requirement_met": "Meets your {criterion} requirement ({op, select, max {at most} other {at least}} {required})",
+        "requirement_met": "{flag, select, yes {Meets your {criterion} requirement} other {Meets your {criterion} requirement ({op, select, max {at most} other {at least}} {required})}}",
         "no_failures": "No mandatory requirement fails",
-        "requirement_failed": "Does not meet your {criterion} requirement: {hasObserved, select, yes {it has {observed}} other {there is no data}}, and you need {op, select, max {at most} other {at least}} {required}",
-        "compromise": "{gap} {direction, select, ABOVE {above} other {below}} your preferred {criterion} ({required})",
-        "unconfirmed": "Your {criterion} requirement cannot be confirmed: {hasObserved, select, yes {{observed} depends on the configuration} other {there is no usable data}} (you need {op, select, max {at most} other {at least}} {required})",
-        "desired_unknown": "Your preferred {criterion} could not be checked ({op, select, max {at most} other {at least}} {required})"
+        "requirement_failed": "{flag, select, yes {Does not meet your {criterion} requirement} other {Does not meet your {criterion} requirement: {hasObserved, select, yes {it has {observed}} other {there is no data}}, and you need {op, select, max {at most} other {at least}} {required}}}",
+        "compromise": "{flag, select, yes {Does not reach your {criterion} target} other {{gap} {direction, select, ABOVE {above} other {below}} your preferred {criterion} ({required})}}",
+        "unconfirmed": "{flag, select, yes {Cannot confirm your {criterion} requirement: not known} other {Your {criterion} requirement cannot be confirmed: {hasObserved, select, yes {{observed} depends on the configuration} other {there is no usable data}} (you need {op, select, max {at most} other {at least}} {required})}}",
+        "desired_unknown": "{flag, select, yes {Your {criterion} target could not be checked} other {Your preferred {criterion} could not be checked ({op, select, max {at most} other {at least}} {required})}}"
       },
       "data_confidence": {
         "pair": "{subject} vs {other}: data confidence is {level}",
@@ -372,8 +394,8 @@
         "requirements_without_data": "{subject}: {count, plural, one {# requirement} other {# requirements}} without verifiable data"
       },
       "why_not": {
-        "deal_breaker": "Does not meet your {criterion} requirement: {hasObserved, select, yes {it has {observed}} other {there is no data}}, and you need {op, select, max {at most} other {at least}} {required}",
-        "compromise": "Below your preferred {criterion}: {hasObserved, select, yes {it has {observed}} other {there is no data}}, and you wanted {op, select, max {at most} other {at least}} {required}",
+        "deal_breaker": "{flag, select, yes {Does not meet your {criterion} requirement} other {Does not meet your {criterion} requirement: {hasObserved, select, yes {it has {observed}} other {there is no data}}, and you need {op, select, max {at most} other {at least}} {required}}}",
+        "compromise": "{flag, select, yes {Does not reach your {criterion} target} other {Below your preferred {criterion}: {hasObserved, select, yes {it has {observed}} other {there is no data}}, and you wanted {op, select, max {at most} other {at least}} {required}}}",
         "running_cost": "Costs about {amount} more per year to run than the {other}{hasKm, select, yes { at {annualKm}} other {}}",
         "economics_not_comparable": "The running costs of the {subject} and the {other} come from different test cycles{hasCycles, select, yes { ({cycleSubject} vs {cycleOther})} other {}}, so VScar does not rank them economically",
         "metric_behind": "{metric}: {subject} {value} vs {other} {otherValue} ({level} difference{hasForYou, select, yes {; for you: {forYou}} other {}})",
@@ -383,8 +405,8 @@
       "no_full_match": "None fully meets your requirements.",
       "closest_option": "Closest option (not a recommendation): {subject}, which fails {failed, plural, one {# requirement} other {# requirements}}",
       "verify": {
-        "requirement": "Not confirmed: {criterion}. Verify that it is {op, select, max {at most} other {at least}} {required}.",
-        "desired": "Your preferred {criterion} ({op, select, max {at most} other {at least}} {required}) could not be checked."
+        "requirement": "{flag, select, yes {Not confirmed: {criterion}. Ask for the documentation before deciding.} other {Not confirmed: {criterion}. Verify that it is {op, select, max {at most} other {at least}} {required}.}}",
+        "desired": "{flag, select, yes {Your {criterion} target could not be checked.} other {Your preferred {criterion} ({op, select, max {at most} other {at least}} {required}) could not be checked.}}"
       },
       "robustness": {
         "switch": "The result changes if {variable, select, annual_km {your annual distance} fuel_price {the fuel price} electricity_price {the electricity price} home_charging_share {your home-charging share} horizon_years {your ownership horizon} other {{variable}}} {direction, select, BELOW {falls below} other {rises above}} {switchValue}",
@@ -415,8 +437,10 @@
         "range_dependent": "Requirement ({criterion}): {observed} depends on the configuration (you need {op, select, max {at most} other {at least}} {required})",
         "no_data": "Requirement ({criterion}): no usable data",
         "no_plugin_range": "A {powertrain} has no plug-in electric range",
-        "used_unknown": "{criterion} requirement: not known for this used car; ask the seller (you need {op, select, max {at most} other {at least}} {required})",
-        "calculated_unconfirmed": "{criterion} requirement: {observed} calculated from the original warranty; confirm it applies to this unit (you need {op, select, max {at most} other {at least}} {required})"
+        "used_unknown": "{flag, select, yes {{criterion} requirement: not known for this used car; ask the seller} other {{criterion} requirement: not known for this used car; ask the seller (you need {op, select, max {at most} other {at least}} {required})}}",
+        "calculated_unconfirmed": "{criterion} requirement: {observed} calculated from the original warranty; confirm it applies to this unit (you need {op, select, max {at most} other {at least}} {required})",
+        "service_history_full": "{criterion} requirement: declared complete and documented",
+        "service_history_not_full": "{criterion} requirement: the declared history is {history, select, NONE {unavailable} other {partial}}"
       },
       "metric": {
         "directional": "{metric}: {a} {valueA} vs {b} {valueB} — {outcome, select, AHEAD {{a} ahead ({level} difference)} BEHIND {{b} ahead ({level} difference)} PRACTICAL_TIE {practical tie} RANGE_DEPENDENT {depends on the configuration} other {different, neither better}}{hasForYou, select, yes {; for your use: {forYouLevel}} other {}}",
@@ -490,7 +514,8 @@
       "maxMileageKm": "mileage",
       "maxAgeYears": "age",
       "minBatteryHealthPct": "battery health",
-      "minWarrantyRemainingMonths": "remaining warranty"
+      "minWarrantyRemainingMonths": "remaining warranty",
+      "mustHaveFullServiceHistory": "full service history"
     },
     "unit": {
       "seats": "seats",
@@ -687,7 +712,8 @@
         "RWD": "Rear-wheel drive",
         "AWD": "All-wheel drive"
       },
-      "powertrainLabel": "Powertrain"
+      "powertrainLabel": "Powertrain",
+      "condition": "New or used"
     },
     "cycle": "{cycle} homologation"
   },
@@ -723,5 +749,100 @@
   },
   "rail": {
     "label": "Compared vehicles"
+  },
+  "used": {
+    "condition": {
+      "question": "How are you considering this car?",
+      "new": "New",
+      "used": "Used",
+      "newHint": "List price and warranty of a new car.",
+      "usedHint": "A specific car: you will enter its price, mileage and condition.",
+      "sameCarNew": "This same car is already the new one on the other side: choose Used to compare a specific car, or pick another car.",
+      "step": "New or used"
+    },
+    "badge": "{side} · {condition, select, used {USED} other {NEW}}",
+    "form": {
+      "title": "About this car",
+      "lead": "The more details you can verify, the better we can assess this specific car.",
+      "essentials": "Essential details",
+      "additional": "Additional information",
+      "optional": "optional",
+      "price": "Asking price",
+      "priceHint": "What the seller is asking. It is not a market value.",
+      "km": "Current mileage",
+      "kmHint": "Leave it empty if you don't know it (empty is not 0).",
+      "reg": "First registration",
+      "regHint": "Not the model year: the date is on the registration document.",
+      "month": "Month",
+      "year": "Year",
+      "monthUnknown": "Month unknown",
+      "warranty": "Remaining warranty",
+      "warrantyUnit": "months",
+      "warrantyUnknown": "I don't know",
+      "warrantyHint": "Enter 0 if you know it has no warranty left. If you don't know, VScar estimates it from the original warranty and asks you to confirm it.",
+      "service": "Service history",
+      "serviceOptions": {
+        "full": "Complete and documented",
+        "partial": "Partial",
+        "none": "Unavailable",
+        "unknown": "I don't know"
+      },
+      "state": "Known condition",
+      "stateOptions": {
+        "ok": "No issues declared",
+        "issues": "Known issues",
+        "unknown": "Not verified"
+      },
+      "stateHint": "This is what you or the seller declare, not an independent inspection.",
+      "soh": "Battery health (SOH)",
+      "sohUnknown": "I don't have it",
+      "sohHint": "Capacity the battery retains according to a report. VScar does not turn it into range.",
+      "damage": "Known damage",
+      "damageOptions": {
+        "none": "No damage declared",
+        "declared": "Damage declared",
+        "unknown": "I don't know"
+      },
+      "review": "Review",
+      "back": "Back",
+      "errors": {
+        "integer": "Enter a whole number without decimals.",
+        "price": "Enter a price between €{min} and €{max}.",
+        "km": "Enter a mileage between 0 and {max} km.",
+        "regYear": "Enter a year between {min} and {max}.",
+        "regFuture": "The registration cannot be after today.",
+        "regMonth": "Choose the year to set the month.",
+        "warranty": "Enter between 0 and {max} months.",
+        "soh": "Enter a percentage between 1 and 100."
+      }
+    },
+    "review": {
+      "title": "Review this car",
+      "choose": "Choose this car",
+      "notProvided": "Not provided",
+      "months": "{count, plural, one {# month} other {# months}}",
+      "privacy": "These details only live in your browser and in the comparison link. They are not stored."
+    },
+    "summary": {
+      "price": "Asking price",
+      "km": "Mileage",
+      "reg": "Registered",
+      "service": "History",
+      "evaluated": "Details as of {date}"
+    },
+    "module": {
+      "title": "About this used car",
+      "lead": "What we know about each used car and what still needs checking. It is not a score of the car.",
+      "confidence": "Information confidence",
+      "attention": "Points to check",
+      "gaps": "Missing details",
+      "notes": "Declared details",
+      "verify": "Check this before deciding",
+      "warnings": "Notices",
+      "provenance": "Provenance: what is marked as declared was entered by you (or the seller); what is calculated comes from the manufacturer's original warranty; what is missing is not known. VScar has not verified the car.",
+      "noSignals": "Nothing to check with the details entered."
+    },
+    "ignoredFacts": "Details ignored because they do not apply to this car: {fields}",
+    "shareNote": "The link will include the price, mileage and condition you entered."
   }
 }

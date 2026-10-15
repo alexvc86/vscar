@@ -1,7 +1,7 @@
 import { Disclosure } from '@vscar/ui/disclosure';
 import type { CandidateSide } from '@vscar/ui/tokens';
 import { DEFAULT_SCENARIO, serializeScenario, type Scenario } from '@/domain/scenario';
-import type { CandidateView, DecisionView, MetricView, WhyNotView } from '@/domain/view-model';
+import type { CandidateView, DecisionView, MetricView, UsedSideView, WhyNotView } from '@/domain/view-model';
 import { metricLabel } from '@/i18n/engine-messages';
 import { useI18n, type I18n } from '@/i18n/use-i18n';
 import { VehicleVisual } from '../vehicle/VehicleVisual';
@@ -26,9 +26,14 @@ export interface DecisionChaptersProps {
   kit?: MotionKit;
   /** true mientras el worker calcula la robustez del escenario actual. */
   robustnessPending?: boolean;
+  /** Step 8b: bloque usado de la URL (`u=1&…`, sin `?`): los enlaces de escenario lo conservan. */
+  usedQuery?: string;
 }
 
-export function DecisionChapters({ view, scenario, pathname, kit = STATIC_KIT, robustnessPending = false }: DecisionChaptersProps) {
+/** Query de escenario (`?…` o "") + bloque usado. */
+const withUsed = (q: string, used?: string) => (!used ? q : q ? `${q}&${used}` : `?${used}`);
+
+export function DecisionChapters({ view, scenario, pathname, kit = STATIC_KIT, robustnessPending = false, usedQuery }: DecisionChaptersProps) {
   const i18n = useI18n();
   const metrics = new Map<string, MetricView>([...view.metricsByCategory.flatMap((c) => c.metrics), ...view.keyMetrics].map((m) => [m.metric, m]));
   let index = 1;
@@ -48,10 +53,12 @@ export function DecisionChapters({ view, scenario, pathname, kit = STATIC_KIT, r
             return <TechnicalChapter key={ch.id} index={index++} view={view} i18n={i18n} />;
           case 'practical':
             return <PracticalChapter key={ch.id} index={index++} view={view} i18n={i18n} />;
+          case 'used':
+            return view.used ? <UsedChapter key={ch.id} index={index++} view={view} i18n={i18n} /> : null;
           case 'tradeoffs':
             return <TradeoffsChapter key={ch.id} index={index++} view={view} i18n={i18n} />;
           case 'change':
-            return <ChangeChapter key={ch.id} index={index++} view={view} scenario={scenario} pathname={pathname} pending={robustnessPending} i18n={i18n} />;
+            return <ChangeChapter key={ch.id} index={index++} view={view} scenario={scenario} pathname={pathname} usedQuery={usedQuery} pending={robustnessPending} i18n={i18n} />;
           case 'confidence':
             return <ConfidenceChapter key={ch.id} index={index++} view={view} i18n={i18n} pending={robustnessPending} />;
           case 'details':
@@ -224,6 +231,7 @@ function EconomicsChapter({ view, scenario, i18n, index }: { view: DecisionView;
         })}
       </div>
       <p className="muted small">{t('economic.rangeNote')}</p>
+      {view.used ? <PurchaseBlock view={view} i18n={i18n} /> : null}
       <MarketContext view={view} i18n={i18n} />
     </Chapter>
   );
@@ -368,9 +376,9 @@ function TradeoffsChapter({ view, i18n, index }: { view: DecisionView; i18n: I18
   );
 }
 
-function ChangeChapter({ view, scenario, pathname, pending, i18n, index }: { view: DecisionView; scenario: Scenario; pathname: string; pending: boolean; i18n: I18n; index: number }) {
+function ChangeChapter({ view, scenario, pathname, usedQuery, pending, i18n, index }: { view: DecisionView; scenario: Scenario; pathname: string; usedQuery?: string | undefined; pending: boolean; i18n: I18n; index: number }) {
   const { t } = i18n;
-  const presets = [1, 10].map((trips) => ({ trips, href: `${pathname}${serializeScenario({ ...scenario, trips })}` }));
+  const presets = [1, 10].map((trips) => ({ trips, href: `${pathname}${withUsed(serializeScenario({ ...scenario, trips }), usedQuery)}` }));
   return (
     <Chapter id="change" labelledBy="change-title" index={index} className="chapter--change">
       <SplitHeading id="change-title" text={t('robustness.title')} className="chapter__title" />
@@ -411,7 +419,7 @@ function ChangeChapter({ view, scenario, pathname, pending, i18n, index }: { vie
           {/* Siempre en el layout (oculto con `visibility` en el escenario por defecto): sin salto al cambiar. */}
           <li className={serializeScenario(scenario) ? undefined : 'is-reserved'}>
             <a
-              href={`${pathname}${serializeScenario(DEFAULT_SCENARIO)}`}
+              href={`${pathname}${withUsed(serializeScenario(DEFAULT_SCENARIO), usedQuery)}`}
               className="vs-button vs-button--quiet vs-button--sm"
               data-scenario-link=""
               {...(serializeScenario(scenario) ? {} : { tabIndex: -1, 'aria-hidden': true })}
@@ -421,6 +429,114 @@ function ChangeChapter({ view, scenario, pathname, pending, i18n, index }: { vie
           </li>
         </ul>
       </div>
+    </Chapter>
+  );
+}
+
+/**
+ * Step 8b — compra y coste conocido (solo con algún usado). Separa el precio de compra (catálogo vs precio
+ * solicitado) del Economic Fit, que sigue comparando el coste de uso. Sin depreciación, reventa ni mantenimiento.
+ */
+function PurchaseBlock({ view, i18n }: { view: DecisionView; i18n: I18n }) {
+  const { t, f } = i18n;
+  const e = view.economics;
+  const [a, b] = view.candidates;
+  const pa = e.perSide.a.purchase;
+  const pb = e.perSide.b.purchase;
+  return (
+    <section className="purchase-block" aria-labelledby="purchase-title" data-testid="purchase-block">
+      <h3 id="purchase-title" className="label">
+        {t('economic.purchaseTitle')}
+      </h3>
+      <div className="econ-grid">
+        {[a, b].map((c) => {
+          const s = e.perSide[c.side];
+          return (
+            <article key={c.side} className={`econ-card econ-card--${c.side}`} data-testid={`purchase-${c.side}`}>
+              <h4 className="econ-card__name">{c.name}</h4>
+              <dl className="econ-card__list">
+                <div>
+                  <dt>
+                    {t('economic.purchase')}
+                    {s.purchase ? <span className="muted"> · {t(`economic.purchaseSource.${s.purchase.source}`)}</span> : null}
+                  </dt>
+                  <dd className="mono econ-card__big">{s.purchase ? f.moneyMinorRange({ min: s.purchase.amount, max: s.purchase.amount }, 0) : t('economic.noPurchase')}</dd>
+                </div>
+                <div>
+                  <dt>{t('economic.ownership', { years: e.horizonYears })}</dt>
+                  <dd className="mono">{s.ownership && s.purchase ? f.moneyMinorRange(s.ownership.total, 0) : t('common.notConfirmed')}</dd>
+                </div>
+              </dl>
+            </article>
+          );
+        })}
+      </div>
+      {pa && pb ? (
+        <p className="purchase-block__diff">
+          {t('economic.initialDifference')}: <span className="mono">{f.moneyMinorRange({ min: Math.abs(pa.amount - pb.amount), max: Math.abs(pa.amount - pb.amount) }, 0)}</span>
+        </p>
+      ) : null}
+      <p className="muted small">{t('economic.purchaseNote')}</p>
+    </section>
+  );
+}
+
+/**
+ * Step 8b — "Este usado": información de la unidad (Used Information Confidence), señales agrupadas por naturaleza
+ * (ATTENTION / INFORMATION_GAP / NOTE) y verificación. Todas las frases vienen del Used Adjustment (messageKey +
+ * params); la UI solo agrupa. Nunca una nota de usado ni una probabilidad.
+ */
+function UsedChapter({ view, i18n, index }: { view: DecisionView; i18n: I18n; index: number }) {
+  const { t } = i18n;
+  const sides = view.candidates.filter((c) => view.used?.[c.side]);
+  const list = (items: UsedSideView['verification'], cls: string, testid: string) =>
+    items.length ? (
+      <ul className={cls} data-testid={testid}>
+        {items.map((m, k) => (
+          <li key={`${m.messageKey}-${k}`}>
+            <MessageText msg={m} i18n={i18n} />
+          </li>
+        ))}
+      </ul>
+    ) : null;
+  return (
+    <Chapter id="used" labelledBy="used-title" index={index} className="chapter--used">
+      <SplitHeading id="used-title" text={t('used.module.title')} className="chapter__title" />
+      <p className="muted">{t('used.module.lead')}</p>
+      <div className="used-grid">
+        {sides.map((c) => {
+          const u = view.used![c.side]!;
+          return (
+            <article key={c.side} className={`used-card used-card--${c.side}`} data-testid={`used-card-${c.side}`}>
+              <h3 className="used-card__name">
+                <span className={`label tone-${c.side}`}>{c.side.toUpperCase()}</span> {c.name}
+              </h3>
+              <p className="used-card__confidence">
+                {t('used.module.confidence')}: <ConfidenceMeter level={u.information.level} i18n={i18n} />
+              </p>
+              <p className="muted small">
+                <MessageText msg={u.information.summary} i18n={i18n} />
+              </p>
+              {list(u.information.reasons, 'used-card__reasons', `used-reasons-${c.side}`)}
+              {u.signals.attention.length ? <h4 className="label">{t('used.module.attention')}</h4> : null}
+              {list(u.signals.attention, 'used-signals used-signals--attention', `used-attention-${c.side}`)}
+              {u.signals.gaps.length ? <h4 className="label">{t('used.module.gaps')}</h4> : null}
+              {list(u.signals.gaps, 'used-signals used-signals--gaps', `used-gaps-${c.side}`)}
+              {u.signals.notes.length ? <h4 className="label">{t('used.module.notes')}</h4> : null}
+              {list(u.signals.notes, 'used-signals used-signals--notes', `used-notes-${c.side}`)}
+              {!u.signals.attention.length && !u.signals.gaps.length ? <p className="muted small">{t('used.module.noSignals')}</p> : null}
+              {u.verification.length ? <h4 className="label">{t('used.module.verify')}</h4> : null}
+              {list(u.verification, 'used-verify', `used-verify-${c.side}`)}
+              {u.warnings.length ? <h4 className="label">{t('used.module.warnings')}</h4> : null}
+              {list(u.warnings, 'used-warnings', `used-warnings-${c.side}`)}
+              <p className="muted small">
+                <MessageText msg={u.purchase} i18n={i18n} />
+              </p>
+            </article>
+          );
+        })}
+      </div>
+      <p className="muted small used-provenance">{t('used.module.provenance')}</p>
     </Chapter>
   );
 }

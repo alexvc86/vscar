@@ -1945,3 +1945,256 @@ a {
     break-inside: avoid;
   }
 }
+
+/* ---------------------------------------------------------------- Step 8b · Nuevo / Usado */
+.condition-badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 2px var(--vs-space-2);
+  border-radius: var(--vs-radius-sm);
+  border: 1px solid var(--vs-line);
+  font-family: var(--vs-font-mono, ui-monospace, monospace);
+  font-size: var(--vs-text-label);
+  letter-spacing: var(--vs-tracking-label);
+  color: var(--vs-muted);
+}
+.condition-badge--used {
+  border-color: var(--vs-line-strong);
+  color: var(--vs-text);
+}
+.vs__used,
+.pick-slot__facts {
+  display: block;
+  color: var(--vs-muted);
+  font-variant-numeric: tabular-nums;
+}
+.vp-condition {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--vs-space-3);
+  width: 100%;
+}
+.vp-condition__option {
+  display: grid;
+  gap: 4px;
+  min-height: 88px;
+  padding: var(--vs-space-4);
+  border: 1px solid var(--vs-line);
+  border-radius: var(--vs-radius-md);
+  background: var(--vs-surface);
+  color: var(--vs-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.vp-condition__option:hover,
+.vp-condition__option:focus-visible {
+  border-color: var(--vs-line-strong);
+}
+.vp[data-side='a'] .vp-condition__option:focus-visible {
+  outline-color: var(--vs-candidate-a);
+}
+.vp[data-side='b'] .vp-condition__option:focus-visible {
+  outline-color: var(--vs-candidate-b);
+}
+.vp-condition__name {
+  font-size: var(--vs-text-h3);
+  font-weight: 600;
+}
+.used-form {
+  display: grid;
+  gap: var(--vs-space-5);
+}
+.uf-section {
+  display: grid;
+  gap: var(--vs-space-4);
+}
+.uf-section > .label {
+  margin: 0;
+}
+.uf-reg__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--vs-space-3);
+}
+.uf-reg select {
+  min-width: 11rem;
+}
+.uf-more {
+  border-top: var(--vs-border);
+  padding-top: var(--vs-space-4);
+}
+.uf-more > summary {
+  cursor: pointer;
+  min-height: var(--vs-touch-target);
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+.uf-more[open] > summary {
+  margin-bottom: var(--vs-space-4);
+}
+.uf-more > .field,
+.uf-more > fieldset {
+  margin-bottom: var(--vs-space-5);
+}
+.uf-radios__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--vs-space-2);
+}
+.uf-radio,
+.uf-check {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--vs-space-2);
+  min-height: var(--vs-touch-target);
+  padding: 0 var(--vs-space-3);
+  border: 1px solid var(--vs-line);
+  border-radius: var(--vs-radius-md);
+  background: var(--vs-surface);
+  color: var(--vs-text);
+  cursor: pointer;
+}
+.uf-radio:has(input:checked) {
+  border-color: var(--vs-line-strong);
+}
+.uf-check {
+  width: fit-content;
+  justify-self: start;
+}
+.uf-radio input,
+.uf-check input {
+  width: 18px;
+  height: 18px;
+  min-height: 0;
+  margin: 0;
+}
+.field input:disabled {
+  opacity: 0.5;
+}
+.used-form__actions {
+  display: flex;
+  justify-content: flex-start;
+}
+.vp-review {
+  display: grid;
+  gap: var(--vs-space-4);
+}
+.vp-review__car {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+}
+.vp-review__name {
+  font-size: var(--vs-text-h3);
+  font-weight: 600;
+}
+.vp-review__facts {
+  display: grid;
+  gap: var(--vs-space-2);
+  margin: 0;
+}
+.vp-review__facts div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--vs-space-4);
+  padding: var(--vs-space-2) 0;
+  border-bottom: var(--vs-border);
+}
+.vp-review__facts dt {
+  color: var(--vs-muted);
+}
+.vp-review__facts dd {
+  margin: 0;
+  text-align: right;
+}
+.share__note {
+  display: block;
+  max-width: 34ch;
+}
+.purchase-block {
+  margin-top: var(--vs-space-6, 32px);
+}
+.purchase-block__diff {
+  font-size: var(--vs-text-lead);
+}
+.used-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--vs-space-4);
+  margin: var(--vs-space-5) 0;
+}
+.used-grid:has(> :only-child) {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 720px;
+}
+.used-card {
+  padding: var(--vs-space-5);
+  border-radius: var(--vs-radius-lg);
+  background: var(--vs-surface);
+  border: var(--vs-border);
+}
+.used-card--a {
+  border-top: 2px solid var(--vs-candidate-a-line);
+}
+.used-card--b {
+  border-top: 2px solid var(--vs-candidate-b-line);
+}
+.used-card__name {
+  margin: 0 0 var(--vs-space-3);
+  font-size: var(--vs-text-h3);
+}
+.used-card h4 {
+  margin: var(--vs-space-4) 0 var(--vs-space-2);
+}
+.used-card ul {
+  margin: 0;
+  padding-left: 1.1em;
+  display: grid;
+  gap: var(--vs-space-1);
+}
+.used-signals--attention li::marker {
+  color: var(--vs-warning);
+}
+.used-verify {
+  border-left: 2px solid rgb(242 153 74 / 0.5);
+  padding-left: var(--vs-space-4) !important;
+  list-style: none;
+}
+.field--requirements {
+  display: grid;
+  gap: var(--vs-space-4);
+  padding-top: var(--vs-space-4);
+  border-top: var(--vs-border);
+}
+.field--check {
+  display: flex;
+  align-items: center;
+  gap: var(--vs-space-2);
+  min-height: var(--vs-touch-target);
+}
+.field--check input {
+  width: 20px;
+  min-height: 0;
+}
+@media (max-width: 699px) {
+  .vp-condition,
+  .used-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .vp-review__facts div {
+    display: grid;
+    gap: 2px;
+  }
+  .vp-review__facts dd {
+    text-align: left;
+  }
+}
+@media print {
+  .uf-more > summary {
+    display: none;
+  }
+}
+

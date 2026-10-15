@@ -5,6 +5,7 @@ import { LEGACY_PAIRS, normalizeSearch } from '../../src/domain/catalog.ts';
 import type { ComparisonData } from '../../src/domain/comparison-data.ts';
 import { createVehicleCatalogService, type VehicleCatalogService } from '../../src/server/catalog-service.ts';
 import { loadComparisonData } from '../../src/server/comparison-loader.ts';
+import { ALL_NEW, type PairConditions } from '../../src/domain/used-params.ts';
 
 /**
  * CatalogReader EN MEMORIA sobre un DatasetBundle, con el mismo contrato que el lector MySQL de @vscar/db
@@ -85,8 +86,8 @@ export function memoryCatalog(channel: 'PUBLIC' | 'PREVIEW' = 'PREVIEW', bundle?
 /** Par de la Step 7a (BYD SEAL vs Model 3 2021), ahora resuelto como dos ReferenceVariants del catálogo. */
 export const DEMO_PAIR = LEGACY_PAIRS['byd-seal-vs-tesla-model-3']!;
 
-export async function comparisonData(slug = DEMO_PAIR, catalog: VehicleCatalogService = memoryCatalog()): Promise<ComparisonData> {
-  const load = await loadComparisonData('ES', slug, catalog);
+export async function comparisonData(slug = DEMO_PAIR, catalog: VehicleCatalogService = memoryCatalog(), conditions: PairConditions = ALL_NEW): Promise<ComparisonData> {
+  const load = await loadComparisonData('ES', slug, catalog, conditions);
   if (load.kind !== 'ok') throw new Error(`could not load ${slug}: ${JSON.stringify(load)}`);
   return load.data;
 }

@@ -6,6 +6,8 @@ import { distinctShortNames, LEGACY_PAIRS, pairSlug, parsePairSlug, type Vehicle
 import type { ComparisonData, ComparisonVehicle, SourceInfo } from '@/domain/comparison-data';
 import { computeDecision } from '@/domain/decision';
 import type { Scenario } from '@/domain/scenario';
+import { ALL_NEW, hasUsed, pairConditionsKey, sohApplies, type PairConditions, type SideCondition } from '@/domain/used-params';
+import { toUsedInstance, usedSubjectId } from '@/domain/used-subject';
 import type { DecisionView } from '@/domain/view-model';
 import type { MarketCode } from '@/i18n/locales';
 import { vehicleCatalog } from './catalog';
@@ -35,7 +37,7 @@ export interface LoadTimings {
 const MAX = 100;
 const cache = new Map<string, ComparisonData>();
 
-export async function loadComparisonData(market: MarketCode, slug: string, catalog: VehicleCatalogService = vehicleCatalog()): Promise<ComparisonLoad> {
+export async function loadComparisonData(market: MarketCode, slug: string, catalog: VehicleCatalogService = vehicleCatalog(), conditions: PairConditions = ALL_NEW): Promise<ComparisonLoad> {
   const t0 = performance.now();
   const legacy = LEGACY_PAIRS[slug];
   if (legacy) return { kind: 'redirect', pairSlug: legacy };
@@ -44,11 +46,13 @@ export async function loadComparisonData(market: MarketCode, slug: string, catal
   const [ra, rb] = await Promise.all([catalog.getVariantBySlug(market, pair.a), catalog.getVariantBySlug(market, pair.b)]);
   const tLookup = performance.now();
   if (!ra || !rb) return { kind: 'not-found', reason: 'UNKNOWN_VEHICLE' };
-  if (ra.option.id === rb.option.id) return { kind: 'not-found', reason: 'SAME_VEHICLE' };
+  // Step 8b: la misma ReferenceVariant en los dos lados solo tiene sentido si al menos uno es una unidad usada
+  // (Golf nuevo vs Golf usado, o dos unidades usadas): son participantes distintos.
+  if (ra.option.id === rb.option.id && !hasUsed(conditions)) return { kind: 'not-found', reason: 'SAME_VEHICLE' };
   if (ra.viaAlias || rb.viaAlias) return { kind: 'redirect', pairSlug: pairSlug(ra.canonicalSlug, rb.canonicalSlug) };
 
   const idx = await catalog.index(market);
-  const key = `${market}|${catalog.channel}|${slug}|${idx.version}`;
+  const key = `${market}|${catalog.channel}|${slug}|${idx.version}|${pairConditionsKey(conditions)}`;
   const hit = cache.get(key);
   if (hit) return { kind: 'ok', data: hit, ms: performance.now() - t0, timings: { lookupMs: tLookup - t0, bundleMs: 0, adaptMs: 0, cached: true } };
 
@@ -57,17 +61,26 @@ export async function loadComparisonData(market: MarketCode, slug: string, catal
   const tBundle = performance.now();
   // Publicación por campo: lo que no se puede publicar en el canal ni se muestra ni se calcula.
   const bundle = filterBundleForChannel(raw, catalog.channel);
-  const [labelA, labelB] = distinctShortNames(ra.option, rb.option);
-  const vehicle = (side: 'a' | 'b', option: VehicleOption, label: string): ComparisonVehicle => {
+  // Misma variant en los dos lados: nombre corto + lado (neutro respecto al idioma; la UI añade Nuevo/Usado).
+  const [labelA, labelB] = ra.option.id === rb.option.id ? [`${ra.option.brand} ${ra.option.model} A`, `${rb.option.brand} ${rb.option.model} B`] : distinctShortNames(ra.option, rb.option);
+  const evaluationDate = conditions.evaluationDate;
+  const subjectIds: Partial<Record<'a' | 'b', string>> = {};
+  const vehicle = (side: 'a' | 'b', option: VehicleOption, label: string, cond: SideCondition): ComparisonVehicle => {
     const at = variantReferenceDate(idx.rowById.get(option.id)!);
     const opts = at ? { at } : {};
-    return {
-      side,
-      option,
-      label,
-      ...opts,
-      pipeline: { candidate: comparisonCandidateFromBundle(bundle, option.id, { label, ...opts }), economicInput: economicVehicleInputFromBundle(bundle, option.id, opts) },
-    };
+    const base = { candidate: comparisonCandidateFromBundle(bundle, option.id, { label, ...opts }), economicInput: economicVehicleInputFromBundle(bundle, option.id, opts) };
+    if (cond.condition === 'new' || !evaluationDate) {
+      subjectIds[side] = option.id;
+      return { side, option, label, ...opts, subjectId: option.id, condition: 'new', pipeline: base };
+    }
+    // La salud de batería solo aplica a BEV/PHEV/EREV: en otro powertrain se ignora (nunca penaliza).
+    const ignored = cond.facts.soh !== undefined && !sohApplies(option.powertrainType) ? [`${side}_soh`] : [];
+    const facts = ignored.length ? (({ soh: _s, ...rest }) => rest)(cond.facts) : cond.facts;
+    // Dos unidades idénticas de la misma variant siguen siendo dos participantes.
+    let id = usedSubjectId(option.id, facts);
+    if (side === 'b' && subjectIds.a === id) id = usedSubjectId(option.id, facts, 'b');
+    subjectIds[side] = id;
+    return { side, option, label, ...opts, subjectId: id, condition: 'used', used: facts, ...(ignored.length ? { ignored } : {}), pipeline: { ...base, usedInstance: toUsedInstance(facts, option.id, id, evaluationDate) } };
   };
   const energy = marketEnergy(market, catalog.channel);
 
@@ -91,10 +104,12 @@ export async function loadComparisonData(market: MarketCode, slug: string, catal
     market,
     pairSlug: slug,
     channel: catalog.channel,
-    vehicles: [vehicle('a', ra.option, labelA), vehicle('b', rb.option, labelB)],
+    vehicles: [vehicle('a', ra.option, labelA, conditions.a), vehicle('b', rb.option, labelB, conditions.b)],
     energy: energy.context,
     sources: [...vehicleSources, ...energy.sources],
     dataSnapshot: { vehicles: idx.version, energy: energy.version, rights: `DATA_RIGHTS_MATRIX v${RIGHTS_MATRIX_VERSION}` },
+    conditions,
+    ...(evaluationDate && hasUsed(conditions) ? { evaluationDate } : {}),
   };
   cache.set(key, data);
   if (cache.size > MAX) cache.delete(cache.keys().next().value!);
@@ -107,8 +122,8 @@ export type ComparisonPage =
   | Exclude<ComparisonLoad, { kind: 'ok' }>;
 
 /** Datos + decisión inicial (con robustez) para el RSC. */
-export async function loadComparisonPageData({ market, slug, scenario }: { market: MarketCode; slug: string; scenario: Scenario }): Promise<ComparisonPage> {
-  const load = await loadComparisonData(market, slug);
+export async function loadComparisonPageData({ market, slug, scenario, conditions = ALL_NEW }: { market: MarketCode; slug: string; scenario: Scenario; conditions?: PairConditions }): Promise<ComparisonPage> {
+  const load = await loadComparisonData(market, slug, vehicleCatalog(), conditions);
   if (load.kind !== 'ok') return load;
   const { view, ms, cached } = serverDecisionView(load.data, scenario);
   const timings = { ...load.timings, loadMs: load.ms, decisionMs: ms, decisionCached: cached };

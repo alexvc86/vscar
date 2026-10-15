@@ -97,6 +97,13 @@ AUTONOMÍA ELÉCTRICA
 
 Hallazgo de CLS: con el contrato de mensajes (7a.1), la explicación del resultado y el titular cambian de longitud entre empate y elegido. En móvil, el recálculo llegaba más de 500 ms después del clic y contaba como desplazamiento (0,055). Ahora se reservan las líneas necesarias en pantallas estrechas.
 
-## 6. Fuera de alcance
+## 6. Step 8b — unidades usadas en la URL
+
+- La URL añade un bloque propio y versionado con la condición y los hechos de cada lado (`u=1&b=used&b_price=28000&b_km=84000&b_reg=2019-03&b_service=partial&eval=2026-10-15`), separado del escenario. Detalle: [USED_COMPARISON_INTEGRATION_V0_1 §2](../used/USED_COMPARISON_INTEGRATION_V0_1.md#2-url-compartible-contrato-u1) y [ADR-017](../adr/ADR-017-used-facts-in-url-and-participant-identity.md).
+- Compartir sigue usando la URL completa; si incluye hechos de usado, se avisa antes: "El enlace incluirá el precio, el kilometraje y el estado que has introducido."
+- Canonical/OG: los del par base; la vista con hechos de usado es `noindex` y sin JSON-LD (misma variant en los dos lados: sin canonical).
+- Intercambiar mueve condición y hechos con su vehículo; cambiar de coche nunca reutiliza los hechos de la unidad anterior; escenario e idioma conservan el bloque.
+
+## 7. Fuera de alcance
 
 PDF, favoritos, comparaciones guardadas, acortador, cuentas, analytics, ratings, comentarios y páginas de modelo (posible 7d).

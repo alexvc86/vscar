@@ -6,6 +6,7 @@ import type { DecisionInput } from '@vscar/decision-engine';
 import type { VehicleOption } from './catalog.ts';
 import { buildComparisonChapters } from './chapters.ts';
 import type { ComparisonData, DataSnapshot, SourceInfo } from './comparison-data.ts';
+import type { UsedFacts } from './used-params.ts';
 
 /**
  * Vista de la decisión, NEUTRA respecto al idioma y serializable. Solo REORGANIZA lo que devuelven los engines
@@ -26,6 +27,8 @@ export interface CandidateView {
   body: string;
   /** Identidad comercial de la ReferenceVariant (selector, hero, cambiar coche). */
   option: VehicleOption;
+  /** Step 8b: cómo se considera este coche. `id` es la identidad del participante (variant o unidad usada). */
+  condition: 'new' | 'used';
 }
 
 /** Métrica orientada: `a` = candidato A de la página (BYD), `b` = candidato B (Model 3). */
@@ -69,7 +72,19 @@ export interface EconomicsView {
   status: AlphaRecommendationResult['economicFit']['status'];
   horizonYears: number;
   leader?: CandidateSide;
-  perSide: Record<CandidateSide, { annual?: Range; per100km?: Range; horizon?: Range; status: string }>;
+  perSide: Record<
+    CandidateSide,
+    {
+      annual?: Range;
+      per100km?: Range;
+      horizon?: Range;
+      status: string;
+      /** Step 8b: precio de compra que usa Economics (lista si nuevo; precio pedido si usado). */
+      purchase?: { amount: number; source: 'LIST' | 'USED_ASKING' | 'OVERRIDE'; basis: string };
+      /** Step 8b: coste conocido de propiedad al horizonte (compra + uso; vista de costes conocidos, nunca TCO). */
+      ownership?: { view: string; total: Range; missing: string[] };
+    }
+  >;
   /** Diferencia anual (positivo: A cuesta más). */
   annualDelta?: Range;
   meaningful?: string;
@@ -84,13 +99,30 @@ export interface EnergyReferenceView {
   homeChargingShare: number;
 }
 
-export type ChapterKind = 'vs' | 'result' | 'reason' | 'economics' | 'technical' | 'practical' | 'tradeoffs' | 'change' | 'confidence' | 'details';
+export type ChapterKind = 'vs' | 'result' | 'reason' | 'economics' | 'technical' | 'practical' | 'used' | 'tradeoffs' | 'change' | 'confidence' | 'details';
 
 export interface ChapterView {
   id: string;
   kind: ChapterKind;
   /** Para capítulos de motivo: la métrica protagonista. */
   metric?: string;
+}
+
+/** Step 8b: información de una unidad usada tal como la devuelve el Used Adjustment (solo mensajes del engine). */
+export interface UsedSideView {
+  side: CandidateSide;
+  /** Hechos declarados (para el resumen; la UI los formatea). */
+  facts: UsedFacts;
+  evaluationDate: string;
+  /** Edad derivada (meses, rango si solo hay año o mes/año). */
+  ageMonths?: Range;
+  warranty: { state: 'KNOWN' | 'UNKNOWN' | 'NOT_APPLICABLE'; basis?: string; months?: Range };
+  batteryApplies: boolean;
+  information: { level: 'HIGH' | 'MEDIUM' | 'LOW'; summary: Message; reasons: Message[]; requiresVerification: boolean };
+  signals: { attention: Message[]; gaps: Message[]; notes: Message[] };
+  verification: Message[];
+  warnings: Message[];
+  purchase: Message;
 }
 
 export interface DecisionView {
@@ -125,6 +157,10 @@ export interface DecisionView {
   sources: SourceInfo[];
   dataSnapshot: DataSnapshot;
   channel: ComparisonData['channel'];
+  /** Step 8b: solo con algún usado. */
+  used?: Partial<Record<CandidateSide, UsedSideView>>;
+  /** Step 8b: confianza de la información de los usados recomendados (NOT_APPLICABLE si no hay ninguno). */
+  usedInformationConfidence?: string;
 }
 
 /** Categorías de la capa de detalles (Step 7a §76); Size + Practicality → Space. */
@@ -166,10 +202,11 @@ const hasValue = (m: MetricView) => m.a !== undefined || m.b !== undefined;
 
 export function buildDecisionView(data: ComparisonData, input: DecisionInput, result: AlphaRecommendationResult, robustnessComputed: boolean): DecisionView {
   const [va, vb] = data.vehicles;
-  const idA = va.option.id;
-  const idB = vb.option.id;
+  // Identidad del PARTICIPANTE (Step 8b): nunca la de la variant, que puede ser la misma en los dos lados.
+  const idA = va.subjectId;
+  const idB = vb.subjectId;
   const side = (id?: string) => sideOf(id, idA);
-  const candidate = (v: ComparisonData['vehicles'][number]): CandidateView => ({ side: v.side, id: v.option.id, name: v.label, year: v.option.year, powertrain: v.option.powertrainType, body: v.option.bodyType, option: v.option });
+  const candidate = (v: ComparisonData['vehicles'][number]): CandidateView => ({ side: v.side, id: v.subjectId, name: v.label, year: v.option.year, powertrain: v.option.powertrainType, body: v.option.bodyType, option: v.option, condition: v.condition });
   const candidates: [CandidateView, CandidateView] = [candidate(va), candidate(vb)];
 
   const pair = input.comparison.pairs.find((p) => [p.candidateAId, p.candidateBId].includes(idA) && [p.candidateAId, p.candidateBId].includes(idB))!;
@@ -209,7 +246,19 @@ export function buildDecisionView(data: ComparisonData, input: DecisionInput, re
     candidates.map((c) => {
       const e = econOf(c.id);
       const h = e?.runningCost.horizons.find((x) => x.years === econ.horizonYears);
-      return [c.side, { status: e?.runningCost.status ?? 'UNAVAILABLE', ...(e?.runningCost.annual_minor ? { annual: e.runningCost.annual_minor } : {}), ...(e?.energy.costPer100km ? { per100km: e.energy.costPer100km } : {}), ...(h ? { horizon: h.total_minor } : {}) }];
+      const own = e?.ownershipCost.horizons.find((x) => x.years === econ.horizonYears);
+      const p = e?.ownershipCost.purchase;
+      return [
+        c.side,
+        {
+          status: e?.runningCost.status ?? 'UNAVAILABLE',
+          ...(e?.runningCost.annual_minor ? { annual: e.runningCost.annual_minor } : {}),
+          ...(e?.energy.costPer100km ? { per100km: e.energy.costPer100km } : {}),
+          ...(h ? { horizon: h.total_minor } : {}),
+          ...(p ? { purchase: { amount: p.amount_minor, source: p.source, basis: p.basis } } : {}),
+          ...(own ? { ownership: { view: own.view, total: own.total_minor, missing: own.missing } } : {}),
+        },
+      ];
     }),
   ) as EconomicsView['perSide'];
   const annualMetric = byMetric.get('economic.running_annual');
@@ -260,6 +309,7 @@ export function buildDecisionView(data: ComparisonData, input: DecisionInput, re
     economicStatus: econ.status,
     practicalStatus: [practicalOf2(idA), practicalOf2(idB)],
     hasTradeoffs,
+    ...(data.vehicles.some((v) => v.condition === 'used') && result.usedAdjustments ? { hasUsed: true } : {}),
   });
 
   const techOf = (id: string) => result.technicalCapability.find((t) => t.candidateId === id);
@@ -298,7 +348,38 @@ export function buildDecisionView(data: ComparisonData, input: DecisionInput, re
     sources: data.sources,
     dataSnapshot: data.dataSnapshot,
     channel: data.channel,
+    ...usedView(data, result),
   };
+}
+
+const msg = (m: Message): Message => ({ messageKey: m.messageKey, params: m.params, text: m.text, ...(m.details ? { details: m.details } : {}) });
+
+/** Step 8b: bloques de la unidad usada, solo reorganizados (las frases son del Used Adjustment). */
+function usedView(data: ComparisonData, result: AlphaRecommendationResult): Pick<DecisionView, 'used' | 'usedInformationConfidence'> {
+  const adjustments = result.usedAdjustments;
+  if (!adjustments || !data.evaluationDate) return {};
+  const used: Partial<Record<CandidateSide, UsedSideView>> = {};
+  for (const v of data.vehicles) {
+    const a = adjustments[v.subjectId];
+    if (!a || v.condition !== 'used' || !v.used) continue;
+    const age = a.instance.age.months;
+    const w = a.instance.warrantyRemainingMonths;
+    const by = (n: string) => a.ownershipSignals.filter((s) => s.nature === n).map(msg);
+    used[v.side] = {
+      side: v.side,
+      facts: v.used,
+      evaluationDate: data.evaluationDate,
+      ...(age.state === 'KNOWN' ? { ageMonths: { min: age.min, max: age.max } } : {}),
+      warranty: w.state === 'KNOWN' ? { state: 'KNOWN', basis: w.basis, months: { min: w.min, max: w.max } } : { state: w.state },
+      batteryApplies: a.instance.batteryHealthPct.state !== 'NOT_APPLICABLE',
+      information: { level: a.informationConfidence.level, summary: msg(a.informationConfidence.summary), reasons: a.informationConfidence.reasons.map(msg), requiresVerification: a.informationConfidence.requiresVerification },
+      signals: { attention: by('ATTENTION'), gaps: by('INFORMATION_GAP'), notes: by('NOTE') },
+      verification: a.verificationRequirements.map(msg),
+      warnings: a.warnings.map(msg),
+      purchase: msg(a.economicAdjustments.purchase),
+    };
+  }
+  return { used, usedInformationConfidence: result.usedInformationConfidence };
 }
 
 /** Aplica el resultado del Web Worker (robustez + confianza que depende de ella) sobre una vista. */

@@ -62,6 +62,17 @@ describe('age (explicit evaluation date, never the clock)', () => {
   it('registration year only → honest range, no assumed month', () => {
     expect(calculateVehicleAge({ registrationYear: 2025 }, '2026-10-14')).toEqual({ months: { state: 'KNOWN', min: 9, max: 21, basis: 'CALCULATED' }, source: 'REGISTRATION_YEAR' });
   });
+  it('Step 8b — registration month/year → range at the declared precision (never an assumed day)', () => {
+    expect(calculateVehicleAge({ registrationYear: 2019, registrationMonth: 3 }, '2026-10-14').months).toEqual({ state: 'KNOWN', min: 90, max: 91, basis: 'CALCULATED' });
+    expect(calculateVehicleAge({ registrationYear: 2026, registrationMonth: 11 }, '2026-10-14')).toMatchObject({ months: { state: 'UNKNOWN' }, invalid: 'REGISTRATION_AFTER_EVALUATION' });
+    const r = adjust(unit({ registration_year: 2019, registration_month: 3, mileage_km: 84_000 }));
+    expect(r.instance.age).toMatchObject({ source: 'REGISTRATION_YEAR', months: { min: 90, max: 91 } });
+    expect(r.informationConfidence.fields.find((f) => f.field === 'registration_year')!.state).toBe('KNOWN');
+  });
+  it('Step 8b — service history becomes a practical fact (unknown ≠ absent)', () => {
+    expect(adjust(unit({ service_history: 'partial' })).practicalSignals.serviceHistory).toEqual({ state: 'KNOWN', value: 'PARTIAL', basis: 'USER_PROVIDED' });
+    expect(adjust(unit()).practicalSignals.serviceHistory).toEqual({ state: 'UNKNOWN' });
+  });
   it('nothing explicit → UNKNOWN (no model year, no assumed year)', () => {
     expect(calculateVehicleAge({}, EVAL)).toEqual({ months: { state: 'UNKNOWN' }, source: 'NONE' });
     const r = adjust(unit({ registration_year_assumed: 2019 }));

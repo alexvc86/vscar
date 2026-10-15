@@ -76,6 +76,13 @@ El HTML inicial no envía catálogos al cliente. Las islas iniciales reciben sus
 
 Para millas, MPG o kW↔hp/CV harán falta conversiones de presentación (`@vscar/units`, Plan §28) cuando exista el primer mercado no métrico. Hoy `MarketConfig.units` ya declara qué sistema usa cada mercado.
 
+## Nuevo / Usado (Step 8b)
+
+- Textos de la UI en el namespace `used` (condición, formulario, revisión, resumen, capítulo "Este usado") y `scenario.requirements`; las razones, señales y verificación de la unidad son mensajes del engine (`engine.used.*`).
+- El MERCADO fija las unidades también en inglés: `84,000 km`, `€28,000`, `March 2019` (en-ES) frente a `84.000 km`, `28.000 €`, `Marzo de 2019` (es-ES). En español, Intl no agrupa los números de 4 cifras (`9000 km`).
+- Requisitos categóricos (historial completo): los mensajes llevan `flag: true` y las plantillas de requisitos tienen una rama `{flag, select, yes {…} other {…}}` para no mostrar "al menos 1".
+- Cambiar de idioma conserva la query completa (escenario + bloque usado).
+
 ## Decision Message Contract
 
 *Engine owns meaning. UI owns language. Market owns units/currency/data context.* (Step 7a.1; contrato completo en [ALPHA_DECISION_ENGINE_V0_1.md](../decision/ALPHA_DECISION_ENGINE_V0_1.md#decision-message-contract-step-7a1)).

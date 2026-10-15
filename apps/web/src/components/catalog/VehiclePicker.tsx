@@ -3,8 +3,12 @@ import { Sheet } from '@vscar/ui/sheet';
 import { motion, MotionConfig } from 'motion/react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { yearParam, type BrandOption, type ModelCard, type VariantRow, type VehicleOption, type YearOption } from '@/domain/catalog';
+import { EMPTY_USED_FORM, factsToForm, validateUsedForm, type UsedFormError, type UsedFormValues } from '@/domain/used-form';
+import { sohApplies, type SideCondition, type UsedFacts } from '@/domain/used-params';
 import { ModelVisual } from '../vehicle/ModelVisual';
-import { fill, optionText, type SelectorLabels } from './labels';
+import { fill, optionText, type SelectorLabels, type UsedLabels } from './labels';
+import { UsedDetailsForm } from './UsedDetailsForm';
+import { usedFactLines } from './used-text';
 import { VehiclePickerSearch } from './VehiclePickerSearch';
 
 /**
@@ -16,7 +20,13 @@ import { VehiclePickerSearch } from './VehiclePickerSearch';
  * entero. Estado temporal local: la URL solo cambia cuando hay una variant válida (al confirmar).
  * Accesibilidad: diálogo Radix, pasos con `aria-current="step"`, foco en el título de cada paso al avanzar o volver,
  * botones nativos (teclado), objetivos ≥ 44 px. Motion solo para transición de paso, hover y selección.
+ *
+ * Step 8b: tras la versión, "¿Cómo estás considerando este coche?" → Nuevo (listo) o Usado → datos de la unidad →
+ * revisión → elegir. La misma ReferenceVariant que el otro lado es válida si alguno de los dos es usado. Cambiar de
+ * vehículo nunca arrastra los hechos de la unidad anterior; volver atrás conserva lo escrito para la misma unidad.
  */
+export type VehicleChoice = { option: VehicleOption; condition: SideCondition };
+
 export interface VehiclePickerProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -24,12 +34,18 @@ export interface VehiclePickerProps {
   market: string;
   labels: SelectorLabels;
   current?: VehicleOption | undefined;
-  /** El coche del otro lado: no se puede elegir (A ≠ B). */
+  /** El coche del otro lado (A ≠ B salvo que uno de los dos sea una unidad usada). */
   other?: VehicleOption | undefined;
-  onSelect: (option: VehicleOption) => void;
+  /** Step 8b: condición actual de este lado (para reeditar la misma unidad) y del otro lado. */
+  currentCondition?: SideCondition | undefined;
+  otherCondition?: SideCondition | undefined;
+  used: UsedLabels;
+  /** Fecha de hoy en el mercado (validación de la matriculación). */
+  today: string;
+  onSelect: (choice: VehicleChoice) => void;
 }
 
-type Step = 'brand' | 'model' | 'year' | 'version' | 'summary';
+type Step = 'brand' | 'model' | 'year' | 'version' | 'summary' | 'used' | 'review';
 const STEPS = ['brand', 'model', 'year', 'version'] as const;
 type Status = 'loading' | 'ready' | 'error';
 
@@ -56,7 +72,7 @@ export function prefetchPicker(market: string): void {
   void browse(market, { level: 'brands' }).catch(() => undefined);
 }
 
-export default function VehiclePicker({ open, onOpenChange, side, market, labels, current, other, onSelect }: VehiclePickerProps) {
+export default function VehiclePicker({ open, onOpenChange, side, market, labels, current, other, currentCondition, otherCondition, used, today, onSelect }: VehiclePickerProps) {
   const L = labels.picker;
   const [mode, setMode] = useState<'browse' | 'search'>('browse');
   const [step, setStep] = useState<Step>('brand');
@@ -65,6 +81,11 @@ export default function VehiclePicker({ open, onOpenChange, side, market, labels
   /** `undefined` = sin elegir; `null` = año desconocido elegido. */
   const [year, setYear] = useState<number | null | undefined>(undefined);
   const [variant, setVariant] = useState<VariantRow>();
+  /** Vehículo elegido (desde la navegación o la búsqueda directa). */
+  const [chosen, setChosen] = useState<VehicleOption>();
+  const [form, setForm] = useState<UsedFormValues>(EMPTY_USED_FORM);
+  const [formErrors, setFormErrors] = useState<UsedFormError[]>([]);
+  const [facts, setFacts] = useState<UsedFacts>();
   const [brands, setBrands] = useState<BrandOption[]>();
   const [models, setModels] = useState<ModelCard[]>();
   const [years, setYears] = useState<YearOption[]>();
@@ -86,6 +107,9 @@ export default function VehiclePicker({ open, onOpenChange, side, market, labels
     setNotice('');
     setVariant(undefined);
     setVariants(undefined);
+    setChosen(undefined);
+    setFacts(undefined);
+    setFormErrors([]);
     if (current) {
       setBrand(current.brand);
       setYear(undefined);
@@ -174,19 +198,62 @@ export default function VehiclePicker({ open, onOpenChange, side, market, labels
     setYear(y);
     go('version');
   };
-  const pickVariant = (v: VariantRow) => {
-    if (other && v.id === other.id) {
-      setNotice(labels.sameCar);
-      return;
+  /**
+   * Vehículo elegido → paso Nuevo/Usado. Otra unidad (otra variant) empieza con el formulario vacío: nunca se
+   * reutiliza el historial, el precio ni el kilometraje de la anterior. La misma variant que ya tenía este lado como
+   * usada se reabre con sus datos.
+   */
+  const choose = (o: VehicleOption) => {
+    if (o.id !== chosen?.id) {
+      const sameUnit = current?.id === o.id && currentCondition?.condition === 'used';
+      setForm(sameUnit ? factsToForm(currentCondition.facts) : EMPTY_USED_FORM);
+      setFacts(undefined);
+      setFormErrors([]);
     }
-    setVariant(v);
+    setChosen(o);
     go('summary');
   };
-  const back = () => go(step === 'summary' ? 'version' : step === 'version' ? 'year' : step === 'year' ? 'model' : 'brand');
+  const pickVariant = (v: VariantRow) => {
+    setVariant(v);
+    choose(v);
+  };
+  const pickNew = () => {
+    if (!chosen) return;
+    // Nuevo vs nuevo de la misma variant no es una comparación.
+    if (other && chosen.id === other.id && otherCondition?.condition !== 'used') {
+      setNotice(used.sameCarNew);
+      return;
+    }
+    onSelect({ option: chosen, condition: { condition: 'new' } });
+  };
+  const applies = !!chosen && sohApplies(chosen.powertrainType);
+  const review = () => {
+    const r = validateUsedForm(form, today, applies);
+    if (!r.ok) {
+      setFormErrors(r.errors);
+      // Foco en el primer campo con error (el mensaje está asociado con aria-describedby).
+      requestAnimationFrame(() => document.getElementById(`uf-${r.errors[0]!.field}`)?.focus());
+      return;
+    }
+    setFormErrors([]);
+    setFacts(r.facts);
+    go('review');
+  };
+  const back = () => {
+    if (step === 'review') return go('used');
+    if (step === 'used') return go('summary');
+    // Elegido desde la búsqueda directa (sin modelo navegado): vuelve a la búsqueda.
+    if (step === 'summary' && !model) {
+      focusOnStep.current = true;
+      setMode('search');
+      return;
+    }
+    go(step === 'summary' ? 'version' : step === 'version' ? 'year' : step === 'year' ? 'model' : 'brand');
+  };
   const reachable = (s: (typeof STEPS)[number]) => s === 'brand' || (s === 'model' && !!brand) || (s === 'year' && !!model) || (s === 'version' && year !== undefined);
   const valueOf = (s: (typeof STEPS)[number]) => (s === 'brand' ? brand : s === 'model' ? model?.model : s === 'year' ? (year === undefined ? undefined : year === null ? L.yearUnknown : String(year)) : variant?.variant);
-  const titleOf: Record<Step, string> = { brand: L.chooseBrand, model: L.chooseModel, year: L.chooseYear, version: L.chooseVersion, summary: L.summary };
-  const stepIndex = step === 'summary' ? 4 : STEPS.indexOf(step) + 1;
+  const titleOf: Record<Step, string> = { brand: L.chooseBrand, model: L.chooseModel, year: L.chooseYear, version: L.chooseVersion, summary: used.question, used: used.form.title, review: used.review.title };
+  const stepIndex = step === 'summary' || step === 'used' || step === 'review' ? 4 : STEPS.indexOf(step) + 1;
   const yearLabel = (y: number | null) => (y === null ? L.yearUnknown : String(y));
   const multiGen = (model?.generations.length ?? 0) > 1;
 
@@ -269,7 +336,6 @@ export default function VehiclePicker({ open, onOpenChange, side, market, labels
                   type="button"
                   className="vp-row vp-variant__row"
                   aria-pressed={v.id === variant?.id}
-                  aria-disabled={isOther || undefined}
                   onClick={() => pickVariant(v)}
                   whileTap={{ scale: 0.99 }}
                   data-testid={`variant-${v.slug}`}
@@ -319,39 +385,78 @@ export default function VehiclePicker({ open, onOpenChange, side, market, labels
         </ul>
       );
     }
-    // Resumen: visual + identidad comercial + CTA. Resuelve la ReferenceVariant exacta.
-    if (!variant || !model) return null;
+    // Paso 8b: datos de la unidad usada.
+    if (step === 'used' && chosen) {
+      return <UsedDetailsForm values={form} onChange={setForm} errors={formErrors} labels={used} sohApplies={applies} formatLocale={labels.formatLocale} onReview={review} />;
+    }
+    // Paso 8b: revisión de la unidad antes de elegir.
+    if (step === 'review' && chosen && facts) {
+      const text = optionText(chosen, labels);
+      return (
+        <div className="vp-review" data-testid="used-review-panel">
+          <p className="vp-review__car">
+            <span className="vp-review__name">
+              {chosen.brand} {text.name}
+            </span>
+            <span className="mono small muted">{text.meta}</span>
+            <span className={`condition-badge condition-badge--used tone-${side}`}>{used.badge[side].used}</span>
+          </p>
+          <dl className="vp-review__facts">
+            {usedFactLines(facts, used, labels.formatLocale, { sohApplies: applies }).map((l) => (
+              <div key={l.key} data-provided={l.provided}>
+                <dt>{l.label}</dt>
+                <dd className={l.provided ? 'mono' : 'muted'}>{l.value}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="muted small">{used.review.privacy}</p>
+          <button type="button" className="vs-button vs-button--solid vs-button--lg" onClick={() => onSelect({ option: chosen, condition: { condition: 'used', facts } })} data-testid="choose-car">
+            {used.review.choose}
+          </button>
+        </div>
+      );
+    }
+    // Resumen: visual + identidad comercial + ¿Nuevo o Usado? Resuelve la ReferenceVariant exacta.
+    if (!chosen) return null;
+    const v = variant?.id === chosen.id ? variant : undefined;
     return (
-      <div className="vp-summary" data-variant-id={variant.id}>
-        <ModelVisual media={variant.media ?? model.media} bodyType={variant.bodyType} name={`${variant.brand} ${variant.model}`} eager sizes="(max-width: 699px) 90vw, 440px" className="model-visual--summary" />
+      <div className="vp-summary" data-variant-id={chosen.id}>
+        <ModelVisual media={v?.media ?? (model?.model === chosen.model ? model.media : undefined)} bodyType={chosen.bodyType} name={`${chosen.brand} ${chosen.model}`} eager sizes="(max-width: 699px) 90vw, 440px" className="model-visual--summary" />
         <dl className="vp-summary__facts">
           <div>
             <dt>{L.brand}</dt>
-            <dd>{variant.brand}</dd>
+            <dd>{chosen.brand}</dd>
           </div>
           <div>
             <dt>{L.model}</dt>
-            <dd>{variant.model}</dd>
+            <dd>{chosen.model}</dd>
           </div>
           <div>
             <dt>{L.year}</dt>
-            <dd>{yearLabel(variant.year)}</dd>
+            <dd>{yearLabel(chosen.year)}</dd>
           </div>
           <div>
             <dt>{L.version}</dt>
             <dd>
-              {variant.variant}
-              {optionText(variant, labels).period ? <span className="mono small muted vp-summary__distinct">{optionText(variant, labels).period}</span> : null}
+              {chosen.variant}
+              {optionText(chosen, labels).period ? <span className="mono small muted vp-summary__distinct">{optionText(chosen, labels).period}</span> : null}
             </dd>
           </div>
           <div>
             <dt>{L.powertrainLabel}</dt>
-            <dd>{labels.powertrain[variant.powertrainType] ? `${labels.powertrain[variant.powertrainType]} (${variant.powertrainType})` : variant.powertrainType}</dd>
+            <dd>{labels.powertrain[chosen.powertrainType] ? `${labels.powertrain[chosen.powertrainType]} (${chosen.powertrainType})` : chosen.powertrainType}</dd>
           </div>
         </dl>
-        <button type="button" className="vs-button vs-button--solid vs-button--lg" onClick={() => onSelect(variant)} data-testid="choose-car">
-          {L.chooseThisCar}
-        </button>
+        <div className="vp-condition" role="group" aria-labelledby="vp-step-title">
+          <button type="button" className="vp-condition__option" onClick={pickNew} data-testid="condition-new">
+            <span className="vp-condition__name">{used.isNew}</span>
+            <span className="muted small">{used.newHint}</span>
+          </button>
+          <button type="button" className="vp-condition__option" onClick={() => go('used')} data-testid="condition-used">
+            <span className="vp-condition__name">{used.isUsed}</span>
+            <span className="muted small">{used.usedHint}</span>
+          </button>
+        </div>
       </div>
     );
   };
@@ -401,14 +506,24 @@ export default function VehiclePicker({ open, onOpenChange, side, market, labels
           {channel === 'PREVIEW' ? <p className="vp__preview muted small">{L.previewNotice}</p> : null}
 
           {mode === 'search' ? (
-            <VehiclePickerSearch market={market} labels={labels} current={current} other={other} onSelect={onSelect} inputRef={searchInput} />
+            <VehiclePickerSearch
+              market={market}
+              labels={labels}
+              current={current}
+              other={other}
+              onSelect={(o) => {
+                setMode('browse');
+                choose(o);
+              }}
+              inputRef={searchInput}
+            />
           ) : (
             <div className="vp__layout">
               <nav className="vp__steps" aria-label={L.stepsLabel}>
                 <ol>
                   {STEPS.map((s, i) => (
                     <li key={s}>
-                      <button type="button" className="vp-step" disabled={!reachable(s)} aria-current={step === s || (step === 'summary' && s === 'version') ? 'step' : undefined} onClick={() => go(s)} data-testid={`step-${s}`}>
+                      <button type="button" className="vp-step" disabled={!reachable(s)} aria-current={step === s || ((step === 'summary' || step === 'used' || step === 'review') && s === 'version') ? 'step' : undefined} onClick={() => go(s)} data-testid={`step-${s}`}>
                         <span className="mono small subtle">0{i + 1}</span>
                         <span className="vp-step__label">{L[s]}</span>
                         {valueOf(s) ? <span className="vp-step__value">{valueOf(s)}</span> : null}

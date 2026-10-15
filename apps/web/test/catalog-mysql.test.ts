@@ -83,6 +83,23 @@ describe.skipIf(!url)('catalog over MySQL', () => {
     }
   });
 
+  it('Step 8b — same ReferenceVariant new vs used over MySQL: two participants, asking price as purchase, server === client', async () => {
+    const golf = 'volkswagen-golf-style-1-5-etsi-150-dsg';
+    const conditions = { a: { condition: 'new' as const }, b: { condition: 'used' as const, facts: { price: 28_000, km: 84_000, reg: { year: 2019, month: 3 }, service: 'partial' as const } }, evaluationDate: '2026-10-15' };
+    const load = await loadComparisonData('ES', pairSlug(golf, golf), catalog, conditions);
+    expect(load.kind).toBe('ok');
+    if (load.kind !== 'ok') return;
+    const [a, b] = load.data.vehicles;
+    expect(a.option.id).toBe(b.option.id);
+    expect(a.subjectId).not.toBe(b.subjectId);
+    const view = serverDecisionView(load.data, DEFAULT_SCENARIO).view;
+    expect(view.economics.perSide.b.purchase).toEqual({ amount: 2_800_000, source: 'USED_ASKING', basis: 'USER_PROVIDED' });
+    expect(view.used?.b).toBeDefined();
+    const client: ComparisonData = JSON.parse(JSON.stringify(load.data));
+    const run = computeDecision(client, DEFAULT_SCENARIO, { robustness: false });
+    expect(withRobustness(buildDecisionView(client, run.input, run.result, false), computeRobustness(client, DEFAULT_SCENARIO))).toEqual(view);
+  });
+
   it('the result carries the data snapshot (catalog version, energy, rights matrix) for traceability', async () => {
     const data = await comparisonData(DEMO_PAIR, catalog);
     expect(data.dataSnapshot.vehicles).toMatch(/^9\.\d+\.\d+\.\d+@/); // variants.values.prices.media@último cambio

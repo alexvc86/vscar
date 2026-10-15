@@ -12,6 +12,8 @@ export interface ShareLabels {
   copyFailed: string;
   /** Texto ya rellenado ("Mira esta comparación de VScar: A vs B"). */
   text: string;
+  /** Step 8b: aviso previo cuando el enlace incluye hechos de unidades usadas introducidos por el usuario. */
+  usedNote?: string;
 }
 
 type ShareNavigator = Navigator & { share?: (d: ShareData) => Promise<void>; canShare?: (d: ShareData) => boolean };
@@ -47,13 +49,18 @@ export function ShareComparison({ labels, title }: { labels: ShareLabels; title:
 
   return (
     <span className="share">
-      <button type="button" className="vs-button vs-button--ghost" onClick={share} data-testid="share">
+      <button type="button" className="vs-button vs-button--ghost" onClick={share} data-testid="share" aria-describedby={labels.usedNote ? 'share-used-note' : undefined}>
         <span aria-hidden="true">↗ </span>
         {labels.button}
       </button>
       <span className="share__status small" role="status" aria-live="polite" data-testid="share-status">
         {status === 'copied' ? labels.copied : status === 'failed' ? labels.copyFailed : ''}
       </span>
+      {labels.usedNote ? (
+        <span id="share-used-note" className="share__note small muted" data-testid="share-used-note">
+          {labels.usedNote}
+        </span>
+      ) : null}
     </span>
   );
 }

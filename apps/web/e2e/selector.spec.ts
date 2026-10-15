@@ -30,7 +30,7 @@ async function browseTo(page: Page, brand: string, model: string, year: string, 
   await page.getByTestId(`variant-${slug}`).click();
   await expect(title).toBeFocused();
   await expect(page.locator('.vp-summary')).toBeVisible();
-  await page.getByTestId('choose-car').click();
+  await page.getByTestId('condition-new').click();
 }
 
 test('§107 home ES → Volkswagen → Golf → 2018 → version → second car → compare → change A (year + version) → EN keeps pair', async ({ page }) => {
@@ -53,7 +53,7 @@ test('§107 home ES → Volkswagen → Golf → 2018 → version → second car 
   await expect(page.locator('.vp-variant__row')).toHaveCount(2);
   await expect(page.getByTestId(`variant-${GOLF18_NEDC}`)).toContainText('homologación NEDC');
   await page.getByTestId(`variant-${GOLF18_NEDC}`).click();
-  await page.getByTestId('choose-car').click();
+  await page.getByTestId('condition-new').click();
 
   // Flujo guiado: el selector pasa al coche B.
   await expect(dialog).toHaveAccessibleName('Elige el segundo coche');
@@ -69,7 +69,7 @@ test('§107 home ES → Volkswagen → Golf → 2018 → version → second car 
   await expect(page.locator('[aria-current="step"]')).toContainText('Año');
   await page.getByTestId('year-2027').click();
   await page.getByTestId(`variant-${GOLF_ETSI}`).click();
-  await page.getByTestId('choose-car').click();
+  await page.getByTestId('condition-new').click();
   await expect(page).toHaveURL(new RegExp(`/es-es/compare/${GOLF_ETSI}-vs-${M3}[?]trips=10$`));
 
   await page.locator('[data-lang-switch="en"]').click();
@@ -95,6 +95,8 @@ test('step back without closing; search directly as a shortcut; swap keeps the s
   await expect(search).toHaveAttribute('role', 'combobox');
   await search.fill('golf etsi');
   await page.locator(`[role="option"][data-slug="${GOLF_ETSI}"]`).click();
+  // Step 8b: tras elegir el coche, ¿Nuevo o Usado?
+  await page.getByTestId('condition-new').click();
   await expect(page).toHaveURL(new RegExp(`/en-es/compare/${BYD}-vs-${GOLF_ETSI}[?]trips=10$`));
 
   await page.getByTestId('swap-cars').click();
@@ -102,15 +104,16 @@ test('step back without closing; search directly as a shortcut; swap keeps the s
   expect(problems).toEqual([]);
 });
 
-test('same car twice is blocked; Escape closes and returns focus to Change', async ({ page }) => {
+test('same car twice as NEW is blocked (Used is allowed); Escape closes and returns focus to Change', async ({ page }) => {
   await page.goto(`/en-es/compare/${BYD}-vs-${M3}`);
   const changeA = page.getByTestId('change-a');
   await changeA.click();
   await page.getByTestId('step-brand').click();
   await browseToVersion(page, 'Tesla', 'Model 3', '2021');
-  // M3 ya es el coche B: la fila está marcada y elegirla avisa en vez de seleccionar.
-  await page.getByTestId(`variant-${M3}`).click({ force: true });
-  await expect(page.getByRole('dialog').getByRole('alert')).toHaveText('Choose a different car.');
+  // Step 8b: M3 ya es el coche B (nuevo). Elegirlo otra vez como NUEVO avisa; como USADO sería válido.
+  await page.getByTestId(`variant-${M3}`).click();
+  await page.getByTestId('condition-new').click();
+  await expect(page.getByRole('dialog').getByRole('alert')).toHaveText('This same car is already the new one on the other side: choose Used to compare a specific car, or pick another car.');
   await page.keyboard.press('Escape');
   await expect(page.getByRole('dialog')).toBeHidden();
   await expect(changeA).toBeFocused();
@@ -135,7 +138,7 @@ test('keyboard only: Tab + Enter through the four steps', async ({ page }) => {
   }
   await page.locator('.vp-variant__row').first().focus();
   await page.keyboard.press('Enter');
-  await page.getByTestId('choose-car').focus();
+  await page.getByTestId('condition-new').focus();
   await page.keyboard.press('Enter');
   await expect(page.getByTestId('pick-a')).toContainText('León');
 });
@@ -159,7 +162,7 @@ test('§108 mobile 390 px: full-screen sheet, the four steps, select a car', asy
   const rb = await row.boundingBox();
   expect(rb?.height).toBeGreaterThanOrEqual(44);
   await row.tap();
-  await page.getByTestId('choose-car').tap();
+  await page.getByTestId('condition-new').tap();
   await expect(page.getByTestId('pick-a')).toContainText('SEAL');
   await ctx.close();
 });

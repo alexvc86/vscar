@@ -9,6 +9,9 @@ import type { ChapterView, Level, MetricView } from './view-model.ts';
  *   Orden en la PÁGINA (§27): VS → resultado → motivos → económico → técnico → práctico → tradeoffs → cambio →
  *                             confianza → detalle
  *   Tope: 9 capítulos (6–9); nunca un capítulo vacío.
+ * Step 8b: con alguna unidad usada se añade el capítulo `used` (información de la unidad, señales y verificación),
+ *   fuera del tope, y el económico pasa a ser obligatorio (la diferencia de compra y el coste conocido son la
+ *   pregunta central nuevo vs usado). Sin usados, los capítulos son exactamente los de antes.
  */
 export const MAX_CHAPTERS = 9;
 const MAX_REASONS = 2;
@@ -24,6 +27,8 @@ export interface ChapterInput {
   economicStatus: string;
   practicalStatus: readonly [string, string];
   hasTradeoffs: boolean;
+  /** Step 8b: hay al menos una unidad usada. */
+  hasUsed?: boolean;
 }
 
 const slugOf = (metric: string) => metric.replace(/[^a-z0-9]+/gi, '-');
@@ -45,7 +50,7 @@ export function buildComparisonChapters(input: ChapterInput): ChapterView[] {
     // Requisitos: un deal breaker, una concesión o un requisito sin confirmar cambian la decisión.
     { kind: 'practical', when: input.practicalStatus.some((s) => PRACTICAL_RELEVANT.has(s)) || input.practicalStatus[0] !== input.practicalStatus[1] },
     // Económico: líder comparable (si no es ya un motivo) o ciclos incomparables, que hay que explicar.
-    { kind: 'economics', when: (input.economicStatus === 'LEADER' && !hasEconomyReason) || input.economicStatus === 'NOT_COMPARABLE' },
+    { kind: 'economics', when: (input.economicStatus === 'LEADER' && !hasEconomyReason) || input.economicStatus === 'NOT_COMPARABLE' || !!input.hasUsed },
     { kind: 'technical', when: relevantTechnicalMetrics(input.technicalMetrics, reasons).length > 0 },
     { kind: 'tradeoffs', when: input.hasTradeoffs },
   ];
@@ -56,7 +61,9 @@ export function buildComparisonChapters(input: ChapterInput): ChapterView[] {
 
   const chapters: ChapterView[] = [{ id: 'vs', kind: 'vs' }, { id: 'result', kind: 'result' }];
   for (const m of reasons) chapters.push({ id: `reason-${slugOf(m.metric)}`, kind: 'reason', metric: m.metric });
-  for (const kind of ['economics', 'technical', 'practical', 'tradeoffs'] as const) if (chosen.has(kind)) chapters.push({ id: kind, kind });
+  for (const kind of ['economics', 'technical', 'practical'] as const) if (chosen.has(kind)) chapters.push({ id: kind, kind });
+  if (input.hasUsed) chapters.push({ id: 'used', kind: 'used' });
+  if (chosen.has('tradeoffs')) chapters.push({ id: 'tradeoffs', kind: 'tradeoffs' });
   chapters.push({ id: 'change', kind: 'change' }, { id: 'confidence', kind: 'confidence' }, { id: 'details', kind: 'details' });
   return chapters;
 }

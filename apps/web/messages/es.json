@@ -50,7 +50,8 @@
       "confidence": "Confianza y verificación",
       "details": "Comparación completa",
       "technical": "Capacidad técnica",
-      "practical": "Encaje práctico"
+      "practical": "Encaje práctico",
+      "used": "Este usado"
     },
     "scenarioSummary": "{km} al año · {daily} al día · {trips, plural, =0 {sin viajes largos} one {# viaje largo} other {# viajes largos}} al año · carga en casa {home}",
     "notFound": "Esta comparación no está disponible en este mercado."
@@ -132,7 +133,17 @@
     "invalidField": "Revisa este valor ({min}–{max}).",
     "presetLongTrips": "{count, plural, one {# viaje largo} other {# viajes largos}} al año",
     "quickTitle": "Prueba otro uso",
-    "recalculating": "Recalculando…"
+    "recalculating": "Recalculando…",
+    "requirements": {
+      "title": "Requisitos para usados",
+      "lead": "Solo se aplican a las unidades usadas. Si un dato no se conoce, el requisito queda sin confirmar (nunca se da por cumplido).",
+      "maxkm": "Kilometraje máximo (km)",
+      "maxage": "Antigüedad máxima (años)",
+      "minsoh": "Salud de batería mínima (%)",
+      "minwarranty": "Garantía restante mínima (meses)",
+      "fullhistory": "Exigir historial de mantenimiento completo",
+      "none": "Vacío = sin requisito"
+    }
   },
   "confidence": {
     "title": "Confianza de la recomendación",
@@ -250,7 +261,18 @@
       "DIESEL_A": "Gasóleo"
     },
     "knownCostView": "Vista de costes conocidos",
-    "horizonYears": "{years} años"
+    "horizonYears": "{years} años",
+    "purchaseTitle": "Compra y coste conocido",
+    "purchase": "Precio de compra",
+    "purchaseSource": {
+      "LIST": "precio de catálogo",
+      "USED_ASKING": "precio solicitado",
+      "OVERRIDE": "precio indicado"
+    },
+    "ownership": "Coste conocido en {years, plural, one {# año} other {# años}}",
+    "initialDifference": "Diferencia inicial de compra",
+    "purchaseNote": "La diferencia de compra no decide por sí sola el encaje económico: el Economic Fit compara el coste de uso. La compra cuenta en el coste conocido y en el punto de equilibrio. Sin depreciación, reventa ni mantenimiento estimados.",
+    "noPurchase": "Sin precio"
   },
   "practical": {
     "title": "Encaje práctico",
@@ -324,10 +346,10 @@
   "engine": {
     "decision": {
       "contribution": {
-        "deal_breaker": "El {subject} no cumple tu requisito de {criterion}: {hasObserved, select, yes {tiene {observed}} other {no hay datos}} y necesitas {op, select, max {como máximo} other {al menos}} {required}",
+        "deal_breaker": "{flag, select, yes {El {subject} no cumple tu requisito de {criterion}} other {El {subject} no cumple tu requisito de {criterion}: {hasObserved, select, yes {tiene {observed}} other {no hay datos}} y necesitas {op, select, max {como máximo} other {al menos}} {required}}}",
         "metric_ahead": "{metric}: {subject} {value} frente a {other} {otherValue} — diferencia {level}{hasGeneral, select, yes { ({generalLevel} en general)} other {}}",
         "running_cost": "El {subject} te costaría unos {amount} menos al año que el {other}{hasKm, select, yes { con {annualKm}} other {}}",
-        "compromise": "{subject}: por debajo de tu objetivo de {criterion} ({hasObserved, select, yes {tiene {observed}} other {no hay datos}}; querías {op, select, max {como máximo} other {al menos}} {required})",
+        "compromise": "{flag, select, yes {{subject}: no alcanza tu objetivo de {criterion}} other {{subject}: por debajo de tu objetivo de {criterion} ({hasObserved, select, yes {tiene {observed}} other {no hay datos}}; querías {op, select, max {como máximo} other {al menos}} {required})}}",
         "priority": "tu prioridad de {priority} es {level}",
         "range_relevance": "{relevance, select, HIGH {con viajes largos frecuentes, la autonomía pesa más} LOW {tu uso diario queda muy por debajo de la autonomía, cargas en casa y haces pocos viajes largos: la autonomía pesa menos} other {la autonomía tiene su peso habitual}}"
       },
@@ -338,7 +360,7 @@
         "tie": "Para tu uso, {count, plural, =2 {ninguno de los dos} other {ninguno de los #}} es claramente mejor: empate práctico, sin ganador forzado.",
         "range_dependent": "Cuál encaja mejor depende de la configuración, así que VScar no fuerza un ganador.",
         "no_full_match": "Ninguno cumple completamente tus requisitos.",
-        "requirement_failed": "El {subject} no cumple tu requisito de {criterion}: {hasObserved, select, yes {tiene {observed}} other {no hay datos}} y necesitas {op, select, max {como máximo} other {al menos}} {required}",
+        "requirement_failed": "{flag, select, yes {El {subject} no cumple tu requisito de {criterion}} other {El {subject} no cumple tu requisito de {criterion}: {hasObserved, select, yes {tiene {observed}} other {no hay datos}} y necesitas {op, select, max {como máximo} other {al menos}} {required}}}",
         "insufficient_data": "No hay datos comparables suficientes de espacio, autonomía, prestaciones o coste de uso para distinguirlos.",
         "closest_note": "Opción más cercana, no una recomendación: incumple menos requisitos o de forma menos grave."
       },
@@ -358,12 +380,12 @@
         "tie": "Los costes de uso son prácticamente iguales en {horizonYears, plural, one {# año} other {# años}}."
       },
       "practical": {
-        "requirement_met": "Cumple tu requisito de {criterion} ({op, select, max {como máximo} other {al menos}} {required})",
+        "requirement_met": "{flag, select, yes {Cumple tu requisito de {criterion}} other {Cumple tu requisito de {criterion} ({op, select, max {como máximo} other {al menos}} {required})}}",
         "no_failures": "No incumple ningún requisito obligatorio",
-        "requirement_failed": "No cumple tu requisito de {criterion}: {hasObserved, select, yes {tiene {observed}} other {no hay datos}} y necesitas {op, select, max {como máximo} other {al menos}} {required}",
-        "compromise": "{gap} {direction, select, ABOVE {por encima de} other {por debajo de}} tu objetivo de {criterion} ({required})",
-        "unconfirmed": "No se puede confirmar tu requisito de {criterion}: {hasObserved, select, yes {{observed} depende de la configuración} other {no hay datos utilizables}} (necesitas {op, select, max {como máximo} other {al menos}} {required})",
-        "desired_unknown": "No se ha podido comprobar tu objetivo de {criterion} ({op, select, max {como máximo} other {al menos}} {required})"
+        "requirement_failed": "{flag, select, yes {No cumple tu requisito de {criterion}} other {No cumple tu requisito de {criterion}: {hasObserved, select, yes {tiene {observed}} other {no hay datos}} y necesitas {op, select, max {como máximo} other {al menos}} {required}}}",
+        "compromise": "{flag, select, yes {No alcanza tu objetivo de {criterion}} other {{gap} {direction, select, ABOVE {por encima de} other {por debajo de}} tu objetivo de {criterion} ({required})}}",
+        "unconfirmed": "{flag, select, yes {No se puede confirmar tu requisito de {criterion}: no se conoce} other {No se puede confirmar tu requisito de {criterion}: {hasObserved, select, yes {{observed} depende de la configuración} other {no hay datos utilizables}} (necesitas {op, select, max {como máximo} other {al menos}} {required})}}",
+        "desired_unknown": "{flag, select, yes {No se ha podido comprobar tu objetivo de {criterion}} other {No se ha podido comprobar tu objetivo de {criterion} ({op, select, max {como máximo} other {al menos}} {required})}}"
       },
       "data_confidence": {
         "pair": "{subject} frente a {other}: la confianza de los datos es {level}",
@@ -372,8 +394,8 @@
         "requirements_without_data": "{subject}: {count, plural, one {# requisito} other {# requisitos}} sin datos verificables"
       },
       "why_not": {
-        "deal_breaker": "No cumple tu requisito de {criterion}: {hasObserved, select, yes {tiene {observed}} other {no hay datos}} y necesitas {op, select, max {como máximo} other {al menos}} {required}",
-        "compromise": "Por debajo de tu objetivo de {criterion}: {hasObserved, select, yes {tiene {observed}} other {no hay datos}} y querías {op, select, max {como máximo} other {al menos}} {required}",
+        "deal_breaker": "{flag, select, yes {No cumple tu requisito de {criterion}} other {No cumple tu requisito de {criterion}: {hasObserved, select, yes {tiene {observed}} other {no hay datos}} y necesitas {op, select, max {como máximo} other {al menos}} {required}}}",
+        "compromise": "{flag, select, yes {No alcanza tu objetivo de {criterion}} other {Por debajo de tu objetivo de {criterion}: {hasObserved, select, yes {tiene {observed}} other {no hay datos}} y querías {op, select, max {como máximo} other {al menos}} {required}}}",
         "running_cost": "Te costaría unos {amount} más al año que el {other}{hasKm, select, yes { con {annualKm}} other {}}",
         "economics_not_comparable": "Los costes de uso del {subject} y del {other} salen de ciclos de homologación distintos{hasCycles, select, yes { ({cycleSubject} frente a {cycleOther})} other {}}, así que VScar no los ordena económicamente",
         "metric_behind": "{metric}: {subject} {value} frente a {other} {otherValue} (diferencia {level}{hasForYou, select, yes {; para ti: {forYou}} other {}})",
@@ -383,8 +405,8 @@
       "no_full_match": "Ninguno cumple completamente tus requisitos.",
       "closest_option": "Opción más cercana (no es una recomendación): {subject}, que incumple {failed, plural, one {# requisito} other {# requisitos}}",
       "verify": {
-        "requirement": "Sin confirmar: {criterion}. Comprueba que sea de {op, select, max {como máximo} other {al menos}} {required}.",
-        "desired": "No se ha podido comprobar tu objetivo de {criterion} ({op, select, max {como máximo} other {al menos}} {required})."
+        "requirement": "{flag, select, yes {Sin confirmar: {criterion}. Pide la documentación antes de decidir.} other {Sin confirmar: {criterion}. Comprueba que sea de {op, select, max {como máximo} other {al menos}} {required}.}}",
+        "desired": "{flag, select, yes {No se ha podido comprobar tu objetivo de {criterion}.} other {No se ha podido comprobar tu objetivo de {criterion} ({op, select, max {como máximo} other {al menos}} {required}).}}"
       },
       "robustness": {
         "switch": "El resultado cambia si {variable, select, annual_km {tu distancia anual} fuel_price {el precio del combustible} electricity_price {el precio de la electricidad} home_charging_share {tu porcentaje de carga en casa} horizon_years {tus años de propiedad} other {{variable}}} {direction, select, BELOW {baja de} other {supera}} {switchValue}",
@@ -415,8 +437,10 @@
         "range_dependent": "Requisito de {criterion}: {observed} depende de la configuración (necesitas {op, select, max {como máximo} other {al menos}} {required})",
         "no_data": "Requisito de {criterion}: no hay datos utilizables",
         "no_plugin_range": "Un {powertrain} no tiene autonomía eléctrica enchufable",
-        "used_unknown": "Requisito de {criterion}: no se conoce en este usado; pregúntalo al vendedor (necesitas {op, select, max {como máximo} other {al menos}} {required})",
-        "calculated_unconfirmed": "Requisito de {criterion}: {observed} calculado a partir de la garantía original; confirma que se aplica a esta unidad (necesitas {op, select, max {como máximo} other {al menos}} {required})"
+        "used_unknown": "{flag, select, yes {Requisito de {criterion}: no se conoce en este usado; pregúntalo al vendedor} other {Requisito de {criterion}: no se conoce en este usado; pregúntalo al vendedor (necesitas {op, select, max {como máximo} other {al menos}} {required})}}",
+        "calculated_unconfirmed": "Requisito de {criterion}: {observed} calculado a partir de la garantía original; confirma que se aplica a esta unidad (necesitas {op, select, max {como máximo} other {al menos}} {required})",
+        "service_history_full": "Requisito de {criterion}: declarado completo y documentado",
+        "service_history_not_full": "Requisito de {criterion}: el historial declarado es {history, select, NONE {no disponible} other {parcial}}"
       },
       "metric": {
         "directional": "{metric}: {a} {valueA} frente a {b} {valueB} — {outcome, select, AHEAD {por delante: {a} (diferencia {level})} BEHIND {por delante: {b} (diferencia {level})} PRACTICAL_TIE {empate práctico} RANGE_DEPENDENT {depende de la configuración} other {distintos, ninguno mejor}}{hasForYou, select, yes {; para tu uso: {forYouLevel}} other {}}",
@@ -490,7 +514,8 @@
       "maxMileageKm": "kilometraje",
       "maxAgeYears": "antigüedad",
       "minBatteryHealthPct": "salud de la batería",
-      "minWarrantyRemainingMonths": "garantía restante"
+      "minWarrantyRemainingMonths": "garantía restante",
+      "mustHaveFullServiceHistory": "historial de mantenimiento completo"
     },
     "unit": {
       "seats": "plazas",
@@ -687,7 +712,8 @@
         "RWD": "Tracción trasera",
         "AWD": "Tracción total"
       },
-      "powertrainLabel": "Motorización"
+      "powertrainLabel": "Motorización",
+      "condition": "Nuevo o usado"
     },
     "cycle": "homologación {cycle}"
   },
@@ -723,5 +749,100 @@
   },
   "rail": {
     "label": "Vehículos comparados"
+  },
+  "used": {
+    "condition": {
+      "question": "¿Cómo estás considerando este coche?",
+      "new": "Nuevo",
+      "used": "Usado",
+      "newHint": "Precio de catálogo y garantía de un coche nuevo.",
+      "usedHint": "Una unidad concreta: indicarás su precio, kilometraje y estado.",
+      "sameCarNew": "Este mismo coche ya está como nuevo en el otro lado: elige Usado para comparar una unidad concreta, o elige otro coche.",
+      "step": "Nuevo o usado"
+    },
+    "badge": "{side} · {condition, select, used {USADO} other {NUEVO}}",
+    "form": {
+      "title": "Datos de esta unidad",
+      "lead": "Cuantos más datos verifiques, mejor podremos evaluar esta unidad.",
+      "essentials": "Datos esenciales",
+      "additional": "Información adicional",
+      "optional": "opcional",
+      "price": "Precio solicitado",
+      "priceHint": "Lo que pide el vendedor. No es un valor de mercado.",
+      "km": "Kilometraje actual",
+      "kmHint": "Déjalo vacío si no lo sabes (vacío no es 0).",
+      "reg": "Primera matriculación",
+      "regHint": "No es el año del modelo: la fecha figura en el permiso de circulación.",
+      "month": "Mes",
+      "year": "Año",
+      "monthUnknown": "Mes desconocido",
+      "warranty": "Garantía restante",
+      "warrantyUnit": "meses",
+      "warrantyUnknown": "No lo sé",
+      "warrantyHint": "Pon 0 si sabes que ya no tiene garantía. Si no lo sabes, VScar la estima desde la garantía original y te pedirá confirmarla.",
+      "service": "Historial de mantenimiento",
+      "serviceOptions": {
+        "full": "Completo y documentado",
+        "partial": "Parcial",
+        "none": "No disponible",
+        "unknown": "No lo sé"
+      },
+      "state": "Estado conocido",
+      "stateOptions": {
+        "ok": "Sin problemas declarados",
+        "issues": "Problemas conocidos",
+        "unknown": "Sin verificar"
+      },
+      "stateHint": "Es lo que tú o el vendedor declaráis, no una inspección independiente.",
+      "soh": "Salud de batería (SOH)",
+      "sohUnknown": "No dispongo del dato",
+      "sohHint": "Capacidad que conserva la batería según un informe. VScar no la convierte en autonomía.",
+      "damage": "Daños conocidos",
+      "damageOptions": {
+        "none": "Sin daños declarados",
+        "declared": "Daños declarados",
+        "unknown": "No lo sé"
+      },
+      "review": "Revisar",
+      "back": "Atrás",
+      "errors": {
+        "integer": "Introduce un número entero sin decimales.",
+        "price": "Introduce un precio entre {min} y {max} €.",
+        "km": "Introduce un kilometraje entre 0 y {max} km.",
+        "regYear": "Introduce un año entre {min} y {max}.",
+        "regFuture": "La matriculación no puede ser posterior a hoy.",
+        "regMonth": "Elige el año para indicar el mes.",
+        "warranty": "Introduce entre 0 y {max} meses.",
+        "soh": "Introduce un porcentaje entre 1 y 100."
+      }
+    },
+    "review": {
+      "title": "Revisa esta unidad",
+      "choose": "Elegir este coche",
+      "notProvided": "Sin indicar",
+      "months": "{count, plural, one {# mes} other {# meses}}",
+      "privacy": "Estos datos solo viven en tu navegador y en el enlace de la comparación. No se guardan."
+    },
+    "summary": {
+      "price": "Precio solicitado",
+      "km": "Kilometraje",
+      "reg": "Matriculación",
+      "service": "Historial",
+      "evaluated": "Datos del {date}"
+    },
+    "module": {
+      "title": "Información de este usado",
+      "lead": "Lo que sabemos de cada unidad usada y lo que falta verificar. No es una nota del coche.",
+      "confidence": "Confianza de la información",
+      "attention": "Aspectos a revisar",
+      "gaps": "Datos pendientes",
+      "notes": "Datos declarados",
+      "verify": "Comprueba esto antes de decidir",
+      "warnings": "Avisos",
+      "provenance": "Procedencia: lo marcado como declarado lo has introducido tú (o el vendedor); lo calculado sale de la garantía original del fabricante; lo pendiente no se conoce. VScar no ha verificado la unidad.",
+      "noSignals": "Sin aspectos que revisar con los datos introducidos."
+    },
+    "ignoredFacts": "Datos ignorados porque no aplican a este coche: {fields}",
+    "shareNote": "El enlace incluirá el precio, el kilometraje y el estado que has introducido."
   }
 }

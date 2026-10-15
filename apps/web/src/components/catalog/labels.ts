@@ -143,6 +143,66 @@ export function pairLabels({ t }: Pick<I18n, 't'>): PairLabels {
   };
 }
 
+/** Step 8b: textos de Nuevo/Usado y del formulario de la unidad (datos para la isla del selector). */
+export interface UsedLabels {
+  question: string;
+  isNew: string;
+  isUsed: string;
+  newHint: string;
+  usedHint: string;
+  sameCarNew: string;
+  step: string;
+  /** `{side}` + `{condition}` ya resueltos por lado/condición: `badge.a.used`… */
+  badge: Record<'a' | 'b', Record<'new' | 'used', string>>;
+  form: Record<(typeof FORM_KEYS)[number], string> & {
+    serviceOptions: Record<'full' | 'partial' | 'none' | 'unknown', string>;
+    stateOptions: Record<'ok' | 'issues' | 'unknown', string>;
+    damageOptions: Record<'none' | 'declared' | 'unknown', string>;
+    errors: Record<string, string>;
+  };
+  review: { title: string; choose: string; notProvided: string; monthsOne: string; monthsOther: string; privacy: string };
+  summary: Record<string, string>;
+  shareNote: string;
+}
+
+const FORM_KEYS = ['title', 'lead', 'essentials', 'additional', 'optional', 'price', 'priceHint', 'km', 'kmHint', 'reg', 'regHint', 'month', 'year', 'monthUnknown', 'warranty', 'warrantyUnit', 'warrantyUnknown', 'warrantyHint', 'service', 'state', 'stateHint', 'soh', 'sohUnknown', 'sohHint', 'damage', 'review', 'back'] as const;
+
+export function usedLabels({ t }: Pick<I18n, 't'>): UsedLabels {
+  const raw = (k: string) => (t.raw?.(k) as string | undefined) ?? '';
+  const group = (k: string, keys: readonly string[]) => Object.fromEntries(keys.map((x) => [x, t(`${k}.${x}`)]));
+  return {
+    question: t('used.condition.question'),
+    isNew: t('used.condition.new'),
+    isUsed: t('used.condition.used'),
+    newHint: t('used.condition.newHint'),
+    usedHint: t('used.condition.usedHint'),
+    sameCarNew: t('used.condition.sameCarNew'),
+    step: t('used.condition.step'),
+    badge: {
+      a: { new: t('used.badge', { side: 'A', condition: 'new' }), used: t('used.badge', { side: 'A', condition: 'used' }) },
+      b: { new: t('used.badge', { side: 'B', condition: 'new' }), used: t('used.badge', { side: 'B', condition: 'used' }) },
+    },
+    form: {
+      ...group('used.form', FORM_KEYS),
+      serviceOptions: group('used.form.serviceOptions', ['full', 'partial', 'none', 'unknown']),
+      stateOptions: group('used.form.stateOptions', ['ok', 'issues', 'unknown']),
+      damageOptions: group('used.form.damageOptions', ['none', 'declared', 'unknown']),
+      // Plantillas con `{min}`/`{max}`: se rellenan en el cliente con `fill()`.
+      errors: Object.fromEntries(['integer', 'price', 'km', 'regYear', 'regFuture', 'regMonth', 'warranty', 'soh'].map((x) => [x, raw(`used.form.errors.${x}`)])),
+    } as UsedLabels['form'],
+    review: {
+      title: t('used.review.title'),
+      choose: t('used.review.choose'),
+      notProvided: t('used.review.notProvided'),
+      monthsOne: t('used.review.months', { count: 1 }).replace('1', '{count}'),
+      monthsOther: t('used.review.months', { count: 7 }).replace('7', '{count}'),
+      privacy: t('used.review.privacy'),
+    },
+    summary: group('used.summary', ['price', 'km', 'reg', 'service']),
+    shareNote: t('used.shareNote'),
+  };
+}
+
 export const fill = (template: string, values: Record<string, string | number>) => template.replace(/\{(\w+)\}/g, (_, k: string) => String(values[k] ?? ''));
 
 /** Texto de una opción: nombre comercial + "año · powertrain" (+ periodo si distingue variants técnicas). */

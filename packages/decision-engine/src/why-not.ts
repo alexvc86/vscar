@@ -68,9 +68,9 @@ export interface VerificationItem extends Message {
 }
 
 /** Requisitos que describen la unidad usada (Step 8a): su motivo es de la instancia, no de la variante. */
-const USED_CRITERIA: ReadonlySet<string> = new Set(['maxMileageKm', 'maxAgeYears', 'minBatteryHealthPct', 'minWarrantyRemainingMonths']);
+const USED_CRITERIA: ReadonlySet<string> = new Set(['maxMileageKm', 'maxAgeYears', 'minBatteryHealthPct', 'minWarrantyRemainingMonths', 'mustHaveFullServiceHistory']);
 /** Requisito de usado sin dato → comprobación equivalente del Used Adjustment (no se duplica). */
-const CRITERION_CHECK: Readonly<Record<string, VerificationCheck>> = { maxMileageKm: 'MILEAGE', minBatteryHealthPct: 'BATTERY_HEALTH', minWarrantyRemainingMonths: 'WARRANTY' };
+const CRITERION_CHECK: Readonly<Record<string, VerificationCheck>> = { maxMileageKm: 'MILEAGE', minBatteryHealthPct: 'BATTERY_HEALTH', minWarrantyRemainingMonths: 'WARRANTY', mustHaveFullServiceHistory: 'SERVICE_HISTORY' };
 const subjectOfCriterion = (criterion: string) => (USED_CRITERIA.has(criterion) ? ('USED_INSTANCE' as const) : ('REFERENCE_VARIANT' as const));
 
 const SEVERITY_RANK: Record<WhyNotSeverity, number> = { BLOCKING: 0, COMPROMISE: 1, VERIFY: 2, MAJOR: 3, MODERATE: 4, MINOR: 6, INFO: 7 };

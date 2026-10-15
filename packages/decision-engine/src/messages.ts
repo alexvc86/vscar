@@ -186,5 +186,7 @@ export function checkParams(c: { criterion: string; requiredValue: number; obser
     unit,
     op: c.criterion.startsWith('max') ? 'max' : 'min',
     ...(c.observedValue ? { observedMin: c.observedValue.min, observedMax: c.observedValue.max } : {}),
+    // Step 8b: requisito categórico (historial completo): no es una cantidad; la UI lo presenta como sí/no.
+    ...(unit === 'FLAG' || c.criterion === 'mustHaveFullServiceHistory' ? { flag: true } : {}),
   };
 }

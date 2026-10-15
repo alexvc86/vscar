@@ -58,6 +58,8 @@ export const ComparisonScenario = z
         minBatteryHealthPct: z.number().positive().max(100).optional(),
         /** "Debe tener garantía" = 1. */
         minWarrantyRemainingMonths: z.number().int().positive().max(240).optional(),
+        /** Step 8b: "debe tener historial de mantenimiento completo". Categórico: FULL → PASS; PARTIAL/NONE → FAIL; desconocido → UNKNOWN. */
+        mustHaveFullServiceHistory: z.literal(true).optional(),
       })
       .strict()
       .default({}),

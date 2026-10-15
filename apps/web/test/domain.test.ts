@@ -2,7 +2,7 @@ import fc from 'fast-check';
 import { describe, expect, it } from 'vitest';
 import { BYD_SEAL_IDS } from '@vscar/fixtures';
 import { computeDecision, computeRobustness } from '../src/domain/decision.ts';
-import { DEFAULT_SCENARIO, parseScenarioFromSearchParams, Scenario, SCENARIO_LIMITS, serializeScenario, toEngineScenarios } from '../src/domain/scenario.ts';
+import { DEFAULT_SCENARIO, parseScenarioFromSearchParams, SCENARIO_LIMITS, serializeScenario, toEngineScenarios } from '../src/domain/scenario.ts';
 import { buildDecisionView, withRobustness } from '../src/domain/view-model.ts';
 import { serverDecisionView } from '../src/server/server-decision.ts';
 import { comparisonData } from './support/catalog.ts';
@@ -29,10 +29,10 @@ describe('scenario ⇄ URL (single parser, single serializer)', () => {
     expect(serializeScenario({ ...DEFAULT_SCENARIO, performance: 3, km: 18000, trips: 10 })).toBe('?km=18000&trips=10&performance=3');
   });
   it('property: parse(serialize(s)) === s for every valid scenario', () => {
-    const arb = fc.record(Object.fromEntries((Object.keys(DEFAULT_SCENARIO) as (keyof Scenario)[]).map((k) => {
+    const arb = fc.record(Object.fromEntries((Object.keys(DEFAULT_SCENARIO) as (keyof typeof DEFAULT_SCENARIO)[]).map((k) => {
       const lim = SCENARIO_LIMITS[k === 'cost' || k === 'space' || k === 'performance' ? 'priority' : k];
       return [k, fc.integer({ min: lim.min, max: lim.max })];
-    })) as Record<keyof Scenario, fc.Arbitrary<number>>);
+    })) as Record<keyof typeof DEFAULT_SCENARIO, fc.Arbitrary<number>>);
     fc.assert(fc.property(arb, (s) => {
       const q = serializeScenario(s);
       expect(parseScenarioFromSearchParams(new URLSearchParams(q)).scenario).toEqual(s);

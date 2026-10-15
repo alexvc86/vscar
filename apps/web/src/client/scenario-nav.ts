@@ -1,5 +1,6 @@
 import { startTransition } from 'react';
 import { serializeScenario, type Scenario } from '@/domain/scenario';
+import { appendUsedSearch } from '@/domain/used-params';
 
 /**
  * Cambio de escenario SIN recarga: la URL se actualiza con `history.pushState` (Next sincroniza
@@ -30,7 +31,8 @@ export function revealResult(): void {
 
 export function pushScenario(pathname: string, scenario: Scenario): void {
   revealResult();
-  push(`${pathname}${serializeScenario(scenario)}`);
+  // Step 8b: el escenario cambia; los hechos de las unidades usadas (bloque `u=1`) se conservan tal cual.
+  push(`${pathname}${appendUsedSearch(serializeScenario(scenario), location.search)}`);
 }
 
 export function pushHref(href: string): void {

@@ -23,6 +23,7 @@ const LABELS: Record<string, [string, string]> = {
   maxAgeYears: ['age', 'years'],
   minBatteryHealthPct: ['battery health', '%'],
   minWarrantyRemainingMonths: ['remaining warranty', 'months'],
+  mustHaveFullServiceHistory: ['full service history', ''],
 };
 
 function shortfallText(c: DealBreakerCheck): string {

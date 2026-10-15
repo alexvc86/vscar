@@ -23,6 +23,8 @@ export interface UsedSubjectFacts {
   batteryHealthPct: UsedNumericFact;
   /** Garantía restante del fabricante: declarada (USER_PROVIDED) o calculada desde la garantía original (CALCULATED). */
   warrantyRemainingMonths: UsedNumericFact;
+  /** Step 8b: historial de mantenimiento declarado (requisito "historial completo"). Desconocido ≠ ausente. */
+  serviceHistory?: { state: 'KNOWN'; value: 'FULL' | 'PARTIAL' | 'NONE'; basis: 'USER_PROVIDED' } | { state: 'UNKNOWN' };
 }
 
 export type DecisionSubject =

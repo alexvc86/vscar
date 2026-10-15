@@ -143,6 +143,24 @@ describe('used deal breakers: UNCONFIRMED, never PASS, never on a new car', () =
   });
 });
 
+describe('Step 8b — must have full service history', () => {
+  const req = { comparison: { requirements: { mustHaveFullServiceHistory: true as const } } };
+  it('FULL passes, PARTIAL fails, unknown is UNCONFIRMED (verified once); the new car is unaffected', () => {
+    const full = run([newGolf(), usedGolf(71)], req).result;
+    expect(full.practicalFit.find((p) => p.candidateId === usedId(71))!.status).toBe('PASS');
+    const partial = run([newGolf(), usedGolf(72, { service_history: 'partial' })], req).result;
+    expect(partial.practicalFit.find((p) => p.candidateId === usedId(72))!.status).toBe('FAIL');
+    expect(partial.alphaBestForYou).toMatchObject({ status: 'BEST_FOR_YOU', candidateId: REF_ICE });
+    expect(partial.whyNotByCandidate[usedId(72)]!.items[0]).toMatchObject({ type: 'DEAL_BREAKER', subject: 'USED_INSTANCE', params: { criterion: 'mustHaveFullServiceHistory', flag: true } });
+    const unknown = run([newGolf(), usedGolf(73, { service_history: 'unknown' })], req).result;
+    expect(unknown.practicalFit.find((p) => p.candidateId === usedId(73))!.status).toBe('UNCONFIRMED');
+    const v = unknown.requiresVerification.filter((x) => x.candidateId === usedId(73));
+    expect(v.filter((x) => x.criterion === 'mustHaveFullServiceHistory')).toHaveLength(1);
+    expect(v.filter((x) => x.criterion === 'SERVICE_HISTORY')).toEqual([]);
+    expect(full.practicalFit.find((p) => p.candidateId === REF_ICE)!.status).toBe('PASS');
+  });
+});
+
 describe('BEV battery health known vs unknown (real Model 3 reference)', () => {
   const bundle = loadAllCases();
   const m3 = (used?: UsedVehicleInstanceInput): PipelineVehicle => ({

@@ -22,7 +22,7 @@ const scenarioArb = fc.record({
   priorities: fc.record({ COST: prio, SPACE: prio, PERFORMANCE: prio }),
 });
 const clean = (s: { comparison: { requirements: Record<string, number | undefined> } } & Record<string, unknown>): DecisionScenarioIn =>
-  ({ ...s, comparison: { ...s.comparison, requirements: Object.fromEntries(Object.entries(s.comparison.requirements).filter(([, v]) => v !== undefined)) } }) as DecisionScenarioIn;
+  ({ ...s, comparison: { ...s.comparison, requirements: Object.fromEntries(Object.entries(s.comparison.requirements).filter(([, v]) => v !== undefined)) } }) as unknown as DecisionScenarioIn;
 const rec = (cs: ReturnType<typeof cand>[], s: DecisionScenarioIn) => recommend({ candidates: cs, comparison: compareCandidates(cs, s.comparison ?? {}), scenario: s });
 const pairOf = (pairs: readonly ComparisonResult[], x: string, y: string) => pairs.find((p) => [p.candidateAId, p.candidateBId].sort().join() === [x, y].sort().join())!;
 

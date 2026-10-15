@@ -5,9 +5,9 @@ import { SiteHeader } from '@/components/site/SiteHeader';
 import { VehicleVisual } from '@/components/vehicle/VehicleVisual';
 import { HeroAtmosphere } from '@/components/visual/HeroAtmosphere';
 import { CompareBuilder } from '@/components/catalog/CompareBuilder';
-import { optionText, pairLabels, selectorLabels } from '@/components/catalog/labels';
+import { optionText, pairLabels, selectorLabels, usedLabels } from '@/components/catalog/labels';
 import { pairSlug, type VehicleOption } from '@/domain/catalog';
-import { DEFAULT_LOCALE, parseLocaleSegment, type MarketCode } from '@/i18n/locales';
+import { DEFAULT_LOCALE, MARKETS, parseLocaleSegment, type MarketCode } from '@/i18n/locales';
 import { localeAlternates } from '@/i18n/metadata';
 import { serverEnv } from '@/server/env';
 import { robotsFor } from '@/server/seo';
@@ -89,7 +89,7 @@ function Home({ examples }: { examples: { a: VehicleOption; b: VehicleOption }[]
             {pair.compareTitle}
           </h2>
           <p className="muted">{pair.compareLead}</p>
-          <CompareBuilder locale={locale.segment} market={locale.market} labels={pair} selector={sel} />
+          <CompareBuilder locale={locale.segment} market={locale.market} labels={pair} selector={sel} used={usedLabels(i18n)} timeZone={MARKETS[locale.market].timeZone} />
           {examples.length ? (
             <div className="home__examples">
               <h3 className="label">{t('catalog.examplesTitle')}</h3>

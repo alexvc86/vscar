@@ -3,6 +3,7 @@ import type { EnergyContext } from '@vscar/market-context';
 import type { CandidateSide } from '@vscar/ui/tokens';
 import type { MarketCode } from '@/i18n/locales';
 import type { VehicleOption } from './catalog.ts';
+import type { PairConditions, UsedFacts } from './used-params.ts';
 
 /**
  * Datos de una comparación resueltos en el SERVIDOR (Step 7b, `loadComparisonData`): las dos ReferenceVariants
@@ -17,6 +18,16 @@ export interface ComparisonVehicle {
   label: string;
   /** Fecha de referencia de los hechos (variants históricas: último día de su homologación). */
   at?: string;
+  /**
+   * Step 8b: identidad del PARTICIPANTE en los engines. Nuevo = id de la ReferenceVariant; usado = id propio de la
+   * unidad (nunca se fusiona con la variante aunque el otro lado sea la misma ReferenceVariant).
+   */
+  subjectId: string;
+  condition: 'new' | 'used';
+  /** Hechos declarados de la unidad usada (ya validados; SOH eliminado si no aplica al powertrain). */
+  used?: UsedFacts;
+  /** Hechos de la URL que no aplican a este vehículo y se han ignorado (p. ej. SOH en un ICE). */
+  ignored?: string[];
   pipeline: PipelineVehicle;
 }
 
@@ -49,4 +60,8 @@ export interface ComparisonData {
   energy: EnergyContext;
   sources: SourceInfo[];
   dataSnapshot: DataSnapshot;
+  /** Step 8b: condición y hechos por lado tal como se resolvieron (base de enlaces de escenario, swap e idioma). */
+  conditions: PairConditions;
+  /** Step 8b: fecha de evaluación de las unidades usadas (explícita; la misma en servidor, cliente y worker). */
+  evaluationDate?: string;
 }

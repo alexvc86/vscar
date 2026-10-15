@@ -80,13 +80,11 @@ export function VehiclePickerSearch({ market, labels, current, other, onSelect, 
   const choose = useCallback(
     (o: VehicleOption | undefined) => {
       if (!o) return;
-      if (other && o.id === other.id) {
-        setNotice(labels.sameCar);
-        return;
-      }
+      // Step 8b: la misma variant que el otro lado es válida si uno de los dos es usado (se decide en el paso
+      // Nuevo/Usado del selector, que conoce la condición del otro lado).
       onSelect(o);
     },
-    [other, labels.sameCar, onSelect],
+    [onSelect],
   );
 
   useEffect(() => {
@@ -182,7 +180,6 @@ export function VehiclePickerSearch({ market, labels, current, other, onSelect, 
               id={`${listId}-opt-${i}`}
               role="option"
               aria-selected={i === active}
-              aria-disabled={isOther || undefined}
               data-active={i === active}
               data-slug={o.slug}
               className="picker__option picker__option--thumb"

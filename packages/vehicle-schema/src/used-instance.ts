@@ -17,6 +17,8 @@ export const UsedVehicleInstance = z
     registration_date: IsoDate.optional(),
     /** Si el usuario no lo indica: ausente + `registration_year_assumed` (ESTIMATED), nunca como dato conocido. */
     registration_year: z.number().int().min(1990).max(2100).optional(),
+    /** Step 8b: mes de primera matriculación (1–12) cuando se conoce mes/año pero no el día. Exige `registration_year`. */
+    registration_month: z.number().int().min(1).max(12).optional(),
     registration_year_assumed: z.number().int().min(1990).max(2100).optional(),
     service_history: z.enum(['full', 'partial', 'none', 'unknown']).default('unknown'),
     accident_history: z.enum(['none_declared', 'declared', 'unknown']).default('unknown'),
@@ -34,6 +36,9 @@ export const UsedVehicleInstance = z
     }
     if ((u.registration_year !== undefined || u.registration_date !== undefined) && u.registration_year_assumed !== undefined) {
       ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['registration_year_assumed'], message: 'an assumption is only allowed when the real value is unknown' });
+    }
+    if (u.registration_month !== undefined && (u.registration_year === undefined || u.registration_date !== undefined)) {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['registration_month'], message: 'a registration month needs the registration year and no full date' });
     }
     if (u.registration_date !== undefined && u.registration_year !== undefined && Number(u.registration_date.slice(0, 4)) !== u.registration_year) {
       ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['registration_year'], message: 'registration year must match the registration date' });

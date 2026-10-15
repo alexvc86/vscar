@@ -56,4 +56,17 @@ describe('used-unit deal breakers', () => {
     const declared = facts({ warrantyRemainingMonths: { state: 'KNOWN', min: 20, max: 20, basis: 'USER_PROVIDED' } });
     expect(evaluateDealBreakers(used(ice, declared), { requirements: { minWarrantyRemainingMonths: 1 } }).status).toBe('PASS');
   });
+  it('Step 8b — full service history: FULL → PASS, PARTIAL/NONE → FAIL, unknown → UNKNOWN (never PASS)', () => {
+    const req = { requirements: { mustHaveFullServiceHistory: true as const } };
+    const sh = (v?: 'FULL' | 'PARTIAL' | 'NONE') => facts({ serviceHistory: v ? { state: 'KNOWN', value: v, basis: 'USER_PROVIDED' } : { state: 'UNKNOWN' } });
+    expect(evaluateDealBreakers(used(ice, sh('FULL')), req).checks[0]).toMatchObject({ status: 'PASS', message: { messageKey: 'comparison.requirement.service_history_full', params: { flag: true } } });
+    for (const v of ['PARTIAL', 'NONE'] as const) {
+      expect(evaluateDealBreakers(used(ice, sh(v)), req).checks[0]).toMatchObject({ status: 'FAIL', message: { messageKey: 'comparison.requirement.service_history_not_full', params: { history: v, flag: true } } });
+    }
+    expect(evaluateDealBreakers(used(ice, sh()), req).checks[0]).toMatchObject({ status: 'UNKNOWN', message: { messageKey: 'comparison.requirement.used_unknown', params: { flag: true } } });
+    // Sin hecho de historial (contrato 8a) = desconocido.
+    expect(evaluateDealBreakers(used(ice, facts()), req).status).toBe('UNKNOWN');
+    // Nunca aplica a un coche nuevo.
+    expect(evaluateDealBreakers(ice, req).checks).toEqual([]);
+  });
 });

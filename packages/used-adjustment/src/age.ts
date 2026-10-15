@@ -4,6 +4,8 @@ import type { VehicleAge } from './contracts.ts';
  * Edad del vehículo (Step 8a §6, §40–41). Reglas:
  *   1. Con fecha de primera matriculación: meses COMPLETOS hasta la fecha de evaluación (punto).
  *   2. Solo con el año: rango honesto [desde el 31-dic, desde el 1-ene] de ese año (sin suponer un mes).
+ *      Con año y mes (Step 8b): la misma regla a la precisión declarada → [desde el último día, desde el día 1] del mes.
+ *      No es una regla nueva: el rango se estrecha porque el dato es más preciso (nunca se supone el día).
  *   3. Sin dato explícito: UNKNOWN. Nunca se deduce del model year, del año supuesto ni de fechas de fuentes.
  * La fecha de evaluación es siempre explícita: el helper no lee el reloj.
  */
@@ -26,7 +28,10 @@ export function fullMonthsBetween(from: string, to: string): number {
   return raw;
 }
 
-export function calculateVehicleAge(registration: { registrationDate?: string; registrationYear?: number }, evaluationDate: string): VehicleAge {
+const pad = (n: number) => String(n).padStart(2, '0');
+const lastDay = (y: number, m: number) => new Date(Date.UTC(y, m, 0)).getUTCDate();
+
+export function calculateVehicleAge(registration: { registrationDate?: string; registrationYear?: number; registrationMonth?: number }, evaluationDate: string): VehicleAge {
   parts(evaluationDate);
   if (registration.registrationDate !== undefined) {
     const months = fullMonthsBetween(registration.registrationDate, evaluationDate);
@@ -35,9 +40,12 @@ export function calculateVehicleAge(registration: { registrationDate?: string; r
   }
   if (registration.registrationYear !== undefined) {
     const y = registration.registrationYear;
-    const max = fullMonthsBetween(`${y}-01-01`, evaluationDate);
-    if (max < 0) return { months: { state: 'UNKNOWN' }, source: 'REGISTRATION_YEAR', invalid: 'REGISTRATION_AFTER_EVALUATION' };
-    const min = Math.max(0, fullMonthsBetween(`${y}-12-31`, evaluationDate));
+    const m = registration.registrationMonth;
+    const first = m ? `${y}-${pad(m)}-01` : `${y}-01-01`;
+    const last = m ? `${y}-${pad(m)}-${pad(lastDay(y, m))}` : `${y}-12-31`;
+    const max = fullMonthsBetween(first, evaluationDate);
+    if (max < 0 || first > evaluationDate) return { months: { state: 'UNKNOWN' }, source: 'REGISTRATION_YEAR', invalid: 'REGISTRATION_AFTER_EVALUATION' };
+    const min = Math.max(0, fullMonthsBetween(last, evaluationDate));
     return { months: { state: 'KNOWN', min, max, basis: 'CALCULATED' }, source: 'REGISTRATION_YEAR' };
   }
   return { months: { state: 'UNKNOWN' }, source: 'NONE' };
