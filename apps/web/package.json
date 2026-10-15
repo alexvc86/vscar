@@ -44,6 +44,7 @@
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@vscar/fixtures": "workspace:*",
-    "tailwindcss": "4.3.3"
+    "tailwindcss": "4.3.3",
+    "@vscar/used-adjustment": "workspace:*"
   }
 }

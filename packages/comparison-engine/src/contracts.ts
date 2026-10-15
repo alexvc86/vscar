@@ -3,7 +3,7 @@ import { z } from 'zod';
 import type { DifferenceClass } from '@vscar/methodology';
 import type { BreakEven, EconomicResult } from '@vscar/economics-engine';
 import type { CategoryEligibility, CategoryStatus } from '@vscar/quality';
-import type { AlphaCategory, PowertrainType, SafetyRating, SpecValue } from '@vscar/vehicle-schema';
+import type { AlphaCategory, DecisionSubject, PowertrainType, SafetyRating, SpecValue } from '@vscar/vehicle-schema';
 
 /**
  * Contratos del Comparison Engine v0.1 (Step 6a). Responde "¿en qué es materialmente mejor, peor o
@@ -25,6 +25,11 @@ export interface ComparisonCandidate {
   /** Datos descartados (conflicto, no usable, BLOCK) — visibles, nunca usados. */
   exclusions: readonly string[];
   economic?: EconomicResult;
+  /**
+   * Step 8a: sujeto de la decisión. Ausente = la ReferenceVariant (`id`). Con una unidad usada, `id` es el
+   * `subjectId` de la instancia y los `facts` siguen siendo los de la ReferenceVariant (nunca se ajustan).
+   */
+  subject?: DecisionSubject;
 }
 
 /** Solo contexto práctico (Step 6a). Sin preferencias de marca, diseño, tecnología ni deportividad (Step 6b). */
@@ -47,6 +52,12 @@ export const ComparisonScenario = z
         maxHeightMm: z.number().positive().optional(),
         minElectricRangeKm: z.number().positive().optional(),
         maxPurchasePriceEur: z.number().positive().optional(),
+        // Step 8a — requisitos de la unidad usada: solo se evalúan en sujetos USED_INSTANCE (no aplican a un coche nuevo).
+        maxMileageKm: z.number().positive().optional(),
+        maxAgeYears: z.number().positive().max(60).optional(),
+        minBatteryHealthPct: z.number().positive().max(100).optional(),
+        /** "Debe tener garantía" = 1. */
+        minWarrantyRemainingMonths: z.number().int().positive().max(240).optional(),
       })
       .strict()
       .default({}),

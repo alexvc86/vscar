@@ -414,7 +414,9 @@
         "fail": "Requisito de {criterion}: {observed} no cumple {op, select, max {como máximo} other {al menos}} {required}",
         "range_dependent": "Requisito de {criterion}: {observed} depende de la configuración (necesitas {op, select, max {como máximo} other {al menos}} {required})",
         "no_data": "Requisito de {criterion}: no hay datos utilizables",
-        "no_plugin_range": "Un {powertrain} no tiene autonomía eléctrica enchufable"
+        "no_plugin_range": "Un {powertrain} no tiene autonomía eléctrica enchufable",
+        "used_unknown": "Requisito de {criterion}: no se conoce en este usado; pregúntalo al vendedor (necesitas {op, select, max {como máximo} other {al menos}} {required})",
+        "calculated_unconfirmed": "Requisito de {criterion}: {observed} calculado a partir de la garantía original; confirma que se aplica a esta unidad (necesitas {op, select, max {como máximo} other {al menos}} {required})"
       },
       "metric": {
         "directional": "{metric}: {a} {valueA} frente a {b} {valueB} — {outcome, select, AHEAD {por delante: {a} (diferencia {level})} BEHIND {por delante: {b} (diferencia {level})} PRACTICAL_TIE {empate práctico} RANGE_DEPENDENT {depende de la configuración} other {distintos, ninguno mejor}}{hasForYou, select, yes {; para tu uso: {forYouLevel}} other {}}",
@@ -484,7 +486,11 @@
       "maxWidthMm": "anchura",
       "maxHeightMm": "altura",
       "minElectricRangeKm": "autonomía eléctrica",
-      "maxPurchasePriceEur": "precio de compra"
+      "maxPurchasePriceEur": "precio de compra",
+      "maxMileageKm": "kilometraje",
+      "maxAgeYears": "antigüedad",
+      "minBatteryHealthPct": "salud de la batería",
+      "minWarrantyRemainingMonths": "garantía restante"
     },
     "unit": {
       "seats": "plazas",
@@ -502,7 +508,8 @@
       "g_km": "g/km",
       "in": "pulg.",
       "m": "m",
-      "_": "%"
+      "_": "%",
+      "months": "meses"
     },
     "category": {
       "Performance": "prestaciones",
@@ -539,6 +546,59 @@
       "BASIS_UNSPECIFIED": "base de medida no declarada",
       "BASIS_MISMATCH": "base de medida distinta",
       "NON_NUMERIC": "valores no numéricos"
+    },
+    "used": {
+      "economic": {
+        "asking_price_used": "El cálculo usa el precio pedido por esta unidad: {amount} (dato tuyo), no el precio de lista original",
+        "asking_price_missing": "Falta el precio pedido de este usado: no se calcula su coste de compra (nunca se usa en su lugar el precio de lista original)"
+      },
+      "ownership": {
+        "high_mileage_for_age": "Kilometraje alto para su edad: {mileageKm} km en {ageMonths} meses, unos {annualKm} km/año (referencia: {referenceAnnualKm} km/año)",
+        "low_mileage_for_age": "Kilometraje bajo para su edad: {mileageKm} km en {ageMonths} meses, unos {annualKm} km/año (referencia: {referenceAnnualKm} km/año)",
+        "mileage_unknown": "No se ha indicado el kilometraje",
+        "no_remaining_warranty": "Sin garantía del fabricante{basis, select, CALCULATED { (calculado a partir de la garantía original)} other {}}",
+        "limited_warranty": "Poca garantía restante: {warrantyRemainingMonths} meses{basis, select, CALCULATED { (calculado a partir de la garantía original)} other {}}, menos de {limitMonths}",
+        "service_history_unknown": "Historial de mantenimiento desconocido",
+        "service_history_incomplete": "Historial de mantenimiento {history, select, NONE {no disponible} other {parcial}}",
+        "battery_health_unknown": "Estado de salud de la batería desconocido",
+        "battery_health_low": "Salud de batería declarada del {batteryHealthPct} %, por debajo del {thresholdPct} %{thresholdBasis, select, VARIANT_WARRANTY { (mínimo garantizado para este coche)} other {}}",
+        "battery_health_reported": "Salud de batería declarada: {batteryHealthPct} % (dato tuyo; no se convierte en autonomía)",
+        "accident_damage_declared": "Se han declarado daños por accidente",
+        "condition_issues_declared": "Se han declarado problemas de estado{inspectionStatus, select, EXPIRED { (ITV caducada)} other {}}",
+        "condition_unconfirmed": "Estado e ITV sin confirmar",
+        "asking_price_missing": "No se ha indicado el precio pedido"
+      },
+      "information_confidence": {
+        "summary": "Confianza de la información del usado: {level} ({knownCount} de {relevantCount} datos relevantes conocidos)",
+        "complete": "Se conocen todos los datos relevantes de esta unidad",
+        "capped": "Sin dato de {field, select, battery_health {salud de batería} other {este dato}}: en un {powertrain}, la confianza de la información es como mucho {level}",
+        "missing_asking_price": "Falta el precio pedido{critical, select, yes { (crítico)} other {}}",
+        "missing_mileage": "Falta el kilometraje{critical, select, yes { (crítico)} other {}}",
+        "missing_registration": "Falta la fecha o el año de matriculación{critical, select, yes { (crítico)} other {}}",
+        "missing_service_history": "Falta el historial de mantenimiento{critical, select, yes { (crítico)} other {}}",
+        "missing_accident_history": "Falta el historial de accidentes{critical, select, yes { (crítico)} other {}}",
+        "missing_owners": "Falta el número de propietarios{critical, select, yes { (crítico)} other {}}",
+        "missing_warranty": "Falta la garantía restante{critical, select, yes { (crítico)} other {}}",
+        "missing_inspection": "Falta el estado de la ITV{critical, select, yes { (crítico)} other {}}",
+        "missing_condition": "Falta el estado del coche{critical, select, yes { (crítico)} other {}}",
+        "missing_battery_health": "Falta la salud de la batería{critical, select, yes { (crítico)} other {}}"
+      },
+      "verification": {
+        "provide_asking_price": "Indica el precio pedido para comparar el coste de compra",
+        "check_mileage": "Comprueba el kilometraje (y sus registros) antes de decidir",
+        "check_service_history": "{history, select, UNKNOWN {Pide el historial de mantenimiento antes de decidir} other {Pide los registros de mantenimiento disponibles antes de decidir}}",
+        "check_battery_health": "{cause, select, LOW {Pide un informe independiente de la batería antes de decidir} other {Comprueba la salud de la batería (informe de estado) antes de decidir}}",
+        "check_warranty": "{basis, select, CALCULATED {Confirma la garantía restante (unos {warrantyRemainingMonths} meses según el cálculo) y sus condiciones para esta unidad} other {Confirma si le queda garantía del fabricante}}",
+        "check_damage_repair": "Pregunta cómo se repararon los daños declarados y haz que lo revisen",
+        "check_condition": "{cause, select, ISSUES {Haz revisar los problemas declarados antes de decidir} other {Comprueba el estado y la ITV antes de decidir}}"
+      },
+      "warning": {
+        "registration_after_evaluation": "La matriculación ({registration}) es posterior a la fecha de evaluación ({evaluationDate}): no se usa la edad",
+        "assumed_registration_not_used": "El año de matriculación supuesto ({registrationYearAssumed}) es una estimación: no se usa para calcular la edad",
+        "battery_health_not_applicable": "La salud de batería no aplica a un {powertrain}: se ignora el dato",
+        "currency_mismatch": "Precio pedido en {currency}, pero este mercado usa {marketCurrency}: no se usa",
+        "observed_after_evaluation": "Datos de la unidad observados el {observedAt}, después de la fecha de evaluación ({evaluationDate})"
+      }
     }
   },
   "catalog": {

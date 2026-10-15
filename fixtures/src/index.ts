@@ -14,6 +14,7 @@ export { BYD_SEAL_IDS } from './cases/byd-seal-battery-unspecified.ts';
 export { LEON_EHYBRID_IDS } from './cases/seat-leon-ehybrid-cross-market.ts';
 export { MODEL3_2021_IDS } from './cases/tesla-model3-2021-intra-year.ts';
 export { GOLF_CURRENT_IDS } from './cases/golf-current-official-conflict.ts';
+export * from './used-instances.ts';
 
 /**
  * Los seis casos de validación técnica del schema v0.2 (Step 3).

@@ -1,5 +1,6 @@
 import type { ComparisonCategory, ComparisonResult, DealBreakerCheck, MetricComparison } from '@vscar/comparison-engine';
 import { WHY_NOT_RULES } from '@vscar/methodology';
+import type { UsedAdjustmentResult, UsedRuleCode, UsedSourceField, VerificationCheck } from '@vscar/used-adjustment';
 import type { AlphaDecisionResult, DecisionInput, Range } from './contracts.ts';
 import { checkParams, message, type Message } from './messages.ts';
 
@@ -21,7 +22,11 @@ export type WhyNotType =
   | 'WARRANTY'
   | 'TECHNOLOGY'
   | 'ECO'
-  | 'DATA_UNCERTAINTY';
+  | 'DATA_UNCERTAINTY'
+  /** Step 8a: señal observable de la unidad usada (km para la edad, garantía, daño, estado…). */
+  | 'USED_OWNERSHIP'
+  /** Step 8a: dato desconocido de la unidad usada (≠ desventaja: hay que verificarlo). */
+  | 'USED_INFORMATION';
 
 /** BLOCKING (requisito incumplido) > COMPROMISE > VERIFY > MAJOR (CLEAR) > MODERATE (MEANINGFUL) > MINOR (SLIGHT) > INFO. */
 export type WhyNotSeverity = 'BLOCKING' | 'COMPROMISE' | 'VERIFY' | 'MAJOR' | 'MODERATE' | 'MINOR' | 'INFO';
@@ -29,7 +34,7 @@ export type WhyNotSeverity = 'BLOCKING' | 'COMPROMISE' | 'VERIFY' | 'MAJOR' | 'M
 export interface WhyNotItem extends Message {
   type: WhyNotType;
   severity: WhyNotSeverity;
-  /** Sobre qué es el motivo: el vehículo de referencia o la unidad usada concreta (Used Adjustment: futuro). */
+  /** Sobre qué es el motivo: el vehículo de referencia o la unidad usada concreta (Step 8a). */
   subject: 'REFERENCE_VARIANT' | 'USED_INSTANCE';
   metric?: string;
   /** Delta del candidato frente al otro (unidad de la métrica; céntimos en economía). Rangos conservados. */
@@ -37,7 +42,10 @@ export interface WhyNotItem extends Message {
   level?: string;
   againstId?: string;
   provenance?: { value_ids?: string[]; source_ids?: string[] };
-  sourceResult: 'DEAL_BREAKERS' | 'PRACTICAL_FIT' | 'COMPARISON' | 'ECONOMIC_FIT';
+  sourceResult: 'DEAL_BREAKERS' | 'PRACTICAL_FIT' | 'COMPARISON' | 'ECONOMIC_FIT' | 'USED_ADJUSTMENT';
+  /** Step 8a: trazabilidad de los motivos que vienen del Used Adjustment. */
+  ruleCode?: UsedRuleCode;
+  sourceFields?: readonly UsedSourceField[];
 }
 
 export interface WhyNotResult {
@@ -50,9 +58,20 @@ export interface WhyNotResult {
 
 export interface VerificationItem extends Message {
   candidateId: string;
+  /** Criterio del requisito o, para la unidad usada, la comprobación (`SERVICE_HISTORY`, `BATTERY_HEALTH`…). */
   criterion: string;
   mandatory: boolean;
+  /** Step 8a: ausente = la ReferenceVariant. */
+  subject?: 'USED_INSTANCE';
+  ruleCode?: UsedRuleCode;
+  sourceFields?: readonly UsedSourceField[];
 }
+
+/** Requisitos que describen la unidad usada (Step 8a): su motivo es de la instancia, no de la variante. */
+const USED_CRITERIA: ReadonlySet<string> = new Set(['maxMileageKm', 'maxAgeYears', 'minBatteryHealthPct', 'minWarrantyRemainingMonths']);
+/** Requisito de usado sin dato → comprobación equivalente del Used Adjustment (no se duplica). */
+const CRITERION_CHECK: Readonly<Record<string, VerificationCheck>> = { maxMileageKm: 'MILEAGE', minBatteryHealthPct: 'BATTERY_HEALTH', minWarrantyRemainingMonths: 'WARRANTY' };
+const subjectOfCriterion = (criterion: string) => (USED_CRITERIA.has(criterion) ? ('USED_INSTANCE' as const) : ('REFERENCE_VARIANT' as const));
 
 const SEVERITY_RANK: Record<WhyNotSeverity, number> = { BLOCKING: 0, COMPROMISE: 1, VERIFY: 2, MAJOR: 3, MODERATE: 4, MINOR: 6, INFO: 7 };
 const LEVEL_RANK = ['TIE', 'SLIGHT', 'MEANINGFUL', 'CLEAR'];
@@ -97,7 +116,7 @@ function requirementItems(id: string, checks: readonly DealBreakerCheck[], type:
     ...message(type === 'DEAL_BREAKER' ? 'decision.why_not.deal_breaker' : 'decision.why_not.compromise', checkParams(c)),
     type,
     severity: type === 'DEAL_BREAKER' ? 'BLOCKING' : 'COMPROMISE',
-    subject: 'REFERENCE_VARIANT',
+    subject: subjectOfCriterion(c.criterion),
     ...(c.provenance?.value_id ? { provenance: { value_ids: [c.provenance.value_id], ...(c.provenance.source_id ? { source_ids: [c.provenance.source_id] } : {}) } } : {}),
     sourceResult: type === 'DEAL_BREAKER' ? 'DEAL_BREAKERS' : 'PRACTICAL_FIT',
     metric: c.provenance?.spec_key ?? c.criterion,
@@ -106,7 +125,7 @@ function requirementItems(id: string, checks: readonly DealBreakerCheck[], type:
 
 function verificationItem(candidateId: string, c: DealBreakerCheck, mandatory: boolean): VerificationItem {
   const op = c.criterion.startsWith('max') ? 'max' : 'min';
-  return { ...message(mandatory ? 'decision.verify.requirement' : 'decision.verify.desired', { ...checkParams(c), op }), candidateId, criterion: c.criterion, mandatory };
+  return { ...message(mandatory ? 'decision.verify.requirement' : 'decision.verify.desired', { ...checkParams(c), op }), candidateId, criterion: c.criterion, mandatory, ...(USED_CRITERIA.has(c.criterion) ? { subject: 'USED_INSTANCE' as const } : {}) };
 }
 
 /** Desventajas de `x` frente a `y` según la comparación (solo resultados confirmados: BEHIND). */
@@ -177,7 +196,26 @@ function select(items: WhyNotItem[], max: number): { items: WhyNotItem[]; onlyMi
   return { items: [...relevant, ...dedup.filter((i) => i.severity === 'MINOR')].slice(0, max), onlyMinor: true };
 }
 
-export function buildWhyNot(input: DecisionInput, decision: AlphaDecisionResult) {
+/** Señales de la unidad usada como motivos (INFO: nunca desplazan requisitos ni diferencias relevantes). NOTE no es un motivo. */
+function usedItems(adjustment: UsedAdjustmentResult | undefined): WhyNotItem[] {
+  return (adjustment?.ownershipSignals ?? [])
+    .filter((s) => s.nature !== 'NOTE')
+    .map((s) => ({
+      messageKey: s.messageKey,
+      params: s.params,
+      text: s.text,
+      type: s.nature === 'ATTENTION' ? ('USED_OWNERSHIP' as const) : ('USED_INFORMATION' as const),
+      severity: 'INFO' as const,
+      subject: 'USED_INSTANCE' as const,
+      metric: s.signal,
+      sourceResult: 'USED_ADJUSTMENT' as const,
+      ruleCode: s.ruleCode,
+      sourceFields: s.sourceFields,
+    }));
+}
+
+export function buildWhyNot(input: DecisionInput, decision: AlphaDecisionResult, usedAdjustments: readonly UsedAdjustmentResult[] = []) {
+  const adjustmentOf = new Map(usedAdjustments.map((a) => [a.subject.subjectId, a]));
   const labels = new Map(input.candidates.map((c) => [c.id, c.label]));
   const pf = new Map(decision.practicalFit.map((p) => [p.candidateId, p]));
   const bfy = decision.alphaBestForYou;
@@ -191,8 +229,9 @@ export function buildWhyNot(input: DecisionInput, decision: AlphaDecisionResult)
     const items: WhyNotItem[] = [...requirementItems(id, p.failed, 'DEAL_BREAKER'), ...requirementItems(id, p.compromises, 'PRACTICAL_COMPROMISE')];
     for (const u of p.mandatoryUnknowns) {
       const v = verificationItem(id, u, true);
-      items.push({ messageKey: v.messageKey, params: v.params, text: v.text, type: 'REQUIRES_VERIFICATION', severity: 'VERIFY', subject: 'REFERENCE_VARIANT', metric: u.provenance?.spec_key ?? u.criterion, sourceResult: 'PRACTICAL_FIT' });
+      items.push({ messageKey: v.messageKey, params: v.params, text: v.text, type: 'REQUIRES_VERIFICATION', severity: 'VERIFY', subject: subjectOfCriterion(u.criterion), metric: u.provenance?.spec_key ?? u.criterion, sourceResult: 'PRACTICAL_FIT' });
     }
+    items.push(...usedItems(adjustmentOf.get(id)));
     const isSelected = selected.includes(id);
     // Contra quién: el no elegido frente a los elegidos; el elegido frente a los demás elegibles (lo que sacrifica).
     const against = isSelected ? eligible.filter((y) => y !== id) : selected.length ? selected : eligible.filter((y) => y !== id);
@@ -205,6 +244,10 @@ export function buildWhyNot(input: DecisionInput, decision: AlphaDecisionResult)
   const requiresVerification: VerificationItem[] = decision.practicalFit.flatMap((p) => [
     ...p.mandatoryUnknowns.map((u) => verificationItem(p.candidateId, u, true)),
     ...p.unknowns.filter((u) => !p.mandatoryUnknowns.includes(u)).map((u) => verificationItem(p.candidateId, u, false)),
+    // Step 8a: comprobaciones de la unidad usada que no repiten un requisito ya pendiente de verificar.
+    ...(adjustmentOf.get(p.candidateId)?.verificationRequirements ?? [])
+      .filter((v) => !p.unknowns.some((u) => CRITERION_CHECK[u.criterion] === v.check))
+      .map((v) => ({ messageKey: v.messageKey, params: v.params, text: v.text, candidateId: p.candidateId, criterion: v.check, mandatory: false, subject: 'USED_INSTANCE' as const, ruleCode: v.ruleCode, sourceFields: v.sourceFields })),
   ]);
   const notices: Message[] = [];
   if (bfy.status === 'NO_FULL_MATCH') {

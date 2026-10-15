@@ -62,6 +62,19 @@ export default tseslint.config(
     },
   },
   {
+    // Step 8a: la capa de usados es pura y browser-safe (ADR-016): sin DB, sin fuentes, sin Node, sin UI ni i18n, sin apps.
+    files: ['packages/used-adjustment/src/**'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          paths: ['@vscar/db', 'mysql2', 'mysql2/promise', '@vscar/data-connectors', '@vscar/worker', '@vscar/fixtures', 'react', 'react-dom', 'next', 'next-intl'],
+          patterns: ['drizzle-orm', 'drizzle-orm/*', '@vscar/db/*', '@vscar/data-connectors/*', '@vscar/worker/*', '@vscar/fixtures/*', 'node:*', 'react/*', 'react-dom/*', 'next/*', 'next-intl/*', '**/apps/**'],
+        },
+      ],
+    },
+  },
+  {
     files: BROWSER_LABS,
     ignores: WEB_SERVER_LAYER,
     rules: {

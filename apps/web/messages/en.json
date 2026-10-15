@@ -414,7 +414,9 @@
         "fail": "Requirement ({criterion}): {observed} does not meet {op, select, max {at most} other {at least}} {required}",
         "range_dependent": "Requirement ({criterion}): {observed} depends on the configuration (you need {op, select, max {at most} other {at least}} {required})",
         "no_data": "Requirement ({criterion}): no usable data",
-        "no_plugin_range": "A {powertrain} has no plug-in electric range"
+        "no_plugin_range": "A {powertrain} has no plug-in electric range",
+        "used_unknown": "{criterion} requirement: not known for this used car; ask the seller (you need {op, select, max {at most} other {at least}} {required})",
+        "calculated_unconfirmed": "{criterion} requirement: {observed} calculated from the original warranty; confirm it applies to this unit (you need {op, select, max {at most} other {at least}} {required})"
       },
       "metric": {
         "directional": "{metric}: {a} {valueA} vs {b} {valueB} — {outcome, select, AHEAD {{a} ahead ({level} difference)} BEHIND {{b} ahead ({level} difference)} PRACTICAL_TIE {practical tie} RANGE_DEPENDENT {depends on the configuration} other {different, neither better}}{hasForYou, select, yes {; for your use: {forYouLevel}} other {}}",
@@ -484,7 +486,11 @@
       "maxWidthMm": "width",
       "maxHeightMm": "height",
       "minElectricRangeKm": "electric range",
-      "maxPurchasePriceEur": "purchase price"
+      "maxPurchasePriceEur": "purchase price",
+      "maxMileageKm": "mileage",
+      "maxAgeYears": "age",
+      "minBatteryHealthPct": "battery health",
+      "minWarrantyRemainingMonths": "remaining warranty"
     },
     "unit": {
       "seats": "seats",
@@ -502,7 +508,8 @@
       "g_km": "g/km",
       "in": "in",
       "m": "m",
-      "_": "%"
+      "_": "%",
+      "months": "months"
     },
     "category": {
       "Performance": "performance",
@@ -539,6 +546,59 @@
       "BASIS_UNSPECIFIED": "measurement basis not declared",
       "BASIS_MISMATCH": "different measurement basis",
       "NON_NUMERIC": "non-numeric values"
+    },
+    "used": {
+      "economic": {
+        "asking_price_used": "The calculation uses this unit's asking price: {amount} (provided by you), not the original list price",
+        "asking_price_missing": "No asking price for this used car: its purchase cost is not calculated (the original list price is never used instead)"
+      },
+      "ownership": {
+        "high_mileage_for_age": "High mileage for its age: {mileageKm} km in {ageMonths} months, about {annualKm} km/year (reference: {referenceAnnualKm} km/year)",
+        "low_mileage_for_age": "Low mileage for its age: {mileageKm} km in {ageMonths} months, about {annualKm} km/year (reference: {referenceAnnualKm} km/year)",
+        "mileage_unknown": "Mileage not provided",
+        "no_remaining_warranty": "No manufacturer warranty left{basis, select, CALCULATED { (calculated from the original warranty)} other {}}",
+        "limited_warranty": "Limited warranty left: {warrantyRemainingMonths} months{basis, select, CALCULATED { (calculated from the original warranty)} other {}}, under {limitMonths}",
+        "service_history_unknown": "Service history unknown",
+        "service_history_incomplete": "Service history {history, select, NONE {not available} other {partial}}",
+        "battery_health_unknown": "Battery state of health unknown",
+        "battery_health_low": "Declared battery health of {batteryHealthPct} % is below {thresholdPct} %{thresholdBasis, select, VARIANT_WARRANTY { (warranted minimum for this car)} other {}}",
+        "battery_health_reported": "Declared battery health: {batteryHealthPct} % (provided by you; not converted into range)",
+        "accident_damage_declared": "Accident damage declared",
+        "condition_issues_declared": "Condition issues declared{inspectionStatus, select, EXPIRED { (inspection expired)} other {}}",
+        "condition_unconfirmed": "Condition and inspection not confirmed",
+        "asking_price_missing": "Asking price not provided"
+      },
+      "information_confidence": {
+        "summary": "Used-car information confidence: {level} ({knownCount} of {relevantCount} relevant facts known)",
+        "complete": "All relevant facts about this unit are known",
+        "capped": "No {field, select, battery_health {battery health} other {value}}: for a {powertrain}, information confidence is at most {level}",
+        "missing_asking_price": "Asking price missing{critical, select, yes { (critical)} other {}}",
+        "missing_mileage": "Mileage missing{critical, select, yes { (critical)} other {}}",
+        "missing_registration": "Registration date or year missing{critical, select, yes { (critical)} other {}}",
+        "missing_service_history": "Service history missing{critical, select, yes { (critical)} other {}}",
+        "missing_accident_history": "Accident history missing{critical, select, yes { (critical)} other {}}",
+        "missing_owners": "Number of owners missing{critical, select, yes { (critical)} other {}}",
+        "missing_warranty": "Remaining warranty missing{critical, select, yes { (critical)} other {}}",
+        "missing_inspection": "Inspection (ITV) status missing{critical, select, yes { (critical)} other {}}",
+        "missing_condition": "Condition missing{critical, select, yes { (critical)} other {}}",
+        "missing_battery_health": "Battery health missing{critical, select, yes { (critical)} other {}}"
+      },
+      "verification": {
+        "provide_asking_price": "Enter the asking price to compare purchase costs",
+        "check_mileage": "Check the odometer reading (and its records) before deciding",
+        "check_service_history": "{history, select, UNKNOWN {Ask for the service history before deciding} other {Ask for the available service records before deciding}}",
+        "check_battery_health": "{cause, select, LOW {Get an independent battery report before deciding} other {Verify battery health (state-of-health report) before deciding}}",
+        "check_warranty": "{basis, select, CALCULATED {Confirm the remaining warranty (about {warrantyRemainingMonths} months by calculation) and its conditions for this unit} other {Confirm whether any manufacturer warranty remains}}",
+        "check_damage_repair": "Ask how the declared damage was repaired and have it inspected",
+        "check_condition": "{cause, select, ISSUES {Have the declared issues inspected before deciding} other {Check the condition and the inspection (ITV) before deciding}}"
+      },
+      "warning": {
+        "registration_after_evaluation": "Registration ({registration}) is after the evaluation date ({evaluationDate}): age is not used",
+        "assumed_registration_not_used": "The assumed registration year ({registrationYearAssumed}) is an estimate: it is not used to calculate age",
+        "battery_health_not_applicable": "Battery health does not apply to a {powertrain}: the value is ignored",
+        "currency_mismatch": "Asking price in {currency}, but this market uses {marketCurrency}: it is not used",
+        "observed_after_evaluation": "Unit facts observed on {observedAt}, after the evaluation date ({evaluationDate})"
+      }
     }
   },
   "catalog": {

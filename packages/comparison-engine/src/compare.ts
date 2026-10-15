@@ -124,6 +124,8 @@ function pairHash(A: ComparisonCandidate, B: ComparisonCandidate, scenario: Comp
     safety: c.safetyRatings.map((r) => r.id),
     eligibility: Object.fromEntries(Object.entries(c.eligibility).map(([k, e]) => [k, e?.status])),
     economic: c.economic?.scenarioHash,
+    // Step 8a: los hechos de la unidad usada deciden requisitos (ausente en sujetos de referencia: huella intacta).
+    subject: c.subject,
   });
   const [x, y] = [A, B].sort((p, q) => p.id.localeCompare(q.id));
   return methodologyFingerprint({ methodology: METHODOLOGY_VERSION, rules: COMPARISON_RULES.version, scenario, candidates: [digest(x!), digest(y!)] });

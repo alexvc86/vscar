@@ -114,6 +114,8 @@ export function formatParams(msg: Message, t: Translator, f: Format): Record<str
     else if (k === 'annualKm' && typeof v === 'number') out[k] = t('units.kmPerYear', { value: f.number(v) });
     else if (KM_PARAMS.has(k) && typeof v === 'number') out[k] = `${f.number(v)} km`;
     else if (k === 'coverage' && typeof v === 'number') out[k] = f.percent(v);
+    // Step 8a: un año es un dato, no una cantidad (sin separador de miles).
+    else if (/Year(Assumed)?$/.test(k) && typeof v === 'number') out[k] = String(v);
     else if ((k === 'switchValue' || k === 'currentValue') && typeof v === 'number') {
       const fmt = ROBUSTNESS_UNIT[String(p.variable)];
       out[k] = fmt ? fmt(f, v, t) : f.number(v, 3);

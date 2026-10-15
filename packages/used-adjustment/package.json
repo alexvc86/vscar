@@ -1,0 +1,22 @@
+{
+  "name": "@vscar/used-adjustment",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "VScar Used Adjustment v0.1 (Step 8a): adds used-instance context (age, mileage, asking price, warranty, battery health, service/accident/condition) to a ReferenceVariant without rewriting the engines. Effective purchase price, Used Information Confidence, Ownership Signals and Verification Requirements as messageKey + params. No market value, depreciation, failure probability or range degradation. Pure, deterministic, browser-safe.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@vscar/economics-engine": "workspace:*",
+    "@vscar/methodology": "workspace:*",
+    "@vscar/vehicle-schema": "workspace:*"
+  },
+  "devDependencies": {
+    "@vscar/fixtures": "workspace:*"
+  }
+}

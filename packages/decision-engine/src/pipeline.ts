@@ -2,7 +2,8 @@ import { compareCandidates, type ComparisonCandidate } from '@vscar/comparison-e
 import { computeEconomics, type EconomicResult, type EconomicScenarioIn, type EconomicVehicleInputIn, type VehicleEconomicOverrides } from '@vscar/economics-engine';
 import type { EnergyContext } from '@vscar/market-context';
 import { ROBUSTNESS_RULES, SENSITIVITY_RANGES } from '@vscar/methodology';
-import type { FuelProduct } from '@vscar/vehicle-schema';
+import { adjustUsedVehicle, referenceContextFromCandidate, toUsedComparisonCandidate, toUsedEconomicInput, type UsedAdjustmentResult } from '@vscar/used-adjustment';
+import type { FuelProduct, UsedVehicleInstanceInput } from '@vscar/vehicle-schema';
 import type { DecisionInput, DecisionScenarioIn, SimplePriorities } from './contracts.ts';
 import { decide } from './decide.ts';
 import { recommend } from './recommend.ts';
@@ -13,12 +14,19 @@ import type { ProbeVariable, RobustnessProbe, RobustnessVariable } from './robus
  * Orquestador puro de la cadena completa (Step 5 → 6a → 6b → 6c) para un escenario y sus variaciones.
  * No contiene lógica económica ni de comparación: REUTILIZA `computeEconomics`, `compareCandidates` y `decide`.
  * Es el único módulo del paquete que llama a esos engines (la robustez necesita re-evaluar el escenario).
+ * Step 8a — ÚNICO camino también para usados: preparación de sujetos → Used Adjustment (si hay unidad usada)
+ * → Economics → Comparison → Decision. Sin unidad usada, la cadena es exactamente la de antes.
  */
 export interface PipelineVehicle {
   /** Hechos ya filtrados por quality (sin `economic`: se calcula aquí con el Economics Engine). */
   candidate: ComparisonCandidate;
   economicInput: EconomicVehicleInputIn;
   overrides?: VehicleEconomicOverrides;
+  /**
+   * Step 8a: unidad usada de la ReferenceVariant del candidato. El candidato pasa a ser el sujeto
+   * USED_INSTANCE (id = id de la instancia) y su precio de compra, el precio pedido. Las specs no cambian.
+   */
+  usedInstance?: UsedVehicleInstanceInput;
 }
 
 export interface PipelineInput {
@@ -27,6 +35,8 @@ export interface PipelineInput {
   /** `annualKm` y `horizonYears` deben coincidir con los del escenario de decisión (se sincronizan). */
   economicScenario: EconomicScenarioIn;
   decisionScenario: DecisionScenarioIn;
+  /** Step 8a: fecha de evaluación de las unidades usadas (YYYY-MM-DD). Obligatoria si hay alguna; nunca se lee el reloj. */
+  evaluationDate?: string;
 }
 
 export interface ScenarioVariation {
@@ -39,7 +49,27 @@ export interface ScenarioVariation {
   priorities?: SimplePriorities;
 }
 
-export function createDecisionPipeline(p: PipelineInput) {
+/** Preparación de sujetos: el Used Adjustment se calcula UNA vez (no depende del escenario). */
+function prepareSubjects(p: PipelineInput): { vehicles: PipelineVehicle[]; usedAdjustments: UsedAdjustmentResult[] } {
+  const usedAdjustments: UsedAdjustmentResult[] = [];
+  const vehicles = p.vehicles.map((v) => {
+    if (!v.usedInstance) return v;
+    if (!p.evaluationDate) throw new Error('a used vehicle needs an explicit evaluationDate (YYYY-MM-DD)');
+    const adjustment = adjustUsedVehicle({ reference: referenceContextFromCandidate(v.candidate), instance: v.usedInstance, evaluationDate: p.evaluationDate });
+    usedAdjustments.push(adjustment);
+    const { usedInstance: _u, ...rest } = v;
+    return { ...rest, candidate: toUsedComparisonCandidate(v.candidate, adjustment), economicInput: toUsedEconomicInput(v.economicInput, adjustment) };
+  });
+  const ids = vehicles.map((v) => v.candidate.id);
+  const dup = ids.find((id, i) => ids.indexOf(id) !== i);
+  if (dup) throw new Error(`duplicate decision subject ${dup}: each vehicle (new or used unit) needs its own identity`);
+  return { vehicles, usedAdjustments };
+}
+
+export function createDecisionPipeline(input: PipelineInput) {
+  const prepared = prepareSubjects(input);
+  const p: PipelineInput = { ...input, vehicles: prepared.vehicles };
+  const usedAdjustments = prepared.usedAdjustments;
   const state: { fuelBase?: { product: string; current: number; prices: Record<string, number> } } = {};
   const build = (v: ScenarioVariation = {}): DecisionInput => {
     const base = p.economicScenario;
@@ -98,6 +128,12 @@ export function createDecisionPipeline(p: PipelineInput) {
     probe,
     decide: (v?: ScenarioVariation) => decide(build(v)),
     recommend: (opts: { usedInformationConfidence?: UsedInformationConfidenceInput; robustness?: boolean } = {}) =>
-      recommend(baseInput, { ...(opts.robustness === false ? {} : { probe }), ...(opts.usedInformationConfidence ? { usedInformationConfidence: opts.usedInformationConfidence } : {}) }),
+      recommend(baseInput, {
+        ...(opts.robustness === false ? {} : { probe }),
+        ...(opts.usedInformationConfidence ? { usedInformationConfidence: opts.usedInformationConfidence } : {}),
+        ...(usedAdjustments.length ? { usedAdjustments } : {}),
+      }),
+    /** Step 8a: ajustes de las unidades usadas (vacío si no hay ninguna). */
+    usedAdjustments,
   };
 }

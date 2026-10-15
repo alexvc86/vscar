@@ -92,13 +92,17 @@ describe('decision-engine — architecture boundary', () => {
     .replace(/\/\*[\s\S]*?\*\//g, '')
     .replace(/^\s*\/\/.*$/gm, '');
   it('imports only pure packages', () => {
-    const allowed = ['@vscar/vehicle-schema', '@vscar/methodology', '@vscar/quality', '@vscar/economics-engine', '@vscar/comparison-engine', '@vscar/market-context', 'zod'];
+    // Step 8a: @vscar/used-adjustment es puro (sin I/O, sin DB, sin reloj); solo el pipeline lo ejecuta.
+    const allowed = ['@vscar/vehicle-schema', '@vscar/methodology', '@vscar/quality', '@vscar/economics-engine', '@vscar/comparison-engine', '@vscar/market-context', '@vscar/used-adjustment', 'zod'];
     for (const i of [...(code + pipeline).matchAll(/from '([^']+)'/g)].map((m) => m[1]!)) expect(i.startsWith('./') || allowed.includes(i), i).toBe(true);
     expect(code + pipeline).not.toMatch(/fetch\(|node:|mysql|drizzle|data-connectors|@vscar\/db|@vscar\/worker/);
   });
   it('never recalculates comparison or economics (only the pipeline orchestrates the existing engines)', () => {
     expect(code).not.toMatch(/computeEconomics|compareVehicles|compareCandidates\(|compareValues|breakEven\(/);
     expect(pipeline).not.toMatch(/compareValues|compareIntervals|breakEven\(|economicDelta|evaluateUtility/);
+    // Un solo camino de orquestación también para usados (Step 8a): el ajuste solo se ejecuta en el pipeline.
+    expect(code).not.toMatch(/adjustUsedVehicle\(|toUsedEconomicInput\(|toUsedComparisonCandidate\(/);
+    expect(pipeline).toMatch(/adjustUsedVehicle\(/);
   });
   it('no Preference Fit, Personal Fit, brand/design scores or age penalties', () => {
     expect(code).not.toMatch(/PreferenceFit|preferenceFit|PersonalFit|personalFit|brandScore|designScore|premiumScore|desirability|registration_year|mileage_km|model_year/);

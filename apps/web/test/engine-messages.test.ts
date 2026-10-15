@@ -1,5 +1,7 @@
 import { COMPARISON_MESSAGE_TEMPLATES } from '@vscar/comparison-engine';
 import { MESSAGE_TEMPLATES, type Message } from '@vscar/decision-engine';
+import { LEON_EHYBRID_IDS, MODEL3_2021_IDS, USED_BEV_COMPLETE, USED_BEV_LOW_INFO, USED_EVALUATION_DATE, USED_ICE_HIGH_MILEAGE, USED_PHEV_UNKNOWN_HISTORY, X3_2018_IDS } from '@vscar/fixtures';
+import { USED_MESSAGE_TEMPLATES, adjustUsedVehicle } from '@vscar/used-adjustment';
 import { createTranslator } from 'next-intl';
 import { describe, expect, it } from 'vitest';
 import { buildMessageCases, collectMessages } from '../../../packages/decision-engine/test/message-cases.ts';
@@ -20,7 +22,7 @@ const fmt = (seg: string) => {
   return createFormat(l.formatLocale, MARKETS[l.market], { yes: 'yes', no: 'no' });
 };
 const render = (msg: Message, seg: string) => translateDecisionMessage(msg, tr(seg), fmt(seg));
-const ALL_KEYS = [...Object.keys(MESSAGE_TEMPLATES), ...Object.keys(COMPARISON_MESSAGE_TEMPLATES)];
+const ALL_KEYS = [...Object.keys(MESSAGE_TEMPLATES), ...Object.keys(COMPARISON_MESSAGE_TEMPLATES), ...Object.keys(USED_MESSAGE_TEMPLATES)];
 
 /** Params de ejemplo por NOMBRE (datos plausibles) para ejercitar cada plantilla del catálogo. */
 const SAMPLE: Record<string, string | number | boolean> = {
@@ -34,6 +36,12 @@ const SAMPLE: Record<string, string | number | boolean> = {
   variable: 'annual_km', switchValue: 21840, currentValue: 15000, outcome: 'AHEAD', missingA: true, missingB: false, powertrain: 'ICE',
   authorityA: 'EuroNCAP', authorityB: 'EuroNCAP', yearA: 2019, yearB: 2023, starsA: 5, starsB: 5, code: 'CYCLE_MISMATCH', dailyKm: 35,
   smallestRangeKm: 448, longTripsPerYear: 10, minLongTrips: 6, maxLongTrips: 2, familySize: 5,
+  // Step 8a — used.*
+  mileageKm: 90000, ageMonthsMin: 25, ageMonthsMax: 25, annualKmMin: 43200, annualKmMax: 43200, referenceAnnualKm: 15000, thresholdAnnualKm: 22500,
+  basis: 'CALCULATED', warrantyRemainingMonthsMin: 5, warrantyRemainingMonthsMax: 5, limitMonths: 12, history: 'PARTIAL', cause: 'LOW', batteryHealthPct: 65,
+  thresholdPct: 70, thresholdBasis: 'METHODOLOGY_DEFAULT', condition: 'POOR', inspectionStatus: 'EXPIRED', field: 'battery_health', critical: true, knownCount: 7,
+  relevantCount: 10, notApplicableCount: 0, registration: '2027-01-01', evaluationDate: '2026-10-14', registrationYearAssumed: 2019, marketCurrency: 'EUR',
+  observedAt: '2026-10-20',
 };
 const synthetic = (key: string): Message => ({ messageKey: key, params: SAMPLE, text: 'FALLBACK' });
 
@@ -134,5 +142,37 @@ describe('real engine results (9 reference cases)', () => {
     const enText = msgs.map((m) => render(m, 'en-es').text).join('\n');
     expect(enText).not.toMatch(/\bmiles?\b|\$|mpg/i);
     expect(enText).toMatch(/km/);
+  });
+});
+
+describe('Step 8a — used.* messages from real adjustments render in both languages without leaks', () => {
+  const ctx = (id: string, powertrainType: 'BEV' | 'ICE' | 'PHEV') => ({ referenceVariantId: id, powertrainType, market: 'ES' as const, originalWarranty: { years: 3, valueIds: [] } });
+  const adjusted = [
+    adjustUsedVehicle({ reference: ctx(MODEL3_2021_IDS.srp, 'BEV'), instance: USED_BEV_COMPLETE, evaluationDate: USED_EVALUATION_DATE }),
+    adjustUsedVehicle({ reference: ctx(MODEL3_2021_IDS.srp, 'BEV'), instance: USED_BEV_LOW_INFO, evaluationDate: USED_EVALUATION_DATE }),
+    adjustUsedVehicle({ reference: ctx(X3_2018_IDS.variant, 'ICE'), instance: USED_ICE_HIGH_MILEAGE, evaluationDate: USED_EVALUATION_DATE }),
+    adjustUsedVehicle({ reference: ctx(LEON_EHYBRID_IDS.variant, 'PHEV'), instance: USED_PHEV_UNKNOWN_HISTORY, evaluationDate: USED_EVALUATION_DATE }),
+  ];
+  const messages = adjusted.flatMap((a) => collectMessages(a) as unknown as Message[]);
+  it('ES: from the catalog, no English', () => {
+    for (const m of messages) {
+      const r = render(m, 'es-es');
+      expect(r.fromCatalog, m.messageKey).toBe(true);
+      expect(stripProper(r.text, [m]).match(ENGLISH), `${m.messageKey}: «${r.text}»`).toBeNull();
+    }
+  });
+  it('EN: from the catalog, no Spanish', () => {
+    for (const m of messages) {
+      const r = render(m, 'en-es');
+      expect(r.fromCatalog, m.messageKey).toBe(true);
+      expect(stripProper(r.text, [m]).match(SPANISH), `${m.messageKey}: «${r.text}»`).toBeNull();
+    }
+  });
+  it('key sentences', () => {
+    const high = adjusted[2]!.ownershipSignals.find((s) => s.signal === 'HIGH_MILEAGE_FOR_AGE')!;
+    expect(render(high, 'es-es').text).toBe('Kilometraje alto para su edad: 210.000 km en 101 meses, unos 24.950 km/año (referencia: 15.000 km/año)');
+    expect(render(high, 'en-es').text).toBe('High mileage for its age: 210,000 km in 101 months, about 24,950 km/year (reference: 15,000 km/year)');
+    const verify = adjusted[3]!.verificationRequirements.find((v) => v.check === 'BATTERY_HEALTH')!;
+    expect(render(verify, 'es-es').text).toBe('Comprueba la salud de la batería (informe de estado) antes de decidir');
   });
 });

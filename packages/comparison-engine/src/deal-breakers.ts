@@ -1,4 +1,4 @@
-import type { SpecValue } from '@vscar/vehicle-schema';
+import type { SpecValue, UsedNumericFact } from '@vscar/vehicle-schema';
 import { ComparisonScenario, type CheckStatus, type ComparisonCandidate, type ComparisonScenarioIn, type DealBreakerCheck, type DealBreakerResult } from './contracts.ts';
 import { cmessage } from './messages.ts';
 
@@ -6,6 +6,8 @@ import { cmessage } from './messages.ts';
  * Deal Breakers (restricciones duras), evaluados ANTES de cualquier comparación.
  * UNKNOWN nunca equivale a PASS. Un rango homologado que cruza el límite es UNKNOWN (depende de la configuración).
  * Ninguna ventaja posterior puede revertir un FAIL.
+ * Step 8a: los requisitos de la unidad usada (km, edad, salud de batería, garantía restante) solo se evalúan en
+ * sujetos USED_INSTANCE; no aplican a un coche nuevo ni (la batería) a un powertrain sin batería enchufable.
  */
 type Req = ComparisonScenario['requirements'];
 const PLUGIN = new Set(['BEV', 'PHEV', 'EREV']);
@@ -94,7 +96,46 @@ export function evaluateDealBreakers(c: ComparisonCandidate, scenarioIn: Compari
     checks.push(check('maxPurchasePriceEur', r.maxPurchasePriceEur, p ? { min: p.amount_minor / 100, max: p.amount_minor / 100 } : undefined, 'MAX', 'EUR', 'purchase price', undefined, p ? ` (${p.basis})` : '', p?.basis));
   }
 
+  checks.push(...usedChecks(c, r));
+
   const failedChecks = checks.filter((x) => x.status === 'FAIL');
   const unknownChecks = checks.filter((x) => x.status === 'UNKNOWN');
   return { candidateId: c.id, status: failedChecks.length ? 'FAIL' : unknownChecks.length ? 'UNKNOWN' : 'PASS', checks, failedChecks, unknownChecks };
+}
+
+/** Requisitos de la unidad usada (Step 8a). Desconocido → UNKNOWN (UNCONFIRMED en Practical Fit), nunca PASS. */
+function usedChecks(c: ComparisonCandidate, r: Req): DealBreakerCheck[] {
+  if (c.subject?.kind !== 'USED_INSTANCE') return [];
+  const f = c.subject.usedFacts;
+  const out: DealBreakerCheck[] = [];
+  const unknown = (criterion: keyof Req, required: number, unit: string, what: string): DealBreakerCheck => ({
+    criterion,
+    requiredValue: required,
+    status: 'UNKNOWN',
+    reason: `${what} of this used vehicle is not known`,
+    message: cmessage('comparison.requirement.used_unknown', { criterion, required, unit }),
+  });
+  const numeric = (criterion: keyof Req, required: number | undefined, fact: UsedNumericFact, kind: 'MIN' | 'MAX', unit: string, what: string, scale = 1) => {
+    if (required === undefined || fact.state === 'NOT_APPLICABLE') return;
+    if (fact.state === 'UNKNOWN') return void out.push(unknown(criterion, required, unit, what));
+    const observed = { min: fact.min / scale, max: fact.max / scale };
+    const base = check(criterion, required, observed, kind, unit, what);
+    // Garantía CALCULADA desde la original: su máximo es una cota superior (FAIL cierto); cumplirla exige confirmar condiciones.
+    // (La edad también es CALCULADA desde la matriculación declarada, pero es un hecho: no necesita esta regla.)
+    if (criterion === 'minWarrantyRemainingMonths' && fact.basis === 'CALCULATED' && base.status !== 'FAIL') {
+      out.push({
+        ...base,
+        status: 'UNKNOWN',
+        reason: `${what} ${observed.min}–${observed.max} ${unit} calculated from the original warranty: confirm it applies to this unit`,
+        message: cmessage('comparison.requirement.calculated_unconfirmed', { criterion, required, unit, observedMin: observed.min, observedMax: observed.max }),
+      });
+      return;
+    }
+    out.push(base);
+  };
+  numeric('maxMileageKm', r.maxMileageKm, f.mileageKm, 'MAX', 'km', 'mileage');
+  numeric('maxAgeYears', r.maxAgeYears, f.ageMonths, 'MAX', 'years', 'age', 12);
+  numeric('minBatteryHealthPct', r.minBatteryHealthPct, f.batteryHealthPct, 'MIN', '%', 'battery health');
+  numeric('minWarrantyRemainingMonths', r.minWarrantyRemainingMonths, f.warrantyRemainingMonths, 'MIN', 'months', 'remaining warranty');
+  return out;
 }

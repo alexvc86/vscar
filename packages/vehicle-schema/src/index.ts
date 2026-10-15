@@ -7,6 +7,7 @@ export * from './records.ts';
 export * from './critical-keys.ts';
 export * from './bundle.ts';
 export * from './used-instance.ts';
+export * from './subject.ts';
 export * from './energy-prices.ts';
 export * from './slug.ts';
 export * from './media.ts';

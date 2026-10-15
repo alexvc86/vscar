@@ -12,6 +12,8 @@ import {
   meaningfulForYou,
   methodologyFingerprint,
   recommendationConfidenceLevel,
+  decisionRelevance,
+  USED_ADJUSTMENT_RULES,
   usedInformationConfidence,
 } from '../src/index.ts';
 
@@ -30,9 +32,9 @@ describe('methodology config integrity', () => {
   });
 
   it('has a version and a stable fingerprint that changes with the config', () => {
-    expect(METHODOLOGY_VERSION).toBe('2026.6');
+    expect(METHODOLOGY_VERSION).toBe('2026.7');
     expect(methodologyFingerprint()).toBe(methodologyFingerprint(JSON.parse(JSON.stringify(METHODOLOGY_CONFIG))));
-    expect(methodologyFingerprint({ ...METHODOLOGY_CONFIG, version: '2026.7' })).not.toBe(methodologyFingerprint());
+    expect(methodologyFingerprint({ ...METHODOLOGY_CONFIG, version: '2026.8' })).not.toBe(methodologyFingerprint());
   });
 
   it('presets and sensitivity ranges exist for both reference markets', () => {
@@ -152,5 +154,40 @@ describe('Used Information Confidence (information, not reliability)', () => {
         expect(after.information_completeness).toBeGreaterThanOrEqual(before.information_completeness);
       }),
     );
+  });
+});
+
+describe('Used Information Confidence v0.2 + used-adjustment-v1 (Step 8a, methodology 2026.7)', () => {
+  const u = (over: Partial<UsedVehicleInstanceInput> = {}) =>
+    UsedVehicleInstance.parse({ id: '00000000-0000-4000-8000-000000000001', reference_variant_id: '00000000-0000-4000-8000-000000000002', asking_price_minor: 2_000_000, currency: 'EUR', mileage_km: 60_000, ...over });
+
+  it('unknown age never lowers relevance (no assumed age)', () => {
+    for (const f of ['service_history', 'warranty_remaining', 'inspection_status'] as const) {
+      const unknown = decisionRelevance(f, { powertrain: 'ICE' });
+      expect(unknown).toBeGreaterThanOrEqual(decisionRelevance(f, { powertrain: 'ICE', age_years: 1 }));
+      expect(unknown).toBeGreaterThanOrEqual(decisionRelevance(f, { powertrain: 'ICE', age_years: 12 }));
+    }
+    // Un rango de edad toma la relevancia más alta de sus extremos.
+    expect(decisionRelevance('service_history', { powertrain: 'ICE', age_years: { min: 2, max: 3.5 } })).toBe(3);
+  });
+  it('N/A is explicit and never counted as missing', () => {
+    const r = usedInformationConfidence(u(), { powertrain: 'HEV', age_years: 4 });
+    expect(r.not_applicable).toEqual(['battery_health']);
+    expect(r.missing).not.toContain('battery_health');
+  });
+  it('BEV without battery health is capped at MEDIUM; PHEV is not', () => {
+    const full = { registration_year: 2021, service_history: 'full', accident_history: 'none_declared', owners: 1, warranty_remaining_months: 10, inspection_status: 'valid', condition: 'good' } as const;
+    const bev = usedInformationConfidence(u(full), { powertrain: 'BEV', age_years: 5 });
+    expect(bev).toMatchObject({ level: 'MEDIUM', caps: [{ field: 'battery_health', cap: 'MEDIUM' }] });
+    expect(usedInformationConfidence(u({ ...full, battery_health_pct: 90 }), { powertrain: 'BEV', age_years: 5 }).level).toBe('HIGH');
+    expect(usedInformationConfidence(u(full), { powertrain: 'PHEV', age_years: 5 }).caps).toEqual([]);
+  });
+  it('a registration date counts as a known registration', () => {
+    expect(usedInformationConfidence(u({ registration_date: '2021-03-01' }), { powertrain: 'ICE' }).missing).not.toContain('registration_year');
+  });
+  it('used rules are provisional, versioned and part of the methodology fingerprint', () => {
+    expect(USED_ADJUSTMENT_RULES).toMatchObject({ version: 'used-adjustment-v1', provisional: true });
+    expect(METHODOLOGY_CONFIG.used_adjustment).toBe(USED_ADJUSTMENT_RULES);
+    expect(methodologyFingerprint({ ...METHODOLOGY_CONFIG, used_adjustment: { ...USED_ADJUSTMENT_RULES, warranty: { ...USED_ADJUSTMENT_RULES.warranty, limited_below_months: 6 } } })).not.toBe(methodologyFingerprint());
   });
 });

@@ -460,6 +460,33 @@ Siguiente:
 - **Step 7c — Comparison URL / Share / richer catalog pages**.
 - En el data workstream: primeras imágenes con derechos verificados (propias o licenciadas) y derechos de S08/S02/S04 para el canal PUBLIC.
 
+## STEP 8a — Used Adjustment Engine v0.1 · ✅ PASS (2026-10-14)
+
+`@vscar/used-adjustment`: capa pura y determinista que añade a una ReferenceVariant los hechos de una unidad usada concreta, sin duplicar ni reescribir engines. **ReferenceVariant + UsedVehicleInstance → Used Adjustment → mismos engines** (un solo `createDecisionPipeline`). Sin UI, marketplace, scraping, precio de mercado, historial externo ni VIN.
+
+| Entregable | Estado |
+|---|---|
+| Contratos: `UsedVehicleInstance` (+ `registration_date`), `DecisionSubject` (REFERENCE_VARIANT / USED_INSTANCE con `subjectId` propio), `UsedAdjustmentResult` (sin "used score") | ✅ |
+| Edad (`calculateVehicleAge`, fecha de evaluación explícita), km relativos a la edad, garantía restante (declarada/calculada), salud de batería (observación, nunca autonomía), estado/ITV, daño declarado | ✅ |
+| Precio pedido → precio de compra efectivo (participante USED de Economics, sin cálculo nuevo) | ✅ |
+| Used Information Confidence (HIGH/MEDIUM/LOW + motivos + verificación; N/A explícito; tope MEDIUM en BEV sin SOH) · Ownership Signals (ATTENTION / INFORMATION_GAP / NOTE) · Verification Requirements · trazabilidad `ruleCode` + `sourceFields` | ✅ |
+| Deal Breakers de usados (`maxMileageKm`, `maxAgeYears`, `minBatteryHealthPct`, `minWarrantyRemainingMonths`): solo en sujetos usados; desconocido → UNCONFIRMED | ✅ |
+| Decision: Why Not / verificación con `subject: USED_INSTANCE`; Recommendation Confidence con la información de la unidad recomendada | ✅ |
+| i18n: 41 claves `used.*` + 2 de requisito + 4 criterios + unidad `months`, ES/EN al 100 % | ✅ |
+| Docs: [USED_ADJUSTMENT_V0_1](used/USED_ADJUSTMENT_V0_1.md) · [USED_INFORMATION_CONFIDENCE_V0_1](used/USED_INFORMATION_CONFIDENCE_V0_1.md) · [ADR-016](adr/ADR-016-used-adjustment-layer.md) | ✅ |
+
+Metodología **2026.6 → 2026.7** (`used-adjustment-v1`, provisional): son reglas nuevas que producen resultados. Sin entrada de usado, la salida new/new es **idéntica** (snapshot completo previo a 8a, textos incluidos); solo cambian la versión y las huellas.
+
+Verificación: `pnpm check` en verde, **646 tests** (3 en vivo omitidos), con MySQL; +89 nuevos (used-adjustment 42, golden de usados 21, regresión completa 9, deal breakers 6, metodología 5, schema 3, web i18n 3). `adjustUsedVehicle` p50 0,17 ms · p95 0,28 ms. JS inicial de la web sin cambios (154,0 KB).
+
+Hallazgos:
+- `decide()` deduplicaba por id de variante: "nuevo vs usado del mismo modelo" era imposible. Ahora el sujeto tiene identidad propia.
+- `usedAdjustments` seguía el orden de entrada (rompía la simetría A/B al serializar): ahora se ordena por sujeto.
+- Economic Fit sigue en coste de uso: la ventaja de compra del usado aparece en la vista de costes conocidos, el break-even y el presupuesto, no en el ganador económico.
+- La referencia de 15.000 km/año es provisional (escenario canónico), no una media medida.
+
+Siguiente: Step 8b (entrada de la unidad usada + UX nuevo/usado), con el requisito categórico de historial completo y la presentación de señales.
+
 ## STEP 7c — Shareable Comparison + Rich Comparison Pages · ✅ PASS (2026-10-14)
 
 Cada comparación es una página estable, compartible y preparada para SEO. La **identidad de la página** (par + mercado) está separada del **escenario del usuario** (query): canonical, hreflang, OG, robots y sitemap representan la comparación base. Sin cambios en engines, identidad, derechos ni metodología.

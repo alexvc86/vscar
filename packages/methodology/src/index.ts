@@ -15,7 +15,8 @@ import {
   SEO_COMPLETENESS_MIN,
 } from './quality-config.ts';
 import { PURCHASE_PRESETS, SENSITIVITY_RANGES, USAGE_PRESETS } from './scenarios.ts';
-import { USED_CONFIDENCE_THRESHOLDS, USED_CRITICAL_FIELDS, USED_INFORMATION_WEIGHTS } from './used-information.ts';
+import { USED_ADJUSTMENT_RULES } from './used-adjustment.ts';
+import { USED_CONFIDENCE_THRESHOLDS, USED_CRITICAL_FIELDS, USED_INFORMATION_WEIGHTS, USED_POWERTRAIN_CRITICAL } from './used-information.ts';
 import { UTILITY_CURVES } from './utility.ts';
 
 export * from './utility.ts';
@@ -23,6 +24,7 @@ export * from './meaningful-difference.ts';
 export * from './for-you.ts';
 export * from './messages.ts';
 export * from './used-information.ts';
+export * from './used-adjustment.ts';
 export * from './ranges.ts';
 export * from './scenarios.ts';
 export * from './dgt-label.ts';
@@ -42,8 +44,12 @@ export * from './recommendation.ts';
  * 2026.5: + reglas del Alpha Decision Engine (`alpha-decision-v1`: pesos técnicos, componentes Alpha Fit,
  *         prioridades simples, relevancia de autonomía, utilidad del coste anual) y umbrales de empate de decisión.
  * 2026.6: + Step 6c (`why-not-v1`, `robustness-v1`, `recommendation-confidence-v1`), provisionales.
+ * 2026.7: + Step 8a (`used-adjustment-v1`, provisional): edad desde matriculación, km/año relativo a la edad,
+ *         garantía restante (declarada o calculada), salud de batería baja, estado declarado; Used Information
+ *         Confidence v0.2 (N/A explícito, edad desconocida = relevancia máxima, tope MEDIUM en BEV sin SOH).
+ *         Sin entrada de usado, ningún resultado cambia (solo la versión y las huellas).
  */
-export const METHODOLOGY_VERSION = '2026.6';
+export const METHODOLOGY_VERSION = '2026.7';
 
 /** Configuración metodológica completa y serializable (fila de `methodology_versions.config`). */
 export const METHODOLOGY_CONFIG = {
@@ -51,7 +57,8 @@ export const METHODOLOGY_CONFIG = {
   utility_curves: UTILITY_CURVES,
   difference_thresholds: DIFFERENCE_THRESHOLDS,
   for_you_rules: FOR_YOU_RULES,
-  used_information: { weights: USED_INFORMATION_WEIGHTS, critical: USED_CRITICAL_FIELDS, thresholds: USED_CONFIDENCE_THRESHOLDS },
+  used_information: { weights: USED_INFORMATION_WEIGHTS, critical: USED_CRITICAL_FIELDS, powertrain_critical: USED_POWERTRAIN_CRITICAL, thresholds: USED_CONFIDENCE_THRESHOLDS },
+  used_adjustment: USED_ADJUSTMENT_RULES,
   usage_presets: USAGE_PRESETS,
   purchase_presets: PURCHASE_PRESETS,
   sensitivity_ranges: SENSITIVITY_RANGES,

@@ -29,6 +29,10 @@ export const COMPARISON_MESSAGE_TEMPLATES: Readonly<Record<string, (p: MessagePa
   'comparison.requirement.range_dependent': (p) => `${crit(p).label} ${fallbackRange(p, 'observed')} ${crit(p).unit}: depends on configuration (required ${crit(p).op === 'max' ? '≤' : '≥'} ${fallbackNumber(p.required)})`,
   'comparison.requirement.no_data': (p) => `${crit(p).label}: no usable data`,
   'comparison.requirement.no_plugin_range': (p) => `${p.powertrain} has no plug-in electric range`,
+  // Step 8a — requisitos de la unidad usada
+  'comparison.requirement.used_unknown': (p) => `${crit(p).label} of this used vehicle is not known: ask the seller (required ${crit(p).op === 'max' ? '≤' : '≥'} ${fallbackNumber(p.required)} ${crit(p).unit})`,
+  'comparison.requirement.calculated_unconfirmed': (p) =>
+    `${crit(p).label} ${fallbackRange(p, 'observed')} ${crit(p).unit} calculated from the original warranty: confirm it applies to this unit (required ${crit(p).op === 'max' ? '≤' : '≥'} ${fallbackNumber(p.required)} ${crit(p).unit})`,
   // Métricas
   'comparison.metric.directional': (p) => {
     const head = `${metricFallbackLabel(p.metric)}: ${vals(p)}`;
@@ -80,6 +84,8 @@ export const COMPARISON_MESSAGE_PARAM_SCHEMA: Readonly<Record<string, readonly s
   'comparison.requirement.range_dependent': ['criterion', 'required', 'unit', 'observedMin', 'observedMax'],
   'comparison.requirement.no_data': ['criterion', 'required', 'unit'],
   'comparison.requirement.no_plugin_range': ['criterion', 'required', 'powertrain'],
+  'comparison.requirement.used_unknown': ['criterion', 'required', 'unit'],
+  'comparison.requirement.calculated_unconfirmed': ['criterion', 'required', 'unit', 'observedMin', 'observedMax'],
   'comparison.metric.directional': ['metric', 'outcome', 'a', 'b'],
   'comparison.metric.descriptive': ['metric', 'outcome', 'a', 'b', 'valueA', 'valueB'],
   'comparison.metric.described': ['metric', 'a', 'b'],

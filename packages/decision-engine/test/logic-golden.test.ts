@@ -16,6 +16,12 @@ const TEXT_KEYS = new Set([
   'rules', 'ruleMessages', 'forYouMessage', 'explanationMessages', 'whyMessages',
 ]);
 
+/**
+ * Versión de metodología y huellas que la incluyen: cambian por diseño al publicar reglas nuevas (2026.7, Step 8a,
+ * reglas de usados que no afectan a estos casos). Se normalizan en AMBOS lados; el resto de la lógica no.
+ */
+const VERSIONED = new Set(['methodologyVersion', 'scenarioHash']);
+
 function logic(v: unknown): unknown {
   if (Array.isArray(v)) return v.map(logic);
   if (v && typeof v === 'object') {
@@ -23,7 +29,7 @@ function logic(v: unknown): unknown {
       Object.entries(v as Record<string, unknown>)
         .filter(([k]) => !TEXT_KEYS.has(k))
         .sort(([a], [b]) => a.localeCompare(b))
-        .map(([k, x]) => [k, logic(x)]),
+        .map(([k, x]) => [k, VERSIONED.has(k) ? '<versioned>' : logic(x)]),
     );
   }
   return v;
@@ -44,7 +50,7 @@ describe('Step 7a.1 — decision logic unchanged by the message contract', () =>
   const golden = JSON.parse(readFileSync(GOLDEN, 'utf8')) as Record<string, unknown>;
   for (const name of Object.keys(golden)) {
     it(`${name}: same enums, scores, winner/tie, deltas, robustness thresholds and confidence`, () => {
-      expect(projected[name]).toEqual(golden[name]);
+      expect(projected[name]).toEqual(logic(golden[name]));
     });
   }
 });

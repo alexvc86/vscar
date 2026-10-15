@@ -58,6 +58,11 @@ export const CRITERION_FALLBACK: Readonly<Record<string, { label: string; unit: 
   maxHeightMm: { label: 'height', unit: 'mm', op: 'max' },
   minElectricRangeKm: { label: 'electric range', unit: 'km', op: 'min' },
   maxPurchasePriceEur: { label: 'purchase price', unit: 'EUR', op: 'max' },
+  // Step 8a: requisitos de la unidad usada (solo aplican a sujetos USED_INSTANCE).
+  maxMileageKm: { label: 'mileage', unit: 'km', op: 'max' },
+  maxAgeYears: { label: 'age', unit: 'years', op: 'max' },
+  minBatteryHealthPct: { label: 'battery health', unit: '%', op: 'min' },
+  minWarrantyRemainingMonths: { label: 'remaining warranty', unit: 'months', op: 'min' },
 };
 
 export const capitalize = (x: string) => (x ? x[0]!.toUpperCase() + x.slice(1) : x);

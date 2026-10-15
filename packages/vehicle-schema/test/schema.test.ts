@@ -6,8 +6,11 @@ import {
   SPEC_KEYS,
   SPEC_KEY_DEFINITIONS,
   SpecValue,
+  UsedVehicleInstance,
   displayCycle,
   isSpecKey,
+  knownUsedFields,
+  subjectOf,
   valueOriginOf,
   type SpecValueInput,
 } from '../src/index.ts';
@@ -184,5 +187,21 @@ describe('value origin (Catalog Q8)', () => {
     expect(valueOriginOf('OFFICIAL_AUTHORITY')).toBe('DIRECT');
     expect(valueOriginOf('CALCULATED')).toBe('CALCULATED');
     expect(valueOriginOf('USER_PROVIDED')).toBe('USER_PROVIDED');
+  });
+});
+
+describe('UsedVehicleInstance registration (Step 8a)', () => {
+  const base = { id: '00000000-0000-4000-8000-000000000001', reference_variant_id: '00000000-0000-4000-8000-000000000002' };
+  it('accepts a registration date and keeps the year consistent', () => {
+    expect(UsedVehicleInstance.safeParse({ ...base, registration_date: '2021-03-01' }).success).toBe(true);
+    expect(UsedVehicleInstance.safeParse({ ...base, registration_date: '2021-03-01', registration_year: 2021 }).success).toBe(true);
+    expect(UsedVehicleInstance.safeParse({ ...base, registration_date: '2021-03-01', registration_year: 2020 }).success).toBe(false);
+    expect(UsedVehicleInstance.safeParse({ ...base, registration_date: '2021-03-01', registration_year_assumed: 2021 }).success).toBe(false);
+  });
+  it('a registration date makes the registration known', () => {
+    expect(knownUsedFields(UsedVehicleInstance.parse({ ...base, registration_date: '2021-03-01' })).registration_year).toBe(true);
+  });
+  it('subjectOf: no explicit subject = the ReferenceVariant', () => {
+    expect(subjectOf({ id: base.reference_variant_id })).toEqual({ kind: 'REFERENCE_VARIANT', subjectId: base.reference_variant_id, referenceVariantId: base.reference_variant_id });
   });
 });

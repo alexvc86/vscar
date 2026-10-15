@@ -120,6 +120,9 @@ importers:
       '@vscar/fixtures':
         specifier: workspace:*
         version: link:../../fixtures
+      '@vscar/used-adjustment':
+        specifier: workspace:*
+        version: link:../../packages/used-adjustment
       tailwindcss:
         specifier: 4.3.3
         version: 4.3.3
@@ -311,6 +314,9 @@ importers:
       '@vscar/quality':
         specifier: workspace:*
         version: link:../quality
+      '@vscar/used-adjustment':
+        specifier: workspace:*
+        version: link:../used-adjustment
       '@vscar/vehicle-schema':
         specifier: workspace:*
         version: link:../vehicle-schema
@@ -400,6 +406,22 @@ importers:
       react-dom:
         specifier: 19.3.0
         version: 19.3.0(react@19.3.0)
+
+  packages/used-adjustment:
+    dependencies:
+      '@vscar/economics-engine':
+        specifier: workspace:*
+        version: link:../economics-engine
+      '@vscar/methodology':
+        specifier: workspace:*
+        version: link:../methodology
+      '@vscar/vehicle-schema':
+        specifier: workspace:*
+        version: link:../vehicle-schema
+    devDependencies:
+      '@vscar/fixtures':
+        specifier: workspace:*
+        version: link:../../fixtures
 
   packages/vehicle-schema:
     dependencies:

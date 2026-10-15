@@ -13,6 +13,8 @@ export const UsedVehicleInstance = z
     asking_price_minor: z.number().int().nonnegative().optional(),
     currency: z.string().regex(/^[A-Z]{3}$/).optional(),
     mileage_km: z.number().int().nonnegative().optional(),
+    /** Fecha de primera matriculación (Step 8a): da la edad exacta en meses. Con solo el año, la edad es un rango. */
+    registration_date: IsoDate.optional(),
     /** Si el usuario no lo indica: ausente + `registration_year_assumed` (ESTIMATED), nunca como dato conocido. */
     registration_year: z.number().int().min(1990).max(2100).optional(),
     registration_year_assumed: z.number().int().min(1990).max(2100).optional(),
@@ -30,8 +32,11 @@ export const UsedVehicleInstance = z
     if (u.asking_price_minor !== undefined && u.currency === undefined) {
       ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['currency'], message: 'asking price needs a currency' });
     }
-    if (u.registration_year !== undefined && u.registration_year_assumed !== undefined) {
+    if ((u.registration_year !== undefined || u.registration_date !== undefined) && u.registration_year_assumed !== undefined) {
       ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['registration_year_assumed'], message: 'an assumption is only allowed when the real value is unknown' });
+    }
+    if (u.registration_date !== undefined && u.registration_year !== undefined && Number(u.registration_date.slice(0, 4)) !== u.registration_year) {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['registration_year'], message: 'registration year must match the registration date' });
     }
   });
 
@@ -57,7 +62,7 @@ export function knownUsedFields(u: UsedVehicleInstance): Record<UsedInformationF
   return {
     asking_price: u.asking_price_minor !== undefined,
     mileage: u.mileage_km !== undefined,
-    registration_year: u.registration_year !== undefined,
+    registration_year: u.registration_year !== undefined || u.registration_date !== undefined,
     service_history: u.service_history !== 'unknown',
     accident_history: u.accident_history !== 'unknown',
     owners: u.owners !== 'unknown',

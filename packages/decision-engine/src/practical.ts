@@ -19,6 +19,10 @@ const LABELS: Record<string, [string, string]> = {
   maxHeightMm: ['height', 'mm'],
   minElectricRangeKm: ['electric range', 'km'],
   maxPurchasePriceEur: ['purchase price', '€'],
+  maxMileageKm: ['mileage', 'km'],
+  maxAgeYears: ['age', 'years'],
+  minBatteryHealthPct: ['battery health', '%'],
+  minWarrantyRemainingMonths: ['remaining warranty', 'months'],
 };
 
 function shortfallText(c: DealBreakerCheck): string {
