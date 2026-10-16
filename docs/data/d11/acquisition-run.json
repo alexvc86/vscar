@@ -1,0 +1,156 @@
+{
+  "ms": 28260,
+  "peakRssMb": 160,
+  "node": "v22.19.0",
+  "steps": [
+    {
+      "step": "rdw",
+      "label": "pilot-10 basis",
+      "datasetId": "byxc-wwua",
+      "rows": 80,
+      "pages": 1,
+      "rateLimited": 0,
+      "ms": 910
+    },
+    {
+      "step": "rdw",
+      "label": "pilot-10 energiebron",
+      "datasetId": "gr7t-qfnb",
+      "rows": 105,
+      "pages": 1,
+      "rateLimited": 0,
+      "ms": 486
+    },
+    {
+      "step": "rdw",
+      "label": "pilot-10 aandrijving",
+      "datasetId": "4by9-ammk",
+      "rows": 94,
+      "pages": 1,
+      "rateLimited": 0,
+      "ms": 185
+    },
+    {
+      "step": "rdw",
+      "label": "pilot-10 carrosserie",
+      "datasetId": "ky2r-jqad",
+      "rows": 80,
+      "pages": 1,
+      "rateLimited": 0,
+      "ms": 192
+    },
+    {
+      "step": "rdw",
+      "label": "pilot-10 versnelling",
+      "datasetId": "7rjk-eycs",
+      "rows": 80,
+      "pages": 1,
+      "rateLimited": 0,
+      "ms": 174
+    },
+    {
+      "step": "rdw",
+      "label": "pilot-10 as",
+      "datasetId": "xhyb-w7xt",
+      "rows": 160,
+      "pages": 1,
+      "rateLimited": 0,
+      "ms": 362
+    },
+    {
+      "step": "rdw",
+      "label": "pilot-10 handelsbenaming",
+      "datasetId": "x5v3-sewk",
+      "rows": 1038,
+      "pages": 2,
+      "rateLimited": 0,
+      "ms": 590
+    },
+    {
+      "step": "rdw",
+      "label": "pilot-10 withdrawals",
+      "datasetId": "9s6a-b42z",
+      "rows": 0,
+      "pages": 1,
+      "rateLimited": 0,
+      "ms": 501
+    },
+    {
+      "step": "rdw",
+      "label": "expansion 1-25 basis",
+      "datasetId": "byxc-wwua",
+      "rows": 357,
+      "pages": 1,
+      "rateLimited": 0,
+      "ms": 225
+    },
+    {
+      "step": "rdw",
+      "label": "expansion 1-25 energiebron",
+      "datasetId": "gr7t-qfnb",
+      "rows": 401,
+      "pages": 1,
+      "rateLimited": 0,
+      "ms": 853
+    },
+    {
+      "step": "rdw",
+      "label": "expansion 26-50 basis",
+      "datasetId": "byxc-wwua",
+      "rows": 359,
+      "pages": 1,
+      "rateLimited": 0,
+      "ms": 775
+    },
+    {
+      "step": "rdw",
+      "label": "expansion 26-50 energiebron",
+      "datasetId": "gr7t-qfnb",
+      "rows": 407,
+      "pages": 1,
+      "rateLimited": 0,
+      "ms": 218
+    },
+    {
+      "step": "rdw",
+      "label": "expansion 51-75 basis",
+      "datasetId": "byxc-wwua",
+      "rows": 166,
+      "pages": 1,
+      "rateLimited": 0,
+      "ms": 808
+    },
+    {
+      "step": "rdw",
+      "label": "expansion 51-75 energiebron",
+      "datasetId": "gr7t-qfnb",
+      "rows": 284,
+      "pages": 1,
+      "rateLimited": 0,
+      "ms": 522
+    },
+    {
+      "step": "rdw",
+      "label": "expansion 76-100 basis",
+      "datasetId": "byxc-wwua",
+      "rows": 223,
+      "pages": 1,
+      "rateLimited": 0,
+      "ms": 594
+    },
+    {
+      "step": "rdw",
+      "label": "expansion 76-100 energiebron",
+      "datasetId": "gr7t-qfnb",
+      "rows": 343,
+      "pages": 1,
+      "rateLimited": 0,
+      "ms": 534
+    },
+    {
+      "step": "giaveh.api",
+      "status": 500,
+      "bytes": 45
+    }
+  ]
+}

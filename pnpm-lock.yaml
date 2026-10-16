@@ -253,6 +253,28 @@ importers:
         specifier: workspace:*
         version: link:../market-context
 
+  packages/curation:
+    dependencies:
+      '@vscar/data-connectors':
+        specifier: workspace:*
+        version: link:../data-connectors
+      '@vscar/methodology':
+        specifier: workspace:*
+        version: link:../methodology
+      '@vscar/quality':
+        specifier: workspace:*
+        version: link:../quality
+      '@vscar/vehicle-schema':
+        specifier: workspace:*
+        version: link:../vehicle-schema
+      zod:
+        specifier: ^3.25.67
+        version: 3.25.76
+    devDependencies:
+      '@vscar/fixtures':
+        specifier: workspace:*
+        version: link:../../fixtures
+
   packages/data-connectors:
     dependencies:
       '@vscar/vehicle-schema':

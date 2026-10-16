@@ -1,6 +1,12 @@
 import { eeaRequestUrl } from './query.ts';
 
-export type FetchLike = (url: string, init?: { signal?: AbortSignal; headers?: Record<string, string> }) => Promise<{ ok: boolean; status: number; json(): Promise<unknown> }>;
+export type FetchLike = (
+  url: string,
+  init?: { signal?: AbortSignal; headers?: Record<string, string>; method?: 'GET' | 'POST'; body?: string },
+) => Promise<{ ok: boolean; status: number; json(): Promise<unknown> }>;
+
+/** discodata responde 404 a URLs GET muy largas (verificado 2026-10-16 con ~8.000 caracteres); por encima se usa POST. */
+export const EEA_MAX_GET_URL = 4000;
 
 /** Logger mínimo inyectable (el worker escribe JSON lines en logs/eea). Nunca recibe secretos. */
 export type AdapterLogger = (event: string, data: Record<string, unknown>) => void;
@@ -39,7 +45,16 @@ export async function fetchEea(query: string, opts: EeaFetchOptions = {}): Promi
     const started = Date.now();
     let res: Awaited<ReturnType<FetchLike>>;
     try {
-      res = await fetchImpl(url, { signal: AbortSignal.timeout(timeoutMs) });
+      // Misma consulta y parámetros; solo cambia el transporte. `request_urls` conserva la URL equivalente (trazabilidad).
+      res =
+        url.length > EEA_MAX_GET_URL
+          ? await fetchImpl(new URL(url).origin + new URL(url).pathname, {
+              signal: AbortSignal.timeout(timeoutMs),
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: new URL(url).searchParams.toString(),
+            })
+          : await fetchImpl(url, { signal: AbortSignal.timeout(timeoutMs) });
     } catch (e) {
       logger?.('eea.fetch.error', { page, error: e instanceof Error ? e.message : String(e) });
       throw new RetryableSourceError(`EEA discodata request failed: ${e instanceof Error ? e.message : String(e)}`);

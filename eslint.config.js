@@ -18,6 +18,8 @@ const DB_FREE_PACKAGES = [
   'packages/methodology/**',
   'packages/data-connectors/**',
   'packages/market-context/**',
+  // Step D1: la curación produce candidatos; nunca carga datos en MySQL.
+  'packages/curation/**',
 ];
 
 // Consumidores de datos normalizados: tampoco conocen las fuentes (Step 4g). Reciben datos por puerto/entrada.

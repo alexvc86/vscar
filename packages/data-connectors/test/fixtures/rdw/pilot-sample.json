@@ -1,0 +1,1328 @@
+{
+ "carrosserie": [
+  {
+   "typegoedkeuringsnummer": "e1*2007/46*0623*33",
+   "codeuitvoeringtgk": "FM6FM6AJ015N7MVON1ML79VR2N",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "GAC4DACAX0",
+   "volgnummercarrosserietype": "1",
+   "codecarrosserietype": "AC"
+  },
+  {
+   "typegoedkeuringsnummer": "e1*2007/46*0623*35",
+   "codeuitvoeringtgk": "FM6FM6AJ015N7CPON1ML1BVR2NA",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "GAC4DACAX0",
+   "volgnummercarrosserietype": "1",
+   "codecarrosserietype": "AC"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "SE2R1C",
+   "volgnummercarrosserietype": "1",
+   "codecarrosserietype": "AA"
+  },
+  {
+   "typegoedkeuringsnummer": "e6*2007/46*0429*05",
+   "codeuitvoeringtgk": "AXAP54L-ANXMBW(1F)",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "AXAP54(N)",
+   "volgnummercarrosserietype": "1",
+   "codecarrosserietype": "AC"
+  },
+  {
+   "typegoedkeuringsnummer": "e6*2007/46*0429*05",
+   "codeuitvoeringtgk": "AXAP54L-ANXMBW(1F)",
+   "volgnummerrevisieuitvoering": "1",
+   "codevarianttgk": "AXAP54(N)",
+   "volgnummercarrosserietype": "1",
+   "codecarrosserietype": "AC"
+  },
+  {
+   "typegoedkeuringsnummer": "e9*2007/46*3167*26",
+   "codeuitvoeringtgk": "FD7SFD7GC0024BIVL1BAD16",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "SFDTTCX0",
+   "volgnummercarrosserietype": "1",
+   "codecarrosserietype": "AC"
+  }
+ ],
+ "basis": [
+  {
+   "typegoedkeuringsnummer": "e1*2007/46*0623*33",
+   "codeuitvoeringtgk": "FM6FM6AJ015N7MVON1ML79VR2N",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "GAC4DACAX0",
+   "begindatumrevisieuitvoering": "2017-12-20",
+   "voertuigcategorie": "M1",
+   "aantaldeurenondergrens": "5",
+   "aantaldeurenbovengrens": "5",
+   "lengteondergrens": "4258",
+   "lengtebovengrens": "4356",
+   "breedteondergrens": "1790",
+   "breedtebovengrens": "1799",
+   "hoogteondergrens": "1437",
+   "hoogtebovengrens": "1492",
+   "wielbasisondergrens": "2620",
+   "wielbasisbovengrens": "2620",
+   "aantalzitplaatsenondergrens": "5",
+   "aantalzitplaatsenbovengrens": "5",
+   "maximummassaondergrens": "1800",
+   "maximummassabovengrens": "1800",
+   "massarijklaarondergrens": "1301",
+   "massarijklaarbovengrens": "1301",
+   "maxconstructiesnelheidahwogr": "210.00",
+   "maxconstructiesnelheidahwbgr": "210.00"
+  },
+  {
+   "typegoedkeuringsnummer": "e1*2007/46*0623*35",
+   "codeuitvoeringtgk": "FM6FM6AJ015N7CPON1ML1BVR2NA",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "GAC4DACAX0",
+   "begindatumrevisieuitvoering": "2018-10-01",
+   "voertuigcategorie": "M1",
+   "aantaldeurenondergrens": "5",
+   "aantaldeurenbovengrens": "5",
+   "lengteondergrens": "4258",
+   "lengtebovengrens": "4356",
+   "breedteondergrens": "1790",
+   "breedtebovengrens": "1799",
+   "hoogteondergrens": "1437",
+   "hoogtebovengrens": "1492",
+   "wielbasisondergrens": "2620",
+   "wielbasisbovengrens": "2620",
+   "aantalzitplaatsenondergrens": "5",
+   "aantalzitplaatsenbovengrens": "5",
+   "maximummassaondergrens": "1800",
+   "maximummassabovengrens": "1800",
+   "massarijklaarondergrens": "1315",
+   "massarijklaarbovengrens": "1315",
+   "maxconstructiesnelheidahwogr": "210.00",
+   "maxconstructiesnelheidahwbgr": "210.00"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "SE2R1C",
+   "begindatumrevisieuitvoering": "2024-07-26",
+   "voertuigcategorie": "M1",
+   "aantaldeurenondergrens": "4",
+   "aantaldeurenbovengrens": "4",
+   "lengteondergrens": "4800",
+   "lengtebovengrens": "4800",
+   "breedteondergrens": "1875",
+   "breedtebovengrens": "1875",
+   "hoogteondergrens": "1460",
+   "hoogtebovengrens": "1460",
+   "wielbasisondergrens": "2920",
+   "wielbasisbovengrens": "2920",
+   "aantalzitplaatsenondergrens": "5",
+   "aantalzitplaatsenbovengrens": "5",
+   "maximummassaondergrens": "2501",
+   "maximummassabovengrens": "2501",
+   "massarijklaarondergrens": "2130",
+   "massarijklaarbovengrens": "2130"
+  },
+  {
+   "typegoedkeuringsnummer": "e6*2007/46*0429*05",
+   "codeuitvoeringtgk": "AXAP54L-ANXMBW(1F)",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "AXAP54(N)",
+   "begindatumrevisieuitvoering": "2024-11-13",
+   "einddatumrevisieuitvoering": "2025-06-16",
+   "voertuigcategorie": "M1",
+   "aantaldeurenondergrens": "4",
+   "aantaldeurenbovengrens": "4",
+   "lengteondergrens": "4600",
+   "lengtebovengrens": "4600",
+   "breedteondergrens": "1855",
+   "breedtebovengrens": "1855",
+   "hoogteondergrens": "1685",
+   "hoogtebovengrens": "1685",
+   "wielbasisondergrens": "2690",
+   "wielbasisbovengrens": "2690",
+   "aantalzitplaatsenondergrens": "5",
+   "aantalzitplaatsenbovengrens": "5",
+   "maximummassaondergrens": "2510",
+   "maximummassabovengrens": "2510",
+   "massarijklaarondergrens": "1985",
+   "massarijklaarbovengrens": "1985"
+  },
+  {
+   "typegoedkeuringsnummer": "e6*2007/46*0429*05",
+   "codeuitvoeringtgk": "AXAP54L-ANXMBW(1F)",
+   "volgnummerrevisieuitvoering": "1",
+   "codevarianttgk": "AXAP54(N)",
+   "begindatumrevisieuitvoering": "2025-06-16",
+   "voertuigcategorie": "M1",
+   "aantaldeurenondergrens": "4",
+   "aantaldeurenbovengrens": "4",
+   "lengteondergrens": "4600",
+   "lengtebovengrens": "4600",
+   "breedteondergrens": "1855",
+   "breedtebovengrens": "1855",
+   "hoogteondergrens": "1685",
+   "hoogtebovengrens": "1685",
+   "wielbasisondergrens": "2690",
+   "wielbasisbovengrens": "2690",
+   "aantalzitplaatsenondergrens": "5",
+   "aantalzitplaatsenbovengrens": "5",
+   "maximummassaondergrens": "2510",
+   "maximummassabovengrens": "2510",
+   "massarijklaarondergrens": "1985",
+   "massarijklaarbovengrens": "1985"
+  },
+  {
+   "typegoedkeuringsnummer": "e9*2007/46*3167*26",
+   "codeuitvoeringtgk": "FD7SFD7GC0024BIVL1BAD16",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "SFDTTCX0",
+   "begindatumrevisieuitvoering": "2023-05-08",
+   "voertuigcategorie": "M1",
+   "aantaldeurenondergrens": "5",
+   "aantaldeurenbovengrens": "5",
+   "lengteondergrens": "4642",
+   "lengtebovengrens": "4642",
+   "breedteondergrens": "1799",
+   "breedtebovengrens": "1799",
+   "hoogteondergrens": "1450",
+   "hoogtebovengrens": "1450",
+   "wielbasisondergrens": "2672",
+   "wielbasisbovengrens": "2672",
+   "aantalzitplaatsenondergrens": "5",
+   "aantalzitplaatsenbovengrens": "5",
+   "maximummassaondergrens": "2070",
+   "maximummassabovengrens": "2070",
+   "massarijklaarondergrens": "1501",
+   "massarijklaarbovengrens": "1501"
+  }
+ ],
+ "versnelling": [
+  {
+   "typegoedkeuringsnummer": "e1*2007/46*0623*33",
+   "codeuitvoeringtgk": "FM6FM6AJ015N7MVON1ML79VR2N",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "GAC4DACAX0",
+   "volgnummerversnelling": "1",
+   "codetypeversnellingsbak": "M",
+   "aantalversnellingenondergrens": "6",
+   "aantalversnellingenbovengrens": "6"
+  },
+  {
+   "typegoedkeuringsnummer": "e1*2007/46*0623*35",
+   "codeuitvoeringtgk": "FM6FM6AJ015N7CPON1ML1BVR2NA",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "GAC4DACAX0",
+   "volgnummerversnelling": "1",
+   "codetypeversnellingsbak": "M",
+   "aantalversnellingenondergrens": "6",
+   "aantalversnellingenbovengrens": "6"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "SE2R1C",
+   "volgnummerversnelling": "1",
+   "codetypeversnellingsbak": "F",
+   "aantalversnellingenondergrens": "1",
+   "aantalversnellingenbovengrens": "1"
+  },
+  {
+   "typegoedkeuringsnummer": "e6*2007/46*0429*05",
+   "codeuitvoeringtgk": "AXAP54L-ANXMBW(1F)",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "AXAP54(N)",
+   "volgnummerversnelling": "1",
+   "codetypeversnellingsbak": "C"
+  },
+  {
+   "typegoedkeuringsnummer": "e6*2007/46*0429*05",
+   "codeuitvoeringtgk": "AXAP54L-ANXMBW(1F)",
+   "volgnummerrevisieuitvoering": "1",
+   "codevarianttgk": "AXAP54(N)",
+   "volgnummerversnelling": "1",
+   "codetypeversnellingsbak": "C"
+  },
+  {
+   "typegoedkeuringsnummer": "e9*2007/46*3167*26",
+   "codeuitvoeringtgk": "FD7SFD7GC0024BIVL1BAD16",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "SFDTTCX0",
+   "volgnummerversnelling": "1",
+   "codetypeversnellingsbak": "A",
+   "aantalversnellingenondergrens": "7",
+   "aantalversnellingenbovengrens": "7"
+  }
+ ],
+ "energiebron": [
+  {
+   "typegoedkeuringsnummer": "e1*2007/46*0623*33",
+   "codeuitvoeringtgk": "FM6FM6AJ015N7MVON1ML79VR2N",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "GAC4DACAX0",
+   "volgnummeraandrijving": "1",
+   "volgnummerenergiebron": "1",
+   "codeenergiebron": "B",
+   "maximumnettovermogenogr": "96.00",
+   "maximumnettovermogenbgr": "96.00",
+   "uitlaatemissieniveau": "EURO 6 ZD",
+   "verbruikgecombineerdnedclaag": "4.90",
+   "verbruikgecombineerdnedchoog": "4.90",
+   "co2emisgecombineerdnedclaag": "113",
+   "co2emisgecombineerdnedchoog": "113"
+  },
+  {
+   "typegoedkeuringsnummer": "e1*2007/46*0623*35",
+   "codeuitvoeringtgk": "FM6FM6AJ015N7CPON1ML1BVR2NA",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "GAC4DACAX0",
+   "volgnummeraandrijving": "1",
+   "volgnummerenergiebron": "1",
+   "codeenergiebron": "B",
+   "maximumnettovermogenogr": "96.00",
+   "maximumnettovermogenbgr": "96.00",
+   "uitlaatemissieniveau": "EURO 6 AG",
+   "co2emisgecombineerdwltpogr": "124",
+   "co2emisgecombineerdwltpbgr": "141",
+   "brandstofverbruikgecombwltpogr": "5.472",
+   "brandstofverbruikgecombwltpbgr": "6.217"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "SE2R1C",
+   "volgnummeraandrijving": "1",
+   "volgnummerenergiebron": "1",
+   "codeenergiebron": "E",
+   "uitlaatemissieniveau": "AX",
+   "verbruikvolledigelekwltpbgr": "159.00",
+   "actieradiusvolledigelekwltpbgr": "583",
+   "elektrischeactieradiusnedc": "570",
+   "elekverbruikgecombineerdnedc": "166.00"
+  },
+  {
+   "typegoedkeuringsnummer": "e6*2007/46*0429*05",
+   "codeuitvoeringtgk": "AXAP54L-ANXMBW(1F)",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "AXAP54(N)",
+   "volgnummeraandrijving": "1",
+   "volgnummerenergiebron": "1",
+   "codeenergiebron": "B",
+   "maximumnettovermogenogr": "136.00",
+   "maximumnettovermogenbgr": "136.00",
+   "uitlaatemissieniveau": "EURO 6 EA",
+   "co2emisgewogengecombwltpbgr": "22",
+   "brandstverbrgewogencombwltpbgr": "1.000"
+  },
+  {
+   "typegoedkeuringsnummer": "e6*2007/46*0429*05",
+   "codeuitvoeringtgk": "AXAP54L-ANXMBW(1F)",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "AXAP54(N)",
+   "volgnummeraandrijving": "1",
+   "volgnummerenergiebron": "2",
+   "codeenergiebron": "E",
+   "uitlaatemissieniveau": "EURO 6 EA",
+   "elekverbrexternoplaadbwltpbgr": "171.00",
+   "actieradiusexternoplaadwltpbgr": "75"
+  },
+  {
+   "typegoedkeuringsnummer": "e6*2007/46*0429*05",
+   "codeuitvoeringtgk": "AXAP54L-ANXMBW(1F)",
+   "volgnummerrevisieuitvoering": "1",
+   "codevarianttgk": "AXAP54(N)",
+   "volgnummeraandrijving": "1",
+   "volgnummerenergiebron": "1",
+   "codeenergiebron": "B",
+   "maximumnettovermogenogr": "136.00",
+   "maximumnettovermogenbgr": "136.00",
+   "uitlaatemissieniveau": "EURO 6 EA",
+   "co2emisgewogengecombwltpbgr": "22",
+   "brandstverbrgewogencombwltpbgr": "1.000"
+  },
+  {
+   "typegoedkeuringsnummer": "e6*2007/46*0429*05",
+   "codeuitvoeringtgk": "AXAP54L-ANXMBW(1F)",
+   "volgnummerrevisieuitvoering": "1",
+   "codevarianttgk": "AXAP54(N)",
+   "volgnummeraandrijving": "1",
+   "volgnummerenergiebron": "2",
+   "codeenergiebron": "E",
+   "uitlaatemissieniveau": "EURO 6 EA",
+   "elekverbrexternoplaadbwltpbgr": "171.00",
+   "actieradiusexternoplaadwltpbgr": "75"
+  },
+  {
+   "typegoedkeuringsnummer": "e9*2007/46*3167*26",
+   "codeuitvoeringtgk": "FD7SFD7GC0024BIVL1BAD16",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "SFDTTCX0",
+   "volgnummeraandrijving": "1",
+   "volgnummerenergiebron": "1",
+   "codeenergiebron": "D",
+   "maximumnettovermogenogr": "110.00",
+   "maximumnettovermogenbgr": "110.00",
+   "uitlaatemissieniveau": "EURO 6 AP",
+   "co2emisgecombineerdwltpogr": "110",
+   "co2emisgecombineerdwltpbgr": "138",
+   "brandstofverbruikgecombwltpogr": "4.176",
+   "brandstofverbruikgecombwltpbgr": "5.270"
+  }
+ ],
+ "aandrijving": [
+  {
+   "typegoedkeuringsnummer": "e1*2007/46*0623*33",
+   "codeuitvoeringtgk": "FM6FM6AJ015N7MVON1ML79VR2N",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "GAC4DACAX0",
+   "volgnummeraandrijving": "1",
+   "aantalcilinders": "4",
+   "cilinderinhoud": "1498.00",
+   "codebrandstoftypemotor": "M",
+   "elektromotorindicator": "N",
+   "hybridemotorindicator": "N",
+   "externoplaadbaarindicator": "N"
+  },
+  {
+   "typegoedkeuringsnummer": "e1*2007/46*0623*35",
+   "codeuitvoeringtgk": "FM6FM6AJ015N7CPON1ML1BVR2NA",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "GAC4DACAX0",
+   "volgnummeraandrijving": "1",
+   "aantalcilinders": "4",
+   "cilinderinhoud": "1498.00",
+   "codebrandstoftypemotor": "M",
+   "elektromotorindicator": "N",
+   "hybridemotorindicator": "N",
+   "externoplaadbaarindicator": "N"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "SE2R1C",
+   "volgnummeraandrijving": "1",
+   "elektromotorindicator": "J",
+   "hybridemotorindicator": "N"
+  },
+  {
+   "typegoedkeuringsnummer": "e6*2007/46*0429*05",
+   "codeuitvoeringtgk": "AXAP54L-ANXMBW(1F)",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "AXAP54(N)",
+   "volgnummeraandrijving": "1",
+   "aantalcilinders": "4",
+   "cilinderinhoud": "2487.00",
+   "codebrandstoftypemotor": "M",
+   "elektromotorindicator": "J",
+   "hybridemotorindicator": "J",
+   "externoplaadbaarindicator": "J"
+  },
+  {
+   "typegoedkeuringsnummer": "e6*2007/46*0429*05",
+   "codeuitvoeringtgk": "AXAP54L-ANXMBW(1F)",
+   "volgnummerrevisieuitvoering": "1",
+   "codevarianttgk": "AXAP54(N)",
+   "volgnummeraandrijving": "1",
+   "aantalcilinders": "4",
+   "cilinderinhoud": "2487.00",
+   "codebrandstoftypemotor": "M",
+   "elektromotorindicator": "J",
+   "hybridemotorindicator": "J",
+   "externoplaadbaarindicator": "J"
+  },
+  {
+   "typegoedkeuringsnummer": "e9*2007/46*3167*26",
+   "codeuitvoeringtgk": "FD7SFD7GC0024BIVL1BAD16",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "SFDTTCX0",
+   "volgnummeraandrijving": "1",
+   "aantalcilinders": "4",
+   "cilinderinhoud": "1968.00",
+   "codebrandstoftypemotor": "M",
+   "elektromotorindicator": "N",
+   "hybridemotorindicator": "N",
+   "externoplaadbaarindicator": "N"
+  }
+ ],
+ "withdrawals": [],
+ "as": [
+  {
+   "typegoedkeuringsnummer": "e1*2007/46*0623*33",
+   "codeuitvoeringtgk": "FM6FM6AJ015N7MVON1ML79VR2N",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "GAC4DACAX0",
+   "volgnummeras": "1",
+   "aangedrevenasindicator": "J"
+  },
+  {
+   "typegoedkeuringsnummer": "e1*2007/46*0623*33",
+   "codeuitvoeringtgk": "FM6FM6AJ015N7MVON1ML79VR2N",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "GAC4DACAX0",
+   "volgnummeras": "2",
+   "aangedrevenasindicator": "N"
+  },
+  {
+   "typegoedkeuringsnummer": "e1*2007/46*0623*35",
+   "codeuitvoeringtgk": "FM6FM6AJ015N7CPON1ML1BVR2NA",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "GAC4DACAX0",
+   "volgnummeras": "1",
+   "aangedrevenasindicator": "J"
+  },
+  {
+   "typegoedkeuringsnummer": "e1*2007/46*0623*35",
+   "codeuitvoeringtgk": "FM6FM6AJ015N7CPON1ML1BVR2NA",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "GAC4DACAX0",
+   "volgnummeras": "2",
+   "aangedrevenasindicator": "N"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "SE2R1C",
+   "volgnummeras": "1",
+   "aangedrevenasindicator": "N"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "SE2R1C",
+   "volgnummeras": "2",
+   "aangedrevenasindicator": "J"
+  },
+  {
+   "typegoedkeuringsnummer": "e6*2007/46*0429*05",
+   "codeuitvoeringtgk": "AXAP54L-ANXMBW(1F)",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "AXAP54(N)",
+   "volgnummeras": "1",
+   "aangedrevenasindicator": "J"
+  },
+  {
+   "typegoedkeuringsnummer": "e6*2007/46*0429*05",
+   "codeuitvoeringtgk": "AXAP54L-ANXMBW(1F)",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "AXAP54(N)",
+   "volgnummeras": "2",
+   "aangedrevenasindicator": "J"
+  },
+  {
+   "typegoedkeuringsnummer": "e6*2007/46*0429*05",
+   "codeuitvoeringtgk": "AXAP54L-ANXMBW(1F)",
+   "volgnummerrevisieuitvoering": "1",
+   "codevarianttgk": "AXAP54(N)",
+   "volgnummeras": "1",
+   "aangedrevenasindicator": "J"
+  },
+  {
+   "typegoedkeuringsnummer": "e6*2007/46*0429*05",
+   "codeuitvoeringtgk": "AXAP54L-ANXMBW(1F)",
+   "volgnummerrevisieuitvoering": "1",
+   "codevarianttgk": "AXAP54(N)",
+   "volgnummeras": "2",
+   "aangedrevenasindicator": "J"
+  },
+  {
+   "typegoedkeuringsnummer": "e9*2007/46*3167*26",
+   "codeuitvoeringtgk": "FD7SFD7GC0024BIVL1BAD16",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "SFDTTCX0",
+   "volgnummeras": "1",
+   "aangedrevenasindicator": "J"
+  },
+  {
+   "typegoedkeuringsnummer": "e9*2007/46*3167*26",
+   "codeuitvoeringtgk": "FD7SFD7GC0024BIVL1BAD16",
+   "volgnummerrevisieuitvoering": "0",
+   "codevarianttgk": "SFDTTCX0",
+   "volgnummeras": "2",
+   "aangedrevenasindicator": "N"
+  }
+ ],
+ "handelsbenaming": [
+  {
+   "typegoedkeuringsnummer": "e1*2007/46*0623*33",
+   "codeuitvoeringtgk": "FM6FM6AJ015N7MVON1ML79VR2N",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "GAC4DACAX0",
+   "volgnummerhandelsbenamingfabr": "1",
+   "handelsbenamingfabrikant": "GOLF",
+   "typeaanduidingfabrikant": "AU"
+  },
+  {
+   "typegoedkeuringsnummer": "e1*2007/46*0623*35",
+   "codeuitvoeringtgk": "FM6FM6AJ015N7CPON1ML1BVR2NA",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "GAC4DACAX0",
+   "volgnummerhandelsbenamingfabr": "1",
+   "handelsbenamingfabrikant": "GOLF",
+   "typeaanduidingfabrikant": "AU"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "1",
+   "handelsbenamingfabrikant": "ATTO 4",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "2",
+   "handelsbenamingfabrikant": "ATTO 5",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "3",
+   "handelsbenamingfabrikant": "ATTO 6",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "4",
+   "handelsbenamingfabrikant": "ATTO 7",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "5",
+   "handelsbenamingfabrikant": "ATTO 8",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "6",
+   "handelsbenamingfabrikant": "ATTO 9",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "7",
+   "handelsbenamingfabrikant": "BYD CL",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "8",
+   "handelsbenamingfabrikant": "BYD CL1",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "9",
+   "handelsbenamingfabrikant": "BYD CL2",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "10",
+   "handelsbenamingfabrikant": "BYD CL3",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "11",
+   "handelsbenamingfabrikant": "BYD CL4",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "12",
+   "handelsbenamingfabrikant": "BYD CL5",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "13",
+   "handelsbenamingfabrikant": "BYD CL6",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "14",
+   "handelsbenamingfabrikant": "BYD CL7",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "15",
+   "handelsbenamingfabrikant": "BYD CL8",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "16",
+   "handelsbenamingfabrikant": "BYD CL9",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "17",
+   "handelsbenamingfabrikant": "BYD EK",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "18",
+   "handelsbenamingfabrikant": "BYD F7",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "19",
+   "handelsbenamingfabrikant": "BYD HALO 1",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "20",
+   "handelsbenamingfabrikant": "BYD HALO 2",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "21",
+   "handelsbenamingfabrikant": "BYD HALO 3",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "22",
+   "handelsbenamingfabrikant": "BYD HALO 4",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "23",
+   "handelsbenamingfabrikant": "BYD HALO 5",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "24",
+   "handelsbenamingfabrikant": "BYD HALO 6",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "25",
+   "handelsbenamingfabrikant": "BYD HALO 7",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "26",
+   "handelsbenamingfabrikant": "BYD HALO 8",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "27",
+   "handelsbenamingfabrikant": "BYD HALO 9",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "28",
+   "handelsbenamingfabrikant": "BYD OT",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "29",
+   "handelsbenamingfabrikant": "BYD OT 1",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "30",
+   "handelsbenamingfabrikant": "BYD OT 3",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "31",
+   "handelsbenamingfabrikant": "BYD OT 5",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "32",
+   "handelsbenamingfabrikant": "BYD OT 7",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "33",
+   "handelsbenamingfabrikant": "BYD OT1",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "34",
+   "handelsbenamingfabrikant": "BYD OT3",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "35",
+   "handelsbenamingfabrikant": "BYD OT5",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "36",
+   "handelsbenamingfabrikant": "BYD OT7",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "37",
+   "handelsbenamingfabrikant": "BYD SEAL",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "38",
+   "handelsbenamingfabrikant": "BYD SEAL 07",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "39",
+   "handelsbenamingfabrikant": "BYD SEAL 7",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "40",
+   "handelsbenamingfabrikant": "BYD SL",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "41",
+   "handelsbenamingfabrikant": "BYD SL1",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "42",
+   "handelsbenamingfabrikant": "BYD SL2",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "43",
+   "handelsbenamingfabrikant": "BYD SL3",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "44",
+   "handelsbenamingfabrikant": "BYD SL4",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "45",
+   "handelsbenamingfabrikant": "BYD SL5",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "46",
+   "handelsbenamingfabrikant": "BYD SL6",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "47",
+   "handelsbenamingfabrikant": "BYD SL7",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "48",
+   "handelsbenamingfabrikant": "BYD SL8",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "49",
+   "handelsbenamingfabrikant": "BYD SL9",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "50",
+   "handelsbenamingfabrikant": "BYD ZEAL",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "51",
+   "handelsbenamingfabrikant": "BYD ZERO1",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "52",
+   "handelsbenamingfabrikant": "BYD ZERO3",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "53",
+   "handelsbenamingfabrikant": "BYD ZERO5",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "54",
+   "handelsbenamingfabrikant": "BYD ZERO7",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "55",
+   "handelsbenamingfabrikant": "CL",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "56",
+   "handelsbenamingfabrikant": "DI-G6",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "57",
+   "handelsbenamingfabrikant": "DI-G7",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "58",
+   "handelsbenamingfabrikant": "DI-G8",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "59",
+   "handelsbenamingfabrikant": "DI-G9",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "60",
+   "handelsbenamingfabrikant": "DI-GREEN",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "61",
+   "handelsbenamingfabrikant": "E-CO",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "62",
+   "handelsbenamingfabrikant": "E-CO.6",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "63",
+   "handelsbenamingfabrikant": "E-CO.7",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "64",
+   "handelsbenamingfabrikant": "E-CO.8",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "65",
+   "handelsbenamingfabrikant": "E-CO.9",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "66",
+   "handelsbenamingfabrikant": "HALO 1",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "67",
+   "handelsbenamingfabrikant": "HALO 2",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "68",
+   "handelsbenamingfabrikant": "HALO 3",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "69",
+   "handelsbenamingfabrikant": "HALO 4",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "70",
+   "handelsbenamingfabrikant": "HALO 5",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "71",
+   "handelsbenamingfabrikant": "HALO 6",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "72",
+   "handelsbenamingfabrikant": "HALO 7",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "73",
+   "handelsbenamingfabrikant": "HALO 8",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "74",
+   "handelsbenamingfabrikant": "HALO 9",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "75",
+   "handelsbenamingfabrikant": "ISEAL",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "76",
+   "handelsbenamingfabrikant": "SEAL",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "77",
+   "handelsbenamingfabrikant": "SEAL 07",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "78",
+   "handelsbenamingfabrikant": "SEAL 7",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "79",
+   "handelsbenamingfabrikant": "SL",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "80",
+   "handelsbenamingfabrikant": "ZEAL",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e13*2018/858*00639*03",
+   "codeuitvoeringtgk": "2NTE5F002NL1",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SE2R1C",
+   "volgnummerhandelsbenamingfabr": "81",
+   "handelsbenamingfabrikant": "ZERO",
+   "typeaanduidingfabrikant": "EKE"
+  },
+  {
+   "typegoedkeuringsnummer": "e6*2007/46*0429*05",
+   "codeuitvoeringtgk": "AXAP54L-ANXMBW(1F)",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "AXAP54(N)",
+   "volgnummerhandelsbenamingfabr": "1",
+   "handelsbenamingfabrikant": "TOYOTA RAV4",
+   "typeaanduidingfabrikant": "XA5P(EU,M)"
+  },
+  {
+   "typegoedkeuringsnummer": "e6*2007/46*0429*05",
+   "codeuitvoeringtgk": "AXAP54L-ANXMBW(1F)",
+   "volgnummerrevisieuitvoering": "1",
+   "codevariantgk": "AXAP54(N)",
+   "volgnummerhandelsbenamingfabr": "1",
+   "handelsbenamingfabrikant": "TOYOTA RAV4",
+   "typeaanduidingfabrikant": "XA5P(EU,M)"
+  },
+  {
+   "typegoedkeuringsnummer": "e9*2007/46*3167*26",
+   "codeuitvoeringtgk": "FD7SFD7GC0024BIVL1BAD16",
+   "volgnummerrevisieuitvoering": "0",
+   "codevariantgk": "SFDTTCX0",
+   "volgnummerhandelsbenamingfabr": "1",
+   "handelsbenamingfabrikant": "SEAT LEON SP",
+   "typeaanduidingfabrikant": "KL"
+  }
+ ]
+}

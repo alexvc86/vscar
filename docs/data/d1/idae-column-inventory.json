@@ -1,0 +1,364 @@
+{
+  "schema": {
+    "schemaVersion": "idae-historico-csv-2026-09",
+    "compatible": true,
+    "missing": [],
+    "unexpected": [],
+    "reordered": false
+  },
+  "totalRows": 106623,
+  "columns": [
+    {
+      "sourceField": "Fecha_alta",
+      "type": "date_dmy",
+      "typeCounts": {
+        "date_dmy": 106623
+      },
+      "count": 106623,
+      "nullCount": 0,
+      "nullRate": 0,
+      "zeroCount": 0,
+      "zeroRate": 0,
+      "distinct": 1438,
+      "distinctCapped": false,
+      "example": "07/10/2020"
+    },
+    {
+      "sourceField": "Fecha_actualizacion",
+      "type": "date_dmy",
+      "typeCounts": {
+        "date_dmy": 106622,
+        "empty": 1
+      },
+      "count": 106623,
+      "nullCount": 1,
+      "nullRate": 0.000009378839462404923,
+      "zeroCount": 0,
+      "zeroRate": 0,
+      "distinct": 1434,
+      "distinctCapped": false,
+      "example": "07/10/2020"
+    },
+    {
+      "sourceField": "Fecha_comercializacion",
+      "type": "date_dmy",
+      "typeCounts": {
+        "empty": 95315,
+        "date_dmy": 11308
+      },
+      "count": 106623,
+      "nullCount": 95315,
+      "nullRate": 0.8939440833591251,
+      "zeroCount": 0,
+      "zeroRate": 0,
+      "distinct": 414,
+      "distinctCapped": false,
+      "example": "24/10/2024"
+    },
+    {
+      "sourceField": "Marca",
+      "type": "text",
+      "typeCounts": {
+        "text": 106623
+      },
+      "count": 106623,
+      "nullCount": 0,
+      "nullRate": 0,
+      "zeroCount": 0,
+      "zeroRate": 0,
+      "distinct": 292,
+      "distinctCapped": false,
+      "example": "Abarth"
+    },
+    {
+      "sourceField": "Modelo",
+      "type": "text",
+      "typeCounts": {
+        "integer": 1204,
+        "text": 105419
+      },
+      "count": 106623,
+      "nullCount": 0,
+      "nullRate": 0,
+      "zeroCount": 0,
+      "zeroRate": 0,
+      "distinct": 7265,
+      "distinctCapped": false,
+      "min": 1,
+      "max": 219410,
+      "example": "595"
+    },
+    {
+      "sourceField": "Vehiculo",
+      "type": "text",
+      "typeCounts": {
+        "text": 106032,
+        "empty": 173,
+        "integer": 394,
+        "decimal": 24
+      },
+      "count": 106623,
+      "nullCount": 173,
+      "nullRate": 0.0016225392269960516,
+      "zeroCount": 69,
+      "zeroRate": 0.0006471399229059396,
+      "distinct": 10000,
+      "distinctCapped": true,
+      "min": 0,
+      "max": 2022,
+      "example": "ABARTH 595 1.4 16v T-JET 107 KW (145 CV) E6D"
+    },
+    {
+      "sourceField": "Segmento",
+      "type": "text",
+      "typeCounts": {
+        "text": 106623
+      },
+      "count": 106623,
+      "nullCount": 0,
+      "nullRate": 0,
+      "zeroCount": 0,
+      "zeroRate": 0,
+      "distinct": 24,
+      "distinctCapped": false,
+      "example": "Minis"
+    },
+    {
+      "sourceField": "Motorizacion",
+      "type": "text",
+      "typeCounts": {
+        "text": 106623
+      },
+      "count": 106623,
+      "nullCount": 0,
+      "nullRate": 0,
+      "zeroCount": 0,
+      "zeroRate": 0,
+      "distinct": 11,
+      "distinctCapped": false,
+      "example": "Gasolina"
+    },
+    {
+      "sourceField": "Categoria",
+      "type": "text",
+      "typeCounts": {
+        "text": 106551,
+        "empty": 72
+      },
+      "count": 106623,
+      "nullCount": 72,
+      "nullRate": 0.0006752764412931544,
+      "zeroCount": 0,
+      "zeroRate": 0,
+      "distinct": 10,
+      "distinctCapped": false,
+      "example": "M1"
+    },
+    {
+      "sourceField": "MTMA",
+      "type": "integer",
+      "typeCounts": {
+        "integer": 106621,
+        "empty": 2
+      },
+      "count": 106623,
+      "nullCount": 2,
+      "nullRate": 0.000018757678924809845,
+      "zeroCount": 449,
+      "zeroRate": 0.00421109891861981,
+      "distinct": 1806,
+      "distinctCapped": false,
+      "min": 0,
+      "max": 200000,
+      "example": "1045"
+    },
+    {
+      "sourceField": "Consumo_NEDC",
+      "type": "decimal",
+      "typeCounts": {
+        "decimal": 35638,
+        "integer": 21810,
+        "empty": 49175
+      },
+      "count": 106623,
+      "nullCount": 49175,
+      "nullRate": 0.46120443056376204,
+      "zeroCount": 20009,
+      "zeroRate": 0.18766119880326007,
+      "distinct": 1176,
+      "distinctCapped": false,
+      "min": 0,
+      "max": 292,
+      "example": "7.3"
+    },
+    {
+      "sourceField": "Emisiones_NEDC",
+      "type": "decimal",
+      "typeCounts": {
+        "decimal": 17761,
+        "integer": 39687,
+        "empty": 49175
+      },
+      "count": 106623,
+      "nullCount": 49175,
+      "nullRate": 0.46120443056376204,
+      "zeroCount": 19959,
+      "zeroRate": 0.18719225683013985,
+      "distinct": 1743,
+      "distinctCapped": false,
+      "min": 0,
+      "max": 444,
+      "example": "163.5"
+    },
+    {
+      "sourceField": "Consumo_Mixto_WLTP_Min",
+      "type": "decimal",
+      "typeCounts": {
+        "decimal": 33881,
+        "integer": 23567,
+        "empty": 49175
+      },
+      "count": 106623,
+      "nullCount": 49175,
+      "nullRate": 0.46120443056376204,
+      "zeroCount": 20025,
+      "zeroRate": 0.18781126023465855,
+      "distinct": 805,
+      "distinctCapped": false,
+      "min": 0,
+      "max": 292,
+      "example": "7.2"
+    },
+    {
+      "sourceField": "Consumo_Mixto_WLTP_Max",
+      "type": "decimal",
+      "typeCounts": {
+        "decimal": 34066,
+        "integer": 23382,
+        "empty": 49175
+      },
+      "count": 106623,
+      "nullCount": 49175,
+      "nullRate": 0.46120443056376204,
+      "zeroCount": 20011,
+      "zeroRate": 0.18767995648218488,
+      "distinct": 826,
+      "distinctCapped": false,
+      "min": 0,
+      "max": 292,
+      "example": "7.4"
+    },
+    {
+      "sourceField": "Consumo_Mixto_WLTP",
+      "type": "decimal",
+      "typeCounts": {
+        "decimal": 35638,
+        "integer": 21810,
+        "empty": 49175
+      },
+      "count": 106623,
+      "nullCount": 49175,
+      "nullRate": 0.46120443056376204,
+      "zeroCount": 20009,
+      "zeroRate": 0.18766119880326007,
+      "distinct": 1176,
+      "distinctCapped": false,
+      "min": 0,
+      "max": 292,
+      "example": "7.3"
+    },
+    {
+      "sourceField": "Emisionies_CO2_Mixto_WLTP_Min",
+      "type": "integer",
+      "typeCounts": {
+        "integer": 91644,
+        "empty": 14979
+      },
+      "count": 106623,
+      "nullCount": 14979,
+      "nullRate": 0.14048563630736333,
+      "zeroCount": 24994,
+      "zeroRate": 0.2344147135233486,
+      "distinct": 327,
+      "distinctCapped": false,
+      "min": 0,
+      "max": 1135,
+      "example": "151"
+    },
+    {
+      "sourceField": "Emisionies_CO2_Mixto_WLTP_Max",
+      "type": "integer",
+      "typeCounts": {
+        "integer": 91644,
+        "empty": 14979
+      },
+      "count": 106623,
+      "nullCount": 14979,
+      "nullRate": 0.14048563630736333,
+      "zeroCount": 24990,
+      "zeroRate": 0.234377198165499,
+      "distinct": 329,
+      "distinctCapped": false,
+      "min": 0,
+      "max": 1135,
+      "example": "153"
+    },
+    {
+      "sourceField": "Autonomia_electrica",
+      "type": "integer",
+      "typeCounts": {
+        "integer": 103536,
+        "empty": 3087
+      },
+      "count": 106623,
+      "nullCount": 3087,
+      "nullRate": 0.028952477420443993,
+      "zeroCount": 91416,
+      "zeroRate": 0.8573759882952083,
+      "distinct": 901,
+      "distinctCapped": false,
+      "min": 0,
+      "max": 1667,
+      "example": "253"
+    },
+    {
+      "sourceField": "Consumo_Electrico",
+      "type": "decimal",
+      "typeCounts": {
+        "integer": 67116,
+        "decimal": 8608,
+        "empty": 30899
+      },
+      "count": 106623,
+      "nullCount": 30899,
+      "nullRate": 0.2897967605488497,
+      "zeroCount": 64825,
+      "zeroRate": 0.607983268150399,
+      "distinct": 824,
+      "distinctCapped": false,
+      "min": 0,
+      "max": 5000,
+      "example": "18.1"
+    },
+    {
+      "sourceField": "Observaciones",
+      "type": "mixed",
+      "typeCounts": {
+        "integer": 37438,
+        "empty": 59631,
+        "text": 9544,
+        "decimal": 10
+      },
+      "count": 106623,
+      "nullCount": 59631,
+      "nullRate": 0.5592695759826679,
+      "zeroCount": 37340,
+      "zeroRate": 0.3502058655261998,
+      "distinct": 1398,
+      "distinctCapped": false,
+      "min": 0,
+      "max": 45288,
+      "example": "Plataforma Aluminio Alto +-25"
+    }
+  ]
+}

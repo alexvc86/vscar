@@ -1,0 +1,322 @@
+{
+  "generatedFrom": {
+    "manifests": 104,
+    "idaeSha256": "cbfab8b7c811e60fbdd3d059bf89ee589b07e26f683f808de5928376e2977302"
+  },
+  "acquisition": {
+    "filesVerified": 104,
+    "bytes": 45206867,
+    "eeaAggregatedRows": 40708,
+    "eeaSourceRowsExamined": 1561322,
+    "eeaRegistrationsExamined": 1875908,
+    "eeaRowsWithoutIdentifiers": 98,
+    "eeaRegistrationsWithoutIdentifiers": 187,
+    "idaeRows": 106623,
+    "idaeM1Rows": 62394,
+    "idaeMainlandM1Rows": 58830,
+    "idaeFilteredOut": {
+      "category N1": 38964,
+      "category L6e": 114,
+      "category L7e": 482,
+      "category M3": 302,
+      "category L3e": 444,
+      "category M2": 14,
+      "category (empty)": 72,
+      "category N3": 1374,
+      "category N2": 2448,
+      "category L5e": 15
+    },
+    "idaeIssueCounts": {
+      "vehiculo_empty": 227,
+      "fuel_wltp_min_gt_max": 567,
+      "fuel_wltp_implausible": 212,
+      "fecha_actualizacion_invalid": 3,
+      "fecha_comercializacion_invalid": 10
+    },
+    "idaeWidthErrors": 0
+  },
+  "technicalGroups": 20062,
+  "technicalIdentities": 18191,
+  "clusters": 1907,
+  "all": {
+    "candidates": 1907,
+    "identity": {
+      "UNCONFIRMED": 1334,
+      "AMBIGUOUS": 530,
+      "CONFLICTED": 38,
+      "EXACT": 5
+    },
+    "curationStatus": {
+      "NEEDS_IDENTITY_REVIEW": 1902,
+      "NEEDS_DATA_COMPLETION": 5
+    },
+    "powertrainBucket": {
+      "ICE": 1588,
+      "HEV": 141,
+      "MHEV": 35,
+      "BEV": 81,
+      "PHEV": 62
+    },
+    "productClass": {
+      "ICE_OR_MHEV": 1588,
+      "HEV_OR_MHEV": 141,
+      "MHEV": 35,
+      "BEV": 81,
+      "PHEV": 62
+    },
+    "period": {
+      "2025–2026": 271,
+      "2019–2021": 340,
+      "2022–2024": 270,
+      "2015–2018": 1026
+    },
+    "families": 25,
+    "withRunningCostEnergyKey": 868,
+    "withPriceData": 0,
+    "withDimensionsBoot": 0,
+    "bevWithRange": 72,
+    "bev": 81,
+    "phevWithChargeSustaining": 0,
+    "phev": 62,
+    "idaeLinked": 601,
+    "criticalComplete": 0,
+    "meanCriticalCompleteness": 0.155,
+    "previewEligibleAfterD1Only": 72,
+    "publicEligible": 0,
+    "pendingRights": 1907,
+    "overlapsExistingCatalog": 2,
+    "historicalUpTo2018": 1026
+  },
+  "shortlist": {
+    "candidates": 100,
+    "identity": {
+      "EXACT": 4,
+      "UNCONFIRMED": 81,
+      "AMBIGUOUS": 15
+    },
+    "curationStatus": {
+      "NEEDS_DATA_COMPLETION": 4,
+      "NEEDS_IDENTITY_REVIEW": 96
+    },
+    "powertrainBucket": {
+      "ICE": 47,
+      "BEV": 20,
+      "MHEV": 3,
+      "HEV": 20,
+      "PHEV": 10
+    },
+    "productClass": {
+      "ICE_OR_MHEV": 47,
+      "BEV": 20,
+      "MHEV": 3,
+      "HEV_OR_MHEV": 20,
+      "PHEV": 10
+    },
+    "period": {
+      "2015–2018": 15,
+      "2025–2026": 35,
+      "2022–2024": 33,
+      "2019–2021": 17
+    },
+    "families": 25,
+    "withRunningCostEnergyKey": 82,
+    "withPriceData": 0,
+    "withDimensionsBoot": 0,
+    "bevWithRange": 19,
+    "bev": 20,
+    "phevWithChargeSustaining": 0,
+    "phev": 10,
+    "idaeLinked": 40,
+    "criticalComplete": 0,
+    "meanCriticalCompleteness": 0.176,
+    "previewEligibleAfterD1Only": 19,
+    "publicEligible": 0,
+    "pendingRights": 100,
+    "overlapsExistingCatalog": 2,
+    "historicalUpTo2018": 15
+  },
+  "pilot": {
+    "candidates": 20,
+    "identity": {
+      "EXACT": 2,
+      "UNCONFIRMED": 18
+    },
+    "curationStatus": {
+      "NEEDS_DATA_COMPLETION": 2,
+      "NEEDS_IDENTITY_REVIEW": 18
+    },
+    "powertrainBucket": {
+      "BEV": 3,
+      "ICE": 10,
+      "MHEV": 1,
+      "HEV": 3,
+      "PHEV": 3
+    },
+    "productClass": {
+      "BEV": 3,
+      "ICE_OR_MHEV": 10,
+      "MHEV": 1,
+      "HEV_OR_MHEV": 3,
+      "PHEV": 3
+    },
+    "period": {
+      "2025–2026": 7,
+      "2022–2024": 8,
+      "2019–2021": 4,
+      "2015–2018": 1
+    },
+    "families": 14,
+    "withRunningCostEnergyKey": 18,
+    "withPriceData": 0,
+    "withDimensionsBoot": 0,
+    "bevWithRange": 3,
+    "bev": 3,
+    "phevWithChargeSustaining": 0,
+    "phev": 3,
+    "idaeLinked": 7,
+    "criticalComplete": 0,
+    "meanCriticalCompleteness": 0.188,
+    "previewEligibleAfterD1Only": 3,
+    "publicEligible": 0,
+    "pendingRights": 20,
+    "overlapsExistingCatalog": 0,
+    "historicalUpTo2018": 1
+  },
+  "familiesWithoutCandidates": [],
+  "perFamily": {
+    "vw-golf": {
+      "clusters": 272,
+      "shortlisted": 7,
+      "registrations": 89406
+    },
+    "seat-leon": {
+      "clusters": 189,
+      "shortlisted": 1,
+      "registrations": 128601
+    },
+    "cupra-formentor": {
+      "clusters": 16,
+      "shortlisted": 2,
+      "registrations": 32698
+    },
+    "toyota-corolla": {
+      "clusters": 37,
+      "shortlisted": 3,
+      "registrations": 76833
+    },
+    "toyota-rav4": {
+      "clusters": 35,
+      "shortlisted": 3,
+      "registrations": 60865
+    },
+    "toyota-yaris": {
+      "clusters": 35,
+      "shortlisted": 3,
+      "registrations": 87128
+    },
+    "bmw-3": {
+      "clusters": 172,
+      "shortlisted": 1,
+      "registrations": 23497
+    },
+    "bmw-x3": {
+      "clusters": 68,
+      "shortlisted": 5,
+      "registrations": 23359
+    },
+    "tesla-model-3": {
+      "clusters": 28,
+      "shortlisted": 4,
+      "registrations": 24883
+    },
+    "tesla-model-y": {
+      "clusters": 19,
+      "shortlisted": 3,
+      "registrations": 13363
+    },
+    "byd-seal": {
+      "clusters": 3,
+      "shortlisted": 2,
+      "registrations": 3444
+    },
+    "hyundai-tucson": {
+      "clusters": 76,
+      "shortlisted": 5,
+      "registrations": 111452
+    },
+    "hyundai-kona": {
+      "clusters": 44,
+      "shortlisted": 7,
+      "registrations": 58972
+    },
+    "kia-sportage": {
+      "clusters": 67,
+      "shortlisted": 6,
+      "registrations": 92807
+    },
+    "kia-niro": {
+      "clusters": 19,
+      "shortlisted": 6,
+      "registrations": 44827
+    },
+    "renault-clio": {
+      "clusters": 76,
+      "shortlisted": 6,
+      "registrations": 129210
+    },
+    "renault-megane": {
+      "clusters": 100,
+      "shortlisted": 4,
+      "registrations": 62842
+    },
+    "peugeot-208": {
+      "clusters": 74,
+      "shortlisted": 5,
+      "registrations": 102434
+    },
+    "peugeot-308": {
+      "clusters": 93,
+      "shortlisted": 2,
+      "registrations": 63621
+    },
+    "peugeot-3008": {
+      "clusters": 39,
+      "shortlisted": 6,
+      "registrations": 74531
+    },
+    "dacia-sandero": {
+      "clusters": 39,
+      "shortlisted": 5,
+      "registrations": 172533
+    },
+    "nissan-qashqai": {
+      "clusters": 39,
+      "shortlisted": 4,
+      "registrations": 123958
+    },
+    "skoda-octavia": {
+      "clusters": 150,
+      "shortlisted": 3,
+      "registrations": 27899
+    },
+    "audi-a3": {
+      "clusters": 156,
+      "shortlisted": 2,
+      "registrations": 52614
+    },
+    "mercedes-a": {
+      "clusters": 61,
+      "shortlisted": 5,
+      "registrations": 52772
+    }
+  },
+  "idaeSemanticsCrossCheck": {
+    "pairs": 11631,
+    "emisionesNedc_matches_eeaWltp": 2965,
+    "emisionesNedc_matches_eeaNedc": 154,
+    "co2MinMax_matches_eeaNedc": 3744,
+    "co2MinMax_matches_eeaWltp": 114,
+    "fuelRange_contains_eeaFc": 1583,
+    "fuelRange_pairs": 1957
+  }
+}

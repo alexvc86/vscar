@@ -47,6 +47,9 @@ export const SOURCE_RIGHTS: Readonly<Record<string, SourceRights>> = {
   'S08-EU': pending,
   S09: pending,
   S10: pending,
+  // Step D1.1: RDW (CC0 según evidencia) y GIAVEH registrados como pendientes: sin aprobación humana no son PUBLIC.
+  S11: pending,
+  S12: pending,
   S20: pending,
   S21: pending,
   S22: pending,

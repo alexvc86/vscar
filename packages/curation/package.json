@@ -1,0 +1,26 @@
+{
+  "name": "@vscar/curation",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "VScar Step D1: curation candidates for the Spain catalogue from official sources (EEA survey + IDAE CSV). Technical grouping, identity classification, editorial curation priority, data vs publication readiness and a validated intermediate format for D2. Never writes to the database and never imports.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "d1:acquire": "node scripts/d1-acquire.ts",
+    "d1:build": "node scripts/d1-build.ts"
+  },
+  "dependencies": {
+    "@vscar/data-connectors": "workspace:*",
+    "@vscar/quality": "workspace:*",
+    "@vscar/vehicle-schema": "workspace:*",
+    "zod": "^3.25.67",
+    "@vscar/methodology": "workspace:*"
+  },
+  "devDependencies": {
+    "@vscar/fixtures": "workspace:*"
+  }
+}

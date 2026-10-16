@@ -1,0 +1,1901 @@
+[
+  {
+    "year": 2012,
+    "status": "FINAL",
+    "table": "[CO2Emission].[latest].[co2cars]",
+    "rows": 6510,
+    "registrations": 569427,
+    "columns": [
+      {
+        "sourceField": "MS",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Mp",
+        "present": true,
+        "nullRate": 0.30906298003072197
+      },
+      {
+        "sourceField": "VFN",
+        "present": true,
+        "nullRate": 1,
+        "distinct": 0
+      },
+      {
+        "sourceField": "Mh",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Man",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "MMS",
+        "present": true,
+        "nullRate": 0.88678955453149
+      },
+      {
+        "sourceField": "TAN",
+        "present": true,
+        "nullRate": 0.9995391705069124,
+        "distinct": 3
+      },
+      {
+        "sourceField": "T",
+        "present": true,
+        "nullRate": 0.01152073732718894,
+        "distinct": 530
+      },
+      {
+        "sourceField": "Va",
+        "present": true,
+        "nullRate": 0.02165898617511521,
+        "distinct": 2694
+      },
+      {
+        "sourceField": "Ve",
+        "present": true,
+        "nullRate": 0.1227342549923195,
+        "distinct": 2749
+      },
+      {
+        "sourceField": "Mk",
+        "present": true,
+        "nullRate": 0.00015360983102918587
+      },
+      {
+        "sourceField": "Cn",
+        "present": true,
+        "nullRate": 0.00030721966205837174,
+        "distinct": 527
+      },
+      {
+        "sourceField": "Ct",
+        "present": true,
+        "nullRate": 0.00015360983102918587
+      },
+      {
+        "sourceField": "Cr",
+        "present": true,
+        "nullRate": 1
+      },
+      {
+        "sourceField": "M (kg)",
+        "present": true,
+        "nullRate": 0.002457757296466974,
+        "zeroRate": 0,
+        "min": 487,
+        "max": 3725
+      },
+      {
+        "sourceField": "Mt",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Enedc (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Ewltp (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "W (mm)",
+        "present": true,
+        "nullRate": 0.004454685099846391,
+        "zeroRate": 0,
+        "min": 1247,
+        "max": 3970
+      },
+      {
+        "sourceField": "At1 (mm)",
+        "present": true,
+        "nullRate": 0.007987711213517665,
+        "zeroRate": 0.001075268817204301,
+        "min": 0,
+        "max": 2630
+      },
+      {
+        "sourceField": "At2 (mm)",
+        "present": true,
+        "nullRate": 0.007373271889400922,
+        "zeroRate": 0.001075268817204301,
+        "min": 0,
+        "max": 4573
+      },
+      {
+        "sourceField": "Ft",
+        "present": true,
+        "nullRate": 0,
+        "distinct": 5
+      },
+      {
+        "sourceField": "Fm",
+        "present": true,
+        "nullRate": 0.002150537634408602,
+        "distinct": 3
+      },
+      {
+        "sourceField": "Ec (cm3)",
+        "present": true,
+        "nullRate": 0.0016897081413210445,
+        "zeroRate": 0,
+        "min": 599,
+        "max": 6592
+      },
+      {
+        "sourceField": "Ep (KW)",
+        "present": true,
+        "nullRate": 0.9244239631336405,
+        "zeroRate": 0.013978494623655914,
+        "min": 0,
+        "max": 195
+      },
+      {
+        "sourceField": "Z (Wh/km)",
+        "present": true,
+        "nullRate": 0.9996927803379416,
+        "zeroRate": 0,
+        "min": 140,
+        "max": 140
+      },
+      {
+        "sourceField": "IT",
+        "present": true,
+        "nullRate": 1
+      },
+      {
+        "sourceField": "Ernedc (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Erwltp (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "De",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Vf",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "R",
+        "present": true,
+        "nullRate": 0,
+        "zeroRate": 0,
+        "min": 1,
+        "max": 8358
+      },
+      {
+        "sourceField": "Year",
+        "present": true,
+        "nullRate": 0,
+        "zeroRate": 0,
+        "min": 2012,
+        "max": 2012
+      },
+      {
+        "sourceField": "Status",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Version_file",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "E (g/km)",
+        "present": true,
+        "nullRate": 0.016129032258064516,
+        "zeroRate": 0.0016897081413210445,
+        "min": 0,
+        "max": 576
+      },
+      {
+        "sourceField": "Er (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Zr",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Dr",
+        "present": true,
+        "nullRate": 1
+      },
+      {
+        "sourceField": "Fc",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Ech",
+        "present": false
+      },
+      {
+        "sourceField": "RLFI",
+        "present": false
+      }
+    ]
+  },
+  {
+    "year": 2016,
+    "status": "FINAL",
+    "table": "[CO2Emission].[latest].[co2cars]",
+    "rows": 16517,
+    "registrations": 1185296,
+    "columns": [
+      {
+        "sourceField": "MS",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Mp",
+        "present": true,
+        "nullRate": 0.21305321789671247
+      },
+      {
+        "sourceField": "VFN",
+        "present": true,
+        "nullRate": 1,
+        "distinct": 0
+      },
+      {
+        "sourceField": "Mh",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Man",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "MMS",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "TAN",
+        "present": true,
+        "nullRate": 0,
+        "distinct": 1495
+      },
+      {
+        "sourceField": "T",
+        "present": true,
+        "nullRate": 0,
+        "distinct": 452
+      },
+      {
+        "sourceField": "Va",
+        "present": true,
+        "nullRate": 0,
+        "distinct": 3204
+      },
+      {
+        "sourceField": "Ve",
+        "present": true,
+        "nullRate": 0.0030271841133377732,
+        "distinct": 5902
+      },
+      {
+        "sourceField": "Mk",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Cn",
+        "present": true,
+        "nullRate": 0,
+        "distinct": 833
+      },
+      {
+        "sourceField": "Ct",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Cr",
+        "present": true,
+        "nullRate": 1
+      },
+      {
+        "sourceField": "M (kg)",
+        "present": true,
+        "nullRate": 0,
+        "zeroRate": 0,
+        "min": 845,
+        "max": 3685
+      },
+      {
+        "sourceField": "Mt",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Enedc (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Ewltp (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "W (mm)",
+        "present": true,
+        "nullRate": 0,
+        "zeroRate": 0,
+        "min": 999,
+        "max": 4325
+      },
+      {
+        "sourceField": "At1 (mm)",
+        "present": true,
+        "nullRate": 0,
+        "zeroRate": 0,
+        "min": 600,
+        "max": 2510
+      },
+      {
+        "sourceField": "At2 (mm)",
+        "present": true,
+        "nullRate": 0.0003632620936005328,
+        "zeroRate": 0,
+        "min": 540,
+        "max": 2120
+      },
+      {
+        "sourceField": "Ft",
+        "present": true,
+        "nullRate": 0,
+        "distinct": 6
+      },
+      {
+        "sourceField": "Fm",
+        "present": true,
+        "nullRate": 0,
+        "distinct": 3
+      },
+      {
+        "sourceField": "Ec (cm3)",
+        "present": true,
+        "nullRate": 0.0041169703941393715,
+        "zeroRate": 0,
+        "min": 647,
+        "max": 6752
+      },
+      {
+        "sourceField": "Ep (KW)",
+        "present": true,
+        "nullRate": 0.9048253314766604,
+        "zeroRate": 0,
+        "min": 51,
+        "max": 423
+      },
+      {
+        "sourceField": "Z (Wh/km)",
+        "present": true,
+        "nullRate": 0.994308893866925,
+        "zeroRate": 0,
+        "min": 110,
+        "max": 205
+      },
+      {
+        "sourceField": "IT",
+        "present": true,
+        "nullRate": 0.9969728158866622
+      },
+      {
+        "sourceField": "Ernedc (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Erwltp (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "De",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Vf",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "R",
+        "present": true,
+        "nullRate": 0,
+        "zeroRate": 0,
+        "min": 1,
+        "max": 14733
+      },
+      {
+        "sourceField": "Year",
+        "present": true,
+        "nullRate": 0,
+        "zeroRate": 0,
+        "min": 2016,
+        "max": 2016
+      },
+      {
+        "sourceField": "Status",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Version_file",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "E (g/km)",
+        "present": true,
+        "nullRate": 0,
+        "zeroRate": 0.004056426711872616,
+        "min": 0,
+        "max": 380
+      },
+      {
+        "sourceField": "Er (g/km)",
+        "present": true,
+        "nullRate": 0.9969728158866622,
+        "zeroRate": 0,
+        "min": 1,
+        "max": 4
+      },
+      {
+        "sourceField": "Zr",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Dr",
+        "present": true,
+        "nullRate": 1
+      },
+      {
+        "sourceField": "Fc",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Ech",
+        "present": false
+      },
+      {
+        "sourceField": "RLFI",
+        "present": false
+      }
+    ]
+  },
+  {
+    "year": 2018,
+    "status": "FINAL",
+    "table": "[CO2Emission].[latest].[co2cars]",
+    "rows": 1379682,
+    "registrations": 1379682,
+    "columns": [
+      {
+        "sourceField": "MS",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Mp",
+        "present": true,
+        "nullRate": 0.06370308520369186
+      },
+      {
+        "sourceField": "VFN",
+        "present": true,
+        "nullRate": 0.8322787424928353,
+        "distinct": 973
+      },
+      {
+        "sourceField": "Mh",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Man",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "MMS",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "TAN",
+        "present": true,
+        "nullRate": 0.00000434882820823929,
+        "distinct": 1798
+      },
+      {
+        "sourceField": "T",
+        "present": true,
+        "nullRate": 0.00000434882820823929,
+        "distinct": 396
+      },
+      {
+        "sourceField": "Va",
+        "present": true,
+        "nullRate": 0.00000434882820823929,
+        "distinct": 2802
+      },
+      {
+        "sourceField": "Ve",
+        "present": true,
+        "nullRate": 0.00000579843761098572,
+        "distinct": 6879
+      },
+      {
+        "sourceField": "Mk",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Cn",
+        "present": true,
+        "nullRate": 7.24804701373215e-7,
+        "distinct": 913
+      },
+      {
+        "sourceField": "Ct",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Cr",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "M (kg)",
+        "present": true,
+        "nullRate": 0.000005073632909612505,
+        "zeroRate": 0,
+        "min": 880,
+        "max": 2751
+      },
+      {
+        "sourceField": "Mt",
+        "present": true,
+        "nullRate": 0.781266262805487,
+        "zeroRate": 0,
+        "min": 985,
+        "max": 2823
+      },
+      {
+        "sourceField": "Enedc (g/km)",
+        "present": true,
+        "nullRate": 0.000047112305589258975,
+        "zeroRate": 0.004274898128699222,
+        "min": 0,
+        "max": 337
+      },
+      {
+        "sourceField": "Ewltp (g/km)",
+        "present": true,
+        "nullRate": 0.7778915721158933,
+        "zeroRate": 0.0015075937788562872,
+        "min": 0,
+        "max": 362
+      },
+      {
+        "sourceField": "W (mm)",
+        "present": true,
+        "nullRate": 0.000007972851715105366,
+        "zeroRate": 0,
+        "min": 1424,
+        "max": 3850
+      },
+      {
+        "sourceField": "At1 (mm)",
+        "present": true,
+        "nullRate": 0,
+        "zeroRate": 0,
+        "min": 1159,
+        "max": 2836
+      },
+      {
+        "sourceField": "At2 (mm)",
+        "present": true,
+        "nullRate": 0.000007972851715105366,
+        "zeroRate": 0,
+        "min": 1159,
+        "max": 1790
+      },
+      {
+        "sourceField": "Ft",
+        "present": true,
+        "nullRate": 7.24804701373215e-7,
+        "distinct": 9
+      },
+      {
+        "sourceField": "Fm",
+        "present": true,
+        "nullRate": 0,
+        "distinct": 3
+      },
+      {
+        "sourceField": "Ec (cm3)",
+        "present": true,
+        "nullRate": 0.004279246956907462,
+        "zeroRate": 0,
+        "min": 647,
+        "max": 5980
+      },
+      {
+        "sourceField": "Ep (KW)",
+        "present": true,
+        "nullRate": 0.00047692149350357546,
+        "zeroRate": 0,
+        "min": 20,
+        "max": 530
+      },
+      {
+        "sourceField": "Z (Wh/km)",
+        "present": true,
+        "nullRate": 0.9922801051256739,
+        "zeroRate": 0,
+        "min": 85,
+        "max": 413
+      },
+      {
+        "sourceField": "IT",
+        "present": true,
+        "nullRate": 0.9591579798823207
+      },
+      {
+        "sourceField": "Ernedc (g/km)",
+        "present": true,
+        "nullRate": 0.9669206382340279,
+        "zeroRate": 0,
+        "min": 1,
+        "max": 4
+      },
+      {
+        "sourceField": "Erwltp (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "De",
+        "present": true,
+        "nullRate": 0.9683731468555797,
+        "zeroRate": 0.012281815664769128,
+        "min": -0.0661,
+        "max": 0.137
+      },
+      {
+        "sourceField": "Vf",
+        "present": true,
+        "nullRate": 0.9397694541205872,
+        "zeroRate": 0.05911652105340216,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "sourceField": "R",
+        "present": true,
+        "nullRate": 0,
+        "zeroRate": 0,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "sourceField": "Year",
+        "present": true,
+        "nullRate": 0,
+        "zeroRate": 0,
+        "min": 2018,
+        "max": 2018
+      },
+      {
+        "sourceField": "Status",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Version_file",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "E (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Er (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Zr",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Dr",
+        "present": true,
+        "nullRate": 1
+      },
+      {
+        "sourceField": "Fc",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Ech",
+        "present": false
+      },
+      {
+        "sourceField": "RLFI",
+        "present": false
+      }
+    ]
+  },
+  {
+    "year": 2020,
+    "status": "FINAL",
+    "table": "[CO2Emission].[latest].[co2cars]",
+    "rows": 919334,
+    "registrations": 919334,
+    "columns": [
+      {
+        "sourceField": "MS",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Mp",
+        "present": true,
+        "nullRate": 0.01452138178289936
+      },
+      {
+        "sourceField": "VFN",
+        "present": true,
+        "nullRate": 0.008926026884679562,
+        "distinct": 3568
+      },
+      {
+        "sourceField": "Mh",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Man",
+        "present": true,
+        "nullRate": 0.00007505433281049107
+      },
+      {
+        "sourceField": "MMS",
+        "present": true,
+        "nullRate": 0.04732012522108396
+      },
+      {
+        "sourceField": "TAN",
+        "present": true,
+        "nullRate": 0.0003926755673128591,
+        "distinct": 2362
+      },
+      {
+        "sourceField": "T",
+        "present": true,
+        "nullRate": 0.0003002173312419643,
+        "distinct": 472
+      },
+      {
+        "sourceField": "Va",
+        "present": true,
+        "nullRate": 0.00007831756467181677,
+        "distinct": 2624
+      },
+      {
+        "sourceField": "Ve",
+        "present": true,
+        "nullRate": 0.000751631072058686,
+        "distinct": 9799
+      },
+      {
+        "sourceField": "Mk",
+        "present": true,
+        "nullRate": 0.017857492489127998
+      },
+      {
+        "sourceField": "Cn",
+        "present": true,
+        "nullRate": 0.029892291593697176,
+        "distinct": 956
+      },
+      {
+        "sourceField": "Ct",
+        "present": true,
+        "nullRate": 0.017874896392388404
+      },
+      {
+        "sourceField": "Cr",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "M (kg)",
+        "present": true,
+        "nullRate": 0.00006308914931896352,
+        "zeroRate": 0,
+        "min": 675,
+        "max": 4845
+      },
+      {
+        "sourceField": "Mt",
+        "present": true,
+        "nullRate": 0.007022474965572904,
+        "zeroRate": 0,
+        "min": 982,
+        "max": 3514
+      },
+      {
+        "sourceField": "Enedc (g/km)",
+        "present": true,
+        "nullRate": 0.00006635238118028921,
+        "zeroRate": 0.019918767281532065,
+        "min": 0,
+        "max": 452
+      },
+      {
+        "sourceField": "Ewltp (g/km)",
+        "present": true,
+        "nullRate": 0.0029379964191469043,
+        "zeroRate": 0.019839361972906474,
+        "min": 0,
+        "max": 486
+      },
+      {
+        "sourceField": "W (mm)",
+        "present": true,
+        "nullRate": 0.017940161029614918,
+        "zeroRate": 0,
+        "min": 1867,
+        "max": 4480
+      },
+      {
+        "sourceField": "At1 (mm)",
+        "present": true,
+        "nullRate": 0.0180989716468661,
+        "zeroRate": 0,
+        "min": 187,
+        "max": 2950
+      },
+      {
+        "sourceField": "At2 (mm)",
+        "present": true,
+        "nullRate": 0.01796191590869042,
+        "zeroRate": 0,
+        "min": 1200,
+        "max": 2720
+      },
+      {
+        "sourceField": "Ft",
+        "present": true,
+        "nullRate": 0,
+        "distinct": 12
+      },
+      {
+        "sourceField": "Fm",
+        "present": true,
+        "nullRate": 0.000034807806520807456,
+        "distinct": 6
+      },
+      {
+        "sourceField": "Ec (cm3)",
+        "present": true,
+        "nullRate": 0.03750323603826248,
+        "zeroRate": 0,
+        "min": 647,
+        "max": 6752
+      },
+      {
+        "sourceField": "Ep (KW)",
+        "present": true,
+        "nullRate": 0.022374893129156543,
+        "zeroRate": 0,
+        "min": 2,
+        "max": 1000
+      },
+      {
+        "sourceField": "Z (Wh/km)",
+        "present": true,
+        "nullRate": 0.9740235866398936,
+        "zeroRate": 0,
+        "min": 100,
+        "max": 373
+      },
+      {
+        "sourceField": "IT",
+        "present": true,
+        "nullRate": 0.42455734259801114
+      },
+      {
+        "sourceField": "Ernedc (g/km)",
+        "present": true,
+        "nullRate": 0.48540682711615146,
+        "zeroRate": 0.000013052927445302795,
+        "min": 0,
+        "max": 6.4
+      },
+      {
+        "sourceField": "Erwltp (g/km)",
+        "present": true,
+        "nullRate": 0.9617288167303722,
+        "zeroRate": 0,
+        "min": 0.5,
+        "max": 2.3
+      },
+      {
+        "sourceField": "De",
+        "present": true,
+        "nullRate": 0.9159739550587708,
+        "zeroRate": 0.0013466270147737384,
+        "min": -0.11,
+        "max": 0.04
+      },
+      {
+        "sourceField": "Vf",
+        "present": true,
+        "nullRate": 0.9047952104458228,
+        "zeroRate": 0.09520478955417726,
+        "min": 0,
+        "max": 0
+      },
+      {
+        "sourceField": "R",
+        "present": true,
+        "nullRate": 0,
+        "zeroRate": 0,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "sourceField": "Year",
+        "present": true,
+        "nullRate": 0,
+        "zeroRate": 0,
+        "min": 2020,
+        "max": 2020
+      },
+      {
+        "sourceField": "Status",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Version_file",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "E (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Er (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Zr",
+        "present": true,
+        "nullRate": 0.9772106764244551,
+        "zeroRate": 0,
+        "min": 19,
+        "max": 484
+      },
+      {
+        "sourceField": "Dr",
+        "present": true,
+        "nullRate": 1
+      },
+      {
+        "sourceField": "Fc",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Ech",
+        "present": false
+      },
+      {
+        "sourceField": "RLFI",
+        "present": false
+      }
+    ]
+  },
+  {
+    "year": 2022,
+    "status": "FINAL",
+    "table": "[CO2Emission].[latest].[co2cars_2022Fv26]",
+    "rows": 851105,
+    "registrations": 851105,
+    "columns": [
+      {
+        "sourceField": "MS",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Mp",
+        "present": true,
+        "nullRate": 0.05708813836130677
+      },
+      {
+        "sourceField": "VFN",
+        "present": true,
+        "nullRate": 0.031710541002579,
+        "distinct": 2298
+      },
+      {
+        "sourceField": "Mh",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Man",
+        "present": true,
+        "nullRate": 0.00007754624870021913
+      },
+      {
+        "sourceField": "MMS",
+        "present": true,
+        "nullRate": 1
+      },
+      {
+        "sourceField": "TAN",
+        "present": true,
+        "nullRate": 0.00023498863242490644,
+        "distinct": 2596
+      },
+      {
+        "sourceField": "T",
+        "present": true,
+        "nullRate": 0.0005721973199546472,
+        "distinct": 828
+      },
+      {
+        "sourceField": "Va",
+        "present": true,
+        "nullRate": 0.00034073351701611435,
+        "distinct": 2985
+      },
+      {
+        "sourceField": "Ve",
+        "present": true,
+        "nullRate": 0.0009376046433753767,
+        "distinct": 8638
+      },
+      {
+        "sourceField": "Mk",
+        "present": true,
+        "nullRate": 0.00010691982775333243
+      },
+      {
+        "sourceField": "Cn",
+        "present": true,
+        "nullRate": 0.00010691982775333243,
+        "distinct": 3231
+      },
+      {
+        "sourceField": "Ct",
+        "present": true,
+        "nullRate": 0.00010691982775333243
+      },
+      {
+        "sourceField": "Cr",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "M (kg)",
+        "present": true,
+        "nullRate": 0.00011749431621245322,
+        "zeroRate": 0,
+        "min": 700,
+        "max": 4525
+      },
+      {
+        "sourceField": "Mt",
+        "present": true,
+        "nullRate": 0.008574735197184836,
+        "zeroRate": 0,
+        "min": 906,
+        "max": 3519
+      },
+      {
+        "sourceField": "Enedc (g/km)",
+        "present": true,
+        "nullRate": 0.9314502910921684,
+        "zeroRate": 0.03738551647564049,
+        "min": 0,
+        "max": 49
+      },
+      {
+        "sourceField": "Ewltp (g/km)",
+        "present": true,
+        "nullRate": 0.0003278091422327445,
+        "zeroRate": 0.03738551647564049,
+        "min": 0,
+        "max": 730
+      },
+      {
+        "sourceField": "W (mm)",
+        "present": true,
+        "nullRate": 0.00033838363069186526,
+        "zeroRate": 0,
+        "min": 750,
+        "max": 4750
+      },
+      {
+        "sourceField": "At1 (mm)",
+        "present": true,
+        "nullRate": 0.00040183056144659,
+        "zeroRate": 0,
+        "min": 937,
+        "max": 2835
+      },
+      {
+        "sourceField": "At2 (mm)",
+        "present": true,
+        "nullRate": 0.0029326581326628324,
+        "zeroRate": 0,
+        "min": 650,
+        "max": 2597
+      },
+      {
+        "sourceField": "Ft",
+        "present": true,
+        "nullRate": 0,
+        "distinct": 9
+      },
+      {
+        "sourceField": "Fm",
+        "present": true,
+        "nullRate": 0.00010809477091545696,
+        "distinct": 6
+      },
+      {
+        "sourceField": "Ec (cm3)",
+        "present": true,
+        "nullRate": 0.03750418573501507,
+        "zeroRate": 0,
+        "min": 654,
+        "max": 7516
+      },
+      {
+        "sourceField": "Ep (KW)",
+        "present": true,
+        "nullRate": 0.004605777195528167,
+        "zeroRate": 0,
+        "min": 7,
+        "max": 932
+      },
+      {
+        "sourceField": "Z (Wh/km)",
+        "present": true,
+        "nullRate": 0.9060656440744679,
+        "zeroRate": 0,
+        "min": 28,
+        "max": 407
+      },
+      {
+        "sourceField": "IT",
+        "present": true,
+        "nullRate": 0.18950305778957943
+      },
+      {
+        "sourceField": "Ernedc (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Erwltp (g/km)",
+        "present": true,
+        "nullRate": 0.3187479805664401,
+        "zeroRate": 0,
+        "min": 0.5,
+        "max": 2.72
+      },
+      {
+        "sourceField": "De",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Vf",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "R",
+        "present": true,
+        "nullRate": 0,
+        "zeroRate": 0,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "sourceField": "Year",
+        "present": true,
+        "nullRate": 0,
+        "zeroRate": 0,
+        "min": 2022,
+        "max": 2022
+      },
+      {
+        "sourceField": "Status",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Version_file",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "E (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Er (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Zr",
+        "present": true,
+        "nullRate": 0.9060938427103589,
+        "zeroRate": 0,
+        "min": 13,
+        "max": 739
+      },
+      {
+        "sourceField": "Dr",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Fc",
+        "present": true,
+        "nullRate": 0.08022041933721456,
+        "zeroRate": 0,
+        "min": 0.5,
+        "max": 24.1
+      },
+      {
+        "sourceField": "Ech",
+        "present": false
+      },
+      {
+        "sourceField": "RLFI",
+        "present": false
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "status": "FINAL",
+    "table": "[CO2Emission].[latest].[co2cars_2024Fv30]",
+    "rows": 1056889,
+    "registrations": 1056889,
+    "columns": [
+      {
+        "sourceField": "MS",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Mp",
+        "present": true,
+        "nullRate": 0.0685502451061559
+      },
+      {
+        "sourceField": "VFN",
+        "present": true,
+        "nullRate": 0.00043997051724447883,
+        "distinct": 2958
+      },
+      {
+        "sourceField": "Mh",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Man",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "MMS",
+        "present": true,
+        "nullRate": 1
+      },
+      {
+        "sourceField": "TAN",
+        "present": true,
+        "nullRate": 0,
+        "distinct": 1810
+      },
+      {
+        "sourceField": "T",
+        "present": true,
+        "nullRate": 9.461731553644706e-7,
+        "distinct": 449
+      },
+      {
+        "sourceField": "Va",
+        "present": true,
+        "nullRate": 0.00002649284835020518,
+        "distinct": 2044
+      },
+      {
+        "sourceField": "Ve",
+        "present": true,
+        "nullRate": 0.00022613538413210848,
+        "distinct": 7073
+      },
+      {
+        "sourceField": "Mk",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Cn",
+        "present": true,
+        "nullRate": 0.0000028385194660934118,
+        "distinct": 1854
+      },
+      {
+        "sourceField": "Ct",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Cr",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "M (kg)",
+        "present": true,
+        "nullRate": 9.461731553644706e-7,
+        "zeroRate": 0,
+        "min": 865,
+        "max": 3410
+      },
+      {
+        "sourceField": "Mt",
+        "present": true,
+        "nullRate": 0.0003652228379706857,
+        "zeroRate": 0,
+        "min": 906,
+        "max": 3257
+      },
+      {
+        "sourceField": "Enedc (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Ewltp (g/km)",
+        "present": true,
+        "nullRate": 0.0000028385194660934118,
+        "zeroRate": 0.05599547350762474,
+        "min": 0,
+        "max": 456
+      },
+      {
+        "sourceField": "W (mm)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "At1 (mm)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "At2 (mm)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Ft",
+        "present": true,
+        "nullRate": 0,
+        "distinct": 8
+      },
+      {
+        "sourceField": "Fm",
+        "present": true,
+        "nullRate": 0,
+        "distinct": 5
+      },
+      {
+        "sourceField": "Ec (cm3)",
+        "present": true,
+        "nullRate": 0.05599547350762474,
+        "zeroRate": 0,
+        "min": 875,
+        "max": 6498
+      },
+      {
+        "sourceField": "Ep (KW)",
+        "present": true,
+        "nullRate": 0.0017835363978620272,
+        "zeroRate": 0,
+        "min": 4,
+        "max": 932
+      },
+      {
+        "sourceField": "Z (Wh/km)",
+        "present": true,
+        "nullRate": 0.8879409285175642,
+        "zeroRate": 0,
+        "min": 101,
+        "max": 343
+      },
+      {
+        "sourceField": "IT",
+        "present": true,
+        "nullRate": 0.3543532007618586
+      },
+      {
+        "sourceField": "Ernedc (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Erwltp (g/km)",
+        "present": true,
+        "nullRate": 0.3543532007618586,
+        "zeroRate": 0,
+        "min": 0.5,
+        "max": 2.78
+      },
+      {
+        "sourceField": "De",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Vf",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "R",
+        "present": true,
+        "nullRate": 0,
+        "zeroRate": 0,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "sourceField": "Year",
+        "present": true,
+        "nullRate": 0,
+        "zeroRate": 0,
+        "min": 2024,
+        "max": 2024
+      },
+      {
+        "sourceField": "Status",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Version_file",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "E (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Er (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Zr",
+        "present": true,
+        "nullRate": 0.8879409285175642,
+        "zeroRate": 0,
+        "min": 12,
+        "max": 785
+      },
+      {
+        "sourceField": "Dr",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Fc",
+        "present": true,
+        "nullRate": 0.08692587395648928,
+        "zeroRate": 0,
+        "min": 0.3,
+        "max": 20.1
+      },
+      {
+        "sourceField": "Ech",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "RLFI",
+        "present": true,
+        "nullRate": 0.312298642525374
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "status": "PROVISIONAL",
+    "table": "[CO2Emission].[latest].[co2cars_2025Pv31]",
+    "rows": 1196466,
+    "registrations": 1196466,
+    "columns": [
+      {
+        "sourceField": "MS",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Mp",
+        "present": true,
+        "nullRate": 0.6142330830963855
+      },
+      {
+        "sourceField": "VFN",
+        "present": true,
+        "nullRate": 0.09221908520593147,
+        "distinct": 2373
+      },
+      {
+        "sourceField": "Mh",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Man",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "MMS",
+        "present": true,
+        "nullRate": 1
+      },
+      {
+        "sourceField": "TAN",
+        "present": true,
+        "nullRate": 0.000005014768493212511,
+        "distinct": 2080
+      },
+      {
+        "sourceField": "T",
+        "present": true,
+        "nullRate": 0.00035939174201356325,
+        "distinct": 468
+      },
+      {
+        "sourceField": "Va",
+        "present": true,
+        "nullRate": 0.000005014768493212511,
+        "distinct": 2027
+      },
+      {
+        "sourceField": "Ve",
+        "present": true,
+        "nullRate": 0.0000058505632420812624,
+        "distinct": 7048
+      },
+      {
+        "sourceField": "Mk",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Cn",
+        "present": true,
+        "nullRate": 0.0000016715894977375037,
+        "distinct": 1886
+      },
+      {
+        "sourceField": "Ct",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Cr",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "M (kg)",
+        "present": true,
+        "nullRate": 0,
+        "zeroRate": 0,
+        "min": 865,
+        "max": 3085
+      },
+      {
+        "sourceField": "Mt",
+        "present": true,
+        "nullRate": 0.004527500154622028,
+        "zeroRate": 0,
+        "min": 906,
+        "max": 3257
+      },
+      {
+        "sourceField": "Enedc (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Ewltp (g/km)",
+        "present": true,
+        "nullRate": 0.00010447434360859397,
+        "zeroRate": 0.08768657028281622,
+        "min": 0,
+        "max": 393
+      },
+      {
+        "sourceField": "W (mm)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "At1 (mm)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "At2 (mm)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Ft",
+        "present": true,
+        "nullRate": 0,
+        "distinct": 8
+      },
+      {
+        "sourceField": "Fm",
+        "present": true,
+        "nullRate": 0,
+        "distinct": 5
+      },
+      {
+        "sourceField": "Ec (cm3)",
+        "present": true,
+        "nullRate": 0.08768657028281622,
+        "zeroRate": 0,
+        "min": 998,
+        "max": 6498
+      },
+      {
+        "sourceField": "Ep (KW)",
+        "present": true,
+        "nullRate": 0.001242826791567834,
+        "zeroRate": 0,
+        "min": 8,
+        "max": 932
+      },
+      {
+        "sourceField": "Z (Wh/km)",
+        "present": true,
+        "nullRate": 0.8067040768396261,
+        "zeroRate": 0,
+        "min": 16,
+        "max": 349
+      },
+      {
+        "sourceField": "IT",
+        "present": true,
+        "nullRate": 0.4298534183169434
+      },
+      {
+        "sourceField": "Ernedc (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Erwltp (g/km)",
+        "present": true,
+        "nullRate": 0.4299018944123778,
+        "zeroRate": 0,
+        "min": 0.5,
+        "max": 2.78
+      },
+      {
+        "sourceField": "De",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Vf",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "R",
+        "present": true,
+        "nullRate": 0,
+        "zeroRate": 0,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "sourceField": "Year",
+        "present": true,
+        "nullRate": 0,
+        "zeroRate": 0,
+        "min": 2025,
+        "max": 2025
+      },
+      {
+        "sourceField": "Status",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Version_file",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "E (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Er (g/km)",
+        "present": true,
+        "nullRate": 1,
+        "zeroRate": 0
+      },
+      {
+        "sourceField": "Zr",
+        "present": true,
+        "nullRate": 0.8067734478037821,
+        "zeroRate": 0,
+        "min": 11,
+        "max": 801
+      },
+      {
+        "sourceField": "Dr",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "Fc",
+        "present": true,
+        "nullRate": 0.15305491338659016,
+        "zeroRate": 0,
+        "min": 0.3,
+        "max": 17.3
+      },
+      {
+        "sourceField": "Ech",
+        "present": true,
+        "nullRate": 0
+      },
+      {
+        "sourceField": "RLFI",
+        "present": true,
+        "nullRate": 0.1975400888951295
+      }
+    ]
+  }
+]

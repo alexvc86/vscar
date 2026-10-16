@@ -460,6 +460,53 @@ Siguiente:
 - **Step 7c — Comparison URL / Share / richer catalog pages**.
 - En el data workstream: primeras imágenes con derechos verificados (propias o licenciadas) y derechos de S08/S02/S04 para el canal PUBLIC.
 
+## STEP D1.1 — RDW + GIAVEH Technical Data Enrichment Pilot · ⚠️ SOURCE AUDIT PASS · ENRICHMENT PARTIAL (2026-10-16)
+
+| Entregable | Estado |
+|---|---|
+| RDW: 12 conjuntos TGK identificados, 8 usados, glosario oficial, licencia por recurso — [RDW_SOURCE_AUDIT_V0_1](data/RDW_SOURCE_AUDIT_V0_1.md) | ✅ |
+| GIAVEH: CSV + API inspeccionados; **solo TAN/tipo/marca, sin datos técnicos** — [GIAVEH_SOURCE_AUDIT_V0_1](data/GIAVEH_SOURCE_AUDIT_V0_1.md) | ✅ (no enriquece) |
+| Adapter RDW (`data-connectors/src/rdw`): SoQL seguro, paginación determinista, 429 con Retry-After, normalización, match por TAN completo + Va + Ve, mapeo v1 con procedencia; lector GIAVEH mínimo | ✅ |
+| Identidad RDW ↔ EEA — [RDW_EEA_IDENTITY_MATCH_V0_1](data/RDW_EEA_IDENTITY_MATCH_V0_1.md) | ✅ |
+| Piloto de 10 — [D1_1_ENRICHMENT_PILOT_V0_1](data/D1_1_ENRICHMENT_PILOT_V0_1.md) | ⚠️ técnico 9/10 EXACT; comercial 4 → 4 |
+| Estimación sobre 100 — [D1_1_100_VARIANT_EXPANSION_ESTIMATE](data/D1_1_100_VARIANT_EXPANSION_ESTIMATE.md) | ✅ medido (RDW EXACT 95/100) |
+| DATA_RIGHTS_MATRIX + `SOURCE_RIGHTS`: S11 RDW y S12 GIAVEH registradas con ❓ (PUBLIC sin cambios) | ✅ |
+
+Resultados:
+- **Completitud crítica** (misma función que D1): piloto 18,7 % → 22,8 % (EEA + regla DGT existente) → **50,8 %** con RDW; lista de 100: 17,6 % → 21,5 % → **54,3 %**.
+- **Calidad real** (`@vscar/quality`) sobre Golf 2018 `*33`/`*35` del catálogo: completitud 9,5 % → **26,7 %**, Eco pasa a AVAILABLE (etiqueta `C` con la norma Euro de RDW); Size/Practicality solo fallan por maletero.
+- RDW **no** confirma identidad comercial (trim): EXACT 4 → 4. Faltan siempre maletero, 0–100, precio y garantía (S08). Consumo CS de PHEV: 1 de 10.
+- 4 conflictos EEA ↔ RDW conservados (BYD SEAL: consumo eléctrico y autonomía). RDW rellena campos "NEDC" en homologaciones WLTP (anomalía: ignorados).
+- Corrección documentada (no aplicada a D1): el candidato D1 #2 (BYD SEAL `SE2R1C`/`2NTE5F002NL1`) es la misma identidad que DC-08 del catálogo; D1 no lo detectó porque el fixture guarda el TAN sin extensión.
+
+Siguiente: D2 condicionado a CoC/ITV (identidad comercial), decisión S08 y aprobación humana de S11.
+
+## STEP D1 — Spain Vehicle Dataset Acquisition & Rights Validation · ⚠️ PARTIAL (2026-10-16)
+
+Investigación, adquisición y evaluación de datos para el catálogo España. **Sin importación, sin cambios de motores, metodología (2026.7), web, canales ni derechos.**
+
+| Entregable | Estado |
+|---|---|
+| Fuentes inventariadas y verificadas (EEA discodata, IDAE CSV, 11 fabricantes, Euro NCAP, DGT) — [SPAIN_DATASET_SOURCES_V0_1](data/SPAIN_DATASET_SOURCES_V0_1.md) | ✅ |
+| Adquisición reproducible: 104 brutos con SHA-256 + manifiestos ([`d1/acquisition-manifests.json`](data/d1/acquisition-manifests.json)); brutos fuera de Git | ✅ |
+| Inventario real de columnas EEA (7 años) e IDAE + schema drift + mapeo a SpecKeys — [EEA_IDAE_SCHEMA_MAPPING_V0_1](data/EEA_IDAE_SCHEMA_MAPPING_V0_1.md) | ✅ |
+| Adapter IDAE nuevo (`data-connectors/src/idae`), encuesta EEA (`eea/survey.ts`), CSV en streaming, inventario, manifiestos; cliente EEA con POST para consultas largas | ✅ |
+| `@vscar/curation`: deduplicación (TAN/Va/Ve → identidad → clúster, NEDC ≠ WLTP), identidad EXACT/PARTIAL/AMBIGUOUS/UNCONFIRMED/CONFLICTED, cobertura con claves críticas existentes, prioridad editorial, data vs publication readiness, JSONL validado | ✅ |
+| 100 candidatos en 25 familias + piloto de 20 — [SPAIN_100_VARIANT_CANDIDATES_V0_1](data/SPAIN_100_VARIANT_CANDIDATES_V0_1.md) | ✅ candidatos · ⚠️ **4 identidades EXACT** |
+| Cobertura y capacidad para comparar — [SPAIN_DATASET_COVERAGE_V0_1](data/SPAIN_DATASET_COVERAGE_V0_1.md) | ✅ (0 candidatas con claves críticas completas) |
+| Derechos — [SPAIN_DATA_RIGHTS_AUDIT_V0_1](data/SPAIN_DATA_RIGHTS_AUDIT_V0_1.md); DATA_RIGHTS_MATRIX con evidencia, **estados sin cambios** | ✅ evidencia · ⏳ decisión legal |
+| Plan D2 — [SPAIN_DATASET_IMPORT_PLAN_V0_1](data/SPAIN_DATASET_IMPORT_PLAN_V0_1.md) · objetivo 100 registrado en [ADR-018](adr/ADR-018-catalog-target-100-curated-incremental.md) | ✅ |
+
+Hallazgos principales:
+- **Identidad**: de 1.907 clústeres técnicos, solo 5 tienen identidad EXACT demostrable (Golf 2018 `*33`/`*35` ya curados; 3 BYD SEAL por código IDAE = Va/Ve). El resto necesita CoC/ficha técnica.
+- **Datos**: EEA + IDAE cubren identidad técnica, CO₂ y energía; **precio, dimensiones, maletero, plazas, 0–100, carga y garantía solo vienen del fabricante** → 0 candidatas con claves críticas completas.
+- **IDAE**: las etiquetas de CO₂ del CSV están intercambiadas (contraste con EEA en 12.504 pares) y `Consumo_Mixto_WLTP` es un punto medio calculado → UNMAPPED.
+- **EEA**: sin `TAN` en 2012 (2010–2014 sin identidad EEA); CO₂ ≤ 2016 en `E (g/km)` (no leído por el adapter v0.2 → propuesta v3).
+- **Derechos**: EEA CC BY 4.0; IDAE y los 8 fabricantes accesibles restringen reutilización/uso comercial sin autorización; BMW, Tesla y Peugeot no accesibles. **PUBLIC gate sin cambios: 0 elegibles.**
+- MHEV no es separable con fuentes públicas (EEA homologa MHEV como ICE o NOVC_HEV).
+
+Siguiente: **Step D2 — First 20 Curated Variants** (CONDICIONAL: CoC/fichas para EXACT y decisión sobre derechos S08 para completar datos; todo en PREVIEW).
+
 ## STEP 8c — New/Used Decision Experience Hardening · ✅ PASS (2026-10-16)
 
 Estabilización del Alpha: auditoría de lo que LEE la persona en NEW/NEW, NEW/USED, USED/NEW y USED/USED (HTML real ES/EN + 15 casos dorados). Sin cambio de metodología (2026.7) ni del Economic Fit (sigue en coste de uso). Detalle: [NEW_USED_DECISION_AUDIT_V0_1](used/NEW_USED_DECISION_AUDIT_V0_1.md) · [NEW_USED_GOLDEN_CASES_V0_1](used/NEW_USED_GOLDEN_CASES_V0_1.md).
