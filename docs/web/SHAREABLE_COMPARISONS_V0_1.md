@@ -104,6 +104,12 @@ Hallazgo de CLS: con el contrato de mensajes (7a.1), la explicación del resulta
 - Canonical/OG: los del par base; la vista con hechos de usado es `noindex` y sin JSON-LD (misma variant en los dos lados: sin canonical).
 - Intercambiar mueve condición y hechos con su vehículo; cambiar de coche nunca reutiliza los hechos de la unidad anterior; escenario e idioma conservan el bloque.
 
+### Step 8c — fecha de evaluación
+
+- La vista muestra "Fecha de evaluación: 15 de octubre de 2026." (capítulo "Este usado" y "Cómo lo calculamos"): fija la antigüedad y los factores temporales de los usados. Abrir un enlace antiguo **no** la cambia.
+- **Actualizar análisis a hoy**: misma URL con `eval` = hoy del mercado (coches, hechos, escenario e idioma intactos) + `prev_eval` transitorio para explicar qué cambió ("Cambia: el resultado / el encaje práctico / la información de la unidad / los aspectos a revisar" o "no cambian"). `prev_eval` se retira de la URL al cargar: no se comparte.
+- La fecha fija la edad; catálogo, precios de energía o versión de metodología pueden haber cambiado (versiones y fecha de datos visibles).
+
 ## 7. Fuera de alcance
 
 PDF, favoritos, comparaciones guardadas, acortador, cuentas, analytics, ratings, comentarios y páginas de modelo (posible 7d).

@@ -83,7 +83,10 @@ const ROBUSTNESS_UNIT: Record<string, (f: Format, v: number, t: Translator) => s
 };
 
 /** Params formateados para la plantilla ICU. Solo formato y etiquetas de enums: ninguna frase. */
-export function formatParams(msg: Message, t: Translator, f: Format): Record<string, string | number> {
+/** Params con nombres propios de vehículo (Step 8c: se pueden presentar con un alias de UI). */
+const NAME_PARAMS = new Set(['subject', 'other', 'a', 'b', 'name']);
+
+export function formatParams(msg: Message, t: Translator, f: Format, aliases?: Readonly<Record<string, string>>): Record<string, string | number> {
   const p = msg.params as Record<string, string | number | boolean | undefined>;
   const out: Record<string, string | number> = {};
   const unit = typeof p.unit === 'string' ? p.unit : undefined;
@@ -106,6 +109,7 @@ export function formatParams(msg: Message, t: Translator, f: Format): Record<str
   for (const [k, v] of Object.entries(p)) {
     if (v === undefined || consumed.has(k)) continue;
     if (typeof v === 'boolean') out[k] = v ? 'yes' : 'no';
+    else if (NAME_PARAMS.has(k) && typeof v === 'string' && aliases?.[v]) out[k] = aliases[v]!;
     else if (k === 'metric') out[k] = metricLabel(t, String(v));
     else if (LEVEL_PARAMS.has(k)) out[k] = levelLabel(t, v);
     else if (ENUM_NS[k]) out[k] = enumLabel(t, ENUM_NS[k], v);
@@ -141,13 +145,17 @@ export interface Rendered {
   fromCatalog: boolean;
 }
 
-export function translateDecisionMessage(msg: Message, t: Translator, f: Format, opts: { inlineDetails?: boolean } = {}): Rendered {
+/**
+ * `aliases` (Step 8c): nombre del engine → nombre de presentación (p. ej. "Volkswagen Golf B" → "Volkswagen Golf usado"
+ * cuando los dos lados son la misma variant). Solo cambia CÓMO se muestra un nombre propio; nunca la semántica.
+ */
+export function translateDecisionMessage(msg: Message, t: Translator, f: Format, opts: { inlineDetails?: boolean; aliases?: Readonly<Record<string, string>> } = {}): Rendered {
   const key = `engine.${msg.messageKey}`;
   let text: string;
   let fromCatalog = true;
   if (t.has(key)) {
     try {
-      const values = formatParams(msg, t, f);
+      const values = formatParams(msg, t, f, opts.aliases);
       // Un opcional ausente nunca rompe la frase: los argumentos referenciados y no presentes van vacíos.
       for (const a of templateArgs(t.raw?.(key))) values[a] ??= '';
       text = t(key, values);
@@ -160,7 +168,7 @@ export function translateDecisionMessage(msg: Message, t: Translator, f: Format,
     fromCatalog = false;
   }
   if (msg.details?.length && opts.inlineDetails !== false) {
-    const inner = msg.details.map((d) => translateDecisionMessage(d, t, f));
+    const inner = msg.details.map((d) => translateDecisionMessage(d, t, f, opts.aliases ? { aliases: opts.aliases } : {}));
     if (inner.some((d) => !d.fromCatalog)) fromCatalog = false;
     text = `${text} (${inner.map((d) => d.text).join('; ')})`;
   }
@@ -168,6 +176,6 @@ export function translateDecisionMessage(msg: Message, t: Translator, f: Format,
 }
 
 /** Atajo: solo el texto (con `details` en línea). */
-export function renderEngineMessage(msg: Message, t: Translator, f: Format, opts: { inlineDetails?: boolean } = {}): string {
+export function renderEngineMessage(msg: Message, t: Translator, f: Format, opts: { inlineDetails?: boolean; aliases?: Readonly<Record<string, string>> } = {}): string {
   return translateDecisionMessage(msg, t, f, opts).text;
 }

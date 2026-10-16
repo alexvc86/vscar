@@ -1,7 +1,7 @@
 import { Disclosure } from '@vscar/ui/disclosure';
 import type { CandidateSide } from '@vscar/ui/tokens';
 import { DEFAULT_SCENARIO, serializeScenario, type Scenario } from '@/domain/scenario';
-import type { CandidateView, DecisionView, MetricView, UsedSideView, WhyNotView } from '@/domain/view-model';
+import { withDisplayNames, type CandidateView, type DecisionView, type MetricView, type UsedSideView, type WhyNotView } from '@/domain/view-model';
 import { metricLabel } from '@/i18n/engine-messages';
 import { useI18n, type I18n } from '@/i18n/use-i18n';
 import { VehicleVisual } from '../vehicle/VehicleVisual';
@@ -28,13 +28,26 @@ export interface DecisionChaptersProps {
   robustnessPending?: boolean;
   /** Step 8b: bloque usado de la URL (`u=1&…`, sin `?`): los enlaces de escenario lo conservan. */
   usedQuery?: string;
+  /** Step 8c: fecha de evaluación de los usados y enlace para actualizarla a hoy (solo con algún usado). */
+  evaluation?: EvaluationInfo | undefined;
+}
+
+export interface EvaluationInfo {
+  /** Fecha de la URL (`eval`). */
+  date: string;
+  /** Hoy en el mercado. */
+  today: string;
+  /** Misma comparación con `eval` = hoy (ausente si ya es hoy). */
+  updateHref?: string;
 }
 
 /** Query de escenario (`?…` o "") + bloque usado. */
 const withUsed = (q: string, used?: string) => (!used ? q : q ? `${q}&${used}` : `?${used}`);
 
-export function DecisionChapters({ view, scenario, pathname, kit = STATIC_KIT, robustnessPending = false, usedQuery }: DecisionChaptersProps) {
-  const i18n = useI18n();
+export function DecisionChapters({ view: engineView, scenario, pathname, kit = STATIC_KIT, robustnessPending = false, usedQuery, evaluation }: DecisionChaptersProps) {
+  // Step 8c: nombres de presentación (misma variant → "Golf nuevo / usado") en la UI y en los mensajes del engine.
+  const i18n = useI18n(engineView);
+  const view = withDisplayNames(engineView, i18n.names);
   const metrics = new Map<string, MetricView>([...view.metricsByCategory.flatMap((c) => c.metrics), ...view.keyMetrics].map((m) => [m.metric, m]));
   let index = 1;
   return (
@@ -54,7 +67,7 @@ export function DecisionChapters({ view, scenario, pathname, kit = STATIC_KIT, r
           case 'practical':
             return <PracticalChapter key={ch.id} index={index++} view={view} i18n={i18n} />;
           case 'used':
-            return view.used ? <UsedChapter key={ch.id} index={index++} view={view} i18n={i18n} /> : null;
+            return view.used ? <UsedChapter key={ch.id} index={index++} view={view} i18n={i18n} evaluation={evaluation} /> : null;
           case 'tradeoffs':
             return <TradeoffsChapter key={ch.id} index={index++} view={view} i18n={i18n} />;
           case 'change':
@@ -62,7 +75,7 @@ export function DecisionChapters({ view, scenario, pathname, kit = STATIC_KIT, r
           case 'confidence':
             return <ConfidenceChapter key={ch.id} index={index++} view={view} i18n={i18n} pending={robustnessPending} />;
           case 'details':
-            return <DetailsChapter key={ch.id} index={index++} view={view} i18n={i18n} />;
+            return <DetailsChapter key={ch.id} index={index++} view={view} i18n={i18n} evaluation={evaluation} />;
           default:
             return null;
         }
@@ -157,6 +170,7 @@ function ResultChapter({ view, kit, i18n, metrics, index, pending, scenario }: {
             </ul>
           </>
         ) : null}
+        {view.sameVariant ? <SameVariantNote view={view} i18n={i18n} /> : null}
         {view.notices.length ? (
           <ul className="result__notices">
             {view.notices.map((n) => (
@@ -176,6 +190,13 @@ function ResultChapter({ view, kit, i18n, metrics, index, pending, scenario }: {
             {t('confidence.title')} · <span className={pending ? 'is-stale' : undefined}><ConfidenceMeter level={view.confidence.level} i18n={i18n} /></span>
             {pending ? <span className="sr-only"> · {t('robustness.checking')}</span> : null}
           </a>
+          {/* Step 8c: la información de la unidad usada es OTRO indicador (cuánto se sabe), no la confianza del resultado. */}
+          {view.used && view.usedInformationConfidence && view.usedInformationConfidence !== 'NOT_APPLICABLE' ? (
+            <span className="result__used-info muted small" data-testid="used-info-short">
+              {' '}
+              · {t('used.module.infoShort', { level: t(`engine.level.${view.usedInformationConfidence}`) })}
+            </span>
+          ) : null}
         </p>
       </Morph>
     </Chapter>
@@ -206,7 +227,8 @@ function EconomicsChapter({ view, scenario, i18n, index }: { view: DecisionView;
       <p className="muted">{t('economic.lead', { km: `${f.number(scenario.km)} km` })}</p>
       <p className="econ-badges">
         <span className="chip chip--horizon">{t('economic.horizonYears', { years: e.horizonYears })}</span>
-        <span className="chip">{t('economic.knownCostView')}</span>
+        {/* Step 8c: estas tarjetas son COSTE DE USO (energía); el coste conocido con compra va en su propio bloque. */}
+        <span className="chip">{t('economic.runningScope')}</span>
       </p>
       <div className="econ-grid">
         {view.candidates.map((c) => {
@@ -231,7 +253,7 @@ function EconomicsChapter({ view, scenario, i18n, index }: { view: DecisionView;
         })}
       </div>
       <p className="muted small">{t('economic.rangeNote')}</p>
-      {view.used ? <PurchaseBlock view={view} i18n={i18n} /> : null}
+      {e.perSide.a.purchase || e.perSide.b.purchase ? <PurchaseBlock view={view} i18n={i18n} /> : null}
       <MarketContext view={view} i18n={i18n} />
     </Chapter>
   );
@@ -434,8 +456,9 @@ function ChangeChapter({ view, scenario, pathname, usedQuery, pending, i18n, ind
 }
 
 /**
- * Step 8b — compra y coste conocido (solo con algún usado). Separa el precio de compra (catálogo vs precio
- * solicitado) del Economic Fit, que sigue comparando el coste de uso. Sin depreciación, reventa ni mantenimiento.
+ * Step 8b/8c — tres conceptos separados (nunca uno solo): (A) DESEMBOLSO INICIAL (precio de compra: catálogo o
+ * solicitado), (B) COSTE DE USO (energía; las tarjetas de arriba, base del Economic Fit) y (C) COSTE CONOCIDO al horizonte
+ * (compra + energía; no es un coste total de propiedad). El punto de equilibrio es el del Economics Engine, sin recalcular.
  */
 function PurchaseBlock({ view, i18n }: { view: DecisionView; i18n: I18n }) {
   const { t, f } = i18n;
@@ -443,6 +466,12 @@ function PurchaseBlock({ view, i18n }: { view: DecisionView; i18n: I18n }) {
   const [a, b] = view.candidates;
   const pa = e.perSide.a.purchase;
   const pb = e.perSide.b.purchase;
+  const notComparable = e.status === 'NOT_COMPARABLE';
+  const money = (n: number) => f.moneyMinorRange({ min: n, max: n }, 0);
+  const lower = pa && pb && pa.amount !== pb.amount ? (pa.amount < pb.amount ? a : b) : undefined;
+  const be = e.breakEven;
+  const premium = be?.premium ? view.candidates.find((c) => c.side === be.premium) : undefined;
+  const component = (k: string) => t(`economic.component.${k}`);
   return (
     <section className="purchase-block" aria-labelledby="purchase-title" data-testid="purchase-block">
       <h3 id="purchase-title" className="label">
@@ -460,24 +489,60 @@ function PurchaseBlock({ view, i18n }: { view: DecisionView; i18n: I18n }) {
                     {t('economic.purchase')}
                     {s.purchase ? <span className="muted"> · {t(`economic.purchaseSource.${s.purchase.source}`)}</span> : null}
                   </dt>
-                  <dd className="mono econ-card__big">{s.purchase ? f.moneyMinorRange({ min: s.purchase.amount, max: s.purchase.amount }, 0) : t('economic.noPurchase')}</dd>
+                  <dd className="mono econ-card__big">{s.purchase ? money(s.purchase.amount) : t('economic.noPurchase')}</dd>
                 </div>
                 <div>
-                  <dt>{t('economic.ownership', { years: e.horizonYears })}</dt>
-                  <dd className="mono">{s.ownership && s.purchase ? f.moneyMinorRange(s.ownership.total, 0) : t('common.notConfirmed')}</dd>
+                  <dt>
+                    {t('economic.ownership', { years: e.horizonYears })}
+                    {s.ownership && s.purchase ? <span className="muted small econ-card__scope"> {t('economic.ownershipIncludes', { items: s.ownership.included.map(component).join(' + ') })}</span> : null}
+                  </dt>
+                  <dd className="mono">{s.ownership && s.purchase ? f.moneyMinorRange(s.ownership.total, 0) : t('economic.ownershipUnavailable')}</dd>
                 </div>
               </dl>
             </article>
           );
         })}
       </div>
-      {pa && pb ? (
-        <p className="purchase-block__diff">
-          {t('economic.initialDifference')}: <span className="mono">{f.moneyMinorRange({ min: Math.abs(pa.amount - pb.amount), max: Math.abs(pa.amount - pb.amount) }, 0)}</span>
+      {lower && pa && pb ? (
+        <p className="purchase-block__diff" data-testid="purchase-diff">
+          {t('economic.lowerPurchase', { name: lower.name, amount: money(Math.abs(pa.amount - pb.amount)) })}
+        </p>
+      ) : !pa || !pb ? (
+        <p className="purchase-block__diff muted" data-testid="purchase-diff">
+          {t('economic.purchaseMissing')}
         </p>
       ) : null}
+      {be && premium && !notComparable ? (
+        <p className="purchase-block__breakeven" data-testid="break-even">
+          {be.status === 'BREAK_EVEN' && be.years && be.annualSaving
+            ? be.years.min > e.horizonYears
+              ? t('economic.breakEvenBeyond', { name: premium.name, saving: f.moneyMinorRange(be.annualSaving, 0), years: e.horizonYears })
+              : t('economic.breakEven', { name: premium.name, extra: f.moneyMinorRange(be.extraPurchase!, 0), saving: f.moneyMinorRange(be.annualSaving, 0), years: f.numberRange(be.years, 1) })
+            : be.status === 'BREAK_EVEN_UNCERTAIN'
+              ? t('economic.breakEvenUncertain', { name: premium.name, years: f.number(be.minYears ?? 0, 1) })
+              : be.status === 'NO_BREAK_EVEN'
+                ? t('economic.noBreakEven', { name: premium.name, extra: f.moneyMinorRange(be.extraPurchase!, 0) })
+                : null}
+        </p>
+      ) : null}
+      <p className="muted small">{t('economic.knownCostNote', { years: e.horizonYears })}</p>
+      {notComparable ? <p className="muted small" data-testid="known-cost-not-comparable">{t('economic.knownCostNotComparable')}</p> : null}
       <p className="muted small">{t('economic.purchaseNote')}</p>
     </section>
+  );
+}
+
+/** Step 8c — misma variant en los dos lados: qué es igual y qué no (datos estructurados de la vista; sin redactar decisiones). */
+function SameVariantNote({ view, i18n }: { view: DecisionView; i18n: I18n }) {
+  const { t, f } = i18n;
+  const pa = view.economics.perSide.a.purchase;
+  const pb = view.economics.perSide.b.purchase;
+  const lower = pa && pb && pa.amount !== pb.amount ? view.candidates.find((c) => c.side === (pa.amount < pb.amount ? 'a' : 'b')) : undefined;
+  return (
+    <div className="result__same" data-testid="same-variant-note">
+      <p>{t('decision.sameVariantNote')}</p>
+      {lower && pa && pb ? <p className="muted">{t('economic.lowerPurchaseSameRunning', { name: lower.name, amount: f.moneyMinorRange({ min: Math.abs(pa.amount - pb.amount), max: Math.abs(pa.amount - pb.amount) }, 0) })}</p> : null}
+    </div>
   );
 }
 
@@ -486,7 +551,7 @@ function PurchaseBlock({ view, i18n }: { view: DecisionView; i18n: I18n }) {
  * (ATTENTION / INFORMATION_GAP / NOTE) y verificación. Todas las frases vienen del Used Adjustment (messageKey +
  * params); la UI solo agrupa. Nunca una nota de usado ni una probabilidad.
  */
-function UsedChapter({ view, i18n, index }: { view: DecisionView; i18n: I18n; index: number }) {
+function UsedChapter({ view, i18n, index, evaluation }: { view: DecisionView; i18n: I18n; index: number; evaluation?: EvaluationInfo | undefined }) {
   const { t } = i18n;
   const sides = view.candidates.filter((c) => view.used?.[c.side]);
   const list = (items: UsedSideView['verification'], cls: string, testid: string) =>
@@ -511,9 +576,12 @@ function UsedChapter({ view, i18n, index }: { view: DecisionView; i18n: I18n; in
               <h3 className="used-card__name">
                 <span className={`label tone-${c.side}`}>{c.side.toUpperCase()}</span> {c.name}
               </h3>
+              {/* Step 8c: indicador PROPIO (cuánto sabemos de esta unidad), visualmente distinto de la confianza de la
+                  recomendación; nunca una fiabilidad mecánica. */}
               <p className="used-card__confidence">
-                {t('used.module.confidence')}: <ConfidenceMeter level={u.information.level} i18n={i18n} />
+                {t('used.module.confidence')}: <span className={`info-level info-level--${u.information.level.toLowerCase()}`} data-testid={`used-info-level-${c.side}`}>{t(`engine.level.${u.information.level}`)}</span>
               </p>
+              <p className="muted small">{t('used.module.confidenceNote')}</p>
               <p className="muted small">
                 <MessageText msg={u.information.summary} i18n={i18n} />
               </p>
@@ -537,6 +605,7 @@ function UsedChapter({ view, i18n, index }: { view: DecisionView; i18n: I18n; in
         })}
       </div>
       <p className="muted small used-provenance">{t('used.module.provenance')}</p>
+      {evaluation ? <EvaluationBlock evaluation={evaluation} i18n={i18n} testId="evaluation" /> : null}
     </Chapter>
   );
 }
@@ -566,23 +635,33 @@ function ConfidenceChapter({ view, i18n, index, pending }: { view: DecisionView;
           </ul>
         </div>
       </div>
-      {view.verify.length ? (
-        <div className="verify">
+      {view.verifyBySide.length ? (
+        <div className="verify" data-testid="verify">
           <h3>{t('decision.verifyTitle')}</h3>
-          <ul>
-            {view.verify.map((v, k) => (
-              <li key={`${v.messageKey}-${k}`}>
-                <MessageText msg={v} i18n={i18n} />
-              </li>
+          {/* Step 8c: cada comprobación con el coche al que pertenece. */}
+          {view.candidates
+            .filter((c) => view.verifyBySide.some((v) => v.side === c.side))
+            .map((c) => (
+              <div key={c.side} className="verify__group" data-testid={`verify-${c.side}`}>
+                <p className={`label tone-${c.side}`}>{c.name}</p>
+                <ul>
+                  {view.verifyBySide
+                    .filter((v) => v.side === c.side)
+                    .map((v, k) => (
+                      <li key={`${v.messageKey}-${k}`}>
+                        <MessageText msg={v} i18n={i18n} />
+                      </li>
+                    ))}
+                </ul>
+              </div>
             ))}
-          </ul>
         </div>
       ) : null}
     </Chapter>
   );
 }
 
-function DetailsChapter({ view, i18n, index }: { view: DecisionView; i18n: I18n; index: number }) {
+function DetailsChapter({ view, i18n, index, evaluation }: { view: DecisionView; i18n: I18n; index: number; evaluation?: EvaluationInfo | undefined }) {
   const { t, f } = i18n;
   return (
     <Chapter id="details" labelledBy="details-title" index={index} className="chapter--details">
@@ -633,13 +712,40 @@ function DetailsChapter({ view, i18n, index }: { view: DecisionView; i18n: I18n;
             </ul>
           ) : null}
         </Disclosure>
-        <HowWeCalculated view={view} i18n={i18n} />
+        <HowWeCalculated view={view} i18n={i18n} evaluation={evaluation} />
       </div>
     </Chapter>
   );
 }
 
-function HowWeCalculated({ view, i18n }: { view: DecisionView; i18n: I18n }) {
+/**
+ * Step 8c — fecha de evaluación de los usados: qué fecha usa el análisis, para qué y cómo llevarla a hoy (solo a
+ * petición: abrir un enlace antiguo nunca la cambia). En el capítulo "Este usado" y en "Cómo lo calculamos".
+ */
+function EvaluationBlock({ evaluation, i18n, testId }: { evaluation: EvaluationInfo; i18n: I18n; testId: string }) {
+  const { t } = i18n;
+  const longDate = (iso: string) => new Intl.DateTimeFormat(i18n.locale.formatLocale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${iso}T00:00:00Z`));
+  return (
+    <div className="evaluation" data-testid={testId}>
+      <p>
+        <strong>{t('used.evaluation.date', { date: longDate(evaluation.date) })}</strong>
+      </p>
+      <p className="muted small">{t('used.evaluation.explain')}</p>
+      <p className="muted small">{t('used.evaluation.scope')}</p>
+      {evaluation.updateHref ? (
+        <p>
+          <a href={evaluation.updateHref} className="vs-button vs-button--ghost vs-button--sm" data-testid={testId === 'evaluation' ? 'update-eval' : undefined}>
+            {t('used.evaluation.update')}
+          </a>
+        </p>
+      ) : (
+        <p className="muted small">{t('used.evaluation.isToday')}</p>
+      )}
+    </div>
+  );
+}
+
+function HowWeCalculated({ view, i18n, evaluation }: { view: DecisionView; i18n: I18n; evaluation?: EvaluationInfo | undefined }) {
   const { t, f } = i18n;
   const elec = view.energy.electricity;
   const sourceInfo = (id: string | undefined) => (id ? view.sources.find((s) => s.id === id) : undefined);
@@ -706,6 +812,7 @@ function HowWeCalculated({ view, i18n }: { view: DecisionView; i18n: I18n }) {
       {view.dataSnapshot.vehicles.includes('@') ? (
         <p className="muted small">{t('methodology.dataUpdated', { date: view.dataSnapshot.vehicles.split('@')[1]!.slice(0, 10) })}</p>
       ) : null}
+      {evaluation && view.used ? <EvaluationBlock evaluation={evaluation} i18n={i18n} testId="evaluation-method" /> : null}
       <p className="small">
         <a href={localizedHref(i18n.locale, { page: 'methodology' })}>{t('methodology.link')}</a>
       </p>

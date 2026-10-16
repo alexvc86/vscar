@@ -84,7 +84,8 @@
     "tradeoffsTitle": "Lo que sacrificas con el {name}",
     "verifyTitle": "Verifica esto antes de decidir",
     "noticesTitle": "Notas",
-    "onlyMinor": "Solo diferencias menores."
+    "onlyMinor": "Solo diferencias menores.",
+    "sameVariantNote": "Los dos son la misma variante técnica: prestaciones y consumos homologados equivalentes. Lo que cambia es el precio de compra y lo que se sabe de cada unidad."
   },
   "metricLayers": {
     "raw": "Diferencia bruta",
@@ -271,8 +272,27 @@
     },
     "ownership": "Coste conocido en {years, plural, one {# año} other {# años}}",
     "initialDifference": "Diferencia inicial de compra",
-    "purchaseNote": "La diferencia de compra no decide por sí sola el encaje económico: el Economic Fit compara el coste de uso. La compra cuenta en el coste conocido y en el punto de equilibrio. Sin depreciación, reventa ni mantenimiento estimados.",
-    "noPurchase": "Sin precio"
+    "purchaseNote": "El encaje económico de VScar compara el coste de uso. Un precio de compra menor no lo cambia por sí solo.",
+    "noPurchase": "Sin precio",
+    "runningScope": "Coste de uso: energía",
+    "ownershipIncludes": "({items})",
+    "component": {
+      "PURCHASE": "compra",
+      "FUEL": "combustible",
+      "ELECTRICITY": "electricidad",
+      "MAINTENANCE": "mantenimiento",
+      "RESIDUAL": "valor residual"
+    },
+    "ownershipUnavailable": "Sin calcular (falta el precio)",
+    "lowerPurchase": "El {name} requiere un desembolso inicial {amount} menor.",
+    "purchaseMissing": "Falta un precio de compra: no se calcula la diferencia de desembolso ni el punto de equilibrio (nunca se pone un precio en su lugar).",
+    "breakEven": "El {name} cuesta {extra} más de comprar y gasta unos {saving} menos al año en energía: con este uso, esa diferencia se recuperaría en unos {years} años.",
+    "breakEvenBeyond": "El {name} gasta unos {saving} menos al año en energía, pero con este uso no recupera la diferencia de compra dentro de tus {years} años.",
+    "breakEvenUncertain": "Con este uso, el {name} podría recuperar la diferencia de compra en {years} años o más; depende del rango de consumo.",
+    "noBreakEven": "El {name} cuesta {extra} más de comprar y no gasta menos al año en energía: con este uso, esa diferencia no se recupera.",
+    "knownCostNote": "Coste conocido = precio de compra + energía en {years, plural, one {# año} other {# años}}. No incluye mantenimiento, seguro, impuestos, depreciación ni valor de reventa: no es un coste total de propiedad.",
+    "knownCostNotComparable": "Los costes de energía salen de ciclos de homologación distintos, así que los costes conocidos no son comparables entre sí; solo lo es el precio de compra.",
+    "lowerPurchaseSameRunning": "El {name} requiere un desembolso inicial {amount} menor; eso no cambia el coste de uso."
   },
   "practical": {
     "title": "Encaje práctico",
@@ -425,7 +445,7 @@
         "economics_unknown": "El coste de uso no está disponible para al menos un vehículo",
         "economics_comparable": "Los costes de uso son comparables para todos los vehículos",
         "robustness": "La robustez del resultado es {level}",
-        "used_information": "La confianza de la información del usado es {level}",
+        "used_information": "La información sobre la unidad usada es {level}",
         "cap": "Confianza limitada a {level}: {reason}",
         "all_unconfirmed": "Todos los vehículos restantes tienen requisitos obligatorios sin confirmar"
       }
@@ -594,7 +614,7 @@
         "asking_price_missing": "No se ha indicado el precio pedido"
       },
       "information_confidence": {
-        "summary": "Confianza de la información del usado: {level} ({knownCount} de {relevantCount} datos relevantes conocidos)",
+        "summary": "Información sobre la unidad: {level} ({knownCount} de {relevantCount} datos relevantes conocidos)",
         "complete": "Se conocen todos los datos relevantes de esta unidad",
         "capped": "Sin dato de {field, select, battery_health {salud de batería} other {este dato}}: en un {powertrain}, la confianza de la información es como mucho {level}",
         "missing_asking_price": "Falta el precio pedido{critical, select, yes { (crítico)} other {}}",
@@ -833,16 +853,40 @@
     "module": {
       "title": "Información de este usado",
       "lead": "Lo que sabemos de cada unidad usada y lo que falta verificar. No es una nota del coche.",
-      "confidence": "Confianza de la información",
+      "confidence": "Información sobre esta unidad",
       "attention": "Aspectos a revisar",
       "gaps": "Datos pendientes",
       "notes": "Datos declarados",
       "verify": "Comprueba esto antes de decidir",
       "warnings": "Avisos",
       "provenance": "Procedencia: lo marcado como declarado lo has introducido tú (o el vendedor); lo calculado sale de la garantía original del fabricante; lo pendiente no se conoce. VScar no ha verificado la unidad.",
-      "noSignals": "Sin aspectos que revisar con los datos introducidos."
+      "noSignals": "Sin aspectos que revisar con los datos introducidos.",
+      "confidenceNote": "Mide cuánto sabemos de esta unidad; no es la fiabilidad del coche ni la confianza de la recomendación.",
+      "infoShort": "Información sobre la unidad usada: {level}"
     },
     "ignoredFacts": "Datos ignorados porque no aplican a este coche: {fields}",
-    "shareNote": "El enlace incluirá el precio, el kilometraje y el estado que has introducido."
+    "shareNote": "El enlace incluirá el precio, el kilometraje y el estado que has introducido.",
+    "alias": {
+      "new": "{name} nuevo",
+      "used": "{name} usado",
+      "usedSide": "{name} usado {side}"
+    },
+    "badgeKm": "{side} · USADO · {km}",
+    "evaluation": {
+      "date": "Fecha de evaluación: {date}.",
+      "explain": "Esta comparación utiliza esa fecha para calcular la antigüedad y otros factores temporales de los coches usados (como la garantía que queda). Un enlace compartido conserva esa fecha.",
+      "scope": "La fecha fija la antigüedad de los usados; los datos del catálogo, los precios de energía o la versión de la metodología pueden haber cambiado desde entonces (ver versiones y fecha de datos).",
+      "update": "Actualizar análisis a hoy",
+      "isToday": "El análisis ya usa la fecha de hoy.",
+      "updated": "Análisis actualizado: fecha de evaluación {to} (antes {from}).",
+      "changed": "Cambia: {items}.",
+      "unchanged": "El resultado, el encaje práctico y la información de las unidades no cambian.",
+      "change": {
+        "result": "el resultado",
+        "practical": "el encaje práctico",
+        "information": "la información de la unidad",
+        "signals": "los aspectos a revisar"
+      }
+    }
   }
 }

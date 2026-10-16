@@ -196,10 +196,14 @@ function select(items: WhyNotItem[], max: number): { items: WhyNotItem[]; onlyMi
   return { items: [...relevant, ...dedup.filter((i) => i.severity === 'MINOR')].slice(0, max), onlyMinor: true };
 }
 
-/** Señales de la unidad usada como motivos (INFO: nunca desplazan requisitos ni diferencias relevantes). NOTE no es un motivo. */
+/**
+ * Señales de la unidad usada como motivos (INFO: nunca desplazan requisitos ni diferencias relevantes).
+ * Step 8c: solo hechos CONOCIDOS que conviene mirar (ATTENTION). Un dato desconocido (INFORMATION_GAP) no es algo que
+ * "se sacrifica" ni una desventaja (unknown ≠ bad): va a la verificación y al capítulo de la unidad. NOTE no es un motivo.
+ */
 function usedItems(adjustment: UsedAdjustmentResult | undefined): WhyNotItem[] {
   return (adjustment?.ownershipSignals ?? [])
-    .filter((s) => s.nature !== 'NOTE')
+    .filter((s) => s.nature === 'ATTENTION')
     .map((s) => ({
       messageKey: s.messageKey,
       params: s.params,
@@ -236,7 +240,9 @@ export function buildWhyNot(input: DecisionInput, decision: AlphaDecisionResult,
     // Contra quién: el no elegido frente a los elegidos; el elegido frente a los demás elegibles (lo que sacrifica).
     const against = isSelected ? eligible.filter((y) => y !== id) : selected.length ? selected : eligible.filter((y) => y !== id);
     for (const y of against) items.push(...disadvantages(id, y, pairOf(input.comparison.pairs, id, y), labels, isSelected, annualKm));
-    const { items: chosen, onlyMinor } = select(items, isSelected ? WHY_NOT_RULES.max_items_tradeoffs : WHY_NOT_RULES.max_items_why_not);
+    const { items: chosen, onlyMinor: minorDifferences } = select(items, isSelected ? WHY_NOT_RULES.max_items_tradeoffs : WHY_NOT_RULES.max_items_why_not);
+    // Step 8c: "solo diferencias menores" describe la comparación; con señales de la unidad usada no se afirma.
+    const onlyMinor = minorDifferences && !chosen.some((i) => i.sourceResult === 'USED_ADJUSTMENT');
     const onlyVerify = chosen.length > 0 && chosen.every((i) => i.severity === 'VERIFY');
     whyNotByCandidate[id] = { candidateId: id, kind: isSelected ? 'TRADEOFFS' : onlyVerify ? 'VERIFY_BEFORE_DECIDING' : 'WHY_NOT', items: chosen, onlyMinor };
   }

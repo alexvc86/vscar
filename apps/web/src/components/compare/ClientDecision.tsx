@@ -8,10 +8,12 @@ import type { ComparisonData } from '@/domain/comparison-data';
 import { computeDecision } from '@/domain/decision';
 import { scenarioKey, type Scenario } from '@/domain/scenario';
 import { serializePairConditions } from '@/domain/used-params';
-import { buildDecisionView, withRobustness, type DecisionView } from '@/domain/view-model';
+import { buildDecisionView, withDisplayNames, withRobustness, type DecisionView } from '@/domain/view-model';
+import type { Translator } from '@/i18n/engine-messages';
+import { participantNames } from '@/i18n/use-i18n';
 import { MARKETS, parseLocaleSegment } from '@/i18n/locales';
 import type { RobustnessRequest, RobustnessResponse } from '@/workers/robustness-protocol';
-import { DecisionChapters } from './DecisionChapters';
+import { DecisionChapters, type EvaluationInfo } from './DecisionChapters';
 import type { MotionKit } from './kit';
 
 /**
@@ -30,6 +32,8 @@ export interface ClientDecisionProps {
   locale: string;
   labels: { recalculating: string };
   messages: Record<string, unknown>;
+  /** Step 8c: fecha de evaluación de los usados (misma que el HTML del servidor). */
+  evaluation?: EvaluationInfo | undefined;
 }
 
 const ease = (b: readonly number[]) => b as [number, number, number, number];
@@ -63,7 +67,7 @@ export function ClientDecision(props: ClientDecisionProps) {
   );
 }
 
-function Recalculating({ initialView, initialScenario, scenario, data, pathname }: ClientDecisionProps) {
+function Recalculating({ initialView, initialScenario, scenario, data, pathname, evaluation }: ClientDecisionProps) {
   const t = useTranslations();
   const [shown, setShown] = useState({ view: initialView, scenario: initialScenario, key: scenarioKey(initialScenario) });
   const [pending, setPending] = useState(false);
@@ -92,7 +96,9 @@ function Recalculating({ initialView, initialScenario, scenario, data, pathname 
       const view: DecisionView = { ...fresh, confidence: shown.view.confidence, ...(shown.view.robustness ? { robustness: shown.view.robustness } : {}) };
       setShown({ view, scenario, key });
       setPending(true);
-      const statusText = t(`decision.announce.${fresh.status}`, { name: fresh.candidates.find((c) => c.side === fresh.selected)?.name ?? '', a: fresh.candidates[0].name, b: fresh.candidates[1].name });
+      // Nombres de presentación (misma variant: por condición), igual que en los capítulos.
+      const shownNames = withDisplayNames(fresh, participantNames(fresh, t as unknown as Translator)).candidates;
+      const statusText = t(`decision.announce.${fresh.status}`, { name: shownNames.find((c) => c.side === fresh.selected)?.name ?? '', a: shownNames[0].name, b: shownNames[1].name });
       setAnnounce(fresh.status !== shown.view.status || fresh.selected !== shown.view.selected ? `${t('decision.announce.changed')} ${statusText}` : statusText);
       const id = ++latest.current;
       if (!worker.current) {
@@ -119,7 +125,7 @@ function Recalculating({ initialView, initialScenario, scenario, data, pathname 
         {announce}
       </p>
       <LayoutGroup>
-        <DecisionChapters view={shown.view} scenario={shown.scenario} pathname={pathname} usedQuery={serializePairConditions(data.conditions)} kit={MOTION_KIT} robustnessPending={pending} />
+        <DecisionChapters view={shown.view} scenario={shown.scenario} pathname={pathname} usedQuery={serializePairConditions(data.conditions)} evaluation={evaluation} kit={MOTION_KIT} robustnessPending={pending} />
       </LayoutGroup>
     </MotionConfig>
   );

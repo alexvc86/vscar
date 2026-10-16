@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { startTransition, useEffect, useState } from 'react';
 import { CHAPTERS_UPDATED } from '@/client/scenario-nav';
 import { useUi } from '@/client/store';
 
@@ -35,7 +35,10 @@ export function ChapterIndex({ initial, labels, title }: { initial: ChapterItem[
       io?.disconnect();
       io = new IntersectionObserver(
         (entries) => {
-          for (const e of entries) if (e.isIntersecting) setActive((e.target as HTMLElement).dataset.chapter!);
+          // Step 8c (INP): al desplazarse por varios capítulos llegaban varias entradas por callback y cada una
+          // re-renderizaba de forma síncrona en el frame previo a un toque. Una sola actualización, no urgente.
+          const last = [...entries].reverse().find((e) => e.isIntersecting);
+          if (last) startTransition(() => setActive((last.target as HTMLElement).dataset.chapter!));
         },
         { rootMargin: '-45% 0px -50% 0px' },
       );

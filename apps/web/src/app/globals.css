@@ -2198,3 +2198,48 @@ a {
   }
 }
 
+/* ---------------------------------------------------------------- Step 8c · claridad nuevo / usado */
+/* Información de la unidad: chip de texto (no el medidor de la confianza de la recomendación). */
+.info-level {
+  display: inline-flex;
+  padding: 1px var(--vs-space-2);
+  border-radius: var(--vs-radius-sm);
+  border: 1px dashed var(--vs-line-strong);
+  font-family: var(--vs-font-mono, ui-monospace, monospace);
+  font-size: var(--vs-text-label);
+  letter-spacing: var(--vs-tracking-label);
+  text-transform: uppercase;
+}
+.result__used-info {
+  white-space: normal;
+}
+.result__same {
+  margin: var(--vs-space-4) 0;
+  padding: var(--vs-space-3) var(--vs-space-4);
+  border-left: 2px solid var(--vs-line-strong);
+}
+.result__same p {
+  margin: 0 0 var(--vs-space-1);
+}
+.purchase-block__breakeven {
+  margin: var(--vs-space-2) 0;
+}
+.econ-card__scope {
+  display: block;
+}
+.verify__group + .verify__group {
+  margin-top: var(--vs-space-4);
+}
+.verify__group > .label {
+  margin: 0 0 var(--vs-space-2);
+}
+.evaluation {
+  margin: var(--vs-space-4) 0;
+  padding: var(--vs-space-4);
+  border: var(--vs-border);
+  border-radius: var(--vs-radius-md);
+}
+.evaluation p {
+  margin: 0 0 var(--vs-space-2);
+}
+

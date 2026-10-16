@@ -84,7 +84,8 @@
     "tradeoffsTitle": "What you give up with the {name}",
     "verifyTitle": "Verify before deciding",
     "noticesTitle": "Notes",
-    "onlyMinor": "Only minor differences."
+    "onlyMinor": "Only minor differences.",
+    "sameVariantNote": "Both are the same technical variant: equivalent performance and homologated consumption. What differs is the purchase price and what is known about each car."
   },
   "metricLayers": {
     "raw": "Raw difference",
@@ -271,8 +272,27 @@
     },
     "ownership": "Known cost over {years, plural, one {# year} other {# years}}",
     "initialDifference": "Initial purchase difference",
-    "purchaseNote": "The purchase difference alone does not decide the economic fit: Economic Fit compares running cost. The purchase counts in the known cost and the break-even. No estimated depreciation, resale or maintenance.",
-    "noPurchase": "No price"
+    "purchaseNote": "VScar's economic fit compares running cost. A lower purchase price does not change it on its own.",
+    "noPurchase": "No price",
+    "runningScope": "Running cost: energy",
+    "ownershipIncludes": "({items})",
+    "component": {
+      "PURCHASE": "purchase",
+      "FUEL": "fuel",
+      "ELECTRICITY": "electricity",
+      "MAINTENANCE": "maintenance",
+      "RESIDUAL": "residual value"
+    },
+    "ownershipUnavailable": "Not calculated (price missing)",
+    "lowerPurchase": "The {name} costs {amount} less to buy (initial outlay).",
+    "purchaseMissing": "A purchase price is missing: the outlay difference and the break-even are not calculated (no price is ever put in its place).",
+    "breakEven": "The {name} costs {extra} more to buy and about {saving} less per year in energy: with this use, that difference would be recovered in about {years} years.",
+    "breakEvenBeyond": "The {name} costs about {saving} less per year in energy, but with this use it does not recover the purchase difference within your {years} years.",
+    "breakEvenUncertain": "With this use, the {name} could recover the purchase difference in {years} years or more; it depends on the consumption range.",
+    "noBreakEven": "The {name} costs {extra} more to buy and does not cost less per year in energy: with this use, that difference is not recovered.",
+    "knownCostNote": "Known cost = purchase price + energy over {years, plural, one {# year} other {# years}}. It does not include maintenance, insurance, taxes, depreciation or resale value: it is not a total cost of ownership.",
+    "knownCostNotComparable": "Energy costs come from different test cycles, so the known costs are not comparable with each other; only the purchase price is.",
+    "lowerPurchaseSameRunning": "The {name} costs {amount} less to buy; that does not change the running cost."
   },
   "practical": {
     "title": "Practical fit",
@@ -425,7 +445,7 @@
         "economics_unknown": "Running cost is unavailable for at least one vehicle",
         "economics_comparable": "Running costs are comparable for all vehicles",
         "robustness": "Result robustness is {level}",
-        "used_information": "Used-vehicle information confidence is {level}",
+        "used_information": "Information about the used car is {level}",
         "cap": "Confidence capped at {level}: {reason}",
         "all_unconfirmed": "Every remaining vehicle has unconfirmed mandatory requirements"
       }
@@ -594,7 +614,7 @@
         "asking_price_missing": "Asking price not provided"
       },
       "information_confidence": {
-        "summary": "Used-car information confidence: {level} ({knownCount} of {relevantCount} relevant facts known)",
+        "summary": "Information about the car: {level} ({knownCount} of {relevantCount} relevant facts known)",
         "complete": "All relevant facts about this unit are known",
         "capped": "No {field, select, battery_health {battery health} other {value}}: for a {powertrain}, information confidence is at most {level}",
         "missing_asking_price": "Asking price missing{critical, select, yes { (critical)} other {}}",
@@ -833,16 +853,40 @@
     "module": {
       "title": "About this used car",
       "lead": "What we know about each used car and what still needs checking. It is not a score of the car.",
-      "confidence": "Information confidence",
+      "confidence": "Information about this car",
       "attention": "Points to check",
       "gaps": "Missing details",
       "notes": "Declared details",
       "verify": "Check this before deciding",
       "warnings": "Notices",
       "provenance": "Provenance: what is marked as declared was entered by you (or the seller); what is calculated comes from the manufacturer's original warranty; what is missing is not known. VScar has not verified the car.",
-      "noSignals": "Nothing to check with the details entered."
+      "noSignals": "Nothing to check with the details entered.",
+      "confidenceNote": "It measures how much we know about this car; it is not the car's reliability nor the confidence in the recommendation.",
+      "infoShort": "Information about the used car: {level}"
     },
     "ignoredFacts": "Details ignored because they do not apply to this car: {fields}",
-    "shareNote": "The link will include the price, mileage and condition you entered."
+    "shareNote": "The link will include the price, mileage and condition you entered.",
+    "alias": {
+      "new": "{name} (new)",
+      "used": "{name} (used)",
+      "usedSide": "{name} (used {side})"
+    },
+    "badgeKm": "{side} · USED · {km}",
+    "evaluation": {
+      "date": "Evaluation date: {date}.",
+      "explain": "This comparison uses that date to calculate vehicle age and other time-dependent used-car factors (such as the remaining warranty). A shared link keeps that date.",
+      "scope": "The date fixes the age of the used cars; catalog data, energy prices or the methodology version may have changed since then (see versions and data date).",
+      "update": "Update analysis to today",
+      "isToday": "The analysis already uses today's date.",
+      "updated": "Analysis updated: evaluation date {to} (before: {from}).",
+      "changed": "Changed: {items}.",
+      "unchanged": "The result, the practical fit and the information about the cars do not change.",
+      "change": {
+        "result": "the result",
+        "practical": "the practical fit",
+        "information": "the information about the car",
+        "signals": "the points to check"
+      }
+    }
   }
 }

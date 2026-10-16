@@ -82,9 +82,21 @@ export interface EconomicsView {
       /** Step 8b: precio de compra que usa Economics (lista si nuevo; precio pedido si usado). */
       purchase?: { amount: number; source: 'LIST' | 'USED_ASKING' | 'OVERRIDE'; basis: string };
       /** Step 8b: coste conocido de propiedad al horizonte (compra + uso; vista de costes conocidos, nunca TCO). */
-      ownership?: { view: string; total: Range; missing: string[] };
+      ownership?: { view: string; total: Range; included: string[]; missing: string[] };
     }
   >;
+  /**
+   * Step 8c: punto de equilibrio del Economics Engine tal cual (sin recalcular): el coche más caro de comprar
+   * frente al otro, con el ahorro anual de USO. Sin ahorro → NO_BREAK_EVEN (nunca se fabrica un plazo).
+   */
+  breakEven?: {
+    status: 'BREAK_EVEN' | 'BREAK_EVEN_UNCERTAIN' | 'NO_BREAK_EVEN' | 'NO_PREMIUM' | 'UNAVAILABLE';
+    premium?: CandidateSide;
+    years?: Range;
+    minYears?: number;
+    extraPurchase?: Range;
+    annualSaving?: Range;
+  };
   /** Diferencia anual (positivo: A cuesta más). */
   annualDelta?: Range;
   meaningful?: string;
@@ -157,6 +169,10 @@ export interface DecisionView {
   sources: SourceInfo[];
   dataSnapshot: DataSnapshot;
   channel: ComparisonData['channel'];
+  /** Step 8c: la misma ReferenceVariant en los dos lados (Golf nuevo vs Golf usado). */
+  sameVariant: boolean;
+  /** Step 8c: verificación pendiente con el participante al que pertenece. */
+  verifyBySide: (Message & { side: CandidateSide })[];
   /** Step 8b: solo con algún usado. */
   used?: Partial<Record<CandidateSide, UsedSideView>>;
   /** Step 8b: confianza de la información de los usados recomendados (NOT_APPLICABLE si no hay ninguno). */
@@ -256,7 +272,7 @@ export function buildDecisionView(data: ComparisonData, input: DecisionInput, re
           ...(e?.energy.costPer100km ? { per100km: e.energy.costPer100km } : {}),
           ...(h ? { horizon: h.total_minor } : {}),
           ...(p ? { purchase: { amount: p.amount_minor, source: p.source, basis: p.basis } } : {}),
-          ...(own ? { ownership: { view: own.view, total: own.total_minor, missing: own.missing } } : {}),
+          ...(own ? { ownership: { view: own.view, total: own.total_minor, included: own.included, missing: own.missing } } : {}),
         },
       ];
     }),
@@ -270,6 +286,7 @@ export function buildDecisionView(data: ComparisonData, input: DecisionInput, re
     ...(annualMetric?.delta ? { annualDelta: annualMetric.delta } : {}),
     ...(annualMetric?.meaningful ? { meaningful: annualMetric.meaningful } : {}),
     messages: econ.messages,
+    ...breakEvenView(pair.economicComparison.breakEven, side),
   };
 
   // Energía de referencia del mercado, tal como la usó el Economics Engine.
@@ -340,6 +357,8 @@ export function buildDecisionView(data: ComparisonData, input: DecisionInput, re
     whyNot,
     tradeoffs,
     verify: result.requiresVerification.map((v) => ({ messageKey: v.messageKey, params: v.params, text: v.text, ...(v.details ? { details: v.details } : {}) })),
+    verifyBySide: result.requiresVerification.map((v) => ({ messageKey: v.messageKey, params: v.params, text: v.text, ...(v.details ? { details: v.details } : {}), side: side(v.candidateId)! })),
+    sameVariant: va.option.id === vb.option.id,
     notices: result.notices,
     confidence: { level: result.recommendationConfidence.level, reasons: result.recommendationConfidence.reasons.slice(0, 3), robustnessComputed },
     ...(robustnessComputed ? { robustness: { status: result.resultRobustness.status, level: result.resultRobustness.level, messages: result.resultRobustness.messages } } : {}),
@@ -349,6 +368,23 @@ export function buildDecisionView(data: ComparisonData, input: DecisionInput, re
     dataSnapshot: data.dataSnapshot,
     channel: data.channel,
     ...usedView(data, result),
+  };
+}
+
+/** Break-even del Economics Engine (vía ComparisonResult) orientado a los lados de la página. */
+type PairBreakEven = DecisionInput['comparison']['pairs'][number]['economicComparison']['breakEven'];
+function breakEvenView(be: PairBreakEven, side: (id?: string) => CandidateSide | undefined): Pick<EconomicsView, 'breakEven'> {
+  if (!be) return {};
+  const r = be.result;
+  const premium = side(be.premiumId);
+  return {
+    breakEven: {
+      status: r.status,
+      ...(premium ? { premium } : {}),
+      ...(r.status === 'BREAK_EVEN' ? { years: r.years } : {}),
+      ...(r.status === 'BREAK_EVEN_UNCERTAIN' ? { minYears: r.minYears } : {}),
+      ...('extraPurchase_minor' in r ? { extraPurchase: r.extraPurchase_minor, annualSaving: r.annualSaving_minor } : {}),
+    },
   };
 }
 
@@ -380,6 +416,16 @@ function usedView(data: ComparisonData, result: AlphaRecommendationResult): Pick
     };
   }
   return { used, usedInformationConfidence: result.usedInformationConfidence };
+}
+
+/**
+ * Step 8c: misma vista con los nombres de PRESENTACIÓN de los participantes (alias por condición cuando los dos lados
+ * son la misma variant). Solo nombres: los mensajes del engine conservan sus params y se presentan con el mismo alias.
+ */
+export function withDisplayNames(view: DecisionView, names: Readonly<Record<string, string>>): DecisionView {
+  if (!Object.keys(names).length) return view;
+  const rename = (c: CandidateView): CandidateView => ({ ...c, name: names[c.name] ?? c.name });
+  return { ...view, candidates: [rename(view.candidates[0]), rename(view.candidates[1])] };
 }
 
 /** Aplica el resultado del Web Worker (robustez + confianza que depende de ella) sobre una vista. */

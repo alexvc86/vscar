@@ -161,6 +161,17 @@ describe('Step 8b — must have full service history', () => {
   });
 });
 
+describe('Step 8c — unknown ≠ bad in Why Not / tradeoffs', () => {
+  it('information gaps never become disadvantages; known attention facts do; "only minor" is not claimed next to them', () => {
+    const { result } = run([newGolf(), usedGolf(81, { service_history: 'unknown', condition: 'unknown', inspection_status: 'unknown', accident_history: 'unknown' })]);
+    const items = result.whyNotByCandidate[usedId(81)]!.items;
+    expect(items.some((i) => i.type === 'USED_INFORMATION')).toBe(false);
+    const known = run([newGolf(), usedGolf(82, { service_history: 'partial' })]).result.whyNotByCandidate[usedId(82)]!;
+    expect(known.items.some((i) => i.type === 'USED_OWNERSHIP' && i.messageKey === 'used.ownership.service_history_incomplete')).toBe(true);
+    expect(known.onlyMinor).toBe(false);
+  });
+});
+
 describe('BEV battery health known vs unknown (real Model 3 reference)', () => {
   const bundle = loadAllCases();
   const m3 = (used?: UsedVehicleInstanceInput): PipelineVehicle => ({

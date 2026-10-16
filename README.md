@@ -3,7 +3,7 @@
 Plataforma de decisión para elegir coche — nuevo o usado — con los cálculos a la vista.
 Plan maestro: [docs/VSCAR_MASTER_PLAN.md](docs/VSCAR_MASTER_PLAN.md) (v1.0 baseline) · Estado: [docs/EXECUTION_STATUS.md](docs/EXECUTION_STATUS.md).
 
-## Estructura (Step 8b)
+## Estructura (Step 8c)
 
 | Paquete | Qué es | I/O |
 |---|---|---|
@@ -58,7 +58,7 @@ corepack pnpm --filter @vscar/web test    # vitest · e2e: corepack pnpm --filte
 
 Selector de vehículos (Step 7b.2): Marca → Modelo → Año → Versión (o "Buscar directamente"), con silueta SVG por carrocería mientras no haya imágenes con derechos ([política de media](docs/data/VEHICLE_MEDIA_POLICY.md)).
 
-Docs: [Web Foundation](docs/web/WEB_FOUNDATION_V0_1.md) · [Vehicle Selector v0.2](docs/web/VEHICLE_SELECTOR_V0_2.md) · [Shareable Comparisons](docs/web/SHAREABLE_COMPARISONS_V0_1.md) · [SEO Foundation](docs/web/SEO_FOUNDATION_V0_1.md) · [v0.1](docs/web/VEHICLE_SELECTOR_V0_1.md) · [Data Orchestration](docs/web/DATA_ORCHESTRATION_V0_1.md) · [i18n y mercados](docs/web/I18N_AND_MARKETS.md) · [desarrollo local](docs/web/LOCAL_DEVELOPMENT.md) · [ADR-012](docs/adr/ADR-012-i18n-market-routing.md) · [ADR-013](docs/adr/ADR-013-catalog-publication-and-routing.md) · [ADR-014](docs/adr/ADR-014-vehicle-model-media-and-selector-flow.md) · [ADR-015](docs/adr/ADR-015-comparison-url-and-indexability.md) · [Used Adjustment](docs/used/USED_ADJUSTMENT_V0_1.md) · [Used Information Confidence](docs/used/USED_INFORMATION_CONFIDENCE_V0_1.md) · [ADR-016](docs/adr/ADR-016-used-adjustment-layer.md) · [Used Input UX](docs/used/USED_INPUT_UX_V0_1.md) · [Used Comparison Integration](docs/used/USED_COMPARISON_INTEGRATION_V0_1.md) · [ADR-017](docs/adr/ADR-017-used-facts-in-url-and-participant-identity.md).
+Docs: [Web Foundation](docs/web/WEB_FOUNDATION_V0_1.md) · [Vehicle Selector v0.2](docs/web/VEHICLE_SELECTOR_V0_2.md) · [Shareable Comparisons](docs/web/SHAREABLE_COMPARISONS_V0_1.md) · [SEO Foundation](docs/web/SEO_FOUNDATION_V0_1.md) · [v0.1](docs/web/VEHICLE_SELECTOR_V0_1.md) · [Data Orchestration](docs/web/DATA_ORCHESTRATION_V0_1.md) · [i18n y mercados](docs/web/I18N_AND_MARKETS.md) · [desarrollo local](docs/web/LOCAL_DEVELOPMENT.md) · [ADR-012](docs/adr/ADR-012-i18n-market-routing.md) · [ADR-013](docs/adr/ADR-013-catalog-publication-and-routing.md) · [ADR-014](docs/adr/ADR-014-vehicle-model-media-and-selector-flow.md) · [ADR-015](docs/adr/ADR-015-comparison-url-and-indexability.md) · [Used Adjustment](docs/used/USED_ADJUSTMENT_V0_1.md) · [Used Information Confidence](docs/used/USED_INFORMATION_CONFIDENCE_V0_1.md) · [ADR-016](docs/adr/ADR-016-used-adjustment-layer.md) · [Used Input UX](docs/used/USED_INPUT_UX_V0_1.md) · [Used Comparison Integration](docs/used/USED_COMPARISON_INTEGRATION_V0_1.md) · [ADR-017](docs/adr/ADR-017-used-facts-in-url-and-participant-identity.md) · [New/Used Decision Audit](docs/used/NEW_USED_DECISION_AUDIT_V0_1.md) · [New/Used Golden Cases](docs/used/NEW_USED_GOLDEN_CASES_V0_1.md).
 
 Nuevo / Usado (Step 8b): tras elegir la versión, cada coche se considera **Nuevo** o **Usado** (datos de esa unidad: precio pedido, km, matriculación…). Los hechos de la unidad van en la URL (`u=1&b=used&b_price=…&eval=…`), nunca se guardan, y las vistas con ellos son `noindex`.
 

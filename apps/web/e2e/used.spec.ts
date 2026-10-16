@@ -67,7 +67,8 @@ test('A — new vs used, same ReferenceVariant: picker → two distinct particip
 
   await expect(page).toHaveURL(new RegExp(`/es-es/compare/${GOLF}-vs-${GOLF}[?]${NEW_USED_QUERY.replace(/[?]/g, '\\?')}&eval=`));
   await expect(page.getByTestId('condition-a')).toHaveText('A · NUEVO');
-  await expect(page.getByTestId('condition-b')).toHaveText('B · USADO');
+  // Step 8c: la insignia del usado lleva su kilometraje.
+  await expect(page.getByTestId('condition-b')).toHaveText('B · USADO · 84.000 km');
   await expect(page.getByTestId('used-facts-b')).toContainText('84.000 km');
   await expect(page.getByTestId('used-card-b')).toBeVisible();
   await expect(page.getByTestId('used-card-a')).toHaveCount(0);
@@ -130,7 +131,7 @@ test('C — share: the link carries both cars, their condition and the used fact
   const other = await browser.newContext();
   const p2 = await other.newPage();
   await p2.goto(url);
-  await expect(p2.getByTestId('condition-b')).toHaveText('B · USADO');
+  await expect(p2.getByTestId('condition-b')).toHaveText('B · USADO · 84.000 km');
   await expect(p2.getByTestId('used-facts-b')).toContainText('84.000 km');
   await expect(p2.getByTestId('used-facts-b')).toContainText('Marzo de 2019');
   await expect(p2.locator('#result-title')).toHaveText(headline);
@@ -145,10 +146,10 @@ test('C — share: the link carries both cars, their condition and the used fact
 test('D — swap: A NEW / B USED → A USED / B NEW, the facts follow their car', async ({ page }) => {
   const problems = watchConsole(page);
   await page.goto(`/es-es/compare/${BYD}-vs-${M3}?${'u=1&b=used&b_price=19000&b_km=62000&b_soh=91'}&eval=2026-10-15`);
-  await expect(page.getByTestId('condition-b')).toHaveText('B · USADO');
+  await expect(page.getByTestId('condition-b')).toHaveText('B · USADO · 62.000 km');
   await page.getByTestId('swap-cars').click();
   await expect(page).toHaveURL(new RegExp(`/es-es/compare/${M3}-vs-${BYD}[?]u=1&a=used&a_price=19000&a_km=62000&a_soh=91&eval=2026-10-15$`));
-  await expect(page.getByTestId('condition-a')).toHaveText('A · USADO');
+  await expect(page.getByTestId('condition-a')).toHaveText('A · USADO · 62.000 km');
   await expect(page.getByTestId('condition-b')).toHaveText('B · NUEVO');
   await expect(page.getByTestId('used-facts-a')).toContainText('19.000');
   await expect(page.getByTestId('used-card-a')).toBeVisible();
@@ -162,7 +163,7 @@ test('E — i18n: switching to English keeps cars, facts and scenario; used reas
   await page.goto(`/es-es/compare/${GOLF}-vs-${GOLF}?${query}`);
   await page.locator('[data-lang-switch="en"]').click();
   await expect(page).toHaveURL(new RegExp(`/en-es/compare/${GOLF}-vs-${GOLF}[?]${query}$`));
-  await expect(page.getByTestId('condition-b')).toHaveText('B · USED');
+  await expect(page.getByTestId('condition-b')).toHaveText('B · USED · 84,000 km');
   await expect(page.getByTestId('used-facts-b')).toContainText('84,000 km');
   await expect(page.getByTestId('used-facts-b')).toContainText('March 2019');
   await expect(page.getByTestId('purchase-b')).toContainText('€28,000');
@@ -223,7 +224,7 @@ test('changing the used car never reuses the previous unit facts', async ({ page
   await expect(page.getByTestId('used-km')).toHaveValue('');
   await page.getByTestId('used-review').click();
   await page.getByTestId('choose-car').click();
-  await expect(page).toHaveURL(new RegExp(`/es-es/compare/${BYD}-vs-${GOLF}[?]u=1&b=used&eval=2026-10-15$`));
+  await expect(page).toHaveURL(new RegExp(`/es-es/compare/${BYD}-vs-${GOLF}[?]u=1&b=used&eval=2026-10-15(#result)?$`));
 });
 
 test('malformed used parameters never produce a 500', async ({ page }) => {

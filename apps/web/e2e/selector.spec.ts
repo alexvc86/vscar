@@ -70,7 +70,7 @@ test('§107 home ES → Volkswagen → Golf → 2018 → version → second car 
   await page.getByTestId('year-2027').click();
   await page.getByTestId(`variant-${GOLF_ETSI}`).click();
   await page.getByTestId('condition-new').click();
-  await expect(page).toHaveURL(new RegExp(`/es-es/compare/${GOLF_ETSI}-vs-${M3}[?]trips=10$`));
+  await expect(page).toHaveURL(new RegExp(`/es-es/compare/${GOLF_ETSI}-vs-${M3}[?]trips=10(#result)?$`));
 
   await page.locator('[data-lang-switch="en"]').click();
   await expect(page).toHaveURL(new RegExp(`/en-es/compare/${GOLF_ETSI}-vs-${M3}[?]trips=10$`));
@@ -97,7 +97,7 @@ test('step back without closing; search directly as a shortcut; swap keeps the s
   await page.locator(`[role="option"][data-slug="${GOLF_ETSI}"]`).click();
   // Step 8b: tras elegir el coche, ¿Nuevo o Usado?
   await page.getByTestId('condition-new').click();
-  await expect(page).toHaveURL(new RegExp(`/en-es/compare/${BYD}-vs-${GOLF_ETSI}[?]trips=10$`));
+  await expect(page).toHaveURL(new RegExp(`/en-es/compare/${BYD}-vs-${GOLF_ETSI}[?]trips=10(#result)?$`));
 
   await page.getByTestId('swap-cars').click();
   await expect(page).toHaveURL(new RegExp(`/en-es/compare/${GOLF_ETSI}-vs-${BYD}[?]trips=10$`));

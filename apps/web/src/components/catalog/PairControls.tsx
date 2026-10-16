@@ -82,7 +82,8 @@ export function PairPickerHost({ locale, market, labels, used, a, b, conditions,
         const slug = side === 'a' ? pairSlug(option.slug, b.slug) : pairSlug(a.slug, option.slug);
         // Escenario de la URL actual intacto; bloque usado reconstruido con la nueva condición de este lado.
         const scenario = new URLSearchParams([...new URLSearchParams(window.location.search).entries()].filter(([k]) => !isUsedParam(k))).toString();
-        router.push(`/${locale}/compare/${slug}${joinQuery(scenario ? `?${scenario}` : '', pair)}`);
+        // Step 8c: tras cambiar una unidad, la atención va al resultado actualizado (`#result` + foco en su titular).
+        router.push(`/${locale}/compare/${slug}${joinQuery(scenario ? `?${scenario}` : '', pair)}#result`);
       }}
     />
   );

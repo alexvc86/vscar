@@ -110,6 +110,28 @@ Hallazgos:
 - El pico de 296 ms en la comparación móvil es el mismo patrón ya documentado en 7c (primera interacción mientras se cargan los chunks visuales diferidos), en 1 de 5 cargas. Vigilar en dispositivos reales.
 - E2E: con un worker por núcleo, un único `next start` encolaba navegaciones y algunas superaban los 5 s de las aserciones. La configuración fija `workers: 2` (27/27 estable).
 
+### 7.1 Step 8c — re-medición y SSR por etapas
+
+| Medida (8c) | Resultado |
+|---|---|
+| JS inicial comparación / home | 155,9 / 153,8 KB gzip |
+| LCP (3 rondas × 5 cargas) | escritorio 168–992 ms · móvil ×4 376–580 ms |
+| CLS | 0 |
+| INP comparación móvil ×4, p75 por ronda | 168 · 56 · 96 ms (peor carga 224 ms, 1 de 15) |
+| INP formulario móvil ×4, p75 por ronda | 256 · 120 · 96 ms (por paso, medido aislado: ≤ 160 ms; "Usado" 104–136, "Revisar" 88–160) |
+| INP comparación perfilado (LoAF, 48 cargas: frío / caliente / reduced motion) | peor 152 ms; retardo de entrada 20–69 ms, procesamiento 4–12 ms; pico de 296 ms de 8b no reproducido |
+| SSR, MySQL caliente (vista usada con hechos nuevos) | búsqueda 3,7–8 ms · bundle 5–8 ms · adaptación 0,5 ms · pipeline sin robustez 5–8 ms · con robustez 115–127 ms (frío: 161 + 168 ms) |
+| SSR por etapa en proceso (p50 / p95, 30 iteraciones) | sujetos + economía + comparación del pipeline 2,9 / 9,4 ms · Used Adjustment 0,33 / 1,8 · Economics 0,39 / 1,0 · Comparison 1,6 / 3,7 · Decision 0,24 / 0,62 · vista 0,34 / 3,3 · **robustez 97 / 115** · total 105 / 127 ms |
+| SSR TTFB (perf-8b) | par base p50 35 / p95 62 ms · usada cacheada 28 / 42 · usada con hechos nuevos 208 / 245 ms |
+
+La robustez domina el coste (≈ 92 %) y sigue fuera del cliente interactivo (servidor + Web Worker). Variabilidad entre rondas en la máquina compartida; **solo emulación (Chrome, CPU ×4)**.
+
+### 7.2 Step 8c — cambios de presentación
+
+- Nombres de presentación por condición cuando la variant es la misma (alias de UI; los nombres internos no cambian).
+- Coste de uso (energía) · desembolso inicial · coste conocido (compra + energía; no TCO) separados; break-even del engine mostrado tal cual; aviso de no comparabilidad con ciclos distintos.
+- Información de la unidad separada de la confianza de la recomendación; verificación por coche; fecha de evaluación explicada y actualizable.
+
 ## 8. Tests
 
 | Suite | Cubre |

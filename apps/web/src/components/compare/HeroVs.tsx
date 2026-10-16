@@ -45,10 +45,14 @@ export function HeroVs({ view, i18n, swapSearch = '' }: { view: DecisionView; i1
                   <span className={`label tone-${c.side}`}>{t('comparison.candidate', { side: c.side.toUpperCase() })}</span>
                   {hasUsed ? (
                     <span className={`condition-badge condition-badge--${c.condition}`} data-testid={`condition-${c.side}`}>
-                      {ul.badge[c.side][c.condition]}
+                      {/* Step 8c: el usado lleva su kilometraje en la insignia (si se conoce): distingue la unidad de un vistazo. */}
+                      {c.condition === 'used' && view.used?.[c.side]?.facts.km !== undefined
+                        ? t('used.badgeKm', { side: c.side.toUpperCase(), km: `${i18n.f.number(view.used[c.side]!.facts.km!)} km` })
+                        : ul.badge[c.side][c.condition]}
                     </span>
                   ) : null}
-                  <span className="vs__name">{c.name}</span>
+                  {/* Misma variant: el nombre base; la condición la dice la insignia (el H1 ya los distingue). */}
+                  <span className="vs__name">{view.sameVariant ? `${c.option.brand} ${c.option.model}` : c.name}</span>
                   {(() => {
                     const text = optionText(c.option, sel);
                     return (

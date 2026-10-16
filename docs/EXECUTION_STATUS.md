@@ -460,6 +460,26 @@ Siguiente:
 - **Step 7c — Comparison URL / Share / richer catalog pages**.
 - En el data workstream: primeras imágenes con derechos verificados (propias o licenciadas) y derechos de S08/S02/S04 para el canal PUBLIC.
 
+## STEP 8c — New/Used Decision Experience Hardening · ✅ PASS (2026-10-16)
+
+Estabilización del Alpha: auditoría de lo que LEE la persona en NEW/NEW, NEW/USED, USED/NEW y USED/USED (HTML real ES/EN + 15 casos dorados). Sin cambio de metodología (2026.7) ni del Economic Fit (sigue en coste de uso). Detalle: [NEW_USED_DECISION_AUDIT_V0_1](used/NEW_USED_DECISION_AUDIT_V0_1.md) · [NEW_USED_GOLDEN_CASES_V0_1](used/NEW_USED_GOLDEN_CASES_V0_1.md).
+
+| Corrección | Tipo |
+|---|---|
+| Misma variant sin título/descripción/OG (metadata cargada sin las condiciones) | bug de integración |
+| Dos `<main>` montados tras cambiar la unidad con la misma ruta (`key` con condiciones) | bug de integración |
+| Nombres "Golf A / B" → alias de presentación por condición (UI y mensajes del engine) | claridad |
+| Tres conceptos separados: desembolso inicial · coste de uso (Economic Fit) · coste conocido (no es TCO) + break-even del engine (`NO_BREAK_EVEN` sin ahorro; nunca fabricado) + costes conocidos no comparables con ciclos distintos | presentación económica |
+| Why Not/tradeoffs solo con hechos conocidos; los huecos van a verificación; sin "solo diferencias menores" junto a señales de la unidad (cambio de salida del engine **solo para usados**) | unknown ≠ bad |
+| Información de la unidad ≠ confianza de la recomendación (chip, nota y vocabulario propios) | claridad |
+| Verificación agrupada por coche; foco en el resultado tras cambiar una unidad | claridad / accesibilidad |
+| Fecha de evaluación explicada + "Actualizar análisis a hoy" (preserva coches, hechos y escenario; dice qué cambia; nunca automático) | reproducibilidad |
+| Índice de capítulos: una actualización no urgente por callback (retardo de entrada) | INP |
+
+Verificación: `pnpm check` en verde, **708 tests** (3 en vivo + 1 de medición omitidos) con MySQL; **E2E 31/31** (4 nuevos). JS inicial comparación **155,9 KB**. LCP ≤ 0,99 s escritorio / ≤ 0,58 s móvil ×4; CLS 0; INP comparación p75 56–168 ms móvil ×4 según ronda (peor 224 ms en 1 de 15 cargas); pico de 296 ms de 8b no reproducido en 48 cargas perfiladas (peor 152 ms). Solo emulación: sin móvil físico.
+
+Siguiente: preparación del despliegue Alpha PREVIEW (`VSCAR_SITE_URL`, canal); prueba en móvil físico; catálogo PUBLIC en el data workstream.
+
 ## STEP 8b — Used Vehicle Input + New/Used UX · ✅ PASS (2026-10-15)
 
 Una sola experiencia para NUEVO/NUEVO, NUEVO/USADO, USADO/NUEVO y USADO/USADO: Marca → Modelo → Año → Versión → **¿Nuevo o Usado?** → datos de la unidad → revisión. Los hechos de la unidad viajan en la URL (contrato `u=1`, ADR-017) y llegan al **único** `createDecisionPipeline` en servidor, cliente y worker. Sin cuentas, sin persistencia, sin marketplace.
