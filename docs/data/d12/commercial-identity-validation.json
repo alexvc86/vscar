@@ -1,0 +1,138 @@
+{
+  "entries": 22,
+  "invalid": 0,
+  "validation": [
+    {
+      "rank": 3,
+      "key": "E1*2007/46*0623*33|GAC4DACAX0|FM6FM6AJ015N7MVON1ML79VR2N",
+      "identity": "PARTIAL",
+      "issues": []
+    },
+    {
+      "rank": 1,
+      "key": "E1*2007/46*0623*35|GAC4DACAX0|FM6FM6AJ015N7CPON1ML1BVR2NA",
+      "identity": "PARTIAL",
+      "issues": []
+    },
+    {
+      "rank": 2,
+      "key": "E13*2018/858*00639*03|SE2R1C|2NTE5F002NL1",
+      "identity": "EXACT",
+      "issues": []
+    },
+    {
+      "rank": 4,
+      "key": "E13*2018/858*00639*00|SE2D1C|1NXE5E001NL1",
+      "identity": "EXACT",
+      "issues": []
+    },
+    {
+      "rank": 5,
+      "key": "E4*2018/858*00079*00|F5P11|M61A11",
+      "identity": "PARTIAL",
+      "issues": []
+    },
+    {
+      "rank": 6,
+      "key": "E2*2007/46*0676*28|BD2|AC6WA2SA500B",
+      "identity": "PARTIAL",
+      "issues": []
+    },
+    {
+      "rank": 7,
+      "key": "E9*2018/858*11042*10|A|A35",
+      "identity": "PARTIAL",
+      "issues": []
+    },
+    {
+      "rank": 8,
+      "key": "E11*2007/46*2724*05|F5D51|M66ZZ1",
+      "identity": "PARTIAL",
+      "issues": []
+    },
+    {
+      "rank": 9,
+      "key": "E11*2007/46*3144*01|F5D51|M66ZZ1",
+      "identity": "PARTIAL",
+      "issues": []
+    },
+    {
+      "rank": 20,
+      "key": "E2*2007/46*0534*05|C|YHZJ-C2B000",
+      "identity": "PARTIAL",
+      "issues": []
+    },
+    {
+      "rank": 22,
+      "key": "E2*2007/46*0639*18|B|YHTK-J2B400",
+      "identity": "PARTIAL",
+      "issues": []
+    },
+    {
+      "rank": 24,
+      "key": "E19*2007/46*0026*27|BEV|MT6WA45M520B",
+      "identity": "PARTIAL",
+      "issues": []
+    },
+    {
+      "rank": 26,
+      "key": "E2*2007/46*0628*30|B|YHZT-B21700",
+      "identity": "EXACT",
+      "issues": []
+    },
+    {
+      "rank": 27,
+      "key": "E6*2007/46*0437*04|MXPA11(H)|MXPA11L-BHFNBW(1E)",
+      "identity": "PARTIAL",
+      "issues": []
+    },
+    {
+      "rank": 48,
+      "key": "E6*2007/46*0437*04|MXPH11(H)|MXPH11L-CHXNBW(1E)",
+      "identity": "PARTIAL",
+      "issues": []
+    },
+    {
+      "rank": 28,
+      "key": "E1*2007/46*1829*16|X21CT2|HZAA151C",
+      "identity": "PARTIAL",
+      "issues": []
+    },
+    {
+      "rank": 53,
+      "key": "E1*2007/46*1829*12|X28QT2|HZAA052A",
+      "identity": "PARTIAL",
+      "issues": []
+    },
+    {
+      "rank": 56,
+      "key": "E6*2007/46*0318*05|ZWE211(H)|ZWE211L-DHXNBW(1F)",
+      "identity": "PARTIAL",
+      "issues": []
+    },
+    {
+      "rank": 57,
+      "key": "E2*2007/46*0534*23|4|DGZU-C1J000",
+      "identity": "PARTIAL",
+      "issues": []
+    },
+    {
+      "rank": 73,
+      "key": "E6*2007/46*0429*05|AXAP54(N)|AXAP54L-ANXMBW(1F)",
+      "identity": "PARTIAL",
+      "issues": []
+    },
+    {
+      "rank": 81,
+      "key": "E4*2007/46*1293*26|Y6LR|BZB3S5T3",
+      "identity": "PARTIAL",
+      "issues": []
+    },
+    {
+      "rank": 86,
+      "key": "E2*2007/46*0676*05|BH2|MU4UA0FA5000",
+      "identity": "PARTIAL",
+      "issues": []
+    }
+  ]
+}

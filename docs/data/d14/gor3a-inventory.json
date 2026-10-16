@@ -1,0 +1,377 @@
+{
+  "dataset": {
+    "source_code": "S14",
+    "name": "gor3a/vehicle-makes-models",
+    "repository": "https://github.com/gor3a/vehicle-makes-models",
+    "release": "v1.0.2",
+    "commit": "ee99776470a45214bf524cdfe22e5dbf4bd67f93",
+    "data_commit": "718f8e789898e612eaee57ed9e76b37b9187a2d5",
+    "release_url": "https://github.com/gor3a/vehicle-makes-models/releases/tag/v1.0.2",
+    "data_license": "ODbL 1.0",
+    "data_license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "code_license": "MIT",
+    "upstream": "autoevolution.com",
+    "attribution": "vehicle-makes-models (github.com/gor3a/vehicle-makes-models), ODbL 1.0 — upstream: autoevolution.com"
+  },
+  "declared": {
+    "makes": 164,
+    "models": 2621,
+    "generations": 7169,
+    "engines": 30390,
+    "source": "README @ v1.0.2 (figures from v1.0.1)"
+  },
+  "actual": {
+    "makeGroups": 164,
+    "makes": 164,
+    "models": 2649,
+    "generations": 7217,
+    "engines": 30535
+  },
+  "parity": {
+    "json": {
+      "makeGroups": 164,
+      "makes": 164,
+      "models": 2649,
+      "generations": 7217,
+      "engines": 30535
+    },
+    "csvEngines": {
+      "csvRows": 30535,
+      "jsonRows": 30535,
+      "onlyInJson": 0,
+      "onlyInCsv": 0,
+      "headerOk": true
+    },
+    "sqlite": {
+      "makes": 164,
+      "models": 2649,
+      "generations": 7217,
+      "engines": 30535,
+      "engine_specs": 781220
+    },
+    "enginesEqual": true
+  },
+  "specKeys": 71,
+  "inventoryTyped": [
+    {
+      "field": "fuelType",
+      "type": "string",
+      "unit": "—",
+      "nullRatePct": 0.1,
+      "distinct": 13,
+      "specKeyMapping": "pt.fuel / powertrain class",
+      "identityBasis": "dataset engine row (L2 at best)",
+      "rights": "ODbL declared · upstream unverified → research only",
+      "confidence": "HIGH (closed list)"
+    },
+    {
+      "field": "cylinders",
+      "type": "number",
+      "unit": "—",
+      "nullRatePct": 2.8,
+      "distinct": 12,
+      "specKeyMapping": "pt.cylinders",
+      "identityBasis": "dataset engine row (L2 at best)",
+      "rights": "ODbL declared · upstream unverified → research only",
+      "confidence": "MEDIUM"
+    },
+    {
+      "field": "displacementCc",
+      "type": "number",
+      "unit": "cm³",
+      "nullRatePct": 4.6,
+      "distinct": 1191,
+      "specKeyMapping": "pt.displacement_cc",
+      "identityBasis": "dataset engine row (L2 at best)",
+      "rights": "ODbL declared · upstream unverified → research only",
+      "confidence": "HIGH"
+    },
+    {
+      "field": "powerHp",
+      "type": "number",
+      "unit": "\"HP\" (often metric PS)",
+      "nullRatePct": 0.5,
+      "distinct": 815,
+      "specKeyMapping": "— (not used: unit ambiguous)",
+      "identityBasis": "dataset engine row (L2 at best)",
+      "rights": "ODbL declared · upstream unverified → research only",
+      "confidence": "LOW"
+    },
+    {
+      "field": "torqueNm",
+      "type": "number",
+      "unit": "N·m",
+      "nullRatePct": 4.1,
+      "distinct": 660,
+      "specKeyMapping": "perf.torque_nm",
+      "identityBasis": "dataset engine row (L2 at best)",
+      "rights": "ODbL declared · upstream unverified → research only",
+      "confidence": "MEDIUM"
+    },
+    {
+      "field": "transmission",
+      "type": "string",
+      "unit": "free text",
+      "nullRatePct": 1.6,
+      "distinct": 678,
+      "specKeyMapping": "transmission (manual/automatic/single_speed; CVT unmapped)",
+      "identityBasis": "dataset engine row (L2 at best)",
+      "rights": "ODbL declared · upstream unverified → research only",
+      "confidence": "MEDIUM"
+    },
+    {
+      "field": "drivetrain",
+      "type": "string",
+      "unit": "FWD/RWD/AWD",
+      "nullRatePct": 0.6,
+      "distinct": 3,
+      "specKeyMapping": "drivetrain",
+      "identityBasis": "dataset engine row (L2 at best)",
+      "rights": "ODbL declared · upstream unverified → research only",
+      "confidence": "HIGH"
+    },
+    {
+      "field": "zeroToHundredKmhS",
+      "type": "number",
+      "unit": "s (0–62 mph / 0–100 km/h)",
+      "nullRatePct": 16.9,
+      "distinct": 276,
+      "specKeyMapping": "perf.accel_0_100_s",
+      "identityBasis": "dataset engine row (L2 at best)",
+      "rights": "ODbL declared · upstream unverified → research only",
+      "confidence": "MEDIUM (method unknown)"
+    },
+    {
+      "field": "topSpeedKmh",
+      "type": "number",
+      "unit": "km/h",
+      "nullRatePct": 15,
+      "distinct": 260,
+      "specKeyMapping": "perf.top_speed_kmh",
+      "identityBasis": "dataset engine row (L2 at best)",
+      "rights": "ODbL declared · upstream unverified → research only",
+      "confidence": "MEDIUM"
+    },
+    {
+      "field": "fuelEconomyCombinedL100",
+      "type": "number",
+      "unit": "L/100 km (cycle mixed NEDC/WLTP)",
+      "nullRatePct": 15.5,
+      "distinct": 228,
+      "specKeyMapping": "— (cycle not separable in typed column)",
+      "identityBasis": "dataset engine row (L2 at best)",
+      "rights": "ODbL declared · upstream unverified → research only",
+      "confidence": "LOW"
+    },
+    {
+      "field": "lengthMm",
+      "type": "number",
+      "unit": "mm",
+      "nullRatePct": 2.4,
+      "distinct": 952,
+      "specKeyMapping": "dim.length_mm",
+      "identityBasis": "dataset engine row (L2 at best)",
+      "rights": "ODbL declared · upstream unverified → research only",
+      "confidence": "MEDIUM (per generation)"
+    },
+    {
+      "field": "widthMm",
+      "type": "number",
+      "unit": "mm",
+      "nullRatePct": 2.4,
+      "distinct": 368,
+      "specKeyMapping": "dim.width_mm",
+      "identityBasis": "dataset engine row (L2 at best)",
+      "rights": "ODbL declared · upstream unverified → research only",
+      "confidence": "MEDIUM (mirrors?)"
+    },
+    {
+      "field": "heightMm",
+      "type": "number",
+      "unit": "mm",
+      "nullRatePct": 2.7,
+      "distinct": 456,
+      "specKeyMapping": "dim.height_mm",
+      "identityBasis": "dataset engine row (L2 at best)",
+      "rights": "ODbL declared · upstream unverified → research only",
+      "confidence": "MEDIUM"
+    },
+    {
+      "field": "wheelbaseMm",
+      "type": "number",
+      "unit": "mm",
+      "nullRatePct": 2.8,
+      "distinct": 543,
+      "specKeyMapping": "dim.wheelbase_mm",
+      "identityBasis": "dataset engine row (L2 at best)",
+      "rights": "ODbL declared · upstream unverified → research only",
+      "confidence": "MEDIUM"
+    },
+    {
+      "field": "curbWeightKg",
+      "type": "number",
+      "unit": "kg (unladen, definition not stated)",
+      "nullRatePct": 9.9,
+      "distinct": 2002,
+      "specKeyMapping": "— (≠ EU running order)",
+      "identityBasis": "dataset engine row (L2 at best)",
+      "rights": "ODbL declared · upstream unverified → research only",
+      "confidence": "LOW"
+    }
+  ],
+  "inventorySpecs": [
+    {
+      "key": "DIMENSIONS / Cargo Volume",
+      "presentPct": 89.4,
+      "parsedPct": 89.4
+    },
+    {
+      "key": "PERFORMANCE SPECS / Acceleration 0-62 Mph (0-100 kph)",
+      "presentPct": 83.1,
+      "parsedPct": 83.1
+    },
+    {
+      "key": "ENGINE SPECS / Power",
+      "presentPct": 97.1,
+      "parsedPct": 97.1
+    },
+    {
+      "key": "ENGINE SPECS / Electrical motor power",
+      "presentPct": 4.4,
+      "parsedPct": 4.4
+    },
+    {
+      "key": "ENGINE SPECS / Total maximum power",
+      "presentPct": 3.6,
+      "parsedPct": 3.6
+    },
+    {
+      "key": "POWER SYSTEM SPECS / Nominal Capacity",
+      "presentPct": 2.4,
+      "parsedPct": null
+    },
+    {
+      "key": "POWER SYSTEM SPECS / Maximum Capacity",
+      "presentPct": 2.1,
+      "parsedPct": null
+    },
+    {
+      "key": "POWER SYSTEM SPECS / Charging time (normal)",
+      "presentPct": 0.1,
+      "parsedPct": null
+    },
+    {
+      "key": "POWER SYSTEM SPECS / Charging time (quick)",
+      "presentPct": 0,
+      "parsedPct": null
+    },
+    {
+      "key": "FUEL ECONOMY (NEDC) / Combined",
+      "presentPct": 81.5,
+      "parsedPct": null
+    },
+    {
+      "key": "FUEL ECONOMY (WLTP) / Combined",
+      "presentPct": 3.8,
+      "parsedPct": null
+    },
+    {
+      "key": "POWER SYSTEM SPECS / Range",
+      "presentPct": 3.1,
+      "parsedPct": null
+    }
+  ],
+  "generationRepresentation": {
+    "generations": 7217,
+    "byStartYear": {
+      "<2010": 3666,
+      "2024+": 445,
+      "2015–2019": 1223,
+      "2010–2014": 1085,
+      "2020–2023": 798
+    },
+    "openEnded": 1060,
+    "bodyTypeFieldNull": true,
+    "namesWithFacelift": 0,
+    "namesWithRomanOrMk": 4,
+    "namesWithDoorsOrBody": 1720,
+    "duplicateNamesWithinModel": 355,
+    "golf": [
+      {
+        "name": "Golf 3 Doors (2008)",
+        "yearStart": 2008,
+        "yearEnd": 2012
+      },
+      {
+        "name": "Golf 5 Doors (2008)",
+        "yearStart": 2008,
+        "yearEnd": 2012
+      },
+      {
+        "name": "Golf 5 Doors (2010)",
+        "yearStart": 2010,
+        "yearEnd": 2014
+      },
+      {
+        "name": "Golf 3 Doors (2012)",
+        "yearStart": 2012,
+        "yearEnd": 2017
+      },
+      {
+        "name": "Golf 5 Doors (2012)",
+        "yearStart": 2012,
+        "yearEnd": 2017
+      },
+      {
+        "name": "Golf 3 Doors (2017)",
+        "yearStart": 2017,
+        "yearEnd": 2019
+      },
+      {
+        "name": "Golf 5 Doors (2017)",
+        "yearStart": 2017,
+        "yearEnd": 2019
+      },
+      {
+        "name": "Golf 5 Doors (2019)",
+        "yearStart": 2019,
+        "yearEnd": 2024
+      },
+      {
+        "name": "Golf 5 Doors (2024)",
+        "yearStart": 2024,
+        "yearEnd": null
+      }
+    ],
+    "countries": [
+      [
+        "not stated",
+        136
+      ],
+      [
+        "China",
+        17
+      ],
+      [
+        "Russia",
+        3
+      ],
+      [
+        "Egypt",
+        2
+      ],
+      [
+        "Iran",
+        2
+      ],
+      [
+        "Germany",
+        2
+      ],
+      [
+        "Serbia",
+        2
+      ]
+    ]
+  }
+}

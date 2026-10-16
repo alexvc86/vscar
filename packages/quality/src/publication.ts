@@ -50,6 +50,16 @@ export const SOURCE_RIGHTS: Readonly<Record<string, SourceRights>> = {
   // Step D1.1: RDW (CC0 según evidencia) y GIAVEH registrados como pendientes: sin aprobación humana no son PUBLIC.
   S11: pending,
   S12: pending,
+  // Step D1.3: Traficom (CC BY 4.0 según CKAN), solo evidencia agregada; pendiente de aprobación humana.
+  S13: pending,
+  // Step D1.4: gor3a (ODbL declarada, origen sin acreditar) pendiente; Opendatabay: licencia enlazada no comercial → denegada.
+  S14: pending,
+  S15: denied,
+  // Step D1.5: autoseeker (CC BY), OpenEV (CDLA-P-2.0), VehiclesDB (CC BY, taxonomía) y Kilowatt (MIT+atribución, archivado): pendientes.
+  S16: pending,
+  S17: pending,
+  S18: pending,
+  S19: pending,
   S20: pending,
   S21: pending,
   S22: pending,

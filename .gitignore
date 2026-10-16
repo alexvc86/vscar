@@ -19,3 +19,7 @@ playwright-report/
 /backups/
 *.sql.gz
 *.dump
+
+# Step D1.5: CSV de terceros aportados en docs/ (derechos pendientes) — no versionar; copia de adquisición en data/raw/
+/docs/Car_Dataset_1945-2020.csv
+/docs/models.csv

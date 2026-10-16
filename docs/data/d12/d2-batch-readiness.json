@@ -1,0 +1,988 @@
+[
+  {
+    "rank": 2,
+    "candidateId": "50b7e964-064d-5103-bfa8-635fa35e5fbf",
+    "label": "BYD SEAL 2025 (BEV)",
+    "key": "E13*2018/858*00639*03|SE2R1C|2NTE5F002NL1",
+    "technicalIdentity": "EXACT",
+    "technicalCorroboration": "EXACT",
+    "commercialIdentity": "EXACT",
+    "commercialFields": {
+      "model": "SEAL",
+      "engine": null,
+      "transmission": null,
+      "body": null,
+      "trim": "Design",
+      "trimSet": null
+    },
+    "criticalCompleteness": {
+      "d1": 0.14285714285714285,
+      "afterRdw": 0.5
+    },
+    "conflictStatus": "OPEN: nrg.electric_combined_kwh100, rng.electric_combined_km",
+    "catalogOverlap": [
+      {
+        "kind": "PROBABLE_DUPLICATE_TAN_INCOMPLETE",
+        "variantSlug": "byd-seal-2026-design-rwd-82-5-kwh",
+        "catalogTan": "(none)"
+      }
+    ],
+    "blockers": {
+      "identity": [
+        "commercial.generation_code (sin fuente oficial abierta)",
+        "commercial.model_year (sin fuente oficial: la EEA da año de matriculación)"
+      ],
+      "data": [
+        "cap.boot_l",
+        "chg.ac_max_kw",
+        "chg.dc_max_kw",
+        "perf.accel_0_100_s",
+        "perf.power_max_kw",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S08 (datos que faltan: ❓/restringido)",
+        "S11 RDW ❓ (expediente listo para aprobación)",
+        "S02 IDAE ❓ (evidencia del acabado)"
+      ],
+      "duplicate": [
+        "PROBABLE_DUPLICATE_TAN_INCOMPLETE byd-seal-2026-design-rwd-82-5-kwh"
+      ]
+    },
+    "curationReadiness": "BLOCKED",
+    "previewImportableUnderCurrentRules": false,
+    "publicationReadiness": "NOT_ELIGIBLE"
+  },
+  {
+    "rank": 4,
+    "candidateId": "8848ea66-9eff-53cb-9967-a0981c48223c",
+    "label": "BYD SEAL 2024/2025 (BEV)",
+    "key": "E13*2018/858*00639*00|SE2D1C|1NXE5E001NL1",
+    "technicalIdentity": "EXACT",
+    "technicalCorroboration": "EXACT",
+    "commercialIdentity": "EXACT",
+    "commercialFields": {
+      "model": "SEAL",
+      "engine": null,
+      "transmission": null,
+      "body": null,
+      "trim": "Excellence AWD",
+      "trimSet": null
+    },
+    "criticalCompleteness": {
+      "d1": 0.14285714285714285,
+      "afterRdw": 0.5
+    },
+    "conflictStatus": "OPEN: nrg.electric_combined_kwh100, rng.electric_combined_km",
+    "catalogOverlap": [],
+    "blockers": {
+      "identity": [
+        "commercial.generation_code (sin fuente oficial abierta)",
+        "commercial.model_year (sin fuente oficial: la EEA da año de matriculación)"
+      ],
+      "data": [
+        "cap.boot_l",
+        "chg.ac_max_kw",
+        "chg.dc_max_kw",
+        "perf.accel_0_100_s",
+        "perf.power_max_kw",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S08 (datos que faltan: ❓/restringido)",
+        "S11 RDW ❓ (expediente listo para aprobación)",
+        "S02 IDAE ❓ (evidencia del acabado)"
+      ],
+      "duplicate": []
+    },
+    "curationReadiness": "NEEDS_IDENTITY_REVIEW",
+    "previewImportableUnderCurrentRules": false,
+    "publicationReadiness": "NOT_ELIGIBLE"
+  },
+  {
+    "rank": 5,
+    "candidateId": "b36b0cb8-aa96-5a2f-adf4-fbf6bde68064",
+    "label": "Kia Sportage 2022 (ICE_OR_MHEV)",
+    "key": "E4*2018/858*00079*00|F5P11|M61A11",
+    "technicalIdentity": "EXACT",
+    "technicalCorroboration": "EXACT",
+    "commercialIdentity": "PARTIAL",
+    "commercialFields": {
+      "model": "SPORTAGE",
+      "engine": null,
+      "transmission": null,
+      "body": null,
+      "trim": null,
+      "trimSet": null
+    },
+    "criticalCompleteness": {
+      "d1": 0.23076923076923078,
+      "afterRdw": 0.6153846153846154
+    },
+    "conflictStatus": "NONE",
+    "catalogOverlap": [],
+    "blockers": {
+      "identity": [
+        "commercial.generation_code (sin fuente oficial abierta)",
+        "commercial.model_year (sin fuente oficial: la EEA da año de matriculación)",
+        "commercial.trim_name (acabado no evidenciado)",
+        "commercial.body_type (código UE AB/AC/AF ambiguo)",
+        "technical.transmission (código RDW sin glosario)",
+        "commercial identity PARTIAL"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "rights": [
+        "S08 (datos que faltan: ❓/restringido)",
+        "S11 RDW ❓ (expediente listo para aprobación)"
+      ],
+      "duplicate": []
+    },
+    "curationReadiness": "NEEDS_IDENTITY_REVIEW",
+    "previewImportableUnderCurrentRules": false,
+    "publicationReadiness": "NOT_ELIGIBLE"
+  },
+  {
+    "rank": 6,
+    "candidateId": "785e17cc-5b85-56c6-bb08-86d1a80e9db5",
+    "label": "Renault Clio 2024/2025 (ICE_OR_MHEV)",
+    "key": "E2*2007/46*0676*28|BD2|AC6WA2SA500B",
+    "technicalIdentity": "EXACT",
+    "technicalCorroboration": "EXACT",
+    "commercialIdentity": "PARTIAL",
+    "commercialFields": {
+      "model": "CLIO",
+      "engine": null,
+      "transmission": null,
+      "body": null,
+      "trim": null,
+      "trimSet": null
+    },
+    "criticalCompleteness": {
+      "d1": 0.23076923076923078,
+      "afterRdw": 0.6153846153846154
+    },
+    "conflictStatus": "NONE",
+    "catalogOverlap": [],
+    "blockers": {
+      "identity": [
+        "commercial.generation_code (sin fuente oficial abierta)",
+        "commercial.model_year (sin fuente oficial: la EEA da año de matriculación)",
+        "commercial.trim_name (acabado no evidenciado)",
+        "commercial.body_type (código UE AB/AC/AF ambiguo)",
+        "technical.transmission (código RDW sin glosario)",
+        "commercial identity PARTIAL"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "rights": [
+        "S08 (datos que faltan: ❓/restringido)",
+        "S11 RDW ❓ (expediente listo para aprobación)"
+      ],
+      "duplicate": []
+    },
+    "curationReadiness": "NEEDS_IDENTITY_REVIEW",
+    "previewImportableUnderCurrentRules": false,
+    "publicationReadiness": "NOT_ELIGIBLE"
+  },
+  {
+    "rank": 7,
+    "candidateId": "ed79a5b6-d043-5c1e-93ae-9762587f1356",
+    "label": "Nissan Qashqai 2024/2025 (MHEV)",
+    "key": "E9*2018/858*11042*10|A|A35",
+    "technicalIdentity": "EXACT",
+    "technicalCorroboration": "EXACT",
+    "commercialIdentity": "PARTIAL",
+    "commercialFields": {
+      "model": "QASHQAI",
+      "engine": null,
+      "transmission": null,
+      "body": null,
+      "trim": null,
+      "trimSet": null
+    },
+    "criticalCompleteness": {
+      "d1": 0.15384615384615385,
+      "afterRdw": 0.5384615384615384
+    },
+    "conflictStatus": "NONE",
+    "catalogOverlap": [],
+    "blockers": {
+      "identity": [
+        "commercial.generation_code (sin fuente oficial abierta)",
+        "commercial.model_year (sin fuente oficial: la EEA da año de matriculación)",
+        "commercial.trim_name (acabado no evidenciado)",
+        "commercial.body_type (código UE AB/AC/AF ambiguo)",
+        "technical.transmission (código RDW sin glosario)",
+        "commercial identity PARTIAL"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "perf.power_max_kw",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "rights": [
+        "S08 (datos que faltan: ❓/restringido)",
+        "S11 RDW ❓ (expediente listo para aprobación)"
+      ],
+      "duplicate": []
+    },
+    "curationReadiness": "NEEDS_IDENTITY_REVIEW",
+    "previewImportableUnderCurrentRules": false,
+    "publicationReadiness": "NOT_ELIGIBLE"
+  },
+  {
+    "rank": 8,
+    "candidateId": "8331c894-0978-5951-98bb-0ffbfe548722",
+    "label": "Hyundai Tucson 2018/2020 (ICE_OR_MHEV)",
+    "key": "E11*2007/46*2724*05|F5D51|M66ZZ1",
+    "technicalIdentity": "EXACT",
+    "technicalCorroboration": "EXACT",
+    "commercialIdentity": "PARTIAL",
+    "commercialFields": {
+      "model": "TUCSON",
+      "engine": null,
+      "transmission": null,
+      "body": null,
+      "trim": null,
+      "trimSet": null
+    },
+    "criticalCompleteness": {
+      "d1": 0.23076923076923078,
+      "afterRdw": 0.6153846153846154
+    },
+    "conflictStatus": "NONE",
+    "catalogOverlap": [],
+    "blockers": {
+      "identity": [
+        "commercial.generation_code (sin fuente oficial abierta)",
+        "commercial.model_year (sin fuente oficial: la EEA da año de matriculación)",
+        "commercial.trim_name (acabado no evidenciado)",
+        "commercial.body_type (código UE AB/AC/AF ambiguo)",
+        "technical.transmission (código RDW sin glosario)",
+        "commercial identity PARTIAL"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "rights": [
+        "S08 (datos que faltan: ❓/restringido)",
+        "S11 RDW ❓ (expediente listo para aprobación)"
+      ],
+      "duplicate": []
+    },
+    "curationReadiness": "NEEDS_IDENTITY_REVIEW",
+    "previewImportableUnderCurrentRules": false,
+    "publicationReadiness": "NOT_ELIGIBLE"
+  },
+  {
+    "rank": 9,
+    "candidateId": "25ae1749-3150-594d-b466-a10df54628ee",
+    "label": "Kia Sportage 2016/2018 (ICE_OR_MHEV)",
+    "key": "E11*2007/46*3144*01|F5D51|M66ZZ1",
+    "technicalIdentity": "EXACT",
+    "technicalCorroboration": "EXACT",
+    "commercialIdentity": "PARTIAL",
+    "commercialFields": {
+      "model": "SPORTAGE",
+      "engine": null,
+      "transmission": null,
+      "body": null,
+      "trim": null,
+      "trimSet": null
+    },
+    "criticalCompleteness": {
+      "d1": 0.23076923076923078,
+      "afterRdw": 0.6153846153846154
+    },
+    "conflictStatus": "NONE",
+    "catalogOverlap": [],
+    "blockers": {
+      "identity": [
+        "commercial.generation_code (sin fuente oficial abierta)",
+        "commercial.model_year (sin fuente oficial: la EEA da año de matriculación)",
+        "commercial.trim_name (acabado no evidenciado)",
+        "commercial.body_type (código UE AB/AC/AF ambiguo)",
+        "technical.transmission (código RDW sin glosario)",
+        "commercial identity PARTIAL"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "rights": [
+        "S08 (datos que faltan: ❓/restringido)",
+        "S11 RDW ❓ (expediente listo para aprobación)"
+      ],
+      "duplicate": []
+    },
+    "curationReadiness": "NEEDS_IDENTITY_REVIEW",
+    "previewImportableUnderCurrentRules": false,
+    "publicationReadiness": "NOT_ELIGIBLE"
+  },
+  {
+    "rank": 20,
+    "candidateId": "fc9f05a8-05ee-5be1-b5ad-dbabf1f52152",
+    "label": "Peugeot 3008 2018/2020 (ICE_OR_MHEV)",
+    "key": "E2*2007/46*0534*05|C|YHZJ-C2B000",
+    "technicalIdentity": "EXACT",
+    "technicalCorroboration": "EXACT",
+    "commercialIdentity": "PARTIAL",
+    "commercialFields": {
+      "model": "3008",
+      "engine": null,
+      "transmission": null,
+      "body": null,
+      "trim": null,
+      "trimSet": null
+    },
+    "criticalCompleteness": {
+      "d1": 0.15384615384615385,
+      "afterRdw": 0.6153846153846154
+    },
+    "conflictStatus": "NONE",
+    "catalogOverlap": [],
+    "blockers": {
+      "identity": [
+        "commercial.generation_code (sin fuente oficial abierta)",
+        "commercial.model_year (sin fuente oficial: la EEA da año de matriculación)",
+        "commercial.trim_name (acabado no evidenciado)",
+        "commercial.body_type (código UE AB/AC/AF ambiguo)",
+        "technical.transmission (código RDW sin glosario)",
+        "commercial identity PARTIAL"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "rights": [
+        "S08 (datos que faltan: ❓/restringido)",
+        "S11 RDW ❓ (expediente listo para aprobación)"
+      ],
+      "duplicate": []
+    },
+    "curationReadiness": "NEEDS_IDENTITY_REVIEW",
+    "previewImportableUnderCurrentRules": false,
+    "publicationReadiness": "NOT_ELIGIBLE"
+  },
+  {
+    "rank": 22,
+    "candidateId": "50eaa5bc-8a36-5672-86d1-bc3182932f42",
+    "label": "Peugeot 208 2022 (ICE_OR_MHEV)",
+    "key": "E2*2007/46*0639*18|B|YHTK-J2B400",
+    "technicalIdentity": "EXACT",
+    "technicalCorroboration": "TAN_EXTENSION_MISMATCH",
+    "commercialIdentity": "PARTIAL",
+    "commercialFields": {
+      "model": "208",
+      "engine": "BLUEHDI 100",
+      "transmission": "6 VEL MAN",
+      "body": "5P",
+      "trim": null,
+      "trimSet": [
+        "ACTIVE",
+        "ACTIVE PACK"
+      ]
+    },
+    "criticalCompleteness": {
+      "d1": 0.23076923076923078,
+      "afterRdw": 0.23076923076923078
+    },
+    "conflictStatus": "NONE",
+    "catalogOverlap": [],
+    "blockers": {
+      "identity": [
+        "commercial.generation_code (sin fuente oficial abierta)",
+        "commercial.model_year (sin fuente oficial: la EEA da año de matriculación)",
+        "commercial.trim_name (acabado no evidenciado)",
+        "commercial identity PARTIAL"
+      ],
+      "data": [
+        "cap.boot_l",
+        "dim.height_mm",
+        "dim.length_mm",
+        "dim.width_mm",
+        "emi.dgt_label_es",
+        "perf.accel_0_100_s",
+        "price",
+        "pt.fuel_tank_l",
+        "seats",
+        "war.years"
+      ],
+      "rights": [
+        "S08 (datos que faltan: ❓/restringido)"
+      ],
+      "duplicate": []
+    },
+    "curationReadiness": "NEEDS_IDENTITY_REVIEW",
+    "previewImportableUnderCurrentRules": false,
+    "publicationReadiness": "NOT_ELIGIBLE"
+  },
+  {
+    "rank": 24,
+    "candidateId": "61c5fe51-c879-5c18-a3c5-2e65f37259dd",
+    "label": "Dacia Sandero 2025 (ICE_OR_MHEV)",
+    "key": "E19*2007/46*0026*27|BEV|MT6WA45M520B",
+    "technicalIdentity": "EXACT",
+    "technicalCorroboration": "EXACT",
+    "commercialIdentity": "PARTIAL",
+    "commercialFields": {
+      "model": "SANDERO",
+      "engine": null,
+      "transmission": null,
+      "body": null,
+      "trim": null,
+      "trimSet": null
+    },
+    "criticalCompleteness": {
+      "d1": 0.23076923076923078,
+      "afterRdw": 0.6153846153846154
+    },
+    "conflictStatus": "NONE",
+    "catalogOverlap": [],
+    "blockers": {
+      "identity": [
+        "commercial.generation_code (sin fuente oficial abierta)",
+        "commercial.model_year (sin fuente oficial: la EEA da año de matriculación)",
+        "commercial.trim_name (acabado no evidenciado)",
+        "commercial.body_type (código UE AB/AC/AF ambiguo)",
+        "technical.transmission (código RDW sin glosario)",
+        "commercial identity PARTIAL"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "rights": [
+        "S08 (datos que faltan: ❓/restringido)",
+        "S11 RDW ❓ (expediente listo para aprobación)"
+      ],
+      "duplicate": []
+    },
+    "curationReadiness": "NEEDS_IDENTITY_REVIEW",
+    "previewImportableUnderCurrentRules": false,
+    "publicationReadiness": "NOT_ELIGIBLE"
+  },
+  {
+    "rank": 26,
+    "candidateId": "bc56ae3e-6e0e-5ae3-b6b0-b93f168f2415",
+    "label": "Peugeot 308 2024 (ICE_OR_MHEV)",
+    "key": "E2*2007/46*0628*30|B|YHZT-B21700",
+    "technicalIdentity": "EXACT",
+    "technicalCorroboration": "EXACT",
+    "commercialIdentity": "EXACT",
+    "commercialFields": {
+      "model": "308",
+      "engine": "BLUEHDI 130",
+      "transmission": "EAT8",
+      "body": "5P",
+      "trim": "ALLURE",
+      "trimSet": null
+    },
+    "criticalCompleteness": {
+      "d1": 0.23076923076923078,
+      "afterRdw": 0.6153846153846154
+    },
+    "conflictStatus": "NONE",
+    "catalogOverlap": [],
+    "blockers": {
+      "identity": [
+        "commercial.generation_code (sin fuente oficial abierta)",
+        "commercial.model_year (sin fuente oficial: la EEA da año de matriculación)"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "rights": [
+        "S08 (datos que faltan: ❓/restringido)",
+        "S11 RDW ❓ (expediente listo para aprobación)"
+      ],
+      "duplicate": []
+    },
+    "curationReadiness": "NEEDS_IDENTITY_REVIEW",
+    "previewImportableUnderCurrentRules": false,
+    "publicationReadiness": "NOT_ELIGIBLE"
+  },
+  {
+    "rank": 27,
+    "candidateId": "5223d033-4cdc-592c-9d31-1ebe922e969e",
+    "label": "Toyota Yaris 2022/2024 (ICE_OR_MHEV)",
+    "key": "E6*2007/46*0437*04|MXPA11(H)|MXPA11L-BHFNBW(1E)",
+    "technicalIdentity": "EXACT",
+    "technicalCorroboration": "EXACT",
+    "commercialIdentity": "PARTIAL",
+    "commercialFields": {
+      "model": "YARIS",
+      "engine": null,
+      "transmission": null,
+      "body": null,
+      "trim": null,
+      "trimSet": null
+    },
+    "criticalCompleteness": {
+      "d1": 0.23076923076923078,
+      "afterRdw": 0.6153846153846154
+    },
+    "conflictStatus": "NONE",
+    "catalogOverlap": [],
+    "blockers": {
+      "identity": [
+        "commercial.generation_code (sin fuente oficial abierta)",
+        "commercial.model_year (sin fuente oficial: la EEA da año de matriculación)",
+        "commercial.trim_name (acabado no evidenciado)",
+        "commercial.body_type (código UE AB/AC/AF ambiguo)",
+        "technical.transmission (código RDW sin glosario)",
+        "commercial identity PARTIAL"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "rights": [
+        "S08 (datos que faltan: ❓/restringido)",
+        "S11 RDW ❓ (expediente listo para aprobación)"
+      ],
+      "duplicate": []
+    },
+    "curationReadiness": "NEEDS_IDENTITY_REVIEW",
+    "previewImportableUnderCurrentRules": false,
+    "publicationReadiness": "NOT_ELIGIBLE"
+  },
+  {
+    "rank": 28,
+    "candidateId": "0244eada-7c20-57d6-94fc-12606bdbf902",
+    "label": "Mercedes-Benz Clase A 2022/2024 (ICE_OR_MHEV)",
+    "key": "E1*2007/46*1829*16|X21CT2|HZAA151C",
+    "technicalIdentity": "EXACT",
+    "technicalCorroboration": "EXACT",
+    "commercialIdentity": "PARTIAL",
+    "commercialFields": {
+      "model": "A 200 D",
+      "engine": null,
+      "transmission": null,
+      "body": null,
+      "trim": null,
+      "trimSet": null
+    },
+    "criticalCompleteness": {
+      "d1": 0.23076923076923078,
+      "afterRdw": 0.6153846153846154
+    },
+    "conflictStatus": "NONE",
+    "catalogOverlap": [],
+    "blockers": {
+      "identity": [
+        "commercial.generation_code (sin fuente oficial abierta)",
+        "commercial.model_year (sin fuente oficial: la EEA da año de matriculación)",
+        "commercial.trim_name (acabado no evidenciado)",
+        "commercial.body_type (código UE AB/AC/AF ambiguo)",
+        "technical.transmission (código RDW sin glosario)",
+        "commercial identity PARTIAL"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "rights": [
+        "S08 (datos que faltan: ❓/restringido)",
+        "S11 RDW ❓ (expediente listo para aprobación)"
+      ],
+      "duplicate": []
+    },
+    "curationReadiness": "NEEDS_IDENTITY_REVIEW",
+    "previewImportableUnderCurrentRules": false,
+    "publicationReadiness": "NOT_ELIGIBLE"
+  },
+  {
+    "rank": 48,
+    "candidateId": "fd633c27-2ed9-570e-8aa3-2f6c1078ee12",
+    "label": "Toyota Yaris 2022/2024/2025 (HEV_OR_MHEV)",
+    "key": "E6*2007/46*0437*04|MXPH11(H)|MXPH11L-CHXNBW(1E)",
+    "technicalIdentity": "EXACT",
+    "technicalCorroboration": "EXACT",
+    "commercialIdentity": "PARTIAL",
+    "commercialFields": {
+      "model": "YARIS",
+      "engine": null,
+      "transmission": null,
+      "body": null,
+      "trim": null,
+      "trimSet": null
+    },
+    "criticalCompleteness": {
+      "d1": 0.15384615384615385,
+      "afterRdw": 0.5384615384615384
+    },
+    "conflictStatus": "NONE",
+    "catalogOverlap": [],
+    "blockers": {
+      "identity": [
+        "commercial.generation_code (sin fuente oficial abierta)",
+        "commercial.model_year (sin fuente oficial: la EEA da año de matriculación)",
+        "commercial.trim_name (acabado no evidenciado)",
+        "commercial.body_type (código UE AB/AC/AF ambiguo)",
+        "technical.transmission (código RDW sin glosario)",
+        "commercial identity PARTIAL"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "perf.power_max_kw",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "rights": [
+        "S08 (datos que faltan: ❓/restringido)",
+        "S11 RDW ❓ (expediente listo para aprobación)"
+      ],
+      "duplicate": []
+    },
+    "curationReadiness": "NEEDS_IDENTITY_REVIEW",
+    "previewImportableUnderCurrentRules": false,
+    "publicationReadiness": "NOT_ELIGIBLE"
+  },
+  {
+    "rank": 53,
+    "candidateId": "ddf97e08-67d6-5668-9a59-5761d989ea41",
+    "label": "Mercedes-Benz Clase A 2020 (PHEV)",
+    "key": "E1*2007/46*1829*12|X28QT2|HZAA052A",
+    "technicalIdentity": "EXACT",
+    "technicalCorroboration": "EXACT",
+    "commercialIdentity": "PARTIAL",
+    "commercialFields": {
+      "model": "A 250 E",
+      "engine": null,
+      "transmission": null,
+      "body": null,
+      "trim": null,
+      "trimSet": null
+    },
+    "criticalCompleteness": {
+      "d1": 0.1875,
+      "afterRdw": 0.5
+    },
+    "conflictStatus": "NONE",
+    "catalogOverlap": [],
+    "blockers": {
+      "identity": [
+        "commercial.generation_code (sin fuente oficial abierta)",
+        "commercial.model_year (sin fuente oficial: la EEA da año de matriculación)",
+        "commercial.trim_name (acabado no evidenciado)",
+        "commercial.body_type (código UE AB/AC/AF ambiguo)",
+        "technical.transmission (código RDW sin glosario)",
+        "commercial identity PARTIAL"
+      ],
+      "data": [
+        "cap.boot_l",
+        "chg.ac_max_kw",
+        "nrg.fuel_charge_sustaining_l100",
+        "perf.accel_0_100_s",
+        "perf.power_max_kw",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "rights": [
+        "S08 (datos que faltan: ❓/restringido)",
+        "S11 RDW ❓ (expediente listo para aprobación)"
+      ],
+      "duplicate": []
+    },
+    "curationReadiness": "NEEDS_IDENTITY_REVIEW",
+    "previewImportableUnderCurrentRules": false,
+    "publicationReadiness": "NOT_ELIGIBLE"
+  },
+  {
+    "rank": 56,
+    "candidateId": "5e196035-2ad2-585e-ad0f-7b8c971209ae",
+    "label": "Toyota Corolla 2022 (HEV_OR_MHEV)",
+    "key": "E6*2007/46*0318*05|ZWE211(H)|ZWE211L-DHXNBW(1F)",
+    "technicalIdentity": "EXACT",
+    "technicalCorroboration": "EXACT",
+    "commercialIdentity": "PARTIAL",
+    "commercialFields": {
+      "model": "COROLLA",
+      "engine": null,
+      "transmission": null,
+      "body": null,
+      "trim": null,
+      "trimSet": null
+    },
+    "criticalCompleteness": {
+      "d1": 0.15384615384615385,
+      "afterRdw": 0.5384615384615384
+    },
+    "conflictStatus": "NONE",
+    "catalogOverlap": [],
+    "blockers": {
+      "identity": [
+        "commercial.generation_code (sin fuente oficial abierta)",
+        "commercial.model_year (sin fuente oficial: la EEA da año de matriculación)",
+        "commercial.trim_name (acabado no evidenciado)",
+        "commercial.body_type (código UE AB/AC/AF ambiguo)",
+        "technical.transmission (código RDW sin glosario)",
+        "commercial identity PARTIAL"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "perf.power_max_kw",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "rights": [
+        "S08 (datos que faltan: ❓/restringido)",
+        "S11 RDW ❓ (expediente listo para aprobación)"
+      ],
+      "duplicate": []
+    },
+    "curationReadiness": "NEEDS_IDENTITY_REVIEW",
+    "previewImportableUnderCurrentRules": false,
+    "publicationReadiness": "NOT_ELIGIBLE"
+  },
+  {
+    "rank": 57,
+    "candidateId": "85beac35-7b7a-5715-856b-5c01589d22ce",
+    "label": "Peugeot 3008 2022 (PHEV)",
+    "key": "E2*2007/46*0534*23|4|DGZU-C1J000",
+    "technicalIdentity": "EXACT",
+    "technicalCorroboration": "EXACT",
+    "commercialIdentity": "PARTIAL",
+    "commercialFields": {
+      "model": "3008",
+      "engine": "PLUG IN HYBRID 225",
+      "transmission": "E EAT8",
+      "body": null,
+      "trim": null,
+      "trimSet": [
+        "ACTIVE PACK",
+        "ALLURE",
+        "ALLURE PACK",
+        "GT",
+        "GT PACK"
+      ]
+    },
+    "criticalCompleteness": {
+      "d1": 0.1875,
+      "afterRdw": 0.5
+    },
+    "conflictStatus": "NONE",
+    "catalogOverlap": [],
+    "blockers": {
+      "identity": [
+        "commercial.generation_code (sin fuente oficial abierta)",
+        "commercial.model_year (sin fuente oficial: la EEA da año de matriculación)",
+        "commercial.trim_name (acabado no evidenciado)",
+        "commercial.body_type (código UE AB/AC/AF ambiguo)",
+        "commercial identity PARTIAL"
+      ],
+      "data": [
+        "cap.boot_l",
+        "chg.ac_max_kw",
+        "nrg.fuel_charge_sustaining_l100",
+        "perf.accel_0_100_s",
+        "perf.power_max_kw",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "rights": [
+        "S08 (datos que faltan: ❓/restringido)",
+        "S11 RDW ❓ (expediente listo para aprobación)"
+      ],
+      "duplicate": []
+    },
+    "curationReadiness": "NEEDS_IDENTITY_REVIEW",
+    "previewImportableUnderCurrentRules": false,
+    "publicationReadiness": "NOT_ELIGIBLE"
+  },
+  {
+    "rank": 73,
+    "candidateId": "f87f76b9-019a-5485-8428-05ad3c1d909b",
+    "label": "Toyota RAV4 2025 (PHEV)",
+    "key": "E6*2007/46*0429*05|AXAP54(N)|AXAP54L-ANXMBW(1F)",
+    "technicalIdentity": "EXACT",
+    "technicalCorroboration": "EXACT",
+    "commercialIdentity": "PARTIAL",
+    "commercialFields": {
+      "model": "RAV4",
+      "engine": null,
+      "transmission": null,
+      "body": null,
+      "trim": null,
+      "trimSet": null
+    },
+    "criticalCompleteness": {
+      "d1": 0.1875,
+      "afterRdw": 0.5
+    },
+    "conflictStatus": "NONE",
+    "catalogOverlap": [],
+    "blockers": {
+      "identity": [
+        "commercial.generation_code (sin fuente oficial abierta)",
+        "commercial.model_year (sin fuente oficial: la EEA da año de matriculación)",
+        "commercial.trim_name (acabado no evidenciado)",
+        "commercial.body_type (código UE AB/AC/AF ambiguo)",
+        "technical.transmission (código RDW sin glosario)",
+        "commercial identity PARTIAL"
+      ],
+      "data": [
+        "cap.boot_l",
+        "chg.ac_max_kw",
+        "nrg.fuel_charge_sustaining_l100",
+        "perf.accel_0_100_s",
+        "perf.power_max_kw",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "rights": [
+        "S08 (datos que faltan: ❓/restringido)",
+        "S11 RDW ❓ (expediente listo para aprobación)"
+      ],
+      "duplicate": []
+    },
+    "curationReadiness": "NEEDS_IDENTITY_REVIEW",
+    "previewImportableUnderCurrentRules": false,
+    "publicationReadiness": "NOT_ELIGIBLE"
+  },
+  {
+    "rank": 81,
+    "candidateId": "81e9cac7-35bc-5191-84d6-d54d3dd0ee84",
+    "label": "Tesla Model Y 2022 (BEV)",
+    "key": "E4*2007/46*1293*26|Y6LR|BZB3S5T3",
+    "technicalIdentity": "EXACT",
+    "technicalCorroboration": "EXACT",
+    "commercialIdentity": "PARTIAL",
+    "commercialFields": {
+      "model": "MODEL Y",
+      "engine": null,
+      "transmission": null,
+      "body": null,
+      "trim": null,
+      "trimSet": null
+    },
+    "criticalCompleteness": {
+      "d1": 0.14285714285714285,
+      "afterRdw": 0.5
+    },
+    "conflictStatus": "NONE",
+    "catalogOverlap": [],
+    "blockers": {
+      "identity": [
+        "commercial.generation_code (sin fuente oficial abierta)",
+        "commercial.model_year (sin fuente oficial: la EEA da año de matriculación)",
+        "commercial.trim_name (acabado no evidenciado)",
+        "commercial.body_type (código UE AB/AC/AF ambiguo)",
+        "commercial identity PARTIAL"
+      ],
+      "data": [
+        "cap.boot_l",
+        "chg.ac_max_kw",
+        "chg.dc_max_kw",
+        "perf.accel_0_100_s",
+        "perf.power_max_kw",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S08 (datos que faltan: ❓/restringido)",
+        "S11 RDW ❓ (expediente listo para aprobación)"
+      ],
+      "duplicate": []
+    },
+    "curationReadiness": "NEEDS_IDENTITY_REVIEW",
+    "previewImportableUnderCurrentRules": false,
+    "publicationReadiness": "NOT_ELIGIBLE"
+  },
+  {
+    "rank": 86,
+    "candidateId": "936a65bb-81d9-53df-b3f7-d5e91211a64b",
+    "label": "Renault Clio 2020 (HEV_OR_MHEV)",
+    "key": "E2*2007/46*0676*05|BH2|MU4UA0FA5000",
+    "technicalIdentity": "EXACT",
+    "technicalCorroboration": "EXACT",
+    "commercialIdentity": "PARTIAL",
+    "commercialFields": {
+      "model": "CLIO",
+      "engine": null,
+      "transmission": null,
+      "body": null,
+      "trim": null,
+      "trimSet": null
+    },
+    "criticalCompleteness": {
+      "d1": 0.07692307692307693,
+      "afterRdw": 0.5384615384615384
+    },
+    "conflictStatus": "NONE",
+    "catalogOverlap": [],
+    "blockers": {
+      "identity": [
+        "commercial.generation_code (sin fuente oficial abierta)",
+        "commercial.model_year (sin fuente oficial: la EEA da año de matriculación)",
+        "commercial.trim_name (acabado no evidenciado)",
+        "commercial.body_type (código UE AB/AC/AF ambiguo)",
+        "technical.transmission (código RDW sin glosario)",
+        "commercial identity PARTIAL"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "perf.power_max_kw",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "rights": [
+        "S08 (datos que faltan: ❓/restringido)",
+        "S11 RDW ❓ (expediente listo para aprobación)"
+      ],
+      "duplicate": []
+    },
+    "curationReadiness": "NEEDS_IDENTITY_REVIEW",
+    "previewImportableUnderCurrentRules": false,
+    "publicationReadiness": "NOT_ELIGIBLE"
+  }
+]

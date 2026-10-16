@@ -1,0 +1,3086 @@
+{
+  "attribution": "Liikenne- ja viestintävirasto Traficom — Ajoneuvojen avoin data, CC BY 4.0",
+  "license": "http://creativecommons.org/licenses/by/4.0/",
+  "note": "aggregates per exact technical key only; Finnish market — commercial names are not Spanish commercial identity",
+  "aggregates": [
+    {
+      "key": "E1*2001/116*0470*16|12S1P2|MZAZ1502",
+      "vehicles": 2,
+      "distributions": {
+        "vaihteisto": {
+          "2": 2
+        },
+        "vaihteidenLkm": {
+          "7": 2
+        },
+        "korityyppi": {
+          "AC": 2
+        },
+        "ovienLukumaara": {
+          "5": 2
+        },
+        "istumapaikkojenLkm": {
+          "5": 2
+        },
+        "kaupallinenNimi": {
+          "A 200 d": 1,
+          "A 200d": 1
+        },
+        "mallimerkinta": {
+          "A 200 d Farmari (AC) 5ov 2143cm3 A": 1,
+          "A 200d Farmari (AC) 5ov 2143cm3 A": 1
+        },
+        "suurinNettoteho": {
+          "100": 2
+        },
+        "iskutilavuus": {
+          "2143": 2
+        },
+        "kayttovoima": {
+          "02": 2
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2019-08-08",
+        "to": "2023-08-17"
+      }
+    },
+    {
+      "key": "E1*2007/46*0314*17|8C31|6A250000",
+      "vehicles": 2,
+      "distributions": {
+        "vaihteisto": {
+          "2": 2
+        },
+        "vaihteidenLkm": {
+          "8": 2
+        },
+        "korityyppi": {
+          "AA": 2
+        },
+        "ovienLukumaara": {
+          "4": 2
+        },
+        "istumapaikkojenLkm": {
+          "5": 2
+        },
+        "kaupallinenNimi": {
+          "318d": 2
+        },
+        "mallimerkinta": {
+          "318d Sedan (AA) 4ov 1995cm3 A": 2
+        },
+        "suurinNettoteho": {
+          "110": 2
+        },
+        "iskutilavuus": {
+          "1995": 2
+        },
+        "kayttovoima": {
+          "02": 2
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2015-10-06",
+        "to": "2016-03-17"
+      }
+    },
+    {
+      "key": "E1*2007/46*0512*15|WZ51|6A250000",
+      "vehicles": 38,
+      "distributions": {
+        "vaihteisto": {
+          "2": 38
+        },
+        "vaihteidenLkm": {
+          "8": 38
+        },
+        "korityyppi": {
+          "AC": 38
+        },
+        "ovienLukumaara": {
+          "4": 38
+        },
+        "istumapaikkojenLkm": {
+          "5": 38
+        },
+        "kaupallinenNimi": {
+          "X3 xDrive20d": 38
+        },
+        "mallimerkinta": {
+          "X3 xDrive20d Farmari (AC) 4ov 1995cm3 A": 38
+        },
+        "suurinNettoteho": {
+          "140": 38
+        },
+        "iskutilavuus": {
+          "1995": 38
+        },
+        "kayttovoima": {
+          "02": 38
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2015-11-03",
+        "to": "2022-05-12"
+      }
+    },
+    {
+      "key": "E1*2007/46*0623*33|GAC4DACAX0|FM6FM6AJ015N7MVON1ML79VR2N",
+      "vehicles": 78,
+      "distributions": {
+        "vaihteisto": {
+          "1": 78
+        },
+        "vaihteidenLkm": {
+          "6": 78
+        },
+        "korityyppi": {
+          "AC": 78
+        },
+        "ovienLukumaara": {
+          "5": 78
+        },
+        "istumapaikkojenLkm": {
+          "5": 78
+        },
+        "kaupallinenNimi": {
+          "GOLF": 78
+        },
+        "mallimerkinta": {
+          "GOLF Farmari (AC) 5ov 1498cm3": 78
+        },
+        "suurinNettoteho": {
+          "96": 78
+        },
+        "iskutilavuus": {
+          "1498": 78
+        },
+        "kayttovoima": {
+          "01": 78
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2018-02-23",
+        "to": "2018-12-28"
+      }
+    },
+    {
+      "key": "E1*2007/46*0623*33|GAC4EAZAX0|FA1FA1MD001E0GAON1ML01VR0N",
+      "vehicles": 125,
+      "distributions": {
+        "vaihteisto": {
+          "2": 124
+        },
+        "vaihteidenLkm": {
+          "1": 124
+        },
+        "korityyppi": {
+          "AC": 125
+        },
+        "ovienLukumaara": {
+          "5": 125
+        },
+        "istumapaikkojenLkm": {
+          "5": 125
+        },
+        "kaupallinenNimi": {
+          "GOLF": 124,
+          "Golf": 1
+        },
+        "mallimerkinta": {
+          "GOLF Farmari (AC) 5ov A": 123,
+          "GOLF Farmari (AC) 5ov": 1,
+          "Golf Farmari (AC) 5ov A": 1
+        },
+        "suurinNettoteho": {
+          "0": 115,
+          "100": 1
+        },
+        "iskutilavuus": {},
+        "kayttovoima": {
+          "04": 125
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2018-02-28",
+        "to": "2023-10-18"
+      }
+    },
+    {
+      "key": "E1*2007/46*0623*35|GAC4DACAX0|FM6FM6AJ015N7CPON1ML1BVR2NA",
+      "vehicles": 8,
+      "distributions": {
+        "vaihteisto": {
+          "1": 8
+        },
+        "vaihteidenLkm": {
+          "6": 8
+        },
+        "korityyppi": {
+          "AC": 8
+        },
+        "ovienLukumaara": {
+          "5": 8
+        },
+        "istumapaikkojenLkm": {
+          "5": 8
+        },
+        "kaupallinenNimi": {
+          "GOLF": 8
+        },
+        "mallimerkinta": {
+          "GOLF Farmari (AC) 5ov 1498cm3": 8
+        },
+        "suurinNettoteho": {
+          "96": 8
+        },
+        "iskutilavuus": {
+          "1498": 8
+        },
+        "kayttovoima": {
+          "01": 8
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2018-10-29",
+        "to": "2018-12-14"
+      }
+    },
+    {
+      "key": "E1*2007/46*0623*41|GAC4EBSAX0|FA1FA1MD001E0GAON1ML1BVR0NA",
+      "vehicles": 5,
+      "distributions": {
+        "vaihteisto": {
+          "2": 5
+        },
+        "vaihteidenLkm": {
+          "1": 3
+        },
+        "korityyppi": {
+          "AC": 5
+        },
+        "ovienLukumaara": {
+          "5": 5
+        },
+        "istumapaikkojenLkm": {
+          "5": 5
+        },
+        "kaupallinenNimi": {
+          "GOLF": 5
+        },
+        "mallimerkinta": {
+          "GOLF Farmari (AC) 5ov A": 5
+        },
+        "suurinNettoteho": {
+          "100": 1
+        },
+        "iskutilavuus": {},
+        "kayttovoima": {
+          "04": 5
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2021-05-28",
+        "to": "2024-03-27"
+      }
+    },
+    {
+      "key": "E1*2007/46*1797*14|61DP|IAW50000",
+      "vehicles": 203,
+      "distributions": {
+        "vaihteisto": {
+          "2": 203
+        },
+        "vaihteidenLkm": {
+          "8": 203
+        },
+        "korityyppi": {
+          "AC": 203
+        },
+        "ovienLukumaara": {
+          "4": 203
+        },
+        "istumapaikkojenLkm": {
+          "5": 203
+        },
+        "kaupallinenNimi": {
+          "X3 xDrive30e": 203
+        },
+        "mallimerkinta": {
+          "X3 xDrive30e Farmari (AC) 4ov 1998cm3 A": 203
+        },
+        "suurinNettoteho": {
+          "135": 203
+        },
+        "iskutilavuus": {
+          "1998": 203
+        },
+        "kayttovoima": {
+          "01": 203
+        },
+        "sahkohybridinluokka": {
+          "01": 203
+        }
+      },
+      "firstRegistration": {
+        "from": "2022-05-31",
+        "to": "2026-06-29"
+      }
+    },
+    {
+      "key": "E1*2007/46*1829*03|X203T2|EZAA151B",
+      "vehicles": 82,
+      "distributions": {
+        "vaihteisto": {
+          "2": 82
+        },
+        "vaihteidenLkm": {
+          "7": 82
+        },
+        "korityyppi": {
+          "AC": 78,
+          "AF": 1
+        },
+        "ovienLukumaara": {
+          "5": 82
+        },
+        "istumapaikkojenLkm": {
+          "2": 1,
+          "5": 81
+        },
+        "kaupallinenNimi": {
+          "A 180 d": 82
+        },
+        "mallimerkinta": {
+          "A 180 d Farmari (AC) 5ov 1461cm3 A": 82
+        },
+        "suurinNettoteho": {
+          "85": 82
+        },
+        "iskutilavuus": {
+          "1461": 82
+        },
+        "kayttovoima": {
+          "02": 82
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2018-10-04",
+        "to": "2020-02-17"
+      }
+    },
+    {
+      "key": "E1*2007/46*1829*12|X28QT2|HZAA052A",
+      "vehicles": 45,
+      "distributions": {
+        "vaihteisto": {
+          "2": 45
+        },
+        "vaihteidenLkm": {
+          "8": 45
+        },
+        "korityyppi": {
+          "AC": 45
+        },
+        "ovienLukumaara": {
+          "5": 45
+        },
+        "istumapaikkojenLkm": {
+          "5": 45
+        },
+        "kaupallinenNimi": {
+          "A 250 e": 44,
+          "A 250 E": 1
+        },
+        "mallimerkinta": {
+          "A 250 e Farmari (AC) 5ov 1332cm3 A": 44,
+          "A 250 E Farmari (AC) 5ov 1332cm3 A": 1
+        },
+        "suurinNettoteho": {
+          "118": 45
+        },
+        "iskutilavuus": {
+          "1332": 45
+        },
+        "kayttovoima": {
+          "01": 45
+        },
+        "sahkohybridinluokka": {
+          "01": 45
+        }
+      },
+      "firstRegistration": {
+        "from": "2020-08-13",
+        "to": "2024-12-31"
+      }
+    },
+    {
+      "key": "E1*2007/46*1829*16|X21CT2|HZAA151C",
+      "vehicles": 1,
+      "distributions": {
+        "vaihteisto": {
+          "2": 1
+        },
+        "vaihteidenLkm": {
+          "8": 1
+        },
+        "korityyppi": {
+          "AC": 1
+        },
+        "ovienLukumaara": {
+          "5": 1
+        },
+        "istumapaikkojenLkm": {
+          "5": 1
+        },
+        "kaupallinenNimi": {
+          "A 200 d": 1
+        },
+        "mallimerkinta": {
+          "A 200 d Farmari (AC) 5ov 1950cm3 A": 1
+        },
+        "suurinNettoteho": {
+          "110": 1
+        },
+        "iskutilavuus": {
+          "1950": 1
+        },
+        "kayttovoima": {
+          "02": 1
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2023-11-30",
+        "to": "2023-11-30"
+      }
+    },
+    {
+      "key": "E1*2007/46*1829*24|X24JT2|FZAA451A",
+      "vehicles": 7,
+      "distributions": {
+        "vaihteisto": {
+          "2": 7
+        },
+        "vaihteidenLkm": {
+          "7": 7
+        },
+        "korityyppi": {
+          "AC": 7
+        },
+        "ovienLukumaara": {
+          "5": 7
+        },
+        "istumapaikkojenLkm": {
+          "5": 7
+        },
+        "kaupallinenNimi": {
+          "A 180": 7
+        },
+        "mallimerkinta": {
+          "A 180 Farmari (AC) 5ov 1332cm3 A": 7
+        },
+        "suurinNettoteho": {
+          "100": 7
+        },
+        "iskutilavuus": {
+          "1332": 7
+        },
+        "kayttovoima": {
+          "01": 7
+        },
+        "sahkohybridinluokka": {
+          "02": 7
+        }
+      },
+      "firstRegistration": {
+        "from": "2025-03-31",
+        "to": "2025-10-23"
+      }
+    },
+    {
+      "key": "E1*2007/46*2014*23|ACDGEAX0|FD6FD6DD001P4BISON1ML1CVR2B00",
+      "vehicles": 3,
+      "distributions": {
+        "vaihteisto": {
+          "2": 3
+        },
+        "vaihteidenLkm": {
+          "6": 3
+        },
+        "korityyppi": {
+          "AC": 3
+        },
+        "ovienLukumaara": {
+          "5": 3
+        },
+        "istumapaikkojenLkm": {
+          "5": 3
+        },
+        "kaupallinenNimi": {
+          "GOLF GTE": 3
+        },
+        "mallimerkinta": {
+          "GOLF GTE Farmari (AC) 5ov 1395cm3 A": 3
+        },
+        "suurinNettoteho": {
+          "110": 3
+        },
+        "iskutilavuus": {
+          "1395": 3
+        },
+        "kayttovoima": {
+          "01": 3
+        },
+        "sahkohybridinluokka": {
+          "01": 3
+        }
+      },
+      "firstRegistration": {
+        "from": "2023-08-22",
+        "to": "2024-01-03"
+      }
+    },
+    {
+      "key": "E1*2007/46*2014*23|ACDNPAX0|FD7FD7GC003S4BISOR2ML1CVR2AI0",
+      "vehicles": 1,
+      "distributions": {
+        "vaihteisto": {
+          "2": 1
+        },
+        "vaihteidenLkm": {
+          "7": 1
+        },
+        "korityyppi": {
+          "AC": 1
+        },
+        "ovienLukumaara": {
+          "5": 1
+        },
+        "istumapaikkojenLkm": {
+          "5": 1
+        },
+        "kaupallinenNimi": {
+          "GOLF": 1
+        },
+        "mallimerkinta": {
+          "GOLF Farmari (AC) 5ov 1984cm3 A": 1
+        },
+        "suurinNettoteho": {
+          "180": 1
+        },
+        "iskutilavuus": {
+          "1984": 1
+        },
+        "kayttovoima": {
+          "01": 1
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2023-08-19",
+        "to": "2023-08-19"
+      }
+    },
+    {
+      "key": "E1*2007/46*2014*28|ACDUCBX0|FD6FD6DD001H4WESON1MLB0",
+      "vehicles": 77,
+      "distributions": {
+        "vaihteisto": {
+          "2": 77
+        },
+        "vaihteidenLkm": {
+          "6": 77
+        },
+        "korityyppi": {
+          "AC": 77
+        },
+        "ovienLukumaara": {
+          "5": 77
+        },
+        "istumapaikkojenLkm": {
+          "5": 77
+        },
+        "kaupallinenNimi": {
+          "GOLF": 77
+        },
+        "mallimerkinta": {
+          "GOLF Farmari (AC) 5ov 1498cm3 A": 77
+        },
+        "suurinNettoteho": {
+          "110": 77
+        },
+        "iskutilavuus": {
+          "1498": 77
+        },
+        "kayttovoima": {
+          "01": 77
+        },
+        "sahkohybridinluokka": {
+          "01": 77
+        }
+      },
+      "firstRegistration": {
+        "from": "2025-01-03",
+        "to": "2026-05-11"
+      }
+    },
+    {
+      "key": "E1*2007/46*2130*02|41DU|0AW5000S",
+      "vehicles": 94,
+      "distributions": {
+        "vaihteisto": {
+          "2": 94
+        },
+        "vaihteidenLkm": {
+          "1": 94
+        },
+        "korityyppi": {
+          "AC": 94
+        },
+        "ovienLukumaara": {
+          "4": 94
+        },
+        "istumapaikkojenLkm": {
+          "5": 94
+        },
+        "kaupallinenNimi": {
+          "iX3": 94
+        },
+        "mallimerkinta": {
+          "iX3 Farmari (AC) 4ov A": 94
+        },
+        "suurinNettoteho": {},
+        "iskutilavuus": {},
+        "kayttovoima": {
+          "04": 94
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2021-12-17",
+        "to": "2026-06-29"
+      }
+    },
+    {
+      "key": "E1*2007/46*2130*07|41DU|0AW5000B",
+      "vehicles": 10,
+      "distributions": {
+        "vaihteisto": {
+          "2": 10
+        },
+        "vaihteidenLkm": {
+          "1": 10
+        },
+        "korityyppi": {
+          "AC": 10
+        },
+        "ovienLukumaara": {
+          "4": 10
+        },
+        "istumapaikkojenLkm": {
+          "5": 10
+        },
+        "kaupallinenNimi": {
+          "iX3": 10
+        },
+        "mallimerkinta": {
+          "iX3 Farmari (AC) 4ov A": 10
+        },
+        "suurinNettoteho": {},
+        "iskutilavuus": {},
+        "kayttovoima": {
+          "04": 10
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2024-12-30",
+        "to": "2025-07-08"
+      }
+    },
+    {
+      "key": "E11*2007/46*0152*10|NHP13(MH)|NHP130L-CHXNBW(1L)",
+      "vehicles": 2040,
+      "distributions": {
+        "vaihteisto": {
+          "3": 2040
+        },
+        "vaihteidenLkm": {},
+        "korityyppi": {
+          "AF": 2038,
+          "AC": 1
+        },
+        "ovienLukumaara": {
+          "4": 2037,
+          "5": 3
+        },
+        "istumapaikkojenLkm": {
+          "5": 2040
+        },
+        "kaupallinenNimi": {
+          "TOYOTA YARIS HYBRID": 2039,
+          "YARIS HYBRID": 1
+        },
+        "mallimerkinta": {
+          "TOYOTA YARIS HYBRID Monikäyttöajoneuvo (AF) 4ov 1497cm3": 2038,
+          "YARIS HYBRID Monikäyttöajoneuvo (AF) 4ov 1497cm3": 1,
+          "TOYOTA YARIS HYBRID Monikäyttöajoneuvo (AF) 5ov 1497cm3": 1
+        },
+        "suurinNettoteho": {
+          "54": 2040
+        },
+        "iskutilavuus": {
+          "1497": 2040
+        },
+        "kayttovoima": {
+          "01": 2040
+        },
+        "sahkohybridinluokka": {
+          "02": 2040
+        }
+      },
+      "firstRegistration": {
+        "from": "2017-04-12",
+        "to": "2025-10-29"
+      }
+    },
+    {
+      "key": "E11*2007/46*0963*17|D|D03",
+      "vehicles": 313,
+      "distributions": {
+        "vaihteisto": {
+          "1": 313
+        },
+        "vaihteidenLkm": {
+          "6": 313
+        },
+        "korityyppi": {
+          "AF": 313
+        },
+        "ovienLukumaara": {
+          "4": 313
+        },
+        "istumapaikkojenLkm": {
+          "5": 313
+        },
+        "kaupallinenNimi": {
+          "Nissan Qashqai": 313
+        },
+        "mallimerkinta": {
+          "Nissan Qashqai Monikäyttöajoneuvo (AF) 4ov 1197cm3": 313
+        },
+        "suurinNettoteho": {
+          "85": 313
+        },
+        "iskutilavuus": {
+          "1197": 313
+        },
+        "kayttovoima": {
+          "01": 313
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2018-03-28",
+        "to": "2022-11-29"
+      }
+    },
+    {
+      "key": "E11*2007/46*2724*05|F5D51|M66ZZ1",
+      "vehicles": 4,
+      "distributions": {
+        "vaihteisto": {
+          "1": 4
+        },
+        "vaihteidenLkm": {
+          "6": 4
+        },
+        "korityyppi": {
+          "AF": 4
+        },
+        "ovienLukumaara": {
+          "5": 4
+        },
+        "istumapaikkojenLkm": {
+          "5": 4
+        },
+        "kaupallinenNimi": {
+          "TUCSON": 4
+        },
+        "mallimerkinta": {
+          "TUCSON Monikäyttöajoneuvo (AF) 5ov 1685cm3": 4
+        },
+        "suurinNettoteho": {
+          "85": 4
+        },
+        "iskutilavuus": {
+          "1685": 4
+        },
+        "kayttovoima": {
+          "02": 4
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2017-09-01",
+        "to": "2018-06-12"
+      }
+    },
+    {
+      "key": "E11*2007/46*2724*05|F5P31|M64ZZ1",
+      "vehicles": 25,
+      "distributions": {
+        "vaihteisto": {
+          "1": 25
+        },
+        "vaihteidenLkm": {
+          "6": 25
+        },
+        "korityyppi": {
+          "AF": 25
+        },
+        "ovienLukumaara": {
+          "5": 25
+        },
+        "istumapaikkojenLkm": {
+          "5": 25
+        },
+        "kaupallinenNimi": {
+          "TUCSON": 25
+        },
+        "mallimerkinta": {
+          "TUCSON Monikäyttöajoneuvo (AF) 5ov 1591cm3": 25
+        },
+        "suurinNettoteho": {
+          "97": 25
+        },
+        "iskutilavuus": {
+          "1591": 25
+        },
+        "kayttovoima": {
+          "01": 25
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2017-09-27",
+        "to": "2018-11-26"
+      }
+    },
+    {
+      "key": "E11*2007/46*3144*01|F5D51|M66ZZ1",
+      "vehicles": 90,
+      "distributions": {
+        "vaihteisto": {
+          "1": 90
+        },
+        "vaihteidenLkm": {
+          "6": 90
+        },
+        "korityyppi": {
+          "AF": 90
+        },
+        "ovienLukumaara": {
+          "5": 90
+        },
+        "istumapaikkojenLkm": {
+          "5": 90
+        },
+        "kaupallinenNimi": {
+          "SPORTAGE": 90
+        },
+        "mallimerkinta": {
+          "SPORTAGE Monikäyttöajoneuvo (AF) 5ov 1685cm3": 90
+        },
+        "suurinNettoteho": {
+          "85": 90
+        },
+        "iskutilavuus": {
+          "1685": 90
+        },
+        "kayttovoima": {
+          "02": 90
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2016-02-26",
+        "to": "2017-10-30"
+      }
+    },
+    {
+      "key": "E11*2007/46*3144*03|F5D61|D72ZZ1",
+      "vehicles": 122,
+      "distributions": {
+        "vaihteisto": {
+          "2": 122
+        },
+        "vaihteidenLkm": {
+          "7": 122
+        },
+        "korityyppi": {
+          "AF": 122
+        },
+        "ovienLukumaara": {
+          "5": 122
+        },
+        "istumapaikkojenLkm": {
+          "5": 122
+        },
+        "kaupallinenNimi": {
+          "SPORTAGE": 122
+        },
+        "mallimerkinta": {
+          "SPORTAGE Monikäyttöajoneuvo (AF) 5ov 1685cm3 A": 122
+        },
+        "suurinNettoteho": {
+          "104": 122
+        },
+        "iskutilavuus": {
+          "1685": 122
+        },
+        "kayttovoima": {
+          "02": 122
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2017-03-31",
+        "to": "2019-06-13"
+      }
+    },
+    {
+      "key": "E13*2018/858*00639*00|SE2D1C|1NXE5E001NL1",
+      "vehicles": 232,
+      "distributions": {
+        "vaihteisto": {
+          "8": 232
+        },
+        "vaihteidenLkm": {
+          "1": 227
+        },
+        "korityyppi": {
+          "AA": 232
+        },
+        "ovienLukumaara": {
+          "4": 232
+        },
+        "istumapaikkojenLkm": {
+          "5": 232
+        },
+        "kaupallinenNimi": {
+          "BYD SEAL": 232
+        },
+        "mallimerkinta": {
+          "BYD SEAL Sedan (AA) 4ov": 232
+        },
+        "suurinNettoteho": {},
+        "iskutilavuus": {},
+        "kayttovoima": {
+          "04": 232
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2024-01-26",
+        "to": "2026-06-22"
+      }
+    },
+    {
+      "key": "E13*2018/858*00639*03|SE2R1C|2NTE5F002NL1",
+      "vehicles": 16,
+      "distributions": {
+        "vaihteisto": {
+          "8": 16
+        },
+        "vaihteidenLkm": {
+          "1": 15
+        },
+        "korityyppi": {
+          "AA": 16
+        },
+        "ovienLukumaara": {
+          "4": 16
+        },
+        "istumapaikkojenLkm": {
+          "5": 16
+        },
+        "kaupallinenNimi": {
+          "BYD SEAL": 16
+        },
+        "mallimerkinta": {
+          "BYD SEAL Sedan (AA) 4ov": 16
+        },
+        "suurinNettoteho": {},
+        "iskutilavuus": {},
+        "kayttovoima": {
+          "04": 16
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2025-02-18",
+        "to": "2026-06-23"
+      }
+    },
+    {
+      "key": "E19*2007/46*0026*12|BEV|M66UA43M5200",
+      "vehicles": 1,
+      "distributions": {
+        "vaihteisto": {
+          "1": 1
+        },
+        "vaihteidenLkm": {
+          "6": 1
+        },
+        "korityyppi": {
+          "AB": 1
+        },
+        "ovienLukumaara": {
+          "5": 1
+        },
+        "istumapaikkojenLkm": {
+          "5": 1
+        },
+        "kaupallinenNimi": {
+          "SANDERO": 1
+        },
+        "mallimerkinta": {
+          "SANDERO Viistoperä (AB) 5ov 999cm3": 1
+        },
+        "suurinNettoteho": {
+          "67": 1
+        },
+        "iskutilavuus": {
+          "999": 1
+        },
+        "kayttovoima": {
+          "01": 1
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2022-08-31",
+        "to": "2022-08-31"
+      }
+    },
+    {
+      "key": "E2*2001/116*0314*83|5SDL1|5SDL1C",
+      "vehicles": 111,
+      "distributions": {
+        "vaihteisto": {
+          "1": 111
+        },
+        "vaihteidenLkm": {
+          "5": 111
+        },
+        "korityyppi": {
+          "AB": 111
+        },
+        "ovienLukumaara": {
+          "4": 111
+        },
+        "istumapaikkojenLkm": {
+          "5": 111
+        },
+        "kaupallinenNimi": {
+          "SANDERO": 111
+        },
+        "mallimerkinta": {
+          "SANDERO Viistoperä (AB) 4ov 898cm3": 111
+        },
+        "suurinNettoteho": {
+          "66": 111
+        },
+        "iskutilavuus": {
+          "898": 111
+        },
+        "kayttovoima": {
+          "01": 111
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2017-07-18",
+        "to": "2019-05-09"
+      }
+    },
+    {
+      "key": "E2*2001/116*0314*93|05EV|AC5DA1A0M500",
+      "vehicles": 47,
+      "distributions": {
+        "vaihteisto": {
+          "1": 47
+        },
+        "vaihteidenLkm": {
+          "5": 47
+        },
+        "korityyppi": {
+          "AB": 47
+        },
+        "ovienLukumaara": {
+          "4": 47
+        },
+        "istumapaikkojenLkm": {
+          "5": 47
+        },
+        "kaupallinenNimi": {
+          "SANDERO": 47
+        },
+        "mallimerkinta": {
+          "SANDERO Viistoperä (AB) 4ov 898cm3": 47
+        },
+        "suurinNettoteho": {
+          "66": 47
+        },
+        "iskutilavuus": {
+          "898": 47
+        },
+        "kayttovoima": {
+          "01": 47
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2020-03-31",
+        "to": "2021-02-19"
+      }
+    },
+    {
+      "key": "E2*2007/46*0534*12|4|5GBU-C1J000",
+      "vehicles": 199,
+      "distributions": {
+        "vaihteisto": {
+          "2": 199
+        },
+        "vaihteidenLkm": {
+          "8": 199
+        },
+        "korityyppi": {
+          "AF": 199
+        },
+        "ovienLukumaara": {
+          "4": 1,
+          "5": 198
+        },
+        "istumapaikkojenLkm": {
+          "5": 199
+        },
+        "kaupallinenNimi": {
+          "3008": 199
+        },
+        "mallimerkinta": {
+          "3008 Monikäyttöajoneuvo (AF) 5ov 1598cm3 A": 198,
+          "3008 Monikäyttöajoneuvo (AF) 4ov 1598cm3 A": 1
+        },
+        "suurinNettoteho": {
+          "147": 199
+        },
+        "iskutilavuus": {
+          "1598": 199
+        },
+        "kayttovoima": {
+          "39": 3,
+          "01": 196
+        },
+        "sahkohybridinluokka": {
+          "01": 199
+        }
+      },
+      "firstRegistration": {
+        "from": "2020-01-29",
+        "to": "2026-05-08"
+      }
+    },
+    {
+      "key": "E2*2007/46*0534*12|R|HNSM-C1P100",
+      "vehicles": 5,
+      "distributions": {
+        "vaihteisto": {
+          "1": 5
+        },
+        "vaihteidenLkm": {
+          "6": 5
+        },
+        "korityyppi": {
+          "AF": 5
+        },
+        "ovienLukumaara": {
+          "5": 5
+        },
+        "istumapaikkojenLkm": {
+          "5": 5
+        },
+        "kaupallinenNimi": {
+          "3008": 5
+        },
+        "mallimerkinta": {
+          "3008 Monikäyttöajoneuvo (AF) 5ov 1199cm3": 5
+        },
+        "suurinNettoteho": {
+          "96": 5
+        },
+        "iskutilavuus": {
+          "1199": 5
+        },
+        "kayttovoima": {
+          "01": 5
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2019-12-30",
+        "to": "2020-02-10"
+      }
+    },
+    {
+      "key": "E2*2007/46*0534*23|4|DGZU-C1J000",
+      "vehicles": 40,
+      "distributions": {
+        "vaihteisto": {
+          "2": 40
+        },
+        "vaihteidenLkm": {
+          "8": 40
+        },
+        "korityyppi": {
+          "AF": 40
+        },
+        "ovienLukumaara": {
+          "5": 40
+        },
+        "istumapaikkojenLkm": {
+          "5": 40
+        },
+        "kaupallinenNimi": {
+          "3008": 40
+        },
+        "mallimerkinta": {
+          "3008 Monikäyttöajoneuvo (AF) 5ov 1598cm3 A": 40
+        },
+        "suurinNettoteho": {
+          "133": 40
+        },
+        "iskutilavuus": {
+          "1598": 40
+        },
+        "kayttovoima": {
+          "01": 40
+        },
+        "sahkohybridinluokka": {
+          "01": 40
+        }
+      },
+      "firstRegistration": {
+        "from": "2022-09-30",
+        "to": "2023-12-29"
+      }
+    },
+    {
+      "key": "E2*2007/46*0546*09|BF2|MR662A010000",
+      "vehicles": 7,
+      "distributions": {
+        "vaihteisto": {
+          "1": 7
+        },
+        "vaihteidenLkm": {
+          "6": 7
+        },
+        "korityyppi": {
+          "AB": 7
+        },
+        "ovienLukumaara": {
+          "5": 7
+        },
+        "istumapaikkojenLkm": {
+          "5": 7
+        },
+        "kaupallinenNimi": {
+          "MEGANE": 7
+        },
+        "mallimerkinta": {
+          "MEGANE Viistoperä (AB) 5ov 1197cm3": 7
+        },
+        "suurinNettoteho": {
+          "97": 7
+        },
+        "iskutilavuus": {
+          "1197": 7
+        },
+        "kayttovoima": {
+          "01": 7
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2018-05-09",
+        "to": "2019-03-11"
+      }
+    },
+    {
+      "key": "E2*2007/46*0639*07|P|HMHD-J1B100",
+      "vehicles": 58,
+      "distributions": {
+        "vaihteisto": {
+          "1": 58
+        },
+        "vaihteidenLkm": {
+          "5": 58
+        },
+        "korityyppi": {
+          "AB": 58
+        },
+        "ovienLukumaara": {
+          "4": 58
+        },
+        "istumapaikkojenLkm": {
+          "5": 58
+        },
+        "kaupallinenNimi": {
+          "208": 58
+        },
+        "mallimerkinta": {
+          "208 Viistoperä (AB) 4ov 1199cm3": 58
+        },
+        "suurinNettoteho": {
+          "55": 58
+        },
+        "iskutilavuus": {
+          "1199": 58
+        },
+        "kayttovoima": {
+          "01": 58
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2020-01-20",
+        "to": "2020-07-30"
+      }
+    },
+    {
+      "key": "E2*2007/46*0639*36|P|HPX5-K1NN00",
+      "vehicles": 2,
+      "distributions": {
+        "vaihteisto": {
+          "2": 2
+        },
+        "vaihteidenLkm": {
+          "6": 2
+        },
+        "korityyppi": {
+          "AB": 2
+        },
+        "ovienLukumaara": {
+          "4": 2
+        },
+        "istumapaikkojenLkm": {
+          "5": 2
+        },
+        "kaupallinenNimi": {
+          "208": 2
+        },
+        "mallimerkinta": {
+          "208 Viistoperä (AB) 4ov 1199cm3 A": 2
+        },
+        "suurinNettoteho": {
+          "74": 2
+        },
+        "iskutilavuus": {
+          "1199": 2
+        },
+        "kayttovoima": {
+          "01": 2
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2025-08-22",
+        "to": "2026-04-09"
+      }
+    },
+    {
+      "key": "E2*2007/46*0676*03|BE2|MT5TA08A5000",
+      "vehicles": 124,
+      "distributions": {
+        "vaihteisto": {
+          "1": 124
+        },
+        "vaihteidenLkm": {
+          "5": 124
+        },
+        "korityyppi": {
+          "AB": 124
+        },
+        "ovienLukumaara": {
+          "5": 124
+        },
+        "istumapaikkojenLkm": {
+          "5": 124
+        },
+        "kaupallinenNimi": {
+          "CLIO": 124
+        },
+        "mallimerkinta": {
+          "CLIO Viistoperä (AB) 5ov 999cm3": 124
+        },
+        "suurinNettoteho": {
+          "74": 124
+        },
+        "iskutilavuus": {
+          "999": 124
+        },
+        "kayttovoima": {
+          "01": 124
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2019-12-30",
+        "to": "2021-09-15"
+      }
+    },
+    {
+      "key": "E2*2007/46*0676*05|BH2|MU4UA0FA5000",
+      "vehicles": 2,
+      "distributions": {
+        "vaihteisto": {
+          "2": 2
+        },
+        "vaihteidenLkm": {
+          "5": 1,
+          "6": 1
+        },
+        "korityyppi": {
+          "AB": 2
+        },
+        "ovienLukumaara": {
+          "5": 2
+        },
+        "istumapaikkojenLkm": {
+          "5": 2
+        },
+        "kaupallinenNimi": {
+          "CLIO": 1,
+          "CLIO (E-Tech Hydrid)": 1
+        },
+        "mallimerkinta": {
+          "CLIO Viistoperä (AB) 5ov 1598cm3 A": 1,
+          "CLIO (E-Tech Hydrid) Viistoperä (AB) 5ov 1598cm3 A": 1
+        },
+        "suurinNettoteho": {
+          "67": 2
+        },
+        "iskutilavuus": {
+          "1598": 2
+        },
+        "kayttovoima": {
+          "01": 2
+        },
+        "sahkohybridinluokka": {
+          "02": 2
+        }
+      },
+      "firstRegistration": {
+        "from": "2022-09-29",
+        "to": "2023-05-23"
+      }
+    },
+    {
+      "key": "E2*2007/46*0676*23|BH2|N84WA3VA5300",
+      "vehicles": 2,
+      "distributions": {
+        "vaihteisto": {
+          "2": 2
+        },
+        "vaihteidenLkm": {
+          "6": 2
+        },
+        "korityyppi": {
+          "AB": 2
+        },
+        "ovienLukumaara": {
+          "5": 2
+        },
+        "istumapaikkojenLkm": {
+          "5": 2
+        },
+        "kaupallinenNimi": {
+          "CLIO (E-TECH HYBRID)": 2
+        },
+        "mallimerkinta": {
+          "CLIO (E-TECH HYBRID) Viistoperä (AB) 5ov 1598cm3 A": 2
+        },
+        "suurinNettoteho": {
+          "69": 2
+        },
+        "iskutilavuus": {
+          "1598": 2
+        },
+        "kayttovoima": {
+          "01": 2
+        },
+        "sahkohybridinluokka": {
+          "02": 2
+        }
+      },
+      "firstRegistration": {
+        "from": "2024-01-26",
+        "to": "2024-01-30"
+      }
+    },
+    {
+      "key": "E2*2007/46*0676*28|BH2|N84WA3VA530B",
+      "vehicles": 20,
+      "distributions": {
+        "vaihteisto": {
+          "2": 20
+        },
+        "vaihteidenLkm": {
+          "6": 20
+        },
+        "korityyppi": {
+          "AB": 20
+        },
+        "ovienLukumaara": {
+          "5": 20
+        },
+        "istumapaikkojenLkm": {
+          "5": 20
+        },
+        "kaupallinenNimi": {
+          "CLIO (E-TECH HYBRID)": 20
+        },
+        "mallimerkinta": {
+          "CLIO (E-TECH HYBRID) Viistoperä (AB) 5ov 1598cm3 A": 20
+        },
+        "suurinNettoteho": {
+          "69": 20
+        },
+        "iskutilavuus": {
+          "1598": 20
+        },
+        "kayttovoima": {
+          "01": 20
+        },
+        "sahkohybridinluokka": {
+          "02": 20
+        }
+      },
+      "firstRegistration": {
+        "from": "2024-09-30",
+        "to": "2025-09-22"
+      }
+    },
+    {
+      "key": "E2*2018/858*00018*03|BE2|J1EEA1000000",
+      "vehicles": 106,
+      "distributions": {
+        "vaihteisto": {
+          "8": 106
+        },
+        "vaihteidenLkm": {
+          "1": 106
+        },
+        "korityyppi": {
+          "AB": 106
+        },
+        "ovienLukumaara": {
+          "5": 106
+        },
+        "istumapaikkojenLkm": {
+          "5": 106
+        },
+        "kaupallinenNimi": {
+          "MEGANE E-TECH ELECTRIC": 106
+        },
+        "mallimerkinta": {
+          "MEGANE E-TECH ELECTRIC Viistoperä (AB) 5ov": 106
+        },
+        "suurinNettoteho": {},
+        "iskutilavuus": {},
+        "kayttovoima": {
+          "04": 106
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2022-07-08",
+        "to": "2026-06-25"
+      }
+    },
+    {
+      "key": "E2*2018/858*00064*02|C|ZKZX-A0E000",
+      "vehicles": 108,
+      "distributions": {
+        "vaihteisto": {
+          "2": 108
+        },
+        "vaihteidenLkm": {
+          "1": 108
+        },
+        "korityyppi": {
+          "AF": 107,
+          "BB": 1
+        },
+        "ovienLukumaara": {
+          "5": 108
+        },
+        "istumapaikkojenLkm": {
+          "2": 1,
+          "5": 107
+        },
+        "kaupallinenNimi": {
+          "3008": 108
+        },
+        "mallimerkinta": {
+          "3008 Monikäyttöajoneuvo (AF) 5ov A": 108
+        },
+        "suurinNettoteho": {},
+        "iskutilavuus": {},
+        "kayttovoima": {
+          "04": 108
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2024-05-06",
+        "to": "2026-04-22"
+      }
+    },
+    {
+      "key": "E2*2018/858*00064*07|A|HPY1-A1AN00",
+      "vehicles": 19,
+      "distributions": {
+        "vaihteisto": {
+          "2": 19
+        },
+        "vaihteidenLkm": {
+          "6": 19
+        },
+        "korityyppi": {
+          "AF": 19
+        },
+        "ovienLukumaara": {
+          "5": 19
+        },
+        "istumapaikkojenLkm": {
+          "5": 19
+        },
+        "kaupallinenNimi": {
+          "3008": 19
+        },
+        "mallimerkinta": {
+          "3008 Monikäyttöajoneuvo (AF) 5ov 1199cm3 A": 19
+        },
+        "suurinNettoteho": {
+          "100": 19
+        },
+        "iskutilavuus": {
+          "1199": 19
+        },
+        "kayttovoima": {
+          "01": 19
+        },
+        "sahkohybridinluokka": {
+          "02": 19
+        }
+      },
+      "firstRegistration": {
+        "from": "2025-04-29",
+        "to": "2026-06-03"
+      }
+    },
+    {
+      "key": "E4*2007/46*1139*02|C5P11|D61AY1",
+      "vehicles": 484,
+      "distributions": {
+        "vaihteisto": {
+          "2": 484
+        },
+        "vaihteidenLkm": {
+          "6": 483
+        },
+        "korityyppi": {
+          "AC": 484
+        },
+        "ovienLukumaara": {
+          "5": 484
+        },
+        "istumapaikkojenLkm": {
+          "5": 484
+        },
+        "kaupallinenNimi": {
+          "NIRO": 482,
+          "Niro": 2
+        },
+        "mallimerkinta": {
+          "NIRO Farmari (AC) 5ov 1580cm3 A": 482,
+          "Niro Farmari (AC) 5ov 1580cm3 A": 2
+        },
+        "suurinNettoteho": {
+          "77.2": 484
+        },
+        "iskutilavuus": {
+          "1580": 484
+        },
+        "kayttovoima": {
+          "01": 484
+        },
+        "sahkohybridinluokka": {
+          "02": 484
+        }
+      },
+      "firstRegistration": {
+        "from": "2017-08-29",
+        "to": "2024-06-19"
+      }
+    },
+    {
+      "key": "E4*2007/46*1139*08|C5P11|D61CY1",
+      "vehicles": 578,
+      "distributions": {
+        "vaihteisto": {
+          "2": 578
+        },
+        "vaihteidenLkm": {
+          "6": 578
+        },
+        "korityyppi": {
+          "AC": 578
+        },
+        "ovienLukumaara": {
+          "5": 578
+        },
+        "istumapaikkojenLkm": {
+          "5": 578
+        },
+        "kaupallinenNimi": {
+          "NIRO": 578
+        },
+        "mallimerkinta": {
+          "NIRO Farmari (AC) 5ov 1580cm3 A": 577,
+          "NIRO Farmari (AC) 5ov A": 1
+        },
+        "suurinNettoteho": {
+          "77.2": 577
+        },
+        "iskutilavuus": {
+          "1580": 577
+        },
+        "kayttovoima": {
+          "01": 577,
+          "04": 1
+        },
+        "sahkohybridinluokka": {
+          "02": 577
+        }
+      },
+      "firstRegistration": {
+        "from": "2019-08-07",
+        "to": "2026-01-29"
+      }
+    },
+    {
+      "key": "E4*2007/46*1139*12|C5E11|E11DY1",
+      "vehicles": 150,
+      "distributions": {
+        "vaihteisto": {
+          "X": 149,
+          "Y": 1
+        },
+        "vaihteidenLkm": {
+          "1": 150
+        },
+        "korityyppi": {
+          "AC": 150
+        },
+        "ovienLukumaara": {
+          "5": 150
+        },
+        "istumapaikkojenLkm": {
+          "5": 150
+        },
+        "kaupallinenNimi": {
+          "NIRO": 149,
+          "Niro": 1
+        },
+        "mallimerkinta": {
+          "NIRO Farmari (AC) 5ov": 149,
+          "Niro Farmari (AC) 5ov": 1
+        },
+        "suurinNettoteho": {},
+        "iskutilavuus": {},
+        "kayttovoima": {
+          "04": 150
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2021-09-30",
+        "to": "2026-05-19"
+      }
+    },
+    {
+      "key": "E4*2007/46*1139*12|C5P11|D61CY1",
+      "vehicles": 128,
+      "distributions": {
+        "vaihteisto": {
+          "2": 128
+        },
+        "vaihteidenLkm": {
+          "6": 128
+        },
+        "korityyppi": {
+          "AC": 128
+        },
+        "ovienLukumaara": {
+          "5": 128
+        },
+        "istumapaikkojenLkm": {
+          "5": 128
+        },
+        "kaupallinenNimi": {
+          "NIRO": 128
+        },
+        "mallimerkinta": {
+          "NIRO Farmari (AC) 5ov 1580cm3 A": 128
+        },
+        "suurinNettoteho": {
+          "77.2": 128
+        },
+        "iskutilavuus": {
+          "1580": 128
+        },
+        "kayttovoima": {
+          "01": 128
+        },
+        "sahkohybridinluokka": {
+          "02": 128
+        }
+      },
+      "firstRegistration": {
+        "from": "2021-10-01",
+        "to": "2025-04-17"
+      }
+    },
+    {
+      "key": "E4*2007/46*1259*16|F5P31|D61CY1Y1",
+      "vehicles": 1,
+      "distributions": {
+        "vaihteisto": {
+          "2": 1
+        },
+        "vaihteidenLkm": {
+          "6": 1
+        },
+        "korityyppi": {
+          "AF": 1
+        },
+        "ovienLukumaara": {
+          "5": 1
+        },
+        "istumapaikkojenLkm": {
+          "5": 1
+        },
+        "kaupallinenNimi": {
+          "Kona": 1
+        },
+        "mallimerkinta": {
+          "Kona Monikäyttöajoneuvo (AF) 5ov 1580cm3 A": 1
+        },
+        "suurinNettoteho": {
+          "77.2": 1
+        },
+        "iskutilavuus": {
+          "1580": 1
+        },
+        "kayttovoima": {
+          "01": 1
+        },
+        "sahkohybridinluokka": {
+          "02": 1
+        }
+      },
+      "firstRegistration": {
+        "from": "2023-01-27",
+        "to": "2023-01-27"
+      }
+    },
+    {
+      "key": "E4*2007/46*1293*07|E3D|BB1N",
+      "vehicles": 120,
+      "distributions": {
+        "vaihteisto": {
+          "3": 1,
+          "8": 1,
+          "Y": 117
+        },
+        "vaihteidenLkm": {
+          "1": 119
+        },
+        "korityyppi": {
+          "AA": 120
+        },
+        "ovienLukumaara": {
+          "4": 120
+        },
+        "istumapaikkojenLkm": {
+          "5": 120
+        },
+        "kaupallinenNimi": {
+          "Model 3": 119,
+          "MODEL 3": 1
+        },
+        "mallimerkinta": {
+          "Model 3 Sedan (AA) 4ov": 119,
+          "MODEL 3 Sedan (AA) 4ov": 1
+        },
+        "suurinNettoteho": {
+          "361": 1
+        },
+        "iskutilavuus": {},
+        "kayttovoima": {
+          "04": 120
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2020-03-17",
+        "to": "2026-04-23"
+      }
+    },
+    {
+      "key": "E4*2007/46*1293*25|E6LR|BQB1S5N",
+      "vehicles": 70,
+      "distributions": {
+        "vaihteisto": {
+          "8": 70
+        },
+        "vaihteidenLkm": {
+          "1": 70
+        },
+        "korityyppi": {
+          "AA": 70
+        },
+        "ovienLukumaara": {
+          "4": 70
+        },
+        "istumapaikkojenLkm": {
+          "5": 70
+        },
+        "kaupallinenNimi": {
+          "Model 3": 70
+        },
+        "mallimerkinta": {
+          "Model 3 Sedan (AA) 4ov": 70
+        },
+        "suurinNettoteho": {},
+        "iskutilavuus": {},
+        "kayttovoima": {
+          "04": 70
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2022-10-31",
+        "to": "2026-05-27"
+      }
+    },
+    {
+      "key": "E4*2007/46*1293*25|Y5LD|PZP4S5T3",
+      "vehicles": 137,
+      "distributions": {
+        "vaihteisto": {
+          "8": 137
+        },
+        "vaihteidenLkm": {
+          "1": 137
+        },
+        "korityyppi": {
+          "AF": 137
+        },
+        "ovienLukumaara": {
+          "5": 137
+        },
+        "istumapaikkojenLkm": {
+          "5": 137
+        },
+        "kaupallinenNimi": {
+          "Model Y": 135,
+          "MODEL Y": 1,
+          "model y": 1
+        },
+        "mallimerkinta": {
+          "Model Y Monikäyttöajoneuvo (AF) 5ov": 135,
+          "MODEL Y Monikäyttöajoneuvo (AF) 5ov": 1,
+          "model y Monikäyttöajoneuvo (AF) 5ov": 1
+        },
+        "suurinNettoteho": {},
+        "iskutilavuus": {},
+        "kayttovoima": {
+          "04": 137
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2022-09-16",
+        "to": "2026-05-21"
+      }
+    },
+    {
+      "key": "E4*2007/46*1293*26|Y6LR|BZB3S5T3",
+      "vehicles": 51,
+      "distributions": {
+        "vaihteisto": {
+          "8": 51
+        },
+        "vaihteidenLkm": {
+          "1": 51
+        },
+        "korityyppi": {
+          "AF": 51
+        },
+        "ovienLukumaara": {
+          "5": 51
+        },
+        "istumapaikkojenLkm": {
+          "5": 51
+        },
+        "kaupallinenNimi": {
+          "Model Y": 51
+        },
+        "mallimerkinta": {
+          "Model Y Monikäyttöajoneuvo (AF) 5ov": 51
+        },
+        "suurinNettoteho": {},
+        "iskutilavuus": {},
+        "kayttovoima": {
+          "04": 51
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2022-12-22",
+        "to": "2026-03-20"
+      }
+    },
+    {
+      "key": "E4*2007/46*1293*39|H6LR|BFB1S5T1W",
+      "vehicles": 240,
+      "distributions": {
+        "vaihteisto": {
+          "8": 240
+        },
+        "vaihteidenLkm": {
+          "1": 240
+        },
+        "korityyppi": {
+          "AA": 240
+        },
+        "ovienLukumaara": {
+          "4": 240
+        },
+        "istumapaikkojenLkm": {
+          "5": 240
+        },
+        "kaupallinenNimi": {
+          "Model 3": 240
+        },
+        "mallimerkinta": {
+          "Model 3 Sedan (AA) 4ov": 240
+        },
+        "suurinNettoteho": {},
+        "iskutilavuus": {},
+        "kayttovoima": {
+          "04": 240
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2024-09-19",
+        "to": "2026-03-09"
+      }
+    },
+    {
+      "key": "E4*2007/46*1293*43|Y5LR|BLB3S5T3X",
+      "vehicles": 4,
+      "distributions": {
+        "vaihteisto": {
+          "8": 4
+        },
+        "vaihteidenLkm": {
+          "1": 4
+        },
+        "korityyppi": {
+          "AF": 4
+        },
+        "ovienLukumaara": {
+          "5": 4
+        },
+        "istumapaikkojenLkm": {
+          "5": 4
+        },
+        "kaupallinenNimi": {
+          "Model Y": 4
+        },
+        "mallimerkinta": {
+          "Model Y Monikäyttöajoneuvo (AF) 5ov": 4
+        },
+        "suurinNettoteho": {},
+        "iskutilavuus": {},
+        "kayttovoima": {
+          "04": 4
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2025-02-06",
+        "to": "2025-10-17"
+      }
+    },
+    {
+      "key": "E4*2007/46*1293*47|H6MR|BFB1S5T1W",
+      "vehicles": 140,
+      "distributions": {
+        "vaihteisto": {
+          "8": 140
+        },
+        "vaihteidenLkm": {
+          "1": 140
+        },
+        "korityyppi": {
+          "AA": 140
+        },
+        "ovienLukumaara": {
+          "4": 140
+        },
+        "istumapaikkojenLkm": {
+          "5": 140
+        },
+        "kaupallinenNimi": {
+          "Model 3": 140
+        },
+        "mallimerkinta": {
+          "Model 3 Sedan (AA) 4ov": 140
+        },
+        "suurinNettoteho": {},
+        "iskutilavuus": {},
+        "kayttovoima": {
+          "04": 140
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2025-09-19",
+        "to": "2026-06-12"
+      }
+    },
+    {
+      "key": "E4*2018/858*00079*00|F5P11|M61A11",
+      "vehicles": 24,
+      "distributions": {
+        "vaihteisto": {
+          "1": 24
+        },
+        "vaihteidenLkm": {
+          "6": 24
+        },
+        "korityyppi": {
+          "AF": 24
+        },
+        "ovienLukumaara": {
+          "5": 24
+        },
+        "istumapaikkojenLkm": {
+          "5": 24
+        },
+        "kaupallinenNimi": {
+          "SPORTAGE": 24
+        },
+        "mallimerkinta": {
+          "SPORTAGE Monikäyttöajoneuvo (AF) 5ov 1598cm3": 24
+        },
+        "suurinNettoteho": {
+          "110.1": 24
+        },
+        "iskutilavuus": {
+          "1598": 24
+        },
+        "kayttovoima": {
+          "01": 24
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2022-01-05",
+        "to": "2023-02-23"
+      }
+    },
+    {
+      "key": "E4*2018/858*00079*01|F5P54|A63F11",
+      "vehicles": 437,
+      "distributions": {
+        "vaihteisto": {
+          "2": 437
+        },
+        "vaihteidenLkm": {
+          "6": 437
+        },
+        "korityyppi": {
+          "AF": 437
+        },
+        "ovienLukumaara": {
+          "5": 437
+        },
+        "istumapaikkojenLkm": {
+          "5": 437
+        },
+        "kaupallinenNimi": {
+          "SPORTAGE": 434,
+          "SPORTACE": 1,
+          "Sportage": 2
+        },
+        "mallimerkinta": {
+          "SPORTAGE Monikäyttöajoneuvo (AF) 5ov 1598cm3 A": 434,
+          "SPORTACE Monikäyttöajoneuvo (AF) 5ov 1598cm3 A": 1,
+          "Sportage Monikäyttöajoneuvo (AF) 5ov 1598cm3 A": 2
+        },
+        "suurinNettoteho": {
+          "132": 1,
+          "132.4": 436
+        },
+        "iskutilavuus": {
+          "1598": 437
+        },
+        "kayttovoima": {
+          "39": 1,
+          "01": 436
+        },
+        "sahkohybridinluokka": {
+          "01": 437
+        }
+      },
+      "firstRegistration": {
+        "from": "2022-04-14",
+        "to": "2026-06-16"
+      }
+    },
+    {
+      "key": "E4*2018/858*00079*04|F5P41|A61B11",
+      "vehicles": 33,
+      "distributions": {
+        "vaihteisto": {
+          "2": 33
+        },
+        "vaihteidenLkm": {
+          "6": 33
+        },
+        "korityyppi": {
+          "AF": 33
+        },
+        "ovienLukumaara": {
+          "5": 33
+        },
+        "istumapaikkojenLkm": {
+          "5": 33
+        },
+        "kaupallinenNimi": {
+          "SPORTAGE": 33
+        },
+        "mallimerkinta": {
+          "SPORTAGE Monikäyttöajoneuvo (AF) 5ov 1598cm3 A": 33
+        },
+        "suurinNettoteho": {
+          "117.6": 33
+        },
+        "iskutilavuus": {
+          "1598": 33
+        },
+        "kayttovoima": {
+          "01": 33
+        },
+        "sahkohybridinluokka": {
+          "02": 33
+        }
+      },
+      "firstRegistration": {
+        "from": "2024-05-24",
+        "to": "2026-06-03"
+      }
+    },
+    {
+      "key": "E4*2018/858*00153*01|F5P42|D61CY1",
+      "vehicles": 174,
+      "distributions": {
+        "vaihteisto": {
+          "2": 174
+        },
+        "vaihteidenLkm": {
+          "6": 174
+        },
+        "korityyppi": {
+          "AF": 174
+        },
+        "ovienLukumaara": {
+          "5": 174
+        },
+        "istumapaikkojenLkm": {
+          "5": 174
+        },
+        "kaupallinenNimi": {
+          "KONA": 174
+        },
+        "mallimerkinta": {
+          "KONA Monikäyttöajoneuvo (AF) 5ov 1580cm3 A": 174
+        },
+        "suurinNettoteho": {
+          "68.5": 174
+        },
+        "iskutilavuus": {
+          "1580": 174
+        },
+        "kayttovoima": {
+          "01": 174
+        },
+        "sahkohybridinluokka": {
+          "02": 174
+        }
+      },
+      "firstRegistration": {
+        "from": "2024-09-19",
+        "to": "2026-06-03"
+      }
+    },
+    {
+      "key": "E5*2007/46*1029*04|F|F04",
+      "vehicles": 336,
+      "distributions": {
+        "vaihteisto": {
+          "1": 336
+        },
+        "vaihteidenLkm": {
+          "6": 336
+        },
+        "korityyppi": {
+          "AF": 336
+        },
+        "ovienLukumaara": {
+          "4": 336
+        },
+        "istumapaikkojenLkm": {
+          "5": 336
+        },
+        "kaupallinenNimi": {
+          "Nissan Qashqai": 336
+        },
+        "mallimerkinta": {
+          "Nissan Qashqai Monikäyttöajoneuvo (AF) 4ov 1332cm3": 336
+        },
+        "suurinNettoteho": {
+          "103": 336
+        },
+        "iskutilavuus": {
+          "1332": 336
+        },
+        "kayttovoima": {
+          "01": 336
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2020-01-10",
+        "to": "2021-06-30"
+      }
+    },
+    {
+      "key": "E5*2018/858*00001*05|F5D41|M62A12",
+      "vehicles": 3,
+      "distributions": {
+        "vaihteisto": {
+          "1": 3
+        },
+        "vaihteidenLkm": {
+          "6": 3
+        },
+        "korityyppi": {
+          "AF": 3
+        },
+        "ovienLukumaara": {
+          "5": 3
+        },
+        "istumapaikkojenLkm": {
+          "5": 3
+        },
+        "kaupallinenNimi": {
+          "TUCSON": 3
+        },
+        "mallimerkinta": {
+          "TUCSON Monikäyttöajoneuvo (AF) 5ov 1598cm3": 3
+        },
+        "suurinNettoteho": {
+          "85": 3
+        },
+        "iskutilavuus": {
+          "1598": 3
+        },
+        "kayttovoima": {
+          "02": 3
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2022-03-07",
+        "to": "2022-05-04"
+      }
+    },
+    {
+      "key": "E5*2018/858*00001*09|F5P41|A61B11",
+      "vehicles": 16,
+      "distributions": {
+        "vaihteisto": {
+          "2": 16
+        },
+        "vaihteidenLkm": {
+          "6": 16
+        },
+        "korityyppi": {
+          "AF": 16
+        },
+        "ovienLukumaara": {
+          "5": 16
+        },
+        "istumapaikkojenLkm": {
+          "5": 16
+        },
+        "kaupallinenNimi": {
+          "TUCSON": 16
+        },
+        "mallimerkinta": {
+          "TUCSON Monikäyttöajoneuvo (AF) 5ov 1598cm3 A": 16
+        },
+        "suurinNettoteho": {
+          "117.6": 16
+        },
+        "iskutilavuus": {
+          "1598": 16
+        },
+        "kayttovoima": {
+          "01": 16
+        },
+        "sahkohybridinluokka": {
+          "02": 16
+        }
+      },
+      "firstRegistration": {
+        "from": "2024-11-26",
+        "to": "2025-07-23"
+      }
+    },
+    {
+      "key": "E5*2018/858*00001*09|F5P81|M61A11",
+      "vehicles": 1,
+      "distributions": {
+        "vaihteisto": {
+          "1": 1
+        },
+        "vaihteidenLkm": {
+          "6": 1
+        },
+        "korityyppi": {
+          "AF": 1
+        },
+        "ovienLukumaara": {
+          "5": 1
+        },
+        "istumapaikkojenLkm": {
+          "5": 1
+        },
+        "kaupallinenNimi": {
+          "TUCSON": 1
+        },
+        "mallimerkinta": {
+          "TUCSON Monikäyttöajoneuvo (AF) 5ov 1598cm3": 1
+        },
+        "suurinNettoteho": {
+          "117.6": 1
+        },
+        "iskutilavuus": {
+          "1598": 1
+        },
+        "kayttovoima": {
+          "01": 1
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2025-01-29",
+        "to": "2025-01-29"
+      }
+    },
+    {
+      "key": "E6*2007/46*0289*02|AXAH52(N)|AXAH52L-ANXMBW(1C)",
+      "vehicles": 183,
+      "distributions": {
+        "vaihteisto": {
+          "3": 183
+        },
+        "vaihteidenLkm": {},
+        "korityyppi": {
+          "AC": 183
+        },
+        "ovienLukumaara": {
+          "4": 183
+        },
+        "istumapaikkojenLkm": {
+          "5": 183
+        },
+        "kaupallinenNimi": {
+          "TOYOTA RAV4": 182,
+          "RAV4": 1
+        },
+        "mallimerkinta": {
+          "TOYOTA RAV4 Farmari (AC) 4ov 2487cm3": 182,
+          "RAV4 Farmari (AC) 4ov 2487cm3": 1
+        },
+        "suurinNettoteho": {
+          "131": 183
+        },
+        "iskutilavuus": {
+          "2487": 183
+        },
+        "kayttovoima": {
+          "01": 183
+        },
+        "sahkohybridinluokka": {
+          "02": 183
+        }
+      },
+      "firstRegistration": {
+        "from": "2019-12-02",
+        "to": "2026-06-26"
+      }
+    },
+    {
+      "key": "E6*2007/46*0289*08|AXAL52(N)|AXAL52L-ANXMBW(1J)",
+      "vehicles": 413,
+      "distributions": {
+        "vaihteisto": {
+          "3": 413
+        },
+        "vaihteidenLkm": {},
+        "korityyppi": {
+          "AC": 413
+        },
+        "ovienLukumaara": {
+          "4": 413
+        },
+        "istumapaikkojenLkm": {
+          "5": 413
+        },
+        "kaupallinenNimi": {
+          "TOYOTA RAV4": 413
+        },
+        "mallimerkinta": {
+          "TOYOTA RAV4 Farmari (AC) 4ov 2487cm3": 413
+        },
+        "suurinNettoteho": {
+          "131": 413
+        },
+        "iskutilavuus": {
+          "2487": 413
+        },
+        "kayttovoima": {
+          "01": 413
+        },
+        "sahkohybridinluokka": {
+          "02": 413
+        }
+      },
+      "firstRegistration": {
+        "from": "2024-04-22",
+        "to": "2025-09-25"
+      }
+    },
+    {
+      "key": "E6*2007/46*0318*03|ZWE211(H)|ZWE211L-DHXNBW(1D)",
+      "vehicles": 650,
+      "distributions": {
+        "vaihteisto": {
+          "3": 650
+        },
+        "vaihteidenLkm": {},
+        "korityyppi": {
+          "AB": 650
+        },
+        "ovienLukumaara": {
+          "4": 649,
+          "5": 1
+        },
+        "istumapaikkojenLkm": {
+          "5": 650
+        },
+        "kaupallinenNimi": {
+          "TOYOTA COROLLA": 650
+        },
+        "mallimerkinta": {
+          "TOYOTA COROLLA Viistoperä (AB) 4ov 1798cm3": 649,
+          "TOYOTA COROLLA Viistoperä (AB) 5ov 1798cm3": 1
+        },
+        "suurinNettoteho": {
+          "72": 650
+        },
+        "iskutilavuus": {
+          "1798": 650
+        },
+        "kayttovoima": {
+          "01": 650
+        },
+        "sahkohybridinluokka": {
+          "02": 650
+        }
+      },
+      "firstRegistration": {
+        "from": "2019-12-11",
+        "to": "2025-11-07"
+      }
+    },
+    {
+      "key": "E6*2007/46*0318*10|ZWE219(W)|ZWE219L-DWXNBW(6L)",
+      "vehicles": 100,
+      "distributions": {
+        "vaihteisto": {
+          "3": 77,
+          "6": 23
+        },
+        "vaihteidenLkm": {},
+        "korityyppi": {
+          "AC": 100
+        },
+        "ovienLukumaara": {
+          "4": 100
+        },
+        "istumapaikkojenLkm": {
+          "5": 100
+        },
+        "kaupallinenNimi": {
+          "TOYOTA COROLLA": 100
+        },
+        "mallimerkinta": {
+          "TOYOTA COROLLA Farmari (AC) 4ov 1798cm3": 100
+        },
+        "suurinNettoteho": {
+          "72": 100
+        },
+        "iskutilavuus": {
+          "1798": 100
+        },
+        "kayttovoima": {
+          "01": 100
+        },
+        "sahkohybridinluokka": {
+          "02": 100
+        }
+      },
+      "firstRegistration": {
+        "from": "2025-03-26",
+        "to": "2026-06-08"
+      }
+    },
+    {
+      "key": "E6*2007/46*0429*05|AXAP54(N)|AXAP54L-ANXMBW(1F)",
+      "vehicles": 1171,
+      "distributions": {
+        "vaihteisto": {
+          "3": 1080,
+          "6": 91
+        },
+        "vaihteidenLkm": {},
+        "korityyppi": {
+          "AC": 1171
+        },
+        "ovienLukumaara": {
+          "4": 1171
+        },
+        "istumapaikkojenLkm": {
+          "5": 1171
+        },
+        "kaupallinenNimi": {
+          "TOYOTA RAV4": 1171
+        },
+        "mallimerkinta": {
+          "TOYOTA RAV4 Farmari (AC) 4ov 2487cm3": 1171
+        },
+        "suurinNettoteho": {
+          "136": 1171
+        },
+        "iskutilavuus": {
+          "2487": 1171
+        },
+        "kayttovoima": {
+          "01": 1171
+        },
+        "sahkohybridinluokka": {
+          "01": 1171
+        }
+      },
+      "firstRegistration": {
+        "from": "2025-02-24",
+        "to": "2026-05-15"
+      }
+    },
+    {
+      "key": "E6*2007/46*0437*04|MXPH11(H)|MXPH11L-CHXNBW(1E)",
+      "vehicles": 2979,
+      "distributions": {
+        "vaihteisto": {
+          "3": 2979
+        },
+        "vaihteidenLkm": {
+          "1": 5
+        },
+        "korityyppi": {
+          "AB": 2979
+        },
+        "ovienLukumaara": {
+          "4": 2978,
+          "5": 1
+        },
+        "istumapaikkojenLkm": {
+          "5": 2979
+        },
+        "kaupallinenNimi": {
+          "TOYOTA YARIS": 2978,
+          "Yaris": 1
+        },
+        "mallimerkinta": {
+          "TOYOTA YARIS Viistoperä (AB) 4ov 1490cm3": 2979
+        },
+        "suurinNettoteho": {
+          "68": 2979
+        },
+        "iskutilavuus": {
+          "1490": 2979
+        },
+        "kayttovoima": {
+          "01": 2979
+        },
+        "sahkohybridinluokka": {
+          "02": 2979
+        }
+      },
+      "firstRegistration": {
+        "from": "2022-05-10",
+        "to": "2025-03-11"
+      }
+    },
+    {
+      "key": "E8*2007/46*0318*09|ACDHFAX0|NFD7FD7CW0054BFSTVLN1B7A",
+      "vehicles": 310,
+      "distributions": {
+        "vaihteisto": {
+          "2": 310
+        },
+        "vaihteidenLkm": {
+          "7": 310
+        },
+        "korityyppi": {
+          "AC": 310
+        },
+        "ovienLukumaara": {
+          "4": 310
+        },
+        "istumapaikkojenLkm": {
+          "5": 310
+        },
+        "kaupallinenNimi": {
+          "OCTAVIA": 310
+        },
+        "mallimerkinta": {
+          "OCTAVIA Farmari (AC) 4ov 1498cm3 A": 310
+        },
+        "suurinNettoteho": {
+          "96": 310
+        },
+        "iskutilavuus": {
+          "1498": 310
+        },
+        "kayttovoima": {
+          "13": 310
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2019-12-19",
+        "to": "2025-10-21"
+      }
+    },
+    {
+      "key": "E8*2007/46*0355*18|ACDFYAX0|NFD7FD7CW0024BIVL4N1A0A",
+      "vehicles": 17,
+      "distributions": {
+        "vaihteisto": {
+          "2": 17
+        },
+        "vaihteidenLkm": {
+          "7": 17
+        },
+        "korityyppi": {
+          "AC": 17
+        },
+        "ovienLukumaara": {
+          "5": 17
+        },
+        "istumapaikkojenLkm": {
+          "5": 17
+        },
+        "kaupallinenNimi": {
+          "OCTAVIA": 17
+        },
+        "mallimerkinta": {
+          "OCTAVIA Farmari (AC) 5ov 1498cm3 A": 17
+        },
+        "suurinNettoteho": {
+          "110": 17
+        },
+        "iskutilavuus": {
+          "1498": 17
+        },
+        "kayttovoima": {
+          "01": 17
+        },
+        "sahkohybridinluokka": {
+          "02": 17
+        }
+      },
+      "firstRegistration": {
+        "from": "2024-05-13",
+        "to": "2024-07-31"
+      }
+    },
+    {
+      "key": "E9*2007/46*4008*24|CXDUCBX0|FD6PFD6DD0014WE1AAAKM1",
+      "vehicles": 2,
+      "distributions": {
+        "vaihteisto": {
+          "2": 2
+        },
+        "vaihteidenLkm": {
+          "6": 2
+        },
+        "korityyppi": {
+          "AC": 2
+        },
+        "ovienLukumaara": {
+          "5": 2
+        },
+        "istumapaikkojenLkm": {
+          "5": 2
+        },
+        "kaupallinenNimi": {
+          "FORMENTOR E-HYBRID": 2
+        },
+        "mallimerkinta": {
+          "FORMENTOR E-HYBRID Farmari (AC) 5ov 1498cm3 A": 2
+        },
+        "suurinNettoteho": {
+          "110": 2
+        },
+        "iskutilavuus": {
+          "1498": 2
+        },
+        "kayttovoima": {
+          "01": 2
+        },
+        "sahkohybridinluokka": {
+          "01": 2
+        }
+      },
+      "firstRegistration": {
+        "from": "2025-01-31",
+        "to": "2026-03-05"
+      }
+    },
+    {
+      "key": "E9*2018/858*11042*10|A|A35",
+      "vehicles": 24,
+      "distributions": {
+        "vaihteisto": {
+          "1": 24
+        },
+        "vaihteidenLkm": {
+          "6": 24
+        },
+        "korityyppi": {
+          "AF": 24
+        },
+        "ovienLukumaara": {
+          "4": 24
+        },
+        "istumapaikkojenLkm": {
+          "5": 24
+        },
+        "kaupallinenNimi": {
+          "Nissan Qashqai": 24
+        },
+        "mallimerkinta": {
+          "Nissan Qashqai Monikäyttöajoneuvo (AF) 4ov 1332cm3": 24
+        },
+        "suurinNettoteho": {
+          "103": 24
+        },
+        "iskutilavuus": {
+          "1332": 24
+        },
+        "kayttovoima": {
+          "01": 24
+        },
+        "sahkohybridinluokka": {
+          "02": 24
+        }
+      },
+      "firstRegistration": {
+        "from": "2024-08-19",
+        "to": "2025-08-13"
+      }
+    },
+    {
+      "key": "E9*2018/858*11042*11|A|A41",
+      "vehicles": 71,
+      "distributions": {
+        "vaihteisto": {
+          "3": 71
+        },
+        "vaihteidenLkm": {},
+        "korityyppi": {
+          "AF": 71
+        },
+        "ovienLukumaara": {
+          "4": 71
+        },
+        "istumapaikkojenLkm": {
+          "5": 71
+        },
+        "kaupallinenNimi": {
+          "Nissan Qashqai": 71
+        },
+        "mallimerkinta": {
+          "Nissan Qashqai Monikäyttöajoneuvo (AF) 4ov 1332cm3": 71
+        },
+        "suurinNettoteho": {
+          "116": 71
+        },
+        "iskutilavuus": {
+          "1332": 71
+        },
+        "kayttovoima": {
+          "01": 71
+        },
+        "sahkohybridinluokka": {
+          "02": 71
+        }
+      },
+      "firstRegistration": {
+        "from": "2024-12-09",
+        "to": "2026-03-30"
+      }
+    },
+    {
+      "key": "E9*2018/858*11241*01|C5E11|E11BY1",
+      "vehicles": 1057,
+      "distributions": {
+        "vaihteisto": {
+          "2": 1055,
+          "8": 1,
+          "Y": 1
+        },
+        "vaihteidenLkm": {
+          "1": 1057
+        },
+        "korityyppi": {
+          "AC": 1057
+        },
+        "ovienLukumaara": {
+          "5": 1057
+        },
+        "istumapaikkojenLkm": {
+          "5": 1057
+        },
+        "kaupallinenNimi": {
+          "NIRO": 1055,
+          "Niro": 2
+        },
+        "mallimerkinta": {
+          "NIRO Farmari (AC) 5ov A": 1053,
+          "Niro Farmari (AC) 5ov A": 2,
+          "NIRO Farmari (AC) 5ov": 2
+        },
+        "suurinNettoteho": {
+          "150": 1
+        },
+        "iskutilavuus": {},
+        "kayttovoima": {
+          "04": 1057
+        },
+        "sahkohybridinluokka": {}
+      },
+      "firstRegistration": {
+        "from": "2022-08-29",
+        "to": "2026-06-25"
+      }
+    },
+    {
+      "key": "E9*2018/858*11241*03|C5P11|D61AY1",
+      "vehicles": 396,
+      "distributions": {
+        "vaihteisto": {
+          "9": 396
+        },
+        "vaihteidenLkm": {
+          "6": 396
+        },
+        "korityyppi": {
+          "AC": 396
+        },
+        "ovienLukumaara": {
+          "5": 396
+        },
+        "istumapaikkojenLkm": {
+          "5": 396
+        },
+        "kaupallinenNimi": {
+          "NIRO": 396
+        },
+        "mallimerkinta": {
+          "NIRO Farmari (AC) 5ov 1580cm3": 396
+        },
+        "suurinNettoteho": {
+          "68.5": 396
+        },
+        "iskutilavuus": {
+          "1580": 396
+        },
+        "kayttovoima": {
+          "01": 396
+        },
+        "sahkohybridinluokka": {
+          "02": 396
+        }
+      },
+      "firstRegistration": {
+        "from": "2024-08-05",
+        "to": "2026-05-11"
+      }
+    }
+  ]
+}

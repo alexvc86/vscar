@@ -81,9 +81,9 @@ export class CsvParser {
 }
 
 /** Itera las filas de un flujo de texto (p. ej. `createReadStream(path, 'utf8')`). */
-export async function* readCsvRows(source: AsyncIterable<string | Buffer>, delimiter = ','): AsyncGenerator<CsvRow> {
+export async function* readCsvRows(source: AsyncIterable<string | Buffer>, delimiter = ',', encoding: 'utf-8' | 'latin1' = 'utf-8'): AsyncGenerator<CsvRow> {
   const parser = new CsvParser(delimiter);
-  const decoder = new TextDecoder('utf-8');
+  const decoder = new TextDecoder(encoding);
   for await (const chunk of source) {
     const text = typeof chunk === 'string' ? chunk : decoder.decode(chunk, { stream: true });
     yield* parser.push(text);

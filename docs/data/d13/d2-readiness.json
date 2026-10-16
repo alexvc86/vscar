@@ -1,0 +1,956 @@
+[
+  {
+    "rank": 2,
+    "label": "BYD SEAL 2025 (BEV)",
+    "technical": "EXACT (EEA+RDW)",
+    "traficom": {
+      "vehicles": 16,
+      "firstRegistration": {
+        "from": "2025-02-18",
+        "to": "2026-06-23"
+      }
+    },
+    "commercial": "EXACT",
+    "transmission": {
+      "value": "single_speed",
+      "reason": "BEV: RDW 1 gear (D1.1)"
+    },
+    "body": {
+      "value": "sedan",
+      "reason": "RDW EU body code AA (D1.1)"
+    },
+    "catalogReferences": [
+      {
+        "site": "km77",
+        "status": "MATCH_COMPATIBLE_UNCONFIRMED"
+      }
+    ],
+    "criticalCompleteness": 0.5,
+    "status": "DUPLICATE",
+    "blockers": {
+      "identity": [
+        "generation_code: no reusable evidence",
+        "model_year: no reusable evidence"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S11 RDW approval pending",
+        "S13 Traficom registration pending",
+        "S08 (manufacturer) data rights"
+      ]
+    },
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 4,
+    "label": "BYD SEAL 2024/2025 (BEV)",
+    "technical": "EXACT (EEA+RDW)",
+    "traficom": {
+      "vehicles": 232,
+      "firstRegistration": {
+        "from": "2024-01-26",
+        "to": "2026-06-22"
+      }
+    },
+    "commercial": "EXACT",
+    "transmission": {
+      "value": "single_speed",
+      "reason": "BEV: RDW 1 gear (D1.1)"
+    },
+    "body": {
+      "value": "sedan",
+      "reason": "RDW EU body code AA (D1.1)"
+    },
+    "catalogReferences": [],
+    "criticalCompleteness": 0.5,
+    "status": "CONFLICTED",
+    "blockers": {
+      "identity": [
+        "generation_code: no reusable evidence",
+        "model_year: no reusable evidence"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S11 RDW approval pending",
+        "S13 Traficom registration pending",
+        "S08 (manufacturer) data rights"
+      ]
+    },
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 5,
+    "label": "Kia Sportage 2022 (ICE_OR_MHEV)",
+    "technical": "EXACT (EEA+RDW)",
+    "traficom": {
+      "vehicles": 24,
+      "firstRegistration": {
+        "from": "2022-01-05",
+        "to": "2023-02-23"
+      }
+    },
+    "commercial": "PARTIAL",
+    "transmission": {
+      "value": "manual",
+      "code": "1",
+      "share": 1,
+      "reason": "Traficom code 1 (Manual)"
+    },
+    "body": {
+      "code": "AF",
+      "share": 1,
+      "reason": "EU body code AF does not separate hatchback/estate/SUV/MPV"
+    },
+    "catalogReferences": [
+      {
+        "site": "coches.net",
+        "status": "MATCH_AMBIGUOUS"
+      },
+      {
+        "site": "km77",
+        "status": "MATCH_AMBIGUOUS"
+      }
+    ],
+    "criticalCompleteness": 0.6153846153846154,
+    "status": "IDENTITY_PENDING",
+    "blockers": {
+      "identity": [
+        "generation_code: no reusable evidence",
+        "model_year: no reusable evidence",
+        "trim: not evidenced by a reusable source",
+        "body_type: EU body code AF does not separate hatchback/estate/SUV/MPV"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S11 RDW approval pending",
+        "S13 Traficom registration pending",
+        "S08 (manufacturer) data rights"
+      ]
+    },
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 6,
+    "label": "Renault Clio 2024/2025 (ICE_OR_MHEV)",
+    "technical": "EXACT (EEA+RDW)",
+    "traficom": null,
+    "commercial": "PARTIAL",
+    "transmission": {
+      "reason": "no Traficom vehicles for the exact key"
+    },
+    "body": {
+      "reason": "no Traficom vehicles for the exact key"
+    },
+    "catalogReferences": [],
+    "criticalCompleteness": 0.6153846153846154,
+    "status": "IDENTITY_PENDING",
+    "blockers": {
+      "identity": [
+        "generation_code: no reusable evidence",
+        "model_year: no reusable evidence",
+        "trim: not evidenced by a reusable source",
+        "transmission: no Traficom vehicles for the exact key",
+        "body_type: no Traficom vehicles for the exact key"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S11 RDW approval pending",
+        "S13 Traficom registration pending",
+        "S08 (manufacturer) data rights"
+      ]
+    },
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 7,
+    "label": "Nissan Qashqai 2024/2025 (MHEV)",
+    "technical": "EXACT (EEA+RDW)",
+    "traficom": {
+      "vehicles": 24,
+      "firstRegistration": {
+        "from": "2024-08-19",
+        "to": "2025-08-13"
+      }
+    },
+    "commercial": "PARTIAL",
+    "transmission": {
+      "value": "manual",
+      "code": "1",
+      "share": 1,
+      "reason": "Traficom code 1 (Manual)"
+    },
+    "body": {
+      "code": "AF",
+      "share": 1,
+      "reason": "EU body code AF does not separate hatchback/estate/SUV/MPV"
+    },
+    "catalogReferences": [],
+    "criticalCompleteness": 0.5384615384615384,
+    "status": "IDENTITY_PENDING",
+    "blockers": {
+      "identity": [
+        "generation_code: no reusable evidence",
+        "model_year: no reusable evidence",
+        "trim: not evidenced by a reusable source",
+        "body_type: EU body code AF does not separate hatchback/estate/SUV/MPV"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S11 RDW approval pending",
+        "S13 Traficom registration pending",
+        "S08 (manufacturer) data rights"
+      ]
+    },
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 8,
+    "label": "Hyundai Tucson 2018/2020 (ICE_OR_MHEV)",
+    "technical": "EXACT (EEA+RDW)",
+    "traficom": {
+      "vehicles": 4,
+      "firstRegistration": {
+        "from": "2017-09-01",
+        "to": "2018-06-12"
+      }
+    },
+    "commercial": "PARTIAL",
+    "transmission": {
+      "value": "manual",
+      "code": "1",
+      "share": 1,
+      "reason": "Traficom code 1 (Manual)"
+    },
+    "body": {
+      "code": "AF",
+      "share": 1,
+      "reason": "EU body code AF does not separate hatchback/estate/SUV/MPV"
+    },
+    "catalogReferences": [
+      {
+        "site": "coches.net",
+        "status": "MATCH_COMPATIBLE_UNCONFIRMED"
+      },
+      {
+        "site": "km77",
+        "status": "MATCH_REJECTED"
+      }
+    ],
+    "criticalCompleteness": 0.6153846153846154,
+    "status": "IDENTITY_PENDING",
+    "blockers": {
+      "identity": [
+        "generation_code: no reusable evidence",
+        "model_year: no reusable evidence",
+        "trim: not evidenced by a reusable source",
+        "body_type: EU body code AF does not separate hatchback/estate/SUV/MPV"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S11 RDW approval pending",
+        "S13 Traficom registration pending",
+        "S08 (manufacturer) data rights"
+      ]
+    },
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 9,
+    "label": "Kia Sportage 2016/2018 (ICE_OR_MHEV)",
+    "technical": "EXACT (EEA+RDW)",
+    "traficom": {
+      "vehicles": 90,
+      "firstRegistration": {
+        "from": "2016-02-26",
+        "to": "2017-10-30"
+      }
+    },
+    "commercial": "PARTIAL",
+    "transmission": {
+      "value": "manual",
+      "code": "1",
+      "share": 1,
+      "reason": "Traficom code 1 (Manual)"
+    },
+    "body": {
+      "code": "AF",
+      "share": 1,
+      "reason": "EU body code AF does not separate hatchback/estate/SUV/MPV"
+    },
+    "catalogReferences": [],
+    "criticalCompleteness": 0.6153846153846154,
+    "status": "IDENTITY_PENDING",
+    "blockers": {
+      "identity": [
+        "generation_code: no reusable evidence",
+        "model_year: no reusable evidence",
+        "trim: not evidenced by a reusable source",
+        "body_type: EU body code AF does not separate hatchback/estate/SUV/MPV"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S11 RDW approval pending",
+        "S13 Traficom registration pending",
+        "S08 (manufacturer) data rights"
+      ]
+    },
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 20,
+    "label": "Peugeot 3008 2018/2020 (ICE_OR_MHEV)",
+    "technical": "EXACT (EEA+RDW)",
+    "traficom": null,
+    "commercial": "PARTIAL",
+    "transmission": {
+      "reason": "no Traficom vehicles for the exact key"
+    },
+    "body": {
+      "reason": "no Traficom vehicles for the exact key"
+    },
+    "catalogReferences": [],
+    "criticalCompleteness": 0.6153846153846154,
+    "status": "IDENTITY_PENDING",
+    "blockers": {
+      "identity": [
+        "generation_code: no reusable evidence",
+        "model_year: no reusable evidence",
+        "trim: not evidenced by a reusable source",
+        "transmission: no Traficom vehicles for the exact key",
+        "body_type: no Traficom vehicles for the exact key"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S11 RDW approval pending",
+        "S13 Traficom registration pending",
+        "S08 (manufacturer) data rights"
+      ]
+    },
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 22,
+    "label": "Peugeot 208 2022 (ICE_OR_MHEV)",
+    "technical": "EXACT (EEA only)",
+    "traficom": null,
+    "commercial": "PARTIAL",
+    "transmission": {
+      "reason": "no Traficom vehicles for the exact key"
+    },
+    "body": {
+      "reason": "no Traficom vehicles for the exact key"
+    },
+    "catalogReferences": [
+      {
+        "site": "km77",
+        "status": "MATCH_COMPATIBLE_UNCONFIRMED"
+      },
+      {
+        "site": "coches.net",
+        "status": "MATCH_COMPATIBLE_UNCONFIRMED"
+      }
+    ],
+    "criticalCompleteness": 0.23076923076923078,
+    "status": "IDENTITY_PENDING",
+    "blockers": {
+      "identity": [
+        "generation_code: no reusable evidence",
+        "model_year: no reusable evidence",
+        "trim: not evidenced by a reusable source",
+        "transmission: no Traficom vehicles for the exact key",
+        "body_type: no Traficom vehicles for the exact key"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S11 RDW approval pending",
+        "S13 Traficom registration pending",
+        "S08 (manufacturer) data rights"
+      ]
+    },
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 24,
+    "label": "Dacia Sandero 2025 (ICE_OR_MHEV)",
+    "technical": "EXACT (EEA+RDW)",
+    "traficom": null,
+    "commercial": "PARTIAL",
+    "transmission": {
+      "reason": "no Traficom vehicles for the exact key"
+    },
+    "body": {
+      "reason": "no Traficom vehicles for the exact key"
+    },
+    "catalogReferences": [],
+    "criticalCompleteness": 0.6153846153846154,
+    "status": "IDENTITY_PENDING",
+    "blockers": {
+      "identity": [
+        "generation_code: no reusable evidence",
+        "model_year: no reusable evidence",
+        "trim: not evidenced by a reusable source",
+        "transmission: no Traficom vehicles for the exact key",
+        "body_type: no Traficom vehicles for the exact key"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S11 RDW approval pending",
+        "S13 Traficom registration pending",
+        "S08 (manufacturer) data rights"
+      ]
+    },
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 26,
+    "label": "Peugeot 308 2024 (ICE_OR_MHEV)",
+    "technical": "EXACT (EEA+RDW)",
+    "traficom": null,
+    "commercial": "EXACT",
+    "transmission": {
+      "reason": "no Traficom vehicles for the exact key"
+    },
+    "body": {
+      "reason": "no Traficom vehicles for the exact key"
+    },
+    "catalogReferences": [
+      {
+        "site": "km77",
+        "status": "MATCH_AMBIGUOUS"
+      },
+      {
+        "site": "km77",
+        "status": "MATCH_AMBIGUOUS"
+      }
+    ],
+    "criticalCompleteness": 0.6153846153846154,
+    "status": "IDENTITY_PENDING",
+    "blockers": {
+      "identity": [
+        "generation_code: no reusable evidence",
+        "model_year: no reusable evidence",
+        "transmission: no Traficom vehicles for the exact key",
+        "body_type: no Traficom vehicles for the exact key"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S11 RDW approval pending",
+        "S13 Traficom registration pending",
+        "S08 (manufacturer) data rights"
+      ]
+    },
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 27,
+    "label": "Toyota Yaris 2022/2024 (ICE_OR_MHEV)",
+    "technical": "EXACT (EEA+RDW)",
+    "traficom": null,
+    "commercial": "PARTIAL",
+    "transmission": {
+      "reason": "no Traficom vehicles for the exact key"
+    },
+    "body": {
+      "reason": "no Traficom vehicles for the exact key"
+    },
+    "catalogReferences": [],
+    "criticalCompleteness": 0.6153846153846154,
+    "status": "IDENTITY_PENDING",
+    "blockers": {
+      "identity": [
+        "generation_code: no reusable evidence",
+        "model_year: no reusable evidence",
+        "trim: not evidenced by a reusable source",
+        "transmission: no Traficom vehicles for the exact key",
+        "body_type: no Traficom vehicles for the exact key"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S11 RDW approval pending",
+        "S13 Traficom registration pending",
+        "S08 (manufacturer) data rights"
+      ]
+    },
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 28,
+    "label": "Mercedes-Benz Clase A 2022/2024 (ICE_OR_MHEV)",
+    "technical": "EXACT (EEA+RDW)",
+    "traficom": {
+      "vehicles": 1,
+      "firstRegistration": {
+        "from": "2023-11-30",
+        "to": "2023-11-30"
+      }
+    },
+    "commercial": "PARTIAL",
+    "transmission": {
+      "value": "automatic",
+      "code": "2",
+      "share": 1,
+      "reason": "Traficom code 2 (Automatic)"
+    },
+    "body": {
+      "code": "AC",
+      "share": 1,
+      "reason": "EU body code AC does not separate hatchback/estate/SUV/MPV"
+    },
+    "catalogReferences": [
+      {
+        "site": "km77",
+        "status": "MATCH_COMPATIBLE_UNCONFIRMED"
+      },
+      {
+        "site": "coches.net",
+        "status": "MATCH_AMBIGUOUS"
+      }
+    ],
+    "criticalCompleteness": 0.6153846153846154,
+    "status": "IDENTITY_PENDING",
+    "blockers": {
+      "identity": [
+        "generation_code: no reusable evidence",
+        "model_year: no reusable evidence",
+        "trim: not evidenced by a reusable source",
+        "body_type: EU body code AC does not separate hatchback/estate/SUV/MPV"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S11 RDW approval pending",
+        "S13 Traficom registration pending",
+        "S08 (manufacturer) data rights"
+      ]
+    },
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 48,
+    "label": "Toyota Yaris 2022/2024/2025 (HEV_OR_MHEV)",
+    "technical": "EXACT (EEA+RDW)",
+    "traficom": {
+      "vehicles": 2979,
+      "firstRegistration": {
+        "from": "2022-05-10",
+        "to": "2025-03-11"
+      }
+    },
+    "commercial": "PARTIAL",
+    "transmission": {
+      "code": "3",
+      "share": 1,
+      "reason": "Traficom code 3 (Stepless) has no unambiguous VScar transmission"
+    },
+    "body": {
+      "value": "hatchback",
+      "code": "AB",
+      "share": 1,
+      "reason": "EU body code AB"
+    },
+    "catalogReferences": [
+      {
+        "site": "coches.net",
+        "status": "MATCH_AMBIGUOUS"
+      },
+      {
+        "site": "km77",
+        "status": "MATCH_AMBIGUOUS"
+      }
+    ],
+    "criticalCompleteness": 0.5384615384615384,
+    "status": "IDENTITY_PENDING",
+    "blockers": {
+      "identity": [
+        "generation_code: no reusable evidence",
+        "model_year: no reusable evidence",
+        "trim: not evidenced by a reusable source",
+        "transmission: Traficom code 3 (Stepless) has no unambiguous VScar transmission"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S11 RDW approval pending",
+        "S13 Traficom registration pending",
+        "S08 (manufacturer) data rights"
+      ]
+    },
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 53,
+    "label": "Mercedes-Benz Clase A 2020 (PHEV)",
+    "technical": "EXACT (EEA+RDW)",
+    "traficom": {
+      "vehicles": 45,
+      "firstRegistration": {
+        "from": "2020-08-13",
+        "to": "2024-12-31"
+      }
+    },
+    "commercial": "PARTIAL",
+    "transmission": {
+      "value": "automatic",
+      "code": "2",
+      "share": 1,
+      "reason": "Traficom code 2 (Automatic)"
+    },
+    "body": {
+      "code": "AC",
+      "share": 1,
+      "reason": "EU body code AC does not separate hatchback/estate/SUV/MPV"
+    },
+    "catalogReferences": [],
+    "criticalCompleteness": 0.5,
+    "status": "IDENTITY_PENDING",
+    "blockers": {
+      "identity": [
+        "generation_code: no reusable evidence",
+        "model_year: no reusable evidence",
+        "trim: not evidenced by a reusable source",
+        "body_type: EU body code AC does not separate hatchback/estate/SUV/MPV"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S11 RDW approval pending",
+        "S13 Traficom registration pending",
+        "S08 (manufacturer) data rights"
+      ]
+    },
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 56,
+    "label": "Toyota Corolla 2022 (HEV_OR_MHEV)",
+    "technical": "EXACT (EEA+RDW)",
+    "traficom": null,
+    "commercial": "PARTIAL",
+    "transmission": {
+      "reason": "no Traficom vehicles for the exact key"
+    },
+    "body": {
+      "reason": "no Traficom vehicles for the exact key"
+    },
+    "catalogReferences": [],
+    "criticalCompleteness": 0.5384615384615384,
+    "status": "IDENTITY_PENDING",
+    "blockers": {
+      "identity": [
+        "generation_code: no reusable evidence",
+        "model_year: no reusable evidence",
+        "trim: not evidenced by a reusable source",
+        "transmission: no Traficom vehicles for the exact key",
+        "body_type: no Traficom vehicles for the exact key"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S11 RDW approval pending",
+        "S13 Traficom registration pending",
+        "S08 (manufacturer) data rights"
+      ]
+    },
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 57,
+    "label": "Peugeot 3008 2022 (PHEV)",
+    "technical": "EXACT (EEA+RDW)",
+    "traficom": {
+      "vehicles": 40,
+      "firstRegistration": {
+        "from": "2022-09-30",
+        "to": "2023-12-29"
+      }
+    },
+    "commercial": "PARTIAL",
+    "transmission": {
+      "value": "automatic",
+      "code": "2",
+      "share": 1,
+      "reason": "Traficom code 2 (Automatic)"
+    },
+    "body": {
+      "code": "AF",
+      "share": 1,
+      "reason": "EU body code AF does not separate hatchback/estate/SUV/MPV"
+    },
+    "catalogReferences": [
+      {
+        "site": "km77",
+        "status": "MATCH_COMPATIBLE_UNCONFIRMED"
+      },
+      {
+        "site": "coches.net",
+        "status": "MATCH_COMPATIBLE_UNCONFIRMED"
+      }
+    ],
+    "criticalCompleteness": 0.5,
+    "status": "IDENTITY_PENDING",
+    "blockers": {
+      "identity": [
+        "generation_code: no reusable evidence",
+        "model_year: no reusable evidence",
+        "trim: not evidenced by a reusable source",
+        "body_type: EU body code AF does not separate hatchback/estate/SUV/MPV"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S11 RDW approval pending",
+        "S13 Traficom registration pending",
+        "S08 (manufacturer) data rights"
+      ]
+    },
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 73,
+    "label": "Toyota RAV4 2025 (PHEV)",
+    "technical": "EXACT (EEA+RDW)",
+    "traficom": {
+      "vehicles": 1171,
+      "firstRegistration": {
+        "from": "2025-02-24",
+        "to": "2026-05-15"
+      }
+    },
+    "commercial": "PARTIAL",
+    "transmission": {
+      "code": "3",
+      "share": 0.9222886421861657,
+      "reason": "gearbox codes disagree within the key (3×1080, 6×91)"
+    },
+    "body": {
+      "code": "AC",
+      "share": 1,
+      "reason": "EU body code AC does not separate hatchback/estate/SUV/MPV"
+    },
+    "catalogReferences": [],
+    "criticalCompleteness": 0.5,
+    "status": "IDENTITY_PENDING",
+    "blockers": {
+      "identity": [
+        "generation_code: no reusable evidence",
+        "model_year: no reusable evidence",
+        "trim: not evidenced by a reusable source",
+        "transmission: gearbox codes disagree within the key (3×1080, 6×91)",
+        "body_type: EU body code AC does not separate hatchback/estate/SUV/MPV"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S11 RDW approval pending",
+        "S13 Traficom registration pending",
+        "S08 (manufacturer) data rights"
+      ]
+    },
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 81,
+    "label": "Tesla Model Y 2022 (BEV)",
+    "technical": "EXACT (EEA+RDW)",
+    "traficom": {
+      "vehicles": 51,
+      "firstRegistration": {
+        "from": "2022-12-22",
+        "to": "2026-03-20"
+      }
+    },
+    "commercial": "PARTIAL",
+    "transmission": {
+      "value": "single_speed",
+      "reason": "BEV: RDW 1 gear (D1.1)"
+    },
+    "body": {
+      "code": "AF",
+      "share": 1,
+      "reason": "EU body code AF does not separate hatchback/estate/SUV/MPV"
+    },
+    "catalogReferences": [
+      {
+        "site": "coches.net",
+        "status": "MATCH_REJECTED"
+      },
+      {
+        "site": "km77",
+        "status": "MATCH_REJECTED"
+      }
+    ],
+    "criticalCompleteness": 0.5,
+    "status": "IDENTITY_PENDING",
+    "blockers": {
+      "identity": [
+        "generation_code: no reusable evidence",
+        "model_year: no reusable evidence",
+        "trim: not evidenced by a reusable source",
+        "body_type: EU body code AF does not separate hatchback/estate/SUV/MPV"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S11 RDW approval pending",
+        "S13 Traficom registration pending",
+        "S08 (manufacturer) data rights"
+      ]
+    },
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 86,
+    "label": "Renault Clio 2020 (HEV_OR_MHEV)",
+    "technical": "EXACT (EEA+RDW)",
+    "traficom": {
+      "vehicles": 2,
+      "firstRegistration": {
+        "from": "2022-09-29",
+        "to": "2023-05-23"
+      }
+    },
+    "commercial": "PARTIAL",
+    "transmission": {
+      "value": "automatic",
+      "code": "2",
+      "share": 1,
+      "reason": "Traficom code 2 (Automatic)"
+    },
+    "body": {
+      "value": "hatchback",
+      "code": "AB",
+      "share": 1,
+      "reason": "EU body code AB"
+    },
+    "catalogReferences": [],
+    "criticalCompleteness": 0.5384615384615384,
+    "status": "IDENTITY_PENDING",
+    "blockers": {
+      "identity": [
+        "generation_code: no reusable evidence",
+        "model_year: no reusable evidence",
+        "trim: not evidenced by a reusable source"
+      ],
+      "data": [
+        "cap.boot_l",
+        "perf.accel_0_100_s",
+        "price",
+        "war.years"
+      ],
+      "rights": [
+        "S11 RDW approval pending",
+        "S13 Traficom registration pending",
+        "S08 (manufacturer) data rights"
+      ]
+    },
+    "previewImportable": false,
+    "publicPotential": false
+  }
+]

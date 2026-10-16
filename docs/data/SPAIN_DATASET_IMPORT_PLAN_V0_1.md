@@ -60,6 +60,14 @@ Official Source → Raw (SHA-256, manifiesto) → Schema inspection → Normaliz
 - Nada de IDAE se publica ni se redistribuye mientras S02 siga ❓ (el JSONL de Git solo lleva referencias de fila).
 - `curation_candidates.jsonl` no es un seed: se lee, se cura y se importa variant a variant.
 
+## 5b. Actualización D1.1 / D1.2 (2026-10-16)
+
+- **D1.1** (RDW): identidad técnica corroborada en 95/100; completitud crítica 17,6 % → 54,3 %. Ver [D1_1_ENRICHMENT_PILOT_V0_1](D1_1_ENRICHMENT_PILOT_V0_1.md).
+- **D1.2**: identidad comercial separada de la técnica; curación versionada [`d12/commercial-identity-v1.json`](d12/commercial-identity-v1.json) con validador anti-invención. Comercial EXACT en el lote D2: 2 → 3 (+ Peugeot 308 #26); los Golf del catálogo pasan a comercial PARTIAL (el acabado era inferencia).
+- **0 importables con las reglas vigentes**: `generation_code` y `model_year` no tienen fuente oficial abierta. Caminos: (A) cita manual S08 en PREVIEW para #26 y #4 + reconciliación de #2 con DC-08; (B) [ADR-019](../adr/ADR-019-technical-identity-without-confirmed-trim.md) (PROPOSED). Ver [D1_2_D2_BATCH_READINESS_V0_1](D1_2_D2_BATCH_READINESS_V0_1.md).
+- Duplicados: estrategia canónica en `catalogOverlap` (TAN completo + Va + Ve; sin fusiones por coincidencia parcial); corrección versionada [`d12/catalog-overlap-v1.json`](d12/catalog-overlap-v1.json).
+- RDW S11: expediente [READY_FOR_HUMAN_APPROVAL](D1_2_RDW_RIGHTS_APPROVAL_DOSSIER.md).
+
 ## 6. Reproducir D1
 
 ```sh

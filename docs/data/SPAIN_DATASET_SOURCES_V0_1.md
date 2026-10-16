@@ -30,8 +30,20 @@
 | MITECO (S03), ESIOS (S04) | ya integrados (Steps 4e/4f) | — | — | ver matriz | — | — |
 | **S11 RDW** (Step D1.1) — TGK: Basis, Energiebron, Aandrijving, Carrosserie, Versnelling, As, Handelsbenaming, Intrekking | ✅ | ✅ 16 respuestas SoQL acotadas, SHA-256 (4.177 filas) | ✅ glosario oficial + respuestas reales | ✅ "Public Domain" por recurso + CC-0 1.0 (data.overheid.nl) | ✅ (S11 ❓ en la matriz hasta revisión) | — |
 | **S12 GIAVEH** (Step D1.1) — Consulta Fichas Reducidas | ✅ | ✅ CSV (88.032 filas, 2023-08-31) + 2 sondas API | ✅ 5 columnas, sin datos técnicos | ✅ condiciones art. 8 Ley 37/2007 | ✅ | — |
+| **S13 Traficom** (Step D1.3) — Ajoneuvojen avoin data (registro FI, ZIP trimestral) | ✅ | ✅ 1 ZIP (208.492.096 B, SHA-256 `81fdd696…5da0`) + 2 docs, manifiestos en `d13/` | ✅ 18 columnas en whitelist; error si cambia | ✅ CC BY 4.0 (CKAN `license_id`) | ✅ (S13 ❓ en la matriz hasta revisión) | — |
+| **coches.net** (Step D1.3) — fichas técnicas | ✅ 7 / 9 fichas de la muestra | ❌ **no adquirido** (condiciones prohíben reproducción y extracción; datos "cedidos por JATO") | — | ✅ términos leídos (restrictivos) | ✅ | ✅ por derechos |
+| **km77** (Step D1.3) — fichas `/datos` | ✅ 9 / 9 fichas de la muestra | ❌ **no adquirido** (aviso legal: solo uso personal y privado) | — | ✅ términos leídos (restrictivos) | ✅ | ✅ por derechos |
+| **C01 JATO** (Step D1.3) — APIs Specifications / WLTP Link / Code Link / VINView | ✅ documentación pública | ❌ sin contrato (RFI preparado, no enviado) | — | ❌ sin términos públicos | ✅ | ✅ hasta contrato |
+| **S14 gor3a/vehicle-makes-models** (Step D1.4) — release v1.0.2 `ee99776` (JSON/CSV/SQLite) | ✅ | ✅ 3 assets + README/LICENSE-DATA, SHA-256 fijados (`d14-acquire.ts`) | ✅ schema tier-3 (Zod `.strict()`), paridad JSON = CSV = SQLite (30.535 motores) | ✅ ODbL 1.0 (datos) / MIT (código); origen autoevolution **sin licencia acreditada** | ✅ (S14 ❓; solo investigación) | — |
+| **S15 Opendatabay** (Step D1.4) — Automotive Specifications 1945–2020 | ✅ | ⚠️ solo muestra pública (100 filas); CSV completo tras cuenta → no descargado | ✅ 78 columnas (muestra) | ❌ "CC0" en la página vs licencia enlazada no comercial; procedencia no declarada | ✅ | ✅ por derechos (S15 ❌) |
+| Kaggle *Car Specification Dataset 1945-2020* · filippos/CarDatabase · NHTSA vPIC (Step D1.4) | ✅ / ❌ / ✅ | ❌ (cuenta) / — / — | — | Kaggle "CC0" sin procedencia · CarDatabase **NOT FOUND** · vPIC solo US | ✅ | — |
+| **S15 Opendatabay/Kaggle** — CSV completo (Step D1.5, aportado por el usuario en `docs/`) | ✅ | ✅ 24.866.141 B, SHA-256 `e4218734…`; copia en `data/raw/`, original en `.gitignore` | ✅ 78 columnas, 70.823 filas, 255 marcas | ❌ licencia contradictoria (CC0 vs no comercial) | ✅ | ✅ derechos (❌) |
+| **S16 autoseeker.eu** `models.csv` (Step D1.5) | ✅ | ✅ copia del usuario = endpoint publicado (SHA-256 idéntico) | ✅ 20 columnas, 281 filas; granularidad MODEL/GENERATION/POWERTRAIN | ✅ CC BY 4.0 (página open-data) | ✅ (❓) | — |
+| **S17 OpenEV Data** v1.24.0 (Step D1.5) | ✅ | ✅ JSON/CSV de release + LICENCE/README/schema | ✅ 1.189 BEV, 0 inválidos | ✅ CDLA-Permissive-2.0 | ✅ (❓) | — |
+| **S18 VehiclesDB** v2026.10.4 (Step D1.5) | ✅ | ✅ release + LICENSE/SOURCES/ATTRIBUTION | ✅ 15.068 modelos (5.541 turismos; 1.222 ES) | ✅ CC BY 4.0 + avisos de origen | ✅ (❓) | — |
+| **S19 Kilowatt Open EV Data** (archivado, Step D1.5) | ✅ | ✅ `ev-data.json` @ `32d7dc5` | ✅ 1.321 variantes | ✅ MIT + atribución | ✅ (❓) | — |
 
-**Ninguna fuente es PUBLIC READY.** Step D1.1: [RDW_SOURCE_AUDIT_V0_1](RDW_SOURCE_AUDIT_V0_1.md) · [GIAVEH_SOURCE_AUDIT_V0_1](GIAVEH_SOURCE_AUDIT_V0_1.md) · [D1_1_ENRICHMENT_PILOT_V0_1](D1_1_ENRICHMENT_PILOT_V0_1.md).
+**Ninguna fuente es PUBLIC READY.** Step D1.5: [D1_5_RIGHTS_DECISION](D1_5_RIGHTS_DECISION.md) · [D1_5_MULTI_SOURCE_MATCHING](D1_5_MULTI_SOURCE_MATCHING.md). Step D1.4: [D1_4_OPEN_DATASET_SOURCE_AUDIT](D1_4_OPEN_DATASET_SOURCE_AUDIT.md). Step D1.3: [D1_3_HISTORICAL_CATALOG_SOURCE_AUDIT](D1_3_HISTORICAL_CATALOG_SOURCE_AUDIT.md) · [D1_3_DATA_ACQUISITION_DECISION](D1_3_DATA_ACQUISITION_DECISION.md). Step D1.1: [RDW_SOURCE_AUDIT_V0_1](RDW_SOURCE_AUDIT_V0_1.md) · [GIAVEH_SOURCE_AUDIT_V0_1](GIAVEH_SOURCE_AUDIT_V0_1.md) · [D1_1_ENRICHMENT_PILOT_V0_1](D1_1_ENRICHMENT_PILOT_V0_1.md).
 
 ## 3. Recursos por fuente
 

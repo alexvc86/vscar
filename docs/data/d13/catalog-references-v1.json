@@ -1,0 +1,488 @@
+{
+  "artifactVersion": 1,
+  "step": "D1.3",
+  "rules": [
+    "references only: URL, method, fields located and match status — never values (coches.net, km77 and JATO terms do not authorise reuse)",
+    "MATCH_CONFIRMED requires type-approval identifiers on the page; none of the pages viewed shows them",
+    "a page that contradicts a technical fact of the exact key (drivetrain, power) is MATCH_REJECTED",
+    "sample limited to search-engine results and a few manual page views (no crawling, no robots-disallowed paths)"
+  ],
+  "references": [
+    {
+      "rank": 26,
+      "candidateId": "bc56ae3e-6e0e-5ae3-b6b0-b93f168f2415",
+      "site": "km77",
+      "url": "https://www.km77.com/coches/peugeot/308/2026/5-puertas/estandar/308-5p-allure-bluehdi-130-eat8/datos",
+      "consultedAt": "2026-10-16",
+      "method": "PAGE_VIEW",
+      "pageLabel": "308 5p Allure BlueHDi 130 EAT8 (2025)",
+      "fieldsLocated": [
+        "brand_model",
+        "period_or_model_year",
+        "trim",
+        "body",
+        "engine",
+        "power",
+        "transmission",
+        "homologated_consumption",
+        "dimensions",
+        "boot",
+        "accel_0_100",
+        "battery",
+        "ac_dc_charging",
+        "historical_price"
+      ],
+      "matchStatus": "MATCH_AMBIGUOUS",
+      "matchBasis": [
+        "engine, trim and gearbox words compatible with the EEA designation",
+        "page period labelled 2025 while the exact key is registered in 2024; another page (Allure Pack 2021-2023) is also compatible → cannot pick one"
+      ],
+      "rightsStatus": "RESTRICTED",
+      "valuesStored": false
+    },
+    {
+      "rank": 26,
+      "candidateId": "bc56ae3e-6e0e-5ae3-b6b0-b93f168f2415",
+      "site": "km77",
+      "url": "https://www.km77.com/coches/peugeot/308/2022/5-puertas/estandar/308-5p-allure-pack-bluehdi-130-eat8/datos",
+      "consultedAt": "2026-10-16",
+      "method": "SEARCH_ENGINE",
+      "pageLabel": "308 5p Allure Pack BlueHDi 130 EAT8 (2021-2023)",
+      "fieldsLocated": [
+        "brand_model",
+        "period_or_model_year",
+        "trim",
+        "engine",
+        "power"
+      ],
+      "matchStatus": "MATCH_AMBIGUOUS",
+      "matchBasis": [
+        "Allure Pack is a different trim name than the evidenced ALLURE; period overlaps the TAN extension *30 only partially"
+      ],
+      "rightsStatus": "RESTRICTED",
+      "valuesStored": false
+    },
+    {
+      "rank": 22,
+      "candidateId": "50eaa5bc-8a36-5672-86d1-bc3182932f42",
+      "site": "km77",
+      "url": "https://www.km77.com/coches/peugeot/208/2020/5-puertas/active/208-active-15-bluehdi-100/datos",
+      "consultedAt": "2026-10-16",
+      "method": "SEARCH_ENGINE",
+      "pageLabel": "208 Active BlueHDi 100 S&S (2019-2023)",
+      "fieldsLocated": [
+        "brand_model",
+        "period_or_model_year",
+        "trim",
+        "engine",
+        "power"
+      ],
+      "matchStatus": "MATCH_COMPATIBLE_UNCONFIRMED",
+      "matchBasis": [
+        "engine BlueHDi 100, trim Active and period compatible with the EEA designation set {ACTIVE, ACTIVE PACK}",
+        "no type-approval identifiers on the page"
+      ],
+      "rightsStatus": "RESTRICTED",
+      "valuesStored": false
+    },
+    {
+      "rank": 22,
+      "candidateId": "50eaa5bc-8a36-5672-86d1-bc3182932f42",
+      "site": "coches.net",
+      "url": "https://www.coches.net/fichas_tecnicas/peugeot/208/berlina/5-puertas/bluehdi_73kw_100cv_active_pack_100cv_diesel/99060/821175720210801/",
+      "consultedAt": "2026-10-16",
+      "method": "SEARCH_ENGINE",
+      "pageLabel": "208 5p BlueHDi 73 kW (100 CV) Active Pack (2021)",
+      "fieldsLocated": [
+        "brand_model",
+        "period_or_model_year",
+        "trim",
+        "engine",
+        "power"
+      ],
+      "matchStatus": "MATCH_COMPATIBLE_UNCONFIRMED",
+      "matchBasis": [
+        "Active Pack is in the EEA designation set; power and fuel compatible"
+      ],
+      "rightsStatus": "RESTRICTED",
+      "valuesStored": false
+    },
+    {
+      "rank": 57,
+      "candidateId": "85beac35-7b7a-5715-856b-5c01589d22ce",
+      "site": "km77",
+      "url": "https://www.km77.com/coches/peugeot/3008/2021/estandar/hibrido-enchufable/3008-gt-hybrid-225-e-eat8/datos",
+      "consultedAt": "2026-10-16",
+      "method": "SEARCH_ENGINE",
+      "pageLabel": "3008 GT Hybrid 225 e-EAT8 (2020-2022)",
+      "fieldsLocated": [
+        "brand_model",
+        "period_or_model_year",
+        "trim",
+        "engine",
+        "power"
+      ],
+      "matchStatus": "MATCH_COMPATIBLE_UNCONFIRMED",
+      "matchBasis": [
+        "GT is one of the five evidenced trims; engine and gearbox compatible"
+      ],
+      "rightsStatus": "RESTRICTED",
+      "valuesStored": false
+    },
+    {
+      "rank": 57,
+      "candidateId": "85beac35-7b7a-5715-856b-5c01589d22ce",
+      "site": "coches.net",
+      "url": "https://www.coches.net/fichas_tecnicas/peugeot/3008_hybrid/4x4_suv/5-puertas/225_eeat8_allure_pack_225cv_hibrido_enchufable/98646/820534720230101/",
+      "consultedAt": "2026-10-16",
+      "method": "SEARCH_ENGINE",
+      "pageLabel": "3008 Hybrid 225 e-EAT8 Allure Pack",
+      "fieldsLocated": [
+        "brand_model",
+        "period_or_model_year",
+        "trim",
+        "engine",
+        "power"
+      ],
+      "matchStatus": "MATCH_COMPATIBLE_UNCONFIRMED",
+      "matchBasis": [
+        "Allure Pack is one of the five evidenced trims"
+      ],
+      "rightsStatus": "RESTRICTED",
+      "valuesStored": false
+    },
+    {
+      "rank": 5,
+      "candidateId": "b36b0cb8-aa96-5a2f-adf4-fbf6bde68064",
+      "site": "coches.net",
+      "url": "https://www.coches.net/fichas_tecnicas/kia/sportage/4x4/5-puertas/16_tgdi_112kw_150cv_drive_4x2_150cv_gasolina/103741/801592020220101/",
+      "consultedAt": "2026-10-16",
+      "method": "SEARCH_ENGINE",
+      "pageLabel": "Sportage 1.6 T-GDi 150 CV Drive 4x2 (2022)",
+      "fieldsLocated": [
+        "brand_model",
+        "period_or_model_year",
+        "trim",
+        "engine",
+        "power"
+      ],
+      "matchStatus": "MATCH_AMBIGUOUS",
+      "matchBasis": [
+        "page labels 112 kW while the EEA engine power of the exact key is 110 kW",
+        "several 1.6 T-GDi variants (MHEV, HEV, trims) are candidates"
+      ],
+      "rightsStatus": "RESTRICTED",
+      "valuesStored": false
+    },
+    {
+      "rank": 5,
+      "candidateId": "b36b0cb8-aa96-5a2f-adf4-fbf6bde68064",
+      "site": "km77",
+      "url": "https://www.km77.com/coches/kia/sportage/2022/estandar/estandar/sportage-16-t-gdi-drive-112-kw-150-cv-4x2/datos",
+      "consultedAt": "2026-10-16",
+      "method": "SEARCH_ENGINE",
+      "pageLabel": "Sportage 1.6 T-GDi Drive 112 kW (150 CV) 4x2",
+      "fieldsLocated": [
+        "brand_model",
+        "period_or_model_year",
+        "trim",
+        "engine",
+        "power"
+      ],
+      "matchStatus": "MATCH_AMBIGUOUS",
+      "matchBasis": [
+        "same 112 kW label vs 110 kW EEA; MHEV variants also listed"
+      ],
+      "rightsStatus": "RESTRICTED",
+      "valuesStored": false
+    },
+    {
+      "rank": 48,
+      "candidateId": "fd633c27-2ed9-570e-8aa3-2f6c1078ee12",
+      "site": "coches.net",
+      "url": "https://www.coches.net/fichas_tecnicas/toyota/yaris/berlina/5-puertas/15_120h_active_tech_116cv_hibrido/97991/804619820230101/",
+      "consultedAt": "2026-10-16",
+      "method": "PAGE_VIEW",
+      "pageLabel": "Yaris 1.5 120H Active Tech 116 CV (2022)",
+      "fieldsLocated": [
+        "brand_model",
+        "period_or_model_year",
+        "trim",
+        "body",
+        "engine",
+        "power",
+        "transmission",
+        "homologated_consumption",
+        "dimensions",
+        "boot",
+        "accel_0_100",
+        "battery",
+        "warranty",
+        "equipment"
+      ],
+      "attribution": "Datos cedidos por JATO",
+      "matchStatus": "MATCH_AMBIGUOUS",
+      "matchBasis": [
+        "hybrid 1.5 engine compatible; Active Tech is one of several trims sharing the technical version"
+      ],
+      "rightsStatus": "RESTRICTED",
+      "valuesStored": false
+    },
+    {
+      "rank": 48,
+      "candidateId": "fd633c27-2ed9-570e-8aa3-2f6c1078ee12",
+      "site": "km77",
+      "url": "https://www.km77.com/coches/toyota/yaris/2020/5-puertas/hybrid/yaris-5p-120h-active-tech/datos",
+      "consultedAt": "2026-10-16",
+      "method": "SEARCH_ENGINE",
+      "pageLabel": "Yaris 5p 120H Active Tech (2020-2023)",
+      "fieldsLocated": [
+        "brand_model",
+        "period_or_model_year",
+        "trim",
+        "engine",
+        "power"
+      ],
+      "matchStatus": "MATCH_AMBIGUOUS",
+      "matchBasis": [
+        "several trims (no trim evidenced for the exact key)"
+      ],
+      "rightsStatus": "RESTRICTED",
+      "valuesStored": false
+    },
+    {
+      "rank": 2,
+      "candidateId": "50b7e964-064d-5103-bfa8-635fa35e5fbf",
+      "site": "km77",
+      "url": "https://www.km77.com/coches/byd/seal/2024/estandar/estandar/seal-rwd/datos",
+      "consultedAt": "2026-10-16",
+      "method": "PAGE_VIEW",
+      "pageLabel": "BYD Seal Design (2023-2026)",
+      "fieldsLocated": [
+        "brand_model",
+        "period_or_model_year",
+        "trim",
+        "body",
+        "engine",
+        "power",
+        "transmission",
+        "homologated_consumption",
+        "dimensions",
+        "boot",
+        "accel_0_100",
+        "battery",
+        "ac_dc_charging",
+        "historical_price"
+      ],
+      "matchStatus": "MATCH_COMPATIBLE_UNCONFIRMED",
+      "matchBasis": [
+        "trim Design matches the IDAE code-linked trim (D1.2); RWD matches RDW drivetrain",
+        "no type-approval identifiers on the page"
+      ],
+      "rightsStatus": "RESTRICTED",
+      "valuesStored": false
+    },
+    {
+      "rank": 81,
+      "candidateId": "81e9cac7-35bc-5191-84d6-d54d3dd0ee84",
+      "site": "coches.net",
+      "url": "https://www.coches.net/fichas_tecnicas/tesla/model_y/4x4_suv/5-puertas/gran_autonomia_4wd_476cv_electrico/98368/820122420210709/",
+      "consultedAt": "2026-10-16",
+      "method": "PAGE_VIEW",
+      "pageLabel": "Model Y Gran Autonomía 4WD 476 CV",
+      "fieldsLocated": [
+        "brand_model",
+        "period_or_model_year",
+        "trim",
+        "body",
+        "engine",
+        "power",
+        "transmission",
+        "homologated_consumption",
+        "dimensions",
+        "boot",
+        "accel_0_100",
+        "battery",
+        "warranty",
+        "equipment"
+      ],
+      "attribution": "Datos cedidos por JATO",
+      "matchStatus": "MATCH_REJECTED",
+      "matchBasis": [
+        "page is all-wheel drive: contradicts the RDW drivetrain RWD of the exact key Y6LR"
+      ],
+      "rightsStatus": "RESTRICTED",
+      "valuesStored": false
+    },
+    {
+      "rank": 81,
+      "candidateId": "81e9cac7-35bc-5191-84d6-d54d3dd0ee84",
+      "site": "km77",
+      "url": "https://www.km77.com/coches/tesla/model-y/2021/estandar/estandar/model-y-traccion-integral-gran-autonomia/datos",
+      "consultedAt": "2026-10-16",
+      "method": "PAGE_VIEW",
+      "pageLabel": "Model Y Tracción integral Gran autonomía (2019-2025)",
+      "fieldsLocated": [
+        "brand_model",
+        "period_or_model_year",
+        "trim",
+        "body",
+        "engine",
+        "power",
+        "transmission",
+        "homologated_consumption",
+        "dimensions",
+        "boot",
+        "accel_0_100",
+        "battery",
+        "ac_dc_charging",
+        "historical_price"
+      ],
+      "matchStatus": "MATCH_REJECTED",
+      "matchBasis": [
+        "all-wheel drive contradicts the RDW drivetrain RWD of the exact key"
+      ],
+      "rightsStatus": "RESTRICTED",
+      "valuesStored": false
+    },
+    {
+      "rank": 8,
+      "candidateId": "8331c894-0978-5951-98bb-0ffbfe548722",
+      "site": "coches.net",
+      "url": "https://www.coches.net/fichas_tecnicas/hyundai/tucson/4x4/5-puertas/17_crdi_85kw_115cv/76494/",
+      "consultedAt": "2026-10-16",
+      "method": "SEARCH_ENGINE",
+      "pageLabel": "Tucson 1.7 CRDi 85 kW (115 CV)",
+      "fieldsLocated": [
+        "brand_model",
+        "period_or_model_year",
+        "trim",
+        "engine",
+        "power"
+      ],
+      "matchStatus": "MATCH_COMPATIBLE_UNCONFIRMED",
+      "matchBasis": [
+        "engine 1.7 CRDi and 85 kW match EEA Ep 85 kW / 1,685 cm³"
+      ],
+      "rightsStatus": "RESTRICTED",
+      "valuesStored": false
+    },
+    {
+      "rank": 8,
+      "candidateId": "8331c894-0978-5951-98bb-0ffbfe548722",
+      "site": "km77",
+      "url": "https://www.km77.com/coches/hyundai/tucson/2015/estandar/tecno/tucson-17-crdi-141-cv-4x2-7dct/datos",
+      "consultedAt": "2026-10-16",
+      "method": "SEARCH_ENGINE",
+      "pageLabel": "Tucson 1.7 CRDi 141 CV 4x2 7DCT Tecno",
+      "fieldsLocated": [
+        "brand_model",
+        "period_or_model_year",
+        "trim",
+        "engine",
+        "power"
+      ],
+      "matchStatus": "MATCH_REJECTED",
+      "matchBasis": [
+        "141 CV (≈ 104 kW) contradicts the EEA engine power 85 kW of the exact key"
+      ],
+      "rightsStatus": "RESTRICTED",
+      "valuesStored": false
+    },
+    {
+      "rank": 28,
+      "candidateId": "0244eada-7c20-57d6-94fc-12606bdbf902",
+      "site": "km77",
+      "url": "https://www.km77.com/coches/mercedes/clase-a/2023/5-puertas/estandar/a-200-d/datos",
+      "consultedAt": "2026-10-16",
+      "method": "SEARCH_ENGINE",
+      "pageLabel": "Clase A 5p A 200 d (2022)",
+      "fieldsLocated": [
+        "brand_model",
+        "period_or_model_year",
+        "trim",
+        "engine",
+        "power"
+      ],
+      "matchStatus": "MATCH_COMPATIBLE_UNCONFIRMED",
+      "matchBasis": [
+        "designation A 200 D equals the EEA designation; period compatible"
+      ],
+      "rightsStatus": "RESTRICTED",
+      "valuesStored": false
+    },
+    {
+      "rank": 28,
+      "candidateId": "0244eada-7c20-57d6-94fc-12606bdbf902",
+      "site": "coches.net",
+      "url": "https://www.coches.net/fichas_tecnicas/mercedes-benz/clase_a/berlina/5-puertas/a_200_d_4matic_150cv/95835/",
+      "consultedAt": "2026-10-16",
+      "method": "SEARCH_ENGINE",
+      "pageLabel": "A 200 d 4MATIC 150 CV",
+      "fieldsLocated": [
+        "brand_model",
+        "period_or_model_year",
+        "trim",
+        "engine",
+        "power"
+      ],
+      "matchStatus": "MATCH_AMBIGUOUS",
+      "matchBasis": [
+        "4MATIC (AWD) page; the drivetrain of the exact key was not fetched from RDW for this candidate → neither confirmed nor rejected"
+      ],
+      "rightsStatus": "RESTRICTED",
+      "valuesStored": false
+    },
+    {
+      "rank": 3,
+      "candidateId": "51873620-871c-5749-8b99-b497d3ead6fc",
+      "site": "coches.net",
+      "url": "https://www.coches.net/fichas_tecnicas/volkswagen/golf/berlina/5-puertas/advance_15_tsi_evo_96kw_130cv/85885/",
+      "consultedAt": "2026-10-16",
+      "method": "PAGE_VIEW",
+      "pageLabel": "Golf Advance 1.5 TSI Evo 96 kW (130 CV)",
+      "fieldsLocated": [
+        "brand_model",
+        "period_or_model_year",
+        "trim",
+        "engine",
+        "power",
+        "transmission",
+        "homologated_consumption",
+        "dimensions",
+        "boot",
+        "accel_0_100",
+        "historical_price"
+      ],
+      "attribution": "Datos cedidos por JATO",
+      "matchStatus": "MATCH_COMPATIBLE_UNCONFIRMED",
+      "matchBasis": [
+        "engine 1.5 TSI 96 kW matches EEA/RDW; trim Advance is the Step 4c inference, still not linked to TAN/Va/Ve"
+      ],
+      "rightsStatus": "RESTRICTED",
+      "valuesStored": false
+    },
+    {
+      "rank": 3,
+      "candidateId": "51873620-871c-5749-8b99-b497d3ead6fc",
+      "site": "km77",
+      "url": "https://www.km77.com/coches/volkswagen/golf/2017/5-puertas/advance/golf-5p-advance-15-tsi-evo-bluemotion-96-kw-130-cv/datos",
+      "consultedAt": "2026-10-16",
+      "method": "SEARCH_ENGINE",
+      "pageLabel": "Golf 5p Advance 1.5 TSI Evo BlueMotion 96 kW (2018-2019)",
+      "fieldsLocated": [
+        "brand_model",
+        "period_or_model_year",
+        "trim",
+        "engine",
+        "power"
+      ],
+      "matchStatus": "MATCH_COMPATIBLE_UNCONFIRMED",
+      "matchBasis": [
+        "engine and power compatible; two homologations (*33 NEDC / *35 WLTP) exist for this commercial version → page cannot tell them apart"
+      ],
+      "rightsStatus": "RESTRICTED",
+      "valuesStored": false
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+[
+  {
+    "rank": 26,
+    "site": "km77",
+    "url": "https://www.km77.com/coches/peugeot/308/2026/5-puertas/estandar/308-5p-allure-bluehdi-130-eat8/datos",
+    "status": "MATCH_AMBIGUOUS",
+    "issues": []
+  },
+  {
+    "rank": 26,
+    "site": "km77",
+    "url": "https://www.km77.com/coches/peugeot/308/2022/5-puertas/estandar/308-5p-allure-pack-bluehdi-130-eat8/datos",
+    "status": "MATCH_AMBIGUOUS",
+    "issues": []
+  },
+  {
+    "rank": 22,
+    "site": "km77",
+    "url": "https://www.km77.com/coches/peugeot/208/2020/5-puertas/active/208-active-15-bluehdi-100/datos",
+    "status": "MATCH_COMPATIBLE_UNCONFIRMED",
+    "issues": []
+  },
+  {
+    "rank": 22,
+    "site": "coches.net",
+    "url": "https://www.coches.net/fichas_tecnicas/peugeot/208/berlina/5-puertas/bluehdi_73kw_100cv_active_pack_100cv_diesel/99060/821175720210801/",
+    "status": "MATCH_COMPATIBLE_UNCONFIRMED",
+    "issues": []
+  },
+  {
+    "rank": 57,
+    "site": "km77",
+    "url": "https://www.km77.com/coches/peugeot/3008/2021/estandar/hibrido-enchufable/3008-gt-hybrid-225-e-eat8/datos",
+    "status": "MATCH_COMPATIBLE_UNCONFIRMED",
+    "issues": []
+  },
+  {
+    "rank": 57,
+    "site": "coches.net",
+    "url": "https://www.coches.net/fichas_tecnicas/peugeot/3008_hybrid/4x4_suv/5-puertas/225_eeat8_allure_pack_225cv_hibrido_enchufable/98646/820534720230101/",
+    "status": "MATCH_COMPATIBLE_UNCONFIRMED",
+    "issues": []
+  },
+  {
+    "rank": 5,
+    "site": "coches.net",
+    "url": "https://www.coches.net/fichas_tecnicas/kia/sportage/4x4/5-puertas/16_tgdi_112kw_150cv_drive_4x2_150cv_gasolina/103741/801592020220101/",
+    "status": "MATCH_AMBIGUOUS",
+    "issues": []
+  },
+  {
+    "rank": 5,
+    "site": "km77",
+    "url": "https://www.km77.com/coches/kia/sportage/2022/estandar/estandar/sportage-16-t-gdi-drive-112-kw-150-cv-4x2/datos",
+    "status": "MATCH_AMBIGUOUS",
+    "issues": []
+  },
+  {
+    "rank": 48,
+    "site": "coches.net",
+    "url": "https://www.coches.net/fichas_tecnicas/toyota/yaris/berlina/5-puertas/15_120h_active_tech_116cv_hibrido/97991/804619820230101/",
+    "status": "MATCH_AMBIGUOUS",
+    "issues": []
+  },
+  {
+    "rank": 48,
+    "site": "km77",
+    "url": "https://www.km77.com/coches/toyota/yaris/2020/5-puertas/hybrid/yaris-5p-120h-active-tech/datos",
+    "status": "MATCH_AMBIGUOUS",
+    "issues": []
+  },
+  {
+    "rank": 2,
+    "site": "km77",
+    "url": "https://www.km77.com/coches/byd/seal/2024/estandar/estandar/seal-rwd/datos",
+    "status": "MATCH_COMPATIBLE_UNCONFIRMED",
+    "issues": []
+  },
+  {
+    "rank": 81,
+    "site": "coches.net",
+    "url": "https://www.coches.net/fichas_tecnicas/tesla/model_y/4x4_suv/5-puertas/gran_autonomia_4wd_476cv_electrico/98368/820122420210709/",
+    "status": "MATCH_REJECTED",
+    "issues": []
+  },
+  {
+    "rank": 81,
+    "site": "km77",
+    "url": "https://www.km77.com/coches/tesla/model-y/2021/estandar/estandar/model-y-traccion-integral-gran-autonomia/datos",
+    "status": "MATCH_REJECTED",
+    "issues": []
+  },
+  {
+    "rank": 8,
+    "site": "coches.net",
+    "url": "https://www.coches.net/fichas_tecnicas/hyundai/tucson/4x4/5-puertas/17_crdi_85kw_115cv/76494/",
+    "status": "MATCH_COMPATIBLE_UNCONFIRMED",
+    "issues": []
+  },
+  {
+    "rank": 8,
+    "site": "km77",
+    "url": "https://www.km77.com/coches/hyundai/tucson/2015/estandar/tecno/tucson-17-crdi-141-cv-4x2-7dct/datos",
+    "status": "MATCH_REJECTED",
+    "issues": []
+  },
+  {
+    "rank": 28,
+    "site": "km77",
+    "url": "https://www.km77.com/coches/mercedes/clase-a/2023/5-puertas/estandar/a-200-d/datos",
+    "status": "MATCH_COMPATIBLE_UNCONFIRMED",
+    "issues": []
+  },
+  {
+    "rank": 28,
+    "site": "coches.net",
+    "url": "https://www.coches.net/fichas_tecnicas/mercedes-benz/clase_a/berlina/5-puertas/a_200_d_4matic_150cv/95835/",
+    "status": "MATCH_AMBIGUOUS",
+    "issues": []
+  },
+  {
+    "rank": 3,
+    "site": "coches.net",
+    "url": "https://www.coches.net/fichas_tecnicas/volkswagen/golf/berlina/5-puertas/advance_15_tsi_evo_96kw_130cv/85885/",
+    "status": "MATCH_COMPATIBLE_UNCONFIRMED",
+    "issues": []
+  },
+  {
+    "rank": 3,
+    "site": "km77",
+    "url": "https://www.km77.com/coches/volkswagen/golf/2017/5-puertas/advance/golf-5p-advance-15-tsi-evo-bluemotion-96-kw-130-cv/datos",
+    "status": "MATCH_COMPATIBLE_UNCONFIRMED",
+    "issues": []
+  }
+]

@@ -28,3 +28,7 @@ export * from './rdw/normalize.ts';
 export * from './rdw/match.ts';
 export * from './rdw/map.ts';
 export * from './giaveh/index.ts';
+export * from './acquisition/zip.ts';
+export * from './traficom/index.ts';
+export * from './gor3a/index.ts';
+export * from './open-catalogs/index.ts';

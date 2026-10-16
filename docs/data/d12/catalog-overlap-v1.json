@@ -1,0 +1,60 @@
+{
+  "correctionVersion": 1,
+  "step": "D1.2",
+  "supersedes": "docs/data/d1/curation_candidates.jsonl field existingCatalogOverlap (not modified)",
+  "rule": "canonical key = full TAN (with extension) + Va + Ve; partial matches never merge",
+  "overlaps": [
+    {
+      "rank": 1,
+      "candidateId": "f24ce616-edd4-5f57-aeaf-edbb5adc30ed",
+      "key": "E1*2007/46*0623*35|GAC4DACAX0|FM6FM6AJ015N7CPON1ML1BVR2NA",
+      "d1ExistingCatalogOverlap": "volkswagen-golf-2018-advance-1-5-tsi-130-h35",
+      "overlaps": [
+        {
+          "kind": "DUPLICATE",
+          "variantSlug": "volkswagen-golf-2018-advance-1-5-tsi-130-h35",
+          "catalogTan": "e1*2007/46*0623*35"
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "candidateId": "50b7e964-064d-5103-bfa8-635fa35e5fbf",
+      "key": "E13*2018/858*00639*03|SE2R1C|2NTE5F002NL1",
+      "d1ExistingCatalogOverlap": null,
+      "overlaps": [
+        {
+          "kind": "PROBABLE_DUPLICATE_TAN_INCOMPLETE",
+          "variantSlug": "byd-seal-2026-design-rwd-82-5-kwh",
+          "catalogTan": "(none)"
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "candidateId": "51873620-871c-5749-8b99-b497d3ead6fc",
+      "key": "E1*2007/46*0623*33|GAC4DACAX0|FM6FM6AJ015N7MVON1ML79VR2N",
+      "d1ExistingCatalogOverlap": "volkswagen-golf-2018-advance-1-5-tsi-130-h33",
+      "overlaps": [
+        {
+          "kind": "DUPLICATE",
+          "variantSlug": "volkswagen-golf-2018-advance-1-5-tsi-130-h33",
+          "catalogTan": "e1*2007/46*0623*33"
+        }
+      ]
+    },
+    {
+      "rank": 88,
+      "candidateId": "7e613212-aa6f-523d-88ee-99b035048397",
+      "key": "E4*2007/46*1293*25|E6LR|BQB1S5N",
+      "d1ExistingCatalogOverlap": null,
+      "overlaps": [
+        {
+          "kind": "CATALOG_PARTIAL_IDENTITY",
+          "variantSlug": "tesla-model-3-2021-traccion-trasera",
+          "catalogTan": "e4*2007/46*1293"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,882 @@
+[
+  {
+    "rank": 2,
+    "label": "BYD SEAL 2025 (BEV)",
+    "d13Status": "DUPLICATE",
+    "d14Status": "DUPLICATE",
+    "gor3a": "NOT_FOUND",
+    "generation": {
+      "before": "none",
+      "foundInSource": 0,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "commercialIdentity": "EXACT",
+    "transmission": {
+      "before": "single_speed",
+      "foundInSource": false,
+      "reusable": false
+    },
+    "body": {
+      "before": "sedan",
+      "foundInSource": false,
+      "reusable": false
+    },
+    "boot": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "accel_0_100": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "blockers": [
+      "generation_code/model_year: no verified source (dataset generations are year-labelled, inferred by interval)",
+      "S14 rights: ODbL declared, upstream autoevolution rights not evidenced (legal review)",
+      "S11/S13 approval pending",
+      "price and warranty: no source"
+    ],
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 4,
+    "label": "BYD SEAL 2024/2025 (BEV)",
+    "d13Status": "CONFLICTED",
+    "d14Status": "CONFLICTED",
+    "gor3a": "NOT_FOUND",
+    "generation": {
+      "before": "none",
+      "foundInSource": 0,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "commercialIdentity": "EXACT",
+    "transmission": {
+      "before": "single_speed",
+      "foundInSource": false,
+      "reusable": false
+    },
+    "body": {
+      "before": "sedan",
+      "foundInSource": false,
+      "reusable": false
+    },
+    "boot": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "accel_0_100": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "blockers": [
+      "generation_code/model_year: no verified source (dataset generations are year-labelled, inferred by interval)",
+      "S14 rights: ODbL declared, upstream autoevolution rights not evidenced (legal review)",
+      "S11/S13 approval pending",
+      "price and warranty: no source"
+    ],
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 5,
+    "label": "Kia Sportage 2022 (ICE_OR_MHEV)",
+    "d13Status": "IDENTITY_PENDING",
+    "d14Status": "IDENTITY_PENDING",
+    "gor3a": "NOT_FOUND",
+    "generation": {
+      "before": "none",
+      "foundInSource": 0,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "commercialIdentity": "PARTIAL",
+    "transmission": {
+      "before": "manual",
+      "foundInSource": false,
+      "reusable": false
+    },
+    "body": {
+      "before": null,
+      "foundInSource": false,
+      "reusable": false
+    },
+    "boot": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "accel_0_100": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "blockers": [
+      "generation_code/model_year: no verified source (dataset generations are year-labelled, inferred by interval)",
+      "S14 rights: ODbL declared, upstream autoevolution rights not evidenced (legal review)",
+      "S11/S13 approval pending",
+      "price and warranty: no source"
+    ],
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 6,
+    "label": "Renault Clio 2024/2025 (ICE_OR_MHEV)",
+    "d13Status": "IDENTITY_PENDING",
+    "d14Status": "IDENTITY_PENDING",
+    "gor3a": "WEAK_COMPATIBLE_MATCH",
+    "generation": {
+      "before": "none",
+      "foundInSource": 1,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "commercialIdentity": "PARTIAL",
+    "transmission": {
+      "before": null,
+      "foundInSource": true,
+      "reusable": false
+    },
+    "body": {
+      "before": null,
+      "foundInSource": true,
+      "reusable": false
+    },
+    "boot": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "accel_0_100": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "blockers": [
+      "generation_code/model_year: no verified source (dataset generations are year-labelled, inferred by interval)",
+      "S14 rights: ODbL declared, upstream autoevolution rights not evidenced (legal review)",
+      "S11/S13 approval pending",
+      "price and warranty: no source"
+    ],
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 7,
+    "label": "Nissan Qashqai 2024/2025 (MHEV)",
+    "d13Status": "IDENTITY_PENDING",
+    "d14Status": "IDENTITY_PENDING",
+    "gor3a": "STRONG_COMPATIBLE_MATCH",
+    "generation": {
+      "before": "none",
+      "foundInSource": 1,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "commercialIdentity": "PARTIAL",
+    "transmission": {
+      "before": "manual",
+      "foundInSource": true,
+      "reusable": false
+    },
+    "body": {
+      "before": null,
+      "foundInSource": false,
+      "reusable": false
+    },
+    "boot": {
+      "foundInSource": true,
+      "singleValue": true,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "accel_0_100": {
+      "foundInSource": true,
+      "singleValue": true,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "blockers": [
+      "generation_code/model_year: no verified source (dataset generations are year-labelled, inferred by interval)",
+      "S14 rights: ODbL declared, upstream autoevolution rights not evidenced (legal review)",
+      "S11/S13 approval pending",
+      "price and warranty: no source"
+    ],
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 8,
+    "label": "Hyundai Tucson 2018/2020 (ICE_OR_MHEV)",
+    "d13Status": "IDENTITY_PENDING",
+    "d14Status": "IDENTITY_PENDING",
+    "gor3a": "WEAK_COMPATIBLE_MATCH",
+    "generation": {
+      "before": "none",
+      "foundInSource": 1,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "commercialIdentity": "PARTIAL",
+    "transmission": {
+      "before": "manual",
+      "foundInSource": true,
+      "reusable": false
+    },
+    "body": {
+      "before": null,
+      "foundInSource": false,
+      "reusable": false
+    },
+    "boot": {
+      "foundInSource": true,
+      "singleValue": true,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "accel_0_100": {
+      "foundInSource": true,
+      "singleValue": true,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "blockers": [
+      "generation_code/model_year: no verified source (dataset generations are year-labelled, inferred by interval)",
+      "S14 rights: ODbL declared, upstream autoevolution rights not evidenced (legal review)",
+      "S11/S13 approval pending",
+      "price and warranty: no source"
+    ],
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 9,
+    "label": "Kia Sportage 2016/2018 (ICE_OR_MHEV)",
+    "d13Status": "IDENTITY_PENDING",
+    "d14Status": "IDENTITY_PENDING",
+    "gor3a": "AMBIGUOUS",
+    "generation": {
+      "before": "none",
+      "foundInSource": 2,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "commercialIdentity": "PARTIAL",
+    "transmission": {
+      "before": "manual",
+      "foundInSource": true,
+      "reusable": false
+    },
+    "body": {
+      "before": null,
+      "foundInSource": false,
+      "reusable": false
+    },
+    "boot": {
+      "foundInSource": true,
+      "singleValue": true,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "accel_0_100": {
+      "foundInSource": true,
+      "singleValue": true,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "blockers": [
+      "generation_code/model_year: no verified source (dataset generations are year-labelled, inferred by interval)",
+      "S14 rights: ODbL declared, upstream autoevolution rights not evidenced (legal review)",
+      "S11/S13 approval pending",
+      "price and warranty: no source"
+    ],
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 20,
+    "label": "Peugeot 3008 2018/2020 (ICE_OR_MHEV)",
+    "d13Status": "IDENTITY_PENDING",
+    "d14Status": "IDENTITY_PENDING",
+    "gor3a": "WEAK_COMPATIBLE_MATCH",
+    "generation": {
+      "before": "none",
+      "foundInSource": 1,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "commercialIdentity": "PARTIAL",
+    "transmission": {
+      "before": null,
+      "foundInSource": true,
+      "reusable": false
+    },
+    "body": {
+      "before": null,
+      "foundInSource": false,
+      "reusable": false
+    },
+    "boot": {
+      "foundInSource": true,
+      "singleValue": true,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "accel_0_100": {
+      "foundInSource": true,
+      "singleValue": true,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "blockers": [
+      "generation_code/model_year: no verified source (dataset generations are year-labelled, inferred by interval)",
+      "S14 rights: ODbL declared, upstream autoevolution rights not evidenced (legal review)",
+      "S11/S13 approval pending",
+      "price and warranty: no source"
+    ],
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 22,
+    "label": "Peugeot 208 2022 (ICE_OR_MHEV)",
+    "d13Status": "IDENTITY_PENDING",
+    "d14Status": "IDENTITY_PENDING",
+    "gor3a": "WEAK_COMPATIBLE_MATCH",
+    "generation": {
+      "before": "none",
+      "foundInSource": 1,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "commercialIdentity": "PARTIAL",
+    "transmission": {
+      "before": null,
+      "foundInSource": true,
+      "reusable": false
+    },
+    "body": {
+      "before": null,
+      "foundInSource": true,
+      "reusable": false
+    },
+    "boot": {
+      "foundInSource": true,
+      "singleValue": true,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "accel_0_100": {
+      "foundInSource": true,
+      "singleValue": true,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "blockers": [
+      "generation_code/model_year: no verified source (dataset generations are year-labelled, inferred by interval)",
+      "S14 rights: ODbL declared, upstream autoevolution rights not evidenced (legal review)",
+      "S11/S13 approval pending",
+      "price and warranty: no source"
+    ],
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 24,
+    "label": "Dacia Sandero 2025 (ICE_OR_MHEV)",
+    "d13Status": "IDENTITY_PENDING",
+    "d14Status": "IDENTITY_PENDING",
+    "gor3a": "AMBIGUOUS",
+    "generation": {
+      "before": "none",
+      "foundInSource": 2,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "commercialIdentity": "PARTIAL",
+    "transmission": {
+      "before": null,
+      "foundInSource": true,
+      "reusable": false
+    },
+    "body": {
+      "before": null,
+      "foundInSource": false,
+      "reusable": false
+    },
+    "boot": {
+      "foundInSource": true,
+      "singleValue": true,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "accel_0_100": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "blockers": [
+      "generation_code/model_year: no verified source (dataset generations are year-labelled, inferred by interval)",
+      "S14 rights: ODbL declared, upstream autoevolution rights not evidenced (legal review)",
+      "S11/S13 approval pending",
+      "price and warranty: no source"
+    ],
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 26,
+    "label": "Peugeot 308 2024 (ICE_OR_MHEV)",
+    "d13Status": "IDENTITY_PENDING",
+    "d14Status": "IDENTITY_PENDING",
+    "gor3a": "WEAK_COMPATIBLE_MATCH",
+    "generation": {
+      "before": "none",
+      "foundInSource": 1,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "commercialIdentity": "EXACT",
+    "transmission": {
+      "before": null,
+      "foundInSource": true,
+      "reusable": false
+    },
+    "body": {
+      "before": null,
+      "foundInSource": true,
+      "reusable": false
+    },
+    "boot": {
+      "foundInSource": true,
+      "singleValue": true,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "accel_0_100": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "blockers": [
+      "generation_code/model_year: no verified source (dataset generations are year-labelled, inferred by interval)",
+      "S14 rights: ODbL declared, upstream autoevolution rights not evidenced (legal review)",
+      "S11/S13 approval pending",
+      "price and warranty: no source"
+    ],
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 27,
+    "label": "Toyota Yaris 2022/2024 (ICE_OR_MHEV)",
+    "d13Status": "IDENTITY_PENDING",
+    "d14Status": "IDENTITY_PENDING",
+    "gor3a": "NOT_FOUND",
+    "generation": {
+      "before": "none",
+      "foundInSource": 0,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "commercialIdentity": "PARTIAL",
+    "transmission": {
+      "before": null,
+      "foundInSource": false,
+      "reusable": false
+    },
+    "body": {
+      "before": null,
+      "foundInSource": false,
+      "reusable": false
+    },
+    "boot": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "accel_0_100": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "blockers": [
+      "generation_code/model_year: no verified source (dataset generations are year-labelled, inferred by interval)",
+      "S14 rights: ODbL declared, upstream autoevolution rights not evidenced (legal review)",
+      "S11/S13 approval pending",
+      "price and warranty: no source"
+    ],
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 28,
+    "label": "Mercedes-Benz Clase A 2022/2024 (ICE_OR_MHEV)",
+    "d13Status": "IDENTITY_PENDING",
+    "d14Status": "IDENTITY_PENDING",
+    "gor3a": "REJECTED",
+    "generation": {
+      "before": "none",
+      "foundInSource": 0,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "commercialIdentity": "PARTIAL",
+    "transmission": {
+      "before": "automatic",
+      "foundInSource": false,
+      "reusable": false
+    },
+    "body": {
+      "before": null,
+      "foundInSource": false,
+      "reusable": false
+    },
+    "boot": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "accel_0_100": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "blockers": [
+      "generation_code/model_year: no verified source (dataset generations are year-labelled, inferred by interval)",
+      "S14 rights: ODbL declared, upstream autoevolution rights not evidenced (legal review)",
+      "S11/S13 approval pending",
+      "price and warranty: no source"
+    ],
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 48,
+    "label": "Toyota Yaris 2022/2024/2025 (HEV_OR_MHEV)",
+    "d13Status": "IDENTITY_PENDING",
+    "d14Status": "IDENTITY_PENDING",
+    "gor3a": "STRONG_COMPATIBLE_MATCH",
+    "generation": {
+      "before": "none",
+      "foundInSource": 1,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "commercialIdentity": "PARTIAL",
+    "transmission": {
+      "before": null,
+      "foundInSource": true,
+      "reusable": false
+    },
+    "body": {
+      "before": "hatchback",
+      "foundInSource": true,
+      "reusable": false
+    },
+    "boot": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "accel_0_100": {
+      "foundInSource": true,
+      "singleValue": true,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "blockers": [
+      "generation_code/model_year: no verified source (dataset generations are year-labelled, inferred by interval)",
+      "S14 rights: ODbL declared, upstream autoevolution rights not evidenced (legal review)",
+      "S11/S13 approval pending",
+      "price and warranty: no source"
+    ],
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 53,
+    "label": "Mercedes-Benz Clase A 2020 (PHEV)",
+    "d13Status": "IDENTITY_PENDING",
+    "d14Status": "IDENTITY_PENDING",
+    "gor3a": "NOT_FOUND",
+    "generation": {
+      "before": "none",
+      "foundInSource": 0,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "commercialIdentity": "PARTIAL",
+    "transmission": {
+      "before": "automatic",
+      "foundInSource": false,
+      "reusable": false
+    },
+    "body": {
+      "before": null,
+      "foundInSource": false,
+      "reusable": false
+    },
+    "boot": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "accel_0_100": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "blockers": [
+      "generation_code/model_year: no verified source (dataset generations are year-labelled, inferred by interval)",
+      "S14 rights: ODbL declared, upstream autoevolution rights not evidenced (legal review)",
+      "S11/S13 approval pending",
+      "price and warranty: no source"
+    ],
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 56,
+    "label": "Toyota Corolla 2022 (HEV_OR_MHEV)",
+    "d13Status": "IDENTITY_PENDING",
+    "d14Status": "IDENTITY_PENDING",
+    "gor3a": "WEAK_COMPATIBLE_MATCH",
+    "generation": {
+      "before": "none",
+      "foundInSource": 1,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "commercialIdentity": "PARTIAL",
+    "transmission": {
+      "before": null,
+      "foundInSource": false,
+      "reusable": false
+    },
+    "body": {
+      "before": null,
+      "foundInSource": true,
+      "reusable": false
+    },
+    "boot": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "accel_0_100": {
+      "foundInSource": true,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "blockers": [
+      "generation_code/model_year: no verified source (dataset generations are year-labelled, inferred by interval)",
+      "S14 rights: ODbL declared, upstream autoevolution rights not evidenced (legal review)",
+      "S11/S13 approval pending",
+      "price and warranty: no source"
+    ],
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 57,
+    "label": "Peugeot 3008 2022 (PHEV)",
+    "d13Status": "IDENTITY_PENDING",
+    "d14Status": "IDENTITY_PENDING",
+    "gor3a": "NOT_FOUND",
+    "generation": {
+      "before": "none",
+      "foundInSource": 0,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "commercialIdentity": "PARTIAL",
+    "transmission": {
+      "before": "automatic",
+      "foundInSource": false,
+      "reusable": false
+    },
+    "body": {
+      "before": null,
+      "foundInSource": false,
+      "reusable": false
+    },
+    "boot": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "accel_0_100": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "blockers": [
+      "generation_code/model_year: no verified source (dataset generations are year-labelled, inferred by interval)",
+      "S14 rights: ODbL declared, upstream autoevolution rights not evidenced (legal review)",
+      "S11/S13 approval pending",
+      "price and warranty: no source"
+    ],
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 73,
+    "label": "Toyota RAV4 2025 (PHEV)",
+    "d13Status": "IDENTITY_PENDING",
+    "d14Status": "IDENTITY_PENDING",
+    "gor3a": "STRONG_COMPATIBLE_MATCH",
+    "generation": {
+      "before": "none",
+      "foundInSource": 1,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "commercialIdentity": "PARTIAL",
+    "transmission": {
+      "before": null,
+      "foundInSource": true,
+      "reusable": false
+    },
+    "body": {
+      "before": null,
+      "foundInSource": true,
+      "reusable": false
+    },
+    "boot": {
+      "foundInSource": true,
+      "singleValue": true,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "accel_0_100": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "blockers": [
+      "generation_code/model_year: no verified source (dataset generations are year-labelled, inferred by interval)",
+      "S14 rights: ODbL declared, upstream autoevolution rights not evidenced (legal review)",
+      "S11/S13 approval pending",
+      "price and warranty: no source"
+    ],
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 81,
+    "label": "Tesla Model Y 2022 (BEV)",
+    "d13Status": "IDENTITY_PENDING",
+    "d14Status": "IDENTITY_PENDING",
+    "gor3a": "NOT_FOUND",
+    "generation": {
+      "before": "none",
+      "foundInSource": 0,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "commercialIdentity": "PARTIAL",
+    "transmission": {
+      "before": "single_speed",
+      "foundInSource": false,
+      "reusable": false
+    },
+    "body": {
+      "before": null,
+      "foundInSource": false,
+      "reusable": false
+    },
+    "boot": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "accel_0_100": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "blockers": [
+      "generation_code/model_year: no verified source (dataset generations are year-labelled, inferred by interval)",
+      "S14 rights: ODbL declared, upstream autoevolution rights not evidenced (legal review)",
+      "S11/S13 approval pending",
+      "price and warranty: no source"
+    ],
+    "previewImportable": false,
+    "publicPotential": false
+  },
+  {
+    "rank": 86,
+    "label": "Renault Clio 2020 (HEV_OR_MHEV)",
+    "d13Status": "IDENTITY_PENDING",
+    "d14Status": "IDENTITY_PENDING",
+    "gor3a": "WEAK_COMPATIBLE_MATCH",
+    "generation": {
+      "before": "none",
+      "foundInSource": 1,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "commercialIdentity": "PARTIAL",
+    "transmission": {
+      "before": "automatic",
+      "foundInSource": false,
+      "reusable": false
+    },
+    "body": {
+      "before": "hatchback",
+      "foundInSource": true,
+      "reusable": false
+    },
+    "boot": {
+      "foundInSource": true,
+      "singleValue": true,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "accel_0_100": {
+      "foundInSource": false,
+      "singleValue": false,
+      "identityVerified": false,
+      "reusable": false
+    },
+    "blockers": [
+      "generation_code/model_year: no verified source (dataset generations are year-labelled, inferred by interval)",
+      "S14 rights: ODbL declared, upstream autoevolution rights not evidenced (legal review)",
+      "S11/S13 approval pending",
+      "price and warranty: no source"
+    ],
+    "previewImportable": false,
+    "publicPotential": false
+  }
+]

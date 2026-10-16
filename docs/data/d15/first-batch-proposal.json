@@ -1,0 +1,2683 @@
+{
+  "note": "ADR-019 split NOT approved: this is the list that WOULD enter the curated technical dataset. Selectable (PREVIEW/PUBLIC): 0.",
+  "candidates": [
+    {
+      "rank": 5,
+      "candidateId": "b36b0cb8-aa96-5a2f-adf4-fbf6bde68064",
+      "pilot": true,
+      "label": "Kia Sportage 2022 (ICE_OR_MHEV)",
+      "technicalIdentity": "E4*2018/858*00079*00|F5P11|M61A11 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 6,
+      "candidateId": "785e17cc-5b85-56c6-bb08-86d1a80e9db5",
+      "pilot": true,
+      "label": "Renault Clio 2024/2025 (ICE_OR_MHEV)",
+      "technicalIdentity": "E2*2007/46*0676*28|BD2|AC6WA2SA500B — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 8,
+      "candidateId": "8331c894-0978-5951-98bb-0ffbfe548722",
+      "pilot": true,
+      "label": "Hyundai Tucson 2018/2020 (ICE_OR_MHEV)",
+      "technicalIdentity": "E11*2007/46*2724*05|F5D51|M66ZZ1 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 9,
+      "candidateId": "25ae1749-3150-594d-b466-a10df54628ee",
+      "pilot": true,
+      "label": "Kia Sportage 2016/2018 (ICE_OR_MHEV)",
+      "technicalIdentity": "E11*2007/46*3144*01|F5D51|M66ZZ1 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 20,
+      "candidateId": "fc9f05a8-05ee-5be1-b5ad-dbabf1f52152",
+      "pilot": true,
+      "label": "Peugeot 3008 2018/2020 (ICE_OR_MHEV)",
+      "technicalIdentity": "E2*2007/46*0534*05|C|YHZJ-C2B000 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 24,
+      "candidateId": "61c5fe51-c879-5c18-a3c5-2e65f37259dd",
+      "pilot": true,
+      "label": "Dacia Sandero 2025 (ICE_OR_MHEV)",
+      "technicalIdentity": "E19*2007/46*0026*27|BEV|MT6WA45M520B — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 26,
+      "candidateId": "bc56ae3e-6e0e-5ae3-b6b0-b93f168f2415",
+      "pilot": true,
+      "label": "Peugeot 308 2024 (ICE_OR_MHEV)",
+      "technicalIdentity": "E2*2007/46*0628*30|B|YHZT-B21700 — EXACT (EEA+RDW)",
+      "commercialIdentity": "EXACT",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 27,
+      "candidateId": "5223d033-4cdc-592c-9d31-1ebe922e969e",
+      "pilot": true,
+      "label": "Toyota Yaris 2022/2024 (ICE_OR_MHEV)",
+      "technicalIdentity": "E6*2007/46*0437*04|MXPA11(H)|MXPA11L-BHFNBW(1E) — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 28,
+      "candidateId": "0244eada-7c20-57d6-94fc-12606bdbf902",
+      "pilot": true,
+      "label": "Mercedes-Benz Clase A 2022/2024 (ICE_OR_MHEV)",
+      "technicalIdentity": "E1*2007/46*1829*16|X21CT2|HZAA151C — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 7,
+      "candidateId": "ed79a5b6-d043-5c1e-93ae-9762587f1356",
+      "pilot": true,
+      "label": "Nissan Qashqai 2024/2025 (MHEV)",
+      "technicalIdentity": "E9*2018/858*11042*10|A|A35 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 48,
+      "candidateId": "fd633c27-2ed9-570e-8aa3-2f6c1078ee12",
+      "pilot": true,
+      "label": "Toyota Yaris 2022/2024/2025 (HEV_OR_MHEV)",
+      "technicalIdentity": "E6*2007/46*0437*04|MXPH11(H)|MXPH11L-CHXNBW(1E) — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "body",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 56,
+      "candidateId": "5e196035-2ad2-585e-ad0f-7b8c971209ae",
+      "pilot": true,
+      "label": "Toyota Corolla 2022 (HEV_OR_MHEV)",
+      "technicalIdentity": "E6*2007/46*0318*05|ZWE211(H)|ZWE211L-DHXNBW(1F) — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 86,
+      "candidateId": "936a65bb-81d9-53df-b3f7-d5e91211a64b",
+      "pilot": true,
+      "label": "Renault Clio 2020 (HEV_OR_MHEV)",
+      "technicalIdentity": "E2*2007/46*0676*05|BH2|MU4UA0FA5000 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "body",
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 4,
+      "candidateId": "8848ea66-9eff-53cb-9967-a0981c48223c",
+      "pilot": true,
+      "label": "BYD SEAL 2024/2025 (BEV)",
+      "technicalIdentity": "E13*2018/858*00639*00|SE2D1C|1NXE5E001NL1 — EXACT (EEA+RDW)",
+      "commercialIdentity": "EXACT",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "body",
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 1,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 53,
+      "candidateId": "ddf97e08-67d6-5668-9a59-5761d989ea41",
+      "pilot": true,
+      "label": "Mercedes-Benz Clase A 2020 (PHEV)",
+      "technicalIdentity": "E1*2007/46*1829*12|X28QT2|HZAA052A — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 57,
+      "candidateId": "85beac35-7b7a-5715-856b-5c01589d22ce",
+      "pilot": true,
+      "label": "Peugeot 3008 2022 (PHEV)",
+      "technicalIdentity": "E2*2007/46*0534*23|4|DGZU-C1J000 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 73,
+      "candidateId": "f87f76b9-019a-5485-8428-05ad3c1d909b",
+      "pilot": true,
+      "label": "Toyota RAV4 2025 (PHEV)",
+      "technicalIdentity": "E6*2007/46*0429*05|AXAP54(N)|AXAP54L-ANXMBW(1F) — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "electric_range"
+      ],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 81,
+      "candidateId": "81e9cac7-35bc-5191-84d6-d54d3dd0ee84",
+      "pilot": true,
+      "label": "Tesla Model Y 2022 (BEV)",
+      "technicalIdentity": "E4*2007/46*1293*26|Y6LR|BZB3S5T3 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "electric_range"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 10,
+      "candidateId": "4ae01227-5c68-57a2-aa71-180a1f03ab2c",
+      "pilot": false,
+      "label": "Renault Clio 2020 (ICE_OR_MHEV)",
+      "technicalIdentity": "E2*2007/46*0676*03|BE2|MT5TA08A5000 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 1,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 12,
+      "candidateId": "4c7248e4-e500-5941-85a4-c596414626a1",
+      "pilot": false,
+      "label": "Renault Clio 2022 (ICE_OR_MHEV)",
+      "technicalIdentity": "E2*2007/46*0676*14|BE2|MG5UA8HA5000 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 14,
+      "candidateId": "e55fea7f-f64e-5a54-810a-3c9d07c45ffa",
+      "pilot": false,
+      "label": "Dacia Sandero 2022 (ICE_OR_MHEV)",
+      "technicalIdentity": "E19*2007/46*0026*12|BEV|M66UA43M5200 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 15,
+      "candidateId": "f503c421-9788-5545-a2fc-92d5440e80f0",
+      "pilot": false,
+      "label": "Volkswagen Golf 2024 (ICE_OR_MHEV)",
+      "technicalIdentity": "E1*2007/46*2014*23|ACDNPAX0|FD7FD7GC003S4BISOR2ML1CVR2AI0 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 16,
+      "candidateId": "7d9df90a-4bea-555c-9f23-9073fd407473",
+      "pilot": false,
+      "label": "Hyundai Kona 2024/2025 (ICE_OR_MHEV)",
+      "technicalIdentity": "E4*2018/858*00153*01|F5P12|M61AY1 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 18,
+      "candidateId": "ca6e98e3-1cba-5418-b157-6ad59120e25c",
+      "pilot": false,
+      "label": "Hyundai Kona 2025 (ICE_OR_MHEV)",
+      "technicalIdentity": "E4*2018/858*00153*03|F5P12|M61AY1 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 19,
+      "candidateId": "ba2f2bbc-0367-521b-8b54-f71c105f4e3f",
+      "pilot": false,
+      "label": "Hyundai Kona 2018 (ICE_OR_MHEV)",
+      "technicalIdentity": "E4*2007/46*1259*01|F5D11|M62AZ1 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 25,
+      "candidateId": "c8a0e419-865c-5511-b74c-3f4df1b036be",
+      "pilot": false,
+      "label": "Peugeot 3008 2020 (ICE_OR_MHEV)",
+      "technicalIdentity": "E2*2007/46*0534*12|R|HNSM-C1P100 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 1,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 29,
+      "candidateId": "7656c0e7-f31e-5ac1-9364-76069da7e904",
+      "pilot": false,
+      "label": "Nissan Qashqai 2018 (ICE_OR_MHEV)",
+      "technicalIdentity": "E11*2007/46*0963*17|D|D03 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 1,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 30,
+      "candidateId": "16e40105-63e8-5ebd-888e-73aa4153c813",
+      "pilot": false,
+      "label": "Škoda Octavia 2020 (ICE_OR_MHEV)",
+      "technicalIdentity": "E8*2007/46*0318*09|ACDHFAX0|NFD7FD7CW0054BFSTVLN1B7A — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 31,
+      "candidateId": "6a7bd4ef-a327-5f44-afaf-0f4fc65d3f8d",
+      "pilot": false,
+      "label": "Kia Sportage 2018/2020 (ICE_OR_MHEV)",
+      "technicalIdentity": "E11*2007/46*3144*03|F5D61|D72ZZ1 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 33,
+      "candidateId": "6682423d-a254-5444-bbc9-2f1dbaf38f9b",
+      "pilot": false,
+      "label": "Audi A3 2024 (ICE_OR_MHEV)",
+      "technicalIdentity": "E1*2007/46*2060*27|SDTSBF1|FD7FD7GC002RT011C184BIBEM1MLN1D0C — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 34,
+      "candidateId": "f1d621d9-74f3-5cc5-b4ec-185c019b5298",
+      "pilot": false,
+      "label": "Toyota Corolla 2020 (ICE_OR_MHEV)",
+      "technicalIdentity": "E6*2007/46*0318*03|ZWE211(H)|ZWE211L-DHXNBW(1D) — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 35,
+      "candidateId": "16ba1cf8-d2e1-5400-8775-2604d7f4ccfb",
+      "pilot": false,
+      "label": "Toyota Yaris 2018 (ICE_OR_MHEV)",
+      "technicalIdentity": "E11*2007/46*0152*10|NHP13(MH)|NHP130L-CHXNBW(1L) — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 36,
+      "candidateId": "d87b4631-da62-57d7-babc-4dbe20f4b1fd",
+      "pilot": false,
+      "label": "Dacia Sandero 2020 (ICE_OR_MHEV)",
+      "technicalIdentity": "E2*2001/116*0314*93|05EV|AC5DA1A0M500 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 37,
+      "candidateId": "640df669-d46f-5775-a477-9c07f36f6d32",
+      "pilot": false,
+      "label": "Dacia Sandero 2018 (ICE_OR_MHEV)",
+      "technicalIdentity": "E2*2001/116*0314*83|5SDL1|5SDL1C — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 38,
+      "candidateId": "d873fc5f-d74b-5981-86b5-a29a2ea0878a",
+      "pilot": false,
+      "label": "Mercedes-Benz Clase A 2016/2018 (ICE_OR_MHEV)",
+      "technicalIdentity": "E1*2001/116*0470*16|12S1P2|MZAZ1502 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 39,
+      "candidateId": "f1f5679c-2fbc-5c98-9478-54823d453507",
+      "pilot": false,
+      "label": "Renault Mégane 2018 (ICE_OR_MHEV)",
+      "technicalIdentity": "E2*2007/46*0546*09|BF4|M6A6SF010000 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 41,
+      "candidateId": "0a20c493-fccb-53e1-9ebe-d65d124ea080",
+      "pilot": false,
+      "label": "Toyota RAV4 2020 (ICE_OR_MHEV)",
+      "technicalIdentity": "E6*2007/46*0289*02|AXAH52(N)|AXAH52L-ANXMBW(1C) — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 42,
+      "candidateId": "46ad6fa0-f0fc-520e-8c06-0b6c42f9c3f2",
+      "pilot": false,
+      "label": "Renault Mégane 2018 (ICE_OR_MHEV)",
+      "technicalIdentity": "E2*2007/46*0546*09|BF2|MR662A010000 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 43,
+      "candidateId": "09b9c876-e2c5-50a8-ae28-d696b293161f",
+      "pilot": false,
+      "label": "Peugeot 308 2020/2022 (ICE_OR_MHEV)",
+      "technicalIdentity": "E2*2007/46*0405*29|B|YHZJ-C22100 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 44,
+      "candidateId": "16c556ad-8321-5304-b7cf-f380a4320767",
+      "pilot": false,
+      "label": "Mercedes-Benz Clase A 2018/2020 (ICE_OR_MHEV)",
+      "technicalIdentity": "E1*2007/46*1829*03|X203T2|EZAA151B — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 45,
+      "candidateId": "936e39a6-f5b9-5dcb-89cd-08868fd864cb",
+      "pilot": false,
+      "label": "Peugeot 208 2025 (ICE_OR_MHEV)",
+      "technicalIdentity": "E2*2007/46*0639*35|P|HNEK-K1T500 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 47,
+      "candidateId": "862262ed-2508-50c6-ad51-d4925c05eb0d",
+      "pilot": false,
+      "label": "Nissan Qashqai 2020 (ICE_OR_MHEV)",
+      "technicalIdentity": "E5*2007/46*1029*04|F|F04 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 49,
+      "candidateId": "382dda1d-abd7-5e1c-8a0a-724be8d059a7",
+      "pilot": false,
+      "label": "Hyundai Tucson 2018 (ICE_OR_MHEV)",
+      "technicalIdentity": "E11*2007/46*2724*05|F5P31|M64ZZ1 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 51,
+      "candidateId": "2a3765b6-5ff7-53ce-8a01-c97b2c7df7ee",
+      "pilot": false,
+      "label": "Kia Niro 2018 (ICE_OR_MHEV)",
+      "technicalIdentity": "E4*2007/46*1139*02|C5P11|D61AY1 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 52,
+      "candidateId": "2d46a54a-51f9-510e-bbf5-929f926d952c",
+      "pilot": false,
+      "label": "Hyundai Tucson 2024/2025 (ICE_OR_MHEV)",
+      "technicalIdentity": "E5*2018/858*00001*09|F5P81|M61A11 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 54,
+      "candidateId": "ea7fea31-8f0d-53b8-8dbc-bc9b75dc2f43",
+      "pilot": false,
+      "label": "Peugeot 208 2020 (ICE_OR_MHEV)",
+      "technicalIdentity": "E2*2007/46*0639*07|P|HMHD-J1B100 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 58,
+      "candidateId": "ec6f2d6a-cc29-5bf9-9eb4-2d7cfd67447d",
+      "pilot": false,
+      "label": "BMW Serie 3 2016 (ICE_OR_MHEV)",
+      "technicalIdentity": "E1*2007/46*0314*17|8C31|6A250000 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 65,
+      "candidateId": "8d0a55c9-c135-56c0-8323-b23d9226dd43",
+      "pilot": false,
+      "label": "CUPRA Formentor 2022 (ICE_OR_MHEV)",
+      "technicalIdentity": "E9*2007/46*4008*11|CXDTTAX0|FM6CFM6C90044BI1AAC — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 72,
+      "candidateId": "5393a22a-fac0-5c44-9fe9-94aaf9b7a1a2",
+      "pilot": false,
+      "label": "BMW X3 2016 (ICE_OR_MHEV)",
+      "technicalIdentity": "E1*2007/46*0512*15|WZ51|6A250000 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "power"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.6153846153846154,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 11,
+      "candidateId": "712d2a4f-3c57-5a38-b30f-00800978aa85",
+      "pilot": false,
+      "label": "Kia Sportage 2022/2024/2025 (MHEV)",
+      "technicalIdentity": "E4*2018/858*00079*02|F5P21|M61A17 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 23,
+      "candidateId": "51eb1379-962c-5cee-a088-bac84fb2788b",
+      "pilot": false,
+      "label": "Hyundai Kona 2024/2025 (MHEV)",
+      "technicalIdentity": "E4*2018/858*00153*01|F5P22|M61AY1 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 40,
+      "candidateId": "ef8da154-e8d4-56fd-8384-de8c55d43d9e",
+      "pilot": false,
+      "label": "Nissan Qashqai 2024/2025 (HEV_OR_MHEV)",
+      "technicalIdentity": "E9*2018/858*11042*11|A|A41 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 46,
+      "candidateId": "ea767130-404b-5783-9f59-e40b66d261d0",
+      "pilot": false,
+      "label": "Audi A3 2024 (HEV_OR_MHEV)",
+      "technicalIdentity": "E1*2007/46*2060*27|SDFYAF1|FD7FD7CW002RT011C184BIBEM1MLN1B20 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 59,
+      "candidateId": "fcb54e91-b416-557a-b872-21a244fea2f1",
+      "pilot": false,
+      "label": "Hyundai Kona 2022/2024 (HEV_OR_MHEV)",
+      "technicalIdentity": "E4*2007/46*1259*16|F5P31|D61CY1Y1 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 60,
+      "candidateId": "520b6cb4-f583-53d7-9aa6-3e449fe95d48",
+      "pilot": false,
+      "label": "Toyota RAV4 2024/2025 (HEV_OR_MHEV)",
+      "technicalIdentity": "E6*2007/46*0289*08|AXAL52(N)|AXAL52L-ANXMBW(1J) — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 62,
+      "candidateId": "c6a16ddd-e197-58d1-9de4-21b6c2a89639",
+      "pilot": false,
+      "label": "Renault Clio 2024 (HEV_OR_MHEV)",
+      "technicalIdentity": "E2*2007/46*0676*23|BH2|N84WA3VA5300 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 63,
+      "candidateId": "30d7038b-8ec6-52a8-a343-55c331af830e",
+      "pilot": false,
+      "label": "Kia Niro 2022 (HEV_OR_MHEV)",
+      "technicalIdentity": "E4*2007/46*1139*12|C5P11|D61CY1 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 64,
+      "candidateId": "b61a4412-e84e-54cb-a28d-80646f0bcf09",
+      "pilot": false,
+      "label": "Toyota Corolla 2025 (HEV_OR_MHEV)",
+      "technicalIdentity": "E6*2007/46*0318*10|ZWE219(W)|ZWE219L-DWXNBW(6L) — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 68,
+      "candidateId": "6ca5b751-2679-5bcc-9279-bcee33222c20",
+      "pilot": false,
+      "label": "Kia Niro 2024/2025 (HEV_OR_MHEV)",
+      "technicalIdentity": "E9*2018/858*11241*03|C5P11|D61AY1 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 69,
+      "candidateId": "ba353843-9276-5db0-9be9-b41872620f85",
+      "pilot": false,
+      "label": "Hyundai Tucson 2024/2025 (HEV_OR_MHEV)",
+      "technicalIdentity": "E5*2018/858*00001*09|F5P41|A61B11 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 70,
+      "candidateId": "c4244cb1-a398-55a2-b7bd-b37199ace56c",
+      "pilot": false,
+      "label": "Škoda Octavia 2024 (HEV_OR_MHEV)",
+      "technicalIdentity": "E8*2007/46*0355*18|ACDFYAX0|NFD7FD7CW0024BIVL4N1A0A — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 71,
+      "candidateId": "181ec927-ecf3-5f02-a853-fc60e6790c4b",
+      "pilot": false,
+      "label": "Hyundai Kona 2024/2025 (HEV_OR_MHEV)",
+      "technicalIdentity": "E4*2018/858*00153*01|F5P42|D61CY1 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 74,
+      "candidateId": "8a430b5f-19ad-58b7-b8de-33a2a09f5d2b",
+      "pilot": false,
+      "label": "Peugeot 3008 2025 (HEV_OR_MHEV)",
+      "technicalIdentity": "E2*2018/858*00064*07|A|HPY1-A1AN00 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 75,
+      "candidateId": "bbf9e924-4d4e-55e3-9339-176f9e491457",
+      "pilot": false,
+      "label": "Kia Sportage 2024/2025 (HEV_OR_MHEV)",
+      "technicalIdentity": "E4*2018/858*00079*04|F5P41|A61B11 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 82,
+      "candidateId": "1eb55671-882a-5f88-a93b-b3fe84837431",
+      "pilot": false,
+      "label": "Peugeot 208 2025 (HEV_OR_MHEV)",
+      "technicalIdentity": "E2*2007/46*0639*36|P|HPX5-K1NN00 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 87,
+      "candidateId": "4d421a74-a585-58f3-8977-aade6292c65c",
+      "pilot": false,
+      "label": "Renault Clio 2024/2025 (HEV_OR_MHEV)",
+      "technicalIdentity": "E2*2007/46*0676*28|BH2|N84WA3VA530B — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 89,
+      "candidateId": "334cd6fa-82ef-5c14-98f9-78ccc3267044",
+      "pilot": false,
+      "label": "Mercedes-Benz Clase A 2025 (HEV_OR_MHEV)",
+      "technicalIdentity": "E1*2007/46*1829*24|X24JT2|FZAA451A — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 91,
+      "candidateId": "1af09337-8bd3-5549-add5-f005e4b8ad4b",
+      "pilot": false,
+      "label": "BMW X3 2022 (HEV_OR_MHEV)",
+      "technicalIdentity": "E1*2007/46*1797*13|55BZ|IAV500L0 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5384615384615384,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 17,
+      "candidateId": "7e709be0-1d1a-57c2-86df-83324f550516",
+      "pilot": false,
+      "label": "Volkswagen Golf 2018 (BEV)",
+      "technicalIdentity": "E1*2007/46*0623*33|GAC4EAZAX0|FA1FA1MD001E0GAON1ML01VR0N — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 32,
+      "candidateId": "33b7d427-f4e2-5ca7-98ab-46c9ac53b04a",
+      "pilot": false,
+      "label": "Hyundai Kona 2024/2025 (BEV)",
+      "technicalIdentity": "E4*2018/858*00168*02|F5E32|E11AZ1 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 1,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 61,
+      "candidateId": "dc4870a2-e4b6-5c41-b6f0-6c9678f3fff3",
+      "pilot": false,
+      "label": "Kia Niro 2022 (BEV)",
+      "technicalIdentity": "E4*2007/46*1139*12|C5E11|E11DY1 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "electric_range"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 66,
+      "candidateId": "12c0d2d4-13f7-51c6-989b-9cc6b33cf0b9",
+      "pilot": false,
+      "label": "Kia Sportage 2022 (PHEV)",
+      "technicalIdentity": "E4*2018/858*00079*01|F5P54|A63F11 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "electric_range"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 76,
+      "candidateId": "aad7b02d-5c1a-559a-af09-fc1ff6e2649f",
+      "pilot": false,
+      "label": "Tesla Model 3 2024/2025 (BEV)",
+      "technicalIdentity": "E4*2007/46*1293*39|H6LR|BFB1S5T1W — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 1,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 77,
+      "candidateId": "b2d80ce8-7b29-5b6e-87c3-df6077bbc9d1",
+      "pilot": false,
+      "label": "BMW X3 2022 (PHEV)",
+      "technicalIdentity": "E1*2007/46*1797*14|61DP|IAW50000 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 78,
+      "candidateId": "e90fafb4-c5d2-5a75-818e-fb6e4e48dcfb",
+      "pilot": false,
+      "label": "Peugeot 3008 2020 (PHEV)",
+      "technicalIdentity": "E2*2007/46*0534*12|4|5GBU-C1J000 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 79,
+      "candidateId": "38f4b49f-a3d3-5afd-a29e-3a5bda76022c",
+      "pilot": false,
+      "label": "Volkswagen Golf 2024 (PHEV)",
+      "technicalIdentity": "E1*2007/46*2014*23|ACDGEAX0|FD6FD6DD001P4BISON1ML1CVR2B00 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "electric_range"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 80,
+      "candidateId": "a4209857-2146-56bd-8130-ec6f3b3fca11",
+      "pilot": false,
+      "label": "Volkswagen Golf 2025 (PHEV)",
+      "technicalIdentity": "E1*2007/46*2014*28|ACDUCBX0|FD6FD6DD001H4WESON1MLB0 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 83,
+      "candidateId": "affa382d-4fb7-53ab-9d89-5684ae2c2791",
+      "pilot": false,
+      "label": "CUPRA Formentor 2024/2025 (PHEV)",
+      "technicalIdentity": "E9*2007/46*4008*24|CXDUCBX0|FD6PFD6DD0014WE1AAAKM1 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 84,
+      "candidateId": "871dd562-89f0-5577-9acb-50e799e3fca7",
+      "pilot": false,
+      "label": "Tesla Model 3 2025 (BEV)",
+      "technicalIdentity": "E4*2007/46*1293*47|H6MR|BFB1S5T1W — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 1,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 85,
+      "candidateId": "03123a29-f5e3-561d-951a-50f3bc2acefb",
+      "pilot": false,
+      "label": "Renault Mégane 2022 (BEV)",
+      "technicalIdentity": "E2*2018/858*00018*03|BE2|J1EEA1000000 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 88,
+      "candidateId": "7e613212-aa6f-523d-88ee-99b035048397",
+      "pilot": false,
+      "label": "Tesla Model 3 2022 (BEV)",
+      "technicalIdentity": "E4*2007/46*1293*25|E6LR|BQB1S5N — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "electric_range"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 90,
+      "candidateId": "d569d556-d3d8-5980-a25b-01b38927c12f",
+      "pilot": false,
+      "label": "Volkswagen Golf 2020/2022 (BEV)",
+      "technicalIdentity": "E1*2007/46*0623*41|GAC4EBSAX0|FA1FA1MD001E0GAON1ML1BVR0NA — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "electric_range"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 92,
+      "candidateId": "64fd2ff2-50fc-5df2-bf53-9cfc755ff093",
+      "pilot": false,
+      "label": "Tesla Model Y 2022 (BEV)",
+      "technicalIdentity": "E4*2007/46*1293*25|Y5LD|PZP4S5T3 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "electric_range"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 93,
+      "candidateId": "884273a1-d3c3-5f6e-b352-130f89032ab1",
+      "pilot": false,
+      "label": "Tesla Model Y 2025 (BEV)",
+      "technicalIdentity": "E4*2007/46*1293*43|Y5LR|BLB3S5T3X — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 94,
+      "candidateId": "b47a401d-f4c8-5f51-9194-d2654c71d400",
+      "pilot": false,
+      "label": "Kia Niro 2022/2024/2025 (BEV)",
+      "technicalIdentity": "E9*2018/858*11241*01|C5E11|E11BY1 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [
+        "electric_range"
+      ],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 95,
+      "candidateId": "8a82f1b4-13d0-57db-9050-919345a35aac",
+      "pilot": false,
+      "label": "BMW X3 2022 (BEV)",
+      "technicalIdentity": "E1*2007/46*2130*02|41DU|0AW5000S — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 96,
+      "candidateId": "d27a1853-fdbd-5ccd-b932-fb6531feb76e",
+      "pilot": false,
+      "label": "Peugeot 3008 2024/2025 (BEV)",
+      "technicalIdentity": "E2*2018/858*00064*02|C|ZKZX-A0E000 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 97,
+      "candidateId": "b5523cb2-642e-5ad0-81d2-543253c1c5d0",
+      "pilot": false,
+      "label": "Peugeot 208 2025 (BEV)",
+      "technicalIdentity": "E2*2007/46*0639*35|H|ZKWZ-K0R000 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 98,
+      "candidateId": "126014f8-7db8-5c88-8e4b-6da9d8566e1f",
+      "pilot": false,
+      "label": "Renault Mégane 2024/2025 (BEV)",
+      "technicalIdentity": "E2*2018/858*00018*09|BE2|J2EEA5F000B0 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 1,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 99,
+      "candidateId": "316d9e1b-f083-579c-a73c-9aa008397f79",
+      "pilot": false,
+      "label": "Tesla Model 3 2020 (BEV)",
+      "technicalIdentity": "E4*2007/46*1293*07|E3D|BB1N — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 100,
+      "candidateId": "d18243a7-27cc-5b74-b343-5e8b14d8d865",
+      "pilot": false,
+      "label": "BMW X3 2024/2025 (BEV)",
+      "technicalIdentity": "E1*2007/46*2130*07|41DU|0AW5000B — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height"
+      ],
+      "criticalCompleteness": 0.5,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    },
+    {
+      "rank": 67,
+      "candidateId": "5c9f5927-a5f5-55e0-833b-5c5e2193d4b7",
+      "pilot": false,
+      "label": "Kia Niro 2020 (PHEV)",
+      "technicalIdentity": "E4*2007/46*1139*08|C5P11|D61CY1 — EXACT (EEA+RDW)",
+      "commercialIdentity": "PARTIAL",
+      "usableFields": [],
+      "verifiedFieldsRightsPending": [
+        "transmission",
+        "seats",
+        "length",
+        "width",
+        "height",
+        "top_speed"
+      ],
+      "criticalCompleteness": 0.375,
+      "rights": "S01 conditional (CC BY); S11/S13 pending human approval; S15 denied; S16–S19 pending",
+      "openConflicts": 0,
+      "missingBlockers": [
+        "generation not verified",
+        "model year not verified",
+        "commercial identity (trim) not exact",
+        "critical keys missing",
+        "rights pending"
+      ],
+      "previewReady": false,
+      "publicReady": false
+    }
+  ]
+}

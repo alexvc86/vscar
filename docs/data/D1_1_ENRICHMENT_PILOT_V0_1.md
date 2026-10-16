@@ -11,7 +11,7 @@ Candidatos D1 reales con claves EEA completas (TAN/Va/Ve). Mezcla de identidades
 | # | Candidato | Por qué |
 |---|---|---|
 | 3 · 1 | Golf 2018 `*33` (NEDC) · `*35` (WLTP) | EXACT; ya en el catálogo → permiten medir con el sistema de calidad real |
-| 2 · 4 | BYD SEAL (2) | EXACT por código IDAE (= Va/Ve). **#2 es la misma identidad que DC-08 del catálogo** (el fixture guarda el TAN sin extensión: D1 no lo marcó como solapamiento) |
+| 2 · 4 | BYD SEAL (2) | EXACT por código IDAE (= Va/Ve). **#2 es la misma identidad que DC-08 del catálogo** (D1 no lo marcó como solapamiento; D1.2: el fixture DC-08 no guarda TAN, solo Va/Ve) |
 | 76 | Tesla Model 3 2024/25 | BEV UNCONFIRMED |
 | 77 | BMW X3 xDrive30e 2022 | PHEV UNCONFIRMED (X3 de la lista orientativa) |
 | 55 | SEAT León SP 2024 | AMBIGUOUS (único León de la lista D1) |

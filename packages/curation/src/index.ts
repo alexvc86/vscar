@@ -6,3 +6,7 @@ export * from './assess.ts';
 export * from './pipeline.ts';
 export * from './enrich.ts';
 export * from './rdw-spec-values.ts';
+export * from './commercial.ts';
+export * from './catalog-references.ts';
+export * from './open-dataset-match.ts';
+export * from './multi-source.ts';

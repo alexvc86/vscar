@@ -460,6 +460,79 @@ Siguiente:
 - **Step 7c — Comparison URL / Share / richer catalog pages**.
 - En el data workstream: primeras imágenes con derechos verificados (propias o licenciadas) y derechos de S08/S02/S04 para el canal PUBLIC.
 
+## STEP D1.5 — Multi-Source Catalog Integration & First Import Readiness · ⚠️ PARTIAL (investigación válida · 0 importables con las reglas aprobadas) (2026-10-16)
+
+| Entregable | Estado |
+|---|---|
+| S15 Opendatabay CSV completo — [D1_5_OPENDATABAY_FULL_CSV_AUDIT](data/D1_5_OPENDATABAY_FULL_CSV_AUDIT.md) | ✅ 70.823 filas / 78 col / 255 marcas; hasta 2020; derechos ❌ |
+| S16 autoseeker `models.csv` — [D1_5_AUTOSEEKER_CSV_AUDIT](data/D1_5_AUTOSEEKER_CSV_AUDIT.md) | ✅ 281 filas; CC BY 4.0 verificada; copia = endpoint publicado; granularidad MODEL 57 / GENERATION 142 / POWERTRAIN 82 |
+| S17 OpenEV · S19 Kilowatt — [D1_5_OPEN_EV_GITHUB_AUDIT](data/D1_5_OPEN_EV_GITHUB_AUDIT.md) | ✅ v1.24.0 (1.189 BEV, CDLA-P-2.0) · archivado (1.321, MIT+atribución) |
+| S18 VehiclesDB — [D1_5_VEHICLESDB_AUDIT](data/D1_5_VEHICLESDB_AUDIT.md) | ✅ v2026.10.4, taxonomía (100/100 candidatas, disponibles en ES) |
+| Matching multi-fuente y matriz FOUND/MATCHED/IDENTITY_VERIFIED/RIGHTS_APPROVED/USABLE — [D1_5_MULTI_SOURCE_MATCHING](data/D1_5_MULTI_SOURCE_MATCHING.md) | ✅ granularidad obligatoria; conflictos conservados |
+| 20 / 100 — [D1_5_20_VARIANT_READINESS](data/D1_5_20_VARIANT_READINESS.md) · [D1_5_100_VARIANT_COVERAGE](data/D1_5_100_VARIANT_COVERAGE.md) | ✅ 0 importables hoy; 18/20 y 92/100 aptas para curación técnica **si** se aprueba ADR-019 (B); 0 seleccionables |
+| Derechos — [D1_5_RIGHTS_DECISION](data/D1_5_RIGHTS_DECISION.md) | ✅ S15 ❌ · S16–S19 ❓ · ninguna aprobada para PUBLIC |
+
+Resultados:
+- Generación verificada 0/20, año-modelo 0/20, acabado EXACT 3/20 (sin cambio).
+- Maletero: MATCHED 3/20, verificado 0. 0–100: MATCHED 2/20, verificado 0. Batería, AC y DC: MATCHED 1/20 cada uno (#2, OpenEV), verificados 0.
+- Completitud crítica del lote: 54,6 % → 54,6 % utilizable (58,3 % si la investigación fuera utilizable). Valores nuevos compatibles con derechos: 0.
+- Conflictos conservados: BYD SEAL ×2; 7 oficial ↔ externo en las 100 (autonomía WLTP EEA vs OpenEV, anchura y Vmax RDW vs S15).
+- CSV aportados en `docs/` excluidos de Git (`.gitignore`) y copiados a `data/raw/`.
+
+## STEP D1.4 — Open Automotive Dataset Validation & Enrichment Pilot · ⚠️ SOURCE AUDIT PASS · ENRICHMENT PARTIAL (0 valores reutilizables) (2026-10-16)
+
+| Entregable | Estado |
+|---|---|
+| Auditoría — [D1_4_OPEN_DATASET_SOURCE_AUDIT](data/D1_4_OPEN_DATASET_SOURCE_AUDIT.md) | ✅ S14 gor3a, S15 Opendatabay, Kaggle, filippos/CarDatabase (NOT FOUND), NHTSA vPIC (US) |
+| gor3a v1.0.2 descargado (SHA-256), recuentos reales, paridad JSON/CSV/SQLite, inventario — [D1_4_GOR3A_DATASET_ANALYSIS](data/D1_4_GOR3A_DATASET_ANALYSIS.md) | ✅ 164 · 2.649 · 7.217 · 30.535 (README: 2.621/7.169/30.390) |
+| Opendatabay — [D1_4_OPENDATABAY_ANALYSIS](data/D1_4_OPENDATABAY_ANALYSIS.md) | ⛔ BLOCKED: CSV completo tras cuenta; "CC0" vs licencia enlazada no comercial; solo muestra (100 filas) |
+| Matching 20 / 100 — [D1_4_TWENTY_VARIANT_MATCHING](data/D1_4_TWENTY_VARIANT_MATCHING.md) · [D1_4_100_VARIANT_COVERAGE](data/D1_4_100_VARIANT_COVERAGE.md) | ✅ niveles L1/L2/L3, falsos positivos, contraste RDW; 0 identidades verificadas |
+| Derechos ODbL / autoevolution — [D1_4_RIGHTS_AND_ODBL_ASSESSMENT](data/D1_4_RIGHTS_AND_ODBL_ASSESSMENT.md) | ✅ propuesta para revisión jurídica; S14 ❓, S15 ❌ |
+| D2 — [D1_4_D2_READINESS](data/D1_4_D2_READINESS.md) | ✅ 0 curables · ADR-019: recomendación **B** (sigue PROPOSED) |
+
+Resultados:
+- 20 D2: STRONG 3 · WEAK 7 · AMBIGUOUS 2 · REJECTED 1 · NOT_FOUND 7. Generación candidata 18 (10 únicas), **verificada 0**. Maletero encontrado 9, 0–100 7; **reutilizables 0**.
+- 100: STRONG 25 · WEAK 8 · AMBIGUOUS 17 · REJECTED 6 · NOT_FOUND 44 (lagunas de motor, no de modelo).
+- Las "generaciones" de gor3a son "modelo + carrocería + año de inicio": sin código, 0 "facelift", `bodyType` nulo en todas.
+- Completitud crítica del lote: 54,6 % → 54,6 %. Valores S14 solo en `data/research/d14/` (fuera de Git); `docs/data/d14/` sin valores.
+
+## STEP D1.3 — Historical Vehicle Catalog Acquisition & Commercial Identity Matching · ⚠️ SOURCE AUDIT PASS · ACQUISITION PARTIAL (restringidas no adquiridas) · ENRICHMENT PARTIAL (2026-10-16)
+
+| Entregable | Estado |
+|---|---|
+| Auditoría coches.net / km77 / JATO — [D1_3_HISTORICAL_CATALOG_SOURCE_AUDIT](data/D1_3_HISTORICAL_CATALOG_SOURCE_AUDIT.md) · [coches.net](data/D1_3_COCHES_NET_COVERAGE.md) · [km77](data/D1_3_KM77_COVERAGE.md) · [JATO](data/D1_3_JATO_ACCESS_AND_LICENSING.md) | ✅ términos, robots y cobertura por muestra; ninguna permite extraer/almacenar/reutilizar |
+| Correspondencia comercial↔técnica — [D1_3_COMMERCIAL_IDENTITY_MATCHING](data/D1_3_COMMERCIAL_IDENTITY_MATCHING.md) · `catalog-references.ts` | ✅ 19 referencias sin valores; 0 CONFIRMED (ninguna ficha publica TAN) |
+| Flujo A: Traficom S13 (CC BY 4.0) — lector ZIP + agregación por clave exacta — [D1_3_DATA_ACQUISITION_DECISION](data/D1_3_DATA_ACQUISITION_DECISION.md) | ✅ adquirido (SHA-256, manifiestos); S13 ❓ en la matriz |
+| Flujo B: coches.net, km77, JATO | ✅ **no adquiridos** (solo referencias); RFI JATO preparado, no enviado |
+| Lote D2 — [D1_3_D2_READINESS](data/D1_3_D2_READINESS.md) | ✅ clasificado · **0 importables** · ADR-019: recomendación **C** (sigue PROPOSED, no implementado) |
+
+Resultados:
+- Catálogos: fichas encontradas en 9 / 9 candidatas buscadas (km77 9, coches.net 7); correspondencias: 0 CONFIRMED, 5 COMPATIBLE, 3 AMBIGUOUS, 1 REJECTED (Model Y AWD vs RDW RWD).
+- Generación y año-modelo: **0 / 20** también en los catálogos (solo periodos y años de URL).
+- Traficom: 74 / 100 claves con vehículos FI (14.974); caja de cambios evidenciada 3 → **11 / 20** (3 con muestra pequeña), carrocería 2 → **4 / 20**.
+- Completitud crítica del lote: 54,6 % → 54,6 % (nada utilizable de los catálogos).
+- Ready for D2: **NO** — el bloqueo vinculante es de derechos (licencia JATO / autorización de fabricantes), además de generación y año-modelo.
+
+## STEP D1.2 — Commercial Identity Resolution & Rights Clearance · ⚠️ SOURCE RESEARCH PASS · COMMERCIAL IDENTITY UNLOCK PARTIAL (2026-10-16)
+
+| Entregable | Estado |
+|---|---|
+| Identidad comercial separada de la técnica (mismo `IdentityStatus`), validador anti-invención (cada valor literal en un texto oficial citado) — [D1_2_COMMERCIAL_IDENTITY_AUDIT_V0_1](data/D1_2_COMMERCIAL_IDENTITY_AUDIT_V0_1.md) | ✅ |
+| Curación versionada [`d12/commercial-identity-v1.json`](data/d12/commercial-identity-v1.json): 22 entradas válidas (D2 + Golf del catálogo) | ✅ |
+| Alternativas para los campos que faltan — [D1_2_MANUFACTURER_DATA_ALTERNATIVES_V0_1](data/D1_2_MANUFACTURER_DATA_ALTERNATIVES_V0_1.md) | ✅ ninguna fuente abierta para maletero, 0–100, garantía, batería bruta, CS PHEV |
+| Expediente RDW S11 — [D1_2_RDW_RIGHTS_APPROVAL_DOSSIER](data/D1_2_RDW_RIGHTS_APPROVAL_DOSSIER.md) | ✅ **READY_FOR_HUMAN_APPROVAL** (matriz sin cambios: ❓) |
+| BYD SEAL — [D1_2_BYD_SEAL_CONFLICT_RESOLUTION](data/D1_2_BYD_SEAL_CONFLICT_RESOLUTION.md) | ⚠️ conflicto UNRESOLVED (base de medida distinta probable); duplicado DC-08 detectado |
+| Duplicados: estrategia canónica `catalogOverlap` + corrección versionada [`d12/catalog-overlap-v1.json`](data/d12/catalog-overlap-v1.json) | ✅ |
+| Lote D2 — [D1_2_D2_BATCH_READINESS_V0_1](data/D1_2_D2_BATCH_READINESS_V0_1.md) · propuesta [ADR-019](adr/ADR-019-technical-identity-without-confirmed-trim.md) (PROPOSED) | ✅ clasificado · 0 importables hoy |
+
+Resultados:
+- Comercial EXACT en el lote D2: **2 → 3** (nuevo: Peugeot 308 #26, designación oficial única 536/536, CC BY). PARTIAL 17, UNCONFIRMED 0. Los Golf 2018 del catálogo pasan de EXACT a **PARTIAL** comercial (el acabado "Advance" era inferencia).
+- RDW `handelsbenaming` no es identidad comercial: lista todos los nombres permitidos (BYD > 80; Peugeot tipo M = 3008 + 5008).
+- Una versión técnica se vende con varios acabados (3008 PHEV: 5) → el acabado no es 1:1 con la variante técnica.
+- **0 / 20 importables** con las reglas vigentes: `generation_code` y `model_year` sin fuente oficial abierta.
+- BYD SEAL: los valores son iguales en todas las extensiones y revisiones (no es revisión); RDW publica un límite de rango ~4 % mejor; conflicto abierto.
+- DC-08 no guarda TAN (solo Va/Ve): corrección del diagnóstico de D1.1.
+
 ## STEP D1.1 — RDW + GIAVEH Technical Data Enrichment Pilot · ⚠️ SOURCE AUDIT PASS · ENRICHMENT PARTIAL (2026-10-16)
 
 | Entregable | Estado |
@@ -477,7 +550,7 @@ Resultados:
 - **Calidad real** (`@vscar/quality`) sobre Golf 2018 `*33`/`*35` del catálogo: completitud 9,5 % → **26,7 %**, Eco pasa a AVAILABLE (etiqueta `C` con la norma Euro de RDW); Size/Practicality solo fallan por maletero.
 - RDW **no** confirma identidad comercial (trim): EXACT 4 → 4. Faltan siempre maletero, 0–100, precio y garantía (S08). Consumo CS de PHEV: 1 de 10.
 - 4 conflictos EEA ↔ RDW conservados (BYD SEAL: consumo eléctrico y autonomía). RDW rellena campos "NEDC" en homologaciones WLTP (anomalía: ignorados).
-- Corrección documentada (no aplicada a D1): el candidato D1 #2 (BYD SEAL `SE2R1C`/`2NTE5F002NL1`) es la misma identidad que DC-08 del catálogo; D1 no lo detectó porque el fixture guarda el TAN sin extensión.
+- Corrección documentada (no aplicada a D1): el candidato D1 #2 (BYD SEAL `SE2R1C`/`2NTE5F002NL1`) es la misma identidad que DC-08 del catálogo. *(Diagnóstico corregido en D1.2: DC-08 no guarda TAN en absoluto, solo Va/Ve.)*
 
 Siguiente: D2 condicionado a CoC/ITV (identidad comercial), decisión S08 y aprobación humana de S11.
 

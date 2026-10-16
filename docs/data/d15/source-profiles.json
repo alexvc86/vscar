@@ -1,0 +1,118 @@
+{
+  "S15": {
+    "rows": 70823,
+    "columns": 78,
+    "makes": 255,
+    "models": 2995,
+    "generations": 7122,
+    "series": 11578,
+    "duplicateRowsExceptId": 2657,
+    "yearRange": [
+      1904,
+      2020
+    ],
+    "yearToZeroOrEmpty": 3790,
+    "rowsFrom2010": 29102,
+    "generationLabels": {
+      "ordinal": 42300,
+      "withRestyling": 24654,
+      "codeOnly": 28504
+    },
+    "powerBasis": {
+      "kwColumn": 7620,
+      "psConverted": 52257,
+      "none": 10946
+    },
+    "nullRatePct": {
+      "Body_type": 26.2,
+      "number_of_seats": 8.7,
+      "length_mm": 8.7,
+      "minimum_trunk_capacity_l": 35.1,
+      "max_trunk_capacity_l": 39.7,
+      "acceleration_0_100_km/h_s": 43.3,
+      "max_speed_km_per_h": 39.2,
+      "engine_hp": 15.5,
+      "max_power_kw": 89.2,
+      "maximum_torque_n_m": 15.8,
+      "capacity_cm3": 15.5,
+      "transmission": 15.5,
+      "drive_wheels": 15.5,
+      "fuel_tank_capacity_l": 18.3,
+      "mixed_fuel_consumption_per_100_km_l": 42.7,
+      "CO2_emissions_g/km": 97.4,
+      "emission_standards": 68.6,
+      "battery_capacity_KW_per_h": 100,
+      "electric_range_km": 100,
+      "charging_time_h": 100,
+      "country_of_origin": 82.5
+    },
+    "granularity": {
+      "dimensionsBootSeats": "SERIES (generation + body): identical across the engine/gearbox rows of a series",
+      "engineFields": "POWERTRAIN (row = engine + gearbox; `Trim` is not a commercial trim)"
+    }
+  },
+  "S16": {
+    "rows": 281,
+    "columns": 20,
+    "makes": 52,
+    "nonEmpty": {
+      "powerPs": 279,
+      "wltpRangeKm": 154,
+      "batteryKwh": 166,
+      "dcKw": 128,
+      "towingKg": 181,
+      "bootL": 266,
+      "wltpL100": 76,
+      "wltpKwh100": 106,
+      "co2": 0
+    },
+    "granularity": {
+      "MODEL": 57,
+      "GENERATION": 142,
+      "POWERTRAIN": 82
+    },
+    "multiFuelRows": 57,
+    "status": {
+      "orderable": 273,
+      "discontinued": 8
+    },
+    "unmappedBody": [],
+    "note": "one representative row per model/generation (NL-oriented \"orderable\" snapshot); battery basis (gross/usable) not declared; trekgewicht 0 treated as absent"
+  },
+  "S17": {
+    "version": "v1.24.0",
+    "records": 1189,
+    "parseIssues": 0,
+    "makes": 65,
+    "withGross": 1185,
+    "withNet": 1189,
+    "grossEqualsNet": 229,
+    "withAc": 1189,
+    "withDc": 1144,
+    "withWltpRange": 739,
+    "withAccel": 959,
+    "withCargo": 319,
+    "europeanMarket": 781,
+    "marketEs": 18,
+    "esPrice": 0,
+    "batteryWarranty": 162,
+    "sourceDomainOnly": 255
+  },
+  "S18": {
+    "version": "2026.10.4",
+    "license": "CC-BY-4.0",
+    "models": 15068,
+    "cars": 5541,
+    "carsAvailableEs": 1222,
+    "makes": 934
+  },
+  "S19": {
+    "archived": true,
+    "lastDataUpdate": "2025-04-12T15:03:50.025Z",
+    "records": 1321,
+    "withUsable": 1321,
+    "withDc": 1321,
+    "yearsFrom2024": 256,
+    "perRecordSources": 0
+  }
+}

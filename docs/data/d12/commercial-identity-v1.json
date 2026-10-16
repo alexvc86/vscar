@@ -1,0 +1,678 @@
+{
+  "artifactVersion": 1,
+  "step": "D1.2",
+  "curatedAt": "2026-10-16",
+  "curator": "Claude (assistant) — pending human review",
+  "rules": [
+    "technical identity (TAN with extension + Va + Ve) and commercial identity are evaluated separately (ADR-007)",
+    "every commercial value must appear literally in a cited official text (validated by d12-build)",
+    "EXACT requires a single evidenced trim; EEA designations need ≥ 95 % of the exact-key registrations",
+    "RDW handelsbenaming lists all permitted names of an approval and is never commercial evidence",
+    "IDAE texts are not redistributed: S02 evidence is a row reference resolved from the local raw file",
+    "generation and model year are left null: no open official source states them"
+  ],
+  "entries": [
+    {
+      "candidateId": "51873620-871c-5749-8b99-b497d3ead6fc",
+      "rank": 3,
+      "technicalIdentityKey": "E1*2007/46*0623*33|GAC4DACAX0|FM6FM6AJ015N7MVON1ML79VR2N",
+      "commercialBrand": "Volkswagen",
+      "commercialGeneration": null,
+      "commercialModelYear": null,
+      "market": "ES",
+      "commercialModel": "GOLF",
+      "evidence": [
+        {
+          "sourceId": "S01",
+          "record": "2018F:E1*2007/46*0623*33|GAC4DACAX0|FM6FM6AJ015N7MVON1ML79VR2N",
+          "field": "Cn",
+          "text": "GOLF",
+          "registrations": 140,
+          "share": 1
+        }
+      ],
+      "identityConfidence": "PARTIAL",
+      "evidenceRights": "CONDITIONAL",
+      "notes": [
+        "official ES registration designation (EEA Cn) names the model only for this exact key; trim not evidenced",
+        "D1 counted this identity EXACT through the Step 4c curated homologation; the trim link (\"Advance\") was a curator inference (HOMOLOGATION_MATCH_REPORT) → commercial identity re-audited as PARTIAL; technical identity stays EXACT"
+      ]
+    },
+    {
+      "candidateId": "f24ce616-edd4-5f57-aeaf-edbb5adc30ed",
+      "rank": 1,
+      "technicalIdentityKey": "E1*2007/46*0623*35|GAC4DACAX0|FM6FM6AJ015N7CPON1ML1BVR2NA",
+      "commercialBrand": "Volkswagen",
+      "commercialGeneration": null,
+      "commercialModelYear": null,
+      "market": "ES",
+      "commercialModel": "GOLF",
+      "evidence": [
+        {
+          "sourceId": "S01",
+          "record": "2018F:E1*2007/46*0623*35|GAC4DACAX0|FM6FM6AJ015N7CPON1ML1BVR2NA",
+          "field": "Cn",
+          "text": "GOLF",
+          "registrations": 523,
+          "share": 1
+        }
+      ],
+      "identityConfidence": "PARTIAL",
+      "evidenceRights": "CONDITIONAL",
+      "notes": [
+        "official ES registration designation (EEA Cn) names the model only for this exact key; trim not evidenced",
+        "same re-audit as the *33 homologation: trim \"Advance\" not evidenced by an official source"
+      ]
+    },
+    {
+      "candidateId": "50b7e964-064d-5103-bfa8-635fa35e5fbf",
+      "rank": 2,
+      "technicalIdentityKey": "E13*2018/858*00639*03|SE2R1C|2NTE5F002NL1",
+      "commercialBrand": "BYD",
+      "commercialGeneration": null,
+      "commercialModelYear": null,
+      "market": "ES",
+      "commercialModel": "SEAL",
+      "commercialTrim": "Design",
+      "evidence": [
+        {
+          "sourceId": "S01",
+          "record": "2025P:E13*2018/858*00639*03|SE2R1C|2NTE5F002NL1",
+          "field": "Cn",
+          "text": "BYD SEAL",
+          "registrations": 1399,
+          "share": 1
+        },
+        {
+          "sourceId": "S02",
+          "record": "S02:cbfab8b7c811:L10709",
+          "field": "Modelo+Vehiculo"
+        },
+        {
+          "sourceId": "S02",
+          "record": "S02:cbfab8b7c811:L10711",
+          "field": "Modelo+Vehiculo"
+        }
+      ],
+      "identityConfidence": "EXACT",
+      "evidenceRights": "PENDING_REVIEW",
+      "notes": [
+        "IDAE prints Va/Ve SE2R1C/2NTE5F002NL1 next to the trim Design (Step 4c finding); EEA designation BYD SEAL for the exact TAN",
+        "same identity as catalogue DC-08 (fixture TAN without extension): PROBABLE_DUPLICATE, see catalog-overlap-v1.json",
+        "trim evidence depends on S02 (rights ❓): not publishable until S02 is cleared or another source corroborates"
+      ]
+    },
+    {
+      "candidateId": "8848ea66-9eff-53cb-9967-a0981c48223c",
+      "rank": 4,
+      "technicalIdentityKey": "E13*2018/858*00639*00|SE2D1C|1NXE5E001NL1",
+      "commercialBrand": "BYD",
+      "commercialGeneration": null,
+      "commercialModelYear": null,
+      "market": "ES",
+      "commercialModel": "SEAL",
+      "commercialTrim": "Excellence AWD",
+      "evidence": [
+        {
+          "sourceId": "S01",
+          "record": "2024F+2025P:E13*2018/858*00639*00|SE2D1C|1NXE5E001NL1",
+          "field": "Cn",
+          "text": "BYD SEAL",
+          "registrations": 556,
+          "share": 1
+        },
+        {
+          "sourceId": "S02",
+          "record": "S02:cbfab8b7c811:L10710",
+          "field": "Modelo+Vehiculo"
+        },
+        {
+          "sourceId": "S02",
+          "record": "S02:cbfab8b7c811:L10717",
+          "field": "Modelo+Vehiculo"
+        }
+      ],
+      "identityConfidence": "EXACT",
+      "evidenceRights": "PENDING_REVIEW",
+      "notes": [
+        "IDAE also prints the same Va/Ve code SE2D1C/1NXE5E001NL1 on BYD HAN rows (L10696, L10697): Va/Ve is not unique across models; the exact TAN *00 is registered in ES only as BYD SEAL (EEA, 556/556), which disambiguates",
+        "trim evidence depends on S02 (rights ❓)"
+      ]
+    },
+    {
+      "candidateId": "b36b0cb8-aa96-5a2f-adf4-fbf6bde68064",
+      "rank": 5,
+      "technicalIdentityKey": "E4*2018/858*00079*00|F5P11|M61A11",
+      "commercialBrand": "Kia",
+      "commercialGeneration": null,
+      "commercialModelYear": null,
+      "market": "ES",
+      "commercialModel": "SPORTAGE",
+      "evidence": [
+        {
+          "sourceId": "S01",
+          "record": "2022F:E4*2018/858*00079*00|F5P11|M61A11",
+          "field": "Cn",
+          "text": "SPORTAGE",
+          "registrations": 2119,
+          "share": 1
+        }
+      ],
+      "identityConfidence": "PARTIAL",
+      "evidenceRights": "CONDITIONAL",
+      "notes": [
+        "official ES registration designation (EEA Cn) names the model only for this exact key; trim not evidenced"
+      ]
+    },
+    {
+      "candidateId": "785e17cc-5b85-56c6-bb08-86d1a80e9db5",
+      "rank": 6,
+      "technicalIdentityKey": "E2*2007/46*0676*28|BD2|AC6WA2SA500B",
+      "commercialBrand": "Renault",
+      "commercialGeneration": null,
+      "commercialModelYear": null,
+      "market": "ES",
+      "commercialModel": "CLIO",
+      "evidence": [
+        {
+          "sourceId": "S01",
+          "record": "2024F+2025P:E2*2007/46*0676*28|BD2|AC6WA2SA500B",
+          "field": "Cn",
+          "text": "CLIO",
+          "registrations": 4444,
+          "share": 1
+        }
+      ],
+      "identityConfidence": "PARTIAL",
+      "evidenceRights": "CONDITIONAL",
+      "notes": [
+        "official ES registration designation (EEA Cn) names the model only for this exact key; trim not evidenced"
+      ]
+    },
+    {
+      "candidateId": "ed79a5b6-d043-5c1e-93ae-9762587f1356",
+      "rank": 7,
+      "technicalIdentityKey": "E9*2018/858*11042*10|A|A35",
+      "commercialBrand": "Nissan",
+      "commercialGeneration": null,
+      "commercialModelYear": null,
+      "market": "ES",
+      "commercialModel": "QASHQAI",
+      "evidence": [
+        {
+          "sourceId": "S01",
+          "record": "2024F+2025P:E9*2018/858*11042*10|A|A35",
+          "field": "Cn",
+          "text": "NISSAN QASHQAI",
+          "registrations": 3226,
+          "share": 1
+        }
+      ],
+      "identityConfidence": "PARTIAL",
+      "evidenceRights": "CONDITIONAL",
+      "notes": [
+        "official ES registration designation (EEA Cn) names the model only for this exact key; trim not evidenced"
+      ]
+    },
+    {
+      "candidateId": "8331c894-0978-5951-98bb-0ffbfe548722",
+      "rank": 8,
+      "technicalIdentityKey": "E11*2007/46*2724*05|F5D51|M66ZZ1",
+      "commercialBrand": "Hyundai",
+      "commercialGeneration": null,
+      "commercialModelYear": null,
+      "market": "ES",
+      "commercialModel": "TUCSON",
+      "evidence": [
+        {
+          "sourceId": "S01",
+          "record": "2018F:E11*2007/46*2724*05|F5D51|M66ZZ1",
+          "field": "Cn",
+          "text": "TUCSON,IX35",
+          "registrations": 6672,
+          "share": 0.9996
+        },
+        {
+          "sourceId": "S01",
+          "record": "2020F:E11*2007/46*2724*05|F5D51|M66ZZ1",
+          "field": "Cn",
+          "text": "TUCSON IX35",
+          "registrations": 3,
+          "share": 0.0004
+        }
+      ],
+      "identityConfidence": "PARTIAL",
+      "evidenceRights": "CONDITIONAL",
+      "notes": [
+        "official ES registration designation (EEA Cn) names the model only for this exact key; trim not evidenced",
+        "EEA writes the approval name pair \"TUCSON,IX35\"; RDW lists IX35 and TUCSON for the same key"
+      ]
+    },
+    {
+      "candidateId": "25ae1749-3150-594d-b466-a10df54628ee",
+      "rank": 9,
+      "technicalIdentityKey": "E11*2007/46*3144*01|F5D51|M66ZZ1",
+      "commercialBrand": "Kia",
+      "commercialGeneration": null,
+      "commercialModelYear": null,
+      "market": "ES",
+      "commercialModel": "SPORTAGE",
+      "evidence": [
+        {
+          "sourceId": "S01",
+          "record": "2016F+2018F:E11*2007/46*3144*01|F5D51|M66ZZ1",
+          "field": "Cn",
+          "text": "SPORTAGE",
+          "registrations": 6278,
+          "share": 1
+        }
+      ],
+      "identityConfidence": "PARTIAL",
+      "evidenceRights": "CONDITIONAL",
+      "notes": [
+        "official ES registration designation (EEA Cn) names the model only for this exact key; trim not evidenced"
+      ]
+    },
+    {
+      "candidateId": "fc9f05a8-05ee-5be1-b5ad-dbabf1f52152",
+      "rank": 20,
+      "technicalIdentityKey": "E2*2007/46*0534*05|C|YHZJ-C2B000",
+      "commercialBrand": "Peugeot",
+      "commercialGeneration": null,
+      "commercialModelYear": null,
+      "market": "ES",
+      "commercialModel": "3008",
+      "evidence": [
+        {
+          "sourceId": "S01",
+          "record": "2018F+2020F:E2*2007/46*0534*05|C|YHZJ-C2B000",
+          "field": "Cn",
+          "text": "3008",
+          "registrations": 5736,
+          "share": 0.9995
+        },
+        {
+          "sourceId": "S01",
+          "record": "2018F:E2*2007/46*0534*05|C|YHZJ-C2B000",
+          "field": "Cn",
+          "text": "3008 ALLURE BLUEHDI 13",
+          "registrations": 3,
+          "share": 0.0005
+        }
+      ],
+      "identityConfidence": "PARTIAL",
+      "evidenceRights": "CONDITIONAL",
+      "notes": [
+        "official ES registration designation (EEA Cn) names the model only for this exact key; trim not evidenced",
+        "\"3008 ALLURE BLUEHDI 13\" appears on 3 of 5,739 registrations (0.05 %): not used as trim evidence",
+        "RDW type M lists both 3008 and 5008 for this key: RDW names are not commercial identity"
+      ]
+    },
+    {
+      "candidateId": "50eaa5bc-8a36-5672-86d1-bc3182932f42",
+      "rank": 22,
+      "technicalIdentityKey": "E2*2007/46*0639*18|B|YHTK-J2B400",
+      "commercialBrand": "Peugeot",
+      "commercialGeneration": null,
+      "commercialModelYear": null,
+      "market": "ES",
+      "commercialModel": "208",
+      "commercialBody": "5P",
+      "commercialEngine": "BLUEHDI 100",
+      "commercialTransmission": "6 VEL MAN",
+      "commercialTrimSet": [
+        "ACTIVE",
+        "ACTIVE PACK"
+      ],
+      "evidence": [
+        {
+          "sourceId": "S01",
+          "record": "2022F:E2*2007/46*0639*18|B|YHTK-J2B400",
+          "field": "Cn",
+          "text": "208 5P ACTIVE BLUEHDI 100 S&S 6 VEL MAN",
+          "registrations": 1084,
+          "share": 0.9056
+        },
+        {
+          "sourceId": "S01",
+          "record": "2022F:E2*2007/46*0639*18|B|YHTK-J2B400",
+          "field": "Cn",
+          "text": "208 5P ACTIVE PACK BLUEHDI 100 S&S 6 VEL MAN",
+          "registrations": 113,
+          "share": 0.0944
+        }
+      ],
+      "identityConfidence": "PARTIAL",
+      "evidenceRights": "CONDITIONAL",
+      "notes": [
+        "one technical version registered under two trims (90.6 % / 9.4 %): trim not unique",
+        "no exact RDW match (TAN extension *18 only under other extensions)"
+      ]
+    },
+    {
+      "candidateId": "61c5fe51-c879-5c18-a3c5-2e65f37259dd",
+      "rank": 24,
+      "technicalIdentityKey": "E19*2007/46*0026*27|BEV|MT6WA45M520B",
+      "commercialBrand": "Dacia",
+      "commercialGeneration": null,
+      "commercialModelYear": null,
+      "market": "ES",
+      "commercialModel": "SANDERO",
+      "evidence": [
+        {
+          "sourceId": "S01",
+          "record": "2025P:E19*2007/46*0026*27|BEV|MT6WA45M520B",
+          "field": "Cn",
+          "text": "SANDERO",
+          "registrations": 3090,
+          "share": 1
+        }
+      ],
+      "identityConfidence": "PARTIAL",
+      "evidenceRights": "CONDITIONAL",
+      "notes": [
+        "official ES registration designation (EEA Cn) names the model only for this exact key; trim not evidenced"
+      ]
+    },
+    {
+      "candidateId": "bc56ae3e-6e0e-5ae3-b6b0-b93f168f2415",
+      "rank": 26,
+      "technicalIdentityKey": "E2*2007/46*0628*30|B|YHZT-B21700",
+      "commercialBrand": "Peugeot",
+      "commercialGeneration": null,
+      "commercialModelYear": null,
+      "market": "ES",
+      "commercialModel": "308",
+      "commercialBody": "5P",
+      "commercialEngine": "BLUEHDI 130",
+      "commercialTransmission": "EAT8",
+      "commercialTrim": "ALLURE",
+      "evidence": [
+        {
+          "sourceId": "S01",
+          "record": "2024F:E2*2007/46*0628*30|B|YHZT-B21700",
+          "field": "Cn",
+          "text": "308 5P ALLURE BLUEHDI 130 S&S EAT8",
+          "registrations": 536,
+          "share": 1
+        }
+      ],
+      "identityConfidence": "EXACT",
+      "evidenceRights": "CONDITIONAL",
+      "notes": [
+        "single official designation for 536/536 ES registrations of the exact key (EEA 2024 F, CC BY 4.0)",
+        "\"EAT8\" kept literally: its expansion (automatic gearbox) is not stated in the source"
+      ]
+    },
+    {
+      "candidateId": "5223d033-4cdc-592c-9d31-1ebe922e969e",
+      "rank": 27,
+      "technicalIdentityKey": "E6*2007/46*0437*04|MXPA11(H)|MXPA11L-BHFNBW(1E)",
+      "commercialBrand": "Toyota",
+      "commercialGeneration": null,
+      "commercialModelYear": null,
+      "market": "ES",
+      "commercialModel": "YARIS",
+      "evidence": [
+        {
+          "sourceId": "S01",
+          "record": "2022F+2024F:E6*2007/46*0437*04|MXPA11(H)|MXPA11L-BHFNBW(1E)",
+          "field": "Cn",
+          "text": "TOYOTA YARIS",
+          "registrations": 1756,
+          "share": 1
+        }
+      ],
+      "identityConfidence": "PARTIAL",
+      "evidenceRights": "CONDITIONAL",
+      "notes": [
+        "official ES registration designation (EEA Cn) names the model only for this exact key; trim not evidenced"
+      ]
+    },
+    {
+      "candidateId": "fd633c27-2ed9-570e-8aa3-2f6c1078ee12",
+      "rank": 48,
+      "technicalIdentityKey": "E6*2007/46*0437*04|MXPH11(H)|MXPH11L-CHXNBW(1E)",
+      "commercialBrand": "Toyota",
+      "commercialGeneration": null,
+      "commercialModelYear": null,
+      "market": "ES",
+      "commercialModel": "YARIS",
+      "evidence": [
+        {
+          "sourceId": "S01",
+          "record": "2022F+2024F+2025P:E6*2007/46*0437*04|MXPH11(H)|MXPH11L-CHXNBW(1E)",
+          "field": "Cn",
+          "text": "TOYOTA YARIS",
+          "registrations": 4936,
+          "share": 1
+        }
+      ],
+      "identityConfidence": "PARTIAL",
+      "evidenceRights": "CONDITIONAL",
+      "notes": [
+        "official ES registration designation (EEA Cn) names the model only for this exact key; trim not evidenced"
+      ]
+    },
+    {
+      "candidateId": "0244eada-7c20-57d6-94fc-12606bdbf902",
+      "rank": 28,
+      "technicalIdentityKey": "E1*2007/46*1829*16|X21CT2|HZAA151C",
+      "commercialBrand": "Mercedes-Benz",
+      "commercialGeneration": null,
+      "commercialModelYear": null,
+      "market": "ES",
+      "commercialModel": "A 200 D",
+      "evidence": [
+        {
+          "sourceId": "S01",
+          "record": "2022F+2024F:E1*2007/46*1829*16|X21CT2|HZAA151C",
+          "field": "Cn",
+          "text": "A 200 D",
+          "registrations": 770,
+          "share": 1
+        }
+      ],
+      "identityConfidence": "PARTIAL",
+      "evidenceRights": "CONDITIONAL",
+      "notes": [
+        "official ES registration designation (EEA Cn) names the model only for this exact key; trim not evidenced",
+        "Mercedes designation = class + engine; trim/line not evidenced"
+      ]
+    },
+    {
+      "candidateId": "ddf97e08-67d6-5668-9a59-5761d989ea41",
+      "rank": 53,
+      "technicalIdentityKey": "E1*2007/46*1829*12|X28QT2|HZAA052A",
+      "commercialBrand": "Mercedes-Benz",
+      "commercialGeneration": null,
+      "commercialModelYear": null,
+      "market": "ES",
+      "commercialModel": "A 250 E",
+      "evidence": [
+        {
+          "sourceId": "S01",
+          "record": "2020F:E1*2007/46*1829*12|X28QT2|HZAA052A",
+          "field": "Cn",
+          "text": "A 250 E",
+          "registrations": 697,
+          "share": 1
+        }
+      ],
+      "identityConfidence": "PARTIAL",
+      "evidenceRights": "CONDITIONAL",
+      "notes": [
+        "official ES registration designation (EEA Cn) names the model only for this exact key; trim not evidenced",
+        "Mercedes designation = class + engine; trim/line not evidenced"
+      ]
+    },
+    {
+      "candidateId": "5e196035-2ad2-585e-ad0f-7b8c971209ae",
+      "rank": 56,
+      "technicalIdentityKey": "E6*2007/46*0318*05|ZWE211(H)|ZWE211L-DHXNBW(1F)",
+      "commercialBrand": "Toyota",
+      "commercialGeneration": null,
+      "commercialModelYear": null,
+      "market": "ES",
+      "commercialModel": "COROLLA",
+      "evidence": [
+        {
+          "sourceId": "S01",
+          "record": "2022F:E6*2007/46*0318*05|ZWE211(H)|ZWE211L-DHXNBW(1F)",
+          "field": "Cn",
+          "text": "TOYOTA COROLLA",
+          "registrations": 1865,
+          "share": 1
+        }
+      ],
+      "identityConfidence": "PARTIAL",
+      "evidenceRights": "CONDITIONAL",
+      "notes": [
+        "official ES registration designation (EEA Cn) names the model only for this exact key; trim not evidenced"
+      ]
+    },
+    {
+      "candidateId": "85beac35-7b7a-5715-856b-5c01589d22ce",
+      "rank": 57,
+      "technicalIdentityKey": "E2*2007/46*0534*23|4|DGZU-C1J000",
+      "commercialBrand": "Peugeot",
+      "commercialGeneration": null,
+      "commercialModelYear": null,
+      "market": "ES",
+      "commercialModel": "3008",
+      "commercialEngine": "PLUG IN HYBRID 225",
+      "commercialTransmission": "E EAT8",
+      "commercialTrimSet": [
+        "ACTIVE PACK",
+        "ALLURE",
+        "ALLURE PACK",
+        "GT",
+        "GT PACK"
+      ],
+      "evidence": [
+        {
+          "sourceId": "S01",
+          "record": "2022F:E2*2007/46*0534*23|4|DGZU-C1J000",
+          "field": "Cn",
+          "text": "3008 ACTIVE PACK PLUG-IN HYBRID 225 E-EAT8",
+          "registrations": 76,
+          "share": 0.1012
+        },
+        {
+          "sourceId": "S01",
+          "record": "2022F:E2*2007/46*0534*23|4|DGZU-C1J000",
+          "field": "Cn",
+          "text": "3008 ALLURE PACK PLUG-IN HYBRID 225 E-EAT8",
+          "registrations": 338,
+          "share": 0.4501
+        },
+        {
+          "sourceId": "S01",
+          "record": "2022F:E2*2007/46*0534*23|4|DGZU-C1J000",
+          "field": "Cn",
+          "text": "3008 ALLURE PLUG-IN HYBRID 225 E-EAT8",
+          "registrations": 45,
+          "share": 0.0599
+        },
+        {
+          "sourceId": "S01",
+          "record": "2022F:E2*2007/46*0534*23|4|DGZU-C1J000",
+          "field": "Cn",
+          "text": "3008 GT PACK PLUG-IN HYBRID 225 E-EAT8",
+          "registrations": 82,
+          "share": 0.1092
+        },
+        {
+          "sourceId": "S01",
+          "record": "2022F:E2*2007/46*0534*23|4|DGZU-C1J000",
+          "field": "Cn",
+          "text": "3008 GT PLUG-IN HYBRID 225 E-EAT8",
+          "registrations": 210,
+          "share": 0.2796
+        }
+      ],
+      "identityConfidence": "PARTIAL",
+      "evidenceRights": "CONDITIONAL",
+      "notes": [
+        "one technical version registered under five trims (largest share 45 %)",
+        "RDW type M lists 3008 and 5008"
+      ]
+    },
+    {
+      "candidateId": "f87f76b9-019a-5485-8428-05ad3c1d909b",
+      "rank": 73,
+      "technicalIdentityKey": "E6*2007/46*0429*05|AXAP54(N)|AXAP54L-ANXMBW(1F)",
+      "commercialBrand": "Toyota",
+      "commercialGeneration": null,
+      "commercialModelYear": null,
+      "market": "ES",
+      "commercialModel": "RAV4",
+      "evidence": [
+        {
+          "sourceId": "S01",
+          "record": "2025P:E6*2007/46*0429*05|AXAP54(N)|AXAP54L-ANXMBW(1F)",
+          "field": "Cn",
+          "text": "TOYOTA RAV4",
+          "registrations": 3586,
+          "share": 1
+        }
+      ],
+      "identityConfidence": "PARTIAL",
+      "evidenceRights": "CONDITIONAL",
+      "notes": [
+        "official ES registration designation (EEA Cn) names the model only for this exact key; trim not evidenced"
+      ]
+    },
+    {
+      "candidateId": "81e9cac7-35bc-5191-84d6-d54d3dd0ee84",
+      "rank": 81,
+      "technicalIdentityKey": "E4*2007/46*1293*26|Y6LR|BZB3S5T3",
+      "commercialBrand": "Tesla",
+      "commercialGeneration": null,
+      "commercialModelYear": null,
+      "market": "ES",
+      "commercialModel": "MODEL Y",
+      "evidence": [
+        {
+          "sourceId": "S01",
+          "record": "2022F:E4*2007/46*1293*26|Y6LR|BZB3S5T3",
+          "field": "Cn",
+          "text": "MODEL Y",
+          "registrations": 555,
+          "share": 1
+        }
+      ],
+      "identityConfidence": "PARTIAL",
+      "evidenceRights": "CONDITIONAL",
+      "notes": [
+        "official ES registration designation (EEA Cn) names the model only for this exact key; trim not evidenced"
+      ]
+    },
+    {
+      "candidateId": "936a65bb-81d9-53df-b3f7-d5e91211a64b",
+      "rank": 86,
+      "technicalIdentityKey": "E2*2007/46*0676*05|BH2|MU4UA0FA5000",
+      "commercialBrand": "Renault",
+      "commercialGeneration": null,
+      "commercialModelYear": null,
+      "market": "ES",
+      "commercialModel": "CLIO",
+      "evidence": [
+        {
+          "sourceId": "S01",
+          "record": "2020F:E2*2007/46*0676*05|BH2|MU4UA0FA5000",
+          "field": "Cn",
+          "text": "CLIO",
+          "registrations": 374,
+          "share": 1
+        }
+      ],
+      "identityConfidence": "PARTIAL",
+      "evidenceRights": "CONDITIONAL",
+      "notes": [
+        "official ES registration designation (EEA Cn) names the model only for this exact key; trim not evidenced",
+        "RDW lists \"CLIO (E-TECH HYBRID)\" for this key, a Dutch permitted name: not used for ES"
+      ]
+    }
+  ]
+}
