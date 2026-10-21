@@ -2,6 +2,7 @@ import {
   DIFFERENCE_THRESHOLDS,
   compareIntervals,
   compareValues,
+  formatEnUs,
   meaningfulForYou,
   type DifferenceClass,
   type DifferenceKey,
@@ -117,7 +118,7 @@ export function outcomeOf(c: IntervalComparison, higherIsBetter: boolean | null)
   return { outcome, delta };
 }
 
-const fmt = (x: number) => (Number.isInteger(x) ? x.toLocaleString('en-US') : x.toLocaleString('en-US', { maximumFractionDigits: 2 }));
+const fmt = (x: number) => (Number.isInteger(x) ? formatEnUs(x) : formatEnUs(x, { maximumFractionDigits: 2 }));
 const fmtView = (v: ValueView) => (v.min === v.max ? `${typeof v.min === 'number' ? fmt(v.min) : String(v.min)}` : `${fmt(v.min as number)}–${fmt(v.max as number)}`);
 
 function forYouOf(key: string, low: DifferenceClass, high: DifferenceClass, profile: ForYouProfile, smallest: number): { level: DifferenceClass | 'RANGE_DEPENDENT'; rules: string[]; messages: Message[] } | undefined {

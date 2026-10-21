@@ -292,7 +292,15 @@
     "noBreakEven": "El {name} cuesta {extra} más de comprar y no gasta menos al año en energía: con este uso, esa diferencia no se recupera.",
     "knownCostNote": "Coste conocido = precio de compra + energía en {years, plural, one {# año} other {# años}}. No incluye mantenimiento, seguro, impuestos, depreciación ni valor de reventa: no es un coste total de propiedad.",
     "knownCostNotComparable": "Los costes de energía salen de ciclos de homologación distintos, así que los costes conocidos no son comparables entre sí; solo lo es el precio de compra.",
-    "lowerPurchaseSameRunning": "El {name} requiere un desembolso inicial {amount} menor; eso no cambia el coste de uso."
+    "lowerPurchaseSameRunning": "El {name} requiere un desembolso inicial {amount} menor; eso no cambia el coste de uso.",
+    "newPrice": {
+      "title": "Precio de compra del coche nuevo",
+      "label": "Precio de compra (€)",
+      "apply": "Aplicar",
+      "clear": "Quitar",
+      "note": "Lo introduces tú: no es un precio oficial ni del fabricante y no se guarda. Cambia el desembolso inicial, el coste conocido y el punto de equilibrio; el encaje económico (coste de uso) no cambia. Vacío = sin precio.",
+      "invalid": "Introduce un importe entero en euros entre 100 y 2.000.000."
+    }
   },
   "practical": {
     "title": "Encaje práctico",

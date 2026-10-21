@@ -10,3 +10,4 @@ export * from './commercial.ts';
 export * from './catalog-references.ts';
 export * from './open-dataset-match.ts';
 export * from './multi-source.ts';
+export * from './technical-plan.ts';

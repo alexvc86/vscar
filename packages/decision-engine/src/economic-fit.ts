@@ -1,6 +1,6 @@
 import type { ComparisonCandidate, ComparisonResult } from '@vscar/comparison-engine';
 import { economicDelta } from '@vscar/economics-engine';
-import { minConfidence, type ConfidenceLevel, type Message } from '@vscar/methodology';
+import { formatEnUs, minConfidence, type ConfidenceLevel, type Message } from '@vscar/methodology';
 import type { EconomicFitResult, EconomicPairOutcome, Range } from './contracts.ts';
 import { message } from './messages.ts';
 import { metricOutcome } from './pairwise.ts';
@@ -11,7 +11,7 @@ import { metricOutcome } from './pairwise.ts';
  * por su equivalente anual y por tanto vale para cualquier horizonte. Si la comparación económica es
  * NOT_COMPARABLE (p. ej. NEDC vs WLTP) se muestran las cifras pero no hay ganador.
  */
-const fmtEur = (minor: number) => `${(minor / 100).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €`;
+const fmtEur = (minor: number) => `${formatEnUs(minor / 100, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €`;
 const money = (r: Range) => (r.min === r.max ? fmtEur(r.min) : `${fmtEur(r.min)}–${fmtEur(r.max)}`);
 
 export function economicFit(candidates: readonly ComparisonCandidate[], pairs: readonly ComparisonResult[], horizonYears: number, annualKm?: number): EconomicFitResult {
@@ -75,7 +75,7 @@ export function economicFit(candidates: readonly ComparisonCandidate[], pairs: r
         const p = pairOf(winner, y);
         const d = p.delta_minor!;
         const abs = { min: Math.min(Math.abs(d.min), Math.abs(d.max)), max: Math.max(Math.abs(d.min), Math.abs(d.max)) };
-        reasons.push(`Economic Fit — ${horizonYears} years: ${label.get(winner)} costs about ${money(abs)} less to run than ${label.get(y)}${annualKm ? ` at ${annualKm.toLocaleString('en-US')} km/year` : ''}`);
+        reasons.push(`Economic Fit — ${horizonYears} years: ${label.get(winner)} costs about ${money(abs)} less to run than ${label.get(y)}${annualKm ? ` at ${formatEnUs(annualKm)} km/year` : ''}`);
         // Diferencia anual (misma fuente: la métrica de coste anual de la comparación), además del horizonte.
         const r = pairs.find((q) => [q.candidateAId, q.candidateBId].includes(winner) && [q.candidateAId, q.candidateBId].includes(y))!;
         const annual = metricOutcome(r, 'economic.running_annual')?.delta;

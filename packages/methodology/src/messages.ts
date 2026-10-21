@@ -36,15 +36,27 @@ export function createMessageFactory(templates: MessageTemplates) {
 
 // ------------------------------------------------------------------------------------------ fallback helpers
 
+const EN_US_FORMATS = new Map<string, Intl.NumberFormat>();
+/**
+ * `x.toLocaleString('en-US', options)` con un `Intl.NumberFormat` reutilizado: misma salida, pero sin crear un
+ * formateador por llamada (era el coste dominante de las re-evaluaciones de Comparison/Decision, Step D1.6a).
+ */
+export function formatEnUs(x: number, options: Intl.NumberFormatOptions = {}): string {
+  const k = JSON.stringify(options);
+  let f = EN_US_FORMATS.get(k);
+  if (!f) EN_US_FORMATS.set(k, (f = new Intl.NumberFormat('en-US', options)));
+  return f.format(x);
+}
+
 /** Formato inglés SOLO para el texto de respaldo (`text`). La UI formatea con su locale. */
-export const fallbackNumber = (x: unknown, digits = 2) => Number(x).toLocaleString('en-US', { maximumFractionDigits: digits });
+export const fallbackNumber = (x: unknown, digits = 2) => formatEnUs(Number(x), { maximumFractionDigits: digits });
 export const fallbackRange = (p: MessageParams, base: string, digits = 2) => {
   const lo = p[`${base}Min`];
   const hi = p[`${base}Max`];
   if (lo === undefined) return String(p[base] ?? '?');
   return lo === hi || hi === undefined ? fallbackNumber(lo, digits) : `${fallbackNumber(lo, digits)}–${fallbackNumber(hi, digits)}`;
 };
-export const fallbackEur = (minor: unknown) => `€${(Number(minor) / 100).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+export const fallbackEur = (minor: unknown) => `€${formatEnUs(Number(minor) / 100, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 export const fallbackEurRange = (p: MessageParams, base = 'amount') =>
   p[`${base}MinMinor`] === p[`${base}MaxMinor`] ? fallbackEur(p[`${base}MinMinor`]) : `${fallbackEur(p[`${base}MinMinor`])}–${fallbackEur(p[`${base}MaxMinor`])}`;
 

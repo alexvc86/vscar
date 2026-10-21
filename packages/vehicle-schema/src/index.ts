@@ -11,3 +11,4 @@ export * from './subject.ts';
 export * from './energy-prices.ts';
 export * from './slug.ts';
 export * from './media.ts';
+export * from './technical-curation.ts';

@@ -88,7 +88,10 @@ describe('used URL contract (parse / serialize)', () => {
     expect(parsePairConditions(q('b=used&eval=2026-02-30'), TODAY).invalid).toEqual(['eval']);
   });
   it('facts of a side that is not used are ignored (and reported); unknown version ignores the block', () => {
-    expect(parsePairConditions(q('a_price=20000&b=used&b_km=10'), TODAY)).toEqual({ pair: { a: { condition: 'new' }, b: { condition: 'used', facts: { km: 10 } }, evaluationDate: TODAY }, invalid: ['a_price'] });
+    // Step D1.6: `a_price` en un lado NUEVO es ahora el precio de compra del usuario (contrato ampliado, ver d16.test.ts);
+    // el resto de hechos de unidad usada siguen ignorándose en un lado nuevo.
+    expect(parsePairConditions(q('a_km=20000&b=used&b_km=10'), TODAY)).toEqual({ pair: { a: { condition: 'new' }, b: { condition: 'used', facts: { km: 10 } }, evaluationDate: TODAY }, invalid: ['a_km'] });
+    expect(parsePairConditions(q('a_price=20000&b=used&b_km=10'), TODAY).pair.a).toEqual({ condition: 'new', price: 20_000 });
     expect(parsePairConditions(q('u=9&b=used&b_km=10'), TODAY).pair).toEqual(ALL_NEW);
   });
   it('no personal or free-text keys exist in the contract', () => {

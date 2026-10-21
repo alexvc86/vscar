@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "VScar Step D1: curation candidates for the Spain catalogue from official sources (EEA survey + IDAE CSV). Technical grouping, identity classification, editorial curation priority, data vs publication readiness and a validated intermediate format for D2. Never writes to the database and never imports.",
+  "description": "VScar Step D1: curation candidates for the Spain catalogue from official sources (EEA survey + IDAE CSV). Technical grouping, identity classification, editorial curation priority, data vs publication readiness and a validated intermediate format for D2. Never writes to the database and never imports: the Step D1.6 technical-curation import lives in @vscar/db (scripts/technical-import.ts) and consumes the plan built here.",
   "exports": {
     ".": "./src/index.ts"
   },

@@ -1,5 +1,5 @@
 import { evaluateDealBreakers, type ComparisonCandidate, type DealBreakerCheck, type DealBreakerResult } from '@vscar/comparison-engine';
-import type { Message } from '@vscar/methodology';
+import { formatEnUs, type Message } from '@vscar/methodology';
 import type { ComponentScore, DecisionScenario, PracticalFitResult } from './contracts.ts';
 import { checkParams, message } from './messages.ts';
 import { practicalScore } from './utilities.ts';
@@ -32,13 +32,13 @@ function shortfallText(c: DealBreakerCheck): string {
   if (!o) return `${what}: no data`;
   const isMax = c.criterion.startsWith('max');
   const gap = isMax ? o.min - c.requiredValue : c.requiredValue - o.max;
-  return `${what} is ${gap.toLocaleString('en-US')} ${unit} ${isMax ? 'above' : 'below'} your preferred ${c.requiredValue.toLocaleString('en-US')} ${unit}`;
+  return `${what} is ${formatEnUs(gap)} ${unit} ${isMax ? 'above' : 'below'} your preferred ${formatEnUs(c.requiredValue)} ${unit}`;
 }
 
 function passText(c: DealBreakerCheck): string {
   if (c.criterion === 'minSeats') return `fits your ${c.requiredValue}-seat requirement`;
   const [what, unit] = LABELS[c.criterion] ?? [c.criterion, ''];
-  return `meets your ${what} requirement (${c.criterion.startsWith('max') ? '≤' : '≥'} ${c.requiredValue.toLocaleString('en-US')} ${unit})`;
+  return `meets your ${what} requirement (${c.criterion.startsWith('max') ? '≤' : '≥'} ${formatEnUs(c.requiredValue)} ${unit})`;
 }
 
 export function practicalFit(c: ComparisonCandidate, mandatory: DealBreakerResult, scenario: DecisionScenario, components: readonly ComponentScore[]): PracticalFitResult {

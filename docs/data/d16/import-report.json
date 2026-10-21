@@ -1,0 +1,74 @@
+{
+  "step": "D1.6",
+  "database": "vscar_dev",
+  "batchKey": "d16-first-18",
+  "planHash": "ec5e4086e56488a6fb76de38e4b69ec6591febf4e1b2cb7834787ce6e388258a",
+  "countsBefore": {
+    "vehicles": 18,
+    "attributes": 69,
+    "observations": 279
+  },
+  "run1": {
+    "status": "COMPLETED",
+    "counts": {
+      "planned": 18,
+      "imported": 0,
+      "skippedUnchanged": 18,
+      "failed": 0,
+      "vehicles": 18,
+      "attributes": 0,
+      "observations": 0
+    }
+  },
+  "afterRun1": {
+    "vehicles": 18,
+    "attributes": 69,
+    "observations": 279
+  },
+  "run2": {
+    "status": "COMPLETED",
+    "counts": {
+      "planned": 18,
+      "imported": 0,
+      "skippedUnchanged": 18,
+      "failed": 0,
+      "vehicles": 18,
+      "attributes": 0,
+      "observations": 0
+    }
+  },
+  "afterRun2": {
+    "vehicles": 18,
+    "attributes": 69,
+    "observations": 279
+  },
+  "idempotent": true,
+  "existingCatalog": {
+    "before": {
+      "reference_variants_rows": 9,
+      "reference_variants_sha256": "349716706efe5a91733cbee9959e460290704055a6d65afd3f8e957a831916cd",
+      "homologations_rows": 9,
+      "homologations_sha256": "c79a25ca7d95471401d1f10a83ab84ff9eedd1e859d14c2128fc884c99b54e2d",
+      "spec_values_rows": 63,
+      "spec_values_sha256": "ed75ccde2b6ffb8bc8439f509497d2fc9e8326450c9ed005b23159df5a80d17b",
+      "vehicle_prices_rows": 7,
+      "vehicle_prices_sha256": "e56ac5c12e413acbbce39534ad2529ee483fb4fc8270a943472f1cdb459dc3e3",
+      "safety_ratings_rows": 1,
+      "safety_ratings_sha256": "ecf5c3183f76adeaa1c33616ef282cdd97b1b1f7fed173e8532565de7f9ca955"
+    },
+    "after": {
+      "reference_variants_rows": 9,
+      "reference_variants_sha256": "349716706efe5a91733cbee9959e460290704055a6d65afd3f8e957a831916cd",
+      "homologations_rows": 9,
+      "homologations_sha256": "c79a25ca7d95471401d1f10a83ab84ff9eedd1e859d14c2128fc884c99b54e2d",
+      "spec_values_rows": 63,
+      "spec_values_sha256": "ed75ccde2b6ffb8bc8439f509497d2fc9e8326450c9ed005b23159df5a80d17b",
+      "vehicle_prices_rows": 7,
+      "vehicle_prices_sha256": "e56ac5c12e413acbbce39534ad2529ee483fb4fc8270a943472f1cdb459dc3e3",
+      "safety_ratings_rows": 1,
+      "safety_ratings_sha256": "ecf5c3183f76adeaa1c33616ef282cdd97b1b1f7fed173e8532565de7f9ca955"
+    },
+    "unchanged": true,
+    "selectableReferenceVariants": 9
+  }
+}

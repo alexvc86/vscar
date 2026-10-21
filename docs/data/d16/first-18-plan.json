@@ -1,0 +1,933 @@
+{
+  "batchKey": "d16-first-18",
+  "planSha256": "16842b05281ee4c92ffc7c0ef502e59e4514a1222d7b7b4cf051ec8b4a6e09da",
+  "eligible": 18,
+  "notEligible": [],
+  "candidates": [
+    {
+      "rank": 5,
+      "candidateId": "b36b0cb8-aa96-5a2f-adf4-fbf6bde68064",
+      "technicalKey": "E4*2018/858*00079*00|F5P11|M61A11",
+      "eligible": true,
+      "vehicleId": "709add1a-d04b-51c8-8582-59f2fa72ba60",
+      "label": "Kia Sportage · matriculado 2022 (ICE_OR_MHEV)",
+      "curationStatus": "CURATED",
+      "commercialIdentity": "PARTIAL",
+      "observations": {
+        "S01": 6,
+        "S11": 9,
+        "total": 15,
+        "usable": 15,
+        "inConflict": 0
+      },
+      "attributes": [
+        "TECHNICAL:transmission:OBSERVED:S13",
+        "TECHNICAL:doors:OBSERVED:S11",
+        "TECHNICAL:seats:OBSERVED:S11",
+        "COMMERCIAL:commercial_designation:PARTIAL:S01"
+      ],
+      "rights": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "criticalCompleteness": 0.538,
+      "missingCritical": [
+        "cap.boot_l",
+        "emi.dgt_label_es",
+        "perf.accel_0_100_s",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "invalidSourceValues": []
+    },
+    {
+      "rank": 6,
+      "candidateId": "785e17cc-5b85-56c6-bb08-86d1a80e9db5",
+      "technicalKey": "E2*2007/46*0676*28|BD2|AC6WA2SA500B",
+      "eligible": true,
+      "vehicleId": "c0b33f7f-fed4-5c67-bc57-f726482fb562",
+      "label": "Renault Clio · matriculado 2024–2025 (ICE_OR_MHEV)",
+      "curationStatus": "CURATED",
+      "commercialIdentity": "PARTIAL",
+      "observations": {
+        "S01": 5,
+        "S11": 9,
+        "total": 14,
+        "usable": 14,
+        "inConflict": 0
+      },
+      "attributes": [
+        "TECHNICAL:seats:OBSERVED:S11",
+        "COMMERCIAL:commercial_designation:PARTIAL:S01",
+        "TECHNICAL:doors:OBSERVED:S11"
+      ],
+      "rights": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "criticalCompleteness": 0.538,
+      "missingCritical": [
+        "cap.boot_l",
+        "emi.dgt_label_es",
+        "perf.accel_0_100_s",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "invalidSourceValues": []
+    },
+    {
+      "rank": 8,
+      "candidateId": "8331c894-0978-5951-98bb-0ffbfe548722",
+      "technicalKey": "E11*2007/46*2724*05|F5D51|M66ZZ1",
+      "eligible": true,
+      "vehicleId": "629abbf8-3417-5ff1-a550-3775e58505d7",
+      "label": "Hyundai Tucson · matriculado 2018–2020 (ICE_OR_MHEV)",
+      "curationStatus": "CURATED",
+      "commercialIdentity": "PARTIAL",
+      "observations": {
+        "S01": 5,
+        "S11": 12,
+        "total": 17,
+        "usable": 17,
+        "inConflict": 0
+      },
+      "attributes": [
+        "TECHNICAL:seats:OBSERVED:S11",
+        "TECHNICAL:doors:OBSERVED:S11",
+        "TECHNICAL:gears:OBSERVED:S11",
+        "TECHNICAL:transmission:OBSERVED:S13"
+      ],
+      "rights": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "criticalCompleteness": 0.538,
+      "missingCritical": [
+        "cap.boot_l",
+        "emi.dgt_label_es",
+        "perf.accel_0_100_s",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "invalidSourceValues": []
+    },
+    {
+      "rank": 9,
+      "candidateId": "25ae1749-3150-594d-b466-a10df54628ee",
+      "technicalKey": "E11*2007/46*3144*01|F5D51|M66ZZ1",
+      "eligible": true,
+      "vehicleId": "1303d6d3-12b2-568c-9b94-f579814fe3da",
+      "label": "Kia Sportage · matriculado 2016–2018 (ICE_OR_MHEV)",
+      "curationStatus": "CURATED",
+      "commercialIdentity": "PARTIAL",
+      "observations": {
+        "S01": 5,
+        "S11": 10,
+        "total": 15,
+        "usable": 15,
+        "inConflict": 0
+      },
+      "attributes": [
+        "TECHNICAL:transmission:OBSERVED:S13",
+        "TECHNICAL:seats:OBSERVED:S11",
+        "COMMERCIAL:commercial_designation:PARTIAL:S01",
+        "TECHNICAL:doors:OBSERVED:S11"
+      ],
+      "rights": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "criticalCompleteness": 0.538,
+      "missingCritical": [
+        "cap.boot_l",
+        "emi.dgt_label_es",
+        "perf.accel_0_100_s",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "invalidSourceValues": []
+    },
+    {
+      "rank": 20,
+      "candidateId": "fc9f05a8-05ee-5be1-b5ad-dbabf1f52152",
+      "technicalKey": "E2*2007/46*0534*05|C|YHZJ-C2B000",
+      "eligible": true,
+      "vehicleId": "a8af8fc7-a222-538b-b97e-2cf0079e038b",
+      "label": "Peugeot 3008 · matriculado 2018–2020 (ICE_OR_MHEV)",
+      "curationStatus": "CURATED",
+      "commercialIdentity": "PARTIAL",
+      "observations": {
+        "S01": 6,
+        "S11": 10,
+        "total": 16,
+        "usable": 16,
+        "inConflict": 0
+      },
+      "attributes": [
+        "TECHNICAL:doors:OBSERVED:S11",
+        "TECHNICAL:seats:OBSERVED:S11"
+      ],
+      "rights": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "criticalCompleteness": 0.538,
+      "missingCritical": [
+        "cap.boot_l",
+        "emi.dgt_label_es",
+        "perf.accel_0_100_s",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "invalidSourceValues": []
+    },
+    {
+      "rank": 24,
+      "candidateId": "61c5fe51-c879-5c18-a3c5-2e65f37259dd",
+      "technicalKey": "E19*2007/46*0026*27|BEV|MT6WA45M520B",
+      "eligible": true,
+      "vehicleId": "69fd7aa0-8399-5692-a600-a7b4ffb76414",
+      "label": "Dacia Sandero · matriculado 2025 (ICE_OR_MHEV)",
+      "curationStatus": "CURATED",
+      "commercialIdentity": "PARTIAL",
+      "observations": {
+        "S01": 5,
+        "S11": 9,
+        "total": 14,
+        "usable": 10,
+        "inConflict": 4
+      },
+      "attributes": [
+        "COMMERCIAL:commercial_designation:PARTIAL:S01",
+        "TECHNICAL:doors:OBSERVED:S11",
+        "TECHNICAL:seats:OBSERVED:S11"
+      ],
+      "rights": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval",
+        "open value conflict (kept, needs review)"
+      ],
+      "criticalCompleteness": 0.538,
+      "missingCritical": [
+        "cap.boot_l",
+        "emi.dgt_label_es",
+        "perf.accel_0_100_s",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "invalidSourceValues": []
+    },
+    {
+      "rank": 26,
+      "candidateId": "bc56ae3e-6e0e-5ae3-b6b0-b93f168f2415",
+      "technicalKey": "E2*2007/46*0628*30|B|YHZT-B21700",
+      "eligible": true,
+      "vehicleId": "4d4a9981-f898-5cc0-89a3-ce98bf583954",
+      "label": "Peugeot 308 · matriculado 2024 (ICE_OR_MHEV)",
+      "curationStatus": "CURATED",
+      "commercialIdentity": "EXACT",
+      "observations": {
+        "S01": 5,
+        "S11": 9,
+        "total": 14,
+        "usable": 14,
+        "inConflict": 0
+      },
+      "attributes": [
+        "COMMERCIAL:trim:EXACT:S01",
+        "TECHNICAL:doors:OBSERVED:S11",
+        "COMMERCIAL:commercial_designation:EXACT:S01",
+        "TECHNICAL:seats:OBSERVED:S11"
+      ],
+      "rights": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "criticalCompleteness": 0.538,
+      "missingCritical": [
+        "cap.boot_l",
+        "emi.dgt_label_es",
+        "perf.accel_0_100_s",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "invalidSourceValues": []
+    },
+    {
+      "rank": 27,
+      "candidateId": "5223d033-4cdc-592c-9d31-1ebe922e969e",
+      "technicalKey": "E6*2007/46*0437*04|MXPA11(H)|MXPA11L-BHFNBW(1E)",
+      "eligible": true,
+      "vehicleId": "e5b01352-421c-5e03-ad14-068279431bcd",
+      "label": "Toyota Yaris · matriculado 2022–2024 (ICE_OR_MHEV)",
+      "curationStatus": "CURATED",
+      "commercialIdentity": "PARTIAL",
+      "observations": {
+        "S01": 5,
+        "S11": 9,
+        "total": 14,
+        "usable": 14,
+        "inConflict": 0
+      },
+      "attributes": [
+        "TECHNICAL:seats:OBSERVED:S11",
+        "COMMERCIAL:commercial_designation:PARTIAL:S01",
+        "TECHNICAL:doors:OBSERVED:S11"
+      ],
+      "rights": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "criticalCompleteness": 0.538,
+      "missingCritical": [
+        "cap.boot_l",
+        "emi.dgt_label_es",
+        "perf.accel_0_100_s",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "invalidSourceValues": []
+    },
+    {
+      "rank": 28,
+      "candidateId": "0244eada-7c20-57d6-94fc-12606bdbf902",
+      "technicalKey": "E1*2007/46*1829*16|X21CT2|HZAA151C",
+      "eligible": true,
+      "vehicleId": "40fdb830-02cf-55c0-bfc9-cf55889fb452",
+      "label": "Mercedes-Benz Clase A · matriculado 2022–2024 (ICE_OR_MHEV)",
+      "curationStatus": "CURATED",
+      "commercialIdentity": "PARTIAL",
+      "observations": {
+        "S01": 5,
+        "S11": 9,
+        "total": 14,
+        "usable": 14,
+        "inConflict": 0
+      },
+      "attributes": [
+        "TECHNICAL:doors:OBSERVED:S11",
+        "TECHNICAL:transmission:OBSERVED:S13",
+        "TECHNICAL:seats:OBSERVED:S11",
+        "COMMERCIAL:commercial_designation:PARTIAL:S01"
+      ],
+      "rights": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "criticalCompleteness": 0.538,
+      "missingCritical": [
+        "cap.boot_l",
+        "emi.dgt_label_es",
+        "perf.accel_0_100_s",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "invalidSourceValues": []
+    },
+    {
+      "rank": 7,
+      "candidateId": "ed79a5b6-d043-5c1e-93ae-9762587f1356",
+      "technicalKey": "E9*2018/858*11042*10|A|A35",
+      "eligible": true,
+      "vehicleId": "639e0d92-40bf-5366-bf0a-f733278c03bb",
+      "label": "Nissan Qashqai · matriculado 2024–2025 (MHEV)",
+      "curationStatus": "CURATED",
+      "commercialIdentity": "PARTIAL",
+      "observations": {
+        "S01": 5,
+        "S11": 9,
+        "total": 14,
+        "usable": 14,
+        "inConflict": 0
+      },
+      "attributes": [
+        "COMMERCIAL:commercial_designation:PARTIAL:S01",
+        "TECHNICAL:transmission:OBSERVED:S13",
+        "TECHNICAL:seats:OBSERVED:S11",
+        "TECHNICAL:doors:OBSERVED:S11"
+      ],
+      "rights": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "criticalCompleteness": 0.462,
+      "missingCritical": [
+        "cap.boot_l",
+        "emi.dgt_label_es",
+        "perf.accel_0_100_s",
+        "perf.power_max_kw",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "invalidSourceValues": []
+    },
+    {
+      "rank": 48,
+      "candidateId": "fd633c27-2ed9-570e-8aa3-2f6c1078ee12",
+      "technicalKey": "E6*2007/46*0437*04|MXPH11(H)|MXPH11L-CHXNBW(1E)",
+      "eligible": true,
+      "vehicleId": "8de103c2-3cea-52bc-85a6-d4617968990e",
+      "label": "Toyota Yaris · matriculado 2022–2025 (HEV_OR_MHEV)",
+      "curationStatus": "CURATED",
+      "commercialIdentity": "PARTIAL",
+      "observations": {
+        "S01": 5,
+        "S11": 9,
+        "total": 14,
+        "usable": 14,
+        "inConflict": 0
+      },
+      "attributes": [
+        "TECHNICAL:doors:OBSERVED:S11",
+        "TECHNICAL:seats:OBSERVED:S11",
+        "COMMERCIAL:commercial_designation:PARTIAL:S01",
+        "TECHNICAL:body_type:OBSERVED:S13"
+      ],
+      "rights": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "criticalCompleteness": 0.462,
+      "missingCritical": [
+        "cap.boot_l",
+        "emi.dgt_label_es",
+        "perf.accel_0_100_s",
+        "perf.power_max_kw",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "invalidSourceValues": []
+    },
+    {
+      "rank": 56,
+      "candidateId": "5e196035-2ad2-585e-ad0f-7b8c971209ae",
+      "technicalKey": "E6*2007/46*0318*05|ZWE211(H)|ZWE211L-DHXNBW(1F)",
+      "eligible": true,
+      "vehicleId": "c956df88-cfd8-5010-8adc-e4f59da02676",
+      "label": "Toyota Corolla · matriculado 2022 (HEV_OR_MHEV)",
+      "curationStatus": "CURATED",
+      "commercialIdentity": "PARTIAL",
+      "observations": {
+        "S01": 6,
+        "S11": 9,
+        "total": 15,
+        "usable": 15,
+        "inConflict": 0
+      },
+      "attributes": [
+        "TECHNICAL:seats:OBSERVED:S11",
+        "TECHNICAL:doors:OBSERVED:S11",
+        "COMMERCIAL:commercial_designation:PARTIAL:S01"
+      ],
+      "rights": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "criticalCompleteness": 0.462,
+      "missingCritical": [
+        "cap.boot_l",
+        "emi.dgt_label_es",
+        "perf.accel_0_100_s",
+        "perf.power_max_kw",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "invalidSourceValues": []
+    },
+    {
+      "rank": 86,
+      "candidateId": "936a65bb-81d9-53df-b3f7-d5e91211a64b",
+      "technicalKey": "E2*2007/46*0676*05|BH2|MU4UA0FA5000",
+      "eligible": true,
+      "vehicleId": "1cb971f9-da64-5da6-901e-6cf5e10dd696",
+      "label": "Renault Clio · matriculado 2020 (HEV_OR_MHEV)",
+      "curationStatus": "CURATED",
+      "commercialIdentity": "PARTIAL",
+      "observations": {
+        "S01": 6,
+        "S11": 10,
+        "total": 16,
+        "usable": 16,
+        "inConflict": 0
+      },
+      "attributes": [
+        "TECHNICAL:transmission:OBSERVED:S13",
+        "TECHNICAL:body_type:OBSERVED:S13",
+        "TECHNICAL:seats:OBSERVED:S11",
+        "TECHNICAL:doors:OBSERVED:S11",
+        "COMMERCIAL:commercial_designation:PARTIAL:S01"
+      ],
+      "rights": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "criticalCompleteness": 0.462,
+      "missingCritical": [
+        "cap.boot_l",
+        "emi.dgt_label_es",
+        "perf.accel_0_100_s",
+        "perf.power_max_kw",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "invalidSourceValues": []
+    },
+    {
+      "rank": 4,
+      "candidateId": "8848ea66-9eff-53cb-9967-a0981c48223c",
+      "technicalKey": "E13*2018/858*00639*00|SE2D1C|1NXE5E001NL1",
+      "eligible": true,
+      "vehicleId": "0db246ad-ea59-556a-8b2b-0eed7e6a0b3f",
+      "label": "BYD SEAL · matriculado 2024–2025 (BEV)",
+      "curationStatus": "CURATED",
+      "commercialIdentity": "EXACT",
+      "observations": {
+        "S01": 5,
+        "S11": 8,
+        "total": 13,
+        "usable": 9,
+        "inConflict": 4
+      },
+      "attributes": [
+        "TECHNICAL:gears:OBSERVED:S11",
+        "TECHNICAL:seats:OBSERVED:S11",
+        "TECHNICAL:drivetrain:OBSERVED:S11",
+        "TECHNICAL:doors:OBSERVED:S11",
+        "TECHNICAL:transmission:OBSERVED:S11",
+        "COMMERCIAL:trim:EXACT:S02",
+        "TECHNICAL:body_type:OBSERVED:S11",
+        "COMMERCIAL:commercial_designation:EXACT:S01"
+      ],
+      "rights": {
+        "S01": "CONDITIONAL",
+        "S02": "PENDING",
+        "S11": "PENDING"
+      },
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval",
+        "open value conflict (kept, needs review)"
+      ],
+      "criticalCompleteness": 0.429,
+      "missingCritical": [
+        "cap.boot_l",
+        "chg.ac_max_kw",
+        "chg.dc_max_kw",
+        "emi.dgt_label_es",
+        "perf.accel_0_100_s",
+        "perf.power_max_kw",
+        "price",
+        "war.years"
+      ],
+      "invalidSourceValues": []
+    },
+    {
+      "rank": 53,
+      "candidateId": "ddf97e08-67d6-5668-9a59-5761d989ea41",
+      "technicalKey": "E1*2007/46*1829*12|X28QT2|HZAA052A",
+      "eligible": true,
+      "vehicleId": "85181d79-ac4e-59a9-a4be-3cd78e2021a0",
+      "label": "Mercedes-Benz Clase A · matriculado 2020 (PHEV)",
+      "curationStatus": "CURATED",
+      "commercialIdentity": "PARTIAL",
+      "observations": {
+        "S01": 8,
+        "S11": 12,
+        "total": 20,
+        "usable": 18,
+        "inConflict": 2
+      },
+      "attributes": [
+        "TECHNICAL:seats:OBSERVED:S11",
+        "COMMERCIAL:commercial_designation:PARTIAL:S01",
+        "TECHNICAL:doors:OBSERVED:S11",
+        "TECHNICAL:transmission:OBSERVED:S13"
+      ],
+      "rights": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.fuel_charge_sustaining_l100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval",
+        "open value conflict (kept, needs review)"
+      ],
+      "criticalCompleteness": 0.438,
+      "missingCritical": [
+        "cap.boot_l",
+        "chg.ac_max_kw",
+        "emi.dgt_label_es",
+        "nrg.fuel_charge_sustaining_l100",
+        "perf.accel_0_100_s",
+        "perf.power_max_kw",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "invalidSourceValues": []
+    },
+    {
+      "rank": 57,
+      "candidateId": "85beac35-7b7a-5715-856b-5c01589d22ce",
+      "technicalKey": "E2*2007/46*0534*23|4|DGZU-C1J000",
+      "eligible": true,
+      "vehicleId": "b6699b55-cddb-5e71-9fa0-e7cdc197788c",
+      "label": "Peugeot 3008 · matriculado 2022 (PHEV)",
+      "curationStatus": "CURATED",
+      "commercialIdentity": "PARTIAL",
+      "observations": {
+        "S01": 9,
+        "S11": 11,
+        "total": 20,
+        "usable": 20,
+        "inConflict": 0
+      },
+      "attributes": [
+        "TECHNICAL:seats:OBSERVED:S11",
+        "TECHNICAL:transmission:OBSERVED:S13",
+        "TECHNICAL:doors:OBSERVED:S11"
+      ],
+      "rights": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.fuel_charge_sustaining_l100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "criticalCompleteness": 0.438,
+      "missingCritical": [
+        "cap.boot_l",
+        "chg.ac_max_kw",
+        "emi.dgt_label_es",
+        "nrg.fuel_charge_sustaining_l100",
+        "perf.accel_0_100_s",
+        "perf.power_max_kw",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "invalidSourceValues": []
+    },
+    {
+      "rank": 73,
+      "candidateId": "f87f76b9-019a-5485-8428-05ad3c1d909b",
+      "technicalKey": "E6*2007/46*0429*05|AXAP54(N)|AXAP54L-ANXMBW(1F)",
+      "eligible": true,
+      "vehicleId": "60a500f3-db31-5f9e-8e16-3ca890cfcf59",
+      "label": "Toyota RAV4 · matriculado 2025 (PHEV)",
+      "curationStatus": "CURATED",
+      "commercialIdentity": "PARTIAL",
+      "observations": {
+        "S01": 7,
+        "S11": 13,
+        "total": 20,
+        "usable": 18,
+        "inConflict": 2
+      },
+      "attributes": [
+        "COMMERCIAL:commercial_designation:PARTIAL:S01",
+        "TECHNICAL:doors:OBSERVED:S11",
+        "TECHNICAL:seats:OBSERVED:S11",
+        "TECHNICAL:drivetrain:OBSERVED:S11"
+      ],
+      "rights": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.fuel_charge_sustaining_l100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval",
+        "open value conflict (kept, needs review)"
+      ],
+      "criticalCompleteness": 0.438,
+      "missingCritical": [
+        "cap.boot_l",
+        "chg.ac_max_kw",
+        "emi.dgt_label_es",
+        "nrg.fuel_charge_sustaining_l100",
+        "perf.accel_0_100_s",
+        "perf.power_max_kw",
+        "price",
+        "pt.fuel_tank_l",
+        "war.years"
+      ],
+      "invalidSourceValues": []
+    },
+    {
+      "rank": 81,
+      "candidateId": "81e9cac7-35bc-5191-84d6-d54d3dd0ee84",
+      "technicalKey": "E4*2007/46*1293*26|Y6LR|BZB3S5T3",
+      "eligible": true,
+      "vehicleId": "5ac0997e-f17d-5482-b39f-2ca0216c8c0b",
+      "label": "Tesla Model Y · matriculado 2022 (BEV)",
+      "curationStatus": "CURATED",
+      "commercialIdentity": "PARTIAL",
+      "observations": {
+        "S01": 6,
+        "S11": 8,
+        "total": 14,
+        "usable": 14,
+        "inConflict": 0
+      },
+      "attributes": [
+        "TECHNICAL:doors:OBSERVED:S11",
+        "TECHNICAL:seats:OBSERVED:S11",
+        "COMMERCIAL:commercial_designation:PARTIAL:S01"
+      ],
+      "rights": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "criticalCompleteness": 0.429,
+      "missingCritical": [
+        "cap.boot_l",
+        "chg.ac_max_kw",
+        "chg.dc_max_kw",
+        "emi.dgt_label_es",
+        "perf.accel_0_100_s",
+        "perf.power_max_kw",
+        "price",
+        "war.years"
+      ],
+      "invalidSourceValues": []
+    }
+  ]
+}

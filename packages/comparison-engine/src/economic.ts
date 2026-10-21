@@ -1,5 +1,5 @@
 import { breakEven, economicDelta, type EconomicResult } from '@vscar/economics-engine';
-import { DIFFERENCE_THRESHOLDS, compareIntervals } from '@vscar/methodology';
+import { DIFFERENCE_THRESHOLDS, compareIntervals, formatEnUs } from '@vscar/methodology';
 import type { ComparisonCandidate, EconomicComparison, MetricComparison, Range } from './contracts.ts';
 import { cmessage, registerMetricLabel } from './messages.ts';
 import { outcomeOf } from './technical.ts';
@@ -27,7 +27,7 @@ const pct = (a: Range, b: Range): Range | undefined => (b.min > 0 ? { min: ((a.m
 const round2 = (r: Range): Range => ({ min: Math.round(r.min * 100) / 100 || 0, max: Math.round(r.max * 100) / 100 || 0 });
 const money = (r: Range) => (r.min === r.max ? `${fmtEur(r.min)}` : `${fmtEur(r.min)}–${fmtEur(r.max)}`);
 function fmtEur(x: number) {
-  return `${x.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €`;
+  return `${formatEnUs(x, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €`;
 }
 
 interface MoneyMetric {
@@ -149,7 +149,7 @@ export function compareEconomics(A: ComparisonCandidate, B: ComparisonCandidate)
   );
   metrics.push(
     moneyMetric(
-      { metric: 'economic.running_annual', label: 'annual running cost', a: ea.runningCost.annual_minor!, b: eb.runningCost.annual_minor!, unit: 'EUR', deltaMinor: d.runningAnnual_minor!, classify: (x, y) => compareIntervals(annualT, x, y, false), per: ` per year (${annualKm.toLocaleString('en-US')} km/year)` },
+      { metric: 'economic.running_annual', label: 'annual running cost', a: ea.runningCost.annual_minor!, b: eb.runningCost.annual_minor!, unit: 'EUR', deltaMinor: d.runningAnnual_minor!, classify: (x, y) => compareIntervals(annualT, x, y, false), per: ` per year (${formatEnUs(annualKm)} km/year)` },
       A,
       B,
       eur,

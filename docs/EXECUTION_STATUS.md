@@ -460,6 +460,36 @@ Siguiente:
 - **Step 7c — Comparison URL / Share / richer catalog pages**.
 - En el data workstream: primeras imágenes con derechos verificados (propias o licenciadas) y derechos de S08/S02/S04 para el canal PUBLIC.
 
+## STEP D1.6a — Stabilization, Security & Technical Catalog Validation · ✅ PASS (entorno controlado) · 74 preparados, no importados (2026-10-21)
+
+| Entregable | Estado |
+|---|---|
+| Estabilidad de tests — [D1_6A_TEST_STABILITY_REPORT](data/D1_6A_TEST_STABILITY_REPORT.md) | ✅ <ul><li>causa medida: trabajo repetido (`Intl.NumberFormat` por llamada, FNV con `BigInt`) + contención de la suite;</li><li>formateador cacheado y FNV de 32 bits con salida idéntica (tests de equivalencia);</li><li>`turbo --concurrency=4`;</li><li>test de rendimiento con rondas y benchmark controlado;</li><li>`pnpm check` ×3 forzado: 981 ✓ · 5 omitidos · 0 ✗</li></ul> |
+| MySQL — [D1_6A_MYSQL_SCHEMA_AUDIT](data/D1_6A_MYSQL_SCHEMA_AUDIT.md) | ✅ <ul><li>migración `0009_curation_hardening`: UNIQUE TAN+Va+Ve, PK y FK de items, 10 CHECK;</li><li>aplicada en `vscar_dev` tras una comprobación previa de solo lectura;</li><li>dry-run, actualizaciones solo explícitas, bloqueo contra ejecuciones simultáneas, runs ABANDONED</li></ul> |
+| Auditoría de los 18 — [D1_6A_FIRST_18_DATA_AUDIT](data/D1_6A_FIRST_18_DATA_AUDIT.md) | ✅ <ul><li>11/11 comprobaciones;</li><li>279 observaciones (267 utilizables, 0 con derechos aprobados), 69 atributos;</li><li>12 valores en conflicto (6 grupos, 4 vehículos) conservados</li></ul> |
+| Seguridad — [D1_6A_SECURITY_AUDIT](data/D1_6A_SECURITY_AUDIT.md) | ✅ 2 correcciones: comparación en tiempo constante (sin fuga de longitud) y HTTP Basic solo sobre HTTPS fuera de loopback; verificado en vivo |
+| Derechos — [D1_6A_RIGHTS_REVIEW](data/D1_6A_RIGHTS_REVIEW.md) | ✅ S11 y S13 **READY_FOR_HUMAN_APPROVAL**; sin firma → ❓ / PENDING sin cambios |
+| Plan de los 74 — [D1_6A_NEXT_74_BATCH_PLAN](data/D1_6A_NEXT_74_BATCH_PLAN.md) | ✅ <ul><li>lotes A–E (15/15/15/15/14);</li><li>dry-run: 74 INSERT, 0 rechazos, nada escrito;</li><li>8 excluidas con su causa exacta</li></ul> |
+| Cierre — [D1_6A_COMPLETION_REPORT](data/D1_6A_COMPLETION_REPORT.md) | ✅ |
+
+Sin cambios en Methodology 2026.7, en las reglas PUBLIC/PREVIEW ni en el selector (9 PREVIEW, 0 PUBLIC).
+
+## STEP D1.6 — Free Data Technical Catalog & Private Demo · ✅ ARQUITECTURA + 18 CURADOS · selector sin cambios (2026-10-21)
+
+| Entregable | Estado |
+|---|---|
+| ADR-019 variante B — [ADR-019](adr/ADR-019-technical-identity-without-confirmed-trim.md) | ✅ **ACCEPTED** (solo arquitectura de curación; no aprueba fuentes ni relaja PREVIEW/PUBLIC) |
+| Esquema y migración — [D1_6_TECHNICAL_CURATION_ARCHITECTURE](data/D1_6_TECHNICAL_CURATION_ARCHITECTURE.md) | ✅ `CuratedTechnicalVehicle` / `CuratedAttribute` / `CuratedObservation` (Zod) · `0008_technical_curation` (5 tablas `curated_*`, reversión manual documentada) |
+| Repositorio + importador idempotente/reanudable | ✅ transacción por vehículo, ids deterministas, huella por elemento, rechazo de duplicados TAN\|Va\|Ve |
+| Primer lote — [D1_6_FIRST_18_IMPORT_REPORT](data/D1_6_FIRST_18_IMPORT_REPORT.md) | ✅ 18/18 curados en `vscar_dev`: 279 observaciones (EEA 104, RDW 175), 69 atributos, 12 valores en conflicto conservados; 2.ª ejecución sin cambios; catálogo existente intacto (9) |
+| Derechos S11/S13 — [D1_6_OFFICIAL_SOURCE_RIGHTS_REVIEW](data/D1_6_OFFICIAL_SOURCE_RIGHTS_REVIEW.md) | ✅ revisión + ficha para firma · **sin aprobar** (❓) |
+| Demo privada + precio manual — [D1_6_PRIVATE_DEMO_REPORT](data/D1_6_PRIVATE_DEMO_REPORT.md) | ✅ `/internal/catalog` (Basic auth, solo PREVIEW, 404 sin credenciales) · `{lado}_price` en coches nuevos (USER_PROVIDED, Economic Fit sin cambios) |
+| Ampliación — [D1_6_92_VARIANT_EXPANSION_PLAN](data/D1_6_92_VARIANT_EXPANSION_PLAN.md) · [D1_6_D2_READINESS](data/D1_6_D2_READINESS.md) · [Import plan v0.2](data/SPAIN_DATASET_IMPORT_PLAN_V0_2.md) | ✅ 92 elegibles (74 pendientes), 3 duplicados a reconciliar, 5 sin RDW |
+
+Resultados:
+- 0 generaciones y 0 años-modelo inventados; acabado EXACT solo en #26 (EEA) y #4 (IDAE, pendiente).
+- Ningún vehículo curado entra en el selector ni en los motores; PUBLIC 0, PREVIEW 9 (sin cambios).
+
 ## STEP D1.5 — Multi-Source Catalog Integration & First Import Readiness · ⚠️ PARTIAL (investigación válida · 0 importables con las reglas aprobadas) (2026-10-16)
 
 | Entregable | Estado |

@@ -12,6 +12,7 @@ import { relevantTechnicalMetrics } from '@/domain/chapters';
 import { localizedHref } from '@/i18n/routes';
 import { MetricCompare } from './MetricCompare';
 import { MetricLayers } from './MetricLayers';
+import { NewPriceForm } from './NewPriceForm';
 import { ScenarioTrigger } from './ScenarioTrigger';
 
 /**
@@ -254,6 +255,10 @@ function EconomicsChapter({ view, scenario, i18n, index }: { view: DecisionView;
       </div>
       <p className="muted small">{t('economic.rangeNote')}</p>
       {e.perSide.a.purchase || e.perSide.b.purchase ? <PurchaseBlock view={view} i18n={i18n} /> : null}
+      <NewPriceForm
+        sides={view.candidates.filter((c) => c.condition === 'new').map((c) => ({ side: c.side, name: c.name, ...(e.perSide[c.side].purchase?.source === 'OVERRIDE' ? { current: Math.round(e.perSide[c.side].purchase!.amount / 100) } : {}) }))}
+        labels={{ title: t('economic.newPrice.title'), label: t('economic.newPrice.label'), apply: t('economic.newPrice.apply'), clear: t('economic.newPrice.clear'), note: t('economic.newPrice.note'), invalid: t('economic.newPrice.invalid') }}
+      />
       <MarketContext view={view} i18n={i18n} />
     </Chapter>
   );

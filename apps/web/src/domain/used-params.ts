@@ -18,6 +18,9 @@ import { z } from 'zod';
  *   {lado}_damage           none | declared (ausente = no lo sé)
  *   eval                    fecha de evaluación YYYY-MM-DD (los hechos se declararon ese día)
  *
+ * Step D1.6 — lado NUEVO: `{lado}_price` = precio de compra indicado por el USUARIO (EUR enteros, mismos límites). Nunca
+ * se guarda como precio oficial ni se atribuye al fabricante; vacío = sin precio (nunca se inventa). No necesita `u=1`.
+ *
  * Nunca: VIN, matrícula, datos personales, vendedor, URL del anuncio ni texto libre. Un parámetro inválido se
  * descarta (y se informa); nunca produce un 500.
  */
@@ -60,7 +63,8 @@ export type UsedFacts = z.infer<typeof UsedFacts>;
 export const FACT_KEYS = ['price', 'km', 'reg', 'warranty', 'service', 'state', 'soh', 'damage'] as const satisfies readonly (keyof UsedFacts)[];
 export type FactKey = (typeof FACT_KEYS)[number];
 
-export type SideCondition = { condition: 'new' } | { condition: 'used'; facts: UsedFacts };
+/** Nuevo: `price` = precio de compra introducido por el usuario (EUR enteros). Usado: hechos de la unidad. */
+export type SideCondition = { condition: 'new'; price?: number } | { condition: 'used'; facts: UsedFacts };
 export interface PairConditions {
   a: SideCondition;
   b: SideCondition;
@@ -136,11 +140,18 @@ export function parsePairConditions(params: ParamsLike, today: string): { pair: 
     const used = versionOk && cond === 'used';
     if (cond !== undefined && cond !== 'used' && cond !== 'new') invalid.push(s);
     const facts: Record<string, unknown> = {};
+    let newPrice: number | undefined;
     for (const key of FACT_KEYS) {
       const raw = read(params, `${s}_${key}`);
       if (raw === undefined || raw === '') continue;
-      // Hechos de un lado que no es usado: no aplican → se ignoran (y se informa).
+      // Lado nuevo: solo el precio de compra del usuario aplica; el resto de hechos se ignora (y se informa).
       if (!used) {
+        if (key === 'price' && (cond === undefined || cond === 'new') && versionOk) {
+          const price = parseFact('price', raw, evaluationDate) as number | undefined;
+          if (price === undefined) invalid.push(`${s}_price`);
+          else newPrice = price;
+          continue;
+        }
         invalid.push(`${s}_${key}`);
         continue;
       }
@@ -148,7 +159,7 @@ export function parsePairConditions(params: ParamsLike, today: string): { pair: 
       if (value === undefined) invalid.push(`${s}_${key}`);
       else facts[key] = value;
     }
-    return used ? { condition: 'used', facts: UsedFacts.parse(facts) } : NEW;
+    return used ? { condition: 'used', facts: UsedFacts.parse(facts) } : newPrice !== undefined ? { condition: 'new', price: newPrice } : NEW;
   };
   const pair: PairConditions = { a: side('a'), b: side('b') };
   return { pair: hasUsed(pair) ? { ...pair, evaluationDate } : pair, invalid };
@@ -164,20 +175,22 @@ const factString = (key: FactKey, f: UsedFacts): string | undefined => {
   return String(v);
 };
 
-/** Bloque usado → pares clave/valor en orden fijo (determinista). Vacío si los dos lados son nuevos. */
+/** Bloque usado (+ precios de compra de los lados nuevos) → pares clave/valor en orden fijo (determinista). */
 export function usedEntries(p: PairConditions): [string, string][] {
-  if (!hasUsed(p)) return [];
-  const out: [string, string][] = [['u', USED_URL_VERSION]];
+  const out: [string, string][] = hasUsed(p) ? [['u', USED_URL_VERSION]] : [];
   for (const s of SIDES) {
     const c = p[s];
-    if (c.condition !== 'used') continue;
+    if (c.condition === 'new') {
+      if (c.price !== undefined) out.push([`${s}_price`, String(c.price)]);
+      continue;
+    }
     out.push([s, 'used']);
     for (const key of FACT_KEYS) {
       const v = factString(key, c.facts);
       if (v !== undefined) out.push([`${s}_${key}`, v]);
     }
   }
-  if (p.evaluationDate) out.push(['eval', p.evaluationDate]);
+  if (p.evaluationDate && hasUsed(p)) out.push(['eval', p.evaluationDate]);
   return out;
 }
 

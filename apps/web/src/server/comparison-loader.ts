@@ -71,7 +71,10 @@ export async function loadComparisonData(market: MarketCode, slug: string, catal
     const base = { candidate: comparisonCandidateFromBundle(bundle, option.id, { label, ...opts }), economicInput: economicVehicleInputFromBundle(bundle, option.id, opts) };
     if (cond.condition === 'new' || !evaluationDate) {
       subjectIds[side] = option.id;
-      return { side, option, label, ...opts, subjectId: option.id, condition: 'new', pipeline: base };
+      // Step D1.6: precio de compra del USUARIO para un coche nuevo → override de compra (USER_PROVIDED); nunca precio oficial.
+      const price = cond.condition === 'new' ? cond.price : undefined;
+      const pipeline = price !== undefined ? { ...base, overrides: { purchasePriceOverride: { amount_minor: price * 100, currency: 'EUR' as const } } } : base;
+      return { side, option, label, ...opts, subjectId: option.id, condition: 'new', pipeline };
     }
     // La salud de batería solo aplica a BEV/PHEV/EREV: en otro powertrain se ignora (nunca penaliza).
     const ignored = cond.facts.soh !== undefined && !sohApplies(option.powertrainType) ? [`${side}_soh`] : [];

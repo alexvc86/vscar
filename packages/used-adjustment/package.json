@@ -9,7 +9,8 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "bench": "node scripts/bench.ts"
   },
   "dependencies": {
     "@vscar/economics-engine": "workspace:*",

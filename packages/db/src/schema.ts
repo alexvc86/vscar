@@ -1,7 +1,9 @@
+import { sql } from 'drizzle-orm';
 import {
   bigint,
   boolean,
   char,
+  check,
   date,
   datetime,
   double,
@@ -10,6 +12,7 @@ import {
   json,
   mysqlEnum,
   mysqlTable,
+  primaryKey,
   smallint,
   text,
   timestamp,
@@ -377,4 +380,167 @@ export const energyPrices = mysqlTable(
     created_at: createdAt(),
   },
   (t) => [index('energy_prices_lookup').on(t.market_code, t.energy_product, t.scope_type, t.scope_code, t.price_date)],
+);
+
+/**
+ * Step D1.6 — capa de CURACIÓN TÉCNICA (ADR-019 B). Tablas separadas del catálogo seleccionable: un vehículo curado
+ * NO es una `reference_variants` y nunca aparece en el selector ni en los motores. Clave canónica = TAN|Va|Ve.
+ */
+export const curatedTechnicalVehicles = mysqlTable(
+  'curated_technical_vehicles',
+  {
+    id: uuid('id').primaryKey(),
+    market_code: char('market_code', { length: 2 }).notNull(),
+    technical_key: varchar('technical_key', { length: 255 }).notNull(),
+    brand: varchar('brand', { length: 64 }).notNull(),
+    model: varchar('model', { length: 128 }).notNull(),
+    type_approval_number: varchar('type_approval_number', { length: 64 }).notNull(),
+    variant_code: varchar('variant_code', { length: 64 }).notNull(),
+    version_code: varchar('version_code', { length: 128 }).notNull(),
+    identity_confidence: varchar('identity_confidence', { length: 16 }).notNull(),
+    homologation_powertrain: varchar('homologation_powertrain', { length: 16 }).notNull(),
+    product_class: varchar('product_class', { length: 16 }).notNull(),
+    fuel_type: varchar('fuel_type', { length: 16 }),
+    first_observed_year: smallint('first_observed_year'),
+    last_observed_year: smallint('last_observed_year'),
+    commercial_identity_status: varchar('commercial_identity_status', { length: 16 }).notNull(),
+    curation_status: varchar('curation_status', { length: 24 }).notNull(),
+    source_codes: json('source_codes').notNull(),
+    d1_candidate_id: uuid('d1_candidate_id'),
+    d1_rank: smallint('d1_rank'),
+    blockers: json('blockers').notNull(),
+    notes: text('notes'),
+    created_at: createdAt(),
+    updated_at: timestamp('updated_at', { mode: 'string' }).defaultNow().onUpdateNow().notNull(),
+  },
+  (t) => [
+    uniqueIndex('curated_technical_vehicles_key').on(t.market_code, t.technical_key),
+    // Step D1.6a: la identidad TAN completo + Va + Ve está protegida por MySQL también en sus columnas (no solo por la clave derivada).
+    uniqueIndex('curated_technical_vehicles_identity').on(t.market_code, t.type_approval_number, t.variant_code, t.version_code),
+    index('curated_technical_vehicles_brand').on(t.brand, t.model),
+    check('curated_technical_vehicles_identity_exact', sql`${t.identity_confidence} = 'EXACT'`),
+    check('curated_technical_vehicles_curation_status', sql`${t.curation_status} in ('CURATED', 'PENDING_EVIDENCE', 'BLOCKED')`),
+    check('curated_technical_vehicles_commercial_status', sql`${t.commercial_identity_status} in ('UNCONFIRMED', 'PARTIAL', 'EXACT')`),
+  ],
+);
+
+/** Atributos estructurales observados (TECHNICAL) y candidatos comerciales con estado (COMMERCIAL). */
+export const curatedAttributes = mysqlTable(
+  'curated_attributes',
+  {
+    id: uuid('id').primaryKey(),
+    vehicle_id: uuid('vehicle_id').notNull().references(() => curatedTechnicalVehicles.id),
+    kind: varchar('kind', { length: 16 }).notNull(),
+    attribute: varchar('attribute', { length: 32 }).notNull(),
+    value: varchar('value', { length: 255 }).notNull(),
+    status: varchar('status', { length: 16 }).notNull(),
+    source_code: varchar('source_code', { length: 16 }).notNull(),
+    source_record: varchar('source_record', { length: 512 }).notNull(),
+    retrieved_at: isoDate('retrieved_at').notNull(),
+    rights_status: varchar('rights_status', { length: 16 }).notNull(),
+    evidence: text('evidence').notNull(),
+    created_at: createdAt(),
+  },
+  (t) => [
+    index('curated_attributes_vehicle').on(t.vehicle_id, t.attribute),
+    // Step D1.6a: un atributo técnico es siempre un hecho OBSERVED; uno comercial (generación, año-modelo, acabado,
+    // designación) nunca lo es. Lo garantiza MySQL además de Zod.
+    check(
+      'curated_attributes_kind_status',
+      sql`(${t.kind} = 'TECHNICAL' and ${t.attribute} in ('transmission', 'body_type', 'drivetrain', 'seats', 'doors', 'gears') and ${t.status} = 'OBSERVED') or (${t.kind} = 'COMMERCIAL' and ${t.attribute} in ('generation', 'model_year', 'trim', 'commercial_designation') and ${t.status} in ('UNCONFIRMED', 'PARTIAL', 'EXACT'))`,
+    ),
+    check('curated_attributes_rights', sql`${t.rights_status} in ('APPROVED', 'CONDITIONAL', 'PENDING')`),
+  ],
+);
+
+/** Observaciones técnicas: SpecValue v0.2 + metadatos de curación por campo (derechos, calidad, conflicto). */
+export const curatedSpecValues = mysqlTable(
+  'curated_spec_values',
+  {
+    id: uuid('id').primaryKey(),
+    vehicle_id: uuid('vehicle_id').notNull().references(() => curatedTechnicalVehicles.id),
+    spec_key: varchar('spec_key', { length: 64 }).notNull(),
+    value_kind: varchar('value_kind', { length: 8 }),
+    value_num: double('value_num'),
+    value_text: text('value_text'),
+    value_bool: boolean('value_bool'),
+    value_min: double('value_min'),
+    value_max: double('value_max'),
+    range_basis: varchar('range_basis', { length: 24 }),
+    unit: varchar('unit', { length: 16 }),
+    source_id: uuid('source_id').notNull().references(() => sources.id),
+    source_url: url('source_url').notNull(),
+    source_market: char('source_market', { length: 2 }).notNull(),
+    reference_market: char('reference_market', { length: 2 }).notNull(),
+    archived: boolean('archived').notNull(),
+    archive_url: url('archive_url'),
+    original_url: url('original_url'),
+    source_authority: varchar('source_authority', { length: 32 }).notNull(),
+    mapping_confidence: varchar('mapping_confidence', { length: 40 }).notNull(),
+    homologation_match: varchar('homologation_match', { length: 16 }).notNull(),
+    retrieved_at: isoDate('retrieved_at').notNull(),
+    valid_from: isoDate('valid_from'),
+    valid_to: isoDate('valid_to'),
+    test_cycle: varchar('test_cycle', { length: 24 }),
+    test_cycle_inferred: varchar('test_cycle_inferred', { length: 24 }),
+    cycle_evidence: text('cycle_evidence'),
+    status: varchar('status', { length: 16 }).notNull(),
+    provisional: boolean('provisional').notNull(),
+    measurement_basis: json('measurement_basis'),
+    external_field: varchar('external_field', { length: 128 }),
+    transformation: varchar('transformation', { length: 24 }),
+    transformation_version: int('transformation_version'),
+    raw_ingest_id: uuid('raw_ingest_id').references(() => rawIngest.id),
+    notes: text('notes'),
+    // curación
+    source_code: varchar('source_code', { length: 16 }).notNull(),
+    source_record: varchar('source_record', { length: 512 }).notNull(),
+    identity_match: varchar('identity_match', { length: 24 }).notNull(),
+    rights_status: varchar('rights_status', { length: 16 }).notNull(),
+    quality_status: varchar('quality_status', { length: 16 }).notNull(),
+    quality_reasons: json('quality_reasons').notNull(),
+    conflict_status: varchar('conflict_status', { length: 16 }).notNull(),
+    conflict_group: varchar('conflict_group', { length: 64 }),
+    created_at: createdAt(),
+  },
+  (t) => [
+    index('curated_spec_values_vehicle_key').on(t.vehicle_id, t.spec_key),
+    index('curated_spec_values_source').on(t.source_id),
+    // Step D1.6a: identidad exacta, nunca fuentes DENIED ni referencias secundarias, conflicto siempre agrupado.
+    check('curated_spec_values_identity', sql`${t.identity_match} = 'EXACT_TAN_VA_VE'`),
+    check('curated_spec_values_rights', sql`${t.rights_status} in ('APPROVED', 'CONDITIONAL', 'PENDING')`),
+    check('curated_spec_values_authority', sql`${t.source_authority} <> 'SECONDARY_REFERENCE'`),
+    check('curated_spec_values_quality', sql`${t.quality_status} in ('USABLE', 'NOT_USABLE')`),
+    check('curated_spec_values_conflict', sql`(${t.conflict_status} = 'NONE') or (${t.conflict_status} = 'IN_CONFLICT' and ${t.conflict_group} is not null)`),
+  ],
+);
+
+/** Ejecuciones del importador técnico (idempotente y reanudable: un elemento IMPORTED con el mismo plan no se repite). */
+export const curatedImportRuns = mysqlTable('curated_import_runs', {
+  id: uuid('id').primaryKey(),
+  batch_key: varchar('batch_key', { length: 64 }).notNull(),
+  plan_hash: char('plan_hash', { length: 64 }).notNull(),
+  status: varchar('status', { length: 16 }).notNull(),
+  started_at: dt('started_at').notNull(),
+  finished_at: dt('finished_at'),
+  counts: json('counts'),
+  error: text('error'),
+});
+
+export const curatedImportItems = mysqlTable(
+  'curated_import_items',
+  {
+    batch_key: varchar('batch_key', { length: 64 }).notNull(),
+    technical_key: varchar('technical_key', { length: 255 }).notNull(),
+    vehicle_id: uuid('vehicle_id').notNull(),
+    item_hash: char('item_hash', { length: 64 }).notNull(),
+    status: varchar('status', { length: 16 }).notNull(),
+    run_id: uuid('run_id')
+      .notNull()
+      .references(() => curatedImportRuns.id),
+    error: text('error'),
+    updated_at: dt('updated_at').notNull(),
+  },
+  // Step D1.6a: clave primaria explícita (antes solo UNIQUE) e índice por clave técnica (estado entre lotes).
+  (t) => [primaryKey({ name: 'curated_import_items_pk', columns: [t.batch_key, t.technical_key] }), index('curated_import_items_technical_key').on(t.technical_key)],
 );

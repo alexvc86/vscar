@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "eslint .",
     "typecheck": "turbo run typecheck",
-    "test": "node --env-file-if-exists=.env node_modules/turbo/bin/turbo run test",
+    "test": "node --env-file-if-exists=.env node_modules/turbo/bin/turbo run test --concurrency=4",
     "check": "pnpm lint && pnpm typecheck && pnpm test",
     "db:generate": "pnpm --filter @vscar/db db:generate",
     "db:dev": "node --env-file=.env packages/db/scripts/dev-db.ts"

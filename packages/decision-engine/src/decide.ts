@@ -4,6 +4,7 @@ import {
   DIFFERENCE_THRESHOLDS,
   METHODOLOGY_VERSION,
   compareIntervals,
+  formatEnUs,
   methodologyFingerprint,
   minConfidence,
   type ConfidenceLevel,
@@ -64,7 +65,7 @@ function tournamentFree<T extends string>(ids: readonly T[], beats: (x: T, y: T)
 function forWhom(s: DecisionScenario): string | undefined {
   const c = s.comparison;
   const parts = [
-    c.annualKm !== undefined ? `${c.annualKm.toLocaleString('en-US')} km/year` : undefined,
+    c.annualKm !== undefined ? `${formatEnUs(c.annualKm)} km/year` : undefined,
     c.dailyDistanceKm !== undefined ? `${c.dailyDistanceKm} km/day` : undefined,
     c.homeChargingAvailable !== undefined ? (c.homeChargingAvailable ? 'home charging' : 'no home charging') : undefined,
     c.passengers !== undefined ? `${c.passengers} passengers` : undefined,
@@ -77,7 +78,7 @@ function howMuch(m: MetricComparison): string | undefined {
   const lo = Math.min(Math.abs(m.delta.min), Math.abs(m.delta.max));
   const hi = Math.max(Math.abs(m.delta.min), Math.abs(m.delta.max));
   const unit = m.a?.unit === 'EUR_MINOR' ? '€' : m.a?.unit ?? '';
-  const f = (x: number) => (unit === '€' ? (x / 100).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : x.toLocaleString('en-US', { maximumFractionDigits: 2 }));
+  const f = (x: number) => (unit === '€' ? formatEnUs(x / 100, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : formatEnUs(x, { maximumFractionDigits: 2 }));
   return `${lo === hi ? f(lo) : `${f(lo)}–${f(hi)}`} ${unit}`.trim();
 }
 

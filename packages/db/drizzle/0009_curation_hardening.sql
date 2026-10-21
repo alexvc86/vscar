@@ -1,0 +1,15 @@
+ALTER TABLE `curated_import_items` DROP INDEX `curated_import_items_key`;--> statement-breakpoint
+ALTER TABLE `curated_import_items` ADD PRIMARY KEY(`batch_key`,`technical_key`);--> statement-breakpoint
+ALTER TABLE `curated_technical_vehicles` ADD CONSTRAINT `curated_technical_vehicles_identity` UNIQUE(`market_code`,`type_approval_number`,`variant_code`,`version_code`);--> statement-breakpoint
+ALTER TABLE `curated_attributes` ADD CONSTRAINT `curated_attributes_kind_status` CHECK ((`curated_attributes`.`kind` = 'TECHNICAL' and `curated_attributes`.`attribute` in ('transmission', 'body_type', 'drivetrain', 'seats', 'doors', 'gears') and `curated_attributes`.`status` = 'OBSERVED') or (`curated_attributes`.`kind` = 'COMMERCIAL' and `curated_attributes`.`attribute` in ('generation', 'model_year', 'trim', 'commercial_designation') and `curated_attributes`.`status` in ('UNCONFIRMED', 'PARTIAL', 'EXACT')));--> statement-breakpoint
+ALTER TABLE `curated_attributes` ADD CONSTRAINT `curated_attributes_rights` CHECK (`curated_attributes`.`rights_status` in ('APPROVED', 'CONDITIONAL', 'PENDING'));--> statement-breakpoint
+ALTER TABLE `curated_spec_values` ADD CONSTRAINT `curated_spec_values_identity` CHECK (`curated_spec_values`.`identity_match` = 'EXACT_TAN_VA_VE');--> statement-breakpoint
+ALTER TABLE `curated_spec_values` ADD CONSTRAINT `curated_spec_values_rights` CHECK (`curated_spec_values`.`rights_status` in ('APPROVED', 'CONDITIONAL', 'PENDING'));--> statement-breakpoint
+ALTER TABLE `curated_spec_values` ADD CONSTRAINT `curated_spec_values_authority` CHECK (`curated_spec_values`.`source_authority` <> 'SECONDARY_REFERENCE');--> statement-breakpoint
+ALTER TABLE `curated_spec_values` ADD CONSTRAINT `curated_spec_values_quality` CHECK (`curated_spec_values`.`quality_status` in ('USABLE', 'NOT_USABLE'));--> statement-breakpoint
+ALTER TABLE `curated_spec_values` ADD CONSTRAINT `curated_spec_values_conflict` CHECK ((`curated_spec_values`.`conflict_status` = 'NONE') or (`curated_spec_values`.`conflict_status` = 'IN_CONFLICT' and `curated_spec_values`.`conflict_group` is not null));--> statement-breakpoint
+ALTER TABLE `curated_technical_vehicles` ADD CONSTRAINT `curated_technical_vehicles_identity_exact` CHECK (`curated_technical_vehicles`.`identity_confidence` = 'EXACT');--> statement-breakpoint
+ALTER TABLE `curated_technical_vehicles` ADD CONSTRAINT `curated_technical_vehicles_curation_status` CHECK (`curated_technical_vehicles`.`curation_status` in ('CURATED', 'PENDING_EVIDENCE', 'BLOCKED'));--> statement-breakpoint
+ALTER TABLE `curated_technical_vehicles` ADD CONSTRAINT `curated_technical_vehicles_commercial_status` CHECK (`curated_technical_vehicles`.`commercial_identity_status` in ('UNCONFIRMED', 'PARTIAL', 'EXACT'));--> statement-breakpoint
+ALTER TABLE `curated_import_items` ADD CONSTRAINT `curated_import_items_run_id_curated_import_runs_id_fk` FOREIGN KEY (`run_id`) REFERENCES `curated_import_runs`(`id`) ON DELETE no action ON UPDATE no action;--> statement-breakpoint
+CREATE INDEX `curated_import_items_technical_key` ON `curated_import_items` (`technical_key`);

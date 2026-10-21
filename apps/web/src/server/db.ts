@@ -21,3 +21,11 @@ export function catalogReader(): CatalogReader {
   g.__vscarDb ??= createDb(databaseUrl);
   return createCatalogReader(g.__vscarDb.db);
 }
+
+/** Step D1.6 — misma conexión para la vista INTERNA de curación técnica (solo lectura; ruta protegida). */
+export function catalogDb(): DbHandle['db'] {
+  const { databaseUrl } = serverEnv();
+  if (!databaseUrl) throw new CatalogUnavailableError('DATABASE_URL is not set');
+  g.__vscarDb ??= createDb(databaseUrl);
+  return g.__vscarDb.db;
+}

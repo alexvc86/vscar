@@ -292,7 +292,15 @@
     "noBreakEven": "The {name} costs {extra} more to buy and does not cost less per year in energy: with this use, that difference is not recovered.",
     "knownCostNote": "Known cost = purchase price + energy over {years, plural, one {# year} other {# years}}. It does not include maintenance, insurance, taxes, depreciation or resale value: it is not a total cost of ownership.",
     "knownCostNotComparable": "Energy costs come from different test cycles, so the known costs are not comparable with each other; only the purchase price is.",
-    "lowerPurchaseSameRunning": "The {name} costs {amount} less to buy; that does not change the running cost."
+    "lowerPurchaseSameRunning": "The {name} costs {amount} less to buy; that does not change the running cost.",
+    "newPrice": {
+      "title": "New-car purchase price",
+      "label": "Purchase price (€)",
+      "apply": "Apply",
+      "clear": "Remove",
+      "note": "You enter it: it is not an official or manufacturer price and it is not stored. It changes the initial outlay, the known cost and the break-even; the economic fit (running cost) does not change. Empty = no price.",
+      "invalid": "Enter a whole euro amount between 100 and 2,000,000."
+    }
   },
   "practical": {
     "title": "Practical fit",

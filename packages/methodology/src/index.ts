@@ -89,12 +89,17 @@ export function canonicalJson(value: unknown): string {
  * Huella FNV-1a de 64 bits de la configuración (sin dependencias de Node: se ejecuta también en navegador).
  * Detecta cambios de metodología no acompañados de nueva versión.
  */
+const UTF8 = new TextEncoder();
 export function methodologyFingerprint(config: unknown = METHODOLOGY_CONFIG): string {
-  let h = 0xcbf29ce484222325n;
-  const prime = 0x100000001b3n;
-  for (const byte of new TextEncoder().encode(canonicalJson(config))) {
-    h ^= BigInt(byte);
-    h = (h * prime) & 0xffffffffffffffffn;
+  // FNV-1a 64 en dos mitades de 32 bits (mismo resultado que con BigInt, sin un BigInt por byte — Step D1.6a).
+  // h · prime = h · 0x1b3 + (h << 40) (mod 2^64); todos los productos intermedios caben exactos en un double.
+  let hi = 0xcbf29ce4;
+  let lo = 0x84222325;
+  for (const byte of UTF8.encode(canonicalJson(config))) {
+    lo = (lo ^ byte) >>> 0;
+    const t = lo * 0x1b3;
+    hi = (hi * 0x1b3 + Math.floor(t / 0x100000000) + ((lo << 8) >>> 0)) >>> 0;
+    lo = t >>> 0;
   }
-  return h.toString(16).padStart(16, '0');
+  return hi.toString(16).padStart(8, '0') + lo.toString(16).padStart(8, '0');
 }

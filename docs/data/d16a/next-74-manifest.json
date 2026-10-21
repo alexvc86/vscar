@@ -1,0 +1,4063 @@
+{
+  "note": "Step D1.6a — classification of the 100 D1 candidates and proposed batches for the 74 pending. Nothing is imported by this file.",
+  "ordering": "risk tier (clean < conflicts < partial catalogue overlap), then critical completeness desc, then rank; round-robin by product class inside each tier; chunks of 15",
+  "candidates": 100,
+  "eligible": 92,
+  "alreadyCurated": 18,
+  "pending": 74,
+  "excluded": [
+    {
+      "rank": 1,
+      "reason": "DUPLICATE of an existing catalogue variant: reconcile, do not insert"
+    },
+    {
+      "rank": 2,
+      "reason": "PROBABLE_DUPLICATE_TAN_INCOMPLETE of an existing catalogue variant: reconcile, do not insert"
+    },
+    {
+      "rank": 3,
+      "reason": "DUPLICATE of an existing catalogue variant: reconcile, do not insert"
+    },
+    {
+      "rank": 13,
+      "reason": "RDW does not corroborate the exact key (TAN_EXTENSION_MISMATCH)"
+    },
+    {
+      "rank": 21,
+      "reason": "RDW does not corroborate the exact key (NONE)"
+    },
+    {
+      "rank": 22,
+      "reason": "RDW does not corroborate the exact key (TAN_EXTENSION_MISMATCH)"
+    },
+    {
+      "rank": 50,
+      "reason": "RDW does not corroborate the exact key (TAN_EXTENSION_MISMATCH)"
+    },
+    {
+      "rank": 55,
+      "reason": "RDW does not corroborate the exact key (TAN_EXTENSION_MISMATCH)"
+    }
+  ],
+  "batches": [
+    {
+      "batchKey": "d16a-batch-A",
+      "planSha256": "abdd14cad31df0b18e4956fee4537ed651ca6934aa7498f7c799597cff35a290",
+      "size": 15,
+      "ranks": [
+        32,
+        40,
+        10,
+        11,
+        77,
+        61,
+        46,
+        12,
+        23,
+        78,
+        76,
+        60,
+        14,
+        79,
+        84
+      ],
+      "byPowertrain": {
+        "BEV": 4,
+        "HEV_OR_MHEV": 3,
+        "ICE_OR_MHEV": 3,
+        "MHEV": 2,
+        "PHEV": 3
+      },
+      "observations": 228,
+      "attributes": 43,
+      "conflictingValues": 0
+    },
+    {
+      "batchKey": "d16a-batch-B",
+      "planSha256": "8e26160ae8bda62eada2ecea24dfa588a6026b342cfeae9b96d820305e181d8b",
+      "size": 15,
+      "ranks": [
+        63,
+        15,
+        80,
+        85,
+        64,
+        16,
+        83,
+        90,
+        68,
+        18,
+        67,
+        92,
+        69,
+        19,
+        93
+      ],
+      "byPowertrain": {
+        "BEV": 4,
+        "HEV_OR_MHEV": 4,
+        "ICE_OR_MHEV": 4,
+        "PHEV": 3
+      },
+      "observations": 223,
+      "attributes": 38,
+      "conflictingValues": 0
+    },
+    {
+      "batchKey": "d16a-batch-C",
+      "planSha256": "704ab607c6b2ff74801e6dd617d5c8971cff65bd416a631b49c9aaafad036244",
+      "size": 15,
+      "ranks": [
+        70,
+        25,
+        94,
+        71,
+        29,
+        95,
+        74,
+        33,
+        96,
+        75,
+        34,
+        97,
+        82,
+        35,
+        98
+      ],
+      "byPowertrain": {
+        "BEV": 5,
+        "HEV_OR_MHEV": 5,
+        "ICE_OR_MHEV": 5
+      },
+      "observations": 210,
+      "attributes": 42,
+      "conflictingValues": 0
+    },
+    {
+      "batchKey": "d16a-batch-D",
+      "planSha256": "03b97432020bd77d08fb154cfd6510ff511c1df6f33525f2f88e8f599eae43f3",
+      "size": 15,
+      "ranks": [
+        87,
+        36,
+        99,
+        89,
+        37,
+        100,
+        91,
+        38,
+        17,
+        39,
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
+      "byPowertrain": {
+        "BEV": 3,
+        "HEV_OR_MHEV": 3,
+        "ICE_OR_MHEV": 9
+      },
+      "observations": 217,
+      "attributes": 44,
+      "conflictingValues": 0
+    },
+    {
+      "batchKey": "d16a-batch-E",
+      "planSha256": "61f75ff8c1c7070a01a184c9d9f3663eb28b266b4d60c3cf5388355d285e58f2",
+      "size": 14,
+      "ranks": [
+        47,
+        49,
+        51,
+        52,
+        54,
+        58,
+        72,
+        30,
+        59,
+        31,
+        66,
+        62,
+        65,
+        88
+      ],
+      "byPowertrain": {
+        "BEV": 1,
+        "HEV_OR_MHEV": 2,
+        "ICE_OR_MHEV": 10,
+        "PHEV": 1
+      },
+      "observations": 211,
+      "attributes": 44,
+      "conflictingValues": 12
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "candidateId": "f24ce616-edd4-5f57-aeaf-edbb5adc30ed",
+      "fullTan": "E1*2007/46*0623*35",
+      "variant": "GAC4DACAX0",
+      "version": "FM6FM6AJ015N7CPON1ML1BVR2NA",
+      "technicalKey": "E1*2007/46*0623*35|GAC4DACAX0|FM6FM6AJ015N7CPON1ML1BVR2NA",
+      "model": "Volkswagen Golf",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "EXCLUDED",
+      "sourceEvidence": null,
+      "openConflicts": [],
+      "catalogOverlap": [
+        "DUPLICATE"
+      ],
+      "rightsState": {},
+      "criticalCompleteness": 0,
+      "proposedBatch": null,
+      "importEligibility": "NOT_ELIGIBLE",
+      "blockers": [
+        "DUPLICATE of an existing catalogue variant: reconcile, do not insert"
+      ]
+    },
+    {
+      "rank": 2,
+      "candidateId": "50b7e964-064d-5103-bfa8-635fa35e5fbf",
+      "fullTan": "E13*2018/858*00639*03",
+      "variant": "SE2R1C",
+      "version": "2NTE5F002NL1",
+      "technicalKey": "E13*2018/858*00639*03|SE2R1C|2NTE5F002NL1",
+      "model": "BYD SEAL",
+      "powertrain": "BEV",
+      "currentStatus": "EXCLUDED",
+      "sourceEvidence": null,
+      "openConflicts": [],
+      "catalogOverlap": [
+        "PROBABLE_DUPLICATE_TAN_INCOMPLETE"
+      ],
+      "rightsState": {},
+      "criticalCompleteness": 0,
+      "proposedBatch": null,
+      "importEligibility": "NOT_ELIGIBLE",
+      "blockers": [
+        "PROBABLE_DUPLICATE_TAN_INCOMPLETE of an existing catalogue variant: reconcile, do not insert"
+      ]
+    },
+    {
+      "rank": 3,
+      "candidateId": "51873620-871c-5749-8b99-b497d3ead6fc",
+      "fullTan": "E1*2007/46*0623*33",
+      "variant": "GAC4DACAX0",
+      "version": "FM6FM6AJ015N7MVON1ML79VR2N",
+      "technicalKey": "E1*2007/46*0623*33|GAC4DACAX0|FM6FM6AJ015N7MVON1ML79VR2N",
+      "model": "Volkswagen Golf",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "EXCLUDED",
+      "sourceEvidence": null,
+      "openConflicts": [],
+      "catalogOverlap": [
+        "DUPLICATE"
+      ],
+      "rightsState": {},
+      "criticalCompleteness": 0,
+      "proposedBatch": null,
+      "importEligibility": "NOT_ELIGIBLE",
+      "blockers": [
+        "DUPLICATE of an existing catalogue variant: reconcile, do not insert"
+      ]
+    },
+    {
+      "rank": 4,
+      "candidateId": "8848ea66-9eff-53cb-9967-a0981c48223c",
+      "fullTan": "E13*2018/858*00639*00",
+      "variant": "SE2D1C",
+      "version": "1NXE5E001NL1",
+      "technicalKey": "E13*2018/858*00639*00|SE2D1C|1NXE5E001NL1",
+      "model": "BYD SEAL",
+      "powertrain": "BEV",
+      "currentStatus": "CURATED (D1.6, vscar_dev)",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 8,
+        "S13Attributes": 0,
+        "attributes": 8
+      },
+      "openConflicts": [
+        "S11:rng.electric_combined_km",
+        "S11:nrg.electric_combined_kwh100",
+        "S01:nrg.electric_combined_kwh100",
+        "S01:rng.electric_combined_km"
+      ],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S02": "PENDING",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.429,
+      "proposedBatch": null,
+      "importEligibility": "ALREADY_CURATED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval",
+        "open value conflict (kept, needs review)"
+      ]
+    },
+    {
+      "rank": 5,
+      "candidateId": "b36b0cb8-aa96-5a2f-adf4-fbf6bde68064",
+      "fullTan": "E4*2018/858*00079*00",
+      "variant": "F5P11",
+      "version": "M61A11",
+      "technicalKey": "E4*2018/858*00079*00|F5P11|M61A11",
+      "model": "Kia Sportage",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "CURATED (D1.6, vscar_dev)",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 9,
+        "S13Attributes": 1,
+        "attributes": 4
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": null,
+      "importEligibility": "ALREADY_CURATED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 6,
+      "candidateId": "785e17cc-5b85-56c6-bb08-86d1a80e9db5",
+      "fullTan": "E2*2007/46*0676*28",
+      "variant": "BD2",
+      "version": "AC6WA2SA500B",
+      "technicalKey": "E2*2007/46*0676*28|BD2|AC6WA2SA500B",
+      "model": "Renault Clio",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "CURATED (D1.6, vscar_dev)",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 0,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": null,
+      "importEligibility": "ALREADY_CURATED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 7,
+      "candidateId": "ed79a5b6-d043-5c1e-93ae-9762587f1356",
+      "fullTan": "E9*2018/858*11042*10",
+      "variant": "A",
+      "version": "A35",
+      "technicalKey": "E9*2018/858*11042*10|A|A35",
+      "model": "Nissan Qashqai",
+      "powertrain": "MHEV",
+      "currentStatus": "CURATED (D1.6, vscar_dev)",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 1,
+        "attributes": 4
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": null,
+      "importEligibility": "ALREADY_CURATED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 8,
+      "candidateId": "8331c894-0978-5951-98bb-0ffbfe548722",
+      "fullTan": "E11*2007/46*2724*05",
+      "variant": "F5D51",
+      "version": "M66ZZ1",
+      "technicalKey": "E11*2007/46*2724*05|F5D51|M66ZZ1",
+      "model": "Hyundai Tucson",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "CURATED (D1.6, vscar_dev)",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 12,
+        "S13Attributes": 1,
+        "attributes": 4
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": null,
+      "importEligibility": "ALREADY_CURATED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 9,
+      "candidateId": "25ae1749-3150-594d-b466-a10df54628ee",
+      "fullTan": "E11*2007/46*3144*01",
+      "variant": "F5D51",
+      "version": "M66ZZ1",
+      "technicalKey": "E11*2007/46*3144*01|F5D51|M66ZZ1",
+      "model": "Kia Sportage",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "CURATED (D1.6, vscar_dev)",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 10,
+        "S13Attributes": 1,
+        "attributes": 4
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": null,
+      "importEligibility": "ALREADY_CURATED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 10,
+      "candidateId": "4ae01227-5c68-57a2-aa71-180a1f03ab2c",
+      "fullTan": "E2*2007/46*0676*03",
+      "variant": "BE2",
+      "version": "MT5TA08A5000",
+      "technicalKey": "E2*2007/46*0676*03|BE2|MT5TA08A5000",
+      "model": "Renault Clio",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 10,
+        "S13Attributes": 2,
+        "attributes": 4
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "A",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 11,
+      "candidateId": "712d2a4f-3c57-5a38-b30f-00800978aa85",
+      "fullTan": "E4*2018/858*00079*02",
+      "variant": "F5P21",
+      "version": "M61A17",
+      "technicalKey": "E4*2018/858*00079*02|F5P21|M61A17",
+      "model": "Kia Sportage",
+      "powertrain": "MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": "A",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 12,
+      "candidateId": "4c7248e4-e500-5941-85a4-c596414626a1",
+      "fullTan": "E2*2007/46*0676*14",
+      "variant": "BE2",
+      "version": "MG5UA8HA5000",
+      "technicalKey": "E2*2007/46*0676*14|BE2|MG5UA8HA5000",
+      "model": "Renault Clio",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 9,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "A",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 13,
+      "candidateId": "5b6a689d-5fa9-5038-aa62-9388d1a30c41",
+      "fullTan": "E19*2007/46*0026*10",
+      "variant": "BES",
+      "version": "MG5UA41M5100",
+      "technicalKey": "E19*2007/46*0026*10|BES|MG5UA41M5100",
+      "model": "Dacia Sandero",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "EXCLUDED",
+      "sourceEvidence": null,
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {},
+      "criticalCompleteness": 0,
+      "proposedBatch": null,
+      "importEligibility": "NOT_ELIGIBLE",
+      "blockers": [
+        "RDW does not corroborate the exact key (TAN_EXTENSION_MISMATCH)"
+      ]
+    },
+    {
+      "rank": 14,
+      "candidateId": "e55fea7f-f64e-5a54-810a-3c9d07c45ffa",
+      "fullTan": "E19*2007/46*0026*12",
+      "variant": "BEV",
+      "version": "M66UA43M5200",
+      "technicalKey": "E19*2007/46*0026*12|BEV|M66UA43M5200",
+      "model": "Dacia Sandero",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 9,
+        "S13Attributes": 2,
+        "attributes": 4
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "A",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 15,
+      "candidateId": "f503c421-9788-5545-a2fc-92d5440e80f0",
+      "fullTan": "E1*2007/46*2014*23",
+      "variant": "ACDNPAX0",
+      "version": "FD7FD7GC003S4BISOR2ML1CVR2AI0",
+      "technicalKey": "E1*2007/46*2014*23|ACDNPAX0|FD7FD7GC003S4BISOR2ML1CVR2AI0",
+      "model": "Volkswagen Golf",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "B",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 16,
+      "candidateId": "7d9df90a-4bea-555c-9f23-9073fd407473",
+      "fullTan": "E4*2018/858*00153*01",
+      "variant": "F5P12",
+      "version": "M61AY1",
+      "technicalKey": "E4*2018/858*00153*01|F5P12|M61AY1",
+      "model": "Hyundai Kona",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "B",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 17,
+      "candidateId": "7e709be0-1d1a-57c2-86df-83324f550516",
+      "fullTan": "E1*2007/46*0623*33",
+      "variant": "GAC4EAZAX0",
+      "version": "FA1FA1MD001E0GAON1ML01VR0N",
+      "technicalKey": "E1*2007/46*0623*33|GAC4EAZAX0|FA1FA1MD001E0GAON1ML01VR0N",
+      "model": "Volkswagen Golf",
+      "powertrain": "BEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 7,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.357,
+      "proposedBatch": "D",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: rng.electric_combined_km",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 18,
+      "candidateId": "ca6e98e3-1cba-5418-b157-6ad59120e25c",
+      "fullTan": "E4*2018/858*00153*03",
+      "variant": "F5P12",
+      "version": "M61AY1",
+      "technicalKey": "E4*2018/858*00153*03|F5P12|M61AY1",
+      "model": "Hyundai Kona",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "B",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 19,
+      "candidateId": "ba2f2bbc-0367-521b-8b54-f71c105f4e3f",
+      "fullTan": "E4*2007/46*1259*01",
+      "variant": "F5D11",
+      "version": "M62AZ1",
+      "technicalKey": "E4*2007/46*1259*01|F5D11|M62AZ1",
+      "model": "Hyundai Kona",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 10,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "B",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 20,
+      "candidateId": "fc9f05a8-05ee-5be1-b5ad-dbabf1f52152",
+      "fullTan": "E2*2007/46*0534*05",
+      "variant": "C",
+      "version": "YHZJ-C2B000",
+      "technicalKey": "E2*2007/46*0534*05|C|YHZJ-C2B000",
+      "model": "Peugeot 3008",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "CURATED (D1.6, vscar_dev)",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 10,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": null,
+      "importEligibility": "ALREADY_CURATED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 21,
+      "candidateId": "d42b8131-3f22-5b8a-8ddf-95c38e0bc091",
+      "fullTan": "E5*2018/858*00001*05",
+      "variant": "F5D41",
+      "version": "M62A12",
+      "technicalKey": "E5*2018/858*00001*05|F5D41|M62A12",
+      "model": "Hyundai Tucson",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "EXCLUDED",
+      "sourceEvidence": null,
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {},
+      "criticalCompleteness": 0,
+      "proposedBatch": null,
+      "importEligibility": "NOT_ELIGIBLE",
+      "blockers": [
+        "RDW does not corroborate the exact key (NONE)"
+      ]
+    },
+    {
+      "rank": 22,
+      "candidateId": "50eaa5bc-8a36-5672-86d1-bc3182932f42",
+      "fullTan": "E2*2007/46*0639*18",
+      "variant": "B",
+      "version": "YHTK-J2B400",
+      "technicalKey": "E2*2007/46*0639*18|B|YHTK-J2B400",
+      "model": "Peugeot 208",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "EXCLUDED",
+      "sourceEvidence": null,
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {},
+      "criticalCompleteness": 0,
+      "proposedBatch": null,
+      "importEligibility": "NOT_ELIGIBLE",
+      "blockers": [
+        "RDW does not corroborate the exact key (TAN_EXTENSION_MISMATCH)"
+      ]
+    },
+    {
+      "rank": 23,
+      "candidateId": "51eb1379-962c-5cee-a088-bac84fb2788b",
+      "fullTan": "E4*2018/858*00153*01",
+      "variant": "F5P22",
+      "version": "M61AY1",
+      "technicalKey": "E4*2018/858*00153*01|F5P22|M61AY1",
+      "model": "Hyundai Kona",
+      "powertrain": "MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": "A",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 24,
+      "candidateId": "61c5fe51-c879-5c18-a3c5-2e65f37259dd",
+      "fullTan": "E19*2007/46*0026*27",
+      "variant": "BEV",
+      "version": "MT6WA45M520B",
+      "technicalKey": "E19*2007/46*0026*27|BEV|MT6WA45M520B",
+      "model": "Dacia Sandero",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "CURATED (D1.6, vscar_dev)",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 0,
+        "attributes": 3
+      },
+      "openConflicts": [
+        "S11:emi.co2_combined_gkm",
+        "S01:emi.co2_combined_gkm",
+        "S01:nrg.fuel_combined_l100",
+        "S11:nrg.fuel_combined_l100"
+      ],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": null,
+      "importEligibility": "ALREADY_CURATED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval",
+        "open value conflict (kept, needs review)"
+      ]
+    },
+    {
+      "rank": 25,
+      "candidateId": "c8a0e419-865c-5511-b74c-3f4df1b036be",
+      "fullTan": "E2*2007/46*0534*12",
+      "variant": "R",
+      "version": "HNSM-C1P100",
+      "technicalKey": "E2*2007/46*0534*12|R|HNSM-C1P100",
+      "model": "Peugeot 3008",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 10,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "C",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 26,
+      "candidateId": "bc56ae3e-6e0e-5ae3-b6b0-b93f168f2415",
+      "fullTan": "E2*2007/46*0628*30",
+      "variant": "B",
+      "version": "YHZT-B21700",
+      "technicalKey": "E2*2007/46*0628*30|B|YHZT-B21700",
+      "model": "Peugeot 308",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "CURATED (D1.6, vscar_dev)",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 0,
+        "attributes": 4
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": null,
+      "importEligibility": "ALREADY_CURATED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 27,
+      "candidateId": "5223d033-4cdc-592c-9d31-1ebe922e969e",
+      "fullTan": "E6*2007/46*0437*04",
+      "variant": "MXPA11(H)",
+      "version": "MXPA11L-BHFNBW(1E)",
+      "technicalKey": "E6*2007/46*0437*04|MXPA11(H)|MXPA11L-BHFNBW(1E)",
+      "model": "Toyota Yaris",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "CURATED (D1.6, vscar_dev)",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 0,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": null,
+      "importEligibility": "ALREADY_CURATED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 28,
+      "candidateId": "0244eada-7c20-57d6-94fc-12606bdbf902",
+      "fullTan": "E1*2007/46*1829*16",
+      "variant": "X21CT2",
+      "version": "HZAA151C",
+      "technicalKey": "E1*2007/46*1829*16|X21CT2|HZAA151C",
+      "model": "Mercedes-Benz Clase A",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "CURATED (D1.6, vscar_dev)",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 1,
+        "attributes": 4
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": null,
+      "importEligibility": "ALREADY_CURATED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 29,
+      "candidateId": "7656c0e7-f31e-5ac1-9364-76069da7e904",
+      "fullTan": "E11*2007/46*0963*17",
+      "variant": "D",
+      "version": "D03",
+      "technicalKey": "E11*2007/46*0963*17|D|D03",
+      "model": "Nissan Qashqai",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 10,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "C",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 30,
+      "candidateId": "16e40105-63e8-5ebd-888e-73aa4153c813",
+      "fullTan": "E8*2007/46*0318*09",
+      "variant": "ACDHFAX0",
+      "version": "NFD7FD7CW0054BFSTVLN1B7A",
+      "technicalKey": "E8*2007/46*0318*09|ACDHFAX0|NFD7FD7CW0054BFSTVLN1B7A",
+      "model": "Škoda Octavia",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 7,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": "E",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.fuel_combined_l100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 31,
+      "candidateId": "6a7bd4ef-a327-5f44-afaf-0f4fc65d3f8d",
+      "fullTan": "E11*2007/46*3144*03",
+      "variant": "F5D61",
+      "version": "D72ZZ1",
+      "technicalKey": "E11*2007/46*3144*03|F5D61|D72ZZ1",
+      "model": "Kia Sportage",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 10,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [
+        "S01:dim.wheelbase_mm",
+        "S11:dim.wheelbase_mm"
+      ],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "E",
+      "importEligibility": "ELIGIBLE_CONFLICTS_PRESERVED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval",
+        "open value conflict (kept, needs review)"
+      ]
+    },
+    {
+      "rank": 32,
+      "candidateId": "33b7d427-f4e2-5ca7-98ab-46c9ac53b04a",
+      "fullTan": "E4*2018/858*00168*02",
+      "variant": "F5E32",
+      "version": "E11AZ1",
+      "technicalKey": "E4*2018/858*00168*02|F5E32|E11AZ1",
+      "model": "Hyundai Kona",
+      "powertrain": "BEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 8,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.429,
+      "proposedBatch": "A",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 33,
+      "candidateId": "6682423d-a254-5444-bbc9-2f1dbaf38f9b",
+      "fullTan": "E1*2007/46*2060*27",
+      "variant": "SDTSBF1",
+      "version": "FD7FD7GC002RT011C184BIBEM1MLN1D0C",
+      "technicalKey": "E1*2007/46*2060*27|SDTSBF1|FD7FD7GC002RT011C184BIBEM1MLN1D0C",
+      "model": "Audi A3",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "C",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 34,
+      "candidateId": "f1d621d9-74f3-5cc5-b4ec-185c019b5298",
+      "fullTan": "E6*2007/46*0318*03",
+      "variant": "ZWE211(H)",
+      "version": "ZWE211L-DHXNBW(1D)",
+      "technicalKey": "E6*2007/46*0318*03|ZWE211(H)|ZWE211L-DHXNBW(1D)",
+      "model": "Toyota Corolla",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 10,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "C",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 35,
+      "candidateId": "16ba1cf8-d2e1-5400-8775-2604d7f4ccfb",
+      "fullTan": "E11*2007/46*0152*10",
+      "variant": "NHP13(MH)",
+      "version": "NHP130L-CHXNBW(1L)",
+      "technicalKey": "E11*2007/46*0152*10|NHP13(MH)|NHP130L-CHXNBW(1L)",
+      "model": "Toyota Yaris",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 10,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "C",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 36,
+      "candidateId": "d87b4631-da62-57d7-babc-4dbe20f4b1fd",
+      "fullTan": "E2*2001/116*0314*93",
+      "variant": "05EV",
+      "version": "AC5DA1A0M500",
+      "technicalKey": "E2*2001/116*0314*93|05EV|AC5DA1A0M500",
+      "model": "Dacia Sandero",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 10,
+        "S13Attributes": 2,
+        "attributes": 4
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "D",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 37,
+      "candidateId": "640df669-d46f-5775-a477-9c07f36f6d32",
+      "fullTan": "E2*2001/116*0314*83",
+      "variant": "5SDL1",
+      "version": "5SDL1C",
+      "technicalKey": "E2*2001/116*0314*83|5SDL1|5SDL1C",
+      "model": "Dacia Sandero",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 10,
+        "S13Attributes": 2,
+        "attributes": 4
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "D",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 38,
+      "candidateId": "d873fc5f-d74b-5981-86b5-a29a2ea0878a",
+      "fullTan": "E1*2001/116*0470*16",
+      "variant": "12S1P2",
+      "version": "MZAZ1502",
+      "technicalKey": "E1*2001/116*0470*16|12S1P2|MZAZ1502",
+      "model": "Mercedes-Benz Clase A",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 10,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "D",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 39,
+      "candidateId": "f1f5679c-2fbc-5c98-9478-54823d453507",
+      "fullTan": "E2*2007/46*0546*09",
+      "variant": "BF4",
+      "version": "M6A6SF010000",
+      "technicalKey": "E2*2007/46*0546*09|BF4|M6A6SF010000",
+      "model": "Renault Mégane",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 10,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "D",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 40,
+      "candidateId": "ef8da154-e8d4-56fd-8384-de8c55d43d9e",
+      "fullTan": "E9*2018/858*11042*11",
+      "variant": "A",
+      "version": "A41",
+      "technicalKey": "E9*2018/858*11042*11|A|A41",
+      "model": "Nissan Qashqai",
+      "powertrain": "HEV_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": "A",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 41,
+      "candidateId": "0a20c493-fccb-53e1-9ebe-d65d124ea080",
+      "fullTan": "E6*2007/46*0289*02",
+      "variant": "AXAH52(N)",
+      "version": "AXAH52L-ANXMBW(1C)",
+      "technicalKey": "E6*2007/46*0289*02|AXAH52(N)|AXAH52L-ANXMBW(1C)",
+      "model": "Toyota RAV4",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 10,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "D",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 42,
+      "candidateId": "46ad6fa0-f0fc-520e-8c06-0b6c42f9c3f2",
+      "fullTan": "E2*2007/46*0546*09",
+      "variant": "BF2",
+      "version": "MR662A010000",
+      "technicalKey": "E2*2007/46*0546*09|BF2|MR662A010000",
+      "model": "Renault Mégane",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 10,
+        "S13Attributes": 2,
+        "attributes": 4
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "D",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 43,
+      "candidateId": "09b9c876-e2c5-50a8-ae28-d696b293161f",
+      "fullTan": "E2*2007/46*0405*29",
+      "variant": "B",
+      "version": "YHZJ-C22100",
+      "technicalKey": "E2*2007/46*0405*29|B|YHZJ-C22100",
+      "model": "Peugeot 308",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 9,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "D",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 44,
+      "candidateId": "16c556ad-8321-5304-b7cf-f380a4320767",
+      "fullTan": "E1*2007/46*1829*03",
+      "variant": "X203T2",
+      "version": "EZAA151B",
+      "technicalKey": "E1*2007/46*1829*03|X203T2|EZAA151B",
+      "model": "Mercedes-Benz Clase A",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 10,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "D",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 45,
+      "candidateId": "936e39a6-f5b9-5dcb-89cd-08868fd864cb",
+      "fullTan": "E2*2007/46*0639*35",
+      "variant": "P",
+      "version": "HNEK-K1T500",
+      "technicalKey": "E2*2007/46*0639*35|P|HNEK-K1T500",
+      "model": "Peugeot 208",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 4,
+        "S11": 9,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "D",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 46,
+      "candidateId": "ea767130-404b-5783-9f59-e40b66d261d0",
+      "fullTan": "E1*2007/46*2060*27",
+      "variant": "SDFYAF1",
+      "version": "FD7FD7CW002RT011C184BIBEM1MLN1B20",
+      "technicalKey": "E1*2007/46*2060*27|SDFYAF1|FD7FD7CW002RT011C184BIBEM1MLN1B20",
+      "model": "Audi A3",
+      "powertrain": "HEV_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": "A",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 47,
+      "candidateId": "862262ed-2508-50c6-ad51-d4925c05eb0d",
+      "fullTan": "E5*2007/46*1029*04",
+      "variant": "F",
+      "version": "F04",
+      "technicalKey": "E5*2007/46*1029*04|F|F04",
+      "model": "Nissan Qashqai",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 10,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "E",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 48,
+      "candidateId": "fd633c27-2ed9-570e-8aa3-2f6c1078ee12",
+      "fullTan": "E6*2007/46*0437*04",
+      "variant": "MXPH11(H)",
+      "version": "MXPH11L-CHXNBW(1E)",
+      "technicalKey": "E6*2007/46*0437*04|MXPH11(H)|MXPH11L-CHXNBW(1E)",
+      "model": "Toyota Yaris",
+      "powertrain": "HEV_OR_MHEV",
+      "currentStatus": "CURATED (D1.6, vscar_dev)",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 1,
+        "attributes": 4
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": null,
+      "importEligibility": "ALREADY_CURATED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 49,
+      "candidateId": "382dda1d-abd7-5e1c-8a0a-724be8d059a7",
+      "fullTan": "E11*2007/46*2724*05",
+      "variant": "F5P31",
+      "version": "M64ZZ1",
+      "technicalKey": "E11*2007/46*2724*05|F5P31|M64ZZ1",
+      "model": "Hyundai Tucson",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 10,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "E",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 50,
+      "candidateId": "6d03910d-2d4b-57f0-9ef8-c87481fc1ed5",
+      "fullTan": "E8*2007/46*0355*17",
+      "variant": "ACDTTCX0",
+      "version": "NFD7FD7GC0024BIVL0N1A3A",
+      "technicalKey": "E8*2007/46*0355*17|ACDTTCX0|NFD7FD7GC0024BIVL0N1A3A",
+      "model": "Škoda Octavia",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "EXCLUDED",
+      "sourceEvidence": null,
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {},
+      "criticalCompleteness": 0,
+      "proposedBatch": null,
+      "importEligibility": "NOT_ELIGIBLE",
+      "blockers": [
+        "RDW does not corroborate the exact key (TAN_EXTENSION_MISMATCH)"
+      ]
+    },
+    {
+      "rank": 51,
+      "candidateId": "2a3765b6-5ff7-53ce-8a01-c97b2c7df7ee",
+      "fullTan": "E4*2007/46*1139*02",
+      "variant": "C5P11",
+      "version": "D61AY1",
+      "technicalKey": "E4*2007/46*1139*02|C5P11|D61AY1",
+      "model": "Kia Niro",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 10,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "E",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 52,
+      "candidateId": "2d46a54a-51f9-510e-bbf5-929f926d952c",
+      "fullTan": "E5*2018/858*00001*09",
+      "variant": "F5P81",
+      "version": "M61A11",
+      "technicalKey": "E5*2018/858*00001*09|F5P81|M61A11",
+      "model": "Hyundai Tucson",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "E",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 53,
+      "candidateId": "ddf97e08-67d6-5668-9a59-5761d989ea41",
+      "fullTan": "E1*2007/46*1829*12",
+      "variant": "X28QT2",
+      "version": "HZAA052A",
+      "technicalKey": "E1*2007/46*1829*12|X28QT2|HZAA052A",
+      "model": "Mercedes-Benz Clase A",
+      "powertrain": "PHEV",
+      "currentStatus": "CURATED (D1.6, vscar_dev)",
+      "sourceEvidence": {
+        "S01": 8,
+        "S11": 12,
+        "S13Attributes": 1,
+        "attributes": 4
+      },
+      "openConflicts": [
+        "S11:nrg.electric_combined_kwh100",
+        "S01:nrg.electric_combined_kwh100"
+      ],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.438,
+      "proposedBatch": null,
+      "importEligibility": "ALREADY_CURATED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.fuel_charge_sustaining_l100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval",
+        "open value conflict (kept, needs review)"
+      ]
+    },
+    {
+      "rank": 54,
+      "candidateId": "ea7fea31-8f0d-53b8-8dbc-bc9b75dc2f43",
+      "fullTan": "E2*2007/46*0639*07",
+      "variant": "P",
+      "version": "HMHD-J1B100",
+      "technicalKey": "E2*2007/46*0639*07|P|HMHD-J1B100",
+      "model": "Peugeot 208",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 10,
+        "S13Attributes": 2,
+        "attributes": 4
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "E",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 55,
+      "candidateId": "14206597-9a5a-5cc3-91bc-a6a18295b721",
+      "fullTan": "E9*2007/46*3167*27",
+      "variant": "SFDTTCX0",
+      "version": "FD7SFD7GC0024BIVL1BAD16",
+      "technicalKey": "E9*2007/46*3167*27|SFDTTCX0|FD7SFD7GC0024BIVL1BAD16",
+      "model": "SEAT León",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "EXCLUDED",
+      "sourceEvidence": null,
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {},
+      "criticalCompleteness": 0,
+      "proposedBatch": null,
+      "importEligibility": "NOT_ELIGIBLE",
+      "blockers": [
+        "RDW does not corroborate the exact key (TAN_EXTENSION_MISMATCH)"
+      ]
+    },
+    {
+      "rank": 56,
+      "candidateId": "5e196035-2ad2-585e-ad0f-7b8c971209ae",
+      "fullTan": "E6*2007/46*0318*05",
+      "variant": "ZWE211(H)",
+      "version": "ZWE211L-DHXNBW(1F)",
+      "technicalKey": "E6*2007/46*0318*05|ZWE211(H)|ZWE211L-DHXNBW(1F)",
+      "model": "Toyota Corolla",
+      "powertrain": "HEV_OR_MHEV",
+      "currentStatus": "CURATED (D1.6, vscar_dev)",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 9,
+        "S13Attributes": 0,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": null,
+      "importEligibility": "ALREADY_CURATED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 57,
+      "candidateId": "85beac35-7b7a-5715-856b-5c01589d22ce",
+      "fullTan": "E2*2007/46*0534*23",
+      "variant": "4",
+      "version": "DGZU-C1J000",
+      "technicalKey": "E2*2007/46*0534*23|4|DGZU-C1J000",
+      "model": "Peugeot 3008",
+      "powertrain": "PHEV",
+      "currentStatus": "CURATED (D1.6, vscar_dev)",
+      "sourceEvidence": {
+        "S01": 9,
+        "S11": 11,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.438,
+      "proposedBatch": null,
+      "importEligibility": "ALREADY_CURATED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.fuel_charge_sustaining_l100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 58,
+      "candidateId": "ec6f2d6a-cc29-5bf9-9eb4-2d7cfd67447d",
+      "fullTan": "E1*2007/46*0314*17",
+      "variant": "8C31",
+      "version": "6A250000",
+      "technicalKey": "E1*2007/46*0314*17|8C31|6A250000",
+      "model": "BMW Serie 3",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 10,
+        "S13Attributes": 2,
+        "attributes": 4
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "E",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 59,
+      "candidateId": "fcb54e91-b416-557a-b872-21a244fea2f1",
+      "fullTan": "E4*2007/46*1259*16",
+      "variant": "F5P31",
+      "version": "D61CY1Y1",
+      "technicalKey": "E4*2007/46*1259*16|F5P31|D61CY1Y1",
+      "model": "Hyundai Kona",
+      "powertrain": "HEV_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [
+        "S01:emi.co2_combined_gkm",
+        "S11:nrg.fuel_combined_l100",
+        "S01:nrg.fuel_combined_l100",
+        "S11:emi.co2_combined_gkm"
+      ],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": "E",
+      "importEligibility": "ELIGIBLE_CONFLICTS_PRESERVED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval",
+        "open value conflict (kept, needs review)"
+      ]
+    },
+    {
+      "rank": 60,
+      "candidateId": "520b6cb4-f583-53d7-9aa6-3e449fe95d48",
+      "fullTan": "E6*2007/46*0289*08",
+      "variant": "AXAL52(N)",
+      "version": "AXAL52L-ANXMBW(1J)",
+      "technicalKey": "E6*2007/46*0289*08|AXAL52(N)|AXAL52L-ANXMBW(1J)",
+      "model": "Toyota RAV4",
+      "powertrain": "HEV_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": "A",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 61,
+      "candidateId": "dc4870a2-e4b6-5c41-b6f0-6c9678f3fff3",
+      "fullTan": "E4*2007/46*1139*12",
+      "variant": "C5E11",
+      "version": "E11DY1",
+      "technicalKey": "E4*2007/46*1139*12|C5E11|E11DY1",
+      "model": "Kia Niro",
+      "powertrain": "BEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 8,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.429,
+      "proposedBatch": "A",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 62,
+      "candidateId": "c6a16ddd-e197-58d1-9de4-21b6c2a89639",
+      "fullTan": "E2*2007/46*0676*23",
+      "variant": "BH2",
+      "version": "N84WA3VA5300",
+      "technicalKey": "E2*2007/46*0676*23|BH2|N84WA3VA5300",
+      "model": "Renault Clio",
+      "powertrain": "HEV_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 2,
+        "attributes": 4
+      },
+      "openConflicts": [
+        "S11:perf.power_ice_kw",
+        "S01:perf.power_ice_kw"
+      ],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": "E",
+      "importEligibility": "ELIGIBLE_CONFLICTS_PRESERVED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval",
+        "open value conflict (kept, needs review)"
+      ]
+    },
+    {
+      "rank": 63,
+      "candidateId": "30d7038b-8ec6-52a8-a343-55c331af830e",
+      "fullTan": "E4*2007/46*1139*12",
+      "variant": "C5P11",
+      "version": "D61CY1",
+      "technicalKey": "E4*2007/46*1139*12|C5P11|D61CY1",
+      "model": "Kia Niro",
+      "powertrain": "HEV_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 9,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": "B",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 64,
+      "candidateId": "b61a4412-e84e-54cb-a28d-80646f0bcf09",
+      "fullTan": "E6*2007/46*0318*10",
+      "variant": "ZWE219(W)",
+      "version": "ZWE219L-DWXNBW(6L)",
+      "technicalKey": "E6*2007/46*0318*10|ZWE219(W)|ZWE219L-DWXNBW(6L)",
+      "model": "Toyota Corolla",
+      "powertrain": "HEV_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": "B",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 65,
+      "candidateId": "8d0a55c9-c135-56c0-8323-b23d9226dd43",
+      "fullTan": "E9*2007/46*4008*11",
+      "variant": "CXDTTAX0",
+      "version": "FM6CFM6C90044BI1AAC",
+      "technicalKey": "E9*2007/46*4008*11|CXDTTAX0|FM6CFM6C90044BI1AAC",
+      "model": "CUPRA Formentor",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 9,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [
+        "S11:nrg.fuel_combined_l100",
+        "S01:nrg.fuel_combined_l100"
+      ],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "E",
+      "importEligibility": "ELIGIBLE_CONFLICTS_PRESERVED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval",
+        "open value conflict (kept, needs review)"
+      ]
+    },
+    {
+      "rank": 66,
+      "candidateId": "12c0d2d4-13f7-51c6-989b-9cc6b33cf0b9",
+      "fullTan": "E4*2018/858*00079*01",
+      "variant": "F5P54",
+      "version": "A63F11",
+      "technicalKey": "E4*2018/858*00079*01|F5P54|A63F11",
+      "model": "Kia Sportage",
+      "powertrain": "PHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 9,
+        "S11": 11,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [
+        "S01:nrg.phev_weighted_fuel_l100",
+        "S11:nrg.phev_weighted_fuel_l100"
+      ],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.438,
+      "proposedBatch": "E",
+      "importEligibility": "ELIGIBLE_CONFLICTS_PRESERVED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.fuel_charge_sustaining_l100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval",
+        "open value conflict (kept, needs review)"
+      ]
+    },
+    {
+      "rank": 67,
+      "candidateId": "5c9f5927-a5f5-55e0-833b-5c5e2193d4b7",
+      "fullTan": "E4*2007/46*1139*08",
+      "variant": "C5P11",
+      "version": "D61CY1",
+      "technicalKey": "E4*2007/46*1139*08|C5P11|D61CY1",
+      "model": "Kia Niro",
+      "powertrain": "PHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 10,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.375,
+      "proposedBatch": "B",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.electric_combined_kwh100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: rng.electric_combined_km",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 68,
+      "candidateId": "6ca5b751-2679-5bcc-9279-bcee33222c20",
+      "fullTan": "E9*2018/858*11241*03",
+      "variant": "C5P11",
+      "version": "D61AY1",
+      "technicalKey": "E9*2018/858*11241*03|C5P11|D61AY1",
+      "model": "Kia Niro",
+      "powertrain": "HEV_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": "B",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 69,
+      "candidateId": "ba353843-9276-5db0-9be9-b41872620f85",
+      "fullTan": "E5*2018/858*00001*09",
+      "variant": "F5P41",
+      "version": "A61B11",
+      "technicalKey": "E5*2018/858*00001*09|F5P41|A61B11",
+      "model": "Hyundai Tucson",
+      "powertrain": "HEV_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": "B",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 70,
+      "candidateId": "c4244cb1-a398-55a2-b7bd-b37199ace56c",
+      "fullTan": "E8*2007/46*0355*18",
+      "variant": "ACDFYAX0",
+      "version": "NFD7FD7CW0024BIVL4N1A0A",
+      "technicalKey": "E8*2007/46*0355*18|ACDFYAX0|NFD7FD7CW0024BIVL4N1A0A",
+      "model": "Škoda Octavia",
+      "powertrain": "HEV_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": "C",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 71,
+      "candidateId": "181ec927-ecf3-5f02-a853-fc60e6790c4b",
+      "fullTan": "E4*2018/858*00153*01",
+      "variant": "F5P42",
+      "version": "D61CY1",
+      "technicalKey": "E4*2018/858*00153*01|F5P42|D61CY1",
+      "model": "Hyundai Kona",
+      "powertrain": "HEV_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": "C",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 72,
+      "candidateId": "5393a22a-fac0-5c44-9fe9-94aaf9b7a1a2",
+      "fullTan": "E1*2007/46*0512*15",
+      "variant": "WZ51",
+      "version": "6A250000",
+      "technicalKey": "E1*2007/46*0512*15|WZ51|6A250000",
+      "model": "BMW X3",
+      "powertrain": "ICE_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 10,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.538,
+      "proposedBatch": "E",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 73,
+      "candidateId": "f87f76b9-019a-5485-8428-05ad3c1d909b",
+      "fullTan": "E6*2007/46*0429*05",
+      "variant": "AXAP54(N)",
+      "version": "AXAP54L-ANXMBW(1F)",
+      "technicalKey": "E6*2007/46*0429*05|AXAP54(N)|AXAP54L-ANXMBW(1F)",
+      "model": "Toyota RAV4",
+      "powertrain": "PHEV",
+      "currentStatus": "CURATED (D1.6, vscar_dev)",
+      "sourceEvidence": {
+        "S01": 7,
+        "S11": 13,
+        "S13Attributes": 0,
+        "attributes": 4
+      },
+      "openConflicts": [
+        "S11:nrg.phev_weighted_fuel_l100",
+        "S01:nrg.phev_weighted_fuel_l100"
+      ],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.438,
+      "proposedBatch": null,
+      "importEligibility": "ALREADY_CURATED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.fuel_charge_sustaining_l100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval",
+        "open value conflict (kept, needs review)"
+      ]
+    },
+    {
+      "rank": 74,
+      "candidateId": "8a430b5f-19ad-58b7-b8de-33a2a09f5d2b",
+      "fullTan": "E2*2018/858*00064*07",
+      "variant": "A",
+      "version": "HPY1-A1AN00",
+      "technicalKey": "E2*2018/858*00064*07|A|HPY1-A1AN00",
+      "model": "Peugeot 3008",
+      "powertrain": "HEV_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": "C",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 75,
+      "candidateId": "bbf9e924-4d4e-55e3-9339-176f9e491457",
+      "fullTan": "E4*2018/858*00079*04",
+      "variant": "F5P41",
+      "version": "A61B11",
+      "technicalKey": "E4*2018/858*00079*04|F5P41|A61B11",
+      "model": "Kia Sportage",
+      "powertrain": "HEV_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": "C",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 76,
+      "candidateId": "aad7b02d-5c1a-559a-af09-fc1ff6e2649f",
+      "fullTan": "E4*2007/46*1293*39",
+      "variant": "H6LR",
+      "version": "BFB1S5T1W",
+      "technicalKey": "E4*2007/46*1293*39|H6LR|BFB1S5T1W",
+      "model": "Tesla Model 3",
+      "powertrain": "BEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 8,
+        "S13Attributes": 0,
+        "attributes": 5
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.429,
+      "proposedBatch": "A",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 77,
+      "candidateId": "b2d80ce8-7b29-5b6e-87c3-df6077bbc9d1",
+      "fullTan": "E1*2007/46*1797*14",
+      "variant": "61DP",
+      "version": "IAW50000",
+      "technicalKey": "E1*2007/46*1797*14|61DP|IAW50000",
+      "model": "BMW X3",
+      "powertrain": "PHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 8,
+        "S11": 13,
+        "S13Attributes": 1,
+        "attributes": 5
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.438,
+      "proposedBatch": "A",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.fuel_charge_sustaining_l100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 78,
+      "candidateId": "e90fafb4-c5d2-5a75-818e-fb6e4e48dcfb",
+      "fullTan": "E2*2007/46*0534*12",
+      "variant": "4",
+      "version": "5GBU-C1J000",
+      "technicalKey": "E2*2007/46*0534*12|4|5GBU-C1J000",
+      "model": "Peugeot 3008",
+      "powertrain": "PHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 8,
+        "S11": 12,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.438,
+      "proposedBatch": "A",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.fuel_charge_sustaining_l100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 79,
+      "candidateId": "38f4b49f-a3d3-5afd-a29e-3a5bda76022c",
+      "fullTan": "E1*2007/46*2014*23",
+      "variant": "ACDGEAX0",
+      "version": "FD6FD6DD001P4BISON1ML1CVR2B00",
+      "technicalKey": "E1*2007/46*2014*23|ACDGEAX0|FD6FD6DD001P4BISON1ML1CVR2B00",
+      "model": "Volkswagen Golf",
+      "powertrain": "PHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 7,
+        "S11": 11,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.438,
+      "proposedBatch": "A",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.fuel_charge_sustaining_l100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 80,
+      "candidateId": "a4209857-2146-56bd-8130-ec6f3b3fca11",
+      "fullTan": "E1*2007/46*2014*28",
+      "variant": "ACDUCBX0",
+      "version": "FD6FD6DD001H4WESON1MLB0",
+      "technicalKey": "E1*2007/46*2014*28|ACDUCBX0|FD6FD6DD001H4WESON1MLB0",
+      "model": "Volkswagen Golf",
+      "powertrain": "PHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 7,
+        "S11": 11,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.438,
+      "proposedBatch": "B",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.fuel_charge_sustaining_l100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 81,
+      "candidateId": "81e9cac7-35bc-5191-84d6-d54d3dd0ee84",
+      "fullTan": "E4*2007/46*1293*26",
+      "variant": "Y6LR",
+      "version": "BZB3S5T3",
+      "technicalKey": "E4*2007/46*1293*26|Y6LR|BZB3S5T3",
+      "model": "Tesla Model Y",
+      "powertrain": "BEV",
+      "currentStatus": "CURATED (D1.6, vscar_dev)",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 8,
+        "S13Attributes": 0,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.429,
+      "proposedBatch": null,
+      "importEligibility": "ALREADY_CURATED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 82,
+      "candidateId": "1eb55671-882a-5f88-a93b-b3fe84837431",
+      "fullTan": "E2*2007/46*0639*36",
+      "variant": "P",
+      "version": "HPX5-K1NN00",
+      "technicalKey": "E2*2007/46*0639*36|P|HPX5-K1NN00",
+      "model": "Peugeot 208",
+      "powertrain": "HEV_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 2,
+        "attributes": 4
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": "C",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 83,
+      "candidateId": "affa382d-4fb7-53ab-9d89-5684ae2c2791",
+      "fullTan": "E9*2007/46*4008*24",
+      "variant": "CXDUCBX0",
+      "version": "FD6PFD6DD0014WE1AAAKM1",
+      "technicalKey": "E9*2007/46*4008*24|CXDUCBX0|FD6PFD6DD0014WE1AAAKM1",
+      "model": "CUPRA Formentor",
+      "powertrain": "PHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 7,
+        "S11": 11,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.438,
+      "proposedBatch": "B",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.fuel_charge_sustaining_l100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 84,
+      "candidateId": "871dd562-89f0-5577-9acb-50e799e3fca7",
+      "fullTan": "E4*2007/46*1293*47",
+      "variant": "H6MR",
+      "version": "BFB1S5T1W",
+      "technicalKey": "E4*2007/46*1293*47|H6MR|BFB1S5T1W",
+      "model": "Tesla Model 3",
+      "powertrain": "BEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 8,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.429,
+      "proposedBatch": "A",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 85,
+      "candidateId": "03123a29-f5e3-561d-951a-50f3bc2acefb",
+      "fullTan": "E2*2018/858*00018*03",
+      "variant": "BE2",
+      "version": "J1EEA1000000",
+      "technicalKey": "E2*2018/858*00018*03|BE2|J1EEA1000000",
+      "model": "Renault Mégane",
+      "powertrain": "BEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 8,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.429,
+      "proposedBatch": "B",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 86,
+      "candidateId": "936a65bb-81d9-53df-b3f7-d5e91211a64b",
+      "fullTan": "E2*2007/46*0676*05",
+      "variant": "BH2",
+      "version": "MU4UA0FA5000",
+      "technicalKey": "E2*2007/46*0676*05|BH2|MU4UA0FA5000",
+      "model": "Renault Clio",
+      "powertrain": "HEV_OR_MHEV",
+      "currentStatus": "CURATED (D1.6, vscar_dev)",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 10,
+        "S13Attributes": 2,
+        "attributes": 5
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": null,
+      "importEligibility": "ALREADY_CURATED",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 87,
+      "candidateId": "4d421a74-a585-58f3-8977-aade6292c65c",
+      "fullTan": "E2*2007/46*0676*28",
+      "variant": "BH2",
+      "version": "N84WA3VA530B",
+      "technicalKey": "E2*2007/46*0676*28|BH2|N84WA3VA530B",
+      "model": "Renault Clio",
+      "powertrain": "HEV_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 2,
+        "attributes": 4
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": "D",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 88,
+      "candidateId": "7e613212-aa6f-523d-88ee-99b035048397",
+      "fullTan": "E4*2007/46*1293*25",
+      "variant": "E6LR",
+      "version": "BQB1S5N",
+      "technicalKey": "E4*2007/46*1293*25|E6LR|BQB1S5N",
+      "model": "Tesla Model 3",
+      "powertrain": "BEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 8,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [
+        "CATALOG_PARTIAL_IDENTITY"
+      ],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.429,
+      "proposedBatch": "E",
+      "importEligibility": "ELIGIBLE_REVIEW_OVERLAP",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 89,
+      "candidateId": "334cd6fa-82ef-5c14-98f9-78ccc3267044",
+      "fullTan": "E1*2007/46*1829*24",
+      "variant": "X24JT2",
+      "version": "FZAA451A",
+      "technicalKey": "E1*2007/46*1829*24|X24JT2|FZAA451A",
+      "model": "Mercedes-Benz Clase A",
+      "powertrain": "HEV_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 9,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": "D",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 90,
+      "candidateId": "d569d556-d3d8-5980-a25b-01b38927c12f",
+      "fullTan": "E1*2007/46*0623*41",
+      "variant": "GAC4EBSAX0",
+      "version": "FA1FA1MD001E0GAON1ML1BVR0NA",
+      "technicalKey": "E1*2007/46*0623*41|GAC4EBSAX0|FA1FA1MD001E0GAON1ML1BVR0NA",
+      "model": "Volkswagen Golf",
+      "powertrain": "BEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 9,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.429,
+      "proposedBatch": "B",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 91,
+      "candidateId": "1af09337-8bd3-5549-add5-f005e4b8ad4b",
+      "fullTan": "E1*2007/46*1797*13",
+      "variant": "55BZ",
+      "version": "IAV500L0",
+      "technicalKey": "E1*2007/46*1797*13|55BZ|IAV500L0",
+      "model": "BMW X3",
+      "powertrain": "HEV_OR_MHEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 9,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.462,
+      "proposedBatch": "D",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 92,
+      "candidateId": "64fd2ff2-50fc-5df2-bf53-9cfc755ff093",
+      "fullTan": "E4*2007/46*1293*25",
+      "variant": "Y5LD",
+      "version": "PZP4S5T3",
+      "technicalKey": "E4*2007/46*1293*25|Y5LD|PZP4S5T3",
+      "model": "Tesla Model Y",
+      "powertrain": "BEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 6,
+        "S11": 8,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.429,
+      "proposedBatch": "B",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 93,
+      "candidateId": "884273a1-d3c3-5f6e-b352-130f89032ab1",
+      "fullTan": "E4*2007/46*1293*43",
+      "variant": "Y5LR",
+      "version": "BLB3S5T3X",
+      "technicalKey": "E4*2007/46*1293*43|Y5LR|BLB3S5T3X",
+      "model": "Tesla Model Y",
+      "powertrain": "BEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 8,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.429,
+      "proposedBatch": "B",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 94,
+      "candidateId": "b47a401d-f4c8-5f51-9194-d2654c71d400",
+      "fullTan": "E9*2018/858*11241*01",
+      "variant": "C5E11",
+      "version": "E11BY1",
+      "technicalKey": "E9*2018/858*11241*01|C5E11|E11BY1",
+      "model": "Kia Niro",
+      "powertrain": "BEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 8,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.429,
+      "proposedBatch": "C",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 95,
+      "candidateId": "8a82f1b4-13d0-57db-9050-919345a35aac",
+      "fullTan": "E1*2007/46*2130*02",
+      "variant": "41DU",
+      "version": "0AW5000S",
+      "technicalKey": "E1*2007/46*2130*02|41DU|0AW5000S",
+      "model": "BMW X3",
+      "powertrain": "BEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 7,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.429,
+      "proposedBatch": "C",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 96,
+      "candidateId": "d27a1853-fdbd-5ccd-b932-fb6531feb76e",
+      "fullTan": "E2*2018/858*00064*02",
+      "variant": "C",
+      "version": "ZKZX-A0E000",
+      "technicalKey": "E2*2018/858*00064*02|C|ZKZX-A0E000",
+      "model": "Peugeot 3008",
+      "powertrain": "BEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 8,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.429,
+      "proposedBatch": "C",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 97,
+      "candidateId": "b5523cb2-642e-5ad0-81d2-543253c1c5d0",
+      "fullTan": "E2*2007/46*0639*35",
+      "variant": "H",
+      "version": "ZKWZ-K0R000",
+      "technicalKey": "E2*2007/46*0639*35|H|ZKWZ-K0R000",
+      "model": "Peugeot 208",
+      "powertrain": "BEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 8,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.429,
+      "proposedBatch": "C",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 98,
+      "candidateId": "126014f8-7db8-5c88-8e4b-6da9d8566e1f",
+      "fullTan": "E2*2018/858*00018*09",
+      "variant": "BE2",
+      "version": "J2EEA5F000B0",
+      "technicalKey": "E2*2018/858*00018*09|BE2|J2EEA5F000B0",
+      "model": "Renault Mégane",
+      "powertrain": "BEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 8,
+        "S13Attributes": 0,
+        "attributes": 2
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING"
+      },
+      "criticalCompleteness": 0.429,
+      "proposedBatch": "C",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 99,
+      "candidateId": "316d9e1b-f083-579c-a73c-9aa008397f79",
+      "fullTan": "E4*2007/46*1293*07",
+      "variant": "E3D",
+      "version": "BB1N",
+      "technicalKey": "E4*2007/46*1293*07|E3D|BB1N",
+      "model": "Tesla Model 3",
+      "powertrain": "BEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 4,
+        "S11": 9,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.429,
+      "proposedBatch": "D",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    },
+    {
+      "rank": 100,
+      "candidateId": "d18243a7-27cc-5b74-b343-5e8b14d8d865",
+      "fullTan": "E1*2007/46*2130*07",
+      "variant": "41DU",
+      "version": "0AW5000B",
+      "technicalKey": "E1*2007/46*2130*07|41DU|0AW5000B",
+      "model": "BMW X3",
+      "powertrain": "BEV",
+      "currentStatus": "PENDING_IMPORT",
+      "sourceEvidence": {
+        "S01": 5,
+        "S11": 8,
+        "S13Attributes": 1,
+        "attributes": 3
+      },
+      "openConflicts": [],
+      "catalogOverlap": [],
+      "rightsState": {
+        "S01": "CONDITIONAL",
+        "S11": "PENDING",
+        "S13": "PENDING"
+      },
+      "criticalCompleteness": 0.429,
+      "proposedBatch": "D",
+      "importEligibility": "ELIGIBLE",
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ]
+    }
+  ]
+}
