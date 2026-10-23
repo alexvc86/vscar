@@ -41,7 +41,8 @@ describe.skipIf(!url)('catalog over MySQL', () => {
     expect(await slugs('seal')).toEqual([BYD]);
     expect(await slugs('leon')).toEqual(await slugs('León'));
     expect(await slugs('leon')).toEqual(['seat-leon-2026-style-e-hybrid-204']);
-    expect((await slugs('tesla')).length).toBe(3);
+    // D1.8: E6R y E6CR son homologaciones equivalentes (mismos hechos WLTP): una sola opción en la búsqueda.
+    expect((await slugs('tesla')).length).toBe(2);
     const r = await catalog.searchVehicles('ES', 'golf');
     expect(r.results.length).toBeLessThanOrEqual(20);
     expect(Object.keys(r.results[0]!).sort()).toEqual(['bodyType', 'brand', 'id', 'model', 'powertrainType', 'preview', 'slug', 'variant', 'year']);

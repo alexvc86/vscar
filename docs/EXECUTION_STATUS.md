@@ -460,6 +460,36 @@ Siguiente:
 - **Step 7c — Comparison URL / Share / richer catalog pages**.
 - En el data workstream: primeras imágenes con derechos verificados (propias o licenciadas) y derechos de S08/S02/S04 para el canal PUBLIC.
 
+## STEP D1.8 — Brand & Model Catalog + Simplified Vehicle Selector · ✅ SELECTOR DE 3 PASOS · 0 promociones (identidad comercial sin fuente) (2026-10-22)
+
+| Entregable | Estado |
+|---|---|
+| Decisión — [ADR-020](adr/ADR-020-simplified-model-selection.md) | ✅ ACCEPTED: Marca → Modelo → Año; resolución técnica interna; años con base; descubrimiento solo PREVIEW; promoción por cinco puertas |
+| Catálogo — [D1_8_BRAND_MODEL_CATALOG](data/D1_8_BRAND_MODEL_CATALOG.md) | ✅ <ul><li>16 marcas y 25 modelos navegables en PREVIEW (15 / 24 de la capa técnica + SEAT León), 103 modelo-año;</li><li>5 modelos comparables (9 variantes en 7 opciones);</li><li>PUBLIC sin cambios</li></ul> |
+| Años — [D1_8_YEAR_AVAILABILITY_RULES](data/D1_8_YEAR_AVAILABILITY_RULES.md) | ✅ <ul><li>MODEL_YEAR ≠ REGISTRATION_OBSERVED; MY ≤ año + 1; matrícula ≤ año en curso;</li><li>Golf 2027 se mantiene (configurador del fabricante)</li></ul> |
+| Resolución — [D1_8_TECHNICAL_RESOLUTION](data/D1_8_TECHNICAL_RESOLUTION.md) | ✅ <ul><li>4 AUTO_RESOLVED · 1 EQUIVALENT_GROUP (Golf 2018 NEDC+WLTP → WLTP) · 1 NEEDS_CONFIGURATION (Model 3 2021) · 97 UNRESOLVED;</li><li>nunca una variante arbitraria</li></ul> |
+| Promoción — [D1_8_PREVIEW_PROMOTION_RULES](data/D1_8_PREVIEW_PROMOTION_RULES.md) | ✅ reglas; **0/9 promovidas**: las nueve se bloquean solo por generación/año-modelo/acabado sin fuente |
+| UX — [D1_8_SELECTOR_UX_REPORT](data/D1_8_SELECTOR_UX_REPORT.md) · [D1_8_REAL_VEHICLE_TESTS](data/D1_8_REAL_VEHICLE_TESTS.md) | ✅ <ul><li>paso Versión eliminado; aclaración contextual; ES/EN; teclado; móvil 390 px;</li><li>e2e 32/32 + 2/2 sobre el build de producción</li></ul> |
+| Cierre — [D1_8_COMPLETION_REPORT](data/D1_8_COMPLETION_REPORT.md) | ✅ |
+
+Sin cambios en:
+- Methodology 2026.7, los engines, Economic Fit y el gate PUBLIC/PREVIEW (0 PUBLIC);
+- las 9 variantes y las 92 homologaciones.
+
+## STEP D1.7 — Technical Catalog Expansion (18 → 92) · ✅ 92 HOMOLOGACIONES TÉCNICAS EN `vscar_dev` · selector sin cambios (2026-10-22)
+
+| Entregable | Estado |
+|---|---|
+| Ejecución — [D1_7_IMPORT_EXECUTION_REPORT](data/D1_7_IMPORT_EXECUTION_REPORT.md) | ✅ <ul><li>checkpoint inicial verificado;</li><li>copia lógica con restauración probada (antes y después);</li><li>74 validadas;</li><li>lotes A–E: dry-run → importación → reejecución sin cambios → checkpoint → auditoría;</li><li>0 anomalías</li></ul> |
+| Lotes — [A](data/D1_7_BATCH_A_AUDIT.md) · [B](data/D1_7_BATCH_B_AUDIT.md) · [C](data/D1_7_BATCH_C_AUDIT.md) · [D](data/D1_7_BATCH_D_AUDIT.md) · [E](data/D1_7_BATCH_E_AUDIT.md) | ✅ 15/15/15/15/14 insertados, 0 actualizados, 0 fallidos; #88 importado como relación (no duplicado) con `tesla-model-3-2021-traccion-trasera`, a reconciliar antes de promover |
+| Catálogo técnico — [D1_7_92_TECHNICAL_CATALOG_AUDIT](data/D1_7_92_TECHNICAL_CATALOG_AUDIT.md) | ✅ <ul><li>92 vehículos (15 marcas, 24 modelos), 1.368 observaciones (1.344 utilizables, 0 con derechos aprobados), 280 atributos;</li><li>0 generaciones, años-modelo, maleteros, 0–100, baterías útiles ni cargas inventados</li></ul> |
+| Conflictos — [D1_7_CONFLICT_REGISTER](data/D1_7_CONFLICT_REGISTER.md) | ✅ 24 valores, 12 grupos, 9 vehículos; todos abiertos y NOT_USABLE |
+| D1.8 — [D1_7_D1_8_PROMOTION_READINESS](data/D1_7_D1_8_PROMOTION_READINESS.md) | ✅ <ul><li>diagnóstico: 9 READY_FOR_PROMOTION_REVIEW · 72 NEEDS_IDENTITY · 2 NEEDS_DATA · 4 NEEDS_RIGHTS · 5 CONFLICTED;</li><li>solo Economy (77) y Range (17 BEV) activables;</li><li>20 candidatos de demo</li></ul> |
+| Cierre — [D1_7_COMPLETION_REPORT](data/D1_7_COMPLETION_REPORT.md) | ✅ |
+
+Sin cambios en:
+- Methodology 2026.7, el gate PUBLIC/PREVIEW, `SOURCE_RIGHTS` (S11/S13 PENDING) y el selector (9 PREVIEW, 0 PUBLIC, SHA-256 idéntico).
+
 ## STEP D1.6a — Stabilization, Security & Technical Catalog Validation · ✅ PASS (entorno controlado) · 74 preparados, no importados (2026-10-21)
 
 | Entregable | Estado |

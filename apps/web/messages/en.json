@@ -679,7 +679,7 @@
     "changeCar": "Change {name}",
     "swap": "Swap cars",
     "compareTitle": "Compare two cars",
-    "compareLead": "Choose two specific versions. You adjust your usage afterwards.",
+    "compareLead": "Choose the make, model and year of each car. You adjust your usage afterwards.",
     "chooseFirst": "Choose the first car",
     "chooseSecond": "Choose the second car",
     "slotA": "Car A",
@@ -741,7 +741,44 @@
         "AWD": "All-wheel drive"
       },
       "powertrainLabel": "Powertrain",
-      "condition": "New or used"
+      "condition": "New or used",
+      "configurationTitle": "There are several configurations",
+      "configurationQuestion": "Which powertrain does it have, or do you prefer?",
+      "dontKnow": "I don't know",
+      "dontKnowTitle": "Powertrain not specified",
+      "dontKnowNote": "Without a specific powertrain we don't compare figures: we would be mixing different versions. You can choose one at any time.",
+      "chooseConfiguration": "Choose powertrain",
+      "unavailableTitle": "Comparison unavailable",
+      "unavailableNote": "We have official technical data for this model and year, but it cannot be compared yet: we don't invent missing data.",
+      "technicalConfigurations": "Documented technical homologations",
+      "insufficientData": "Insufficient data",
+      "trimNotConfirmed": "Trim not confirmed",
+      "comparisonUnavailable": "Comparison unavailable",
+      "technicalOnly": "Technical data only",
+      "equivalentCount": "{count, plural, one {# homologation} other {# equivalent homologations}}",
+      "technicalOnlyCount": "{count, plural, one {# more technical homologation, not comparable} other {# more technical homologations, not comparable}}",
+      "yearBasis": {
+        "MODEL_YEAR": "model year",
+        "REGISTRATION_OBSERVED": "registrations"
+      },
+      "reasons": {
+        "COMMERCIAL_IDENTITY_UNCONFIRMED": "Commercial version not confirmed",
+        "GENERATION_NOT_VERIFIED": "Generation not verified",
+        "MODEL_YEAR_NOT_VERIFIED": "Model year not verified",
+        "TRIM_NOT_CONFIRMED": "Trim not confirmed",
+        "NOT_PROMOTED": "Not yet in the comparable catalogue"
+      },
+      "fuel": {
+        "petrol": "Petrol",
+        "diesel": "Diesel",
+        "lpg": "LPG",
+        "cng": "CNG",
+        "hydrogen": "Hydrogen",
+        "electric": "Electric"
+      },
+      "powerThermal": "{kw} kW (combustion engine)",
+      "powerElectric": "{kw} kW",
+      "rangeKm": "{km} km WLTP"
     },
     "cycle": "{cycle} homologation"
   },

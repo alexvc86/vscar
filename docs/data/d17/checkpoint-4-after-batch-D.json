@@ -1,0 +1,95 @@
+{
+  "step": "D1.7",
+  "label": "after-batch-D",
+  "database": "vscar_dev",
+  "migrations": {
+    "journal": 10,
+    "applied": 10,
+    "latest": "0009_curation_hardening",
+    "pending": 0
+  },
+  "selectableCatalog": {
+    "referenceVariantsByStatus": {
+      "test_fixture": 9
+    },
+    "tables": {
+      "reference_variants": {
+        "rows": 9,
+        "sha256": "349716706efe5a91733cbee9959e460290704055a6d65afd3f8e957a831916cd"
+      },
+      "homologations": {
+        "rows": 9,
+        "sha256": "c79a25ca7d95471401d1f10a83ab84ff9eedd1e859d14c2128fc884c99b54e2d"
+      },
+      "spec_values": {
+        "rows": 63,
+        "sha256": "ed75ccde2b6ffb8bc8439f509497d2fc9e8326450c9ed005b23159df5a80d17b"
+      },
+      "vehicle_prices": {
+        "rows": 7,
+        "sha256": "e56ac5c12e413acbbce39534ad2529ee483fb4fc8270a943472f1cdb459dc3e3"
+      },
+      "safety_ratings": {
+        "rows": 1,
+        "sha256": "ecf5c3183f76adeaa1c33616ef282cdd97b1b1f7fed173e8532565de7f9ca955"
+      }
+    },
+    "sha256": "be0d441b3c0612b055ba097cc0b33d767e147de15e23c15946eb5c901bf265bc"
+  },
+  "curatedLayer": {
+    "tables": {
+      "curated_technical_vehicles": {
+        "rows": 78,
+        "sha256": "659ec8d82cffc4ddc04bf2dca97a59ac84b59443a2f99c09bba00c6a893eeda5"
+      },
+      "curated_attributes": {
+        "rows": 236,
+        "sha256": "d16d19cc3c8bff0dca8e55dfe9d240bd4686cc6b75662174ed68a652f199e22f"
+      },
+      "curated_spec_values": {
+        "rows": 1157,
+        "sha256": "99c781ef6b6263c03176310a239b320a354042764cc06aaa3abda60a53a0a12d"
+      }
+    },
+    "sha256": "9ff196b1ee80061efb9ad019f72834850949ac19555929cb2db8e9a6f06e993f"
+  },
+  "counts": {
+    "vehicles": 78,
+    "attributes": 236,
+    "observations": 1157,
+    "usable": 1145,
+    "inConflict": 12,
+    "vehiclesWithConflicts": 4,
+    "byRights": {
+      "CONDITIONAL": 431,
+      "PENDING": 726
+    },
+    "bySource": {
+      "S01": 431,
+      "S11": 726
+    },
+    "runs": {
+      "COMPLETED": 14
+    },
+    "itemsByBatch": {
+      "d16-first-18:IMPORTED": 18,
+      "d16a-batch-A:IMPORTED": 15,
+      "d16a-batch-B:IMPORTED": 15,
+      "d16a-batch-C:IMPORTED": 15,
+      "d16a-batch-D:IMPORTED": 15
+    }
+  },
+  "integrity": {
+    "duplicateTechnicalKeys": 0,
+    "duplicateIdentityColumns": 0,
+    "keyColumnMismatch": 0,
+    "incompleteTan": 0,
+    "orphanAttributes": 0,
+    "orphanObservations": 0,
+    "observationsWithoutSource": 0,
+    "itemsWithoutRun": 0,
+    "curatedIdsInReferenceVariants": 0,
+    "checkConstraints": 10
+  },
+  "ok": true
+}

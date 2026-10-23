@@ -1,0 +1,5333 @@
+{
+  "summary": {
+    "step": "D1.6a",
+    "database": "vscar_dev",
+    "vehicles": 78,
+    "observations": 1157,
+    "bySource": {
+      "S01": 431,
+      "S11": 726
+    },
+    "usable": 1145,
+    "notUsable": 12,
+    "usableByRights": {
+      "APPROVED": 0,
+      "CONDITIONAL": 425,
+      "PENDING": 720
+    },
+    "attributes": 236,
+    "attributesByKind": {
+      "TECHNICAL": 219,
+      "COMMERCIAL": 17
+    },
+    "conflictingValues": 12,
+    "vehiclesWithConflicts": [
+      4,
+      24,
+      53,
+      73
+    ],
+    "conflictGroups": 6,
+    "sourceHosts": [
+      "discodata.eea.europa.eu",
+      "opendata.rdw.nl"
+    ],
+    "importRuns": [
+      {
+        "batch": "d16-first-18",
+        "status": "COMPLETED",
+        "startedAt": "2026-10-21 07:37:14.691"
+      },
+      {
+        "batch": "d16-first-18",
+        "status": "COMPLETED",
+        "startedAt": "2026-10-21 07:37:15.257"
+      },
+      {
+        "batch": "d16-first-18",
+        "status": "COMPLETED",
+        "startedAt": "2026-10-21 07:47:14.746"
+      },
+      {
+        "batch": "d16-first-18",
+        "status": "COMPLETED",
+        "startedAt": "2026-10-21 07:47:14.814"
+      },
+      {
+        "batch": "d16-first-18",
+        "status": "COMPLETED",
+        "startedAt": "2026-10-21 07:56:19.669"
+      },
+      {
+        "batch": "d16-first-18",
+        "status": "COMPLETED",
+        "startedAt": "2026-10-21 07:56:19.689"
+      },
+      {
+        "batch": "d16a-batch-A",
+        "status": "COMPLETED",
+        "startedAt": "2026-10-22 13:45:21.753"
+      },
+      {
+        "batch": "d16a-batch-A",
+        "status": "COMPLETED",
+        "startedAt": "2026-10-22 13:45:22.020"
+      },
+      {
+        "batch": "d16a-batch-B",
+        "status": "COMPLETED",
+        "startedAt": "2026-10-22 13:45:32.819"
+      },
+      {
+        "batch": "d16a-batch-B",
+        "status": "COMPLETED",
+        "startedAt": "2026-10-22 13:45:33.047"
+      },
+      {
+        "batch": "d16a-batch-C",
+        "status": "COMPLETED",
+        "startedAt": "2026-10-22 13:45:42.220"
+      },
+      {
+        "batch": "d16a-batch-C",
+        "status": "COMPLETED",
+        "startedAt": "2026-10-22 13:45:42.448"
+      },
+      {
+        "batch": "d16a-batch-D",
+        "status": "COMPLETED",
+        "startedAt": "2026-10-22 13:45:51.404"
+      },
+      {
+        "batch": "d16a-batch-D",
+        "status": "COMPLETED",
+        "startedAt": "2026-10-22 13:45:51.693"
+      }
+    ],
+    "selectableCatalog": {
+      "referenceVariants": 9
+    },
+    "checks": {
+      "noGenerationOrModelYearRows": true,
+      "trimOnlyWhereD12Exact": true,
+      "noCommercialAttributeObserved": true,
+      "noModelPropagation": true,
+      "onlyOfficialSources": true,
+      "noResearchDataset": true,
+      "noPriceInCuratedLayer": true,
+      "noDeniedOrSecondary": true,
+      "conflictsPreserved": true,
+      "selectableCatalogUnchangedSinceD16": true,
+      "curatedIdsNotReferenceVariants": true
+    },
+    "allChecksPass": true
+  },
+  "conflicts": [
+    {
+      "candidateRank": 4,
+      "specKey": "rng.electric_combined_km",
+      "conflictGroup": "rng.electric_combined_km:ab25622a37bc",
+      "values": [
+        {
+          "source": "S11",
+          "record": "S11:S11:gr7t-qfnb:E13*2018/858*00639*00|SE2D1C|1NXE5E001NL1|r0|e1",
+          "value": null,
+          "unit": "km",
+          "testCycle": "WLTP",
+          "measurementBasis": {
+            "range_type": "WLTP_COMBINED"
+          },
+          "quality": "NOT_USABLE",
+          "rights": "PENDING",
+          "valueRedacted": "rights PENDING"
+        },
+        {
+          "source": "S01",
+          "record": "S01:E13*2018/858*00639*00|SE2D1C|1NXE5E001NL1:Zr:EEA 2025 provisional",
+          "value": 520,
+          "unit": "km",
+          "testCycle": "UNDECLARED",
+          "measurementBasis": {
+            "range_type": "UNSPECIFIED"
+          },
+          "quality": "NOT_USABLE",
+          "rights": "CONDITIONAL"
+        }
+      ],
+      "conflictType": "CROSS_SOURCE_DIFFERENT_BASIS",
+      "decisionStatus": "OPEN — all values kept, none averaged, no source-priority rule applied"
+    },
+    {
+      "candidateRank": 4,
+      "specKey": "nrg.electric_combined_kwh100",
+      "conflictGroup": "nrg.electric_combined_kwh100:49023d795fb8",
+      "values": [
+        {
+          "source": "S11",
+          "record": "S11:S11:gr7t-qfnb:E13*2018/858*00639*00|SE2D1C|1NXE5E001NL1|r0|e1",
+          "value": null,
+          "unit": "kWh/100 km",
+          "testCycle": "WLTP",
+          "measurementBasis": {
+            "consumption_basis": "COMBINED",
+            "charging_loss_basis": "UNSPECIFIED"
+          },
+          "quality": "NOT_USABLE",
+          "rights": "PENDING",
+          "valueRedacted": "rights PENDING"
+        },
+        {
+          "source": "S01",
+          "record": "S01:E13*2018/858*00639*00|SE2D1C|1NXE5E001NL1:Z (Wh/km):EEA 2025 provisional",
+          "value": 18.2,
+          "unit": "kWh/100 km",
+          "testCycle": "UNDECLARED",
+          "measurementBasis": {
+            "consumption_basis": "COMBINED",
+            "charging_loss_basis": "UNSPECIFIED"
+          },
+          "quality": "NOT_USABLE",
+          "rights": "CONDITIONAL"
+        }
+      ],
+      "conflictType": "CROSS_SOURCE_DIFFERENT_BASIS",
+      "decisionStatus": "OPEN — all values kept, none averaged, no source-priority rule applied"
+    },
+    {
+      "candidateRank": 24,
+      "specKey": "emi.co2_combined_gkm",
+      "conflictGroup": "emi.co2_combined_gkm:e6777aa0e22a",
+      "values": [
+        {
+          "source": "S11",
+          "record": "S11:S11:gr7t-qfnb:E19*2007/46*0026*27|BEV|MT6WA45M520B|r0|e2 ; S11:gr7t-qfnb:E19*2007/46*0026*27|BEV|MT6WA45M520B|r1|e2",
+          "value": null,
+          "unit": "g/km",
+          "testCycle": "WLTP",
+          "measurementBasis": null,
+          "quality": "NOT_USABLE",
+          "rights": "PENDING",
+          "valueRedacted": "rights PENDING"
+        },
+        {
+          "source": "S01",
+          "record": "S01:E19*2007/46*0026*27|BEV|MT6WA45M520B:Ewltp (g/km):EEA 2025 provisional",
+          "value": [
+            112,
+            113
+          ],
+          "unit": "g/km",
+          "testCycle": "WLTP",
+          "measurementBasis": null,
+          "quality": "NOT_USABLE",
+          "rights": "CONDITIONAL"
+        }
+      ],
+      "conflictType": "CROSS_SOURCE_VALUE_MISMATCH",
+      "decisionStatus": "OPEN — all values kept, none averaged, no source-priority rule applied"
+    },
+    {
+      "candidateRank": 24,
+      "specKey": "nrg.fuel_combined_l100",
+      "conflictGroup": "nrg.fuel_combined_l100:f80799b821b6",
+      "values": [
+        {
+          "source": "S01",
+          "record": "S01:E19*2007/46*0026*27|BEV|MT6WA45M520B:Fc:EEA 2025 provisional",
+          "value": 5.7,
+          "unit": "L/100 km",
+          "testCycle": "UNDECLARED",
+          "measurementBasis": null,
+          "quality": "NOT_USABLE",
+          "rights": "CONDITIONAL"
+        },
+        {
+          "source": "S11",
+          "record": "S11:S11:gr7t-qfnb:E19*2007/46*0026*27|BEV|MT6WA45M520B|r0|e2 ; S11:gr7t-qfnb:E19*2007/46*0026*27|BEV|MT6WA45M520B|r1|e2",
+          "value": null,
+          "unit": "L/100 km",
+          "testCycle": "WLTP",
+          "measurementBasis": null,
+          "quality": "NOT_USABLE",
+          "rights": "PENDING",
+          "valueRedacted": "rights PENDING"
+        }
+      ],
+      "conflictType": "CROSS_SOURCE_DIFFERENT_BASIS",
+      "decisionStatus": "OPEN — all values kept, none averaged, no source-priority rule applied"
+    },
+    {
+      "candidateRank": 53,
+      "specKey": "nrg.electric_combined_kwh100",
+      "conflictGroup": "nrg.electric_combined_kwh100:0b0d4c02dfac",
+      "values": [
+        {
+          "source": "S11",
+          "record": "S11:S11:gr7t-qfnb:E1*2007/46*1829*12|X28QT2|HZAA052A|r0|e2 ; S11:gr7t-qfnb:E1*2007/46*1829*12|X28QT2|HZAA052A|r1|e2",
+          "value": null,
+          "unit": "kWh/100 km",
+          "testCycle": "WLTP",
+          "measurementBasis": {
+            "consumption_basis": "UNSPECIFIED",
+            "charging_loss_basis": "UNSPECIFIED"
+          },
+          "quality": "NOT_USABLE",
+          "rights": "PENDING",
+          "valueRedacted": "rights PENDING"
+        },
+        {
+          "source": "S01",
+          "record": "S01:E1*2007/46*1829*12|X28QT2|HZAA052A:Z (Wh/km):EEA 2020 final",
+          "value": [
+            21.1,
+            21.7
+          ],
+          "unit": "kWh/100 km",
+          "testCycle": "UNDECLARED",
+          "measurementBasis": {
+            "consumption_basis": "UNSPECIFIED",
+            "charging_loss_basis": "UNSPECIFIED"
+          },
+          "quality": "NOT_USABLE",
+          "rights": "CONDITIONAL"
+        }
+      ],
+      "conflictType": "CROSS_SOURCE_DIFFERENT_BASIS",
+      "decisionStatus": "OPEN — all values kept, none averaged, no source-priority rule applied"
+    },
+    {
+      "candidateRank": 73,
+      "specKey": "nrg.phev_weighted_fuel_l100",
+      "conflictGroup": "nrg.phev_weighted_fuel_l100:3e335e051d57",
+      "values": [
+        {
+          "source": "S11",
+          "record": "S11:S11:gr7t-qfnb:E6*2007/46*0429*05|AXAP54(N)|AXAP54L-ANXMBW(1F)|r0|e1 ; S11:gr7t-qfnb:E6*2007/46*0429*05|AXAP54(N)|AXAP54L-ANXMBW(1F)|r1|e1",
+          "value": null,
+          "unit": "L/100 km",
+          "testCycle": "WLTP",
+          "measurementBasis": {
+            "consumption_basis": "WEIGHTED_PHEV"
+          },
+          "quality": "NOT_USABLE",
+          "rights": "PENDING",
+          "valueRedacted": "rights PENDING"
+        },
+        {
+          "source": "S01",
+          "record": "S01:E6*2007/46*0429*05|AXAP54(N)|AXAP54L-ANXMBW(1F):Fc:EEA 2025 provisional",
+          "value": 0.3,
+          "unit": "L/100 km",
+          "testCycle": "UNDECLARED",
+          "measurementBasis": null,
+          "quality": "NOT_USABLE",
+          "rights": "CONDITIONAL"
+        }
+      ],
+      "conflictType": "CROSS_SOURCE_DIFFERENT_BASIS",
+      "decisionStatus": "OPEN — all values kept, none averaged, no source-priority rule applied"
+    }
+  ],
+  "vehicles": [
+    {
+      "id": "0db246ad-ea59-556a-8b2b-0eed7e6a0b3f",
+      "candidateRank": 4,
+      "candidateId": "8848ea66-9eff-53cb-9967-a0981c48223c",
+      "brand": "BYD",
+      "model": "SEAL",
+      "fullTan": "E13*2018/858*00639*00",
+      "variant": "SE2D1C",
+      "version": "1NXE5E001NL1",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "EXACT",
+      "commercialAttributes": [
+        {
+          "attribute": "trim",
+          "status": "EXACT",
+          "source": "S02",
+          "rights": "PENDING"
+        },
+        {
+          "attribute": "commercial_designation",
+          "status": "EXACT",
+          "source": "S01",
+          "rights": "CONDITIONAL"
+        }
+      ],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 13,
+        "S01": 5,
+        "S11": 8,
+        "usable": 9,
+        "notUsable": 4
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "gears=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)",
+        "drivetrain=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S11, PENDING)",
+        "body_type=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [
+        {
+          "candidateRank": 4,
+          "specKey": "rng.electric_combined_km",
+          "conflictGroup": "rng.electric_combined_km:ab25622a37bc",
+          "values": [
+            {
+              "source": "S11",
+              "record": "S11:S11:gr7t-qfnb:E13*2018/858*00639*00|SE2D1C|1NXE5E001NL1|r0|e1",
+              "value": null,
+              "unit": "km",
+              "testCycle": "WLTP",
+              "measurementBasis": {
+                "range_type": "WLTP_COMBINED"
+              },
+              "quality": "NOT_USABLE",
+              "rights": "PENDING",
+              "valueRedacted": "rights PENDING"
+            },
+            {
+              "source": "S01",
+              "record": "S01:E13*2018/858*00639*00|SE2D1C|1NXE5E001NL1:Zr:EEA 2025 provisional",
+              "value": 520,
+              "unit": "km",
+              "testCycle": "UNDECLARED",
+              "measurementBasis": {
+                "range_type": "UNSPECIFIED"
+              },
+              "quality": "NOT_USABLE",
+              "rights": "CONDITIONAL"
+            }
+          ],
+          "conflictType": "CROSS_SOURCE_DIFFERENT_BASIS",
+          "decisionStatus": "OPEN — all values kept, none averaged, no source-priority rule applied"
+        },
+        {
+          "candidateRank": 4,
+          "specKey": "nrg.electric_combined_kwh100",
+          "conflictGroup": "nrg.electric_combined_kwh100:49023d795fb8",
+          "values": [
+            {
+              "source": "S11",
+              "record": "S11:S11:gr7t-qfnb:E13*2018/858*00639*00|SE2D1C|1NXE5E001NL1|r0|e1",
+              "value": null,
+              "unit": "kWh/100 km",
+              "testCycle": "WLTP",
+              "measurementBasis": {
+                "consumption_basis": "COMBINED",
+                "charging_loss_basis": "UNSPECIFIED"
+              },
+              "quality": "NOT_USABLE",
+              "rights": "PENDING",
+              "valueRedacted": "rights PENDING"
+            },
+            {
+              "source": "S01",
+              "record": "S01:E13*2018/858*00639*00|SE2D1C|1NXE5E001NL1:Z (Wh/km):EEA 2025 provisional",
+              "value": 18.2,
+              "unit": "kWh/100 km",
+              "testCycle": "UNDECLARED",
+              "measurementBasis": {
+                "consumption_basis": "COMBINED",
+                "charging_loss_basis": "UNSPECIFIED"
+              },
+              "quality": "NOT_USABLE",
+              "rights": "CONDITIONAL"
+            }
+          ],
+          "conflictType": "CROSS_SOURCE_DIFFERENT_BASIS",
+          "decisionStatus": "OPEN — all values kept, none averaged, no source-priority rule applied"
+        }
+      ],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval",
+        "open value conflict (kept, needs review)"
+      ],
+      "lastImport": {
+        "batch": "d16-first-18",
+        "status": "IMPORTED",
+        "runId": "d8eca0ce-d485-4928-9b1a-423100a8e1a5",
+        "at": "2026-10-21 07:47:14.789",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "709add1a-d04b-51c8-8582-59f2fa72ba60",
+      "candidateRank": 5,
+      "candidateId": "b36b0cb8-aa96-5a2f-adf4-fbf6bde68064",
+      "brand": "Kia",
+      "model": "Sportage",
+      "fullTan": "E4*2018/858*00079*00",
+      "variant": "F5P11",
+      "version": "M61A11",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "PARTIAL",
+      "commercialAttributes": [
+        {
+          "attribute": "commercial_designation",
+          "status": "PARTIAL",
+          "source": "S01",
+          "rights": "CONDITIONAL"
+        }
+      ],
+      "registrationPeriod": {
+        "first_observed_year": 2022,
+        "last_observed_year": 2022
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 15,
+        "S01": 6,
+        "S11": 9,
+        "usable": 15,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "transmission=<redacted> (S13, PENDING)",
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16-first-18",
+        "status": "IMPORTED",
+        "runId": "a521b58a-eaf5-4d5d-9ee1-fef20779d567",
+        "at": "2026-10-21 07:37:14.778",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "c0b33f7f-fed4-5c67-bc57-f726482fb562",
+      "candidateRank": 6,
+      "candidateId": "785e17cc-5b85-56c6-bb08-86d1a80e9db5",
+      "brand": "Renault",
+      "model": "Clio",
+      "fullTan": "E2*2007/46*0676*28",
+      "variant": "BD2",
+      "version": "AC6WA2SA500B",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "PARTIAL",
+      "commercialAttributes": [
+        {
+          "attribute": "commercial_designation",
+          "status": "PARTIAL",
+          "source": "S01",
+          "rights": "CONDITIONAL"
+        }
+      ],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16-first-18",
+        "status": "IMPORTED",
+        "runId": "a521b58a-eaf5-4d5d-9ee1-fef20779d567",
+        "at": "2026-10-21 07:37:14.805",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "639e0d92-40bf-5366-bf0a-f733278c03bb",
+      "candidateRank": 7,
+      "candidateId": "ed79a5b6-d043-5c1e-93ae-9762587f1356",
+      "brand": "Nissan",
+      "model": "Qashqai",
+      "fullTan": "E9*2018/858*11042*10",
+      "variant": "A",
+      "version": "A35",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "PARTIAL",
+      "commercialAttributes": [
+        {
+          "attribute": "commercial_designation",
+          "status": "PARTIAL",
+          "source": "S01",
+          "rights": "CONDITIONAL"
+        }
+      ],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "transmission=<redacted> (S13, PENDING)",
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16-first-18",
+        "status": "IMPORTED",
+        "runId": "a521b58a-eaf5-4d5d-9ee1-fef20779d567",
+        "at": "2026-10-21 07:37:15.059",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "629abbf8-3417-5ff1-a550-3775e58505d7",
+      "candidateRank": 8,
+      "candidateId": "8331c894-0978-5951-98bb-0ffbfe548722",
+      "brand": "Hyundai",
+      "model": "Tucson",
+      "fullTan": "E11*2007/46*2724*05",
+      "variant": "F5D51",
+      "version": "M66ZZ1",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "PARTIAL",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2018,
+        "last_observed_year": 2020
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 17,
+        "S01": 5,
+        "S11": 12,
+        "usable": 17,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)",
+        "gears=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16-first-18",
+        "status": "IMPORTED",
+        "runId": "d8eca0ce-d485-4928-9b1a-423100a8e1a5",
+        "at": "2026-10-21 07:47:14.770",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "1303d6d3-12b2-568c-9b94-f579814fe3da",
+      "candidateRank": 9,
+      "candidateId": "25ae1749-3150-594d-b466-a10df54628ee",
+      "brand": "Kia",
+      "model": "Sportage",
+      "fullTan": "E11*2007/46*3144*01",
+      "variant": "F5D51",
+      "version": "M66ZZ1",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "PARTIAL",
+      "commercialAttributes": [
+        {
+          "attribute": "commercial_designation",
+          "status": "PARTIAL",
+          "source": "S01",
+          "rights": "CONDITIONAL"
+        }
+      ],
+      "registrationPeriod": {
+        "first_observed_year": 2016,
+        "last_observed_year": 2018
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 15,
+        "S01": 5,
+        "S11": 10,
+        "usable": 15,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "transmission=<redacted> (S13, PENDING)",
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16-first-18",
+        "status": "IMPORTED",
+        "runId": "a521b58a-eaf5-4d5d-9ee1-fef20779d567",
+        "at": "2026-10-21 07:37:14.862",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "50b131f4-a127-5d0d-a3c4-bd0348d8b8a0",
+      "candidateRank": 10,
+      "candidateId": "4ae01227-5c68-57a2-aa71-180a1f03ab2c",
+      "brand": "Renault",
+      "model": "Clio",
+      "fullTan": "E2*2007/46*0676*03",
+      "variant": "BE2",
+      "version": "MT5TA08A5000",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2020,
+        "last_observed_year": 2020
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 16,
+        "S01": 6,
+        "S11": 10,
+        "usable": 16,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "transmission=<redacted> (S13, PENDING)",
+        "seats=<redacted> (S11, PENDING)",
+        "body_type=<redacted> (S13, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-A",
+        "status": "IMPORTED",
+        "runId": "22be59f5-a2a6-4803-ac4b-eafb1cb2e270",
+        "at": "2026-10-22 13:45:21.844",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "cf3153ee-a36f-52b9-9a38-a07c208858d5",
+      "candidateRank": 11,
+      "candidateId": "712d2a4f-3c57-5a38-b30f-00800978aa85",
+      "brand": "Kia",
+      "model": "Sportage",
+      "fullTan": "E4*2018/858*00079*02",
+      "variant": "F5P21",
+      "version": "M61A17",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2022,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-A",
+        "status": "IMPORTED",
+        "runId": "22be59f5-a2a6-4803-ac4b-eafb1cb2e270",
+        "at": "2026-10-22 13:45:21.857",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "45d2cec7-df7f-572c-8e0f-eb1da36bab9b",
+      "candidateRank": 12,
+      "candidateId": "4c7248e4-e500-5941-85a4-c596414626a1",
+      "brand": "Renault",
+      "model": "Clio",
+      "fullTan": "E2*2007/46*0676*14",
+      "variant": "BE2",
+      "version": "MG5UA8HA5000",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2022,
+        "last_observed_year": 2022
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 15,
+        "S01": 6,
+        "S11": 9,
+        "usable": 15,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-A",
+        "status": "IMPORTED",
+        "runId": "22be59f5-a2a6-4803-ac4b-eafb1cb2e270",
+        "at": "2026-10-22 13:45:21.917",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "9a92787e-8e6d-57d9-816b-c14958a315f7",
+      "candidateRank": 14,
+      "candidateId": "e55fea7f-f64e-5a54-810a-3c9d07c45ffa",
+      "brand": "Dacia",
+      "model": "Sandero",
+      "fullTan": "E19*2007/46*0026*12",
+      "variant": "BEV",
+      "version": "M66UA43M5200",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2022,
+        "last_observed_year": 2022
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 15,
+        "S01": 6,
+        "S11": 9,
+        "usable": 15,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "transmission=<redacted> (S13, PENDING)",
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)",
+        "body_type=<redacted> (S13, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-A",
+        "status": "IMPORTED",
+        "runId": "22be59f5-a2a6-4803-ac4b-eafb1cb2e270",
+        "at": "2026-10-22 13:45:21.984",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "1e06eb60-66dd-5a57-98f4-0d40ff0d9998",
+      "candidateRank": 15,
+      "candidateId": "f503c421-9788-5545-a2fc-92d5440e80f0",
+      "brand": "Volkswagen",
+      "model": "Golf",
+      "fullTan": "E1*2007/46*2014*23",
+      "variant": "ACDNPAX0",
+      "version": "FD7FD7GC003S4BISOR2ML1CVR2AI0",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2024
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-B",
+        "status": "IMPORTED",
+        "runId": "0db9ad84-2347-40d0-939c-bd7dfbab0b29",
+        "at": "2026-10-22 13:45:32.865",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "46dcb6ca-e2d4-578d-b576-4900d06b2279",
+      "candidateRank": 16,
+      "candidateId": "7d9df90a-4bea-555c-9f23-9073fd407473",
+      "brand": "Hyundai",
+      "model": "Kona",
+      "fullTan": "E4*2018/858*00153*01",
+      "variant": "F5P12",
+      "version": "M61AY1",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-B",
+        "status": "IMPORTED",
+        "runId": "0db9ad84-2347-40d0-939c-bd7dfbab0b29",
+        "at": "2026-10-22 13:45:32.918",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "24bfff79-b4f2-5a9c-bda4-2ceb7dcb282e",
+      "candidateRank": 17,
+      "candidateId": "7e709be0-1d1a-57c2-86df-83324f550516",
+      "brand": "Volkswagen",
+      "model": "Golf",
+      "fullTan": "E1*2007/46*0623*33",
+      "variant": "GAC4EAZAX0",
+      "version": "FA1FA1MD001E0GAON1ML01VR0N",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2018,
+        "last_observed_year": 2018
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 12,
+        "S01": 5,
+        "S11": 7,
+        "usable": 12,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: rng.electric_combined_km",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-D",
+        "status": "IMPORTED",
+        "runId": "47c7d5c8-507e-40cc-852d-5fd3261bd00e",
+        "at": "2026-10-22 13:45:51.600",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "08529298-1367-5ca5-b472-bd774f805ffc",
+      "candidateRank": 18,
+      "candidateId": "ca6e98e3-1cba-5418-b157-6ad59120e25c",
+      "brand": "Hyundai",
+      "model": "Kona",
+      "fullTan": "E4*2018/858*00153*03",
+      "variant": "F5P12",
+      "version": "M61AY1",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2025,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-B",
+        "status": "IMPORTED",
+        "runId": "0db9ad84-2347-40d0-939c-bd7dfbab0b29",
+        "at": "2026-10-22 13:45:32.979",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "12e3f29c-3b2a-57a6-9eda-bab70c572e39",
+      "candidateRank": 19,
+      "candidateId": "ba2f2bbc-0367-521b-8b54-f71c105f4e3f",
+      "brand": "Hyundai",
+      "model": "Kona",
+      "fullTan": "E4*2007/46*1259*01",
+      "variant": "F5D11",
+      "version": "M62AZ1",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2018,
+        "last_observed_year": 2018
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 16,
+        "S01": 6,
+        "S11": 10,
+        "usable": 16,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-B",
+        "status": "IMPORTED",
+        "runId": "0db9ad84-2347-40d0-939c-bd7dfbab0b29",
+        "at": "2026-10-22 13:45:33.029",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "a8af8fc7-a222-538b-b97e-2cf0079e038b",
+      "candidateRank": 20,
+      "candidateId": "fc9f05a8-05ee-5be1-b5ad-dbabf1f52152",
+      "brand": "Peugeot",
+      "model": "3008",
+      "fullTan": "E2*2007/46*0534*05",
+      "variant": "C",
+      "version": "YHZJ-C2B000",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "PARTIAL",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2018,
+        "last_observed_year": 2020
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 16,
+        "S01": 6,
+        "S11": 10,
+        "usable": 16,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16-first-18",
+        "status": "IMPORTED",
+        "runId": "a521b58a-eaf5-4d5d-9ee1-fef20779d567",
+        "at": "2026-10-21 07:37:14.887",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "054483b5-e965-587a-ab11-95ae8f8630dd",
+      "candidateRank": 23,
+      "candidateId": "51eb1379-962c-5cee-a088-bac84fb2788b",
+      "brand": "Hyundai",
+      "model": "Kona",
+      "fullTan": "E4*2018/858*00153*01",
+      "variant": "F5P22",
+      "version": "M61AY1",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-A",
+        "status": "IMPORTED",
+        "runId": "22be59f5-a2a6-4803-ac4b-eafb1cb2e270",
+        "at": "2026-10-22 13:45:21.930",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "69fd7aa0-8399-5692-a600-a7b4ffb76414",
+      "candidateRank": 24,
+      "candidateId": "61c5fe51-c879-5c18-a3c5-2e65f37259dd",
+      "brand": "Dacia",
+      "model": "Sandero",
+      "fullTan": "E19*2007/46*0026*27",
+      "variant": "BEV",
+      "version": "MT6WA45M520B",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "PARTIAL",
+      "commercialAttributes": [
+        {
+          "attribute": "commercial_designation",
+          "status": "PARTIAL",
+          "source": "S01",
+          "rights": "CONDITIONAL"
+        }
+      ],
+      "registrationPeriod": {
+        "first_observed_year": 2025,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 10,
+        "notUsable": 4
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [
+        {
+          "candidateRank": 24,
+          "specKey": "emi.co2_combined_gkm",
+          "conflictGroup": "emi.co2_combined_gkm:e6777aa0e22a",
+          "values": [
+            {
+              "source": "S11",
+              "record": "S11:S11:gr7t-qfnb:E19*2007/46*0026*27|BEV|MT6WA45M520B|r0|e2 ; S11:gr7t-qfnb:E19*2007/46*0026*27|BEV|MT6WA45M520B|r1|e2",
+              "value": null,
+              "unit": "g/km",
+              "testCycle": "WLTP",
+              "measurementBasis": null,
+              "quality": "NOT_USABLE",
+              "rights": "PENDING",
+              "valueRedacted": "rights PENDING"
+            },
+            {
+              "source": "S01",
+              "record": "S01:E19*2007/46*0026*27|BEV|MT6WA45M520B:Ewltp (g/km):EEA 2025 provisional",
+              "value": [
+                112,
+                113
+              ],
+              "unit": "g/km",
+              "testCycle": "WLTP",
+              "measurementBasis": null,
+              "quality": "NOT_USABLE",
+              "rights": "CONDITIONAL"
+            }
+          ],
+          "conflictType": "CROSS_SOURCE_VALUE_MISMATCH",
+          "decisionStatus": "OPEN — all values kept, none averaged, no source-priority rule applied"
+        },
+        {
+          "candidateRank": 24,
+          "specKey": "nrg.fuel_combined_l100",
+          "conflictGroup": "nrg.fuel_combined_l100:f80799b821b6",
+          "values": [
+            {
+              "source": "S01",
+              "record": "S01:E19*2007/46*0026*27|BEV|MT6WA45M520B:Fc:EEA 2025 provisional",
+              "value": 5.7,
+              "unit": "L/100 km",
+              "testCycle": "UNDECLARED",
+              "measurementBasis": null,
+              "quality": "NOT_USABLE",
+              "rights": "CONDITIONAL"
+            },
+            {
+              "source": "S11",
+              "record": "S11:S11:gr7t-qfnb:E19*2007/46*0026*27|BEV|MT6WA45M520B|r0|e2 ; S11:gr7t-qfnb:E19*2007/46*0026*27|BEV|MT6WA45M520B|r1|e2",
+              "value": null,
+              "unit": "L/100 km",
+              "testCycle": "WLTP",
+              "measurementBasis": null,
+              "quality": "NOT_USABLE",
+              "rights": "PENDING",
+              "valueRedacted": "rights PENDING"
+            }
+          ],
+          "conflictType": "CROSS_SOURCE_DIFFERENT_BASIS",
+          "decisionStatus": "OPEN — all values kept, none averaged, no source-priority rule applied"
+        }
+      ],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval",
+        "open value conflict (kept, needs review)"
+      ],
+      "lastImport": {
+        "batch": "d16-first-18",
+        "status": "IMPORTED",
+        "runId": "a521b58a-eaf5-4d5d-9ee1-fef20779d567",
+        "at": "2026-10-21 07:37:14.913",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "bdda0b3a-7a9c-5276-b328-f4099c7cc23e",
+      "candidateRank": 25,
+      "candidateId": "c8a0e419-865c-5511-b74c-3f4df1b036be",
+      "brand": "Peugeot",
+      "model": "3008",
+      "fullTan": "E2*2007/46*0534*12",
+      "variant": "R",
+      "version": "HNSM-C1P100",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2020,
+        "last_observed_year": 2020
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 16,
+        "S01": 6,
+        "S11": 10,
+        "usable": 16,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-C",
+        "status": "IMPORTED",
+        "runId": "a714b474-c0e6-47f3-9897-b84780dab42b",
+        "at": "2026-10-22 13:45:42.272",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "4d4a9981-f898-5cc0-89a3-ce98bf583954",
+      "candidateRank": 26,
+      "candidateId": "bc56ae3e-6e0e-5ae3-b6b0-b93f168f2415",
+      "brand": "Peugeot",
+      "model": "308",
+      "fullTan": "E2*2007/46*0628*30",
+      "variant": "B",
+      "version": "YHZT-B21700",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "EXACT",
+      "commercialAttributes": [
+        {
+          "attribute": "trim",
+          "status": "EXACT",
+          "source": "S01",
+          "rights": "CONDITIONAL"
+        },
+        {
+          "attribute": "commercial_designation",
+          "status": "EXACT",
+          "source": "S01",
+          "rights": "CONDITIONAL"
+        }
+      ],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2024
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16-first-18",
+        "status": "IMPORTED",
+        "runId": "a521b58a-eaf5-4d5d-9ee1-fef20779d567",
+        "at": "2026-10-21 07:37:14.932",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "e5b01352-421c-5e03-ad14-068279431bcd",
+      "candidateRank": 27,
+      "candidateId": "5223d033-4cdc-592c-9d31-1ebe922e969e",
+      "brand": "Toyota",
+      "model": "Yaris",
+      "fullTan": "E6*2007/46*0437*04",
+      "variant": "MXPA11(H)",
+      "version": "MXPA11L-BHFNBW(1E)",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "PARTIAL",
+      "commercialAttributes": [
+        {
+          "attribute": "commercial_designation",
+          "status": "PARTIAL",
+          "source": "S01",
+          "rights": "CONDITIONAL"
+        }
+      ],
+      "registrationPeriod": {
+        "first_observed_year": 2022,
+        "last_observed_year": 2024
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16-first-18",
+        "status": "IMPORTED",
+        "runId": "a521b58a-eaf5-4d5d-9ee1-fef20779d567",
+        "at": "2026-10-21 07:37:15.000",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "40fdb830-02cf-55c0-bfc9-cf55889fb452",
+      "candidateRank": 28,
+      "candidateId": "0244eada-7c20-57d6-94fc-12606bdbf902",
+      "brand": "Mercedes-Benz",
+      "model": "Clase A",
+      "fullTan": "E1*2007/46*1829*16",
+      "variant": "X21CT2",
+      "version": "HZAA151C",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "PARTIAL",
+      "commercialAttributes": [
+        {
+          "attribute": "commercial_designation",
+          "status": "PARTIAL",
+          "source": "S01",
+          "rights": "CONDITIONAL"
+        }
+      ],
+      "registrationPeriod": {
+        "first_observed_year": 2022,
+        "last_observed_year": 2024
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16-first-18",
+        "status": "IMPORTED",
+        "runId": "a521b58a-eaf5-4d5d-9ee1-fef20779d567",
+        "at": "2026-10-21 07:37:15.042",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "850a395b-72cd-5d9e-a76d-502fdbb12b05",
+      "candidateRank": 29,
+      "candidateId": "7656c0e7-f31e-5ac1-9364-76069da7e904",
+      "brand": "Nissan",
+      "model": "Qashqai",
+      "fullTan": "E11*2007/46*0963*17",
+      "variant": "D",
+      "version": "D03",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2018,
+        "last_observed_year": 2018
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 15,
+        "S01": 5,
+        "S11": 10,
+        "usable": 15,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-C",
+        "status": "IMPORTED",
+        "runId": "a714b474-c0e6-47f3-9897-b84780dab42b",
+        "at": "2026-10-22 13:45:42.308",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "47ca5c00-78de-51ae-be6d-49f5f5c03f81",
+      "candidateRank": 32,
+      "candidateId": "33b7d427-f4e2-5ca7-98ab-46c9ac53b04a",
+      "brand": "Hyundai",
+      "model": "Kona",
+      "fullTan": "E4*2018/858*00168*02",
+      "variant": "F5E32",
+      "version": "E11AZ1",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 13,
+        "S01": 5,
+        "S11": 8,
+        "usable": 13,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-A",
+        "status": "IMPORTED",
+        "runId": "22be59f5-a2a6-4803-ac4b-eafb1cb2e270",
+        "at": "2026-10-22 13:45:21.800",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "a571c95c-ad2e-5748-b5fd-1440c64309fd",
+      "candidateRank": 33,
+      "candidateId": "6682423d-a254-5444-bbc9-2f1dbaf38f9b",
+      "brand": "Audi",
+      "model": "A3",
+      "fullTan": "E1*2007/46*2060*27",
+      "variant": "SDTSBF1",
+      "version": "FD7FD7GC002RT011C184BIBEM1MLN1D0C",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2024
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-C",
+        "status": "IMPORTED",
+        "runId": "a714b474-c0e6-47f3-9897-b84780dab42b",
+        "at": "2026-10-22 13:45:42.347",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "1d1a13fd-d749-5997-b946-685e9cd3e13c",
+      "candidateRank": 34,
+      "candidateId": "f1d621d9-74f3-5cc5-b4ec-185c019b5298",
+      "brand": "Toyota",
+      "model": "Corolla",
+      "fullTan": "E6*2007/46*0318*03",
+      "variant": "ZWE211(H)",
+      "version": "ZWE211L-DHXNBW(1D)",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2020,
+        "last_observed_year": 2020
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 16,
+        "S01": 6,
+        "S11": 10,
+        "usable": 16,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)",
+        "body_type=<redacted> (S13, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-C",
+        "status": "IMPORTED",
+        "runId": "a714b474-c0e6-47f3-9897-b84780dab42b",
+        "at": "2026-10-22 13:45:42.384",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "84363c34-04cc-508c-b8c2-d506036d32fc",
+      "candidateRank": 35,
+      "candidateId": "16ba1cf8-d2e1-5400-8775-2604d7f4ccfb",
+      "brand": "Toyota",
+      "model": "Yaris",
+      "fullTan": "E11*2007/46*0152*10",
+      "variant": "NHP13(MH)",
+      "version": "NHP130L-CHXNBW(1L)",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2018,
+        "last_observed_year": 2018
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 15,
+        "S01": 5,
+        "S11": 10,
+        "usable": 15,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-C",
+        "status": "IMPORTED",
+        "runId": "a714b474-c0e6-47f3-9897-b84780dab42b",
+        "at": "2026-10-22 13:45:42.425",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "8773803b-135a-573d-a007-3d6db603c7d2",
+      "candidateRank": 36,
+      "candidateId": "d87b4631-da62-57d7-babc-4dbe20f4b1fd",
+      "brand": "Dacia",
+      "model": "Sandero",
+      "fullTan": "E2*2001/116*0314*93",
+      "variant": "05EV",
+      "version": "AC5DA1A0M500",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2020,
+        "last_observed_year": 2020
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 16,
+        "S01": 6,
+        "S11": 10,
+        "usable": 16,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "body_type=<redacted> (S13, PENDING)",
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-D",
+        "status": "IMPORTED",
+        "runId": "47c7d5c8-507e-40cc-852d-5fd3261bd00e",
+        "at": "2026-10-22 13:45:51.459",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "e83a1f91-56fc-50c8-b0f0-85c7b70e4b25",
+      "candidateRank": 37,
+      "candidateId": "640df669-d46f-5775-a477-9c07f36f6d32",
+      "brand": "Dacia",
+      "model": "Sandero",
+      "fullTan": "E2*2001/116*0314*83",
+      "variant": "5SDL1",
+      "version": "5SDL1C",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2018,
+        "last_observed_year": 2018
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 15,
+        "S01": 5,
+        "S11": 10,
+        "usable": 15,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "body_type=<redacted> (S13, PENDING)",
+        "doors=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-D",
+        "status": "IMPORTED",
+        "runId": "47c7d5c8-507e-40cc-852d-5fd3261bd00e",
+        "at": "2026-10-22 13:45:51.535",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "ef164e7a-05f7-5630-94a4-0ea7cc180808",
+      "candidateRank": 38,
+      "candidateId": "d873fc5f-d74b-5981-86b5-a29a2ea0878a",
+      "brand": "Mercedes-Benz",
+      "model": "Clase A",
+      "fullTan": "E1*2001/116*0470*16",
+      "variant": "12S1P2",
+      "version": "MZAZ1502",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2016,
+        "last_observed_year": 2018
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 15,
+        "S01": 5,
+        "S11": 10,
+        "usable": 15,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "transmission=<redacted> (S13, PENDING)",
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-D",
+        "status": "IMPORTED",
+        "runId": "47c7d5c8-507e-40cc-852d-5fd3261bd00e",
+        "at": "2026-10-22 13:45:51.586",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "30760935-9a96-5f91-9720-d970bbf89b52",
+      "candidateRank": 39,
+      "candidateId": "f1f5679c-2fbc-5c98-9478-54823d453507",
+      "brand": "Renault",
+      "model": "Mégane",
+      "fullTan": "E2*2007/46*0546*09",
+      "variant": "BF4",
+      "version": "M6A6SF010000",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2018,
+        "last_observed_year": 2018
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 15,
+        "S01": 5,
+        "S11": 10,
+        "usable": 15,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-D",
+        "status": "IMPORTED",
+        "runId": "47c7d5c8-507e-40cc-852d-5fd3261bd00e",
+        "at": "2026-10-22 13:45:51.616",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "a672fdbc-5eeb-5912-9551-ef69dc53cd9b",
+      "candidateRank": 40,
+      "candidateId": "ef8da154-e8d4-56fd-8384-de8c55d43d9e",
+      "brand": "Nissan",
+      "model": "Qashqai",
+      "fullTan": "E9*2018/858*11042*11",
+      "variant": "A",
+      "version": "A41",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-A",
+        "status": "IMPORTED",
+        "runId": "22be59f5-a2a6-4803-ac4b-eafb1cb2e270",
+        "at": "2026-10-22 13:45:21.825",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "1bc7df21-6285-5072-8697-730100ac7e17",
+      "candidateRank": 41,
+      "candidateId": "0a20c493-fccb-53e1-9ebe-d65d124ea080",
+      "brand": "Toyota",
+      "model": "RAV4",
+      "fullTan": "E6*2007/46*0289*02",
+      "variant": "AXAH52(N)",
+      "version": "AXAH52L-ANXMBW(1C)",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2020,
+        "last_observed_year": 2020
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 16,
+        "S01": 6,
+        "S11": 10,
+        "usable": 16,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-D",
+        "status": "IMPORTED",
+        "runId": "47c7d5c8-507e-40cc-852d-5fd3261bd00e",
+        "at": "2026-10-22 13:45:51.630",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "9786e758-f307-57ac-ab1f-d7d5f7c4a7e2",
+      "candidateRank": 42,
+      "candidateId": "46ad6fa0-f0fc-520e-8c06-0b6c42f9c3f2",
+      "brand": "Renault",
+      "model": "Mégane",
+      "fullTan": "E2*2007/46*0546*09",
+      "variant": "BF2",
+      "version": "MR662A010000",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2018,
+        "last_observed_year": 2018
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 15,
+        "S01": 5,
+        "S11": 10,
+        "usable": 15,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)",
+        "body_type=<redacted> (S13, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-D",
+        "status": "IMPORTED",
+        "runId": "47c7d5c8-507e-40cc-852d-5fd3261bd00e",
+        "at": "2026-10-22 13:45:51.644",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "a0e350b0-7ec9-53ab-80fe-b5c643637800",
+      "candidateRank": 43,
+      "candidateId": "09b9c876-e2c5-50a8-ae28-d696b293161f",
+      "brand": "Peugeot",
+      "model": "308",
+      "fullTan": "E2*2007/46*0405*29",
+      "variant": "B",
+      "version": "YHZJ-C22100",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2020,
+        "last_observed_year": 2022
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 15,
+        "S01": 6,
+        "S11": 9,
+        "usable": 15,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-D",
+        "status": "IMPORTED",
+        "runId": "47c7d5c8-507e-40cc-852d-5fd3261bd00e",
+        "at": "2026-10-22 13:45:51.656",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "881dc0ad-c48a-53d7-8b8a-adaf370e9c12",
+      "candidateRank": 44,
+      "candidateId": "16c556ad-8321-5304-b7cf-f380a4320767",
+      "brand": "Mercedes-Benz",
+      "model": "Clase A",
+      "fullTan": "E1*2007/46*1829*03",
+      "variant": "X203T2",
+      "version": "EZAA151B",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2018,
+        "last_observed_year": 2020
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 16,
+        "S01": 6,
+        "S11": 10,
+        "usable": 16,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-D",
+        "status": "IMPORTED",
+        "runId": "47c7d5c8-507e-40cc-852d-5fd3261bd00e",
+        "at": "2026-10-22 13:45:51.670",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "41909ac3-932a-5028-aa29-44a4ae386590",
+      "candidateRank": 45,
+      "candidateId": "936e39a6-f5b9-5dcb-89cd-08868fd864cb",
+      "brand": "Peugeot",
+      "model": "208",
+      "fullTan": "E2*2007/46*0639*35",
+      "variant": "P",
+      "version": "HNEK-K1T500",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2025,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 13,
+        "S01": 4,
+        "S11": 9,
+        "usable": 13,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-D",
+        "status": "IMPORTED",
+        "runId": "47c7d5c8-507e-40cc-852d-5fd3261bd00e",
+        "at": "2026-10-22 13:45:51.683",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "1b1c801d-8c33-59d4-ad57-ecca147f8a22",
+      "candidateRank": 46,
+      "candidateId": "ea767130-404b-5783-9f59-e40b66d261d0",
+      "brand": "Audi",
+      "model": "A3",
+      "fullTan": "E1*2007/46*2060*27",
+      "variant": "SDFYAF1",
+      "version": "FD7FD7CW002RT011C184BIBEM1MLN1B20",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2024
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-A",
+        "status": "IMPORTED",
+        "runId": "22be59f5-a2a6-4803-ac4b-eafb1cb2e270",
+        "at": "2026-10-22 13:45:21.902",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "8de103c2-3cea-52bc-85a6-d4617968990e",
+      "candidateRank": 48,
+      "candidateId": "fd633c27-2ed9-570e-8aa3-2f6c1078ee12",
+      "brand": "Toyota",
+      "model": "Yaris",
+      "fullTan": "E6*2007/46*0437*04",
+      "variant": "MXPH11(H)",
+      "version": "MXPH11L-CHXNBW(1E)",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "PARTIAL",
+      "commercialAttributes": [
+        {
+          "attribute": "commercial_designation",
+          "status": "PARTIAL",
+          "source": "S01",
+          "rights": "CONDITIONAL"
+        }
+      ],
+      "registrationPeriod": {
+        "first_observed_year": 2022,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)",
+        "body_type=<redacted> (S13, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16-first-18",
+        "status": "IMPORTED",
+        "runId": "a521b58a-eaf5-4d5d-9ee1-fef20779d567",
+        "at": "2026-10-21 07:37:15.103",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "85181d79-ac4e-59a9-a4be-3cd78e2021a0",
+      "candidateRank": 53,
+      "candidateId": "ddf97e08-67d6-5668-9a59-5761d989ea41",
+      "brand": "Mercedes-Benz",
+      "model": "Clase A",
+      "fullTan": "E1*2007/46*1829*12",
+      "variant": "X28QT2",
+      "version": "HZAA052A",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "PARTIAL",
+      "commercialAttributes": [
+        {
+          "attribute": "commercial_designation",
+          "status": "PARTIAL",
+          "source": "S01",
+          "rights": "CONDITIONAL"
+        }
+      ],
+      "registrationPeriod": {
+        "first_observed_year": 2020,
+        "last_observed_year": 2020
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 20,
+        "S01": 8,
+        "S11": 12,
+        "usable": 18,
+        "notUsable": 2
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)"
+      ],
+      "openConflicts": [
+        {
+          "candidateRank": 53,
+          "specKey": "nrg.electric_combined_kwh100",
+          "conflictGroup": "nrg.electric_combined_kwh100:0b0d4c02dfac",
+          "values": [
+            {
+              "source": "S11",
+              "record": "S11:S11:gr7t-qfnb:E1*2007/46*1829*12|X28QT2|HZAA052A|r0|e2 ; S11:gr7t-qfnb:E1*2007/46*1829*12|X28QT2|HZAA052A|r1|e2",
+              "value": null,
+              "unit": "kWh/100 km",
+              "testCycle": "WLTP",
+              "measurementBasis": {
+                "consumption_basis": "UNSPECIFIED",
+                "charging_loss_basis": "UNSPECIFIED"
+              },
+              "quality": "NOT_USABLE",
+              "rights": "PENDING",
+              "valueRedacted": "rights PENDING"
+            },
+            {
+              "source": "S01",
+              "record": "S01:E1*2007/46*1829*12|X28QT2|HZAA052A:Z (Wh/km):EEA 2020 final",
+              "value": [
+                21.1,
+                21.7
+              ],
+              "unit": "kWh/100 km",
+              "testCycle": "UNDECLARED",
+              "measurementBasis": {
+                "consumption_basis": "UNSPECIFIED",
+                "charging_loss_basis": "UNSPECIFIED"
+              },
+              "quality": "NOT_USABLE",
+              "rights": "CONDITIONAL"
+            }
+          ],
+          "conflictType": "CROSS_SOURCE_DIFFERENT_BASIS",
+          "decisionStatus": "OPEN — all values kept, none averaged, no source-priority rule applied"
+        }
+      ],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.fuel_charge_sustaining_l100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval",
+        "open value conflict (kept, needs review)"
+      ],
+      "lastImport": {
+        "batch": "d16-first-18",
+        "status": "IMPORTED",
+        "runId": "a521b58a-eaf5-4d5d-9ee1-fef20779d567",
+        "at": "2026-10-21 07:37:15.188",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "c956df88-cfd8-5010-8adc-e4f59da02676",
+      "candidateRank": 56,
+      "candidateId": "5e196035-2ad2-585e-ad0f-7b8c971209ae",
+      "brand": "Toyota",
+      "model": "Corolla",
+      "fullTan": "E6*2007/46*0318*05",
+      "variant": "ZWE211(H)",
+      "version": "ZWE211L-DHXNBW(1F)",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "PARTIAL",
+      "commercialAttributes": [
+        {
+          "attribute": "commercial_designation",
+          "status": "PARTIAL",
+          "source": "S01",
+          "rights": "CONDITIONAL"
+        }
+      ],
+      "registrationPeriod": {
+        "first_observed_year": 2022,
+        "last_observed_year": 2022
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 15,
+        "S01": 6,
+        "S11": 9,
+        "usable": 15,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16-first-18",
+        "status": "IMPORTED",
+        "runId": "a521b58a-eaf5-4d5d-9ee1-fef20779d567",
+        "at": "2026-10-21 07:37:15.123",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "b6699b55-cddb-5e71-9fa0-e7cdc197788c",
+      "candidateRank": 57,
+      "candidateId": "85beac35-7b7a-5715-856b-5c01589d22ce",
+      "brand": "Peugeot",
+      "model": "3008",
+      "fullTan": "E2*2007/46*0534*23",
+      "variant": "4",
+      "version": "DGZU-C1J000",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "PARTIAL",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2022,
+        "last_observed_year": 2022
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 20,
+        "S01": 9,
+        "S11": 11,
+        "usable": 20,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.fuel_charge_sustaining_l100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16-first-18",
+        "status": "IMPORTED",
+        "runId": "a521b58a-eaf5-4d5d-9ee1-fef20779d567",
+        "at": "2026-10-21 07:37:15.205",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "2f889fe5-eedf-580d-9163-12cf4edf1d08",
+      "candidateRank": 60,
+      "candidateId": "520b6cb4-f583-53d7-9aa6-3e449fe95d48",
+      "brand": "Toyota",
+      "model": "RAV4",
+      "fullTan": "E6*2007/46*0289*08",
+      "variant": "AXAL52(N)",
+      "version": "AXAL52L-ANXMBW(1J)",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-A",
+        "status": "IMPORTED",
+        "runId": "22be59f5-a2a6-4803-ac4b-eafb1cb2e270",
+        "at": "2026-10-22 13:45:21.967",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "589f6efd-aeb6-5577-a184-45d4f5ab1113",
+      "candidateRank": 61,
+      "candidateId": "dc4870a2-e4b6-5c41-b6f0-6c9678f3fff3",
+      "brand": "Kia",
+      "model": "Niro",
+      "fullTan": "E4*2007/46*1139*12",
+      "variant": "C5E11",
+      "version": "E11DY1",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2022,
+        "last_observed_year": 2022
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 6,
+        "S11": 8,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-A",
+        "status": "IMPORTED",
+        "runId": "22be59f5-a2a6-4803-ac4b-eafb1cb2e270",
+        "at": "2026-10-22 13:45:21.885",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "3102206f-b9a5-5ba0-bb64-2f9a356d0dd9",
+      "candidateRank": 63,
+      "candidateId": "30d7038b-8ec6-52a8-a343-55c331af830e",
+      "brand": "Kia",
+      "model": "Niro",
+      "fullTan": "E4*2007/46*1139*12",
+      "variant": "C5P11",
+      "version": "D61CY1",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2022,
+        "last_observed_year": 2022
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 15,
+        "S01": 6,
+        "S11": 9,
+        "usable": 15,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "transmission=<redacted> (S13, PENDING)",
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-B",
+        "status": "IMPORTED",
+        "runId": "0db9ad84-2347-40d0-939c-bd7dfbab0b29",
+        "at": "2026-10-22 13:45:32.852",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "9524a0c4-8b86-52f0-b950-484e3fb401db",
+      "candidateRank": 64,
+      "candidateId": "b61a4412-e84e-54cb-a28d-80646f0bcf09",
+      "brand": "Toyota",
+      "model": "Corolla",
+      "fullTan": "E6*2007/46*0318*10",
+      "variant": "ZWE219(W)",
+      "version": "ZWE219L-DWXNBW(6L)",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2025,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-B",
+        "status": "IMPORTED",
+        "runId": "0db9ad84-2347-40d0-939c-bd7dfbab0b29",
+        "at": "2026-10-22 13:45:32.907",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "5e06a7fe-0274-5fca-b909-7996b1a19e76",
+      "candidateRank": 67,
+      "candidateId": "5c9f5927-a5f5-55e0-833b-5c5e2193d4b7",
+      "brand": "Kia",
+      "model": "Niro",
+      "fullTan": "E4*2007/46*1139*08",
+      "variant": "C5P11",
+      "version": "D61CY1",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2020,
+        "last_observed_year": 2020
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 16,
+        "S01": 6,
+        "S11": 10,
+        "usable": 16,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.electric_combined_kwh100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: rng.electric_combined_km",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-B",
+        "status": "IMPORTED",
+        "runId": "0db9ad84-2347-40d0-939c-bd7dfbab0b29",
+        "at": "2026-10-22 13:45:32.989",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "7a2bf3a5-ef95-5b41-8b40-771dcf11d573",
+      "candidateRank": 68,
+      "candidateId": "6ca5b751-2679-5bcc-9279-bcee33222c20",
+      "brand": "Kia",
+      "model": "Niro",
+      "fullTan": "E9*2018/858*11241*03",
+      "variant": "C5P11",
+      "version": "D61AY1",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-B",
+        "status": "IMPORTED",
+        "runId": "0db9ad84-2347-40d0-939c-bd7dfbab0b29",
+        "at": "2026-10-22 13:45:32.970",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "feeeb839-f731-547b-bb9d-e1c18c10bfce",
+      "candidateRank": 69,
+      "candidateId": "ba353843-9276-5db0-9be9-b41872620f85",
+      "brand": "Hyundai",
+      "model": "Tucson",
+      "fullTan": "E5*2018/858*00001*09",
+      "variant": "F5P41",
+      "version": "A61B11",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-B",
+        "status": "IMPORTED",
+        "runId": "0db9ad84-2347-40d0-939c-bd7dfbab0b29",
+        "at": "2026-10-22 13:45:33.017",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "9a0797d7-e267-5708-afa2-65f14674a36f",
+      "candidateRank": 70,
+      "candidateId": "c4244cb1-a398-55a2-b7bd-b37199ace56c",
+      "brand": "Škoda",
+      "model": "Octavia",
+      "fullTan": "E8*2007/46*0355*18",
+      "variant": "ACDFYAX0",
+      "version": "NFD7FD7CW0024BIVL4N1A0A",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2024
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-C",
+        "status": "IMPORTED",
+        "runId": "a714b474-c0e6-47f3-9897-b84780dab42b",
+        "at": "2026-10-22 13:45:42.256",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "ce21547c-4769-5238-8c62-0e115fca39c4",
+      "candidateRank": 71,
+      "candidateId": "181ec927-ecf3-5f02-a853-fc60e6790c4b",
+      "brand": "Hyundai",
+      "model": "Kona",
+      "fullTan": "E4*2018/858*00153*01",
+      "variant": "F5P42",
+      "version": "D61CY1",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-C",
+        "status": "IMPORTED",
+        "runId": "a714b474-c0e6-47f3-9897-b84780dab42b",
+        "at": "2026-10-22 13:45:42.298",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "60a500f3-db31-5f9e-8e16-3ca890cfcf59",
+      "candidateRank": 73,
+      "candidateId": "f87f76b9-019a-5485-8428-05ad3c1d909b",
+      "brand": "Toyota",
+      "model": "RAV4",
+      "fullTan": "E6*2007/46*0429*05",
+      "variant": "AXAP54(N)",
+      "version": "AXAP54L-ANXMBW(1F)",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "PARTIAL",
+      "commercialAttributes": [
+        {
+          "attribute": "commercial_designation",
+          "status": "PARTIAL",
+          "source": "S01",
+          "rights": "CONDITIONAL"
+        }
+      ],
+      "registrationPeriod": {
+        "first_observed_year": 2025,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 20,
+        "S01": 7,
+        "S11": 13,
+        "usable": 18,
+        "notUsable": 2
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)",
+        "drivetrain=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [
+        {
+          "candidateRank": 73,
+          "specKey": "nrg.phev_weighted_fuel_l100",
+          "conflictGroup": "nrg.phev_weighted_fuel_l100:3e335e051d57",
+          "values": [
+            {
+              "source": "S11",
+              "record": "S11:S11:gr7t-qfnb:E6*2007/46*0429*05|AXAP54(N)|AXAP54L-ANXMBW(1F)|r0|e1 ; S11:gr7t-qfnb:E6*2007/46*0429*05|AXAP54(N)|AXAP54L-ANXMBW(1F)|r1|e1",
+              "value": null,
+              "unit": "L/100 km",
+              "testCycle": "WLTP",
+              "measurementBasis": {
+                "consumption_basis": "WEIGHTED_PHEV"
+              },
+              "quality": "NOT_USABLE",
+              "rights": "PENDING",
+              "valueRedacted": "rights PENDING"
+            },
+            {
+              "source": "S01",
+              "record": "S01:E6*2007/46*0429*05|AXAP54(N)|AXAP54L-ANXMBW(1F):Fc:EEA 2025 provisional",
+              "value": 0.3,
+              "unit": "L/100 km",
+              "testCycle": "UNDECLARED",
+              "measurementBasis": null,
+              "quality": "NOT_USABLE",
+              "rights": "CONDITIONAL"
+            }
+          ],
+          "conflictType": "CROSS_SOURCE_DIFFERENT_BASIS",
+          "decisionStatus": "OPEN — all values kept, none averaged, no source-priority rule applied"
+        }
+      ],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.fuel_charge_sustaining_l100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval",
+        "open value conflict (kept, needs review)"
+      ],
+      "lastImport": {
+        "batch": "d16-first-18",
+        "status": "IMPORTED",
+        "runId": "d8eca0ce-d485-4928-9b1a-423100a8e1a5",
+        "at": "2026-10-21 07:47:14.806",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "d82a763d-a8bb-5c50-8593-e665da05157d",
+      "candidateRank": 74,
+      "candidateId": "8a430b5f-19ad-58b7-b8de-33a2a09f5d2b",
+      "brand": "Peugeot",
+      "model": "3008",
+      "fullTan": "E2*2018/858*00064*07",
+      "variant": "A",
+      "version": "HPY1-A1AN00",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2025,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-C",
+        "status": "IMPORTED",
+        "runId": "a714b474-c0e6-47f3-9897-b84780dab42b",
+        "at": "2026-10-22 13:45:42.335",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "e48e7edd-eb97-531a-bab3-8f8465b97b30",
+      "candidateRank": 75,
+      "candidateId": "bbf9e924-4d4e-55e3-9339-176f9e491457",
+      "brand": "Kia",
+      "model": "Sportage",
+      "fullTan": "E4*2018/858*00079*04",
+      "variant": "F5P41",
+      "version": "A61B11",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-C",
+        "status": "IMPORTED",
+        "runId": "a714b474-c0e6-47f3-9897-b84780dab42b",
+        "at": "2026-10-22 13:45:42.372",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "e7191b04-fc69-5660-a3a2-b8d8918f9101",
+      "candidateRank": 76,
+      "candidateId": "aad7b02d-5c1a-559a-af09-fc1ff6e2649f",
+      "brand": "Tesla",
+      "model": "Model 3",
+      "fullTan": "E4*2007/46*1293*39",
+      "variant": "H6LR",
+      "version": "BFB1S5T1W",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 13,
+        "S01": 5,
+        "S11": 8,
+        "usable": 13,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "gears=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)",
+        "body_type=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-A",
+        "status": "IMPORTED",
+        "runId": "22be59f5-a2a6-4803-ac4b-eafb1cb2e270",
+        "at": "2026-10-22 13:45:21.956",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "ebcd9b02-dc1d-544a-9cf3-bb95c2883345",
+      "candidateRank": 77,
+      "candidateId": "b2d80ce8-7b29-5b6e-87c3-df6077bbc9d1",
+      "brand": "BMW",
+      "model": "X3",
+      "fullTan": "E1*2007/46*1797*14",
+      "variant": "61DP",
+      "version": "IAW50000",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2022,
+        "last_observed_year": 2022
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 21,
+        "S01": 8,
+        "S11": 13,
+        "usable": 21,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "gears=<redacted> (S11, PENDING)",
+        "drivetrain=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.fuel_charge_sustaining_l100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-A",
+        "status": "IMPORTED",
+        "runId": "22be59f5-a2a6-4803-ac4b-eafb1cb2e270",
+        "at": "2026-10-22 13:45:21.872",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "969f80ac-1d36-53cf-a5a0-0199956df91e",
+      "candidateRank": 78,
+      "candidateId": "e90fafb4-c5d2-5a75-818e-fb6e4e48dcfb",
+      "brand": "Peugeot",
+      "model": "3008",
+      "fullTan": "E2*2007/46*0534*12",
+      "variant": "4",
+      "version": "5GBU-C1J000",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2020,
+        "last_observed_year": 2020
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 20,
+        "S01": 8,
+        "S11": 12,
+        "usable": 20,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.fuel_charge_sustaining_l100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-A",
+        "status": "IMPORTED",
+        "runId": "22be59f5-a2a6-4803-ac4b-eafb1cb2e270",
+        "at": "2026-10-22 13:45:21.946",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "22941f94-0620-5e35-a304-625d85dcf912",
+      "candidateRank": 79,
+      "candidateId": "38f4b49f-a3d3-5afd-a29e-3a5bda76022c",
+      "brand": "Volkswagen",
+      "model": "Golf",
+      "fullTan": "E1*2007/46*2014*23",
+      "variant": "ACDGEAX0",
+      "version": "FD6FD6DD001P4BISON1ML1CVR2B00",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2024
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 18,
+        "S01": 7,
+        "S11": 11,
+        "usable": 18,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.fuel_charge_sustaining_l100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-A",
+        "status": "IMPORTED",
+        "runId": "22be59f5-a2a6-4803-ac4b-eafb1cb2e270",
+        "at": "2026-10-22 13:45:21.998",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "920c644c-7090-5ba7-b7d0-4635ca5ca2fe",
+      "candidateRank": 80,
+      "candidateId": "a4209857-2146-56bd-8130-ec6f3b3fca11",
+      "brand": "Volkswagen",
+      "model": "Golf",
+      "fullTan": "E1*2007/46*2014*28",
+      "variant": "ACDUCBX0",
+      "version": "FD6FD6DD001H4WESON1MLB0",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2025,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 18,
+        "S01": 7,
+        "S11": 11,
+        "usable": 18,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "transmission=<redacted> (S13, PENDING)",
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.fuel_charge_sustaining_l100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-B",
+        "status": "IMPORTED",
+        "runId": "0db9ad84-2347-40d0-939c-bd7dfbab0b29",
+        "at": "2026-10-22 13:45:32.879",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "5ac0997e-f17d-5482-b39f-2ca0216c8c0b",
+      "candidateRank": 81,
+      "candidateId": "81e9cac7-35bc-5191-84d6-d54d3dd0ee84",
+      "brand": "Tesla",
+      "model": "Model Y",
+      "fullTan": "E4*2007/46*1293*26",
+      "variant": "Y6LR",
+      "version": "BZB3S5T3",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "PARTIAL",
+      "commercialAttributes": [
+        {
+          "attribute": "commercial_designation",
+          "status": "PARTIAL",
+          "source": "S01",
+          "rights": "CONDITIONAL"
+        }
+      ],
+      "registrationPeriod": {
+        "first_observed_year": 2022,
+        "last_observed_year": 2022
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 6,
+        "S11": 8,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16-first-18",
+        "status": "IMPORTED",
+        "runId": "a521b58a-eaf5-4d5d-9ee1-fef20779d567",
+        "at": "2026-10-21 07:37:15.242",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "c58c5cff-d031-5be8-ac1b-35e91b94151a",
+      "candidateRank": 82,
+      "candidateId": "1eb55671-882a-5f88-a93b-b3fe84837431",
+      "brand": "Peugeot",
+      "model": "208",
+      "fullTan": "E2*2007/46*0639*36",
+      "variant": "P",
+      "version": "HPX5-K1NN00",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2025,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "transmission=<redacted> (S13, PENDING)",
+        "body_type=<redacted> (S13, PENDING)",
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-C",
+        "status": "IMPORTED",
+        "runId": "a714b474-c0e6-47f3-9897-b84780dab42b",
+        "at": "2026-10-22 13:45:42.411",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "b1b38eca-ad0c-5648-b0cd-fad1854567a6",
+      "candidateRank": 83,
+      "candidateId": "affa382d-4fb7-53ab-9d89-5684ae2c2791",
+      "brand": "CUPRA",
+      "model": "Formentor",
+      "fullTan": "E9*2007/46*4008*24",
+      "variant": "CXDUCBX0",
+      "version": "FD6PFD6DD0014WE1AAAKM1",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 18,
+        "S01": 7,
+        "S11": 11,
+        "usable": 18,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: nrg.fuel_charge_sustaining_l100",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-B",
+        "status": "IMPORTED",
+        "runId": "0db9ad84-2347-40d0-939c-bd7dfbab0b29",
+        "at": "2026-10-22 13:45:32.932",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "47dccb1d-545e-55fd-8e4e-4f96995aa4d2",
+      "candidateRank": 84,
+      "candidateId": "871dd562-89f0-5577-9acb-50e799e3fca7",
+      "brand": "Tesla",
+      "model": "Model 3",
+      "fullTan": "E4*2007/46*1293*47",
+      "variant": "H6MR",
+      "version": "BFB1S5T1W",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2025,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 13,
+        "S01": 5,
+        "S11": 8,
+        "usable": 13,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)",
+        "body_type=<redacted> (S13, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-A",
+        "status": "IMPORTED",
+        "runId": "22be59f5-a2a6-4803-ac4b-eafb1cb2e270",
+        "at": "2026-10-22 13:45:22.011",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "d19cee89-a70e-5e1d-932d-2a3da86d1f66",
+      "candidateRank": 85,
+      "candidateId": "03123a29-f5e3-561d-951a-50f3bc2acefb",
+      "brand": "Renault",
+      "model": "Mégane",
+      "fullTan": "E2*2018/858*00018*03",
+      "variant": "BE2",
+      "version": "J1EEA1000000",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2022,
+        "last_observed_year": 2022
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 6,
+        "S11": 8,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "body_type=<redacted> (S13, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-B",
+        "status": "IMPORTED",
+        "runId": "0db9ad84-2347-40d0-939c-bd7dfbab0b29",
+        "at": "2026-10-22 13:45:32.894",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "1cb971f9-da64-5da6-901e-6cf5e10dd696",
+      "candidateRank": 86,
+      "candidateId": "936a65bb-81d9-53df-b3f7-d5e91211a64b",
+      "brand": "Renault",
+      "model": "Clio",
+      "fullTan": "E2*2007/46*0676*05",
+      "variant": "BH2",
+      "version": "MU4UA0FA5000",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "PARTIAL",
+      "commercialAttributes": [
+        {
+          "attribute": "commercial_designation",
+          "status": "PARTIAL",
+          "source": "S01",
+          "rights": "CONDITIONAL"
+        }
+      ],
+      "registrationPeriod": {
+        "first_observed_year": 2020,
+        "last_observed_year": 2020
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 16,
+        "S01": 6,
+        "S11": 10,
+        "usable": 16,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "transmission=<redacted> (S13, PENDING)",
+        "body_type=<redacted> (S13, PENDING)",
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16-first-18",
+        "status": "IMPORTED",
+        "runId": "a521b58a-eaf5-4d5d-9ee1-fef20779d567",
+        "at": "2026-10-21 07:37:15.145",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "da882552-0eb5-5ff0-9e9d-e81e8a24bcbe",
+      "candidateRank": 87,
+      "candidateId": "4d421a74-a585-58f3-8977-aade6292c65c",
+      "brand": "Renault",
+      "model": "Clio",
+      "fullTan": "E2*2007/46*0676*28",
+      "variant": "BH2",
+      "version": "N84WA3VA530B",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "body_type=<redacted> (S13, PENDING)",
+        "transmission=<redacted> (S13, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-D",
+        "status": "IMPORTED",
+        "runId": "47c7d5c8-507e-40cc-852d-5fd3261bd00e",
+        "at": "2026-10-22 13:45:51.438",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "cc9f8212-9f33-5150-bcdf-fa3b47fa7b9c",
+      "candidateRank": 89,
+      "candidateId": "334cd6fa-82ef-5c14-98f9-78ccc3267044",
+      "brand": "Mercedes-Benz",
+      "model": "Clase A",
+      "fullTan": "E1*2007/46*1829*24",
+      "variant": "X24JT2",
+      "version": "FZAA451A",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2025,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 5,
+        "S11": 9,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-D",
+        "status": "IMPORTED",
+        "runId": "47c7d5c8-507e-40cc-852d-5fd3261bd00e",
+        "at": "2026-10-22 13:45:51.516",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "e06cdf98-916f-522d-98d9-ed479b79dbb5",
+      "candidateRank": 90,
+      "candidateId": "d569d556-d3d8-5980-a25b-01b38927c12f",
+      "brand": "Volkswagen",
+      "model": "Golf",
+      "fullTan": "E1*2007/46*0623*41",
+      "variant": "GAC4EBSAX0",
+      "version": "FA1FA1MD001E0GAON1ML1BVR0NA",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2020,
+        "last_observed_year": 2022
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 15,
+        "S01": 6,
+        "S11": 9,
+        "usable": 15,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "transmission=<redacted> (S13, PENDING)",
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-B",
+        "status": "IMPORTED",
+        "runId": "0db9ad84-2347-40d0-939c-bd7dfbab0b29",
+        "at": "2026-10-22 13:45:32.958",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "50f1b8f4-d2c4-586a-a6e3-74969519ce87",
+      "candidateRank": 91,
+      "candidateId": "1af09337-8bd3-5549-add5-f005e4b8ad4b",
+      "brand": "BMW",
+      "model": "X3",
+      "fullTan": "E1*2007/46*1797*13",
+      "variant": "55BZ",
+      "version": "IAV500L0",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2022,
+        "last_observed_year": 2022
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 15,
+        "S01": 6,
+        "S11": 9,
+        "usable": 15,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: pt.fuel_tank_l",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-D",
+        "status": "IMPORTED",
+        "runId": "47c7d5c8-507e-40cc-852d-5fd3261bd00e",
+        "at": "2026-10-22 13:45:51.572",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "02edc1c9-0045-5081-8c60-ee378926817e",
+      "candidateRank": 92,
+      "candidateId": "64fd2ff2-50fc-5df2-bf53-9cfc755ff093",
+      "brand": "Tesla",
+      "model": "Model Y",
+      "fullTan": "E4*2007/46*1293*25",
+      "variant": "Y5LD",
+      "version": "PZP4S5T3",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2022,
+        "last_observed_year": 2022
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 14,
+        "S01": 6,
+        "S11": 8,
+        "usable": 14,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-B",
+        "status": "IMPORTED",
+        "runId": "0db9ad84-2347-40d0-939c-bd7dfbab0b29",
+        "at": "2026-10-22 13:45:33.003",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "bda4ee39-9a57-5473-87cc-af9a822e0f0f",
+      "candidateRank": 93,
+      "candidateId": "884273a1-d3c3-5f6e-b352-130f89032ab1",
+      "brand": "Tesla",
+      "model": "Model Y",
+      "fullTan": "E4*2007/46*1293*43",
+      "variant": "Y5LR",
+      "version": "BLB3S5T3X",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2025,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 13,
+        "S01": 5,
+        "S11": 8,
+        "usable": 13,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-B",
+        "status": "IMPORTED",
+        "runId": "0db9ad84-2347-40d0-939c-bd7dfbab0b29",
+        "at": "2026-10-22 13:45:33.039",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "ad24ffab-7f44-59a4-8c9d-6952395ab849",
+      "candidateRank": 94,
+      "candidateId": "b47a401d-f4c8-5f51-9194-d2654c71d400",
+      "brand": "Kia",
+      "model": "Niro",
+      "fullTan": "E9*2018/858*11241*01",
+      "variant": "C5E11",
+      "version": "E11BY1",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2022,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 13,
+        "S01": 5,
+        "S11": 8,
+        "usable": 13,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-C",
+        "status": "IMPORTED",
+        "runId": "a714b474-c0e6-47f3-9897-b84780dab42b",
+        "at": "2026-10-22 13:45:42.285",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "9fc78b0c-d5c0-579a-988d-07d7afe0e991",
+      "candidateRank": 95,
+      "candidateId": "8a82f1b4-13d0-57db-9050-919345a35aac",
+      "brand": "BMW",
+      "model": "X3",
+      "fullTan": "E1*2007/46*2130*02",
+      "variant": "41DU",
+      "version": "0AW5000S",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2022,
+        "last_observed_year": 2022
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 12,
+        "S01": 5,
+        "S11": 7,
+        "usable": 12,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-C",
+        "status": "IMPORTED",
+        "runId": "a714b474-c0e6-47f3-9897-b84780dab42b",
+        "at": "2026-10-22 13:45:42.321",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "168e4a9d-9b77-5783-b25f-4ae04e0c5b3e",
+      "candidateRank": 96,
+      "candidateId": "d27a1853-fdbd-5ccd-b932-fb6531feb76e",
+      "brand": "Peugeot",
+      "model": "3008",
+      "fullTan": "E2*2018/858*00064*02",
+      "variant": "C",
+      "version": "ZKZX-A0E000",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 13,
+        "S01": 5,
+        "S11": 8,
+        "usable": 13,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "transmission=<redacted> (S13, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-C",
+        "status": "IMPORTED",
+        "runId": "a714b474-c0e6-47f3-9897-b84780dab42b",
+        "at": "2026-10-22 13:45:42.361",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "372f432e-0bf5-5ad7-a668-548c48725be1",
+      "candidateRank": 97,
+      "candidateId": "b5523cb2-642e-5ad0-81d2-543253c1c5d0",
+      "brand": "Peugeot",
+      "model": "208",
+      "fullTan": "E2*2007/46*0639*35",
+      "variant": "H",
+      "version": "ZKWZ-K0R000",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2025,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 13,
+        "S01": 5,
+        "S11": 8,
+        "usable": 13,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-C",
+        "status": "IMPORTED",
+        "runId": "a714b474-c0e6-47f3-9897-b84780dab42b",
+        "at": "2026-10-22 13:45:42.396",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "138a64a1-75c7-5c63-8249-b66a480d0067",
+      "candidateRank": 98,
+      "candidateId": "126014f8-7db8-5c88-8e4b-6da9d8566e1f",
+      "brand": "Renault",
+      "model": "Mégane",
+      "fullTan": "E2*2018/858*00018*09",
+      "variant": "BE2",
+      "version": "J2EEA5F000B0",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 13,
+        "S01": 5,
+        "S11": 8,
+        "usable": 13,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-C",
+        "status": "IMPORTED",
+        "runId": "a714b474-c0e6-47f3-9897-b84780dab42b",
+        "at": "2026-10-22 13:45:42.437",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "05aaf9f0-ee5c-5b15-aef8-f4719bb1328b",
+      "candidateRank": 99,
+      "candidateId": "316d9e1b-f083-579c-a73c-9aa008397f79",
+      "brand": "Tesla",
+      "model": "Model 3",
+      "fullTan": "E4*2007/46*1293*07",
+      "variant": "E3D",
+      "version": "BB1N",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2020,
+        "last_observed_year": 2020
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 13,
+        "S01": 4,
+        "S11": 9,
+        "usable": 13,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "doors=<redacted> (S11, PENDING)",
+        "seats=<redacted> (S11, PENDING)",
+        "body_type=<redacted> (S13, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-D",
+        "status": "IMPORTED",
+        "runId": "47c7d5c8-507e-40cc-852d-5fd3261bd00e",
+        "at": "2026-10-22 13:45:51.483",
+        "runStatus": "COMPLETED"
+      }
+    },
+    {
+      "id": "26e56359-084f-59d8-b395-6daef3c9ba0a",
+      "candidateRank": 100,
+      "candidateId": "d18243a7-27cc-5b74-b343-5e8b14d8d865",
+      "brand": "BMW",
+      "model": "X3",
+      "fullTan": "E1*2007/46*2130*07",
+      "variant": "41DU",
+      "version": "0AW5000B",
+      "identityConfidence": "EXACT",
+      "commercialIdentity": "UNCONFIRMED",
+      "commercialAttributes": [],
+      "registrationPeriod": {
+        "first_observed_year": 2024,
+        "last_observed_year": 2025
+      },
+      "curationStatus": "CURATED",
+      "observations": {
+        "total": 13,
+        "S01": 5,
+        "S11": 8,
+        "usable": 13,
+        "notUsable": 0
+      },
+      "rights": {
+        "S01": [
+          "CONDITIONAL"
+        ],
+        "S11": [
+          "PENDING"
+        ]
+      },
+      "technicalAttributes": [
+        "transmission=<redacted> (S13, PENDING)",
+        "seats=<redacted> (S11, PENDING)",
+        "doors=<redacted> (S11, PENDING)"
+      ],
+      "openConflicts": [],
+      "rowsCitingAnotherKey": 0,
+      "blockers": [
+        "generation not verified (no source)",
+        "model_year not verified (no source)",
+        "trim not confirmed",
+        "critical key missing: cap.boot_l",
+        "critical key missing: chg.ac_max_kw",
+        "critical key missing: chg.dc_max_kw",
+        "critical key missing: emi.dgt_label_es",
+        "critical key missing: perf.accel_0_100_s",
+        "critical key missing: perf.power_max_kw",
+        "critical key missing: price",
+        "critical key missing: war.years",
+        "S11 rights pending human approval"
+      ],
+      "lastImport": {
+        "batch": "d16a-batch-D",
+        "status": "IMPORTED",
+        "runId": "47c7d5c8-507e-40cc-852d-5fd3261bd00e",
+        "at": "2026-10-22 13:45:51.553",
+        "runStatus": "COMPLETED"
+      }
+    }
+  ]
+}

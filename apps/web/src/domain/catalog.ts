@@ -1,3 +1,5 @@
+import type { SelectionAvailability, YearBasis } from './model-selection';
+
 /**
  * Catálogo de vehículos en la web (Step 7b): forma mínima de una ReferenceVariant seleccionable, etiqueta derivada,
  * ranking de búsqueda y slugs de par. Módulo PURO y apto para cliente: sin engines, sin DB, sin specs.
@@ -175,8 +177,10 @@ export interface MediaView {
 
 export interface BrandOption {
   brand: string;
-  /** Modelos seleccionables de la marca en el mercado y canal. */
+  /** Modelos navegables de la marca en el mercado y canal (comparables o solo descubribles, D1.8). */
   models: number;
+  /** D1.8: COMPARISON_ELIGIBLE si algún modelo es comparable; CATALOG_DISCOVERABLE si solo hay datos técnicos. */
+  availability: SelectionAvailability;
 }
 
 /** Tarjeta de modelo: como mucho imagen, nombre, años disponibles y una pista de generación. */
@@ -190,13 +194,18 @@ export interface ModelCard {
   bodyType: string;
   media?: MediaView;
   preview?: boolean;
+  /** D1.8: comparable (alguna ReferenceVariant seleccionable) o solo descubrible (homologaciones técnicas). */
+  availability: SelectionAvailability;
 }
 
 export interface YearOption {
-  /** Año modelo declarado por la fuente; `null` = desconocido (nunca deducido de matriculación o del dataset). */
+  /** Año del selector; `null` = desconocido. Su significado lo da `basis` (nunca se convierte uno en otro). */
   year: number | null;
   /** Generación explícita de ese año, si existe (p. ej. "Mk7"). */
   generations: string[];
+  /** D1.8: año-modelo declarado (catálogo seleccionable) y/o matriculación observada (homologaciones técnicas). */
+  basis: YearBasis[];
+  availability: SelectionAvailability;
 }
 
 /** Fila de versión: apunta EXACTAMENTE a una ReferenceVariant (`id`), nunca a un nombre comercial. */

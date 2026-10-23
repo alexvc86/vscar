@@ -1640,6 +1640,37 @@ a {
   font-size: var(--vs-text-body);
   font-weight: 600;
 }
+/* D1.8 (ADR-020): aclaración contextual de motorización y "comparación no disponible". */
+.vp-config,
+.vp-unavailable {
+  display: grid;
+  gap: var(--vs-space-3);
+}
+.vp-row--quiet {
+  border-style: dashed;
+  background: transparent;
+}
+.vp-unavailable__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--vs-space-2);
+}
+.vp-unavailable__list li {
+  padding: var(--vs-space-2) var(--vs-space-3);
+  border: 1px solid var(--vs-line);
+  border-radius: var(--vs-radius-md);
+  overflow-wrap: anywhere;
+}
+.vp-unavailable__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--vs-space-2);
+}
+.vp-unavailable .picker__badge {
+  justify-self: start;
+}
 .vp-variant__badges:empty {
   display: none;
 }

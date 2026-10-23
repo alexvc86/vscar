@@ -18,11 +18,12 @@ function watchConsole(page: Page) {
   return problems;
 }
 
-async function browse(page: Page, brand: string, model: string, year: string, slug: string) {
+/** D1.8: tres pasos; si el año tiene varias configuraciones, se elige la indicada por su nombre visible. */
+async function browse(page: Page, brand: string, model: string, year: string, configuration?: RegExp) {
   await page.getByTestId(`brand-${brand}`).click();
   await page.getByTestId(`model-${model}`).click();
   await page.getByTestId(`year-${year}`).click();
-  await page.getByTestId(`variant-${slug}`).click();
+  if (configuration) await page.getByTestId('configuration-panel').getByRole('button', { name: configuration }).click();
   await expect(page.locator('.vp-summary')).toBeVisible();
 }
 
@@ -50,12 +51,12 @@ test('A — new vs used, same ReferenceVariant: picker → two distinct particip
   const problems = watchConsole(page);
   await page.goto('/es-es');
   await page.getByTestId('home-cta').click();
-  await browse(page, 'Volkswagen', 'Golf', '2027', GOLF);
+  await browse(page, 'Volkswagen', 'Golf', '2027');
   await expect(page.locator('#vp-step-title')).toHaveText('¿Cómo estás considerando este coche?');
   await page.getByTestId('condition-new').click();
   // Coche B: la MISMA variant, como usado.
   await expect(page.getByTestId('picker-side')).toHaveText('Coche B');
-  await browse(page, 'Volkswagen', 'Golf', '2027', GOLF);
+  await browse(page, 'Volkswagen', 'Golf', '2027');
   await fillUsed(page, { price: '28.000', km: '84.000', month: '3', year: '2019', service: 'partial' });
   await expect(page.getByTestId('used-review-panel')).toContainText('28.000 €');
   await expect(page.getByTestId('used-review-panel')).toContainText('84.000 km');
@@ -86,10 +87,10 @@ test('B — used vs used: facts per car, scenario change recalculates and keeps 
   const problems = watchConsole(page);
   await page.goto('/es-es');
   await page.getByTestId('home-cta').click();
-  await browse(page, 'BYD', 'SEAL', '2026', BYD);
+  await browse(page, 'BYD', 'SEAL', '2026');
   await fillUsed(page, { price: '33000', km: '9000', soh: '96' });
   await page.getByTestId('choose-car').click();
-  await browse(page, 'Tesla', 'Model 3', '2021', M3);
+  await browse(page, 'Tesla', 'Model 3', '2021', /Autonomía estándar plus/);
   await fillUsed(page, { price: '18500', km: '70000', month: '6', year: '2021', soh: '88' });
   await page.getByTestId('choose-car').click();
   await page.getByTestId('compare-go').click();
@@ -183,7 +184,6 @@ test('F — mobile 390 px: used form by touch and keyboard, accessible CTA, erro
   await page.getByTestId('brand-Volkswagen').tap();
   await page.getByTestId('model-Golf').tap();
   await page.getByTestId('year-2027').tap();
-  await page.getByTestId(`variant-${GOLF}`).tap();
   const used = page.getByTestId('condition-used');
   expect((await used.boundingBox())?.height).toBeGreaterThanOrEqual(44);
   await used.tap();
@@ -218,7 +218,7 @@ test('changing the used car never reuses the previous unit facts', async ({ page
   await page.goto(`/es-es/compare/${BYD}-vs-${M3}?u=1&b=used&b_price=19000&b_km=62000&b_soh=91&eval=2026-10-15`);
   await page.getByTestId('change-b').click();
   await page.getByTestId('step-brand').click();
-  await browse(page, 'Volkswagen', 'Golf', '2027', GOLF);
+  await browse(page, 'Volkswagen', 'Golf', '2027');
   await page.getByTestId('condition-used').click();
   await expect(page.getByTestId('used-price')).toHaveValue('');
   await expect(page.getByTestId('used-km')).toHaveValue('');

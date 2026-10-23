@@ -83,7 +83,8 @@ test('changing a used car brings attention to the updated result', async ({ page
   await page.goto(`/es-es/compare/${BYD}-vs-${M3}?u=1&b=used&b_price=19000&b_km=62000&eval=2026-10-15`);
   await page.getByTestId('change-b').click();
   await page.getByTestId('year-2021').click();
-  await page.getByTestId(`variant-${M3}`).click();
+  // D1.8: aclaración contextual (E6R y E6CR son la misma configuración; se compara E6CR).
+  await page.getByTestId('configuration-panel').getByRole('button', { name: /Autonomía estándar plus/ }).click();
   await page.getByTestId('condition-used').click();
   await page.getByTestId('used-price').fill('17500');
   await page.getByTestId('used-review').click();

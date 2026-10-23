@@ -2,6 +2,9 @@ import { buildVehicleDisplayLabel, POWERTRAINS, type VehicleOption } from '@/dom
 
 const TRANSMISSIONS = ['manual', 'automatic', 'dct', 'cvt', 'ecvt', 'single_speed'] as const;
 const DRIVETRAINS = ['FWD', 'RWD', 'AWD'] as const;
+const YEAR_BASES = ['MODEL_YEAR', 'REGISTRATION_OBSERVED'] as const;
+const REASONS = ['COMMERCIAL_IDENTITY_UNCONFIRMED', 'GENERATION_NOT_VERIFIED', 'MODEL_YEAR_NOT_VERIFIED', 'TRIM_NOT_CONFIRMED', 'NOT_PROMOTED'] as const;
+const FUELS = ['petrol', 'diesel', 'lpg', 'cng', 'hydrogen', 'electric'] as const;
 import type { I18n } from '@/i18n/use-i18n';
 
 /**
@@ -70,6 +73,32 @@ export interface PickerLabels {
   powertrainLabel: string;
   transmission: Record<string, string>;
   drivetrain: Record<string, string>;
+  /** D1.8 (ADR-020): aclaración contextual y estados de disponibilidad. */
+  configurationTitle: string;
+  configurationQuestion: string;
+  dontKnow: string;
+  dontKnowTitle: string;
+  dontKnowNote: string;
+  chooseConfiguration: string;
+  unavailableTitle: string;
+  unavailableNote: string;
+  technicalConfigurations: string;
+  insufficientData: string;
+  trimNotConfirmed: string;
+  comparisonUnavailable: string;
+  technicalOnly: string;
+  /** Plurales ya resueltos: `{count}` se sustituye. */
+  equivalentOne: string;
+  equivalentOther: string;
+  technicalOnlyOne: string;
+  technicalOnlyOther: string;
+  yearBasis: Record<string, string>;
+  reasons: Record<string, string>;
+  fuel: Record<string, string>;
+  /** Plantillas: `{kw}`, `{km}`. */
+  powerThermal: string;
+  powerElectric: string;
+  rangeKm: string;
 }
 
 export interface PairLabels {
@@ -123,6 +152,19 @@ export function selectorLabels({ t, locale }: Pick<I18n, 't' | 'locale'>): Selec
       modelsOther: t('catalog.picker.modelsCount', { count: 7 }).replace('7', '{count}'),
       transmission: Object.fromEntries(TRANSMISSIONS.map((x) => [x, t(`catalog.picker.transmission.${x}`)])),
       drivetrain: Object.fromEntries(DRIVETRAINS.map((x) => [x, t(`catalog.picker.drivetrain.${x}`)])),
+      ...Object.fromEntries(
+        (['configurationTitle', 'configurationQuestion', 'dontKnow', 'dontKnowTitle', 'dontKnowNote', 'chooseConfiguration', 'unavailableTitle', 'unavailableNote', 'technicalConfigurations', 'insufficientData', 'trimNotConfirmed', 'comparisonUnavailable', 'technicalOnly'] as const).map((k) => [k, t(`catalog.picker.${k}`)]),
+      ),
+      equivalentOne: t('catalog.picker.equivalentCount', { count: 1 }).replace('1', '{count}'),
+      equivalentOther: t('catalog.picker.equivalentCount', { count: 7 }).replace('7', '{count}'),
+      technicalOnlyOne: t('catalog.picker.technicalOnlyCount', { count: 1 }).replace('1', '{count}'),
+      technicalOnlyOther: t('catalog.picker.technicalOnlyCount', { count: 7 }).replace('7', '{count}'),
+      yearBasis: Object.fromEntries(YEAR_BASES.map((x) => [x, t(`catalog.picker.yearBasis.${x}`)])),
+      reasons: Object.fromEntries(REASONS.map((x) => [x, t(`catalog.picker.reasons.${x}`)])),
+      fuel: Object.fromEntries(FUELS.map((x) => [x, t(`catalog.picker.fuel.${x}`)])),
+      powerThermal: (t.raw?.('catalog.picker.powerThermal') as string | undefined) ?? '',
+      powerElectric: (t.raw?.('catalog.picker.powerElectric') as string | undefined) ?? '',
+      rangeKm: (t.raw?.('catalog.picker.rangeKm') as string | undefined) ?? '',
     } as PickerLabels,
   };
 }

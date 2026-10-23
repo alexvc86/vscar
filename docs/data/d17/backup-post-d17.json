@@ -1,0 +1,36 @@
+{
+  "file": "data/backups/d17/curated-post-d17.json",
+  "fileSha256": "312a37644775e36417727aacbcca86c07fe8a643f716ea58fda6b4389b1e2e9a",
+  "database": "vscar_dev",
+  "tables": {
+    "sources": {
+      "rows": 2,
+      "sha256": "9db471f853a33b4951b76457a369a57cdefb7c8ef05a46140d8642a0890eab54"
+    },
+    "curated_technical_vehicles": {
+      "rows": 92,
+      "sha256": "3354cbc2cf8a3d350c7ea3176fb0e1588383a30c862812fd7eba219f47ec843a"
+    },
+    "curated_attributes": {
+      "rows": 280,
+      "sha256": "0d1edaa9ded6b76031f84c17377933bb8aff240568bdfffe7238bc849e1b1019"
+    },
+    "curated_spec_values": {
+      "rows": 1368,
+      "sha256": "7c7660e7c139a3ed82be751b27c854db109cef17b0882a68001ba140ed2bfc4d"
+    },
+    "curated_import_runs": {
+      "rows": 16,
+      "sha256": "f66991a84a8a1e48d0b7322c35af7456ba65de19ea4c830615865cbd010f5c76"
+    },
+    "curated_import_items": {
+      "rows": 92,
+      "sha256": "c5e3fbf28027540d02836bf73ee2b52866fb6ec54bfad155c21dafcc8d989b51"
+    }
+  },
+  "restoreVerified": {
+    "into": "vscar_test (restore_d17_* tables, dropped afterwards)",
+    "allMatch": true,
+    "checkConstraints": 10
+  }
+}

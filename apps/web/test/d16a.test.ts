@@ -103,7 +103,8 @@ describe('curated layer isolation (D1.6a)', () => {
     const importers = all.filter((f) => /server\/technical-catalog['"]|from '\.\/technical-catalog'/.test(readFileSync(f, 'utf8'))).map(rel);
     expect(importers).toEqual(['app/internal/catalog/page.tsx']);
     const repoUsers = all.filter((f) => /createTechnicalCurationRepository|curatedTechnicalVehicles|curatedSpecValues|curated_spec_values/.test(readFileSync(f, 'utf8'))).map(rel);
-    expect(repoUsers).toEqual(['server/technical-catalog.ts']);
+    // D1.8 (ADR-020): el descubrimiento del selector lee la capa técnica SOLO en agregado (ver test/d18.test.ts).
+    expect(repoUsers.sort()).toEqual(['server/catalog-discovery.ts', 'server/technical-catalog.ts']);
   });
 
   it('no static file exposes plans, raw data or curated values', () => {

@@ -1,0 +1,302 @@
+{
+  "step": "D1.8",
+  "note": "Promotion review only. Nothing is written to reference_variants. A curated homologation is never promoted by filling generation, model year or trim from registration or homologation data.",
+  "candidates": 9,
+  "promoted": 0,
+  "blocked": {
+    "identity": 9,
+    "rights": 0,
+    "data": 0,
+    "conflicts": 0
+  },
+  "review": [
+    {
+      "rank": 5,
+      "label": "Kia Sportage",
+      "productClass": "ICE_OR_MHEV",
+      "diagnosisD17": "READY_FOR_PROMOTION_REVIEW",
+      "gates": {
+        "TECHNICAL_IDENTITY": {
+          "pass": true,
+          "detail": "TAN completo + Va + Ve (EXACT)"
+        },
+        "RIGHTS": {
+          "pass": true,
+          "detail": "categorías con S01 condicional (CC BY): Economy"
+        },
+        "QUALITY": {
+          "pass": true,
+          "detail": "sin conflicto en claves de categoría"
+        },
+        "CATEGORY_ELIGIBILITY": {
+          "pass": true,
+          "detail": "activables: Economy"
+        },
+        "CONFIGURATION_RESOLUTION": {
+          "pass": false,
+          "detail": "ReferenceVariant exige generation_code, model_year, trim_name y commercial_name verificados. Generación: sin fuente; año-modelo: sin fuente (solo matriculación 2022–2022); acabado: no confirmado; identidad comercial PARTIAL"
+        }
+      },
+      "decision": "NOT_PROMOTED",
+      "blockedBy": [
+        "CONFIGURATION_RESOLUTION"
+      ]
+    },
+    {
+      "rank": 6,
+      "label": "Renault Clio",
+      "productClass": "ICE_OR_MHEV",
+      "diagnosisD17": "READY_FOR_PROMOTION_REVIEW",
+      "gates": {
+        "TECHNICAL_IDENTITY": {
+          "pass": true,
+          "detail": "TAN completo + Va + Ve (EXACT)"
+        },
+        "RIGHTS": {
+          "pass": true,
+          "detail": "categorías con S01 condicional (CC BY): Economy"
+        },
+        "QUALITY": {
+          "pass": true,
+          "detail": "sin conflicto en claves de categoría"
+        },
+        "CATEGORY_ELIGIBILITY": {
+          "pass": true,
+          "detail": "activables: Economy"
+        },
+        "CONFIGURATION_RESOLUTION": {
+          "pass": false,
+          "detail": "ReferenceVariant exige generation_code, model_year, trim_name y commercial_name verificados. Generación: sin fuente; año-modelo: sin fuente (solo matriculación 2024–2025); acabado: no confirmado; identidad comercial PARTIAL"
+        }
+      },
+      "decision": "NOT_PROMOTED",
+      "blockedBy": [
+        "CONFIGURATION_RESOLUTION"
+      ]
+    },
+    {
+      "rank": 7,
+      "label": "Nissan Qashqai",
+      "productClass": "MHEV",
+      "diagnosisD17": "READY_FOR_PROMOTION_REVIEW",
+      "gates": {
+        "TECHNICAL_IDENTITY": {
+          "pass": true,
+          "detail": "TAN completo + Va + Ve (EXACT)"
+        },
+        "RIGHTS": {
+          "pass": true,
+          "detail": "categorías con S01 condicional (CC BY): Economy"
+        },
+        "QUALITY": {
+          "pass": true,
+          "detail": "sin conflicto en claves de categoría"
+        },
+        "CATEGORY_ELIGIBILITY": {
+          "pass": true,
+          "detail": "activables: Economy"
+        },
+        "CONFIGURATION_RESOLUTION": {
+          "pass": false,
+          "detail": "ReferenceVariant exige generation_code, model_year, trim_name y commercial_name verificados. Generación: sin fuente; año-modelo: sin fuente (solo matriculación 2024–2025); acabado: no confirmado; identidad comercial PARTIAL"
+        }
+      },
+      "decision": "NOT_PROMOTED",
+      "blockedBy": [
+        "CONFIGURATION_RESOLUTION"
+      ]
+    },
+    {
+      "rank": 26,
+      "label": "Peugeot 308",
+      "productClass": "ICE_OR_MHEV",
+      "diagnosisD17": "READY_FOR_PROMOTION_REVIEW",
+      "gates": {
+        "TECHNICAL_IDENTITY": {
+          "pass": true,
+          "detail": "TAN completo + Va + Ve (EXACT)"
+        },
+        "RIGHTS": {
+          "pass": true,
+          "detail": "categorías con S01 condicional (CC BY): Economy"
+        },
+        "QUALITY": {
+          "pass": true,
+          "detail": "sin conflicto en claves de categoría"
+        },
+        "CATEGORY_ELIGIBILITY": {
+          "pass": true,
+          "detail": "activables: Economy"
+        },
+        "CONFIGURATION_RESOLUTION": {
+          "pass": false,
+          "detail": "ReferenceVariant exige generation_code, model_year, trim_name y commercial_name verificados. Generación: sin fuente; año-modelo: sin fuente (solo matriculación 2024–2024); acabado: EXACT; identidad comercial EXACT"
+        }
+      },
+      "decision": "NOT_PROMOTED",
+      "blockedBy": [
+        "CONFIGURATION_RESOLUTION"
+      ]
+    },
+    {
+      "rank": 27,
+      "label": "Toyota Yaris",
+      "productClass": "ICE_OR_MHEV",
+      "diagnosisD17": "READY_FOR_PROMOTION_REVIEW",
+      "gates": {
+        "TECHNICAL_IDENTITY": {
+          "pass": true,
+          "detail": "TAN completo + Va + Ve (EXACT)"
+        },
+        "RIGHTS": {
+          "pass": true,
+          "detail": "categorías con S01 condicional (CC BY): Economy"
+        },
+        "QUALITY": {
+          "pass": true,
+          "detail": "sin conflicto en claves de categoría"
+        },
+        "CATEGORY_ELIGIBILITY": {
+          "pass": true,
+          "detail": "activables: Economy"
+        },
+        "CONFIGURATION_RESOLUTION": {
+          "pass": false,
+          "detail": "ReferenceVariant exige generation_code, model_year, trim_name y commercial_name verificados. Generación: sin fuente; año-modelo: sin fuente (solo matriculación 2022–2024); acabado: no confirmado; identidad comercial PARTIAL"
+        }
+      },
+      "decision": "NOT_PROMOTED",
+      "blockedBy": [
+        "CONFIGURATION_RESOLUTION"
+      ]
+    },
+    {
+      "rank": 28,
+      "label": "Mercedes-Benz Clase A",
+      "productClass": "ICE_OR_MHEV",
+      "diagnosisD17": "READY_FOR_PROMOTION_REVIEW",
+      "gates": {
+        "TECHNICAL_IDENTITY": {
+          "pass": true,
+          "detail": "TAN completo + Va + Ve (EXACT)"
+        },
+        "RIGHTS": {
+          "pass": true,
+          "detail": "categorías con S01 condicional (CC BY): Economy"
+        },
+        "QUALITY": {
+          "pass": true,
+          "detail": "sin conflicto en claves de categoría"
+        },
+        "CATEGORY_ELIGIBILITY": {
+          "pass": true,
+          "detail": "activables: Economy"
+        },
+        "CONFIGURATION_RESOLUTION": {
+          "pass": false,
+          "detail": "ReferenceVariant exige generation_code, model_year, trim_name y commercial_name verificados. Generación: sin fuente; año-modelo: sin fuente (solo matriculación 2022–2024); acabado: no confirmado; identidad comercial PARTIAL"
+        }
+      },
+      "decision": "NOT_PROMOTED",
+      "blockedBy": [
+        "CONFIGURATION_RESOLUTION"
+      ]
+    },
+    {
+      "rank": 48,
+      "label": "Toyota Yaris",
+      "productClass": "HEV_OR_MHEV",
+      "diagnosisD17": "READY_FOR_PROMOTION_REVIEW",
+      "gates": {
+        "TECHNICAL_IDENTITY": {
+          "pass": true,
+          "detail": "TAN completo + Va + Ve (EXACT)"
+        },
+        "RIGHTS": {
+          "pass": true,
+          "detail": "categorías con S01 condicional (CC BY): Economy"
+        },
+        "QUALITY": {
+          "pass": true,
+          "detail": "sin conflicto en claves de categoría"
+        },
+        "CATEGORY_ELIGIBILITY": {
+          "pass": true,
+          "detail": "activables: Economy"
+        },
+        "CONFIGURATION_RESOLUTION": {
+          "pass": false,
+          "detail": "ReferenceVariant exige generation_code, model_year, trim_name y commercial_name verificados. Generación: sin fuente; año-modelo: sin fuente (solo matriculación 2022–2025); acabado: no confirmado; identidad comercial PARTIAL"
+        }
+      },
+      "decision": "NOT_PROMOTED",
+      "blockedBy": [
+        "CONFIGURATION_RESOLUTION"
+      ]
+    },
+    {
+      "rank": 56,
+      "label": "Toyota Corolla",
+      "productClass": "HEV_OR_MHEV",
+      "diagnosisD17": "READY_FOR_PROMOTION_REVIEW",
+      "gates": {
+        "TECHNICAL_IDENTITY": {
+          "pass": true,
+          "detail": "TAN completo + Va + Ve (EXACT)"
+        },
+        "RIGHTS": {
+          "pass": true,
+          "detail": "categorías con S01 condicional (CC BY): Economy"
+        },
+        "QUALITY": {
+          "pass": true,
+          "detail": "sin conflicto en claves de categoría"
+        },
+        "CATEGORY_ELIGIBILITY": {
+          "pass": true,
+          "detail": "activables: Economy"
+        },
+        "CONFIGURATION_RESOLUTION": {
+          "pass": false,
+          "detail": "ReferenceVariant exige generation_code, model_year, trim_name y commercial_name verificados. Generación: sin fuente; año-modelo: sin fuente (solo matriculación 2022–2022); acabado: no confirmado; identidad comercial PARTIAL"
+        }
+      },
+      "decision": "NOT_PROMOTED",
+      "blockedBy": [
+        "CONFIGURATION_RESOLUTION"
+      ]
+    },
+    {
+      "rank": 81,
+      "label": "Tesla Model Y",
+      "productClass": "BEV",
+      "diagnosisD17": "READY_FOR_PROMOTION_REVIEW",
+      "gates": {
+        "TECHNICAL_IDENTITY": {
+          "pass": true,
+          "detail": "TAN completo + Va + Ve (EXACT)"
+        },
+        "RIGHTS": {
+          "pass": true,
+          "detail": "categorías con S01 condicional (CC BY): Economy, Range"
+        },
+        "QUALITY": {
+          "pass": true,
+          "detail": "sin conflicto en claves de categoría"
+        },
+        "CATEGORY_ELIGIBILITY": {
+          "pass": true,
+          "detail": "activables: Economy, Range"
+        },
+        "CONFIGURATION_RESOLUTION": {
+          "pass": false,
+          "detail": "ReferenceVariant exige generation_code, model_year, trim_name y commercial_name verificados. Generación: sin fuente; año-modelo: sin fuente (solo matriculación 2022–2022); acabado: no confirmado; identidad comercial PARTIAL"
+        }
+      },
+      "decision": "NOT_PROMOTED",
+      "blockedBy": [
+        "CONFIGURATION_RESOLUTION"
+      ]
+    }
+  ]
+}

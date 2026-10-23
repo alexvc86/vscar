@@ -33,12 +33,13 @@ describe('browse: brand → model → year → version (Dataset Core, PREVIEW)',
   const c = memoryCatalog();
 
   it('brands come from the catalog (not hardcoded)', async () => {
+    // D1.8: cada marca declara si tiene algún modelo comparable (aquí todas: Dataset Core sin capa técnica).
     expect(await c.listBrands('ES')).toEqual([
-      { brand: 'BMW', models: 1 },
-      { brand: 'BYD', models: 1 },
-      { brand: 'SEAT', models: 1 },
-      { brand: 'Tesla', models: 1 },
-      { brand: 'Volkswagen', models: 1 },
+      { brand: 'BMW', models: 1, availability: 'COMPARISON_ELIGIBLE' },
+      { brand: 'BYD', models: 1, availability: 'COMPARISON_ELIGIBLE' },
+      { brand: 'SEAT', models: 1, availability: 'COMPARISON_ELIGIBLE' },
+      { brand: 'Tesla', models: 1, availability: 'COMPARISON_ELIGIBLE' },
+      { brand: 'Volkswagen', models: 1, availability: 'COMPARISON_ELIGIBLE' },
     ]);
   });
 
@@ -49,15 +50,17 @@ describe('browse: brand → model → year → version (Dataset Core, PREVIEW)',
     const [m3] = await c.listModels('ES', 'Tesla');
     expect(m3).toMatchObject({ model: 'Model 3', years: [2021], generations: ['pre-Highland'] });
     // Card payload: as much as brand, model, generations, years, body type, media.
-    expect(Object.keys(golf!).sort()).toEqual(['bodyType', 'brand', 'generations', 'model', 'preview', 'years']);
+    expect(Object.keys(golf!).sort()).toEqual(['availability', 'bodyType', 'brand', 'generations', 'model', 'preview', 'years']);
+    expect(golf!.availability).toBe('COMPARISON_ELIGIBLE');
   });
 
   it('years: only those present, with their explicit generation', async () => {
+    // D1.8: cada año declara su base (aquí año-modelo del catálogo seleccionable) y si es comparable.
     expect(await c.listModelYears('ES', 'Volkswagen', 'Golf')).toEqual([
-      { year: 2027, generations: ['Mk8'] },
-      { year: 2018, generations: ['Mk7'] },
+      { year: 2027, generations: ['Mk8'], basis: ['MODEL_YEAR'], availability: 'COMPARISON_ELIGIBLE' },
+      { year: 2018, generations: ['Mk7'], basis: ['MODEL_YEAR'], availability: 'COMPARISON_ELIGIBLE' },
     ]);
-    expect(await c.listModelYears('ES', 'SEAT', 'León')).toEqual([{ year: 2026, generations: ['Mk4'] }]);
+    expect(await c.listModelYears('ES', 'SEAT', 'León')).toEqual([{ year: 2026, generations: ['Mk4'], basis: ['MODEL_YEAR'], availability: 'COMPARISON_ELIGIBLE' }]);
   });
 
   it('Golf 2018 returns only 2018 variants; each row resolves an exact ReferenceVariant id', async () => {

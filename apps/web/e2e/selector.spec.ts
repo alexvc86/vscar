@@ -1,13 +1,16 @@
 import { expect, test, type Page } from '@playwright/test';
 
 /**
- * Step 7b.2 — VehiclePicker: Marca → Modelo → Año → Versión (por defecto) y "Buscar directamente" (atajo), sobre el
- * catálogo MySQL de desarrollo (canal PREVIEW). El último paso resuelve SIEMPRE una ReferenceVariant concreta.
+ * Step 7b.2 → D1.8 (ADR-020) — VehiclePicker: Marca → Modelo → Año (tres pasos) y "Buscar directamente" (atajo), sobre el
+ * catálogo MySQL de desarrollo (canal PREVIEW). La homologación se resuelve en el servidor; solo si hay configuraciones
+ * realmente distintas aparece una aclaración contextual. Nunca hay un paso "Versión".
  */
-const GOLF18_NEDC = 'volkswagen-golf-2018-advance-1-5-tsi-130-h33';
+const GOLF18_WLTP = 'volkswagen-golf-2018-advance-1-5-tsi-130-h35';
 const GOLF_ETSI = 'volkswagen-golf-style-1-5-etsi-150-dsg';
 const BYD = 'byd-seal-2026-design-rwd-82-5-kwh';
-const M3 = 'tesla-model-3-2021-standard-range-plus-e6r';
+/** Model 3 2021 "Autonomía estándar plus": E6R y E6CR son equivalentes; se compara E6CR (ADR-020 §4). */
+const M3 = 'tesla-model-3-2021-standard-range-plus-e6cr';
+const M3_SRP = /Autonomía estándar plus|Standard Range Plus|estándar plus/i;
 
 function watchConsole(page: Page) {
   const problems: string[] = [];
@@ -18,8 +21,8 @@ function watchConsole(page: Page) {
   return problems;
 }
 
-/** Recorre los 4 pasos y confirma. Comprueba el foco en el título de cada paso. */
-async function browseTo(page: Page, brand: string, model: string, year: string, slug: string) {
+/** Recorre los 3 pasos (+ aclaración si hace falta) y confirma. Comprueba el foco en el título de cada paso. */
+async function browseTo(page: Page, brand: string, model: string, year: string, configuration?: RegExp) {
   const title = page.locator('#vp-step-title');
   await page.getByTestId(`brand-${brand}`).click();
   await expect(title).toBeFocused();
@@ -27,13 +30,16 @@ async function browseTo(page: Page, brand: string, model: string, year: string, 
   await expect(title).toBeFocused();
   await page.getByTestId(`year-${year}`).click();
   await expect(title).toBeFocused();
-  await page.getByTestId(`variant-${slug}`).click();
-  await expect(title).toBeFocused();
+  if (configuration) {
+    await expect(page.getByTestId('configuration-panel')).toBeVisible();
+    await page.getByTestId('configuration-panel').getByRole('button', { name: configuration }).click();
+    await expect(title).toBeFocused();
+  }
   await expect(page.locator('.vp-summary')).toBeVisible();
   await page.getByTestId('condition-new').click();
 }
 
-test('§107 home ES → Volkswagen → Golf → 2018 → version → second car → compare → change A (year + version) → EN keeps pair', async ({ page }) => {
+test('§107 home ES → Volkswagen → Golf → 2018 (no version step) → second car → compare → change A (year) → EN keeps pair', async ({ page }) => {
   const problems = watchConsole(page);
   await page.goto('/es-es');
   await page.getByTestId('home-cta').click();
@@ -44,31 +50,32 @@ test('§107 home ES → Volkswagen → Golf → 2018 → version → second car 
   // Tarjeta de modelo: una por modelo, con sus años reales y visual (silueta genérica: no hay imagen con derechos).
   await page.getByTestId('brand-Volkswagen').click();
   const golf = page.getByTestId('model-Golf');
-  await expect(golf).toContainText('2027 · 2018');
+  await expect(golf).toContainText('2027');
+  await expect(golf).toContainText('2018');
   await expect(golf.locator('[data-visual="silhouette"]')).toHaveCount(1);
   await page.getByTestId('model-Golf').click();
-  await expect(page.locator('.vp__chips button')).toHaveCount(2);
+  await expect(page.getByTestId('year-2018')).toHaveAttribute('data-availability', 'COMPARISON_ELIGIBLE');
   await page.getByTestId('year-2018').click();
-  // Misma versión comercial, dos identidades técnicas: se distinguen (NEDC / WLTP), nunca se fusionan.
-  await expect(page.locator('.vp-variant__row')).toHaveCount(2);
-  await expect(page.getByTestId(`variant-${GOLF18_NEDC}`)).toContainText('homologación NEDC');
-  await page.getByTestId(`variant-${GOLF18_NEDC}`).click();
+  // D1.8: dos homologaciones (NEDC / WLTP) del mismo coche → UNA opción, sin paso Versión ni tarjetas duplicadas.
+  await expect(page.locator('.vp-summary')).toBeVisible();
+  await expect(page.locator('.vp-summary')).not.toContainText(/NEDC|WLTP/);
+  await expect(page.getByTestId('step-version')).toHaveCount(0);
   await page.getByTestId('condition-new').click();
 
   // Flujo guiado: el selector pasa al coche B.
   await expect(dialog).toHaveAccessibleName('Elige el segundo coche');
   await expect(page.getByTestId('picker-side')).toHaveText('Coche B');
-  await browseTo(page, 'Tesla', 'Model 3', '2021', M3);
+  // Model 3 2021: dos configuraciones reales → aclaración contextual (no un cuarto paso fijo).
+  await browseTo(page, 'Tesla', 'Model 3', '2021', M3_SRP);
   await expect(dialog).toBeHidden();
   await page.getByTestId('compare-go').click();
-  await expect(page).toHaveURL(new RegExp(`/es-es/compare/${GOLF18_NEDC}-vs-${M3}$`));
+  await expect(page).toHaveURL(new RegExp(`/es-es/compare/${GOLF18_WLTP}-vs-${M3}$`));
 
-  // Escenario + cambiar A: el selector abre en el AÑO del coche actual; otro año, otra versión.
-  await page.goto(`/es-es/compare/${GOLF18_NEDC}-vs-${M3}?trips=10`);
+  // Escenario + cambiar A: el selector abre en el AÑO del coche actual; otro año → coche resuelto directamente.
+  await page.goto(`/es-es/compare/${GOLF18_WLTP}-vs-${M3}?trips=10`);
   await page.getByTestId('change-a').click();
   await expect(page.locator('[aria-current="step"]')).toContainText('Año');
   await page.getByTestId('year-2027').click();
-  await page.getByTestId(`variant-${GOLF_ETSI}`).click();
   await page.getByTestId('condition-new').click();
   await expect(page).toHaveURL(new RegExp(`/es-es/compare/${GOLF_ETSI}-vs-${M3}[?]trips=10(#result)?$`));
 
@@ -111,7 +118,7 @@ test('same car twice as NEW is blocked (Used is allowed); Escape closes and retu
   await page.getByTestId('step-brand').click();
   await browseToVersion(page, 'Tesla', 'Model 3', '2021');
   // Step 8b: M3 ya es el coche B (nuevo). Elegirlo otra vez como NUEVO avisa; como USADO sería válido.
-  await page.getByTestId(`variant-${M3}`).click();
+  await page.getByTestId('configuration-panel').getByRole('button', { name: /Standard Range Plus|estándar plus/i }).click();
   await page.getByTestId('condition-new').click();
   await expect(page.getByRole('dialog').getByRole('alert')).toHaveText('This same car is already the new one on the other side: choose Used to compare a specific car, or pick another car.');
   await page.keyboard.press('Escape');
@@ -125,7 +132,7 @@ async function browseToVersion(page: Page, brand: string, model: string, year: s
   await page.getByTestId(`year-${year}`).click();
 }
 
-test('keyboard only: Tab + Enter through the four steps', async ({ page }) => {
+test('keyboard only: Tab + Enter through the three steps (a single configuration resolves by itself)', async ({ page }) => {
   await page.goto('/es-es');
   await page.getByTestId('pick-a').focus();
   await page.keyboard.press('Enter');
@@ -136,14 +143,12 @@ test('keyboard only: Tab + Enter through the four steps', async ({ page }) => {
     await page.keyboard.press('Enter');
     await expect(title).toBeFocused();
   }
-  await page.locator('.vp-variant__row').first().focus();
-  await page.keyboard.press('Enter');
   await page.getByTestId('condition-new').focus();
   await page.keyboard.press('Enter');
   await expect(page.getByTestId('pick-a')).toContainText('León');
 });
 
-test('§108 mobile 390 px: full-screen sheet, the four steps, select a car', async ({ browser }) => {
+test('§108 mobile 390 px: full-screen sheet, the three steps, select a car', async ({ browser }) => {
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
   const page = await ctx.newPage();
   await page.goto('/es-es');
@@ -153,16 +158,16 @@ test('§108 mobile 390 px: full-screen sheet, the four steps, select a car', asy
   const box = await sheet.boundingBox();
   expect(box?.width).toBeGreaterThanOrEqual(388);
   await expect(page.locator('.vp__steps')).toBeHidden();
-  await expect(page.locator('.vp__progress')).toHaveText('1 / 4');
+  await expect(page.locator('.vp__progress')).toHaveText('1 / 3');
   await page.getByTestId('brand-BYD').tap();
   await page.getByTestId('model-SEAL').tap();
-  await page.getByTestId('year-2026').tap();
-  await expect(page.locator('.vp__progress')).toHaveText('4 / 4');
-  const row = page.getByTestId(`variant-${BYD}`);
-  const rb = await row.boundingBox();
-  expect(rb?.height).toBeGreaterThanOrEqual(44);
-  await row.tap();
-  await page.getByTestId('condition-new').tap();
+  const year = page.getByTestId('year-2026');
+  expect((await year.boundingBox())?.height).toBeGreaterThanOrEqual(44);
+  await year.tap();
+  await expect(page.locator('.vp__progress')).toHaveText('3 / 3');
+  const newCar = page.getByTestId('condition-new');
+  expect((await newCar.boundingBox())?.height).toBeGreaterThanOrEqual(44);
+  await newCar.tap();
   await expect(page.getByTestId('pick-a')).toContainText('SEAL');
   await ctx.close();
 });
@@ -175,19 +180,53 @@ test('unknown vehicle → specific 404; invalid inputs → controlled API errors
   expect((await request.get('/api/catalog/browse?market=ES&level=models')).status()).toBe(400);
 });
 
-test('ES and EN pickers show the same brands, models, years and versions', async ({ page }) => {
+test('ES and EN pickers show the same brands, models, years and configurations', async ({ page }) => {
   const collect = async (locale: string) => {
     await page.goto(`/${locale}`);
     await page.getByTestId('pick-a').click();
+    // Esperar a que cada lista haya cargado antes de leerla.
+    await expect(page.getByTestId('brand-Tesla')).toBeVisible();
+    const brands = await page.locator('[data-testid^="brand-"]').evaluateAll((els) => els.map((e) => e.getAttribute('data-testid')));
     await page.getByTestId('brand-Tesla').click();
     await page.getByTestId('model-Model 3').click();
-    const years = await page.locator('.vp__chips button').evaluateAll((els) => els.map((e) => e.getAttribute('data-testid')));
+    await expect(page.getByTestId('year-2021')).toBeVisible();
+    const years = await page.locator('[data-testid^="year-"]').evaluateAll((els) => els.map((e) => e.getAttribute('data-testid')));
     await page.getByTestId('year-2021').click();
-    await expect(page.locator('.vp-variant__row')).toHaveCount(3);
-    const versions = await page.locator('.vp-variant__row').evaluateAll((els) => els.map((e) => e.getAttribute('data-variant-id')));
-    return { years, versions };
+    await expect(page.getByTestId('configuration-panel')).toBeVisible();
+    const configurations = await page.locator('[data-testid^="configuration-c"]').evaluateAll((els) => els.map((e) => e.getAttribute('data-testid')));
+    return { brands, years, configurations };
   };
   const es = await collect('es-es');
-  expect(es.versions).toHaveLength(3);
+  // 2021: "Autonomía estándar plus" (E6R + E6CR equivalentes) y "Tracción trasera" — nunca tres filas.
+  expect(es.configurations).toHaveLength(2);
   expect(await collect('en-es')).toEqual(es);
+});
+
+test('D1.8 — "I don\'t know" keeps the choice without numbers; a model with only technical data says why it is not comparable', async ({ page }) => {
+  const problems = watchConsole(page);
+  await page.goto('/en-es');
+  await page.getByTestId('pick-a').click();
+  await page.getByTestId('brand-Tesla').click();
+  await page.getByTestId('model-Model 3').click();
+  await page.getByTestId('year-2021').click();
+  await page.getByTestId('configuration-dont-know').click();
+  const panel = page.getByTestId('unavailable-panel');
+  await expect(panel).toHaveAttribute('data-reason', 'dontKnow');
+  await expect(panel).toContainText('Comparison unavailable');
+  await expect(page.locator('.vp-summary')).toHaveCount(0);
+  await page.getByTestId('choose-configuration').click();
+  await expect(page.getByTestId('configuration-panel')).toBeVisible();
+
+  // Toyota: solo homologaciones técnicas → información y motivos, sin comparación ni resumen Nuevo/Usado.
+  await page.getByTestId('step-brand').click();
+  await expect(page.getByTestId('brand-Toyota')).toHaveAttribute('data-availability', 'CATALOG_DISCOVERABLE');
+  await page.getByTestId('brand-Toyota').click();
+  await page.getByTestId('model-Corolla').click();
+  await expect(page.getByTestId('year-2022')).toContainText('registrations');
+  await page.getByTestId('year-2022').click();
+  await expect(page.getByTestId('unavailable-panel')).toHaveAttribute('data-reason', 'technical');
+  await expect(page.getByTestId('unavailable-panel')).toContainText('Not yet in the comparable catalogue');
+  await expect(page.getByTestId('condition-new')).toHaveCount(0);
+  await expect(page.getByTestId('unavailable-panel')).not.toContainText(/E\d+\*|TAN|S11|RDW/);
+  expect(problems).toEqual([]);
 });

@@ -9,6 +9,7 @@
  *   valores en conflicto) SIN escribir: no aplica migraciones, no crea runs, no escribe informes; comprueba al final
  *   que las tablas curadas y el catálogo seleccionable no han cambiado.
  * - `--allow-update`: permite reescribir vehículos curados existentes con contenido distinto (por defecto, fallan).
+ * - `--report <ruta>` (Step D1.7): dónde escribir el informe de la importación real.
  * - Solo bases cuyo nombre termina en `_dev` (o `_test`). Nunca el VPS.
  * - Importación real: aplica migraciones, ejecuta el lote DOS veces (la segunda no debe cambiar nada) y comprueba que
  *   el catálogo seleccionable existente (reference_variants, spec_values, precios…) queda intacto.
@@ -25,7 +26,7 @@ import { MIGRATIONS_FOLDER, applyMigrations } from '../src/migrations.ts';
 import { Source } from '@vscar/vehicle-schema';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
-const { values: args } = parseArgs({ options: { plan: { type: 'string', default: 'data/curation/d16/plan-first-18.json' }, 'dry-run': { type: 'boolean', default: false }, 'allow-update': { type: 'boolean', default: false } } });
+const { values: args } = parseArgs({ options: { plan: { type: 'string', default: 'data/curation/d16/plan-first-18.json' }, 'dry-run': { type: 'boolean', default: false }, 'allow-update': { type: 'boolean', default: false }, report: { type: 'string' } } });
 const url = process.env.DATABASE_URL;
 if (!url) throw new Error('DATABASE_URL is not set (see .env.example)');
 const dbName = new URL(url).pathname.replace(/^\//, '');
@@ -106,7 +107,7 @@ try {
     const after = await catalogFingerprint(db);
     const selectableReferenceVariants = Number(after.reference_variants_rows);
     const report = {
-      step: plan.batchKey === 'd16-first-18' ? 'D1.6' : 'D1.6a',
+      step: plan.batchKey === 'd16-first-18' ? 'D1.6' : args.report ? 'D1.7' : 'D1.6a',
       database: dbName,
       batchKey: plan.batchKey,
       planHash: planHash(plan.items),
@@ -118,7 +119,7 @@ try {
       idempotent: JSON.stringify(after1) === JSON.stringify(after2) && run2.counts.imported === 0,
       existingCatalog: { before, after, unchanged: JSON.stringify(before) === JSON.stringify(after), selectableReferenceVariants },
     };
-    const out = plan.batchKey === 'd16-first-18' ? 'docs/data/d16/import-report.json' : `docs/data/d16a/import-report-${plan.batchKey}.json`;
+    const out = args.report ?? (plan.batchKey === 'd16-first-18' ? 'docs/data/d16/import-report.json' : `docs/data/d16a/import-report-${plan.batchKey}.json`);
     await mkdir(dirname(join(ROOT, out)), { recursive: true });
     await writeFile(join(ROOT, out), `${JSON.stringify(report, null, 2)}\n`);
     console.log(JSON.stringify({ run1: report.run1.counts, run2: report.run2.counts, idempotent: report.idempotent, catalogUnchanged: report.existingCatalog.unchanged, selectableReferenceVariants }));

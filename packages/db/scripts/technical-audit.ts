@@ -59,7 +59,8 @@ try {
           candidateRank: v.d1_rank,
           specKey: obs[0]!.value.spec_key,
           conflictGroup: group,
-          values: obs.map((o) => ({ source: o.source_code, record: o.source_record, value: o.value.value ?? [o.value.value_min, o.value.value_max], unit: o.value.unit, testCycle: o.value.test_cycle ?? null, measurementBasis: o.value.measurement_basis ?? null, quality: o.quality_status })),
+          // Step D1.7: los valores de fuentes con derechos PENDING no se escriben en artefactos versionados (redistribución no aprobada).
+          values: obs.map((o) => ({ source: o.source_code, record: o.source_record, rights: o.rights_status, ...(o.rights_status === 'PENDING' ? { value: null, valueRedacted: 'rights PENDING' } : { value: o.value.value ?? [o.value.value_min, o.value.value_max] }), unit: o.value.unit, testCycle: o.value.test_cycle ?? null, measurementBasis: o.value.measurement_basis ?? null, quality: o.quality_status })),
           conflictType: sources.length > 1 ? (bases.length > 1 ? 'CROSS_SOURCE_DIFFERENT_BASIS' : 'CROSS_SOURCE_VALUE_MISMATCH') : bases.length > 1 ? 'SAME_SOURCE_DIFFERENT_BASIS' : 'SAME_SOURCE_VALUE_MISMATCH',
           decisionStatus: 'OPEN — all values kept, none averaged, no source-priority rule applied',
         };
@@ -81,7 +82,7 @@ try {
         curationStatus: v.curation_status,
         observations: { total: observations.length, S01: bySource('S01'), S11: bySource('S11'), usable: observations.filter((o) => o.quality_status === 'USABLE').length, notUsable: observations.filter((o) => o.quality_status === 'NOT_USABLE').length },
         rights: Object.fromEntries([...new Set(observations.map((o) => o.source_code))].sort().map((s) => [s, [...new Set(observations.filter((o) => o.source_code === s).map((o) => o.rights_status))]])),
-        technicalAttributes: attributes.filter((a) => a.kind === 'TECHNICAL').map((a) => `${a.attribute}=${a.value} (${a.source_code}, ${a.rights_status})`),
+        technicalAttributes: attributes.filter((a) => a.kind === 'TECHNICAL').map((a) => `${a.attribute}=${a.rights_status === 'PENDING' ? '<redacted>' : a.value} (${a.source_code}, ${a.rights_status})`),
         openConflicts: conflicts,
         rowsCitingAnotherKey: foreign.length,
         blockers: v.blockers,

@@ -100,8 +100,8 @@ describe.skipIf(!url)('internal browse API /api/catalog/browse (MySQL)', () => {
     expect((brands.body.brands as { brand: string }[]).map((b) => b.brand)).toEqual(['BMW', 'BYD', 'SEAT', 'Tesla', 'Volkswagen']);
     expect(((await call('market=ES&level=models&brand=Volkswagen')).body.models as unknown[]).length).toBe(1);
     expect((await call('market=ES&level=years&brand=Volkswagen&model=Golf')).body.years).toEqual([
-      { year: 2027, generations: ['Mk8'] },
-      { year: 2018, generations: ['Mk7'] },
+      { year: 2027, generations: ['Mk8'], basis: ['MODEL_YEAR'], availability: 'COMPARISON_ELIGIBLE' },
+      { year: 2018, generations: ['Mk7'], basis: ['MODEL_YEAR'], availability: 'COMPARISON_ELIGIBLE' },
     ]);
     const variants = (await call('market=ES&level=variants&brand=Volkswagen&model=Golf&year=2018')).body.variants as { id: string; year: number }[];
     expect(variants.map((v) => v.year)).toEqual([2018, 2018]);
